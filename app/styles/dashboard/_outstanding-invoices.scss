@@ -1,0 +1,19 @@
+.outstanding-invoices-container-dashboard{
+	margin-bottom: 50px;
+	.see-all-invoice{
+		margin-top: 30px;
+	}
+
+	.amount-owed{
+		color: #e6374f;
+	}
+	.due-date{
+		color: #999; 
+	}
+	.glyphicon.glyphicon-list-alt{
+	  font-size: 28px;
+	  margin-top: 27px;
+	  color: #999;
+	  margin-right: 7px;
+	}
+}

@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "privacy.js",
+  "sourceRoot": "",
+  "sources": [
+    "privacy.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EACA,OAAO,CAAC,MAAR,CAAe,aAAf,CAA6B,CAAC,UAA9B,CAAyC,aAAzC,EAAwD,SAAC,MAAD,EAAS,UAAT,GAAA;AACtD,IAAA,UAAU,CAAC,SAAX,GAAuB,yBAAvB,CADsD;EAAA,CAAxD,CADA,CAAA;AAAA"
+}

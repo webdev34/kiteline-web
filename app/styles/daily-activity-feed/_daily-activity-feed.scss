@@ -1,0 +1,40 @@
+
+.daily-activity-feed-container{
+	.col-md-4{
+		height: 490px;
+	}
+	.fa.fa-sun-o{
+	  font-size: 24px;
+	  margin-top: 27px;
+	  color: #999;
+	  margin-right: 7px;
+	}
+	.feed-date{
+		font-size: 14px;
+  		color: #999;
+	}
+	.feed-headline{
+		color: #666;
+	}
+	ul{
+		li{
+			font-size: 18px;
+			.pull-left{
+				span.list-title{
+					margin-top: 10px;
+				}
+			}
+			.pull-right{
+				margin-top: 10px;
+			}
+		}
+	}
+	.feed-breakdown-view{
+		.detail-breakdown{
+			.detail-value{
+			  width: 100%;
+			  text-align: left;
+			}
+		}
+	}
+} //.daily-activity-feed-container

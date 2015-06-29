@@ -1,0 +1,469 @@
+<div class="my-accounts-container">
+	<h3 class="greeting">My Accounts</h3>
+
+
+	<div class="left-feature-container col-md-4 white-bg">
+		
+		<div  ng-show="displayView != 'my accounts' && displayView != 'pickup list' ">
+			<a class="back-to-main-view" ng-click="goBackToMyAccounts()"><i class="fa fa-angle-left"></i>Back</a>
+		</div>
+
+		<i ng-show="displayView == 'my accounts' || displayView == 'pickup list'" class="fa fa-user pull-left"></i>
+		<h4 class="pull-left" ng-show="displayView == 'my accounts' || displayView == 'pickup list'">
+			My Accounts
+		</h4> 
+		<h4 class="pull-left" ng-show="displayView != 'my accounts' && displayView != 'pickup list'">
+			{{displayView}}
+		</h4> 
+
+
+		<!-- MY ACCOUNTS MENU -->
+		<ul ng-show="displayView == 'my accounts' || displayView == 'pickup list'">
+			<li ng-click="goToView('guardians')">
+				<div class="pull-left">
+					<span class="list-title">Guardians</span>
+				</div>
+				<div class="pull-right">
+					<a href="">See details</a><i class="fa fa-angle-right"></i>
+				</div>
+			</li>
+			<li ng-click="goToView('alternative contact information')">
+				<div class="pull-left">
+					<span class="list-title">Alternative Contact Information</span>
+				</div>
+				<div class="pull-right">
+					<a href="">See details</a><i class="fa fa-angle-right"></i>
+				</div>
+			</li>
+			<li ng-click="goToView('pickup list')">
+				<div class="pull-left">
+					<span class="list-title">Pickup List</span>
+				</div>
+				<div class="pull-right">
+					<a href="">See details</a><i class="fa fa-angle-right"></i>
+				</div>
+			</li>
+		</ul>
+		
+		<!-- GUARDIANS -->	
+		<ul ng-show="displayView == 'guardians'">
+			<li data-ng-repeat="guardian in guardians" ng-click="goToGuardian(guardian.GuardianId)">
+				<div class="pull-left">
+					<span class="list-title">{{guardian.FullName}}</span>
+				</div>
+				<div class="pull-right">
+					<a href="">See details</a><i class="fa fa-angle-right"></i>
+				</div>
+			</li>
+		</ul>
+
+		<!-- ALT CONTACT INFO -->	
+		<ul ng-show="displayView =='alternative contact information'">
+			<li data-ng-repeat="contact in contacts" ng-click="goToAltContact(contact.EmergencyContactId)">
+				<div class="pull-left">
+					<span class="detail-label">{{contact.Name}}</span>
+				</div>
+				<div class="pull-right">
+					<a href="">See details</a><i class="fa fa-angle-right"></i>
+				</div>
+			</li>
+			<li ng-click="goToSubView('new alt contact personal information breakdown')">
+				<div class="pull-left">
+					<span class="detail-label blue"><i class="fa fa-plus"></i> Add New Contact</span>
+				</div>
+				<div class="pull-right ng-hide">
+					<a href="">See details</a><i class="fa fa-angle-right"></i>
+				</div>
+			</li>
+		</ul>
+
+	</div>
+
+
+<!-- MIDDLE CONTAINER-->
+	<div class="middle-feature-container col-md-4 white-bg">
+
+	<!-- GUARDIAN BREAKDOWN -->
+		<div class="guardian-breakdown-view" ng-show="displayView == 'guardians' && showBreakDownView">
+			<h4 class="pull-left">{{displayView}}
+				{{viewGuardian.FullName}}
+			</h4> 
+			<a class="edit-button edit-guardian-info">Edit <span class="glyphicon glyphicon-pencil"></span></a>
+			<br class="clearfix" />
+			<nav id="guardian-nav">
+				<ul>
+					<li ng-class="{'active': displaySubView == 'personal information breakdown' || displaySubView == null}" data-ng-click="goToSubView('personal information breakdown')">Personal Information</li>
+					<li ng-class="{'active': displaySubView == 'mailing address breakdown'}" data-ng-click="goToSubMenu('mailing address breakdown')">Mailing Address</li>
+					<li ng-class="{'active': displaySubView == 'contact information breakdown'}" data-ng-click="goToSubMenu('contact information breakdown')">Contact Information</li>					
+				</ul>
+			</nav>
+			<hr/>
+
+			<!-- PERSONAL INFORMATION -->
+			<div ng-show="displaySubView == 'personal information breakdown'" >
+				<div class="detail-breakdown">
+					<span class="detail-label">First Name</span>
+					<span class="detail-value">{{viewGuardian.FullName}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Last Name</span>
+					<span class="detail-value">{{viewGuardian.FullName}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Relationship</span>
+					<span class="detail-value">{{viewGuardian.FullName}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Legal Custody?</span>
+					<span class="detail-value">
+						{{viewGuardian.FullName}}
+					</span>
+				</div>
+			</div>
+
+			<!-- MAILING ADDRESS -->
+			<div ng-show="displaySubView == 'mailing address breakdown'" >
+				<div class="detail-breakdown">
+					<span class="detail-label">First Name</span>
+					<span class="detail-value">{{viewGuardian.FullName}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Last Name</span>
+					<span class="detail-value">{{viewGuardian.FullName}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Relationship</span>
+					<span class="detail-value">{{viewGuardian.FullName}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Legal Custody?</span>
+					<span class="detail-value">
+						{{viewGuardian.FullName}}
+					</span>
+				</div>
+			</div>
+
+
+			<!-- CONTACT INFORMATION -->
+			<div ng-show="displaySubView == 'contact information breakdown'" >
+				<div class="detail-breakdown">
+					<span class="detail-label">First Name</span>
+					<span class="detail-value">{{viewGuardian.FullName}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Last Name</span>
+					<span class="detail-value">{{viewGuardian.FullName}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Relationship</span>
+					<span class="detail-value">{{viewGuardian.FullName}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Legal Custody?</span>
+					<span class="detail-value">
+						{{viewGuardian.FullName}}
+					</span>
+				</div>
+			</div>
+
+		</div> 
+		<!-- GUARDIAN BREAKDOWN -->
+
+	<!-- ALT CONTACT BREAKDOWN -->
+		<div class="alt-contact-breakdown-view" ng-show="displayView == 'alternative contact information' && showBreakDownView">
+			<span class="header-border-left"></span>
+			<h4 class="pull-left">{{displayView}}
+				{{viewAltContact.FullName}}
+			</h4> 
+			<a class="edit-button edit-alt-contact-info" ng-click="isEditFunc(true)" ng-show="!isEdit">Edit <span class="glyphicon glyphicon-pencil"></span></a>
+			<br class="clearfix" />
+			<nav id="alt-contact-nav">
+				<ul>
+					<li ng-class="{'active': displaySubView == 'alt contact personal information breakdown' || displaySubView == null}" data-ng-click="goToSubView('alt contact personal information breakdown')">Personal Information</li>
+					<li ng-class="{'active': displaySubView == 'alt contact mailing address breakdown'}" data-ng-click="goToSubView('alt contact mailing address breakdown')">Mailing Address</li>
+					<li ng-class="{'active': displaySubView == 'alt contact information breakdown'}" data-ng-click="goToSubView('alt contact information breakdown')">Contact Information</li>					
+				</ul>
+			</nav>
+			<hr/>
+			<!-- PERSONAL INFORMATION -->
+			<div ng-show="displaySubView == 'alt contact personal information breakdown' && !isEdit" >
+				<div class="detail-breakdown">
+					<span class="detail-label">Name</span>
+					<span class="detail-value capitalize">{{viewAltContact.Name}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Relationship</span>
+					<span class="detail-value capitalize">{{viewAltContact.RelationShip}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Security Pin</span>
+					<span class="detail-value">{{viewAltContact.Pin}}</span>
+				</div>
+			</div>
+
+			<!-- MAILING ADDRESS -->
+			<div ng-show="displaySubView == 'alt contact mailing address breakdown' && !isEdit" >
+				<div class="detail-breakdown">
+					<span class="detail-label">Street</span>
+					<span class="detail-value capitalize">{{viewAltContact.Street}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">City</span>
+					<span class="detail-value capitalize">{{viewAltContact.City}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">State</span>
+					<span class="detail-value">{{viewAltContact.State}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Zip</span>
+					<span class="detail-value">
+						{{viewAltContact.Zip}}
+					</span>
+				</div>
+			</div>
+
+
+			<!-- CONTACT INFORMATION -->
+			<div ng-show="displaySubView == 'alt contact information breakdown' && !isEdit" >
+				<div class="detail-breakdown">
+					<span class="detail-label">Home Phone</span>
+					<span class="detail-value">{{viewAltContact.HomePhone | tel}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Work Phone</span>
+					<span class="detail-value">{{viewAltContact.WorkPhone | tel}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Cell</span>
+					<span class="detail-value">{{viewAltContact.CellPhone | tel}}</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Email</span>
+					<span class="detail-value">
+						{{viewAltContact.EmailAddress}}
+					</span>
+				</div>
+			</div>
+
+
+			<!-- NEW PERSONAL INFORMATION -->
+			<div ng-show="displaySubView == 'new alt contact personal information breakdown'" >
+				<div id="new-personal-info-wrapper" ng-scrollbars ng-scrollbars-config="scrollbarConfig">
+					<div class="detail-breakdown">
+						<label>Name</label>
+						<input type="text" class="form-control" ng-model="new_contact_name" name="new_contact_name" />
+					</div>
+					<div class="detail-breakdown">
+						<label>Relationship</label>
+						<input type="text" class="form-control" ng-model="new_contact_relationship" name="new_contact_relationship" />
+					</div>
+					<div class="detail-breakdown">
+						<label>Security Pin</label>
+						<input type="text" class="form-control" maxlength="4" ng-model="new_contact_pin" name="new_contact_pin" numbers-only />
+					</div>
+
+					<div class="detail-breakdown">
+						<label>Street</label>
+						<input type="text" class="form-control" ng-model="new_contact_street" name="new_contact_street" />
+					</div>
+					<div class="detail-breakdown">
+						<label>City</label>
+						<input type="text" class="form-control" ng-model="new_contact_city" name="new_contact_city" />
+					</div>
+					<div class="detail-breakdown">
+							<label>State</label>
+							<input type="text" class="form-control" ng-model="new_contact_state" name="new_contact_state" />
+					</div>
+					<div class="detail-breakdown">
+							<label>Zip</label>
+							<input type="text" class="form-control" ng-model="new_contact_zip" name="new_contact_zip" />
+					</div>
+					<div class="detail-breakdown">
+							<label>Home Phone</label>
+							<input type="text" class="form-control" ng-model="new_contact_home_phone" name="new_contact_home_phone" />
+					</div>
+					<div class="detail-breakdown">
+							<label>Work Phone</label>
+							<input type="text" class="form-control" ng-model="new_contact_work_phone" name="new_contact_work_phone" />
+					</div>
+					<div class="detail-breakdown">
+							<label>Cell</label>
+							<input type="text" class="form-control" ng-model="new_contact_cell_phone" name="new_contact_cell_phone" />
+					</div>
+					<div class="detail-breakdown">
+							<label>Email</label>
+							<input type="text" class="form-control" ng-model="new_contact_email" name="new_contact_email" />
+					</div>
+				</div>
+				<div class="form-button-wrapper">
+					<button class="btn btn-primary" ng-click="addNewContactSubmit()" >Save</button>
+					<button class="btn btn-warning" ng-click="goToSubView('pickup list breakdown')">Cancel</button>
+				</div>
+			</div>
+
+
+			<!-- EDIT PERSONAL INFORMATION -->
+			<div >
+				<div ng-show="displaySubView == 'alt contact personal information breakdown' && isEdit" >
+					<div class="detail-breakdown">
+						<label>Name</label>
+						<input type="text" class="form-control" ng-model="viewAltContactEdit.Name" name="edit_contact_name" />
+					</div>
+					<div class="detail-breakdown">
+						<label>Relationship</label>
+						<input type="text" class="form-control" ng-model="viewAltContactEdit.RelationShip" name="edit_contact_relationship" />
+					</div>
+					<div class="detail-breakdown">
+						<label>Security Pin</label>
+						<input type="text" class="form-control" maxlength="4" ng-model="viewAltContactEdit.Pin" name="edit_contact_pin" numbers-only />
+					</div>
+				</div>
+				<div ng-show="displaySubView == 'alt contact mailing address breakdown' && isEdit"  class="edit-contact-scroll-wrapper">
+					<div class="detail-breakdown">
+						<label>Street</label>
+						<input type="text" class="form-control" ng-model="viewAltContactEdit.Street" name="edit_contact_street" />
+					</div>
+					<div class="detail-breakdown">
+						<label>City</label>
+						<input type="text" class="form-control" ng-model="viewAltContactEdit.City" name="edit_contact_city" />
+					</div>
+					<div class="detail-breakdown">
+						<label>State</label>
+						<input type="text" class="form-control" ng-model="viewAltContactEdit.State" name="edit_contact_state" />
+					</div>
+					<div class="detail-breakdown">
+						<label>Zip</label>
+						<input type="text" class="form-control" ng-model="viewAltContactEdit.Zip" name="edit_contact_zip" numbers-only />
+					</div>
+				</div>
+				<div ng-show="displaySubView == 'alt contact information breakdown' && isEdit"  class="edit-contact-scroll-wrapper">
+					<div class="detail-breakdown">
+						<label>Home Phone</label>
+						<input type="text" class="form-control" ng-model="viewAltContactEdit.HomePhone" name="edit_contact_home_phone" mask="(999) 999-9999" clean="true" />
+					</div>
+					<div class="detail-breakdown">
+						<label>Work Phone</label>
+						<input type="text" class="form-control" ng-model="viewAltContactEdit.WorkPhone" name="edit_contact_work_phone" mask="(999) 999-9999" clean="true" />
+					</div>
+					<div class="detail-breakdown">
+						<label>Cell</label>
+						<input type="text" class="form-control" ng-model="viewAltContactEdit.CellPhone" name="edit_contact_cell_phone" mask="(999) 999-9999" clean="true" />
+					</div>
+					<div class="detail-breakdown">
+						<label>Email</label>
+						<input type="email" class="form-control" ng-model="viewAltContactEdit.EmailAddress" name="edit_contact_email" />
+					</div>
+				</div>
+				<div class="form-button-wrapper" ng-show="isEdit">
+					<button class="btn btn-primary" ng-click="editAltContactSubmit()" >Edit</button>
+					<button class="btn btn-warning" ng-click="isEditFunc(false)">Cancel</button>
+				</div>
+			</div>
+
+
+		</div> <!-- ALT CONTACT BREAKDOWN -->
+
+	<!-- PICKUP LIST CONTACT BREAKDOWN -->
+		<div class="pickup-list-contact-breakdown-view" ng-show="displayView == 'pickup list' && showBreakDownView">
+			<a class="add-new add-new-pickup pull-left" ng-click="goToSubView('add new pickup')" ng-show="displaySubView == 'pickup list breakdown'"><span class="fa fa-plus"></span> Add New Person</a>
+			<br class="clearfix" />
+			<div id="pickup-list-contact-breakdown-wrapper" ng-scrollbars ng-scrollbars-config="scrollbarConfig" ng-show="displaySubView == 'pickup list breakdown'">
+				<div data-ng-repeat="pickupContact in pickupList" class="pickup-list-contact" >
+					<div class="detail-breakdown" >
+						<div class="detail-header">
+							<span class="pull-left">Person #{{$index+1}}</span>
+							<a class="delete-button delete-pick-up-contact pull-right" ng-click="deletePickupContact(pickupContact.ChildPickupId)">Delete <span class="fa fa-times"></span></a>							
+							<a class="edit-button edit-pick-up-contact pull-right" ng-click="editPickupContact(pickupContact)">Edit <span class="glyphicon glyphicon-pencil"></span></a>
+						</div>
+						<span class="detail-label">Name</span>
+						<span class="detail-value capitalize">{{pickupContact.PickupName}}</span>
+					</div>
+					<div class="detail-breakdown can-pickup" >
+						<span class="detail-label">Can Pickup?</span>
+						<span class="detail-value" ng-show="pickupContact.CanPickup == 1">Yes</span>
+						<span class="detail-value" ng-show="pickupContact.CanPickup == 0">No</span>
+					</div>
+					<div class="detail-breakdown" >
+						<span class="detail-label">Additional Information</span>
+						<span class="detail-value">{{pickupContact.AdditionalInfo}}</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- ADD PICKUP LIST -->
+			<div class="add-medication-wrapper" ng-show="displaySubView == 'add new pickup'">
+				<h4 class="alt-header">Add Pickup</h4>
+				<div>
+					<div class="detail-breakdown">
+							<label>Name</label>
+							<input type="text" class="form-control" ng-model="new_pickup_name" name="new_pickup_name" />
+					</div>
+					<div class="detail-breakdown">
+							<label>Can Pick Up</label>
+					          <toggle-switch
+					            ng-model="new_canPickup"
+					            class="switch-success" 
+						        on-label="Yes"
+						        off-label="No">
+					          <toggle-switch>
+					</div>					
+					<div class="detail-breakdown">
+							<label>Additional Information</label>
+							<textarea class="form-control" ng-model="new_pickup_additionalInfo" name="new_pickup_additionalInfo"></textarea>
+					</div>	
+				</div>
+				<div class="form-button-wrapper">
+					<button class="btn btn-primary" ng-click="addNewPickupContactSubmit()" >Add</button>
+					<button class="btn btn-warning" ng-click="goToSubView('pickup list breakdown')">Cancel</button>
+				</div>
+			</div>
+
+
+			<!-- EDIT PICKUP LIST -->
+			<div class="edit-medication-wrapper" ng-show="displaySubView == 'edit pickup'">
+				<h4 class="alt-header">Edit Pickup</h4>
+				<div>
+					<div class="detail-breakdown">
+							<label>Name</label>
+							<input type="text" class="form-control" ng-model="edit_pickup_name" name="edit_pickup_name" />
+					</div>
+					<div class="detail-breakdown">
+							<label>Can Pick Up</label>
+					          <toggle-switch
+					            ng-model="edit_canPickup"
+					            class="switch-success" 
+						        on-label="Yes"
+						        off-label="No">
+					          <toggle-switch>
+					</div>					
+					<div class="detail-breakdown">
+							<label>Additional Information</label>
+							<textarea class="form-control" ng-model="edit_additionalInfo" name="edit_additionalInfo"></textarea>
+					</div>	
+				</div>
+				<div class="form-button-wrapper">
+					<button class="btn btn-primary" ng-click="editPickupContactSubmit()" >Edit</button>
+					<button class="btn btn-warning" ng-click="goToSubView('pickup list breakdown')">Cancel</button>
+				</div>
+			</div>
+			
+
+		</div> <!-- PICKUP LIST CONTACT BREAKDOWN -->
+
+	</div>  <!-- MIDDLE CONTAINER-->
+
+
+
+
+
+
+
+
+
+
+
+	<div class="right-feature-container col-md-4" ng-include src="'views/dashboard/my-children.html'" ng-controller="DashboardCtrl"></div>
+</div>
+
+

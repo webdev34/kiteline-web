@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "tos.js",
+  "sourceRoot": "",
+  "sources": [
+    "tos.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;AAAA,EAAA,YAAA,CAAA;AAAA,EACA,OAAO,CAAC,MAAR,CAAe,aAAf,CAA6B,CAAC,UAA9B,CAAyC,SAAzC,EAAoD,SAAC,MAAD,EAAS,UAAT,GAAA;AAClD,IAAA,UAAU,CAAC,SAAX,GAAuB,2BAAvB,CADkD;EAAA,CAApD,CADA,CAAA;AAAA"
+}

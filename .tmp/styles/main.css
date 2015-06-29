@@ -1,0 +1,1794 @@
+/* line 2, ../../app/styles/_header.scss */
+header.header .navbar, header.header .navbar-inverse {
+  border-radius: 0;
+  border: none;
+  margin-bottom: 0;
+  background-color: #4e99bd;
+  height: 60px;
+}
+/* line 9, ../../app/styles/_header.scss */
+header.header .navbar .nav .fa,
+header.header .navbar .nav .glyphicon, header.header .navbar-inverse .nav .fa,
+header.header .navbar-inverse .nav .glyphicon {
+  font-size: 16px;
+  display: inline-block;
+  position: absolute;
+  top: 23px;
+  left: 8px;
+}
+/* line 16, ../../app/styles/_header.scss */
+header.header .navbar .nav .fa.msg,
+header.header .navbar .nav .glyphicon.msg, header.header .navbar-inverse .nav .fa.msg,
+header.header .navbar-inverse .nav .glyphicon.msg {
+  top: 18px;
+}
+/* line 19, ../../app/styles/_header.scss */
+header.header .navbar .nav .fa.glyphicon-list-alt, header.header .navbar .nav .fa.glyphicon-credit-card, header.header .navbar .nav .fa.fa-tachometer, header.header .navbar .nav .fa.fa-sun-o,
+header.header .navbar .nav .glyphicon.glyphicon-list-alt,
+header.header .navbar .nav .glyphicon.glyphicon-credit-card,
+header.header .navbar .nav .glyphicon.fa-tachometer,
+header.header .navbar .nav .glyphicon.fa-sun-o, header.header .navbar-inverse .nav .fa.glyphicon-list-alt, header.header .navbar-inverse .nav .fa.glyphicon-credit-card, header.header .navbar-inverse .nav .fa.fa-tachometer, header.header .navbar-inverse .nav .fa.fa-sun-o,
+header.header .navbar-inverse .nav .glyphicon.glyphicon-list-alt,
+header.header .navbar-inverse .nav .glyphicon.glyphicon-credit-card,
+header.header .navbar-inverse .nav .glyphicon.fa-tachometer,
+header.header .navbar-inverse .nav .glyphicon.fa-sun-o {
+  left: 4px;
+}
+/* line 25, ../../app/styles/_header.scss */
+header.header .navbar .nav .fa.fa-user,
+header.header .navbar .nav .glyphicon.fa-user, header.header .navbar-inverse .nav .fa.fa-user,
+header.header .navbar-inverse .nav .glyphicon.fa-user {
+  left: 6px;
+}
+/* line 28, ../../app/styles/_header.scss */
+header.header .navbar .nav .fa.fa-child,
+header.header .navbar .nav .glyphicon.fa-child, header.header .navbar-inverse .nav .fa.fa-child,
+header.header .navbar-inverse .nav .glyphicon.fa-child {
+  left: 8px;
+}
+/* line 34, ../../app/styles/_header.scss */
+header.header .nav li {
+  display: inline;
+  color: white;
+  position: relative;
+  min-width: 80px;
+}
+/* line 40, ../../app/styles/_header.scss */
+header.header .nav li.active a {
+  background-color: white !important;
+  color: #4e99bd !important;
+}
+/* line 44, ../../app/styles/_header.scss */
+header.header .nav li.active .fa, header.header .nav li.active .glyphicon {
+  color: #4e99bd !important;
+  z-index: 100;
+}
+/* line 49, ../../app/styles/_header.scss */
+header.header .nav li a {
+  color: #fff;
+  text-indent: 15px;
+}
+/* line 52, ../../app/styles/_header.scss */
+header.header .nav li a.msg {
+  text-indent: 30px;
+}
+/* line 55, ../../app/styles/_header.scss */
+header.header .nav li a.activity-feed-link {
+  padding-right: 20px 10px 20px 0;
+}
+/* line 59, ../../app/styles/_header.scss */
+header.header .nav li img {
+  width: 45px;
+  height: 45px;
+  margin-top: 8px;
+  margin-left: 5px;
+  border-radius: 25px;
+}
+/* line 66, ../../app/styles/_header.scss */
+header.header .nav li.user-profile-img-container {
+  cursor: pointer;
+  min-width: 90px;
+}
+/* line 69, ../../app/styles/_header.scss */
+header.header .nav li.user-profile-img-container .fa {
+  left: 60px;
+}
+/* line 72, ../../app/styles/_header.scss */
+header.header .nav li.user-profile-img-container:hover .fa.fa-caret-down {
+  color: #0c4d6e;
+}
+/* line 76, ../../app/styles/_header.scss */
+header.header .nav li .msg-count-wrapper {
+  float: left;
+  position: relative;
+  left: 9px;
+  top: 4px;
+  z-index: 100;
+}
+/* line 82, ../../app/styles/_header.scss */
+header.header .nav li .msg-count-wrapper .msg-count-span {
+  background-color: red;
+  padding: 0px 6px;
+  border-radius: 35px;
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  font-size: 12px;
+}
+/* line 93, ../../app/styles/_header.scss */
+header.header .navbar-inverse .navbar-nav > li > a {
+  color: inherit;
+  font-size: 1em;
+  padding: 20px 10px;
+}
+/* line 98, ../../app/styles/_header.scss */
+header.header .navbar-inverse .navbar-nav li:not(.user-profile-img-container):hover {
+  background-color: white;
+  color: #4e99bd;
+  transition: 0.3s all linear;
+  height: 100%;
+  cursor: pointer;
+}
+/* line 104, ../../app/styles/_header.scss */
+header.header .navbar-inverse .navbar-nav li:not(.user-profile-img-container):hover .msg-count-span {
+  color: white;
+}
+/* line 108, ../../app/styles/_header.scss */
+header.header .navbar-inverse .navbar-nav li:hover .fa,
+header.header .navbar-inverse .navbar-nav li:hover .glyphicon,
+header.header .navbar-inverse .navbar-nav li:hover a {
+  color: #4e99bd;
+  transition: 0.3s all linear;
+}
+/* line 114, ../../app/styles/_header.scss */
+header.header .container {
+  width: 100%;
+  max-width: 100%;
+}
+/* line 118, ../../app/styles/_header.scss */
+header.header .greeting-wrapper {
+  float: left;
+  display: inline-block;
+  margin-left: 20%;
+  margin-top: 20px;
+}
+/* line 123, ../../app/styles/_header.scss */
+header.header .greeting-wrapper .greeting {
+  font-size: 21px;
+  color: white;
+}
+
+/* line 1, ../../app/styles/_footer.scss */
+footer.footer {
+  height: 60px;
+  background-color: #0c4d6e;
+  color: #bac0c0;
+  bottom: 0px;
+  left: 0px;
+  position: relative;
+  width: 100%;
+}
+/* line 9, ../../app/styles/_footer.scss */
+footer.footer a {
+  color: #bac0c0;
+  font-size: 13px;
+}
+/* line 12, ../../app/styles/_footer.scss */
+footer.footer a:hover {
+  text-decoration: none;
+}
+/* line 17, ../../app/styles/_footer.scss */
+footer.footer .footer-container p, footer.footer .footer-container div {
+  display: inline;
+  margin-top: 25px;
+  font-size: 13px;
+}
+/* line 23, ../../app/styles/_footer.scss */
+footer.footer .footer-container .reserved-rights {
+  margin-left: 38%;
+}
+/* line 27, ../../app/styles/_footer.scss */
+footer.footer .footer-container .terms-privacy-container {
+  margin-right: 30px;
+}
+
+/* line 3, ../../app/styles/_login.scss */
+body.loginPage {
+  background-image: url(../images/background.jpg);
+  background-size: cover;
+}
+/* line 6, ../../app/styles/_login.scss */
+body.loginPage .container {
+  width: 400px;
+}
+/* line 8, ../../app/styles/_login.scss */
+body.loginPage .container.kiteline-content {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 10%;
+}
+
+/* line 16, ../../app/styles/_login.scss */
+.log-in-wrapper {
+  margin-top: 35%;
+  text-align: center;
+  color: white;
+}
+/* line 20, ../../app/styles/_login.scss */
+.log-in-wrapper h3 {
+  font-family: arial;
+  font-weight: lighter;
+  font-size: 18px;
+  margin: 10px;
+  text-align: center;
+  color: white;
+}
+/* line 28, ../../app/styles/_login.scss */
+.log-in-wrapper a {
+  color: white;
+}
+/* line 30, ../../app/styles/_login.scss */
+.log-in-wrapper a:hover {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* line 36, ../../app/styles/_login.scss */
+.log-in-wrapper form {
+  margin-top: 25px;
+}
+/* line 39, ../../app/styles/_login.scss */
+.log-in-wrapper .form-group {
+  position: relative;
+}
+/* line 41, ../../app/styles/_login.scss */
+.log-in-wrapper .form-group label {
+  display: none;
+}
+/* line 45, ../../app/styles/_login.scss */
+.log-in-wrapper .list-group {
+  position: absolute;
+  left: 0px;
+  top: 23px;
+  width: 370px;
+  z-index: 1000;
+}
+/* line 51, ../../app/styles/_login.scss */
+.log-in-wrapper .list-group li.list-group-item-info:hover {
+  background-color: white;
+  cursor: pointer;
+}
+/* line 56, ../../app/styles/_login.scss */
+.log-in-wrapper .forgot-pin-link,
+.log-in-wrapper .list-group {
+  color: white;
+  display: block;
+  margin-top: 10px;
+}
+/* line 62, ../../app/styles/_login.scss */
+.log-in-wrapper .btn-warning {
+  width: 370px;
+  margin-top: 15px;
+}
+/* line 66, ../../app/styles/_login.scss */
+.log-in-wrapper .fa {
+  position: absolute;
+  left: 10px;
+  font-size: 20px;
+  top: 7px;
+  z-index: 1;
+  color: #498DB1;
+}
+/* line 74, ../../app/styles/_login.scss */
+.log-in-wrapper .ng-invalid.fa {
+  color: white;
+}
+/* line 77, ../../app/styles/_login.scss */
+.log-in-wrapper .fa-envelope-o {
+  font-size: 13px;
+  top: 11px;
+}
+/* line 81, ../../app/styles/_login.scss */
+.log-in-wrapper .fa-lock {
+  font-size: 15px;
+  top: 10px;
+}
+/* line 85, ../../app/styles/_login.scss */
+.log-in-wrapper input:-webkit-autofill,
+.log-in-wrapper input:-webkit-autofill:focus {
+  box-shadow: 0, 0, 0, 1000px, white, inset;
+  color: #498DB1;
+  background-color: white;
+  -moz-text-fill-color: #498DB1;
+  -webkit-text-fill-color: #498DB1;
+  /* needed to overwrite auto complete background used by browsers */
+}
+/* line 97, ../../app/styles/_login.scss */
+.log-in-wrapper input.form-control {
+  border: solid 1px #498DB1;
+  text-indent: 20px;
+  font-family: Verdana, Tahoma, sans-serif;
+  color: #498DB1;
+  background-color: white;
+}
+/* line 104, ../../app/styles/_login.scss */
+.log-in-wrapper input.form-control:not(.ng-invalid):focus {
+  box-shadow: 0, 0, 0, 1000px, white, inset;
+}
+/* line 107, ../../app/styles/_login.scss */
+.log-in-wrapper input.form-control.ng-invalid-email,
+.log-in-wrapper input.form-control.ng-invalid-pin {
+  background-color: #ff6666;
+  color: white;
+  border-color: red;
+}
+/* line 113, ../../app/styles/_login.scss */
+.log-in-wrapper input::-webkit-input-placeholder {
+  color: #498DB1;
+}
+/* line 116, ../../app/styles/_login.scss */
+.log-in-wrapper input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #498DB1;
+}
+/* line 120, ../../app/styles/_login.scss */
+.log-in-wrapper input:-ms-input-placeholder {
+  color: #498DB1;
+}
+/* line 123, ../../app/styles/_login.scss */
+.log-in-wrapper input:-moz-placeholder {
+  color: #498DB1;
+  /* Firefox 18- */
+}
+/* line 127, ../../app/styles/_login.scss */
+.log-in-wrapper .help-block {
+  color: red;
+  position: absolute;
+  top: 2px;
+  right: -120px;
+  text-shadow: 2px 2px 2px black;
+}
+/* line 134, ../../app/styles/_login.scss */
+.log-in-wrapper .preloader {
+  float: right;
+  margin-right: -25px;
+  margin-top: -25px;
+}
+/* line 139, ../../app/styles/_login.scss */
+.log-in-wrapper .terms-wrapper {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+/* line 143, ../../app/styles/_login.scss */
+.log-in-wrapper .login-link {
+  margin-top: 10px;
+  display: block;
+}
+
+/* line 1, ../../app/styles/_tos-privacy.scss */
+.tos-wrapper, .privacy-wrapper {
+  color: black;
+}
+
+/* line 5, ../../app/styles/_tos-privacy.scss */
+.tos-wrapper .container,
+.privacy-wrapper .container {
+  background: white;
+}
+
+/* line 10, ../../app/styles/_tos-privacy.scss */
+.tos-wrapper h1:first-child,
+.privacy-wrapper h1:first-child,
+h4.effective {
+  text-align: center;
+}
+
+/* line 2, ../../app/styles/dashboard/_lower-tabs.scss */
+.lower-tabs-container .nav.nav-tabs {
+  background-color: #ddd;
+  padding-top: 15px;
+}
+
+/* line 1, ../../app/styles/dashboard/_outstanding-invoices.scss */
+.outstanding-invoices-container-dashboard {
+  margin-bottom: 50px;
+}
+/* line 3, ../../app/styles/dashboard/_outstanding-invoices.scss */
+.outstanding-invoices-container-dashboard .see-all-invoice {
+  margin-top: 30px;
+}
+/* line 7, ../../app/styles/dashboard/_outstanding-invoices.scss */
+.outstanding-invoices-container-dashboard .amount-owed {
+  color: #e6374f;
+}
+/* line 10, ../../app/styles/dashboard/_outstanding-invoices.scss */
+.outstanding-invoices-container-dashboard .due-date {
+  color: #999;
+}
+/* line 13, ../../app/styles/dashboard/_outstanding-invoices.scss */
+.outstanding-invoices-container-dashboard .glyphicon.glyphicon-list-alt {
+  font-size: 28px;
+  margin-top: 27px;
+  color: #999;
+  margin-right: 7px;
+}
+
+/* line 2, ../../app/styles/dashboard/_contact.scss */
+.contact-container .glyphicon.glyphicon-map-marker {
+  font-size: 28px;
+  margin-top: 25px;
+  color: #999;
+  margin-right: 5px;
+}
+/* line 8, ../../app/styles/dashboard/_contact.scss */
+.contact-container a, .contact-container p, .contact-container .fa {
+  display: block;
+  margin-left: 35px;
+  font-size: 18px;
+}
+/* line 13, ../../app/styles/dashboard/_contact.scss */
+.contact-container .phone-number {
+  margin-bottom: 0px;
+  color: #999;
+}
+/* line 18, ../../app/styles/dashboard/_contact.scss */
+.contact-container .day-care-hours {
+  color: #999;
+}
+/* line 21, ../../app/styles/dashboard/_contact.scss */
+.contact-container .contact-wrap {
+  margin-bottom: 3px;
+}
+/* line 23, ../../app/styles/dashboard/_contact.scss */
+.contact-container .contact-wrap a {
+  font-size: 18px;
+}
+/* line 26, ../../app/styles/dashboard/_contact.scss */
+.contact-container .contact-wrap .fa {
+  color: #287194;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+/* line 30, ../../app/styles/dashboard/_contact.scss */
+.contact-container .contact-wrap .fa.fa-mobile {
+  margin-left: 38px;
+}
+
+/* line 2, ../../app/styles/dashboard/_my-children.scss */
+.my-children-container-dashboard img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin-left: 7px;
+  margin-top: 11px;
+}
+/* line 9, ../../app/styles/dashboard/_my-children.scss */
+.my-children-container-dashboard ul#my-children-ul {
+  margin-top: 5px;
+}
+/* line 11, ../../app/styles/dashboard/_my-children.scss */
+.my-children-container-dashboard ul#my-children-ul li {
+  min-height: 90px;
+}
+/* line 14, ../../app/styles/dashboard/_my-children.scss */
+.my-children-container-dashboard ul#my-children-ul li:hover {
+  background-color: #fffff8 !important;
+}
+/* line 17, ../../app/styles/dashboard/_my-children.scss */
+.my-children-container-dashboard ul#my-children-ul li span.child-name {
+  text-transform: capitalize;
+}
+/* line 20, ../../app/styles/dashboard/_my-children.scss */
+.my-children-container-dashboard ul#my-children-ul li div.pull-right {
+  margin-top: 10px;
+}
+/* line 25, ../../app/styles/dashboard/_my-children.scss */
+.my-children-container-dashboard .fa {
+  color: #999;
+  margin-top: 2%;
+}
+/* line 29, ../../app/styles/dashboard/_my-children.scss */
+.my-children-container-dashboard h4.my-children-header {
+  margin-top: 20px;
+}
+/* line 32, ../../app/styles/dashboard/_my-children.scss */
+.my-children-container-dashboard .child-breakdown-wrapper {
+  margin-bottom: 25px;
+}
+
+/* line 2, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard .fa.fa-sun-o {
+  font-size: 28px;
+  margin-top: 27px;
+  color: #999;
+  margin-right: 7px;
+}
+/* line 8, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard .daily-activity-feed-count {
+  color: #5b5b5a;
+  font-size: 26px;
+  font-family: concourse_c4bold;
+  margin-top: -45px;
+}
+/* line 14, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard .view-all-feeds {
+  margin-top: -10px;
+}
+/* line 17, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard .feed-date {
+  color: #999;
+}
+/* line 20, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard img {
+  width: 35px;
+  height: 35px;
+  border-radius: 25px;
+  margin-left: 7px;
+}
+/* line 27, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard ul li {
+  min-height: 90px;
+}
+
+/* line 2, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard .glyphicon.glyphicon-bullhorn {
+  font-size: 26px;
+  margin-top: 27px;
+  color: #999;
+  margin-right: 7px;
+}
+/* line 8, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard .message-date {
+  color: #999;
+}
+/* line 11, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard .view-all-messages {
+  margin-top: -10px;
+}
+/* line 14, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard .message-count {
+  color: #5b5b5a;
+  font-size: 26px;
+  font-family: concourse_c4bold;
+  margin-top: -45px;
+  margin-bottom: 5px;
+}
+
+/* line 2, ../../app/styles/dashboard/_payments-made.scss */
+.payments-made-container-dashboard .view-payments-made {
+  margin-top: 30px;
+}
+/* line 6, ../../app/styles/dashboard/_payments-made.scss */
+.payments-made-container-dashboard .amount-paid {
+  color: #417505;
+}
+/* line 9, ../../app/styles/dashboard/_payments-made.scss */
+.payments-made-container-dashboard .date-paid {
+  color: #999;
+}
+/* line 12, ../../app/styles/dashboard/_payments-made.scss */
+.payments-made-container-dashboard .glyphicon.glyphicon-credit-card {
+  font-size: 28px;
+  margin-top: 27px;
+  color: #999;
+  margin-right: 7px;
+}
+
+/* line 13, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .col-md-4 {
+  height: 490px;
+}
+/* line 17, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .my-children-container,
+.dashboard-container .outstanding-balance-container,
+.dashboard-container .outstanding-invoice-container,
+.dashboard-container .messages-container,
+.dashboard-container .payments-made-container,
+.dashboard-container .daily-activity-feed-container,
+.dashboard-container .contact-container {
+  position: relative;
+}
+/* line 28, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .sub-header-wrapper {
+  float: left;
+  width: 100%;
+  height: 90px;
+}
+/* line 32, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .sub-header-wrapper .greeting {
+  font-size: 21px;
+}
+/* line 37, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .sub-header-wrapper ul li {
+  float: left;
+  list-style: none;
+  color: #4a90e2;
+  margin-right: 3%;
+}
+/* line 42, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .sub-header-wrapper ul li p {
+  margin-top: 25px;
+}
+/* line 45, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .sub-header-wrapper ul li img {
+  width: 160px;
+}
+/* line 48, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .sub-header-wrapper ul li .fa, .dashboard-container .sub-header-wrapper ul li .glyphicon {
+  font-size: 21px;
+  position: relative;
+  left: -2px;
+  top: 3px;
+}
+/* line 54, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .sub-header-wrapper ul li .center-name {
+  margin-top: 25%;
+}
+/* line 62, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container ul.nav.nav-tabs {
+  border-bottom: 1px solid #4e99bd;
+  padding-top: 5px;
+}
+/* line 65, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container ul.nav.nav-tabs li {
+  clear: none;
+  cursor: pointer;
+  padding-bottom: 0px;
+  height: auto;
+  margin-left: 3%;
+}
+/* line 71, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container ul.nav.nav-tabs li a {
+  background-color: #529acd;
+  color: white;
+  border: none;
+  min-width: 135px;
+  text-align: center;
+  font-size: 16px;
+}
+/* line 78, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container ul.nav.nav-tabs li a:hover {
+  background-color: #224f77;
+}
+/* line 81, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container ul.nav.nav-tabs li a .fa, .dashboard-container .left-feature-container ul.nav.nav-tabs li a .glyphicon {
+  font-size: 12px;
+  margin-right: 2%;
+}
+/* line 84, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container ul.nav.nav-tabs li a .fa.fa-car, .dashboard-container .left-feature-container ul.nav.nav-tabs li a .fa.glyphicon-user, .dashboard-container .left-feature-container ul.nav.nav-tabs li a .glyphicon.fa-car, .dashboard-container .left-feature-container ul.nav.nav-tabs li a .glyphicon.glyphicon-user {
+  margin-right: 5%;
+}
+/* line 91, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container ul.nav.nav-tabs li.active a {
+  background-color: #224f77;
+}
+/* line 95, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container ul.nav.nav-tabs li:hover {
+  background-color: transparent;
+}
+/* line 98, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container ul.nav.nav-tabs li.longer {
+  width: 175px;
+}
+/* line 105, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container .child-name-wrapper .name-block,
+.dashboard-container .left-feature-container .child-name-wrapper .date-block {
+  float: left;
+}
+/* line 108, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container .child-name-wrapper .name-block h4,
+.dashboard-container .left-feature-container .child-name-wrapper .date-block h4 {
+  float: none;
+}
+/* line 111, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .left-feature-container .child-name-wrapper .name-block p,
+.dashboard-container .left-feature-container .child-name-wrapper .date-block p {
+  color: #224f77;
+  font-size: 18px;
+}
+
+/* line 3, ../../app/styles/invoices/_invoices.scss */
+.invoices-container .col-md-4 {
+  height: 490px;
+}
+/* line 6, ../../app/styles/invoices/_invoices.scss */
+.invoices-container .amount-owed {
+  color: #e6374f;
+}
+/* line 9, ../../app/styles/invoices/_invoices.scss */
+.invoices-container .due-date,
+.invoices-container .date-paid {
+  color: #999;
+}
+/* line 13, ../../app/styles/invoices/_invoices.scss */
+.invoices-container .amount-paid {
+  color: #417505;
+}
+/* line 15, ../../app/styles/invoices/_invoices.scss */
+.invoices-container .amount-paid.bad {
+  color: red;
+}
+/* line 19, ../../app/styles/invoices/_invoices.scss */
+.invoices-container .glyphicon.glyphicon-list-alt {
+  font-size: 26px;
+  margin-top: 27px;
+  color: #999;
+  margin-right: 7px;
+}
+/* line 26, ../../app/styles/invoices/_invoices.scss */
+.invoices-container ul li {
+  font-size: 18px;
+}
+/* line 29, ../../app/styles/invoices/_invoices.scss */
+.invoices-container ul li .pull-left span.list-title {
+  margin-top: 10px;
+}
+/* line 35, ../../app/styles/invoices/_invoices.scss */
+.invoices-container ul#outstanding-balance-ul .outstanding-balance-due {
+  color: red;
+}
+/* line 41, ../../app/styles/invoices/_invoices.scss */
+.invoices-container .amountBeingPaid {
+  margin-right: 5px;
+}
+/* line 44, ../../app/styles/invoices/_invoices.scss */
+.invoices-container #payTotalAmountDue {
+  float: none;
+  margin-left: 5px;
+}
+/* line 48, ../../app/styles/invoices/_invoices.scss */
+.invoices-container .btn-primary {
+  width: 250px;
+  margin-right: 10px;
+}
+/* line 52, ../../app/styles/invoices/_invoices.scss */
+.invoices-container .btn-grey {
+  background: #999;
+  color: white;
+  border-color: #999;
+  margin-right: 0px;
+  width: 150px;
+}
+/* line 58, ../../app/styles/invoices/_invoices.scss */
+.invoices-container .btn-grey:hover {
+  background: #666;
+}
+/* line 63, ../../app/styles/invoices/_invoices.scss */
+.invoices-container #payments-made-ul.mCustomScrollbar {
+  height: 360px !important;
+}
+
+/* line 3, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .col-md-4 {
+  height: 490px;
+}
+/* line 7, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .fa.fa-child {
+  font-size: 26px;
+  margin-top: 27px;
+  color: #999;
+  margin-right: 7px;
+}
+/* line 13, ../../app/styles/my-children/_my-children.scss */
+.my-children-container img {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin-left: 7px;
+  margin-top: 11px;
+}
+/* line 21, ../../app/styles/my-children/_my-children.scss */
+.my-children-container ul li {
+  min-height: 90px;
+}
+/* line 23, ../../app/styles/my-children/_my-children.scss */
+.my-children-container ul li span.child-name {
+  text-transform: capitalize;
+}
+/* line 26, ../../app/styles/my-children/_my-children.scss */
+.my-children-container ul li .pull-right {
+  margin-top: 10px;
+}
+/* line 29, ../../app/styles/my-children/_my-children.scss */
+.my-children-container ul li .detail-label {
+  margin-top: 20px;
+}
+/* line 35, ../../app/styles/my-children/_my-children.scss */
+.my-children-container nav#general-info-nav,
+.my-children-container nav#medical-info-nav {
+  height: 25px;
+  clear: both;
+  float: left;
+  margin-top: 20px;
+  width: 100%;
+}
+/* line 43, ../../app/styles/my-children/_my-children.scss */
+.my-children-container nav#general-info-nav ul li,
+.my-children-container nav#medical-info-nav ul li {
+  max-height: 25px;
+  min-height: 25px;
+  height: 25px;
+  margin-right: 20px;
+}
+/* line 52, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .detail-value {
+  text-transform: capitalize;
+}
+/* line 54, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .detail-value.notes {
+  text-transform: normal;
+}
+/* line 60, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .child-history-breakdown-view .detail-breakdown {
+  margin-bottom: 40px;
+}
+/* line 65, ../../app/styles/my-children/_my-children.scss */
+.my-children-container #child-history-breakdown-wrapper.mCustomScrollbar {
+  height: 410px !important;
+}
+/* line 67, ../../app/styles/my-children/_my-children.scss */
+.my-children-container #child-history-breakdown-wrapper.mCustomScrollbar .detail-value {
+  margin-right: 5px;
+}
+/* line 74, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .medications-info-breakdown-view ul li,
+.my-children-container .allergies-info-breakdown-view ul li {
+  min-height: 65px;
+}
+/* line 77, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .medications-info-breakdown-view ul li .pull-left span,
+.my-children-container .allergies-info-breakdown-view ul li .pull-left span {
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+/* line 83, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .medications-info-breakdown-view ul li .pull-right,
+.my-children-container .allergies-info-breakdown-view ul li .pull-right {
+  margin-top: 0px;
+}
+/* line 91, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .medication-info-breakdown-view .detail-value.red {
+  color: red;
+}
+/* line 96, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .add-medication-scroll-wrapper.mCustomScrollbar {
+  height: 325px !important;
+}
+/* line 100, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .form-button-wrapper {
+  margin-top: 30px;
+}
+/* line 102, ../../app/styles/my-children/_my-children.scss */
+.my-children-container .form-button-wrapper button {
+  margin-top: 50px;
+}
+
+/* line 3, ../../app/styles/messages/_messages.scss */
+.messages-container .col-md-4 {
+  height: 490px;
+}
+/* line 6, ../../app/styles/messages/_messages.scss */
+.messages-container .glyphicon.glyphicon-bullhorn {
+  font-size: 24px;
+  margin-top: 27px;
+  color: #999;
+  margin-right: 7px;
+}
+/* line 12, ../../app/styles/messages/_messages.scss */
+.messages-container .message-date {
+  font-size: 14px;
+  color: #999;
+}
+/* line 16, ../../app/styles/messages/_messages.scss */
+.messages-container .message-headline {
+  color: #666;
+}
+/* line 20, ../../app/styles/messages/_messages.scss */
+.messages-container ul li {
+  font-size: 18px;
+}
+/* line 23, ../../app/styles/messages/_messages.scss */
+.messages-container ul li .pull-left span.list-title {
+  margin-top: 10px;
+}
+/* line 30, ../../app/styles/messages/_messages.scss */
+.messages-container .middle-feature-container .detail-breakdown .detail-value {
+  text-align: initial;
+  width: 100%;
+}
+
+/* line 2, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container .fa.fa-user {
+  font-size: 26px;
+  margin-top: 27px;
+  color: #999;
+  margin-right: 7px;
+}
+/* line 9, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container ul li {
+  font-size: 18px;
+}
+/* line 12, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container ul li .pull-left span.list-title {
+  text-transform: capitalize;
+}
+/* line 18, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container nav#guardian-nav,
+.my-accounts-container nav#alt-contact-nav {
+  height: 25px;
+  clear: both;
+  float: left;
+  margin-top: 20px;
+  width: 100%;
+}
+/* line 26, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container nav#guardian-nav ul li,
+.my-accounts-container nav#alt-contact-nav ul li {
+  max-height: 25px;
+  min-height: 25px;
+  height: 25px;
+  margin-right: 20px;
+}
+/* line 34, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container .pickup-list-contact {
+  margin-bottom: 15px;
+  min-height: 150px;
+}
+/* line 39, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container .pickup-list-contact .detail-breakdown .detail-header .edit-button.edit-pick-up-contact {
+  margin-top: 0px;
+  margin-right: 10px;
+}
+/* line 44, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container .pickup-list-contact .detail-breakdown .detail-label {
+  clear: both;
+}
+/* line 47, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container .pickup-list-contact .detail-breakdown .edit-button,
+.my-accounts-container .pickup-list-contact .detail-breakdown .delete-button {
+  font-size: 14px;
+  margin-right: 5px;
+}
+/* line 52, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container .pickup-list-contact .detail-breakdown.can-pickup {
+  padding-top: 10px;
+}
+/* line 58, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container .pickup-list-contact-breakdown-view {
+  height: 100%;
+}
+/* line 62, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container #pickup-list-contact-breakdown-wrapper.mCustomScrollbar {
+  height: 90% !important;
+  padding-right: 15px;
+}
+/* line 65, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container #pickup-list-contact-breakdown-wrapper.mCustomScrollbar .detail-value {
+  margin-right: 5px;
+}
+/* line 72, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container .left-feature-container ul li .pull-left span {
+  margin-top: 10px;
+}
+/* line 76, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container .detail-label.blue .fa {
+  font-size: 12px;
+}
+/* line 81, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container .switch-success {
+  float: right;
+  margin-right: 30px;
+}
+/* line 86, ../../app/styles/my-accounts/_my-accounts.scss */
+.my-accounts-container .form-control {
+  width: 95%;
+}
+
+/* line 3, ../../app/styles/daily-activity-feed/_daily-activity-feed.scss */
+.daily-activity-feed-container .col-md-4 {
+  height: 490px;
+}
+/* line 6, ../../app/styles/daily-activity-feed/_daily-activity-feed.scss */
+.daily-activity-feed-container .fa.fa-sun-o {
+  font-size: 24px;
+  margin-top: 27px;
+  color: #999;
+  margin-right: 7px;
+}
+/* line 12, ../../app/styles/daily-activity-feed/_daily-activity-feed.scss */
+.daily-activity-feed-container .feed-date {
+  font-size: 14px;
+  color: #999;
+}
+/* line 16, ../../app/styles/daily-activity-feed/_daily-activity-feed.scss */
+.daily-activity-feed-container .feed-headline {
+  color: #666;
+}
+/* line 20, ../../app/styles/daily-activity-feed/_daily-activity-feed.scss */
+.daily-activity-feed-container ul li {
+  font-size: 18px;
+}
+/* line 23, ../../app/styles/daily-activity-feed/_daily-activity-feed.scss */
+.daily-activity-feed-container ul li .pull-left span.list-title {
+  margin-top: 10px;
+}
+/* line 27, ../../app/styles/daily-activity-feed/_daily-activity-feed.scss */
+.daily-activity-feed-container ul li .pull-right {
+  margin-top: 10px;
+}
+/* line 34, ../../app/styles/daily-activity-feed/_daily-activity-feed.scss */
+.daily-activity-feed-container .feed-breakdown-view .detail-breakdown .detail-value {
+  width: 100%;
+  text-align: left;
+}
+
+/* line 3, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default {
+  padding: 60px;
+  width: 100%;
+  height: 100%;
+}
+/* line 7, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content {
+  width: 50%;
+  height: 80%;
+  background: #04364c;
+  padding: 0px;
+  top: 40px;
+}
+/* line 13, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container {
+  height: 100%;
+}
+/* line 15, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col {
+  font-family: "concourse_t4regular";
+  float: left;
+  width: 290px;
+  height: 100%;
+  background: #052d41;
+  overflow-x: hidden;
+  overflow-y: visible;
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 2000;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+/* line 30, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col .amount-owed {
+  color: red;
+}
+/* line 33, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col ul {
+  clear: both;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+/* line 38, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col ul li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 65px;
+  clear: both;
+  color: #9CCAE3;
+}
+/* line 44, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col ul li span {
+  display: block;
+  margin-left: 15px;
+}
+/* line 48, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col ul li:hover {
+  cursor: pointer;
+  background: #094461;
+}
+/* line 52, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col ul li.taller-li {
+  height: 90px;
+}
+/* line 55, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col ul li .fa.fa-angle-right {
+  margin-right: 10px;
+  margin-top: 5px;
+  font-size: 35px;
+  color: #ccc;
+}
+/* line 61, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col ul li div.pull-right {
+  display: none;
+}
+/* line 63, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col ul li div.pull-right a {
+  position: relative;
+  top: -8px;
+  left: -10px;
+  color: #9CCAE3;
+}
+/* line 68, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col ul li div.pull-right a:hover {
+  color: #9CCAE3;
+}
+/* line 74, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-left-col ul li:hover div.pull-right {
+  display: inline-block;
+}
+/* line 81, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col {
+  height: 100%;
+  min-width: 10px;
+  max-width: 100%;
+  padding-left: 20px;
+  overflow-y: scroll;
+  position: relative;
+  display: block;
+  margin: auto;
+  padding: 10px;
+}
+/* line 91, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col h3 {
+  font-family: "concourse_t4regular";
+  color: white;
+  text-align: center;
+  font-size: 21px;
+}
+/* line 97, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col .glyphicon, body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col .fa {
+  color: white;
+  font-size: 25px;
+  top: 20px;
+  margin-right: 10px;
+}
+/* line 103, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col .detail-breakdown {
+  font-family: "concourse_t4regular";
+  color: white;
+  font-size: 18px;
+  margin-left: 1%;
+  clear: both;
+  margin-bottom: 15px;
+}
+/* line 110, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col .detail-breakdown .detail-label {
+  font-weight: bold;
+  float: left;
+  margin-top: 15px;
+}
+/* line 115, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col .detail-breakdown .detail-value {
+  float: right;
+  margin-top: 15px;
+}
+/* line 118, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col .detail-breakdown .detail-value.red {
+  color: red;
+}
+/* line 123, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col nav {
+  float: right;
+  display: inline-block;
+  margin-top: -10px;
+  width: 200px;
+}
+/* line 128, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col nav ul {
+  list-style: none;
+}
+/* line 130, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col nav ul li {
+  float: left;
+  clear: none;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 0px;
+  color: #9CCAE3;
+  height: auto;
+  cursor: pointer;
+}
+/* line 139, ../../app/styles/modal/_modal.scss */
+body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col nav ul li:hover, body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .overlay-right-col nav ul li.active {
+  background: transparent;
+  color: #999;
+}
+
+/* line 19, ../../app/styles/main.scss */
+html {
+  height: 95%;
+}
+/* line 21, ../../app/styles/main.scss */
+html body {
+  height: 100%;
+  padding: 0;
+  background: #f6f6f6;
+  font-family: concourse_t4regular;
+}
+/* line 27, ../../app/styles/main.scss */
+html body .header {
+  margin-bottom: 15px;
+}
+
+/* line 33, ../../app/styles/main.scss */
+.inner-kiteline-content-container {
+  height: 100%;
+}
+
+/* line 37, ../../app/styles/main.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 41, ../../app/styles/main.scss */
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Supporting marketing content */
+/* line 46, ../../app/styles/main.scss */
+.marketing {
+  margin: 40px 0;
+}
+
+/* line 50, ../../app/styles/main.scss */
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* line 54, ../../app/styles/main.scss */
+.clearfix {
+  clear: both;
+}
+
+/* line 58, ../../app/styles/main.scss */
+.container.kiteline-content {
+  max-width: 100%;
+  width: 100%;
+  height: 84%;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/* line 66, ../../app/styles/main.scss */
+.white-bg {
+  background-color: #fffff8;
+}
+
+/* line 70, ../../app/styles/main.scss */
+.logo {
+  background: url(../images/logo.svg);
+  background-repeat: no-repeat;
+  width: 163px;
+  height: 26px;
+  margin: 20px auto;
+}
+
+/* line 78, ../../app/styles/main.scss */
+.kiteline-logo {
+  background: url(../images/kiteline-logo.png);
+  background-repeat: no-repeat;
+  width: 155px;
+  height: 43px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+/* line 88, ../../app/styles/main.scss */
+h1, h2, h3 {
+  color: #287194;
+  font-family: concourse_c4regular;
+}
+
+/* line 93, ../../app/styles/main.scss */
+.left-feature-container {
+  border-right: thin solid #ccc;
+}
+
+/* line 98, ../../app/styles/main.scss */
+.middle-feature-container nav {
+  float: right;
+  display: inline-block;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  width: 200px;
+}
+/* line 105, ../../app/styles/main.scss */
+.middle-feature-container nav ul li {
+  float: left;
+  clear: none;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 0px;
+  color: #4a90e2;
+  height: auto;
+}
+/* line 113, ../../app/styles/main.scss */
+.middle-feature-container nav ul li:hover, .middle-feature-container nav ul li.active {
+  background: transparent;
+  color: #999;
+}
+/* line 121, ../../app/styles/main.scss */
+.middle-feature-container .edit-button {
+  float: right;
+  font-size: 18px;
+  margin-top: 25px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+/* line 127, ../../app/styles/main.scss */
+.middle-feature-container .edit-button:hover {
+  color: #999;
+}
+/* line 131, ../../app/styles/main.scss */
+.middle-feature-container .delete-button {
+  float: right;
+  font-size: 18px;
+  color: red;
+  cursor: pointer;
+}
+/* line 136, ../../app/styles/main.scss */
+.middle-feature-container .delete-button:hover {
+  color: #999;
+}
+
+/* line 147, ../../app/styles/main.scss */
+.left-feature-container,
+.middle-feature-container,
+.right-feature-container {
+  position: relative;
+  /*
+   The ng-enter-active and ng-move-active
+   are where the transition destination properties
+   are set so that the animation knows what to
+   animate.
+  */
+}
+/* line 151, ../../app/styles/main.scss */
+.left-feature-container.col-md-4, .left-feature-container.col-md-8,
+.middle-feature-container.col-md-4,
+.middle-feature-container.col-md-8,
+.right-feature-container.col-md-4,
+.right-feature-container.col-md-8 {
+  height: 100%;
+}
+/* line 154, ../../app/styles/main.scss */
+.left-feature-container.col-md-4 .my-children-container-dashboard, .left-feature-container.col-md-8 .my-children-container-dashboard,
+.middle-feature-container.col-md-4 .my-children-container-dashboard,
+.middle-feature-container.col-md-8 .my-children-container-dashboard,
+.right-feature-container.col-md-4 .my-children-container-dashboard,
+.right-feature-container.col-md-8 .my-children-container-dashboard {
+  height: 70%;
+}
+/* line 158, ../../app/styles/main.scss */
+.left-feature-container nav ul li,
+.middle-feature-container nav ul li,
+.right-feature-container nav ul li {
+  border: none;
+}
+/* line 161, ../../app/styles/main.scss */
+.left-feature-container .glyphicon,
+.left-feature-container .fa,
+.middle-feature-container .glyphicon,
+.middle-feature-container .fa,
+.right-feature-container .glyphicon,
+.right-feature-container .fa {
+  font-size: 24px;
+}
+/* line 165, ../../app/styles/main.scss */
+.left-feature-container .ng-enter,
+.middle-feature-container .ng-enter,
+.right-feature-container .ng-enter {
+  transition: 1s linear all;
+  opacity: 0;
+}
+/* line 178, ../../app/styles/main.scss */
+.left-feature-container .ng-enter.ng-enter-active,
+.middle-feature-container .ng-enter.ng-enter-active,
+.right-feature-container .ng-enter.ng-enter-active {
+  opacity: 1;
+}
+/* line 181, ../../app/styles/main.scss */
+.left-feature-container .ng-enter, .left-feature-container .ng-leave,
+.middle-feature-container .ng-enter,
+.middle-feature-container .ng-leave,
+.right-feature-container .ng-enter,
+.right-feature-container .ng-leave {
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+}
+/* line 185, ../../app/styles/main.scss */
+.left-feature-container .ng-enter,
+.left-feature-container .ng-leave.ng-leave-active,
+.middle-feature-container .ng-enter,
+.middle-feature-container .ng-leave.ng-leave-active,
+.right-feature-container .ng-enter,
+.right-feature-container .ng-leave.ng-leave-active {
+  opacity: 0;
+}
+/* line 189, ../../app/styles/main.scss */
+.left-feature-container .ng-leave,
+.left-feature-container .ng-enter.ng-enter-active,
+.middle-feature-container .ng-leave,
+.middle-feature-container .ng-enter.ng-enter-active,
+.right-feature-container .ng-leave,
+.right-feature-container .ng-enter.ng-enter-active {
+  opacity: 1;
+}
+/* line 193, ../../app/styles/main.scss */
+.left-feature-container hr,
+.middle-feature-container hr,
+.right-feature-container hr {
+  border-color: #ccc;
+  width: 100%;
+  margin-bottom: 0px;
+}
+/* line 198, ../../app/styles/main.scss */
+.left-feature-container h4,
+.middle-feature-container h4,
+.right-feature-container h4 {
+  color: #999;
+  margin-top: 30px;
+  float: left;
+  font-family: concourse_t4regular;
+  text-transform: capitalize;
+  font-size: 18px;
+}
+/* line 206, ../../app/styles/main.scss */
+.left-feature-container h4.alt-header,
+.middle-feature-container h4.alt-header,
+.right-feature-container h4.alt-header {
+  color: #287194;
+  font-family: concourse_c4regular;
+  float: none;
+  margin-top: 20px;
+  margin-bottom: -10px;
+  font-size: 21px;
+}
+/* line 214, ../../app/styles/main.scss */
+.left-feature-container .back-to-main-view,
+.left-feature-container .back-to-sub-view,
+.left-feature-container .add-new,
+.middle-feature-container .back-to-main-view,
+.middle-feature-container .back-to-sub-view,
+.middle-feature-container .add-new,
+.right-feature-container .back-to-main-view,
+.right-feature-container .back-to-sub-view,
+.right-feature-container .add-new {
+  color: #4a90e2;
+  float: none;
+  font-family: concourse_t4regular;
+  font-size: 18px;
+  border-bottom: thin solid #ccc;
+  width: 100%;
+  display: block;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+/* line 227, ../../app/styles/main.scss */
+.left-feature-container .back-to-main-view:hover,
+.left-feature-container .back-to-sub-view:hover,
+.left-feature-container .add-new:hover,
+.middle-feature-container .back-to-main-view:hover,
+.middle-feature-container .back-to-sub-view:hover,
+.middle-feature-container .add-new:hover,
+.right-feature-container .back-to-main-view:hover,
+.right-feature-container .back-to-sub-view:hover,
+.right-feature-container .add-new:hover {
+  color: #999;
+}
+/* line 230, ../../app/styles/main.scss */
+.left-feature-container .back-to-main-view .fa-angle-left,
+.left-feature-container .back-to-sub-view .fa-angle-left,
+.left-feature-container .add-new .fa-angle-left,
+.middle-feature-container .back-to-main-view .fa-angle-left,
+.middle-feature-container .back-to-sub-view .fa-angle-left,
+.middle-feature-container .add-new .fa-angle-left,
+.right-feature-container .back-to-main-view .fa-angle-left,
+.right-feature-container .back-to-sub-view .fa-angle-left,
+.right-feature-container .add-new .fa-angle-left {
+  color: #999;
+  font-size: 22px;
+  margin-right: 5px;
+}
+/* line 236, ../../app/styles/main.scss */
+.left-feature-container .detail-breakdown,
+.middle-feature-container .detail-breakdown,
+.right-feature-container .detail-breakdown {
+  color: #666;
+  clear: both;
+  margin: 20px 0px;
+  min-height: 25px;
+  display: block;
+}
+/* line 242, ../../app/styles/main.scss */
+.left-feature-container .detail-breakdown .detail-label,
+.middle-feature-container .detail-breakdown .detail-label,
+.right-feature-container .detail-breakdown .detail-label {
+  font-weight: bold;
+  font-size: 18px;
+  float: left;
+}
+/* line 247, ../../app/styles/main.scss */
+.left-feature-container .detail-breakdown label,
+.middle-feature-container .detail-breakdown label,
+.right-feature-container .detail-breakdown label {
+  font-weight: bold;
+  font-size: 18px;
+}
+/* line 251, ../../app/styles/main.scss */
+.left-feature-container .detail-breakdown .detail-header,
+.middle-feature-container .detail-breakdown .detail-header,
+.right-feature-container .detail-breakdown .detail-header {
+  clear: both;
+}
+/* line 254, ../../app/styles/main.scss */
+.left-feature-container .detail-breakdown .detail-value,
+.middle-feature-container .detail-breakdown .detail-value,
+.right-feature-container .detail-breakdown .detail-value {
+  font-size: 18px;
+  float: right;
+  width: 40%;
+}
+/* line 259, ../../app/styles/main.scss */
+.left-feature-container .detail-breakdown .fa-check-circle,
+.left-feature-container .detail-breakdown .good,
+.middle-feature-container .detail-breakdown .fa-check-circle,
+.middle-feature-container .detail-breakdown .good,
+.right-feature-container .detail-breakdown .fa-check-circle,
+.right-feature-container .detail-breakdown .good {
+  color: green;
+}
+/* line 263, ../../app/styles/main.scss */
+.left-feature-container .detail-breakdown .fa-times-circle,
+.left-feature-container .detail-breakdown .bad,
+.middle-feature-container .detail-breakdown .fa-times-circle,
+.middle-feature-container .detail-breakdown .bad,
+.right-feature-container .detail-breakdown .fa-times-circle,
+.right-feature-container .detail-breakdown .bad {
+  color: red;
+}
+/* line 268, ../../app/styles/main.scss */
+.left-feature-container a,
+.middle-feature-container a,
+.right-feature-container a {
+  color: #4a90e2;
+  font-size: 13px;
+}
+/* line 272, ../../app/styles/main.scss */
+.left-feature-container ul,
+.middle-feature-container ul,
+.right-feature-container ul {
+  clear: both;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+/* line 277, ../../app/styles/main.scss */
+.left-feature-container ul li,
+.middle-feature-container ul li,
+.right-feature-container ul li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 75px;
+  clear: both;
+  font-size: 18px;
+}
+/* line 284, ../../app/styles/main.scss */
+.left-feature-container ul li span,
+.middle-feature-container ul li span,
+.right-feature-container ul li span {
+  display: block;
+  margin-left: 15px;
+}
+/* line 288, ../../app/styles/main.scss */
+.left-feature-container ul li:hover,
+.middle-feature-container ul li:hover,
+.right-feature-container ul li:hover {
+  cursor: pointer;
+  background-color: #f8f8f8;
+}
+/* line 292, ../../app/styles/main.scss */
+.left-feature-container ul li.taller-li,
+.middle-feature-container ul li.taller-li,
+.right-feature-container ul li.taller-li {
+  height: 90px;
+}
+/* line 295, ../../app/styles/main.scss */
+.left-feature-container ul li .fa.fa-angle-right,
+.middle-feature-container ul li .fa.fa-angle-right,
+.right-feature-container ul li .fa.fa-angle-right {
+  margin-right: 10px;
+  margin-top: 5px;
+  font-size: 35px;
+  color: #ccc;
+}
+/* line 302, ../../app/styles/main.scss */
+.left-feature-container ul li div.pull-right a,
+.middle-feature-container ul li div.pull-right a,
+.right-feature-container ul li div.pull-right a {
+  position: relative;
+  top: -7px;
+  left: -10px;
+  font-size: 16px;
+}
+/* line 311, ../../app/styles/main.scss */
+.left-feature-container .header-border-left,
+.middle-feature-container .header-border-left,
+.right-feature-container .header-border-left {
+  border-left: #dce6e9 4px solid;
+  margin-left: -15px;
+  padding-left: 30px;
+  height: 60px;
+  display: block;
+  position: absolute;
+  top: 15px;
+}
+/* line 320, ../../app/styles/main.scss */
+.left-feature-container .mCustomScrollbar,
+.middle-feature-container .mCustomScrollbar,
+.right-feature-container .mCustomScrollbar {
+  width: 103%;
+  height: 250px !important;
+}
+/* line 323, ../../app/styles/main.scss */
+.left-feature-container .mCustomScrollbar.scroll-wrapper,
+.middle-feature-container .mCustomScrollbar.scroll-wrapper,
+.right-feature-container .mCustomScrollbar.scroll-wrapper {
+  height: 95% !important;
+}
+/* line 326, ../../app/styles/main.scss */
+.left-feature-container .mCustomScrollbar.scroll-wrapper-shorter,
+.middle-feature-container .mCustomScrollbar.scroll-wrapper-shorter,
+.right-feature-container .mCustomScrollbar.scroll-wrapper-shorter {
+  height: 235px !important;
+}
+/* line 331, ../../app/styles/main.scss */
+.left-feature-container .daily-activity-feed-container-dashboard .mCustomScrollbar,
+.middle-feature-container .daily-activity-feed-container-dashboard .mCustomScrollbar,
+.right-feature-container .daily-activity-feed-container-dashboard .mCustomScrollbar {
+  height: 300px !important;
+}
+
+/* line 337, ../../app/styles/main.scss */
+.box-shadow-container, .left-feature-container,
+.middle-feature-container {
+  box-shadow: 4px 3px 8px 0px rgba(166, 166, 166, 0.5);
+}
+
+/* line 341, ../../app/styles/main.scss */
+.box-shadow-default {
+  box-shadow: 2px 2px 2px 0px rgba(166, 166, 166, 0.5);
+}
+
+/* line 345, ../../app/styles/main.scss */
+.form-control[readonly] {
+  background-color: #fff;
+}
+
+/* Scroll Bar fix */
+/* line 351, ../../app/styles/main.scss */
+body .mCSB_container,
+body .mCustomScrollBox {
+  width: 100% !important;
+}
+/* line 355, ../../app/styles/main.scss */
+body .mCSB_scrollTools .mCSB_buttonUp,
+body .mCSB_scrollTools .mCSB_buttonDown {
+  background-position: 0 0 !important;
+}
+/* line 359, ../../app/styles/main.scss */
+body .mCSB_container_wrapper {
+  margin-right: 0px;
+}
+/* line 362, ../../app/styles/main.scss */
+body .mCSB_container_wrapper > .mCSB_container {
+  padding-right: 10px;
+}
+/* line 365, ../../app/styles/main.scss */
+body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  position: relative;
+  width: 2px;
+}
+
+/* Scroll Bar fix */
+/* Typography */
+@font-face {
+  font-family: 'concourse_c4regular';
+  src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_regular-webfont.eot");
+  src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_regular-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_regular-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_regular-webfont.svg#concourse_c4regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'concourse_c4bold';
+  src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_bold-webfont.eot");
+  src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_bold-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_bold-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_bold-webfont.svg#concourse_c4bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'concourse_t2regular';
+  src: url("../fonts/Concourse/webfontkit-20140324-151540/concourse_t2_regular-webfont.eot");
+  src: url("../fonts/Concourse/webfontkit-20140324-151540/concourse_t2_regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140324-151540/concourse_t2_regular-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140324-151540/concourse_t2_regular-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140324-151540/concourse_t2_regular-webfont.svg#concourse_t4regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'concourse_t4regular';
+  src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_regular-webfont.eot");
+  src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_regular-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_regular-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_regular-webfont.svg#concourse_t4regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'concourse_t4bold';
+  src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_bold-webfont.eot");
+  src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_bold-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_bold-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_bold-webfont.svg#concourse_t4bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'concourse_t6regular';
+  src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t6_regular-webfont.eot");
+  src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t6_regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t6_regular-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t6_regular-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t6_regular-webfont.svg#concourse_t6regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 428, ../../app/styles/main.scss */
+.capitalize {
+  text-transform: capitalize;
+}
+
+/* line 432, ../../app/styles/main.scss */
+.forty-percent-width {
+  width: 40%;
+}
+
+/* line 436, ../../app/styles/main.scss */
+.half-width {
+  width: 50%;
+}
+
+/* line 440, ../../app/styles/main.scss */
+.red {
+  color: red !important;
+}
+
+/* line 444, ../../app/styles/main.scss */
+.blue {
+  color: #4a90e2 !important;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* line 450, ../../app/styles/main.scss */
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  /* line 454, ../../app/styles/main.scss */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Space out the masthead */
+  /* line 461, ../../app/styles/main.scss */
+  .header {
+    margin-bottom: 30px;
+  }
+}
+@media (min-width: 992px) {
+  /* line 467, ../../app/styles/main.scss */
+  footer.footer {
+    position: absolute;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

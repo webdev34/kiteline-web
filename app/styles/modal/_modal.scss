@@ -1,0 +1,152 @@
+body {
+    .ngdialog {
+        &.ngdialog-theme-default {
+            padding: 60px;
+            width: 100%;
+            height: 100%;
+            .ngdialog-content {
+                width: 50%;
+                height: 80%;
+                background: #04364c;
+                padding: 0px;
+                top: 40px;
+                .overlay-container {
+                    height: 100%;
+                    .overlay-left-col {
+                        font-family: "concourse_t4regular";
+                        float: left;
+                        width: 290px;
+                        height: 100%;
+                        background: rgba(5, 45, 65, 1);
+                        overflow-x: hidden;
+                        overflow-y: visible;
+                        position: relative;
+                        left: 0;
+                        top: 0;
+                        z-index: 2000;
+                        padding: 10px;
+                        border-top-left-radius: 5px;
+                        border-bottom-left-radius: 5px;
+                        .amount-owed {
+                            color: red;
+                        }
+                        ul {
+                            clear: both;
+                            list-style: none;
+                            margin: 0px;
+                            padding: 0px;
+                            li {
+                                padding-top: 10px;
+                                padding-bottom: 10px;
+                                height: 65px;
+                                clear: both;
+                                color: #9CCAE3;
+                                span {
+                                    display: block;
+                                    margin-left: 15px;
+                                }
+                                &:hover {
+                                    cursor: pointer;
+                                    background: #094461;
+                                }
+                                &.taller-li {
+                                    height: 90px;
+                                }
+                                .fa.fa-angle-right {
+                                    margin-right: 10px;
+                                    margin-top: 5px;
+                                    font-size: 35px;
+                                    color: #ccc;
+                                }
+                                div.pull-right {
+                                    display: none;
+                                    a {
+                                        position: relative;
+                                        top: -8px;
+                                        left: -10px;
+                                        color: #9CCAE3;
+                                        &:hover {
+                                            color: #9CCAE3;
+                                        }
+                                    }
+                                }
+                                &:hover {
+                                    div.pull-right {
+                                        display: inline-block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .overlay-right-col {
+                        height: 100%;
+                        min-width: 10px;
+                        max-width: 100%;
+                        padding-left: 20px;
+                        overflow-y: scroll;
+                        position: relative;
+                        display: block;
+                        margin: auto;
+                        padding: 10px;
+                        h3 {
+                            font-family: "concourse_t4regular";
+                            color: white;
+                            text-align: center;
+                            font-size: 21px;
+                        }
+                        .glyphicon, .fa {
+                            color: white;
+                            font-size: 25px;
+                            top: 20px;
+                            margin-right: 10px;
+                        }
+                        .detail-breakdown {
+                            font-family: "concourse_t4regular";
+                            color: white;
+                            font-size: 18px;
+                            margin-left: 1%;
+                            clear: both;
+                            margin-bottom: 15px;
+                            .detail-label {
+                                font-weight: bold;
+                                float: left;
+                                margin-top: 15px;
+                            }
+                            .detail-value {
+                                float: right;
+                                margin-top: 15px;
+                                &.red {
+                                    color: red;
+                                }
+                            }
+                        }
+                        nav {
+                            float: right;
+                            display: inline-block;
+                            margin-top: -10px;
+                            width: 200px;
+                            ul {
+                                list-style: none;
+                                li {
+                                    float: left;
+                                    clear: none;
+                                    font-size: 14px;
+                                    margin-right: 10px;
+                                    padding: 0px;
+                                    color: #9CCAE3;
+                                    height: auto;
+                                    cursor: pointer;
+                                    &:hover,
+                                    &.active {
+                                        background: transparent;
+                                        color: #999;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

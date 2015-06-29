@@ -1,0 +1,36 @@
+
+.messages-container{
+	.col-md-4{
+		height: 490px;
+	}
+	.glyphicon.glyphicon-bullhorn{
+	  font-size: 24px;
+	  margin-top: 27px;
+	  color: #999;
+	  margin-right: 7px;
+	}
+	.message-date{
+		font-size: 14px;
+  		color: #999;
+	}
+	.message-headline{
+		color: #666;
+	}
+	ul{
+		li{
+			font-size: 18px;
+			.pull-left{
+				span.list-title{
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+	.middle-feature-container{
+		.detail-breakdown .detail-value{
+			text-align: initial;
+			width: 100%;
+		}
+	}
+
+} //.messages-container

@@ -1,0 +1,32 @@
+<div class="my-children-container-dashboard">
+	<i class="fa fa-child pull-left" ></i>
+	<h4 class="my-children-header pull-left">Children</h4>
+	<div class="clearfix" ></div>
+    <ul class="nav nav-tabs">
+        <li ng-animate="'animate'" data-ng-repeat="child in userChildren" ng-click="goToChild(child.ChildId); changeActiveChild('child-'+[$index+1]);" class="child-{{$index+1}}" ng-class="{ 'active': activeChild == 'child-'+[$index+1]}"><a>{{child.ChildName}}</a></li>
+    </ul>
+	<div class="col-md-12 child-breakdown-wrapper">
+		<div class="pull-left">
+			<img class="box-shadow-default" ng-show="viewChild.PhotoUrl.length > 0" src="{{viewChild.PhotoUrl}}" />
+			<img class="box-shadow-default" ng-show="viewChild.PhotoUrl.length == 0"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDYSw3KB9amgYnaFZ1hTsUwl5kVag7MpoWcBF9IUVH-tEPDOmbPQ" />
+		</div>
+		<div class="pull-left child-name-wrapper col-md-10">
+			<div class="name-block col-md-3">
+				<h4>First Name</h4>
+				<p>{{viewChildGeneralInfo.FirstName}}</p>
+			</div>
+			<div class="name-block col-md-3">
+				<h4>Last Name</h4>
+				<p>{{viewChildGeneralInfo.LastName}}</p>
+			</div>
+			<div class="name-block col-md-3">
+				<h4>Middle Name</h4>
+				<p>{{viewChildGeneralInfo.MiddleName}}</p>
+			</div>
+			<div class="date-block col-md-3">
+				<h4>Date of Birth</h4>
+				<p>{{viewChildGeneralInfo.DOB | date}}</p>
+			</div>
+		</div>
+	</div>
+</div>

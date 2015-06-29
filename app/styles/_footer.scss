@@ -1,0 +1,31 @@
+footer.footer{
+	height: 60px;
+	background-color: #0c4d6e;
+    color: #bac0c0;
+	bottom: 0px;
+	left: 0px;
+	position: relative;
+	width: 100%;
+	a{
+		color: #bac0c0;
+		font-size: 13px;
+		&:hover{
+			text-decoration: none;
+		}
+	}
+	.footer-container{
+		p,div{
+			display: inline;
+			margin-top: 25px;
+			font-size: 13px;
+		}
+
+		.reserved-rights{
+			margin-left: 38%;
+		}
+
+		.terms-privacy-container{
+			margin-right: 30px;
+		}
+	}
+}

@@ -1,0 +1,128 @@
+header.header {
+    .navbar, .navbar-inverse {
+        border-radius: 0;
+        border: none;
+        margin-bottom: 0;
+        background-color: #4e99bd;
+        height: 60px;
+        .nav {
+            .fa,
+            .glyphicon {
+                font-size: 16px;
+                display: inline-block;
+                position: absolute;
+                top: 23px;
+                left: 8px;
+                &.msg {
+                    top: 18px;
+                }
+                &.glyphicon-list-alt,
+                &.glyphicon-credit-card,
+                &.fa-tachometer,
+                &.fa-sun-o {
+                    left: 4px;
+                }
+                &.fa-user {
+                    left: 6px;
+                }
+                &.fa-child {
+                    left: 8px;
+                }
+            }
+        }
+    }
+    .nav li {
+        display: inline;
+        color: white;
+        position: relative;
+        min-width: 80px;
+        &.active {
+            a {
+                background-color: white !important;
+                color: #4e99bd !important;
+            }
+            .fa, .glyphicon {
+                color: #4e99bd !important;
+                z-index: 100;
+            }
+        }
+        a {
+            color: #fff;
+            text-indent: 15px;
+            &.msg {
+                text-indent: 30px;
+            }
+            &.activity-feed-link {
+                padding-right: 20px 10px 20px 0;
+            }
+        }
+        img {
+            width: 45px;
+            height: 45px;
+            margin-top: 8px;
+            margin-left: 5px;
+            @include border-radius(25px);
+        }
+        &.user-profile-img-container {
+            cursor: pointer;
+            min-width: 90px;
+            .fa {
+                left: 60px;
+            }
+            &:hover .fa.fa-caret-down {
+                color: #0c4d6e;
+            }
+        }
+        .msg-count-wrapper {
+            float: left;
+            position: relative;
+            left: 9px;
+            top: 4px;
+            z-index: 100;
+            .msg-count-span {
+                background-color: red;
+                padding: 0px 6px;
+                border-radius: 35px;
+                position: absolute;
+                top: 10px;
+                left: -5px;
+                font-size: 12px;
+            }
+        }
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        color: inherit;
+        font-size: 1em;
+        padding: 20px 10px;
+    }
+    .navbar-inverse .navbar-nav li:not(.user-profile-img-container):hover {
+        background-color: white;
+        color: #4e99bd;
+        transition: 0.3s all linear;
+        height: 100%;
+        cursor: pointer;
+        .msg-count-span {
+            color: white;
+        }
+    }
+    .navbar-inverse .navbar-nav li:hover .fa,
+    .navbar-inverse .navbar-nav li:hover .glyphicon,
+    .navbar-inverse .navbar-nav li:hover a {
+        color: #4e99bd;
+        transition: 0.3s all linear;
+    }
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+    .greeting-wrapper{
+        float: left;
+        display: inline-block;
+        margin-left: 20%;
+        margin-top: 20px;
+        .greeting{
+            font-size: 21px;
+            color: white;
+        }
+    }
+}

@@ -1,0 +1,470 @@
+@import "compass/css3";
+@import "compass/utilities";
+@import "header";
+@import "footer";
+@import "login";
+@import "tos-privacy";
+@import "dashboard/dashboard";
+@import "invoices/invoices";
+@import "my-children/my-children";
+@import "messages/messages";
+@import "my-accounts/my-accounts";
+@import "daily-activity-feed/daily-activity-feed";
+@import "modal/modal";
+
+
+$dark-blue: #287194;
+$light-blue: #4e99bd;
+
+html {
+    height: 95%;
+    body {
+        height: 100%;
+        padding: 0;
+        background: #f6f6f6;
+        //#498DB1;
+        font-family: concourse_t4regular;
+        .header {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.inner-kiteline-content-container {
+    height: 100%;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+}
+
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.container.kiteline-content {
+    max-width: 100%;
+    width: 100%;
+    height: 84%;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.white-bg {
+    background-color: #fffff8;
+}
+
+.logo {
+    background: url(../images/logo.svg);
+    background-repeat: no-repeat;
+    width: 163px;
+    height: 26px;
+    margin: 20px auto;
+}
+
+.kiteline-logo {
+    background: url(../images/kiteline-logo.png);
+    background-repeat: no-repeat;
+    width: 155px;
+    height: 43px;
+    position: absolute;
+    top: 8px;
+    left: 10px;
+}
+
+h1, h2, h3 {
+    color: #287194;
+    font-family: concourse_c4regular;
+}
+
+.left-feature-container {
+    border-right: thin solid #ccc;
+}
+
+.middle-feature-container {
+    nav {
+        float: right;
+        display: inline-block;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        width: 200px;
+        ul {
+            li {
+                float: left;
+                clear: none;
+                font-size: 14px;
+                margin-right: 10px;
+                padding: 0px;
+                color: #4a90e2;
+                height: auto;
+                &:hover,
+                &.active {
+                    background: transparent;
+                    color: #999;
+                }
+            }
+        }
+    }
+    .edit-button {
+        float: right;
+        font-size: 18px;
+        margin-top: 25px;
+        margin-right: 5px;
+        cursor: pointer;
+        &:hover {
+            color: #999;
+        }
+    }
+    .delete-button {
+        float: right;
+        font-size: 18px;
+        color: red;
+        cursor: pointer;
+        &:hover {
+            color: #999;
+        }
+    }
+}
+
+.left-feature-container,
+.middle-feature-container {
+    @extend .box-shadow-container;
+}
+
+.left-feature-container,
+.middle-feature-container,
+.right-feature-container {
+    position: relative;
+    &.col-md-4, 
+    &.col-md-8{
+        height: 100%;
+        .my-children-container-dashboard {
+            height: 70%;
+        }
+    }
+    nav ul li {
+        border: none;
+    }
+    .glyphicon,
+    .fa {
+        font-size: 24px;
+    }
+    .ng-enter {
+        -webkit-transition: 1s linear all;
+        -moz-transition: 1s linear all;
+        -o-transition: 1s linear all;
+        transition: 1s linear all;
+        opacity: 0;
+    }
+    /*
+     The ng-enter-active and ng-move-active
+     are where the transition destination properties
+     are set so that the animation knows what to
+     animate.
+    */
+    .ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+    .ng-enter, .ng-leave {
+        -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+        transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+    }
+    .ng-enter,
+    .ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+    .ng-leave,
+    .ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+    hr {
+        border-color: #ccc;
+        width: 100%;
+        margin-bottom: 0px;
+    }
+    h4 {
+        color: #999;
+        margin-top: 30px;
+        float: left;
+        font-family: concourse_t4regular;
+        text-transform: capitalize;
+        font-size: 18px;
+    }
+    h4.alt-header {
+        color: #287194;
+        font-family: concourse_c4regular;
+        float: none;
+        margin-top: 20px;
+        margin-bottom: -10px;
+        font-size: 21px;
+    }
+    .back-to-main-view,
+    .back-to-sub-view,
+    .add-new {
+        color: #4a90e2;
+        float: none;
+        font-family: concourse_t4regular;
+        font-size: 18px;
+        border-bottom: thin solid #ccc;
+        width: 100%;
+        display: block;
+        padding-bottom: 10px;
+        margin-top: 15px;
+        cursor: pointer;
+        &:hover {
+            color: #999;
+        }
+        .fa-angle-left {
+            color: #999;
+            font-size: 22px;
+            margin-right: 5px;
+        }
+    }
+    .detail-breakdown {
+        color: #666;
+        clear: both;
+        margin: 20px 0px;
+        min-height: 25px;
+        display: block;
+        .detail-label {
+            font-weight: bold;
+            font-size: 18px;
+            float: left;
+        }
+        label {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .detail-header {
+            clear: both;
+        }
+        .detail-value {
+            font-size: 18px;
+            float: right;
+            width: 40%;
+        }
+        .fa-check-circle,
+        .good {
+            color: green;
+        }
+        .fa-times-circle,
+        .bad {
+            color: red;
+        }
+    }
+    a {
+        color: #4a90e2;
+        font-size: 13px;
+    }
+    ul {
+        clear: both;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        li {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            height: 75px;
+            clear: both;
+            //border-bottom: thin solid #ccc;
+            font-size: 18px;
+            span {
+                display: block;
+                margin-left: 15px;
+            }
+            &:hover {
+                cursor: pointer;
+                background-color: #f8f8f8;
+            }
+            &.taller-li {
+                height: 90px;
+            }
+            .fa.fa-angle-right {
+                margin-right: 10px;
+                margin-top: 5px;
+                font-size: 35px;
+                color: #ccc;
+            }
+            div.pull-right {
+                a {
+                    position: relative;
+                    top: -7px;
+                    left: -10px;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    .header-border-left {
+        border-left: #dce6e9 4px solid;
+        margin-left: -15px;
+        padding-left: 30px;
+        height: 60px;
+        display: block;
+        position: absolute;
+        top: 15px;
+    }
+    .mCustomScrollbar {
+        width: 103%;
+        height: 250px !important;
+        &.scroll-wrapper {
+            height: 95% !important;
+        }
+        &.scroll-wrapper-shorter {
+            height: 235px !important;
+        }
+    }
+    .daily-activity-feed-container-dashboard {
+        .mCustomScrollbar {
+            height: 300px !important;
+        }
+    }
+}
+
+.box-shadow-container {
+    @include box-shadow(4px 3px 8px 0px rgba(166, 166, 166, 0.5));
+}
+
+.box-shadow-default {
+    @include box-shadow(2px 2px 2px 0px rgba(166, 166, 166, 0.5));
+}
+
+.form-control[readonly] {
+    background-color: #fff;
+}
+
+/* Scroll Bar fix */
+body {
+    .mCSB_container,
+    .mCustomScrollBox {
+        width: 100% !important;
+    }
+    .mCSB_scrollTools .mCSB_buttonUp,
+    .mCSB_scrollTools .mCSB_buttonDown {
+        background-position: 0 0 !important;
+    }
+    .mCSB_container_wrapper {
+        margin-right: 0px;
+    }
+    .mCSB_container_wrapper > .mCSB_container {
+        padding-right: 10px;
+    }
+    .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+        position: relative;
+        width: 2px;
+    }
+}
+
+/* Scroll Bar fix */
+
+/* Typography */
+@font-face {
+    font-family: 'concourse_c4regular';
+    src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_regular-webfont.eot");
+    src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_regular-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_regular-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_regular-webfont.svg#concourse_c4regular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'concourse_c4bold';
+    src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_bold-webfont.eot");
+    src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_bold-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_bold-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_c4_bold-webfont.svg#concourse_c4bold") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'concourse_t2regular';
+    src: url("../fonts/Concourse/webfontkit-20140324-151540/concourse_t2_regular-webfont.eot");
+    src: url("../fonts/Concourse/webfontkit-20140324-151540/concourse_t2_regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140324-151540/concourse_t2_regular-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140324-151540/concourse_t2_regular-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140324-151540/concourse_t2_regular-webfont.svg#concourse_t4regular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'concourse_t4regular';
+    src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_regular-webfont.eot");
+    src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_regular-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_regular-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_regular-webfont.svg#concourse_t4regular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'concourse_t4bold';
+    src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_bold-webfont.eot");
+    src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_bold-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_bold-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t4_bold-webfont.svg#concourse_t4bold") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'concourse_t6regular';
+    src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t6_regular-webfont.eot");
+    src: url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t6_regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t6_regular-webfont.woff") format("woff"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t6_regular-webfont.ttf") format("truetype"), url("../fonts/Concourse/webfontkit-20140211-223637/concourse_t6_regular-webfont.svg#concourse_t6regular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.forty-percent-width {
+    width: 40%;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.red {
+    color: red !important;
+}
+
+.blue {
+    color: #4a90e2 !important;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+}
+
+@media (min-width: 992px) {
+    footer.footer {
+        position: absolute;
+    }
+}

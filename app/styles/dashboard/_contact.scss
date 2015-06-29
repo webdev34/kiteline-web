@@ -1,0 +1,35 @@
+.contact-container{
+	.glyphicon.glyphicon-map-marker{
+		font-size: 28px;
+		margin-top: 25px;
+		color: #999;
+		margin-right: 5px;
+	}
+	a,p, .fa{
+		display: block;
+		margin-left: 35px;
+		font-size: 18px;
+	}
+	.phone-number{
+		margin-bottom: 0px;
+		//font-size: 12px;
+		color: #999;
+	}
+	.day-care-hours{
+		color: #999;
+	}
+	.contact-wrap{
+		margin-bottom: 3px;
+		a{
+			font-size: 18px;
+		}
+		.fa{
+			color: #287194;
+			margin-right: 10px;
+			margin-top: 3px;
+			&.fa-mobile{
+				margin-left: 38px;
+			}
+		}
+	}
+}

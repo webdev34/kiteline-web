@@ -1,0 +1,27 @@
+<div class="daily-activity-feed-container-dashboard">
+		<span class="header-border-left"></span>
+		<i class="fa fa-sun-o pull-left"></i>
+		<h4>Daily Activity Feed</h4>
+		<span class="pull-right daily-activity-feed-count clearfix">
+			5
+		</span> 
+		<br style=" clear: both;"/>
+		<a href="#/daily-activity-feed" class="pull-right view-all-feeds">View all</a>
+		<div ng-scrollbars ng-scrollbars-config="scrollbarConfig">
+			<ul>
+		        <li ng-animate="'animate'" data-ng-repeat="feed in dailyFeed">
+					<div class="pull-left">
+						<img src="{{feed.ChildPhotoUrl}}" />
+					</div>
+					<div class="pull-left">
+						<span class="feed-headline">{{feed.FeedTitle}}</span>
+						<span class="feed-date">{{feed.FeedPostedDate | date}}</span>
+						<span class="attachment-count">Attachments: {{feed.FeedAttachments}}</span>
+					</div>
+					<div class="pull-right">
+						<a href="">See details</a><i class="fa fa-angle-right"></i>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>

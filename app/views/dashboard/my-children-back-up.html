@@ -1,0 +1,31 @@
+<div>
+	<div class="my-children-container-dashboard">
+		<i class="fa fa-child pull-left"></i>
+		<h4>My Children</h4>
+		<span class="pull-right children-count clearfix">
+			{{userChildren.length}}
+		</span> 
+		<br style=" clear: both;"/>
+		<a href="#/my-children" class="pull-right view-all-children">View all</a>
+		<div  ng-scrollbars ng-scrollbars-config="scrollbarConfig">
+			<ul id="my-children-ul" >
+	            <li ng-animate="'animate'" data-ng-repeat="child in userChildren" ng-click="goToChildFromDashboard(child.ChildId)">
+	            	<div class="pull-left">
+						<img class="box-shadow-default" ng-show="child.PhotoUrl.length > 0" src="{{child.PhotoUrl}}" />
+						<img class="box-shadow-default" ng-show="child.PhotoUrl.length == 0"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDYSw3KB9amgYnaFZ1hTsUwl5kVag7MpoWcBF9IUVH-tEPDOmbPQ" />
+					</div>
+					<div class="pull-left">
+						<span class="child-name">{{child.ChildName}}</span>
+						<span class="listed-class">{{childrenClasses[$index]}}</span>
+					</div>
+					<div class="pull-right">
+						<a href="">See details</a><i class="fa fa-angle-right"></i>
+					</div>
+	            </li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="" ng-include src="'views/dashboard/contact.html'"></div>
+</div>

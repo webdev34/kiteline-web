@@ -1,0 +1,67 @@
+
+.invoices-container{
+	.col-md-4{
+		height: 490px;
+	}
+	.amount-owed{
+		color: #e6374f;
+	}
+	.due-date,
+	.date-paid{
+		color: #999; 
+	}
+	.amount-paid{
+		color: #417505;
+		&.bad{
+			color: red;
+		}
+	}
+	.glyphicon.glyphicon-list-alt{
+	  font-size: 26px;
+	  margin-top: 27px;
+	  color: #999;
+	  margin-right: 7px;
+	}
+	ul{
+		li{
+			font-size: 18px;
+			.pull-left{
+				span.list-title{
+					margin-top: 10px;
+				}
+			}
+		}
+		&#outstanding-balance-ul{
+			.outstanding-balance-due{
+				color: red;
+			}
+		}
+	}
+
+	.amountBeingPaid{
+		margin-right: 5px;
+	}
+	#payTotalAmountDue{
+		float: none;
+		margin-left: 5px;
+	}
+	.btn-primary{
+		  width: 250px;
+		  margin-right: 10px;
+	}
+	.btn-grey{
+		background: #999;
+		color: white;
+		border-color: #999;
+		margin-right: 0px;
+		width: 150px;
+		&:hover{
+			background: #666;
+		}
+	}
+
+	#payments-made-ul.mCustomScrollbar{
+		height: 360px !important;
+	}
+
+} //.invoices-container

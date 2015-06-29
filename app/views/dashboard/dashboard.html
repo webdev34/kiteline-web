@@ -1,0 +1,47 @@
+<div class="dashboard-container">
+
+
+<div class="sub-header-wrapper">
+	<ul>
+		<li>
+			<h2 class="greeting">
+				Welcome {{currentCenter.FullName}}
+			</h2>
+		</li>
+		<li><img src="images/day-care-logo.png" /></li>
+		<li>
+			<h4 class="center-name">
+				{{currentCenterDetails.CenterName}}
+			</h4>
+		</li>
+		<li>
+			<p class="phone">
+				<i class="fa fa-mobile"></i>
+				{{currentCenterDetails.Phone}}
+			</p>
+		</li>
+		<li>
+			<p class="email">
+				<i class="fa fa-at"></i>
+				<a href="mailto:{{currentCenterDetails.EmailAddress}}">{{currentCenterDetails.EmailAddress}}</a>
+			</p>
+		</li>
+		<li>
+			<p class="url">
+				<i class="fa fa-globe"></i>
+				<a href="#">mychildcenter.com</a>
+			</p>
+		</li>
+	</ul>
+</div>
+<div class="clearfix"></div>
+
+	<div class="left-feature-container col-md-8 white-bg" ng-include src="'views/dashboard/left-content.html'"  ></div>
+	<!-- <div class="middle-feature-container col-md-4 white-bg" ng-include src="'views/dashboard/messages.html'"></div>
+
+-->
+	<div class="right-feature-container col-md-4" ng-include src="'views/dashboard/my-children.html'"></div>
+
+</div>
+
+
