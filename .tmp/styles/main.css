@@ -2,11 +2,12 @@
 header.header .navbar, header.header .navbar-inverse {
   border-radius: 0;
   border: none;
-  margin-bottom: 0;
   background-color: #4e99bd;
   height: 60px;
+  width: 1280px;
+  margin: 0 auto;
 }
-/* line 9, ../../app/styles/_header.scss */
+/* line 11, ../../app/styles/_header.scss */
 header.header .navbar .nav .fa,
 header.header .navbar .nav .glyphicon, header.header .navbar-inverse .nav .fa,
 header.header .navbar-inverse .nav .glyphicon {
@@ -16,13 +17,13 @@ header.header .navbar-inverse .nav .glyphicon {
   top: 23px;
   left: 8px;
 }
-/* line 16, ../../app/styles/_header.scss */
+/* line 18, ../../app/styles/_header.scss */
 header.header .navbar .nav .fa.msg,
 header.header .navbar .nav .glyphicon.msg, header.header .navbar-inverse .nav .fa.msg,
 header.header .navbar-inverse .nav .glyphicon.msg {
   top: 18px;
 }
-/* line 19, ../../app/styles/_header.scss */
+/* line 21, ../../app/styles/_header.scss */
 header.header .navbar .nav .fa.glyphicon-list-alt, header.header .navbar .nav .fa.glyphicon-credit-card, header.header .navbar .nav .fa.fa-tachometer, header.header .navbar .nav .fa.fa-sun-o,
 header.header .navbar .nav .glyphicon.glyphicon-list-alt,
 header.header .navbar .nav .glyphicon.glyphicon-credit-card,
@@ -34,49 +35,49 @@ header.header .navbar-inverse .nav .glyphicon.fa-tachometer,
 header.header .navbar-inverse .nav .glyphicon.fa-sun-o {
   left: 4px;
 }
-/* line 25, ../../app/styles/_header.scss */
+/* line 27, ../../app/styles/_header.scss */
 header.header .navbar .nav .fa.fa-user,
 header.header .navbar .nav .glyphicon.fa-user, header.header .navbar-inverse .nav .fa.fa-user,
 header.header .navbar-inverse .nav .glyphicon.fa-user {
   left: 6px;
 }
-/* line 28, ../../app/styles/_header.scss */
+/* line 30, ../../app/styles/_header.scss */
 header.header .navbar .nav .fa.fa-child,
 header.header .navbar .nav .glyphicon.fa-child, header.header .navbar-inverse .nav .fa.fa-child,
 header.header .navbar-inverse .nav .glyphicon.fa-child {
   left: 8px;
 }
-/* line 34, ../../app/styles/_header.scss */
+/* line 36, ../../app/styles/_header.scss */
 header.header .nav li {
   display: inline;
   color: white;
   position: relative;
   min-width: 80px;
 }
-/* line 40, ../../app/styles/_header.scss */
+/* line 42, ../../app/styles/_header.scss */
 header.header .nav li.active a {
   background-color: white !important;
   color: #4e99bd !important;
 }
-/* line 44, ../../app/styles/_header.scss */
+/* line 46, ../../app/styles/_header.scss */
 header.header .nav li.active .fa, header.header .nav li.active .glyphicon {
   color: #4e99bd !important;
   z-index: 100;
 }
-/* line 49, ../../app/styles/_header.scss */
+/* line 51, ../../app/styles/_header.scss */
 header.header .nav li a {
   color: #fff;
   text-indent: 15px;
 }
-/* line 52, ../../app/styles/_header.scss */
+/* line 54, ../../app/styles/_header.scss */
 header.header .nav li a.msg {
   text-indent: 30px;
 }
-/* line 55, ../../app/styles/_header.scss */
+/* line 57, ../../app/styles/_header.scss */
 header.header .nav li a.activity-feed-link {
   padding-right: 20px 10px 20px 0;
 }
-/* line 59, ../../app/styles/_header.scss */
+/* line 61, ../../app/styles/_header.scss */
 header.header .nav li img {
   width: 45px;
   height: 45px;
@@ -84,20 +85,20 @@ header.header .nav li img {
   margin-left: 5px;
   border-radius: 25px;
 }
-/* line 66, ../../app/styles/_header.scss */
+/* line 68, ../../app/styles/_header.scss */
 header.header .nav li.user-profile-img-container {
   cursor: pointer;
   min-width: 90px;
 }
-/* line 69, ../../app/styles/_header.scss */
+/* line 71, ../../app/styles/_header.scss */
 header.header .nav li.user-profile-img-container .fa {
   left: 60px;
 }
-/* line 72, ../../app/styles/_header.scss */
+/* line 74, ../../app/styles/_header.scss */
 header.header .nav li.user-profile-img-container:hover .fa.fa-caret-down {
   color: #0c4d6e;
 }
-/* line 76, ../../app/styles/_header.scss */
+/* line 78, ../../app/styles/_header.scss */
 header.header .nav li .msg-count-wrapper {
   float: left;
   position: relative;
@@ -105,7 +106,7 @@ header.header .nav li .msg-count-wrapper {
   top: 4px;
   z-index: 100;
 }
-/* line 82, ../../app/styles/_header.scss */
+/* line 84, ../../app/styles/_header.scss */
 header.header .nav li .msg-count-wrapper .msg-count-span {
   background-color: red;
   padding: 0px 6px;
@@ -115,13 +116,13 @@ header.header .nav li .msg-count-wrapper .msg-count-span {
   left: -5px;
   font-size: 12px;
 }
-/* line 93, ../../app/styles/_header.scss */
+/* line 95, ../../app/styles/_header.scss */
 header.header .navbar-inverse .navbar-nav > li > a {
   color: inherit;
   font-size: 1em;
   padding: 20px 10px;
 }
-/* line 98, ../../app/styles/_header.scss */
+/* line 100, ../../app/styles/_header.scss */
 header.header .navbar-inverse .navbar-nav li:not(.user-profile-img-container):hover {
   background-color: white;
   color: #4e99bd;
@@ -129,30 +130,30 @@ header.header .navbar-inverse .navbar-nav li:not(.user-profile-img-container):ho
   height: 100%;
   cursor: pointer;
 }
-/* line 104, ../../app/styles/_header.scss */
+/* line 106, ../../app/styles/_header.scss */
 header.header .navbar-inverse .navbar-nav li:not(.user-profile-img-container):hover .msg-count-span {
   color: white;
 }
-/* line 108, ../../app/styles/_header.scss */
+/* line 110, ../../app/styles/_header.scss */
 header.header .navbar-inverse .navbar-nav li:hover .fa,
 header.header .navbar-inverse .navbar-nav li:hover .glyphicon,
 header.header .navbar-inverse .navbar-nav li:hover a {
   color: #4e99bd;
   transition: 0.3s all linear;
 }
-/* line 114, ../../app/styles/_header.scss */
+/* line 116, ../../app/styles/_header.scss */
 header.header .container {
   width: 100%;
   max-width: 100%;
 }
-/* line 118, ../../app/styles/_header.scss */
+/* line 120, ../../app/styles/_header.scss */
 header.header .greeting-wrapper {
   float: left;
   display: inline-block;
   margin-left: 20%;
   margin-top: 20px;
 }
-/* line 123, ../../app/styles/_header.scss */
+/* line 125, ../../app/styles/_header.scss */
 header.header .greeting-wrapper .greeting {
   font-size: 21px;
   color: white;
@@ -165,7 +166,7 @@ footer.footer {
   color: #bac0c0;
   bottom: 0px;
   left: 0px;
-  position: relative;
+  position: absolute;
   width: 100%;
 }
 /* line 9, ../../app/styles/_footer.scss */
@@ -177,17 +178,22 @@ footer.footer a {
 footer.footer a:hover {
   text-decoration: none;
 }
-/* line 17, ../../app/styles/_footer.scss */
+/* line 16, ../../app/styles/_footer.scss */
+footer.footer .footer-container {
+  width: 1280px;
+  margin: 0 auto;
+}
+/* line 19, ../../app/styles/_footer.scss */
 footer.footer .footer-container p, footer.footer .footer-container div {
   display: inline;
   margin-top: 25px;
   font-size: 13px;
 }
-/* line 23, ../../app/styles/_footer.scss */
+/* line 25, ../../app/styles/_footer.scss */
 footer.footer .footer-container .reserved-rights {
   margin-left: 38%;
 }
-/* line 27, ../../app/styles/_footer.scss */
+/* line 29, ../../app/styles/_footer.scss */
 footer.footer .footer-container .terms-privacy-container {
   margin-right: 30px;
 }
@@ -384,9 +390,97 @@ h4.effective {
 }
 
 /* line 2, ../../app/styles/dashboard/_lower-tabs.scss */
-.lower-tabs-container .nav.nav-tabs {
+.lower-container-dashboard ul.nav.nav-tabs {
   background-color: #ddd;
-  padding-top: 15px;
+}
+/* line 5, ../../app/styles/dashboard/_lower-tabs.scss */
+.lower-container-dashboard .feed-breakdown-view {
+  width: 70%;
+  float: left;
+  border: 2px solid #ddd;
+  height: 280px;
+  margin-top: 10px;
+  padding: 1%;
+}
+/* line 12, ../../app/styles/dashboard/_lower-tabs.scss */
+.lower-container-dashboard .feed-breakdown-view .detail-value {
+  margin-top: 27px;
+  font-size: 16px;
+  font-weight: bold;
+}
+/* line 17, ../../app/styles/dashboard/_lower-tabs.scss */
+.lower-container-dashboard .feed-breakdown-view p {
+  font-size: 16px;
+  margin-top: 10px;
+  min-height: 130px;
+}
+/* line 26, ../../app/styles/dashboard/_lower-tabs.scss */
+.lower-container-dashboard .guardian-detail-wrapper .mCustomScrollbar,
+.lower-container-dashboard .emergency-contact-detail-wrapper .mCustomScrollbar {
+  height: 325px !important;
+}
+/* line 29, ../../app/styles/dashboard/_lower-tabs.scss */
+.lower-container-dashboard .guardian-detail-wrapper hr,
+.lower-container-dashboard .emergency-contact-detail-wrapper hr {
+  width: 99%;
+  margin-left: -5px;
+}
+/* line 33, ../../app/styles/dashboard/_lower-tabs.scss */
+.lower-container-dashboard .guardian-detail-wrapper h2,
+.lower-container-dashboard .emergency-contact-detail-wrapper h2 {
+  font-size: 21px;
+  margin-top: 10px;
+}
+/* line 39, ../../app/styles/dashboard/_lower-tabs.scss */
+.lower-container-dashboard .medical-info-breakdown-view,
+.lower-container-dashboard .emergency-contact-detail-wrapper,
+.lower-container-dashboard .guardian-detail-wrapper,
+.lower-container-dashboard .pickup-list-contact {
+  margin-top: 10px;
+}
+
+/* line 1, ../../app/styles/dashboard/_right-content.scss */
+.outstanding-balance-container {
+  height: auto;
+  padding-bottom: 15px;
+}
+/* line 4, ../../app/styles/dashboard/_right-content.scss */
+.outstanding-balance-container .current-balance {
+  color: #5b5b5a;
+  font-size: 21px;
+  font-family: concourse_c4bold;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+/* line 12, ../../app/styles/dashboard/_right-content.scss */
+.outstanding-balance-container h4.pull-left {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+/* line 17, ../../app/styles/dashboard/_right-content.scss */
+.outstanding-balance-container a {
+  display: block;
+}
+/* line 20, ../../app/styles/dashboard/_right-content.scss */
+.outstanding-balance-container .payment-btn {
+  width: 50%;
+  font-size: 16px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+/* line 27, ../../app/styles/dashboard/_right-content.scss */
+.outstanding-balance-container .fa.fa-usd {
+  font-size: 26px;
+  margin-top: 15px;
+  color: #999;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+/* line 34, ../../app/styles/dashboard/_right-content.scss */
+.outstanding-balance-container .auto-pay {
+  color: #999;
+  display: block;
 }
 
 /* line 1, ../../app/styles/dashboard/_outstanding-invoices.scss */
@@ -413,52 +507,11 @@ h4.effective {
   margin-right: 7px;
 }
 
-/* line 2, ../../app/styles/dashboard/_contact.scss */
-.contact-container .glyphicon.glyphicon-map-marker {
-  font-size: 28px;
-  margin-top: 25px;
-  color: #999;
-  margin-right: 5px;
-}
-/* line 8, ../../app/styles/dashboard/_contact.scss */
-.contact-container a, .contact-container p, .contact-container .fa {
-  display: block;
-  margin-left: 35px;
-  font-size: 18px;
-}
-/* line 13, ../../app/styles/dashboard/_contact.scss */
-.contact-container .phone-number {
-  margin-bottom: 0px;
-  color: #999;
-}
-/* line 18, ../../app/styles/dashboard/_contact.scss */
-.contact-container .day-care-hours {
-  color: #999;
-}
-/* line 21, ../../app/styles/dashboard/_contact.scss */
-.contact-container .contact-wrap {
-  margin-bottom: 3px;
-}
-/* line 23, ../../app/styles/dashboard/_contact.scss */
-.contact-container .contact-wrap a {
-  font-size: 18px;
-}
-/* line 26, ../../app/styles/dashboard/_contact.scss */
-.contact-container .contact-wrap .fa {
-  color: #287194;
-  margin-right: 10px;
-  margin-top: 3px;
-}
-/* line 30, ../../app/styles/dashboard/_contact.scss */
-.contact-container .contact-wrap .fa.fa-mobile {
-  margin-left: 38px;
-}
-
 /* line 2, ../../app/styles/dashboard/_my-children.scss */
 .my-children-container-dashboard img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
   margin-left: 7px;
   margin-top: 11px;
 }
@@ -485,73 +538,165 @@ h4.effective {
 /* line 25, ../../app/styles/dashboard/_my-children.scss */
 .my-children-container-dashboard .fa {
   color: #999;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 /* line 29, ../../app/styles/dashboard/_my-children.scss */
 .my-children-container-dashboard h4.my-children-header {
-  margin-top: 20px;
+  margin-top: 14px;
 }
 /* line 32, ../../app/styles/dashboard/_my-children.scss */
 .my-children-container-dashboard .child-breakdown-wrapper {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+}
+/* line 34, ../../app/styles/dashboard/_my-children.scss */
+.my-children-container-dashboard .child-breakdown-wrapper .last-checked-in {
+  color: orange;
+  margin-bottom: 0px;
+  margin-left: 105px;
 }
 
 /* line 2, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard .fa.fa-sun-o {
-  font-size: 28px;
-  margin-top: 27px;
-  color: #999;
-  margin-right: 7px;
+.daily-activity-feed-container-dashboard .attachment-wrapper {
+  float: left;
+  margin-right: 15px;
 }
-/* line 8, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard .daily-activity-feed-count {
-  color: #5b5b5a;
-  font-size: 26px;
-  font-family: concourse_c4bold;
-  margin-top: -45px;
-}
-/* line 14, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard .view-all-feeds {
-  margin-top: -10px;
-}
-/* line 17, ../../app/styles/dashboard/_daily-activity-feed.scss */
+/* line 6, ../../app/styles/dashboard/_daily-activity-feed.scss */
 .daily-activity-feed-container-dashboard .feed-date {
   color: #999;
 }
-/* line 20, ../../app/styles/dashboard/_daily-activity-feed.scss */
+/* line 9, ../../app/styles/dashboard/_daily-activity-feed.scss */
 .daily-activity-feed-container-dashboard img {
   width: 35px;
   height: 35px;
   border-radius: 25px;
   margin-left: 7px;
 }
-/* line 27, ../../app/styles/dashboard/_daily-activity-feed.scss */
+/* line 17, ../../app/styles/dashboard/_daily-activity-feed.scss */
 .daily-activity-feed-container-dashboard ul li {
-  min-height: 90px;
+  min-height: 100px;
+  font-size: 14px !important;
+  border-bottom: thin solid #224f77;
+  width: 90%;
+}
+/* line 23, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard ul li .feed-headline {
+  margin-top: 5%;
+}
+/* line 27, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard ul li .pull-left {
+  width: 100%;
+  height: 80px;
+}
+/* line 32, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard ul li:hover, .daily-activity-feed-container-dashboard ul li.active {
+  position: relative;
+  color: white !important;
+}
+/* line 37, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard ul li:hover .pull-left, .daily-activity-feed-container-dashboard ul li.active .pull-left {
+  background-color: #535253 !important;
+}
+/* line 41, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard ul li:hover .feed-date, .daily-activity-feed-container-dashboard ul li.active .feed-date {
+  color: white;
+}
+/* line 45, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard ul li:hover .pointer, .daily-activity-feed-container-dashboard ul li.active .pointer {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 40px 0 40px 40px;
+  border-color: transparent transparent transparent #535253;
+  position: absolute;
+  right: -15px;
+  top: 10px;
+}
+/* line 59, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard .mCustomScrollbar {
+  width: 30% !important;
+  float: left;
+}
+/* line 63, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.daily-activity-feed-container-dashboard .mCSB_draggerContainer {
+  margin-left: 15px !important;
 }
 
-/* line 2, ../../app/styles/dashboard/_messages.scss */
-.messages-container-dashboard .glyphicon.glyphicon-bullhorn {
-  font-size: 26px;
-  margin-top: 27px;
-  color: #999;
-  margin-right: 7px;
+/* line 69, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.feed-breakdown-view.mCustomScrollbar {
+  width: 69% !important;
+}
+/* line 71, ../../app/styles/dashboard/_daily-activity-feed.scss */
+.feed-breakdown-view.mCustomScrollbar .mCSB_scrollTools a + .mCSB_draggerContainer {
+  margin-left: 23px !important;
+}
+
+/* line 1, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard {
+  margin-top: 3%;
+  height: auto;
+  padding-bottom: 15px;
+}
+/* line 5, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard h4.pull-left {
+  margin-top: 19px;
 }
 /* line 8, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard .glyphicon.glyphicon-bullhorn {
+  font-size: 26px;
+  margin-top: 15px;
+  color: #999;
+  margin-right: 7px;
+  margin-left: 3%;
+}
+/* line 15, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard .message-date,
+.messages-container-dashboard .message-headline {
+  text-align: center;
+  display: block;
+  font-size: 16px;
+}
+/* line 22, ../../app/styles/dashboard/_messages.scss */
 .messages-container-dashboard .message-date {
   color: #999;
+  margin-top: 10px;
 }
-/* line 11, ../../app/styles/dashboard/_messages.scss */
+/* line 26, ../../app/styles/dashboard/_messages.scss */
 .messages-container-dashboard .view-all-messages {
   margin-top: -10px;
 }
-/* line 14, ../../app/styles/dashboard/_messages.scss */
+/* line 29, ../../app/styles/dashboard/_messages.scss */
 .messages-container-dashboard .message-count {
   color: #5b5b5a;
   font-size: 26px;
   font-family: concourse_c4bold;
-  margin-top: -45px;
-  margin-bottom: 5px;
+  margin-top: -38px;
+  margin-right: 15px;
+}
+/* line 36, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard button.carousel-control {
+  background-color: transparent;
+  background-image: none;
+  border: none;
+}
+/* line 40, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard button.carousel-control .glyphicon {
+  color: #999;
+}
+/* line 45, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard .carousel-indicators {
+  top: 80px;
+}
+/* line 47, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard .carousel-indicators li {
+  border: thin solid #999;
+}
+/* line 49, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard .carousel-indicators li.active {
+  background-color: #999;
+}
+/* line 56, ../../app/styles/dashboard/_messages.scss */
+.messages-container-dashboard .carousel-inner {
+  text-align: center;
 }
 
 /* line 2, ../../app/styles/dashboard/_payments-made.scss */
@@ -574,11 +719,7 @@ h4.effective {
   margin-right: 7px;
 }
 
-/* line 13, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .col-md-4 {
-  height: 490px;
-}
-/* line 17, ../../app/styles/dashboard/_dashboard.scss */
+/* line 14, ../../app/styles/dashboard/_dashboard.scss */
 .dashboard-container .my-children-container,
 .dashboard-container .outstanding-balance-container,
 .dashboard-container .outstanding-invoice-container,
@@ -588,104 +729,54 @@ h4.effective {
 .dashboard-container .contact-container {
   position: relative;
 }
-/* line 28, ../../app/styles/dashboard/_dashboard.scss */
+/* line 24, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .my-children-tabs {
+  height: 180px;
+}
+/* line 27, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .dashboard-lower-section {
+  height: 330px;
+}
+/* line 31, ../../app/styles/dashboard/_dashboard.scss */
 .dashboard-container .sub-header-wrapper {
   float: left;
   width: 100%;
-  height: 90px;
+  height: 80px;
 }
-/* line 32, ../../app/styles/dashboard/_dashboard.scss */
+/* line 35, ../../app/styles/dashboard/_dashboard.scss */
 .dashboard-container .sub-header-wrapper .greeting {
-  font-size: 21px;
+  font-size: 20px;
 }
-/* line 37, ../../app/styles/dashboard/_dashboard.scss */
+/* line 40, ../../app/styles/dashboard/_dashboard.scss */
 .dashboard-container .sub-header-wrapper ul li {
   float: left;
   list-style: none;
   color: #4a90e2;
   margin-right: 3%;
 }
-/* line 42, ../../app/styles/dashboard/_dashboard.scss */
+/* line 45, ../../app/styles/dashboard/_dashboard.scss */
 .dashboard-container .sub-header-wrapper ul li p {
   margin-top: 25px;
 }
-/* line 45, ../../app/styles/dashboard/_dashboard.scss */
+/* line 48, ../../app/styles/dashboard/_dashboard.scss */
 .dashboard-container .sub-header-wrapper ul li img {
   width: 160px;
 }
-/* line 48, ../../app/styles/dashboard/_dashboard.scss */
+/* line 51, ../../app/styles/dashboard/_dashboard.scss */
 .dashboard-container .sub-header-wrapper ul li .fa, .dashboard-container .sub-header-wrapper ul li .glyphicon {
   font-size: 21px;
   position: relative;
   left: -2px;
   top: 3px;
 }
-/* line 54, ../../app/styles/dashboard/_dashboard.scss */
+/* line 57, ../../app/styles/dashboard/_dashboard.scss */
 .dashboard-container .sub-header-wrapper ul li .center-name {
-  margin-top: 25%;
-}
-/* line 62, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container ul.nav.nav-tabs {
-  border-bottom: 1px solid #4e99bd;
-  padding-top: 5px;
-}
-/* line 65, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container ul.nav.nav-tabs li {
-  clear: none;
-  cursor: pointer;
-  padding-bottom: 0px;
-  height: auto;
-  margin-left: 3%;
-}
-/* line 71, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container ul.nav.nav-tabs li a {
-  background-color: #529acd;
-  color: white;
-  border: none;
-  min-width: 135px;
-  text-align: center;
+  margin-top: 13px;
   font-size: 16px;
 }
-/* line 78, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container ul.nav.nav-tabs li a:hover {
-  background-color: #224f77;
-}
-/* line 81, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container ul.nav.nav-tabs li a .fa, .dashboard-container .left-feature-container ul.nav.nav-tabs li a .glyphicon {
-  font-size: 12px;
-  margin-right: 2%;
-}
-/* line 84, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container ul.nav.nav-tabs li a .fa.fa-car, .dashboard-container .left-feature-container ul.nav.nav-tabs li a .fa.glyphicon-user, .dashboard-container .left-feature-container ul.nav.nav-tabs li a .glyphicon.fa-car, .dashboard-container .left-feature-container ul.nav.nav-tabs li a .glyphicon.glyphicon-user {
-  margin-right: 5%;
-}
-/* line 91, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container ul.nav.nav-tabs li.active a {
-  background-color: #224f77;
-}
-/* line 95, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container ul.nav.nav-tabs li:hover {
-  background-color: transparent;
-}
-/* line 98, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container ul.nav.nav-tabs li.longer {
-  width: 175px;
-}
-/* line 105, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container .child-name-wrapper .name-block,
-.dashboard-container .left-feature-container .child-name-wrapper .date-block {
-  float: left;
-}
-/* line 108, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container .child-name-wrapper .name-block h4,
-.dashboard-container .left-feature-container .child-name-wrapper .date-block h4 {
-  float: none;
-}
-/* line 111, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .left-feature-container .child-name-wrapper .name-block p,
-.dashboard-container .left-feature-container .child-name-wrapper .date-block p {
-  color: #224f77;
-  font-size: 18px;
+/* line 60, ../../app/styles/dashboard/_dashboard.scss */
+.dashboard-container .sub-header-wrapper ul li .center-name span {
+  display: block;
 }
 
 /* line 3, ../../app/styles/invoices/_invoices.scss */
@@ -1208,41 +1299,44 @@ html body {
 }
 /* line 27, ../../app/styles/main.scss */
 html body .header {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+  background-color: #4e99bd;
 }
 
-/* line 33, ../../app/styles/main.scss */
+/* line 34, ../../app/styles/main.scss */
 .inner-kiteline-content-container {
   height: 100%;
+  width: 1280px;
+  margin: 0 auto;
 }
 
-/* line 37, ../../app/styles/main.scss */
+/* line 40, ../../app/styles/main.scss */
 a:hover {
   text-decoration: none;
 }
 
-/* line 41, ../../app/styles/main.scss */
+/* line 44, ../../app/styles/main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
 /* Supporting marketing content */
-/* line 46, ../../app/styles/main.scss */
+/* line 49, ../../app/styles/main.scss */
 .marketing {
   margin: 40px 0;
 }
 
-/* line 50, ../../app/styles/main.scss */
+/* line 53, ../../app/styles/main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
-/* line 54, ../../app/styles/main.scss */
+/* line 57, ../../app/styles/main.scss */
 .clearfix {
   clear: both;
 }
 
-/* line 58, ../../app/styles/main.scss */
+/* line 61, ../../app/styles/main.scss */
 .container.kiteline-content {
   max-width: 100%;
   width: 100%;
@@ -1251,12 +1345,12 @@ a:hover {
   padding-right: 50px;
 }
 
-/* line 66, ../../app/styles/main.scss */
+/* line 69, ../../app/styles/main.scss */
 .white-bg {
   background-color: #fffff8;
 }
 
-/* line 70, ../../app/styles/main.scss */
+/* line 73, ../../app/styles/main.scss */
 .logo {
   background: url(../images/logo.svg);
   background-repeat: no-repeat;
@@ -1265,7 +1359,7 @@ a:hover {
   margin: 20px auto;
 }
 
-/* line 78, ../../app/styles/main.scss */
+/* line 81, ../../app/styles/main.scss */
 .kiteline-logo {
   background: url(../images/kiteline-logo.png);
   background-repeat: no-repeat;
@@ -1276,18 +1370,86 @@ a:hover {
   left: 10px;
 }
 
-/* line 88, ../../app/styles/main.scss */
+/* line 91, ../../app/styles/main.scss */
 h1, h2, h3 {
   color: #287194;
   font-family: concourse_c4regular;
 }
 
-/* line 93, ../../app/styles/main.scss */
+/* line 96, ../../app/styles/main.scss */
 .left-feature-container {
   border-right: thin solid #ccc;
 }
-
 /* line 98, ../../app/styles/main.scss */
+.left-feature-container .nav > li > a {
+  padding: 5px 15px;
+}
+/* line 102, ../../app/styles/main.scss */
+.left-feature-container ul.nav.nav-tabs {
+  border-bottom: 1px solid #4e99bd;
+}
+/* line 104, ../../app/styles/main.scss */
+.left-feature-container ul.nav.nav-tabs li {
+  clear: none;
+  cursor: pointer;
+  padding-bottom: 0px;
+  height: auto;
+  margin-left: 3%;
+}
+/* line 110, ../../app/styles/main.scss */
+.left-feature-container ul.nav.nav-tabs li a {
+  background-color: #529acd;
+  color: white;
+  border: none;
+  min-width: 125px;
+  text-align: center;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+/* line 118, ../../app/styles/main.scss */
+.left-feature-container ul.nav.nav-tabs li a:hover {
+  background-color: #224f77;
+}
+/* line 121, ../../app/styles/main.scss */
+.left-feature-container ul.nav.nav-tabs li a .fa, .left-feature-container ul.nav.nav-tabs li a .glyphicon {
+  font-size: 12px;
+  margin-right: 2%;
+}
+/* line 124, ../../app/styles/main.scss */
+.left-feature-container ul.nav.nav-tabs li a .fa.fa-car, .left-feature-container ul.nav.nav-tabs li a .fa.glyphicon-user, .left-feature-container ul.nav.nav-tabs li a .glyphicon.fa-car, .left-feature-container ul.nav.nav-tabs li a .glyphicon.glyphicon-user {
+  margin-right: 5%;
+}
+/* line 131, ../../app/styles/main.scss */
+.left-feature-container ul.nav.nav-tabs li.active a {
+  background-color: #224f77;
+}
+/* line 135, ../../app/styles/main.scss */
+.left-feature-container ul.nav.nav-tabs li:hover {
+  background-color: transparent;
+}
+/* line 138, ../../app/styles/main.scss */
+.left-feature-container ul.nav.nav-tabs li.longer {
+  width: 175px;
+}
+/* line 145, ../../app/styles/main.scss */
+.left-feature-container .child-name-wrapper .name-block,
+.left-feature-container .child-name-wrapper .date-block {
+  float: left;
+}
+/* line 148, ../../app/styles/main.scss */
+.left-feature-container .child-name-wrapper .name-block h4,
+.left-feature-container .child-name-wrapper .date-block h4 {
+  float: none;
+  margin-top: 15px;
+}
+/* line 152, ../../app/styles/main.scss */
+.left-feature-container .child-name-wrapper .name-block p,
+.left-feature-container .child-name-wrapper .date-block p {
+  color: #224f77;
+  font-size: 16px;
+}
+
+/* line 161, ../../app/styles/main.scss */
 .middle-feature-container nav {
   float: right;
   display: inline-block;
@@ -1295,7 +1457,7 @@ h1, h2, h3 {
   margin-bottom: 10px;
   width: 200px;
 }
-/* line 105, ../../app/styles/main.scss */
+/* line 168, ../../app/styles/main.scss */
 .middle-feature-container nav ul li {
   float: left;
   clear: none;
@@ -1305,12 +1467,12 @@ h1, h2, h3 {
   color: #4a90e2;
   height: auto;
 }
-/* line 113, ../../app/styles/main.scss */
+/* line 176, ../../app/styles/main.scss */
 .middle-feature-container nav ul li:hover, .middle-feature-container nav ul li.active {
   background: transparent;
   color: #999;
 }
-/* line 121, ../../app/styles/main.scss */
+/* line 184, ../../app/styles/main.scss */
 .middle-feature-container .edit-button {
   float: right;
   font-size: 18px;
@@ -1318,23 +1480,23 @@ h1, h2, h3 {
   margin-right: 5px;
   cursor: pointer;
 }
-/* line 127, ../../app/styles/main.scss */
+/* line 190, ../../app/styles/main.scss */
 .middle-feature-container .edit-button:hover {
   color: #999;
 }
-/* line 131, ../../app/styles/main.scss */
+/* line 194, ../../app/styles/main.scss */
 .middle-feature-container .delete-button {
   float: right;
   font-size: 18px;
   color: red;
   cursor: pointer;
 }
-/* line 136, ../../app/styles/main.scss */
+/* line 199, ../../app/styles/main.scss */
 .middle-feature-container .delete-button:hover {
   color: #999;
 }
 
-/* line 147, ../../app/styles/main.scss */
+/* line 210, ../../app/styles/main.scss */
 .left-feature-container,
 .middle-feature-container,
 .right-feature-container {
@@ -1346,15 +1508,16 @@ h1, h2, h3 {
    animate.
   */
 }
-/* line 151, ../../app/styles/main.scss */
+/* line 214, ../../app/styles/main.scss */
 .left-feature-container.col-md-4, .left-feature-container.col-md-8,
 .middle-feature-container.col-md-4,
 .middle-feature-container.col-md-8,
 .right-feature-container.col-md-4,
 .right-feature-container.col-md-8 {
-  height: 100%;
+  height: auto;
+  padding-bottom: 25px;
 }
-/* line 154, ../../app/styles/main.scss */
+/* line 218, ../../app/styles/main.scss */
 .left-feature-container.col-md-4 .my-children-container-dashboard, .left-feature-container.col-md-8 .my-children-container-dashboard,
 .middle-feature-container.col-md-4 .my-children-container-dashboard,
 .middle-feature-container.col-md-8 .my-children-container-dashboard,
@@ -1362,13 +1525,13 @@ h1, h2, h3 {
 .right-feature-container.col-md-8 .my-children-container-dashboard {
   height: 70%;
 }
-/* line 158, ../../app/styles/main.scss */
+/* line 222, ../../app/styles/main.scss */
 .left-feature-container nav ul li,
 .middle-feature-container nav ul li,
 .right-feature-container nav ul li {
   border: none;
 }
-/* line 161, ../../app/styles/main.scss */
+/* line 225, ../../app/styles/main.scss */
 .left-feature-container .glyphicon,
 .left-feature-container .fa,
 .middle-feature-container .glyphicon,
@@ -1377,20 +1540,20 @@ h1, h2, h3 {
 .right-feature-container .fa {
   font-size: 24px;
 }
-/* line 165, ../../app/styles/main.scss */
+/* line 229, ../../app/styles/main.scss */
 .left-feature-container .ng-enter,
 .middle-feature-container .ng-enter,
 .right-feature-container .ng-enter {
   transition: 1s linear all;
   opacity: 0;
 }
-/* line 178, ../../app/styles/main.scss */
+/* line 242, ../../app/styles/main.scss */
 .left-feature-container .ng-enter.ng-enter-active,
 .middle-feature-container .ng-enter.ng-enter-active,
 .right-feature-container .ng-enter.ng-enter-active {
   opacity: 1;
 }
-/* line 181, ../../app/styles/main.scss */
+/* line 245, ../../app/styles/main.scss */
 .left-feature-container .ng-enter, .left-feature-container .ng-leave,
 .middle-feature-container .ng-enter,
 .middle-feature-container .ng-leave,
@@ -1398,7 +1561,7 @@ h1, h2, h3 {
 .right-feature-container .ng-leave {
   transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
 }
-/* line 185, ../../app/styles/main.scss */
+/* line 249, ../../app/styles/main.scss */
 .left-feature-container .ng-enter,
 .left-feature-container .ng-leave.ng-leave-active,
 .middle-feature-container .ng-enter,
@@ -1407,7 +1570,7 @@ h1, h2, h3 {
 .right-feature-container .ng-leave.ng-leave-active {
   opacity: 0;
 }
-/* line 189, ../../app/styles/main.scss */
+/* line 253, ../../app/styles/main.scss */
 .left-feature-container .ng-leave,
 .left-feature-container .ng-enter.ng-enter-active,
 .middle-feature-container .ng-leave,
@@ -1416,7 +1579,7 @@ h1, h2, h3 {
 .right-feature-container .ng-enter.ng-enter-active {
   opacity: 1;
 }
-/* line 193, ../../app/styles/main.scss */
+/* line 257, ../../app/styles/main.scss */
 .left-feature-container hr,
 .middle-feature-container hr,
 .right-feature-container hr {
@@ -1424,7 +1587,7 @@ h1, h2, h3 {
   width: 100%;
   margin-bottom: 0px;
 }
-/* line 198, ../../app/styles/main.scss */
+/* line 262, ../../app/styles/main.scss */
 .left-feature-container h4,
 .middle-feature-container h4,
 .right-feature-container h4 {
@@ -1435,7 +1598,7 @@ h1, h2, h3 {
   text-transform: capitalize;
   font-size: 18px;
 }
-/* line 206, ../../app/styles/main.scss */
+/* line 270, ../../app/styles/main.scss */
 .left-feature-container h4.alt-header,
 .middle-feature-container h4.alt-header,
 .right-feature-container h4.alt-header {
@@ -1446,7 +1609,7 @@ h1, h2, h3 {
   margin-bottom: -10px;
   font-size: 21px;
 }
-/* line 214, ../../app/styles/main.scss */
+/* line 278, ../../app/styles/main.scss */
 .left-feature-container .back-to-main-view,
 .left-feature-container .back-to-sub-view,
 .left-feature-container .add-new,
@@ -1467,7 +1630,7 @@ h1, h2, h3 {
   margin-top: 15px;
   cursor: pointer;
 }
-/* line 227, ../../app/styles/main.scss */
+/* line 291, ../../app/styles/main.scss */
 .left-feature-container .back-to-main-view:hover,
 .left-feature-container .back-to-sub-view:hover,
 .left-feature-container .add-new:hover,
@@ -1479,7 +1642,7 @@ h1, h2, h3 {
 .right-feature-container .add-new:hover {
   color: #999;
 }
-/* line 230, ../../app/styles/main.scss */
+/* line 294, ../../app/styles/main.scss */
 .left-feature-container .back-to-main-view .fa-angle-left,
 .left-feature-container .back-to-sub-view .fa-angle-left,
 .left-feature-container .add-new .fa-angle-left,
@@ -1493,17 +1656,17 @@ h1, h2, h3 {
   font-size: 22px;
   margin-right: 5px;
 }
-/* line 236, ../../app/styles/main.scss */
+/* line 300, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown,
 .middle-feature-container .detail-breakdown,
 .right-feature-container .detail-breakdown {
-  color: #666;
-  clear: both;
-  margin: 20px 0px;
+  margin: 5px 0px;
   min-height: 25px;
   display: block;
+  width: 49%;
+  float: left;
 }
-/* line 242, ../../app/styles/main.scss */
+/* line 306, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .detail-label,
 .middle-feature-container .detail-breakdown .detail-label,
 .right-feature-container .detail-breakdown .detail-label {
@@ -1511,28 +1674,36 @@ h1, h2, h3 {
   font-size: 18px;
   float: left;
 }
-/* line 247, ../../app/styles/main.scss */
+/* line 311, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown label,
 .middle-feature-container .detail-breakdown label,
 .right-feature-container .detail-breakdown label {
   font-weight: bold;
   font-size: 18px;
 }
-/* line 251, ../../app/styles/main.scss */
+/* line 315, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .detail-header,
 .middle-feature-container .detail-breakdown .detail-header,
 .right-feature-container .detail-breakdown .detail-header {
   clear: both;
 }
-/* line 254, ../../app/styles/main.scss */
+/* line 318, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .detail-value,
 .middle-feature-container .detail-breakdown .detail-value,
 .right-feature-container .detail-breakdown .detail-value {
-  font-size: 18px;
+  font-size: 16px;
   float: right;
-  width: 40%;
+  width: 50%;
+  color: #224f77;
+  text-transform: capitalize;
 }
-/* line 259, ../../app/styles/main.scss */
+/* line 324, ../../app/styles/main.scss */
+.left-feature-container .detail-breakdown .detail-value.no-cap,
+.middle-feature-container .detail-breakdown .detail-value.no-cap,
+.right-feature-container .detail-breakdown .detail-value.no-cap {
+  text-transform: none;
+}
+/* line 328, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .fa-check-circle,
 .left-feature-container .detail-breakdown .good,
 .middle-feature-container .detail-breakdown .fa-check-circle,
@@ -1541,7 +1712,7 @@ h1, h2, h3 {
 .right-feature-container .detail-breakdown .good {
   color: green;
 }
-/* line 263, ../../app/styles/main.scss */
+/* line 332, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .fa-times-circle,
 .left-feature-container .detail-breakdown .bad,
 .middle-feature-container .detail-breakdown .fa-times-circle,
@@ -1550,14 +1721,14 @@ h1, h2, h3 {
 .right-feature-container .detail-breakdown .bad {
   color: red;
 }
-/* line 268, ../../app/styles/main.scss */
+/* line 337, ../../app/styles/main.scss */
 .left-feature-container a,
 .middle-feature-container a,
 .right-feature-container a {
   color: #4a90e2;
   font-size: 13px;
 }
-/* line 272, ../../app/styles/main.scss */
+/* line 341, ../../app/styles/main.scss */
 .left-feature-container ul,
 .middle-feature-container ul,
 .right-feature-container ul {
@@ -1566,7 +1737,7 @@ h1, h2, h3 {
   margin: 0px;
   padding: 0px;
 }
-/* line 277, ../../app/styles/main.scss */
+/* line 346, ../../app/styles/main.scss */
 .left-feature-container ul li,
 .middle-feature-container ul li,
 .right-feature-container ul li {
@@ -1576,27 +1747,27 @@ h1, h2, h3 {
   clear: both;
   font-size: 18px;
 }
-/* line 284, ../../app/styles/main.scss */
+/* line 353, ../../app/styles/main.scss */
 .left-feature-container ul li span,
 .middle-feature-container ul li span,
 .right-feature-container ul li span {
   display: block;
   margin-left: 15px;
 }
-/* line 288, ../../app/styles/main.scss */
+/* line 357, ../../app/styles/main.scss */
 .left-feature-container ul li:hover,
 .middle-feature-container ul li:hover,
 .right-feature-container ul li:hover {
   cursor: pointer;
   background-color: #f8f8f8;
 }
-/* line 292, ../../app/styles/main.scss */
+/* line 361, ../../app/styles/main.scss */
 .left-feature-container ul li.taller-li,
 .middle-feature-container ul li.taller-li,
 .right-feature-container ul li.taller-li {
   height: 90px;
 }
-/* line 295, ../../app/styles/main.scss */
+/* line 364, ../../app/styles/main.scss */
 .left-feature-container ul li .fa.fa-angle-right,
 .middle-feature-container ul li .fa.fa-angle-right,
 .right-feature-container ul li .fa.fa-angle-right {
@@ -1605,7 +1776,7 @@ h1, h2, h3 {
   font-size: 35px;
   color: #ccc;
 }
-/* line 302, ../../app/styles/main.scss */
+/* line 371, ../../app/styles/main.scss */
 .left-feature-container ul li div.pull-right a,
 .middle-feature-container ul li div.pull-right a,
 .right-feature-container ul li div.pull-right a {
@@ -1614,80 +1785,90 @@ h1, h2, h3 {
   left: -10px;
   font-size: 16px;
 }
-/* line 311, ../../app/styles/main.scss */
+/* line 380, ../../app/styles/main.scss */
 .left-feature-container .header-border-left,
 .middle-feature-container .header-border-left,
 .right-feature-container .header-border-left {
   border-left: #dce6e9 4px solid;
-  margin-left: -15px;
   padding-left: 30px;
   height: 60px;
   display: block;
   position: absolute;
-  top: 15px;
 }
-/* line 320, ../../app/styles/main.scss */
+/* line 388, ../../app/styles/main.scss */
+.left-feature-container .header-border-left.pull-outside,
+.middle-feature-container .header-border-left.pull-outside,
+.right-feature-container .header-border-left.pull-outside {
+  margin-left: -15px;
+}
+/* line 392, ../../app/styles/main.scss */
 .left-feature-container .mCustomScrollbar,
 .middle-feature-container .mCustomScrollbar,
 .right-feature-container .mCustomScrollbar {
   width: 103%;
   height: 250px !important;
 }
-/* line 323, ../../app/styles/main.scss */
+/* line 395, ../../app/styles/main.scss */
 .left-feature-container .mCustomScrollbar.scroll-wrapper,
 .middle-feature-container .mCustomScrollbar.scroll-wrapper,
 .right-feature-container .mCustomScrollbar.scroll-wrapper {
   height: 95% !important;
 }
-/* line 326, ../../app/styles/main.scss */
+/* line 398, ../../app/styles/main.scss */
 .left-feature-container .mCustomScrollbar.scroll-wrapper-shorter,
 .middle-feature-container .mCustomScrollbar.scroll-wrapper-shorter,
 .right-feature-container .mCustomScrollbar.scroll-wrapper-shorter {
   height: 235px !important;
 }
-/* line 331, ../../app/styles/main.scss */
+/* line 401, ../../app/styles/main.scss */
+.left-feature-container .mCustomScrollbar .mCSB_scrollTools.mCSB_scrollTools_vertical,
+.middle-feature-container .mCustomScrollbar .mCSB_scrollTools.mCSB_scrollTools_vertical,
+.right-feature-container .mCustomScrollbar .mCSB_scrollTools.mCSB_scrollTools_vertical {
+  right: 10px;
+}
+/* line 406, ../../app/styles/main.scss */
 .left-feature-container .daily-activity-feed-container-dashboard .mCustomScrollbar,
 .middle-feature-container .daily-activity-feed-container-dashboard .mCustomScrollbar,
 .right-feature-container .daily-activity-feed-container-dashboard .mCustomScrollbar {
   height: 300px !important;
 }
 
-/* line 337, ../../app/styles/main.scss */
+/* line 412, ../../app/styles/main.scss */
 .box-shadow-container, .left-feature-container,
 .middle-feature-container {
   box-shadow: 4px 3px 8px 0px rgba(166, 166, 166, 0.5);
 }
 
-/* line 341, ../../app/styles/main.scss */
+/* line 416, ../../app/styles/main.scss */
 .box-shadow-default {
   box-shadow: 2px 2px 2px 0px rgba(166, 166, 166, 0.5);
 }
 
-/* line 345, ../../app/styles/main.scss */
+/* line 420, ../../app/styles/main.scss */
 .form-control[readonly] {
   background-color: #fff;
 }
 
 /* Scroll Bar fix */
-/* line 351, ../../app/styles/main.scss */
+/* line 426, ../../app/styles/main.scss */
 body .mCSB_container,
 body .mCustomScrollBox {
   width: 100% !important;
 }
-/* line 355, ../../app/styles/main.scss */
+/* line 430, ../../app/styles/main.scss */
 body .mCSB_scrollTools .mCSB_buttonUp,
 body .mCSB_scrollTools .mCSB_buttonDown {
   background-position: 0 0 !important;
 }
-/* line 359, ../../app/styles/main.scss */
+/* line 434, ../../app/styles/main.scss */
 body .mCSB_container_wrapper {
   margin-right: 0px;
 }
-/* line 362, ../../app/styles/main.scss */
+/* line 437, ../../app/styles/main.scss */
 body .mCSB_container_wrapper > .mCSB_container {
   padding-right: 10px;
 }
-/* line 365, ../../app/styles/main.scss */
+/* line 440, ../../app/styles/main.scss */
 body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   position: relative;
   width: 2px;
@@ -1737,40 +1918,46 @@ body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   font-weight: normal;
   font-style: normal;
 }
-/* line 428, ../../app/styles/main.scss */
+/* line 503, ../../app/styles/main.scss */
 .capitalize {
   text-transform: capitalize;
 }
 
-/* line 432, ../../app/styles/main.scss */
+/* line 507, ../../app/styles/main.scss */
 .forty-percent-width {
   width: 40%;
 }
 
-/* line 436, ../../app/styles/main.scss */
+/* line 511, ../../app/styles/main.scss */
 .half-width {
   width: 50%;
 }
 
-/* line 440, ../../app/styles/main.scss */
+/* line 515, ../../app/styles/main.scss */
 .red {
   color: red !important;
 }
 
-/* line 444, ../../app/styles/main.scss */
+/* line 519, ../../app/styles/main.scss */
 .blue {
   color: #4a90e2 !important;
 }
 
+/* line 523, ../../app/styles/main.scss */
+.center-align {
+  width: 100%;
+  text-align: center;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* line 450, ../../app/styles/main.scss */
+  /* line 530, ../../app/styles/main.scss */
   .container {
     max-width: 730px;
   }
 
   /* Remove the padding we set earlier */
-  /* line 454, ../../app/styles/main.scss */
+  /* line 534, ../../app/styles/main.scss */
   .header,
   .marketing,
   .footer {
@@ -1779,16 +1966,35 @@ body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   }
 
   /* Space out the masthead */
-  /* line 461, ../../app/styles/main.scss */
+  /* line 541, ../../app/styles/main.scss */
   .header {
     margin-bottom: 30px;
   }
 }
-@media (min-width: 992px) {
-  /* line 467, ../../app/styles/main.scss */
+@media (max-width: 992px) {
+  /* line 547, ../../app/styles/main.scss */
   footer.footer {
-    position: absolute;
+    position: relative;
+  }
+
+  /* line 550, ../../app/styles/main.scss */
+  .container.kiteline-content,
+  .inner-kiteline-content-container,
+  header.header .navbar,
+  header.header .navbar-inverse,
+  footer.footer .footer-container {
+    width: auto;
+    height: auto;
+  }
+
+  /* line 559, ../../app/styles/main.scss */
+  .right-feature-container {
+    padding: 0px;
+    margin-top: 30px;
+  }
+
+  /* line 564, ../../app/styles/main.scss */
+  .left-feature-container.col-md-8 {
+    min-height: 600px;
   }
 }
-
-/*# sourceMappingURL=main.css.map */

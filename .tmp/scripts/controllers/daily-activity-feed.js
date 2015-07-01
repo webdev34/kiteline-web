@@ -19,6 +19,7 @@
       $scope.viewFeed = $filter('filter')($scope.dailyFeed, function(d) {
         return d.FeedId === feedId;
       })[0];
+      console.log($scope.viewFeed);
     };
     if (StorageService.getItem('currentCenter')) {
       $rootScope.currentCenter = StorageService.getItem('currentCenter');

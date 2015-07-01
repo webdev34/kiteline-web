@@ -4,7 +4,7 @@ footer.footer{
     color: #bac0c0;
 	bottom: 0px;
 	left: 0px;
-	position: relative;
+	position: absolute;
 	width: 100%;
 	a{
 		color: #bac0c0;
@@ -14,6 +14,8 @@ footer.footer{
 		}
 	}
 	.footer-container{
+		width: 1280px;
+  		margin: 0 auto;
 		p,div{
 			display: inline;
 			margin-top: 25px;

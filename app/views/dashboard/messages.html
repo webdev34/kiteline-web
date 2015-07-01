@@ -1,26 +1,40 @@
-<div>
-	<div class="messages-container-dashboard">
-		<span class="header-border-left"></span>
-		<i class="glyphicon glyphicon-bullhorn pull-left"></i>
-		<h4>Messages</h4>
-		<span class="pull-right message-count clearfix">
-			{{announcementCount}}
-		</span> 
-		<br style=" clear: both;"/>
-		<a href="#/messages" class="pull-right view-all-messages">View all</a>
-		<div ng-scrollbars ng-scrollbars-config="scrollbarConfig">
-			<ul>
-				<li ng-animate="'animate'" data-ng-repeat="announcement in announcements | limitTo: 5" ng-click="goToAnnouncement(announcement.MessageId)">
-					<div class="pull-left">
-						<span class="message-headline">{{announcement.MessageShortDescription}}</span>
-						<span class="message-date">Posted: {{announcement.MessageDate | date}}</span>
-					</div>
-					<div class="pull-right">
-						<a href="">See details</a><i class="fa fa-angle-right"></i>
-					</div>
-				</li>
-			</ul>
-		</div>
+<div class="messages-container-dashboard white-bg box-shadow-container">
+	<span class="header-border-left"></span>
+	<i class="glyphicon glyphicon-bullhorn pull-left"></i>
+	<h4 class="pull-left">Messages</h4>
+	<span class="pull-right message-count clearfix">
+		{{announcementCount}}
+	</span> 
+	<br class="clearfix" />
+
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 100px;">
+		  <!-- Indicators -->
+		
+
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+			    <div class="item" ng-class="{'active': $index == 0}" data-ng-repeat="announcement in announcements">
+			    <span class="message-date">Posted: {{announcement.MessageDate | date}}</span>  	
+				<span class="message-headline">{{announcement.MessageShortDescription}}</span>
+				<a>View Details</a>
+			    </div>
+		  </div>
+
+		    <ol class="carousel-indicators">
+		    <li data-target="#myCarousel" data-slide-to="{{$index}}" ng-class="{'active': $index == 0}" data-ng-repeat="announcement in announcements"></li>
+		  </ol>
+
+		  
+
+		  <!-- Left and right controls -->
+		  <button class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </button>
+		  <button class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </button>
 	</div>
-	<div ng-include src="'views/dashboard/daily-activity-feed.html'"></div>
 </div>
+	

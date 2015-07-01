@@ -2,9 +2,11 @@ header.header {
     .navbar, .navbar-inverse {
         border-radius: 0;
         border: none;
-        margin-bottom: 0;
+        //margin-bottom: 0;
         background-color: #4e99bd;
         height: 60px;
+        width: 1280px;
+        margin: 0 auto;
         .nav {
             .fa,
             .glyphicon {

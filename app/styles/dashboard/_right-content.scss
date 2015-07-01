@@ -1,0 +1,38 @@
+.outstanding-balance-container{
+	height: auto;
+    padding-bottom: 15px;
+	.current-balance{
+		color: #5b5b5a;
+		font-size: 21px;
+		font-family: concourse_c4bold;
+		text-align: center;
+  		display: inline-block;
+  		width: 100%;
+	}
+	h4.pull-left{
+		margin-top: 20px;
+		margin-bottom: 5px;
+	}
+
+	a{
+		display: block;
+	}	
+	.payment-btn{
+		width: 50%;
+		font-size: 16px;
+		margin-top: 2%;
+  		margin-bottom: 2%;
+	}
+
+	.fa.fa-usd{
+		font-size: 26px;
+    	margin-top: 15px;
+    	color: #999;
+    	margin-left: 10px;
+  		margin-right: 5px;
+	}
+	.auto-pay{
+		color: #999;
+		display: block;
+	}
+}

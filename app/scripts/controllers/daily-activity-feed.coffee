@@ -18,6 +18,7 @@ angular.module('kiteLineApp').controller 'DailyActivityFeedCtrl', ($scope, $root
   $scope.goToFeed = (feedId) ->
     $scope.showBreakDownView = true
     $scope.viewFeed = $filter('filter')($scope.dailyFeed, (d) -> d.FeedId == feedId)[0]
+    console.log $scope.viewFeed
     return
   
   if StorageService.getItem('currentCenter')

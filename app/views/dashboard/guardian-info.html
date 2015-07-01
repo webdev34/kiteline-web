@@ -1,0 +1,75 @@
+<div class="guardian-info-breakdown-view">
+    <ul class="nav nav-tabs">
+        <li ng-animate="'animate'" data-ng-repeat="guardian in guardians" ng-click="goToGuardian(guardian.GuardianId); changeActiveGuardian('guardian-'+[$index+1]);" class="guardian-{{$index+1}}" ng-class="{ 'active': activeGuardian == 'guardian-'+[$index+1]}"><a>Guardian {{$index+1}}</a></li>
+    </ul>
+    <div class="guardian-detail-wrapper" ng-scrollbars ng-scrollbars-config="scrollbarConfig" >
+		<div class="detail-breakdown">
+			<span class="detail-label">First Name</span>
+			<span class="detail-value">{{viewGuardian.FirstName}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Last Name</span>
+			<span class="detail-value">{{viewGuardian.LastName}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Relationship</span>
+			<span class="detail-value">{{viewGuardian.RelationShip}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Legal Custody?</span>
+			<span class="detail-value">
+				{{viewGuardian.LegalCustody}}
+			</span>
+		</div>
+
+		<hr />
+		<!-- MAILING ADDRESS -->
+		<h2>Address</h2>
+		<div class="detail-breakdown">
+			<span class="detail-label">Street</span>
+			<span class="detail-value">{{viewGuardian.Street}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">City</span>
+			<span class="detail-value">{{viewGuardian.City}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">State</span>
+			<span class="detail-value">{{viewGuardian.Street}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Zip</span>
+			<span class="detail-value">
+				{{viewGuardian.Zip}}
+			</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Home Phone</span>
+			<span class="detail-value">{{viewGuardian.HomePhone  | tel}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Work Phone</span>
+			<span class="detail-value">
+				{{viewGuardian.WorkPhone | tel}}
+			</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Cell Phone</span>
+			<span class="detail-value">
+				{{viewGuardian.CellPhone | tel}}
+			</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Email</span>
+			<span class="detail-value no-cap">
+				{{viewGuardian.EmailAddress}}
+			</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Pref. Method Of Contact</span>
+			<span class="detail-value">
+				{{viewGuardian.PrefMethodOfContact}}
+			</span>
+		</div>
+	</div>
+</div>

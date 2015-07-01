@@ -1,8 +1,8 @@
 .my-children-container-dashboard{
 	img{
-		width: 100px;
-		height: 100px;
-		@include border-radius(50px);
+		width: 70px;
+		height: 70px;
+		@include border-radius(35px);
 		margin-left: 7px;
   		margin-top: 11px;
 	}
@@ -24,12 +24,17 @@
 	}
 	.fa{
 		  color: #999;
-  		  margin-top: 2%;
+  		  margin-top: 1%;
 	}
 	h4.my-children-header{
-		margin-top: 20px;
+		margin-top: 14px;
 	}
 	.child-breakdown-wrapper{
-		margin-bottom: 25px;
+		margin-bottom: 15px;
+		.last-checked-in{
+	        color: orange;
+	        margin-bottom: 0px;
+	        margin-left: 105px;
+	    }
 	}
 }

@@ -1,0 +1,21 @@
+<div class="pickup-list-contact-breakdown-view">
+	<ul class="nav nav-tabs">
+        <li ng-animate="'animate'" data-ng-repeat="pickupContact in pickupList" ng-click="goToPickupContact(pickupContact.ChildPickupId); changeActivePickupContact('pickup-contact-'+[$index+1]);" class="contact-{{$index+1}}" ng-class="{ 'active': activePickupContact == 'pickup-contact-'+[$index+1]}"><a>Contact {{$index+1}}</a></li>
+    </ul>
+
+	<div class="pickup-list-contact" >
+		<div class="detail-breakdown" >
+			<span class="detail-label">Name</span>
+			<span class="detail-value capitalize">{{viewPickupContact.PickupName}}</span>
+		</div>
+		<div class="detail-breakdown can-pickup" >
+			<span class="detail-label">Can Pickup?</span>
+			<span class="detail-value" ng-show="viewPickupContact.CanPickup == 1">Yes</span>
+			<span class="detail-value" ng-show="viewPickupContact.CanPickup == 0">No</span>
+		</div>
+		<div class="detail-breakdown" >
+			<span class="detail-label">Additional Information</span>
+			<span class="detail-value">{{viewPickupContact.AdditionalInfo}}</span>
+		</div>
+	</div>
+</div>

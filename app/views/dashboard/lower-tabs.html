@@ -9,29 +9,37 @@
         <li ng-class="{ 'active': currentLowerTab == 'Guardian Info'}" ng-click="changeActiveLowerTab('Guardian Info');">
         	<a><i class="glyphicon glyphicon-user"></i>Guardian Info</a>
         </li>
-        <li class="longer" ng-class="{ 'active': currentLowerTab == 'Emergency Contact'}" ng-click="changeActiveLowerTab('Emergency Contact');">
+        <li class="longer" ng-class="{ 'active': currentLowerTab == 'Emergency Contact Info'}" ng-click="changeActiveLowerTab('Emergency Contact Info');">
         	<a><i class="fa fa-ambulance"></i> Emergency Contact</a>
         </li>    
-        <li ng-class="{ 'active': currentLowerTab == 'Pickup List'}" ng-click="changeActiveLowerTab('Pickup List');">
+        <li ng-class="{ 'active': currentLowerTab == 'Pickup List Info'}" ng-click="changeActiveLowerTab('Pickup List Info');">
         	<a><i class="fa fa-car"></i>Pickup List</a>
         </li>      
     </ul>
     <div class="clearfix"></div>
 
 
+<!-- DAILY FEEDS -->
+<div ng-show="currentLowerTab == 'Updates' "  ng-include src="'views/dashboard/daily-activity-feed.html'"></div>
 
-    <div class="daily-activity-feed-container-dashboard">
-		<div ng-scrollbars ng-scrollbars-config="scrollbarConfig">
-			<ul>
-		        <li ng-animate="'animate'" data-ng-repeat="feed in dailyFeed">
-					<div class="pull-left">
-						<span class="feed-headline">{{feed.FeedTitle}}</span>
-						<span class="feed-date">{{feed.FeedPostedDate | date}}</span>
-						<span class="attachment-count">Attachments: {{feed.FeedAttachments}}</span>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
+<!-- MEDICAL INFO -->
+<div ng-show="currentLowerTab == 'Medical Info' "  ng-include src="'views/dashboard/medical-info.html'"></div>
+
+<!-- GUARDIAN INFO -->
+<div ng-show="currentLowerTab == 'Guardian Info' "  ng-include src="'views/dashboard/guardian-info.html'"></div>
+
+<!-- EMERGENCY CONTACT INFO -->
+<div ng-show="currentLowerTab == 'Emergency Contact Info' "  ng-include src="'views/dashboard/emergency-contact-info.html'"></div>
+
+<!-- PICK UP LIST INFO -->
+<div ng-show="currentLowerTab == 'Pickup List Info' "  ng-include src="'views/dashboard/pickup-list-info.html'"></div>
+
+
+
+
+
+
+
+
 	
 </div>

@@ -1,6 +1,6 @@
 'use strict'
 angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $location, StorageService) ->
-
+  $rootScope.pageTitle = 'Dashboard'
   $rootScope.changePageTitle = () ->
     if $location.$$path is '/dashboard'
       $rootScope.pageTitle = 'Dashboard'
@@ -17,12 +17,9 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
     if $location.$$path is '/messages'
       $rootScope.pageTitle = 'Messages'
 
-    return
-
   $rootScope.logOut = () ->
     StorageService.deleteLocalStorage();
     $location.path '/'
-    return
 
   $rootScope.changePageTitle()
 

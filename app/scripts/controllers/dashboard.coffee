@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, DailyActivityFeedService) ->
+angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService) ->
   $rootScope.changePageTitle()
   $rootScope.isLoginPage = false
   $scope.showItemsMenu = false
@@ -8,23 +8,26 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.viewChild = null
   $scope.currentLowerTab = "Updates"
   $scope.activeChild = "child-1"
+  $scope.activeGuardian = "guardian-1"
+  $scope.activeEmergencyContact = "contact-1"
+  $scope.activePickupContact = "pickup-contact-1"
   #console.log StorageService.getItem('currentCenter')
   # StorageService.deleteLocalStorage();
+  $scope.changeActivePickupContact = (activePickupContact) ->
+    $scope.activePickupContact = activePickupContact
+
+  $scope.changeActiveEmergencyContact = (activeEmergencyContact) ->
+    $scope.activeEmergencyContact = activeEmergencyContact
+
+  $scope.changeActiveGuardian = (activeGuardian) ->
+    $scope.activeGuardian = activeGuardian
+
   $scope.changeActiveChild = (activeChild) ->
     $scope.activeChild = activeChild
 
   $scope.changeActiveLowerTab = (activeTab) ->
     $scope.currentLowerTab = activeTab
   
-  $scope.goToInvoice = (invoiceId) ->
-    $location.path 'invoices/outstanding-invoices/'+invoiceId
-
-  $scope.goToPayment = (payId) ->
-    $location.path 'invoices/payments-made/'+payId
-
-  $scope.goToAnnouncement = (messageId) ->
-    $location.path 'messages/'+messageId
-
   $scope.getChildrenData = () ->
     CurbSideService.getAllChildren(centerId, familyId).then (response) ->
       $scope.userChildren = response.data
@@ -34,7 +37,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.childrenHistoryInfo = []
 
       angular.forEach $scope.userChildren, (value, key) ->
-        
         ChildService.getChildClass(value.ChildId).then (response) ->
           $scope.childrenClasses.push response.data
 
@@ -55,7 +57,31 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     $scope.viewChildMedicalInfo = $filter('filter')($scope.childrenMedicalInfo, (d) -> d.ChildId == childId)[0]
     $scope.viewChildGeneralInfo = $filter('filter')($scope.childrenGenInfo, (d) -> d.ChildId == childId)[0]
     $scope.viewChildHistoryInfo = $filter('filter')($scope.childrenHistoryInfo, (d) -> d.ChildId == childId)[0]
-    console.log $scope.viewChild
+
+  $scope.goToFeed = (feedId) ->
+    $scope.viewFeedAttachments = null
+    $scope.viewFeedNotes = null
+    $scope.viewFeed = null
+
+    $scope.viewFeed = $filter('filter')($scope.dailyFeed, (d) -> d.FeedId == feedId)[0]
+    DailyActivityFeedService.getFeedDetail(feedId, $scope.viewFeed.FeedType).then (response) ->
+      $scope.viewFeedNotes = response.data.Notes
+
+    DailyActivityFeedService.getFeedFiles(feedId, $scope.viewFeed.FeedType).then (response) ->
+      $scope.viewFeedAttachments = response.data
+
+  $scope.goToGuardian = (guardianId) ->
+    GuardianService.getGuardian(guardianId).then (response) ->
+      $scope.viewGuardian = response.data
+
+  $scope.goToEmergencyContact = (contactId) ->
+    ContactService.getContact(contactId).then (response) ->
+      $scope.viewEmergencyContact = response.data
+
+  $scope.goToPickupContact = (contactId) ->
+    $scope.viewPickupContact = $filter('filter')($scope.pickupList, (d) -> d.ChildPickupId == contactId)[0]
+
+ 
 
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
@@ -67,6 +93,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     customerId = $rootScope.currentCenter.CustomerId
     
     CenterInfoService.getCenterDetails(centerId).then (response) ->
+      console.log response.data
       $scope.currentCenterDetails = response.data
 
       $scope.getChildrenData()
@@ -80,34 +107,17 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
 
     DailyActivityFeedService.getActivityFeed(familyId).then (response) ->
       $scope.dailyFeed = response.data
+      $scope.goToFeed($scope.dailyFeed[0].FeedId)
       
-    PaymentService.getPastPayments(customerId).then (response) ->
-      $scope.pastPayments = response.data
+    GuardianService.getAllGuardians(familyId).then (response) ->
+      $scope.guardians = response.data
+      $scope.goToGuardian($scope.guardians[0].GuardianId)
 
-    InvoiceService.getOutstandingInvoices(customerId).then (response) ->
-      $scope.outstandingInvoices = response.data
-      $scope.invoicesArray = []
+    ContactService.getAllContacts(familyId).then (response) ->
+      $scope.contacts = response.data
+      $scope.goToEmergencyContact($scope.contacts[0].EmergencyContactId)
 
-      angular.forEach $scope.outstandingInvoices, (value, key) ->
-        InvoiceDetailService.getInvoiceDetail(value.InvoiceId).then (response) ->
-          
-          if response.data.length == 1
-            $scope.invoicesArray.push response.data[0]
-            $scope.invoiceGrandTotal = $scope.invoiceGrandTotal+response.data[0].Amount
-
-          else
-            arrayHolder = []
-            angular.forEach response.data, (value, key) ->
-              arrayHolder.push value
-              $scope.invoiceGrandTotal = $scope.invoiceGrandTotal+value.Amount
-            
-            $scope.invoicesArray.push arrayHolder
-
-        return
-     
-  return
-
-
-
-  
-
+    ChildPickupService.getAllChildPickupList(familyId).then (response) ->
+      $scope.pickupList = response.data
+      $scope.goToPickupContact($scope.pickupList[0].ChildPickupId)
+      

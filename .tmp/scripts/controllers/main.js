@@ -1,6 +1,7 @@
 (function() {
   'use strict';
   angular.module('kiteLineApp').controller('MainCtrl', function($scope, $rootScope, $location, StorageService) {
+    $rootScope.pageTitle = 'Dashboard';
     $rootScope.changePageTitle = function() {
       if ($location.$$path === '/dashboard') {
         $rootScope.pageTitle = 'Dashboard';
@@ -15,12 +16,12 @@
         $rootScope.pageTitle = 'My Children';
       }
       if ($location.$$path === '/messages') {
-        $rootScope.pageTitle = 'Messages';
+        return $rootScope.pageTitle = 'Messages';
       }
     };
     $rootScope.logOut = function() {
       StorageService.deleteLocalStorage();
-      $location.path('/');
+      return $location.path('/');
     };
     $rootScope.changePageTitle();
     $rootScope.scrollbarConfig = {

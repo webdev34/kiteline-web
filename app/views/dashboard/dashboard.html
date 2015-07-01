@@ -11,7 +11,9 @@
 		<li><img src="images/day-care-logo.png" /></li>
 		<li>
 			<h4 class="center-name">
-				{{currentCenterDetails.CenterName}}
+				<span>{{currentCenterDetails.CenterName}}</span>
+				<span>{{currentCenterDetails.Street}}</span>
+				<span>{{currentCenterDetails.City}}, {{currentCenterDetails.State}} {{currentCenterDetails.Zip}}</span>
 			</h4>
 		</li>
 		<li>
@@ -40,7 +42,7 @@
 	<!-- <div class="middle-feature-container col-md-4 white-bg" ng-include src="'views/dashboard/messages.html'"></div>
 
 -->
-	<div class="right-feature-container col-md-4" ng-include src="'views/dashboard/my-children.html'"></div>
+	<div class="right-feature-container col-md-4" ng-include src="'views/dashboard/right-content.html'"></div>
 
 </div>
 

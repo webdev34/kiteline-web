@@ -1,7 +1,45 @@
-.lower-tabs-container{
-	.nav.nav-tabs{
+.lower-container-dashboard{
+	ul.nav.nav-tabs{
 		background-color: #ddd;
-	  	padding-top: 15px;
 	}
-	
+	.feed-breakdown-view{
+		  width: 70%;
+		  float: left;
+		  border: 2px solid #ddd;
+		  height: 280px;
+		  margin-top: 10px;
+		  padding: 1%;
+		.detail-value{
+		  margin-top: 27px;
+		  font-size: 16px;
+		  font-weight: bold;
+		}
+		p{
+			font-size: 16px;
+			margin-top: 10px;
+			min-height: 130px;
+		}
+	}
+
+	.guardian-detail-wrapper,
+	.emergency-contact-detail-wrapper{
+		.mCustomScrollbar{
+			height: 325px !important;
+		}
+		hr{
+			width: 99%;
+  			margin-left: -5px;
+		}
+		h2{
+          font-size: 21px;
+          margin-top: 10px;
+        }
+
+	} 
+	.medical-info-breakdown-view,
+	.emergency-contact-detail-wrapper,
+	.guardian-detail-wrapper,
+	.pickup-list-contact{
+		margin-top: 10px;
+	}
 }

@@ -25,13 +25,16 @@ html {
         //#498DB1;
         font-family: concourse_t4regular;
         .header {
-            margin-bottom: 15px;
+            margin-bottom: 5px;
+            background-color: #4e99bd;
         }
     }
 }
 
 .inner-kiteline-content-container {
     height: 100%;
+    width: 1280px;
+    margin: 0 auto;
 }
 
 a:hover {
@@ -92,7 +95,67 @@ h1, h2, h3 {
 
 .left-feature-container {
     border-right: thin solid #ccc;
-}
+    .nav > li > a {
+    padding: 5px 15px;
+  }
+
+  ul.nav.nav-tabs{
+     border-bottom: 1px solid #4e99bd;
+    li{
+      clear: none;
+      cursor: pointer;
+      padding-bottom: 0px;
+      height: auto;
+      margin-left: 3%;
+      a{
+        background-color: #529acd;
+        color: white;
+        border: none;
+        min-width: 125px;
+        text-align: center;
+        font-size: 14px;
+        text-transform: capitalize;
+        &:hover{
+          background-color: #224f77;
+        }
+        .fa, .glyphicon{
+          font-size: 12px;
+          margin-right: 2%;
+          &.fa-car,
+            &.glyphicon-user{
+                margin-right: 5%;
+            }
+        }
+      }
+      &.active{
+        a{
+          background-color: #224f77;
+        }
+      }
+      &:hover{
+        background-color: transparent;
+      }
+      &.longer{
+        width: 175px;
+      }
+    }
+  }
+
+  .child-name-wrapper{
+    .name-block,
+    .date-block{
+      float: left;
+      h4{
+        float: none;
+         margin-top: 15px;
+      }
+      p{
+        color: #224f77;
+        font-size: 16px;
+      }
+    }
+  }
+} //.left-feature-container
 
 .middle-feature-container {
     nav {
@@ -150,7 +213,8 @@ h1, h2, h3 {
     position: relative;
     &.col-md-4, 
     &.col-md-8{
-        height: 100%;
+        height: auto;
+        padding-bottom: 25px;
         .my-children-container-dashboard {
             height: 70%;
         }
@@ -234,11 +298,11 @@ h1, h2, h3 {
         }
     }
     .detail-breakdown {
-        color: #666;
-        clear: both;
-        margin: 20px 0px;
+        margin: 5px 0px;
         min-height: 25px;
         display: block;
+        width: 49%;
+        float: left;
         .detail-label {
             font-weight: bold;
             font-size: 18px;
@@ -252,9 +316,14 @@ h1, h2, h3 {
             clear: both;
         }
         .detail-value {
-            font-size: 18px;
+            font-size: 16px;
             float: right;
-            width: 40%;
+            width: 50%;
+            color:#224f77;
+            text-transform: capitalize;
+            &.no-cap{
+              text-transform: none;
+            }
         }
         .fa-check-circle,
         .good {
@@ -310,12 +379,15 @@ h1, h2, h3 {
     }
     .header-border-left {
         border-left: #dce6e9 4px solid;
-        margin-left: -15px;
+        //margin-left: -15px;
         padding-left: 30px;
         height: 60px;
         display: block;
         position: absolute;
-        top: 15px;
+        //top: 15px;
+        &.pull-outside{
+            margin-left: -15px;
+        }
     }
     .mCustomScrollbar {
         width: 103%;
@@ -325,6 +397,9 @@ h1, h2, h3 {
         }
         &.scroll-wrapper-shorter {
             height: 235px !important;
+        }
+        .mCSB_scrollTools.mCSB_scrollTools_vertical{
+            right: 10px;
         }
     }
     .daily-activity-feed-container-dashboard {
@@ -445,6 +520,11 @@ body {
     color: #4a90e2 !important;
 }
 
+.center-align{
+    width: 100%;
+    text-align: center;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
@@ -463,8 +543,25 @@ body {
     }
 }
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
     footer.footer {
-        position: absolute;
+        position: relative;
+    }
+    .container.kiteline-content,
+    .inner-kiteline-content-container,
+    header.header .navbar,
+    header.header .navbar-inverse,
+    footer.footer .footer-container{
+        width: auto;
+        height: auto;
+    }
+
+    .right-feature-container{
+        padding: 0px;
+        margin-top: 30px;
+    }
+
+    .left-feature-container.col-md-8{
+        min-height: 600px;
     }
 }
