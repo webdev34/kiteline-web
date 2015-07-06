@@ -1,8 +1,17 @@
-<div class="emergency-contact-info-breakdown-view">
-    <ul class="nav nav-tabs">
-        <li ng-animate="'animate'" data-ng-repeat="contact in contacts" ng-click="goToEmergencyContact(contact.EmergencyContactId); changeActiveEmergencyContact('contact-'+[$index+1]);" class="contact-{{$index+1}}" ng-class="{ 'active': activeEmergencyContact == 'contact-'+[$index+1]}"><a>Contact {{$index+1}}</a></li>
-    </ul>
-    <div class="emergency-contact-detail-wrapper" ng-scrollbars ng-scrollbars-config="scrollbarConfig" >
+<div class="emergency-contact-info-breakdown-view lower-section-wrapper">
+    <div ng-scrollbars ng-scrollbars-config="scrollbarConfig" class="pull-left">
+		<ul>
+	        <li ng-class="{ 'active': activeEmergencyContact == 'contact-'+[$index+1]}"  data-ng-repeat="contact in contacts" ng-animate="'animate'"   ng-click="goToEmergencyContact(contact.EmergencyContactId); changeActiveEmergencyContact('contact-'+[$index+1]);" >
+				<div class="pull-left">
+					<span class="feed-headline cap">Contact {{$index+1}}</span>
+					<span class="feed-headline cap">{{contact.Name}}</span>
+				</div>
+				<div class="pointer pull-right">
+				</div>
+			</li>
+		</ul>
+	</div>
+    <div class="emergency-contact-detail-wrapper feed-breakdown-view" ng-scrollbars ng-scrollbars-config="scrollbarConfig" >
 		<div class="detail-breakdown">
 			<span class="detail-label">Name</span>
 			<span class="detail-value">{{viewEmergencyContact.Name}}</span>

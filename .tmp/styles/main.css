@@ -404,34 +404,33 @@ h4.effective {
 }
 /* line 12, ../../app/styles/dashboard/_lower-tabs.scss */
 .lower-container-dashboard .feed-breakdown-view .detail-value {
-  margin-top: 27px;
   font-size: 16px;
   font-weight: bold;
 }
-/* line 17, ../../app/styles/dashboard/_lower-tabs.scss */
+/* line 16, ../../app/styles/dashboard/_lower-tabs.scss */
 .lower-container-dashboard .feed-breakdown-view p {
   font-size: 16px;
   margin-top: 10px;
   min-height: 130px;
 }
-/* line 26, ../../app/styles/dashboard/_lower-tabs.scss */
+/* line 25, ../../app/styles/dashboard/_lower-tabs.scss */
 .lower-container-dashboard .guardian-detail-wrapper .mCustomScrollbar,
 .lower-container-dashboard .emergency-contact-detail-wrapper .mCustomScrollbar {
   height: 325px !important;
 }
-/* line 29, ../../app/styles/dashboard/_lower-tabs.scss */
+/* line 28, ../../app/styles/dashboard/_lower-tabs.scss */
 .lower-container-dashboard .guardian-detail-wrapper hr,
 .lower-container-dashboard .emergency-contact-detail-wrapper hr {
   width: 99%;
   margin-left: -5px;
 }
-/* line 33, ../../app/styles/dashboard/_lower-tabs.scss */
+/* line 32, ../../app/styles/dashboard/_lower-tabs.scss */
 .lower-container-dashboard .guardian-detail-wrapper h2,
 .lower-container-dashboard .emergency-contact-detail-wrapper h2 {
   font-size: 21px;
   margin-top: 10px;
 }
-/* line 39, ../../app/styles/dashboard/_lower-tabs.scss */
+/* line 38, ../../app/styles/dashboard/_lower-tabs.scss */
 .lower-container-dashboard .medical-info-breakdown-view,
 .lower-container-dashboard .emergency-contact-detail-wrapper,
 .lower-container-dashboard .guardian-detail-wrapper,
@@ -446,7 +445,7 @@ h4.effective {
 }
 /* line 4, ../../app/styles/dashboard/_right-content.scss */
 .outstanding-balance-container .current-balance {
-  color: #5b5b5a;
+  color: orange;
   font-size: 21px;
   font-family: concourse_c4bold;
   text-align: center;
@@ -571,70 +570,12 @@ h4.effective {
   border-radius: 25px;
   margin-left: 7px;
 }
-/* line 17, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard ul li {
-  min-height: 100px;
-  font-size: 14px !important;
-  border-bottom: thin solid #224f77;
-  width: 90%;
-}
-/* line 23, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard ul li .feed-headline {
-  margin-top: 5%;
-}
-/* line 27, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard ul li .pull-left {
-  width: 100%;
-  height: 80px;
-}
-/* line 32, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard ul li:hover, .daily-activity-feed-container-dashboard ul li.active {
-  position: relative;
-  color: white !important;
-}
-/* line 37, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard ul li:hover .pull-left, .daily-activity-feed-container-dashboard ul li.active .pull-left {
-  background-color: #535253 !important;
-}
-/* line 41, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard ul li:hover .feed-date, .daily-activity-feed-container-dashboard ul li.active .feed-date {
-  color: white;
-}
-/* line 45, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard ul li:hover .pointer, .daily-activity-feed-container-dashboard ul li.active .pointer {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 40px 0 40px 40px;
-  border-color: transparent transparent transparent #535253;
-  position: absolute;
-  right: -15px;
-  top: 10px;
-}
-/* line 59, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard .mCustomScrollbar {
-  width: 30% !important;
-  float: left;
-}
-/* line 63, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.daily-activity-feed-container-dashboard .mCSB_draggerContainer {
-  margin-left: 15px !important;
-}
-
-/* line 69, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.feed-breakdown-view.mCustomScrollbar {
-  width: 69% !important;
-}
-/* line 71, ../../app/styles/dashboard/_daily-activity-feed.scss */
-.feed-breakdown-view.mCustomScrollbar .mCSB_scrollTools a + .mCSB_draggerContainer {
-  margin-left: 23px !important;
-}
 
 /* line 1, ../../app/styles/dashboard/_messages.scss */
 .messages-container-dashboard {
   margin-top: 3%;
   height: auto;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
 }
 /* line 5, ../../app/styles/dashboard/_messages.scss */
 .messages-container-dashboard h4.pull-left {
@@ -1286,57 +1227,57 @@ body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .over
   color: #999;
 }
 
-/* line 19, ../../app/styles/main.scss */
+/* line 18, ../../app/styles/main.scss */
 html {
   height: 95%;
 }
-/* line 21, ../../app/styles/main.scss */
+/* line 20, ../../app/styles/main.scss */
 html body {
   height: 100%;
   padding: 0;
   background: #f6f6f6;
   font-family: concourse_t4regular;
 }
-/* line 27, ../../app/styles/main.scss */
+/* line 26, ../../app/styles/main.scss */
 html body .header {
   margin-bottom: 5px;
   background-color: #4e99bd;
 }
 
-/* line 34, ../../app/styles/main.scss */
+/* line 33, ../../app/styles/main.scss */
 .inner-kiteline-content-container {
   height: 100%;
   width: 1280px;
   margin: 0 auto;
 }
 
-/* line 40, ../../app/styles/main.scss */
+/* line 39, ../../app/styles/main.scss */
 a:hover {
   text-decoration: none;
 }
 
-/* line 44, ../../app/styles/main.scss */
+/* line 43, ../../app/styles/main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
 /* Supporting marketing content */
-/* line 49, ../../app/styles/main.scss */
+/* line 48, ../../app/styles/main.scss */
 .marketing {
   margin: 40px 0;
 }
 
-/* line 53, ../../app/styles/main.scss */
+/* line 52, ../../app/styles/main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
-/* line 57, ../../app/styles/main.scss */
+/* line 56, ../../app/styles/main.scss */
 .clearfix {
   clear: both;
 }
 
-/* line 61, ../../app/styles/main.scss */
+/* line 60, ../../app/styles/main.scss */
 .container.kiteline-content {
   max-width: 100%;
   width: 100%;
@@ -1345,12 +1286,12 @@ a:hover {
   padding-right: 50px;
 }
 
-/* line 69, ../../app/styles/main.scss */
+/* line 68, ../../app/styles/main.scss */
 .white-bg {
   background-color: #fffff8;
 }
 
-/* line 73, ../../app/styles/main.scss */
+/* line 72, ../../app/styles/main.scss */
 .logo {
   background: url(../images/logo.svg);
   background-repeat: no-repeat;
@@ -1359,7 +1300,7 @@ a:hover {
   margin: 20px auto;
 }
 
-/* line 81, ../../app/styles/main.scss */
+/* line 80, ../../app/styles/main.scss */
 .kiteline-logo {
   background: url(../images/kiteline-logo.png);
   background-repeat: no-repeat;
@@ -1370,25 +1311,90 @@ a:hover {
   left: 10px;
 }
 
-/* line 91, ../../app/styles/main.scss */
+/* line 90, ../../app/styles/main.scss */
 h1, h2, h3 {
   color: #287194;
   font-family: concourse_c4regular;
 }
 
-/* line 96, ../../app/styles/main.scss */
+/* line 95, ../../app/styles/main.scss */
 .left-feature-container {
   border-right: thin solid #ccc;
 }
-/* line 98, ../../app/styles/main.scss */
+/* line 97, ../../app/styles/main.scss */
 .left-feature-container .nav > li > a {
   padding: 5px 15px;
 }
-/* line 102, ../../app/styles/main.scss */
+/* line 101, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper .mCustomScrollbar {
+  width: 250px !important;
+}
+/* line 103, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper .mCustomScrollbar.feed-breakdown-view {
+  width: 570px !important;
+}
+/* line 108, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper .feed-breakdown-view .mCustomScrollbar {
+  width: 30% !important;
+  float: left;
+}
+/* line 112, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper .feed-breakdown-view .mCSB_draggerContainer {
+  margin-left: 15px !important;
+}
+/* line 117, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper ul li {
+  min-height: 100px;
+  font-size: 14px !important;
+  border-bottom: thin solid #224f77;
+  width: 90%;
+}
+/* line 122, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper ul li .feed-headline {
+  margin-top: 5%;
+}
+/* line 125, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper ul li .pull-left {
+  width: 100%;
+  height: 80px;
+}
+/* line 129, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper ul li:hover, .left-feature-container .lower-section-wrapper ul li.active {
+  position: relative;
+  color: white !important;
+}
+/* line 133, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper ul li:hover .pull-left, .left-feature-container .lower-section-wrapper ul li.active .pull-left {
+  background-color: #535253 !important;
+}
+/* line 136, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper ul li:hover .feed-date, .left-feature-container .lower-section-wrapper ul li.active .feed-date {
+  color: white;
+}
+/* line 139, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper ul li:hover .pointer, .left-feature-container .lower-section-wrapper ul li.active .pointer {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 40px 0 40px 40px;
+  border-color: transparent transparent transparent #535253;
+  position: absolute;
+  right: -15px;
+  top: 10px;
+}
+/* line 153, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper.mCustomScrollbar {
+  width: 69% !important;
+}
+/* line 155, ../../app/styles/main.scss */
+.left-feature-container .lower-section-wrapper.mCustomScrollbar .mCSB_scrollTools a + .mCSB_draggerContainer {
+  margin-left: 23px !important;
+}
+/* line 160, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs {
   border-bottom: 1px solid #4e99bd;
 }
-/* line 104, ../../app/styles/main.scss */
+/* line 162, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li {
   clear: none;
   cursor: pointer;
@@ -1396,7 +1402,7 @@ h1, h2, h3 {
   height: auto;
   margin-left: 3%;
 }
-/* line 110, ../../app/styles/main.scss */
+/* line 168, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li a {
   background-color: #529acd;
   color: white;
@@ -1406,50 +1412,50 @@ h1, h2, h3 {
   font-size: 14px;
   text-transform: capitalize;
 }
-/* line 118, ../../app/styles/main.scss */
+/* line 176, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li a:hover {
   background-color: #224f77;
 }
-/* line 121, ../../app/styles/main.scss */
+/* line 179, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li a .fa, .left-feature-container ul.nav.nav-tabs li a .glyphicon {
   font-size: 12px;
   margin-right: 2%;
 }
-/* line 124, ../../app/styles/main.scss */
+/* line 182, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li a .fa.fa-car, .left-feature-container ul.nav.nav-tabs li a .fa.glyphicon-user, .left-feature-container ul.nav.nav-tabs li a .glyphicon.fa-car, .left-feature-container ul.nav.nav-tabs li a .glyphicon.glyphicon-user {
   margin-right: 5%;
 }
-/* line 131, ../../app/styles/main.scss */
+/* line 189, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li.active a {
   background-color: #224f77;
 }
-/* line 135, ../../app/styles/main.scss */
+/* line 193, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li:hover {
   background-color: transparent;
 }
-/* line 138, ../../app/styles/main.scss */
+/* line 196, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li.longer {
   width: 175px;
 }
-/* line 145, ../../app/styles/main.scss */
+/* line 202, ../../app/styles/main.scss */
 .left-feature-container .child-name-wrapper .name-block,
 .left-feature-container .child-name-wrapper .date-block {
   float: left;
 }
-/* line 148, ../../app/styles/main.scss */
+/* line 205, ../../app/styles/main.scss */
 .left-feature-container .child-name-wrapper .name-block h4,
 .left-feature-container .child-name-wrapper .date-block h4 {
   float: none;
   margin-top: 15px;
 }
-/* line 152, ../../app/styles/main.scss */
+/* line 209, ../../app/styles/main.scss */
 .left-feature-container .child-name-wrapper .name-block p,
 .left-feature-container .child-name-wrapper .date-block p {
   color: #224f77;
   font-size: 16px;
 }
 
-/* line 161, ../../app/styles/main.scss */
+/* line 220, ../../app/styles/main.scss */
 .middle-feature-container nav {
   float: right;
   display: inline-block;
@@ -1457,7 +1463,7 @@ h1, h2, h3 {
   margin-bottom: 10px;
   width: 200px;
 }
-/* line 168, ../../app/styles/main.scss */
+/* line 227, ../../app/styles/main.scss */
 .middle-feature-container nav ul li {
   float: left;
   clear: none;
@@ -1467,12 +1473,12 @@ h1, h2, h3 {
   color: #4a90e2;
   height: auto;
 }
-/* line 176, ../../app/styles/main.scss */
+/* line 235, ../../app/styles/main.scss */
 .middle-feature-container nav ul li:hover, .middle-feature-container nav ul li.active {
   background: transparent;
   color: #999;
 }
-/* line 184, ../../app/styles/main.scss */
+/* line 243, ../../app/styles/main.scss */
 .middle-feature-container .edit-button {
   float: right;
   font-size: 18px;
@@ -1480,23 +1486,23 @@ h1, h2, h3 {
   margin-right: 5px;
   cursor: pointer;
 }
-/* line 190, ../../app/styles/main.scss */
+/* line 249, ../../app/styles/main.scss */
 .middle-feature-container .edit-button:hover {
   color: #999;
 }
-/* line 194, ../../app/styles/main.scss */
+/* line 253, ../../app/styles/main.scss */
 .middle-feature-container .delete-button {
   float: right;
   font-size: 18px;
   color: red;
   cursor: pointer;
 }
-/* line 199, ../../app/styles/main.scss */
+/* line 258, ../../app/styles/main.scss */
 .middle-feature-container .delete-button:hover {
   color: #999;
 }
 
-/* line 210, ../../app/styles/main.scss */
+/* line 269, ../../app/styles/main.scss */
 .left-feature-container,
 .middle-feature-container,
 .right-feature-container {
@@ -1508,16 +1514,15 @@ h1, h2, h3 {
    animate.
   */
 }
-/* line 214, ../../app/styles/main.scss */
+/* line 273, ../../app/styles/main.scss */
 .left-feature-container.col-md-4, .left-feature-container.col-md-8,
 .middle-feature-container.col-md-4,
 .middle-feature-container.col-md-8,
 .right-feature-container.col-md-4,
 .right-feature-container.col-md-8 {
-  height: auto;
-  padding-bottom: 25px;
+  height: 575px;
 }
-/* line 218, ../../app/styles/main.scss */
+/* line 276, ../../app/styles/main.scss */
 .left-feature-container.col-md-4 .my-children-container-dashboard, .left-feature-container.col-md-8 .my-children-container-dashboard,
 .middle-feature-container.col-md-4 .my-children-container-dashboard,
 .middle-feature-container.col-md-8 .my-children-container-dashboard,
@@ -1525,13 +1530,13 @@ h1, h2, h3 {
 .right-feature-container.col-md-8 .my-children-container-dashboard {
   height: 70%;
 }
-/* line 222, ../../app/styles/main.scss */
+/* line 280, ../../app/styles/main.scss */
 .left-feature-container nav ul li,
 .middle-feature-container nav ul li,
 .right-feature-container nav ul li {
   border: none;
 }
-/* line 225, ../../app/styles/main.scss */
+/* line 283, ../../app/styles/main.scss */
 .left-feature-container .glyphicon,
 .left-feature-container .fa,
 .middle-feature-container .glyphicon,
@@ -1540,20 +1545,20 @@ h1, h2, h3 {
 .right-feature-container .fa {
   font-size: 24px;
 }
-/* line 229, ../../app/styles/main.scss */
+/* line 287, ../../app/styles/main.scss */
 .left-feature-container .ng-enter,
 .middle-feature-container .ng-enter,
 .right-feature-container .ng-enter {
   transition: 1s linear all;
   opacity: 0;
 }
-/* line 242, ../../app/styles/main.scss */
+/* line 300, ../../app/styles/main.scss */
 .left-feature-container .ng-enter.ng-enter-active,
 .middle-feature-container .ng-enter.ng-enter-active,
 .right-feature-container .ng-enter.ng-enter-active {
   opacity: 1;
 }
-/* line 245, ../../app/styles/main.scss */
+/* line 303, ../../app/styles/main.scss */
 .left-feature-container .ng-enter, .left-feature-container .ng-leave,
 .middle-feature-container .ng-enter,
 .middle-feature-container .ng-leave,
@@ -1561,7 +1566,7 @@ h1, h2, h3 {
 .right-feature-container .ng-leave {
   transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
 }
-/* line 249, ../../app/styles/main.scss */
+/* line 307, ../../app/styles/main.scss */
 .left-feature-container .ng-enter,
 .left-feature-container .ng-leave.ng-leave-active,
 .middle-feature-container .ng-enter,
@@ -1570,7 +1575,7 @@ h1, h2, h3 {
 .right-feature-container .ng-leave.ng-leave-active {
   opacity: 0;
 }
-/* line 253, ../../app/styles/main.scss */
+/* line 311, ../../app/styles/main.scss */
 .left-feature-container .ng-leave,
 .left-feature-container .ng-enter.ng-enter-active,
 .middle-feature-container .ng-leave,
@@ -1579,7 +1584,7 @@ h1, h2, h3 {
 .right-feature-container .ng-enter.ng-enter-active {
   opacity: 1;
 }
-/* line 257, ../../app/styles/main.scss */
+/* line 315, ../../app/styles/main.scss */
 .left-feature-container hr,
 .middle-feature-container hr,
 .right-feature-container hr {
@@ -1587,7 +1592,7 @@ h1, h2, h3 {
   width: 100%;
   margin-bottom: 0px;
 }
-/* line 262, ../../app/styles/main.scss */
+/* line 320, ../../app/styles/main.scss */
 .left-feature-container h4,
 .middle-feature-container h4,
 .right-feature-container h4 {
@@ -1598,7 +1603,7 @@ h1, h2, h3 {
   text-transform: capitalize;
   font-size: 18px;
 }
-/* line 270, ../../app/styles/main.scss */
+/* line 328, ../../app/styles/main.scss */
 .left-feature-container h4.alt-header,
 .middle-feature-container h4.alt-header,
 .right-feature-container h4.alt-header {
@@ -1609,7 +1614,7 @@ h1, h2, h3 {
   margin-bottom: -10px;
   font-size: 21px;
 }
-/* line 278, ../../app/styles/main.scss */
+/* line 336, ../../app/styles/main.scss */
 .left-feature-container .back-to-main-view,
 .left-feature-container .back-to-sub-view,
 .left-feature-container .add-new,
@@ -1630,7 +1635,7 @@ h1, h2, h3 {
   margin-top: 15px;
   cursor: pointer;
 }
-/* line 291, ../../app/styles/main.scss */
+/* line 349, ../../app/styles/main.scss */
 .left-feature-container .back-to-main-view:hover,
 .left-feature-container .back-to-sub-view:hover,
 .left-feature-container .add-new:hover,
@@ -1642,7 +1647,7 @@ h1, h2, h3 {
 .right-feature-container .add-new:hover {
   color: #999;
 }
-/* line 294, ../../app/styles/main.scss */
+/* line 352, ../../app/styles/main.scss */
 .left-feature-container .back-to-main-view .fa-angle-left,
 .left-feature-container .back-to-sub-view .fa-angle-left,
 .left-feature-container .add-new .fa-angle-left,
@@ -1656,7 +1661,7 @@ h1, h2, h3 {
   font-size: 22px;
   margin-right: 5px;
 }
-/* line 300, ../../app/styles/main.scss */
+/* line 358, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown,
 .middle-feature-container .detail-breakdown,
 .right-feature-container .detail-breakdown {
@@ -1666,7 +1671,7 @@ h1, h2, h3 {
   width: 49%;
   float: left;
 }
-/* line 306, ../../app/styles/main.scss */
+/* line 364, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .detail-label,
 .middle-feature-container .detail-breakdown .detail-label,
 .right-feature-container .detail-breakdown .detail-label {
@@ -1674,36 +1679,37 @@ h1, h2, h3 {
   font-size: 18px;
   float: left;
 }
-/* line 311, ../../app/styles/main.scss */
+/* line 369, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown label,
 .middle-feature-container .detail-breakdown label,
 .right-feature-container .detail-breakdown label {
   font-weight: bold;
   font-size: 18px;
 }
-/* line 315, ../../app/styles/main.scss */
+/* line 373, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .detail-header,
 .middle-feature-container .detail-breakdown .detail-header,
 .right-feature-container .detail-breakdown .detail-header {
   clear: both;
 }
-/* line 318, ../../app/styles/main.scss */
+/* line 376, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .detail-value,
 .middle-feature-container .detail-breakdown .detail-value,
 .right-feature-container .detail-breakdown .detail-value {
   font-size: 16px;
+  margin-right: 15px;
   float: right;
-  width: 50%;
+  width: 51%;
   color: #224f77;
   text-transform: capitalize;
 }
-/* line 324, ../../app/styles/main.scss */
+/* line 383, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .detail-value.no-cap,
 .middle-feature-container .detail-breakdown .detail-value.no-cap,
 .right-feature-container .detail-breakdown .detail-value.no-cap {
   text-transform: none;
 }
-/* line 328, ../../app/styles/main.scss */
+/* line 387, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .fa-check-circle,
 .left-feature-container .detail-breakdown .good,
 .middle-feature-container .detail-breakdown .fa-check-circle,
@@ -1712,7 +1718,7 @@ h1, h2, h3 {
 .right-feature-container .detail-breakdown .good {
   color: green;
 }
-/* line 332, ../../app/styles/main.scss */
+/* line 391, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .fa-times-circle,
 .left-feature-container .detail-breakdown .bad,
 .middle-feature-container .detail-breakdown .fa-times-circle,
@@ -1721,14 +1727,14 @@ h1, h2, h3 {
 .right-feature-container .detail-breakdown .bad {
   color: red;
 }
-/* line 337, ../../app/styles/main.scss */
+/* line 396, ../../app/styles/main.scss */
 .left-feature-container a,
 .middle-feature-container a,
 .right-feature-container a {
   color: #4a90e2;
   font-size: 13px;
 }
-/* line 341, ../../app/styles/main.scss */
+/* line 400, ../../app/styles/main.scss */
 .left-feature-container ul,
 .middle-feature-container ul,
 .right-feature-container ul {
@@ -1737,7 +1743,7 @@ h1, h2, h3 {
   margin: 0px;
   padding: 0px;
 }
-/* line 346, ../../app/styles/main.scss */
+/* line 405, ../../app/styles/main.scss */
 .left-feature-container ul li,
 .middle-feature-container ul li,
 .right-feature-container ul li {
@@ -1747,27 +1753,27 @@ h1, h2, h3 {
   clear: both;
   font-size: 18px;
 }
-/* line 353, ../../app/styles/main.scss */
+/* line 412, ../../app/styles/main.scss */
 .left-feature-container ul li span,
 .middle-feature-container ul li span,
 .right-feature-container ul li span {
   display: block;
   margin-left: 15px;
 }
-/* line 357, ../../app/styles/main.scss */
+/* line 416, ../../app/styles/main.scss */
 .left-feature-container ul li:hover,
 .middle-feature-container ul li:hover,
 .right-feature-container ul li:hover {
   cursor: pointer;
   background-color: #f8f8f8;
 }
-/* line 361, ../../app/styles/main.scss */
+/* line 420, ../../app/styles/main.scss */
 .left-feature-container ul li.taller-li,
 .middle-feature-container ul li.taller-li,
 .right-feature-container ul li.taller-li {
   height: 90px;
 }
-/* line 364, ../../app/styles/main.scss */
+/* line 423, ../../app/styles/main.scss */
 .left-feature-container ul li .fa.fa-angle-right,
 .middle-feature-container ul li .fa.fa-angle-right,
 .right-feature-container ul li .fa.fa-angle-right {
@@ -1776,7 +1782,7 @@ h1, h2, h3 {
   font-size: 35px;
   color: #ccc;
 }
-/* line 371, ../../app/styles/main.scss */
+/* line 430, ../../app/styles/main.scss */
 .left-feature-container ul li div.pull-right a,
 .middle-feature-container ul li div.pull-right a,
 .right-feature-container ul li div.pull-right a {
@@ -1785,7 +1791,7 @@ h1, h2, h3 {
   left: -10px;
   font-size: 16px;
 }
-/* line 380, ../../app/styles/main.scss */
+/* line 439, ../../app/styles/main.scss */
 .left-feature-container .header-border-left,
 .middle-feature-container .header-border-left,
 .right-feature-container .header-border-left {
@@ -1795,80 +1801,74 @@ h1, h2, h3 {
   display: block;
   position: absolute;
 }
-/* line 388, ../../app/styles/main.scss */
+/* line 447, ../../app/styles/main.scss */
 .left-feature-container .header-border-left.pull-outside,
 .middle-feature-container .header-border-left.pull-outside,
 .right-feature-container .header-border-left.pull-outside {
   margin-left: -15px;
 }
-/* line 392, ../../app/styles/main.scss */
+/* line 451, ../../app/styles/main.scss */
 .left-feature-container .mCustomScrollbar,
 .middle-feature-container .mCustomScrollbar,
 .right-feature-container .mCustomScrollbar {
   width: 103%;
-  height: 250px !important;
+  height: 300px !important;
 }
-/* line 395, ../../app/styles/main.scss */
+/* line 454, ../../app/styles/main.scss */
 .left-feature-container .mCustomScrollbar.scroll-wrapper,
 .middle-feature-container .mCustomScrollbar.scroll-wrapper,
 .right-feature-container .mCustomScrollbar.scroll-wrapper {
   height: 95% !important;
 }
-/* line 398, ../../app/styles/main.scss */
+/* line 457, ../../app/styles/main.scss */
 .left-feature-container .mCustomScrollbar.scroll-wrapper-shorter,
 .middle-feature-container .mCustomScrollbar.scroll-wrapper-shorter,
 .right-feature-container .mCustomScrollbar.scroll-wrapper-shorter {
   height: 235px !important;
 }
-/* line 401, ../../app/styles/main.scss */
+/* line 460, ../../app/styles/main.scss */
 .left-feature-container .mCustomScrollbar .mCSB_scrollTools.mCSB_scrollTools_vertical,
 .middle-feature-container .mCustomScrollbar .mCSB_scrollTools.mCSB_scrollTools_vertical,
 .right-feature-container .mCustomScrollbar .mCSB_scrollTools.mCSB_scrollTools_vertical {
-  right: 10px;
-}
-/* line 406, ../../app/styles/main.scss */
-.left-feature-container .daily-activity-feed-container-dashboard .mCustomScrollbar,
-.middle-feature-container .daily-activity-feed-container-dashboard .mCustomScrollbar,
-.right-feature-container .daily-activity-feed-container-dashboard .mCustomScrollbar {
-  height: 300px !important;
+  right: 3px;
 }
 
-/* line 412, ../../app/styles/main.scss */
+/* line 466, ../../app/styles/main.scss */
 .box-shadow-container, .left-feature-container,
 .middle-feature-container {
   box-shadow: 4px 3px 8px 0px rgba(166, 166, 166, 0.5);
 }
 
-/* line 416, ../../app/styles/main.scss */
+/* line 470, ../../app/styles/main.scss */
 .box-shadow-default {
   box-shadow: 2px 2px 2px 0px rgba(166, 166, 166, 0.5);
 }
 
-/* line 420, ../../app/styles/main.scss */
+/* line 474, ../../app/styles/main.scss */
 .form-control[readonly] {
   background-color: #fff;
 }
 
 /* Scroll Bar fix */
-/* line 426, ../../app/styles/main.scss */
+/* line 480, ../../app/styles/main.scss */
 body .mCSB_container,
 body .mCustomScrollBox {
   width: 100% !important;
 }
-/* line 430, ../../app/styles/main.scss */
+/* line 484, ../../app/styles/main.scss */
 body .mCSB_scrollTools .mCSB_buttonUp,
 body .mCSB_scrollTools .mCSB_buttonDown {
   background-position: 0 0 !important;
 }
-/* line 434, ../../app/styles/main.scss */
+/* line 488, ../../app/styles/main.scss */
 body .mCSB_container_wrapper {
   margin-right: 0px;
 }
-/* line 437, ../../app/styles/main.scss */
+/* line 491, ../../app/styles/main.scss */
 body .mCSB_container_wrapper > .mCSB_container {
   padding-right: 10px;
 }
-/* line 440, ../../app/styles/main.scss */
+/* line 494, ../../app/styles/main.scss */
 body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   position: relative;
   width: 2px;
@@ -1918,32 +1918,33 @@ body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   font-weight: normal;
   font-style: normal;
 }
-/* line 503, ../../app/styles/main.scss */
-.capitalize {
+/* line 557, ../../app/styles/main.scss */
+.capitalize,
+.cap {
   text-transform: capitalize;
 }
 
-/* line 507, ../../app/styles/main.scss */
+/* line 562, ../../app/styles/main.scss */
 .forty-percent-width {
   width: 40%;
 }
 
-/* line 511, ../../app/styles/main.scss */
+/* line 566, ../../app/styles/main.scss */
 .half-width {
   width: 50%;
 }
 
-/* line 515, ../../app/styles/main.scss */
+/* line 570, ../../app/styles/main.scss */
 .red {
   color: red !important;
 }
 
-/* line 519, ../../app/styles/main.scss */
+/* line 574, ../../app/styles/main.scss */
 .blue {
   color: #4a90e2 !important;
 }
 
-/* line 523, ../../app/styles/main.scss */
+/* line 578, ../../app/styles/main.scss */
 .center-align {
   width: 100%;
   text-align: center;
@@ -1951,13 +1952,13 @@ body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* line 530, ../../app/styles/main.scss */
+  /* line 585, ../../app/styles/main.scss */
   .container {
     max-width: 730px;
   }
 
   /* Remove the padding we set earlier */
-  /* line 534, ../../app/styles/main.scss */
+  /* line 589, ../../app/styles/main.scss */
   .header,
   .marketing,
   .footer {
@@ -1966,18 +1967,18 @@ body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   }
 
   /* Space out the masthead */
-  /* line 541, ../../app/styles/main.scss */
+  /* line 596, ../../app/styles/main.scss */
   .header {
     margin-bottom: 30px;
   }
 }
 @media (max-width: 992px) {
-  /* line 547, ../../app/styles/main.scss */
+  /* line 602, ../../app/styles/main.scss */
   footer.footer {
     position: relative;
   }
 
-  /* line 550, ../../app/styles/main.scss */
+  /* line 605, ../../app/styles/main.scss */
   .container.kiteline-content,
   .inner-kiteline-content-container,
   header.header .navbar,
@@ -1987,13 +1988,13 @@ body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
     height: auto;
   }
 
-  /* line 559, ../../app/styles/main.scss */
+  /* line 613, ../../app/styles/main.scss */
   .right-feature-container {
     padding: 0px;
     margin-top: 30px;
   }
 
-  /* line 564, ../../app/styles/main.scss */
+  /* line 617, ../../app/styles/main.scss */
   .left-feature-container.col-md-8 {
     min-height: 600px;
   }

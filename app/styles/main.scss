@@ -12,7 +12,6 @@
 @import "daily-activity-feed/daily-activity-feed";
 @import "modal/modal";
 
-
 $dark-blue: #287194;
 $light-blue: #4e99bd;
 
@@ -96,66 +95,126 @@ h1, h2, h3 {
 .left-feature-container {
     border-right: thin solid #ccc;
     .nav > li > a {
-    padding: 5px 15px;
-  }
-
-  ul.nav.nav-tabs{
-     border-bottom: 1px solid #4e99bd;
-    li{
-      clear: none;
-      cursor: pointer;
-      padding-bottom: 0px;
-      height: auto;
-      margin-left: 3%;
-      a{
-        background-color: #529acd;
-        color: white;
-        border: none;
-        min-width: 125px;
-        text-align: center;
-        font-size: 14px;
-        text-transform: capitalize;
-        &:hover{
-          background-color: #224f77;
-        }
-        .fa, .glyphicon{
-          font-size: 12px;
-          margin-right: 2%;
-          &.fa-car,
-            &.glyphicon-user{
-                margin-right: 5%;
+        padding: 5px 15px;
+    }   
+    .lower-section-wrapper {
+        .mCustomScrollbar{
+            width: 250px !important;
+            &.feed-breakdown-view{
+                width: 570px !important;
             }
         }
-      }
-      &.active{
-        a{
-          background-color: #224f77;
+        .feed-breakdown-view{   
+            .mCustomScrollbar{
+                width: 30% !important;
+                float: left;
+            }
+            .mCSB_draggerContainer{
+                margin-left: 15px !important;
+            }
+        }        
+        ul {
+            li {
+                min-height: 100px;
+                font-size: 14px !important;
+                border-bottom: thin solid #224f77;
+                width: 90%;
+                .feed-headline {
+                    margin-top: 5%;
+                }
+                .pull-left {
+                    width: 100%;
+                    height: 80px;
+                }
+                &:hover,
+                &.active {
+                    position: relative;
+                    color: white !important;
+                    .pull-left {
+                        background-color: #535253 !important;
+                    }
+                    .feed-date {
+                        color: white;
+                    }
+                    .pointer {
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 40px 0 40px 40px;
+                        border-color: transparent transparent transparent #535253;
+                        position: absolute;
+                        right: -15px;
+                        top: 10px;
+                    }
+                }
+            }
         }
-      }
-      &:hover{
-        background-color: transparent;
-      }
-      &.longer{
-        width: 175px;
-      }
-    }
-  }
 
-  .child-name-wrapper{
-    .name-block,
-    .date-block{
-      float: left;
-      h4{
-        float: none;
-         margin-top: 15px;
-      }
-      p{
-        color: #224f77;
-        font-size: 16px;
-      }
+        &.mCustomScrollbar{
+            width: 69% !important;
+            .mCSB_scrollTools a + .mCSB_draggerContainer {
+                margin-left: 23px !important;
+            }
+        }
     }
-  }
-} //.left-feature-container
+    ul.nav.nav-tabs {
+        border-bottom: 1px solid #4e99bd;
+        li {
+            clear: none;
+            cursor: pointer;
+            padding-bottom: 0px;
+            height: auto;
+            margin-left: 3%;
+            a {
+                background-color: #529acd;
+                color: white;
+                border: none;
+                min-width: 125px;
+                text-align: center;
+                font-size: 14px;
+                text-transform: capitalize;
+                &:hover {
+                    background-color: #224f77;
+                }
+                .fa, .glyphicon {
+                    font-size: 12px;
+                    margin-right: 2%;
+                    &.fa-car,
+                    &.glyphicon-user {
+                        margin-right: 5%;
+                    }
+                }
+            }
+            &.active {
+                a {
+                    background-color: #224f77;
+                }
+            }
+            &:hover {
+                background-color: transparent;
+            }
+            &.longer {
+                width: 175px;
+            }
+        }
+    }
+    .child-name-wrapper {
+        .name-block,
+        .date-block {
+            float: left;
+            h4 {
+                float: none;
+                margin-top: 15px;
+            }
+            p {
+                color: #224f77;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+//.left-feature-container
 
 .middle-feature-container {
     nav {
@@ -211,10 +270,9 @@ h1, h2, h3 {
 .middle-feature-container,
 .right-feature-container {
     position: relative;
-    &.col-md-4, 
-    &.col-md-8{
-        height: auto;
-        padding-bottom: 25px;
+    &.col-md-4,
+    &.col-md-8 {
+        height: 575px;
         .my-children-container-dashboard {
             height: 70%;
         }
@@ -317,12 +375,13 @@ h1, h2, h3 {
         }
         .detail-value {
             font-size: 16px;
+            margin-right: 15px;
             float: right;
-            width: 50%;
-            color:#224f77;
+            width: 51%;
+            color: #224f77;
             text-transform: capitalize;
-            &.no-cap{
-              text-transform: none;
+            &.no-cap {
+                text-transform: none;
             }
         }
         .fa-check-circle,
@@ -385,26 +444,21 @@ h1, h2, h3 {
         display: block;
         position: absolute;
         //top: 15px;
-        &.pull-outside{
+        &.pull-outside {
             margin-left: -15px;
         }
     }
     .mCustomScrollbar {
         width: 103%;
-        height: 250px !important;
+        height: 300px !important;
         &.scroll-wrapper {
             height: 95% !important;
         }
         &.scroll-wrapper-shorter {
             height: 235px !important;
         }
-        .mCSB_scrollTools.mCSB_scrollTools_vertical{
-            right: 10px;
-        }
-    }
-    .daily-activity-feed-container-dashboard {
-        .mCustomScrollbar {
-            height: 300px !important;
+        .mCSB_scrollTools.mCSB_scrollTools_vertical {
+            right: 3px;
         }
     }
 }
@@ -500,7 +554,8 @@ body {
 }
 
 
-.capitalize {
+.capitalize,
+.cap {
     text-transform: capitalize;
 }
 
@@ -520,7 +575,7 @@ body {
     color: #4a90e2 !important;
 }
 
-.center-align{
+.center-align {
     width: 100%;
     text-align: center;
 }
@@ -551,17 +606,15 @@ body {
     .inner-kiteline-content-container,
     header.header .navbar,
     header.header .navbar-inverse,
-    footer.footer .footer-container{
+    footer.footer .footer-container {
         width: auto;
         height: auto;
     }
-
-    .right-feature-container{
+    .right-feature-container {
         padding: 0px;
         margin-top: 30px;
     }
-
-    .left-feature-container.col-md-8{
+    .left-feature-container.col-md-8 {
         min-height: 600px;
     }
 }
