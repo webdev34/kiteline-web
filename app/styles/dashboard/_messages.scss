@@ -12,17 +12,6 @@
 		margin-right: 7px;
 		margin-left: 3%;
 	}
-	.message-date,
-	.message-headline{
-		text-align: center;
-		display: block;
-		font-size: 16px;
-	}
-
-	.message-date{
-		color: #999;
-		margin-top: 10px;
-	}
 	.view-all-messages{
 		margin-top: -10px;
 	}
@@ -33,29 +22,4 @@
 		margin-top: -38px;
   		margin-right: 15px;
 	}
-	button.carousel-control {
-	 	background-color: transparent;
-  		background-image: none;
-  		border: none;
-  		.glyphicon{
-  			color: #999;
-  		}
-	}
-
-	.carousel-indicators{
-		top: 80px;
-		li{
-			border: thin solid #999;
-			&.active{
-				background-color: #999;
-			}
-		}
-
-	} 
-
-	.carousel-inner{
-		text-align: center;
-	}
-
-
 }

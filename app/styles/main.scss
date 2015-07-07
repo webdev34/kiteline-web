@@ -5,7 +5,7 @@
 @import "login";
 @import "tos-privacy";
 @import "dashboard/dashboard";
-@import "invoices/invoices";
+@import "billing/billing";
 @import "my-children/my-children";
 @import "messages/messages";
 @import "my-accounts/my-accounts";
@@ -21,11 +21,50 @@ html {
         height: 100%;
         padding: 0;
         background: #f6f6f6;
-        //#498DB1;
         font-family: concourse_t4regular;
         .header {
             margin-bottom: 5px;
             background-color: #4e99bd;
+        }
+        .table > tbody > tr > td{
+            padding: 0px;
+            vertical-align: middle;
+        }
+        .table > thead > tr > th,
+        .table > tbody > tr > td{
+            text-align: center;
+        }
+        #myCarousel{
+            button.carousel-control {
+                background-color: transparent;
+                background-image: none;
+                border: none;
+                .glyphicon{
+                    color: #999;
+                }
+            }
+            .carousel-indicators{
+                top: 80px;
+                li{
+                    border: thin solid #999;
+                    &.active{
+                        background-color: #999;
+                    }
+                }
+            } 
+            .carousel-inner{
+                text-align: center;
+            }
+            .message-date,
+            .message-headline{
+                text-align: center;
+                display: block;
+                font-size: 16px;
+            }
+            .message-date{
+                color: #999;
+                margin-top: 10px;
+            }
         }
     }
 }
@@ -92,27 +131,64 @@ h1, h2, h3 {
     font-family: concourse_c4regular;
 }
 
+.sub-header-wrapper {
+    float: left;
+    width: 100%;
+    min-height: 80px;
+    .greeting {
+        font-size: 20px;
+    }
+    ul {
+        //margin-left: 10%;
+        li {
+            float: left;
+            list-style: none;
+            color: #4a90e2;
+            margin-right: 3%;
+            p {
+                margin-top: 25px;
+            }
+            img {
+                width: 160px;
+            }
+            .fa, .glyphicon {
+                font-size: 21px;
+                position: relative;
+                left: -2px;
+                top: 3px;
+            }
+            .center-name {
+                margin-top: 13px;
+                font-size: 16px;
+                span {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
 .left-feature-container {
     border-right: thin solid #ccc;
     .nav > li > a {
         padding: 5px 15px;
-    }   
+    }
     .lower-section-wrapper {
-        .mCustomScrollbar{
+        .mCustomScrollbar {
             width: 250px !important;
-            &.feed-breakdown-view{
+            &.feed-breakdown-view {
                 width: 570px !important;
             }
         }
-        .feed-breakdown-view{   
-            .mCustomScrollbar{
+        .feed-breakdown-view {
+            .mCustomScrollbar {
                 width: 30% !important;
                 float: left;
             }
-            .mCSB_draggerContainer{
+            .mCSB_draggerContainer {
                 margin-left: 15px !important;
             }
-        }        
+        }
         ul {
             li {
                 min-height: 100px;
@@ -149,8 +225,7 @@ h1, h2, h3 {
                 }
             }
         }
-
-        &.mCustomScrollbar{
+        &.mCustomScrollbar {
             width: 69% !important;
             .mCSB_scrollTools a + .mCSB_draggerContainer {
                 margin-left: 23px !important;
@@ -271,8 +346,10 @@ h1, h2, h3 {
 .right-feature-container {
     position: relative;
     &.col-md-4,
-    &.col-md-8 {
+    &.col-md-8,
+    &.col-md-12 {
         height: 575px;
+        margin-bottom: 30px;
         .my-children-container-dashboard {
             height: 70%;
         }
@@ -283,6 +360,7 @@ h1, h2, h3 {
     .glyphicon,
     .fa {
         font-size: 24px;
+        color: #999;
     }
     .ng-enter {
         -webkit-transition: 1s linear all;

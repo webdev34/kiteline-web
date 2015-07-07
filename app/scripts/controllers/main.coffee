@@ -1,12 +1,12 @@
 'use strict'
 angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $location, StorageService) ->
-  $rootScope.pageTitle = 'Dashboard'
+  $rootScope.pageTitle = ''
   $rootScope.changePageTitle = () ->
     if $location.$$path is '/dashboard'
       $rootScope.pageTitle = 'Dashboard'
 
-    if $location.$$path is '/invoices'
-      $rootScope.pageTitle = 'Invoices'
+    if $location.$$path is '/billing'
+      $rootScope.pageTitle = 'Billing'
 
     if $location.$$path is '/'
       $rootScope.pageTitle = 'Kiteline Web'

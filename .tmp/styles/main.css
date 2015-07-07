@@ -590,54 +590,16 @@ h4.effective {
   margin-left: 3%;
 }
 /* line 15, ../../app/styles/dashboard/_messages.scss */
-.messages-container-dashboard .message-date,
-.messages-container-dashboard .message-headline {
-  text-align: center;
-  display: block;
-  font-size: 16px;
-}
-/* line 22, ../../app/styles/dashboard/_messages.scss */
-.messages-container-dashboard .message-date {
-  color: #999;
-  margin-top: 10px;
-}
-/* line 26, ../../app/styles/dashboard/_messages.scss */
 .messages-container-dashboard .view-all-messages {
   margin-top: -10px;
 }
-/* line 29, ../../app/styles/dashboard/_messages.scss */
+/* line 18, ../../app/styles/dashboard/_messages.scss */
 .messages-container-dashboard .message-count {
   color: #5b5b5a;
   font-size: 26px;
   font-family: concourse_c4bold;
   margin-top: -38px;
   margin-right: 15px;
-}
-/* line 36, ../../app/styles/dashboard/_messages.scss */
-.messages-container-dashboard button.carousel-control {
-  background-color: transparent;
-  background-image: none;
-  border: none;
-}
-/* line 40, ../../app/styles/dashboard/_messages.scss */
-.messages-container-dashboard button.carousel-control .glyphicon {
-  color: #999;
-}
-/* line 45, ../../app/styles/dashboard/_messages.scss */
-.messages-container-dashboard .carousel-indicators {
-  top: 80px;
-}
-/* line 47, ../../app/styles/dashboard/_messages.scss */
-.messages-container-dashboard .carousel-indicators li {
-  border: thin solid #999;
-}
-/* line 49, ../../app/styles/dashboard/_messages.scss */
-.messages-container-dashboard .carousel-indicators li.active {
-  background-color: #999;
-}
-/* line 56, ../../app/styles/dashboard/_messages.scss */
-.messages-container-dashboard .carousel-inner {
-  text-align: center;
 }
 
 /* line 2, ../../app/styles/dashboard/_payments-made.scss */
@@ -678,117 +640,82 @@ h4.effective {
 .dashboard-container .dashboard-lower-section {
   height: 330px;
 }
-/* line 31, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .sub-header-wrapper {
-  float: left;
-  width: 100%;
-  height: 80px;
-}
-/* line 35, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .sub-header-wrapper .greeting {
-  font-size: 20px;
-}
-/* line 40, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .sub-header-wrapper ul li {
-  float: left;
-  list-style: none;
-  color: #4a90e2;
-  margin-right: 3%;
-}
-/* line 45, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .sub-header-wrapper ul li p {
+
+/* line 3, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4 {
+  height: 220px;
   margin-top: 25px;
 }
-/* line 48, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .sub-header-wrapper ul li img {
-  width: 160px;
+/* line 7, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4 .fa, .billing-container .col-md-4 .glyphicon {
+  margin-top: 20px;
 }
-/* line 51, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .sub-header-wrapper ul li .fa, .dashboard-container .sub-header-wrapper ul li .glyphicon {
-  font-size: 21px;
-  position: relative;
-  left: -2px;
-  top: 3px;
-}
-/* line 57, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .sub-header-wrapper ul li .center-name {
-  margin-top: 13px;
-  font-size: 16px;
-}
-/* line 60, ../../app/styles/dashboard/_dashboard.scss */
-.dashboard-container .sub-header-wrapper ul li .center-name span {
-  display: block;
-}
-
-/* line 3, ../../app/styles/invoices/_invoices.scss */
-.invoices-container .col-md-4 {
-  height: 490px;
-}
-/* line 6, ../../app/styles/invoices/_invoices.scss */
-.invoices-container .amount-owed {
-  color: #e6374f;
-}
-/* line 9, ../../app/styles/invoices/_invoices.scss */
-.invoices-container .due-date,
-.invoices-container .date-paid {
-  color: #999;
-}
-/* line 13, ../../app/styles/invoices/_invoices.scss */
-.invoices-container .amount-paid {
-  color: #417505;
-}
-/* line 15, ../../app/styles/invoices/_invoices.scss */
-.invoices-container .amount-paid.bad {
-  color: red;
-}
-/* line 19, ../../app/styles/invoices/_invoices.scss */
-.invoices-container .glyphicon.glyphicon-list-alt {
-  font-size: 26px;
-  margin-top: 27px;
-  color: #999;
-  margin-right: 7px;
-}
-/* line 26, ../../app/styles/invoices/_invoices.scss */
-.invoices-container ul li {
-  font-size: 18px;
-}
-/* line 29, ../../app/styles/invoices/_invoices.scss */
-.invoices-container ul li .pull-left span.list-title {
-  margin-top: 10px;
-}
-/* line 35, ../../app/styles/invoices/_invoices.scss */
-.invoices-container ul#outstanding-balance-ul .outstanding-balance-due {
-  color: red;
-}
-/* line 41, ../../app/styles/invoices/_invoices.scss */
-.invoices-container .amountBeingPaid {
-  margin-right: 5px;
-}
-/* line 44, ../../app/styles/invoices/_invoices.scss */
-.invoices-container #payTotalAmountDue {
-  float: none;
-  margin-left: 5px;
-}
-/* line 48, ../../app/styles/invoices/_invoices.scss */
-.invoices-container .btn-primary {
-  width: 250px;
+/* line 9, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4 .fa.glyphicon-bullhorn, .billing-container .col-md-4 .fa.glyphicon-list-alt, .billing-container .col-md-4 .glyphicon.glyphicon-bullhorn, .billing-container .col-md-4 .glyphicon.glyphicon-list-alt {
   margin-right: 10px;
 }
-/* line 52, ../../app/styles/invoices/_invoices.scss */
-.invoices-container .btn-grey {
-  background: #999;
-  color: white;
-  border-color: #999;
-  margin-right: 0px;
-  width: 150px;
+/* line 14, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4 h4 {
+  margin-top: 23px;
 }
-/* line 58, ../../app/styles/invoices/_invoices.scss */
-.invoices-container .btn-grey:hover {
-  background: #666;
+/* line 19, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.messages-wrapper .message-date {
+  margin-top: 30px !important;
 }
-/* line 63, ../../app/styles/invoices/_invoices.scss */
-.invoices-container #payments-made-ul.mCustomScrollbar {
-  height: 360px !important;
+/* line 22, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.messages-wrapper .message-headline {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+/* line 26, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.messages-wrapper .carousel-indicators {
+  top: 110px !important;
+}
+/* line 32, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.outstanding-balance-wrapper span,
+.billing-container .col-md-4.outstanding-balance-wrapper a {
+  display: block;
+  margin: 5px 0px;
+}
+/* line 37, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.outstanding-balance-wrapper .see-all-invoice {
+  margin-top: 30px;
+}
+/* line 41, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.outstanding-balance-wrapper .amount-owed {
+  color: #e6374f;
+}
+/* line 44, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.outstanding-balance-wrapper .due-date {
+  color: #999;
+}
+/* line 47, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.outstanding-balance-wrapper .current-balance {
+  color: orange;
+  font-size: 21px;
+  font-family: concourse_c4bold;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+/* line 55, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.outstanding-balance-wrapper .auto-pay {
+  color: #999;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 0px;
+}
+/* line 64, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.payment-activity-wrapper .fa.fa-check {
+  color: green;
+}
+/* line 67, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.payment-activity-wrapper .fa.fa-times {
+  color: red;
+}
+/* line 70, ../../app/styles/billing/_billing.scss */
+.billing-container .col-md-4.payment-activity-wrapper .mCustomScrollbar {
+  height: 150px !important;
 }
 
 /* line 3, ../../app/styles/my-children/_my-children.scss */
@@ -1238,46 +1165,94 @@ html body {
   background: #f6f6f6;
   font-family: concourse_t4regular;
 }
-/* line 26, ../../app/styles/main.scss */
+/* line 25, ../../app/styles/main.scss */
 html body .header {
   margin-bottom: 5px;
   background-color: #4e99bd;
 }
-
+/* line 29, ../../app/styles/main.scss */
+html body .table > tbody > tr > td {
+  padding: 0px;
+  vertical-align: middle;
+}
 /* line 33, ../../app/styles/main.scss */
+html body .table > thead > tr > th,
+html body .table > tbody > tr > td {
+  text-align: center;
+}
+/* line 38, ../../app/styles/main.scss */
+html body #myCarousel button.carousel-control {
+  background-color: transparent;
+  background-image: none;
+  border: none;
+}
+/* line 42, ../../app/styles/main.scss */
+html body #myCarousel button.carousel-control .glyphicon {
+  color: #999;
+}
+/* line 46, ../../app/styles/main.scss */
+html body #myCarousel .carousel-indicators {
+  top: 80px;
+}
+/* line 48, ../../app/styles/main.scss */
+html body #myCarousel .carousel-indicators li {
+  border: thin solid #999;
+}
+/* line 50, ../../app/styles/main.scss */
+html body #myCarousel .carousel-indicators li.active {
+  background-color: #999;
+}
+/* line 55, ../../app/styles/main.scss */
+html body #myCarousel .carousel-inner {
+  text-align: center;
+}
+/* line 58, ../../app/styles/main.scss */
+html body #myCarousel .message-date,
+html body #myCarousel .message-headline {
+  text-align: center;
+  display: block;
+  font-size: 16px;
+}
+/* line 64, ../../app/styles/main.scss */
+html body #myCarousel .message-date {
+  color: #999;
+  margin-top: 10px;
+}
+
+/* line 72, ../../app/styles/main.scss */
 .inner-kiteline-content-container {
   height: 100%;
   width: 1280px;
   margin: 0 auto;
 }
 
-/* line 39, ../../app/styles/main.scss */
+/* line 78, ../../app/styles/main.scss */
 a:hover {
   text-decoration: none;
 }
 
-/* line 43, ../../app/styles/main.scss */
+/* line 82, ../../app/styles/main.scss */
 .container-narrow > hr {
   margin: 30px 0;
 }
 
 /* Supporting marketing content */
-/* line 48, ../../app/styles/main.scss */
+/* line 87, ../../app/styles/main.scss */
 .marketing {
   margin: 40px 0;
 }
 
-/* line 52, ../../app/styles/main.scss */
+/* line 91, ../../app/styles/main.scss */
 .marketing p + h4 {
   margin-top: 28px;
 }
 
-/* line 56, ../../app/styles/main.scss */
+/* line 95, ../../app/styles/main.scss */
 .clearfix {
   clear: both;
 }
 
-/* line 60, ../../app/styles/main.scss */
+/* line 99, ../../app/styles/main.scss */
 .container.kiteline-content {
   max-width: 100%;
   width: 100%;
@@ -1286,12 +1261,12 @@ a:hover {
   padding-right: 50px;
 }
 
-/* line 68, ../../app/styles/main.scss */
+/* line 107, ../../app/styles/main.scss */
 .white-bg {
   background-color: #fffff8;
 }
 
-/* line 72, ../../app/styles/main.scss */
+/* line 111, ../../app/styles/main.scss */
 .logo {
   background: url(../images/logo.svg);
   background-repeat: no-repeat;
@@ -1300,7 +1275,7 @@ a:hover {
   margin: 20px auto;
 }
 
-/* line 80, ../../app/styles/main.scss */
+/* line 119, ../../app/styles/main.scss */
 .kiteline-logo {
   background: url(../images/kiteline-logo.png);
   background-repeat: no-repeat;
@@ -1311,67 +1286,109 @@ a:hover {
   left: 10px;
 }
 
-/* line 90, ../../app/styles/main.scss */
+/* line 129, ../../app/styles/main.scss */
 h1, h2, h3 {
   color: #287194;
   font-family: concourse_c4regular;
 }
 
-/* line 95, ../../app/styles/main.scss */
+/* line 134, ../../app/styles/main.scss */
+.sub-header-wrapper {
+  float: left;
+  width: 100%;
+  min-height: 80px;
+}
+/* line 138, ../../app/styles/main.scss */
+.sub-header-wrapper .greeting {
+  font-size: 20px;
+}
+/* line 143, ../../app/styles/main.scss */
+.sub-header-wrapper ul li {
+  float: left;
+  list-style: none;
+  color: #4a90e2;
+  margin-right: 3%;
+}
+/* line 148, ../../app/styles/main.scss */
+.sub-header-wrapper ul li p {
+  margin-top: 25px;
+}
+/* line 151, ../../app/styles/main.scss */
+.sub-header-wrapper ul li img {
+  width: 160px;
+}
+/* line 154, ../../app/styles/main.scss */
+.sub-header-wrapper ul li .fa, .sub-header-wrapper ul li .glyphicon {
+  font-size: 21px;
+  position: relative;
+  left: -2px;
+  top: 3px;
+}
+/* line 160, ../../app/styles/main.scss */
+.sub-header-wrapper ul li .center-name {
+  margin-top: 13px;
+  font-size: 16px;
+}
+/* line 163, ../../app/styles/main.scss */
+.sub-header-wrapper ul li .center-name span {
+  display: block;
+}
+
+/* line 171, ../../app/styles/main.scss */
 .left-feature-container {
   border-right: thin solid #ccc;
 }
-/* line 97, ../../app/styles/main.scss */
+/* line 173, ../../app/styles/main.scss */
 .left-feature-container .nav > li > a {
   padding: 5px 15px;
 }
-/* line 101, ../../app/styles/main.scss */
+/* line 177, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper .mCustomScrollbar {
   width: 250px !important;
 }
-/* line 103, ../../app/styles/main.scss */
+/* line 179, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper .mCustomScrollbar.feed-breakdown-view {
   width: 570px !important;
 }
-/* line 108, ../../app/styles/main.scss */
+/* line 184, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper .feed-breakdown-view .mCustomScrollbar {
   width: 30% !important;
   float: left;
 }
-/* line 112, ../../app/styles/main.scss */
+/* line 188, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper .feed-breakdown-view .mCSB_draggerContainer {
   margin-left: 15px !important;
 }
-/* line 117, ../../app/styles/main.scss */
+/* line 193, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper ul li {
   min-height: 100px;
   font-size: 14px !important;
   border-bottom: thin solid #224f77;
   width: 90%;
 }
-/* line 122, ../../app/styles/main.scss */
+/* line 198, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper ul li .feed-headline {
   margin-top: 5%;
 }
-/* line 125, ../../app/styles/main.scss */
+/* line 201, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper ul li .pull-left {
   width: 100%;
   height: 80px;
 }
-/* line 129, ../../app/styles/main.scss */
+/* line 205, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper ul li:hover, .left-feature-container .lower-section-wrapper ul li.active {
   position: relative;
   color: white !important;
 }
-/* line 133, ../../app/styles/main.scss */
+/* line 209, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper ul li:hover .pull-left, .left-feature-container .lower-section-wrapper ul li.active .pull-left {
   background-color: #535253 !important;
 }
-/* line 136, ../../app/styles/main.scss */
+/* line 212, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper ul li:hover .feed-date, .left-feature-container .lower-section-wrapper ul li.active .feed-date {
   color: white;
 }
-/* line 139, ../../app/styles/main.scss */
+/* line 215, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper ul li:hover .pointer, .left-feature-container .lower-section-wrapper ul li.active .pointer {
   width: 0;
   height: 0;
@@ -1382,19 +1399,19 @@ h1, h2, h3 {
   right: -15px;
   top: 10px;
 }
-/* line 153, ../../app/styles/main.scss */
+/* line 228, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper.mCustomScrollbar {
   width: 69% !important;
 }
-/* line 155, ../../app/styles/main.scss */
+/* line 230, ../../app/styles/main.scss */
 .left-feature-container .lower-section-wrapper.mCustomScrollbar .mCSB_scrollTools a + .mCSB_draggerContainer {
   margin-left: 23px !important;
 }
-/* line 160, ../../app/styles/main.scss */
+/* line 235, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs {
   border-bottom: 1px solid #4e99bd;
 }
-/* line 162, ../../app/styles/main.scss */
+/* line 237, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li {
   clear: none;
   cursor: pointer;
@@ -1402,7 +1419,7 @@ h1, h2, h3 {
   height: auto;
   margin-left: 3%;
 }
-/* line 168, ../../app/styles/main.scss */
+/* line 243, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li a {
   background-color: #529acd;
   color: white;
@@ -1412,50 +1429,50 @@ h1, h2, h3 {
   font-size: 14px;
   text-transform: capitalize;
 }
-/* line 176, ../../app/styles/main.scss */
+/* line 251, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li a:hover {
   background-color: #224f77;
 }
-/* line 179, ../../app/styles/main.scss */
+/* line 254, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li a .fa, .left-feature-container ul.nav.nav-tabs li a .glyphicon {
   font-size: 12px;
   margin-right: 2%;
 }
-/* line 182, ../../app/styles/main.scss */
+/* line 257, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li a .fa.fa-car, .left-feature-container ul.nav.nav-tabs li a .fa.glyphicon-user, .left-feature-container ul.nav.nav-tabs li a .glyphicon.fa-car, .left-feature-container ul.nav.nav-tabs li a .glyphicon.glyphicon-user {
   margin-right: 5%;
 }
-/* line 189, ../../app/styles/main.scss */
+/* line 264, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li.active a {
   background-color: #224f77;
 }
-/* line 193, ../../app/styles/main.scss */
+/* line 268, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li:hover {
   background-color: transparent;
 }
-/* line 196, ../../app/styles/main.scss */
+/* line 271, ../../app/styles/main.scss */
 .left-feature-container ul.nav.nav-tabs li.longer {
   width: 175px;
 }
-/* line 202, ../../app/styles/main.scss */
+/* line 277, ../../app/styles/main.scss */
 .left-feature-container .child-name-wrapper .name-block,
 .left-feature-container .child-name-wrapper .date-block {
   float: left;
 }
-/* line 205, ../../app/styles/main.scss */
+/* line 280, ../../app/styles/main.scss */
 .left-feature-container .child-name-wrapper .name-block h4,
 .left-feature-container .child-name-wrapper .date-block h4 {
   float: none;
   margin-top: 15px;
 }
-/* line 209, ../../app/styles/main.scss */
+/* line 284, ../../app/styles/main.scss */
 .left-feature-container .child-name-wrapper .name-block p,
 .left-feature-container .child-name-wrapper .date-block p {
   color: #224f77;
   font-size: 16px;
 }
 
-/* line 220, ../../app/styles/main.scss */
+/* line 295, ../../app/styles/main.scss */
 .middle-feature-container nav {
   float: right;
   display: inline-block;
@@ -1463,7 +1480,7 @@ h1, h2, h3 {
   margin-bottom: 10px;
   width: 200px;
 }
-/* line 227, ../../app/styles/main.scss */
+/* line 302, ../../app/styles/main.scss */
 .middle-feature-container nav ul li {
   float: left;
   clear: none;
@@ -1473,12 +1490,12 @@ h1, h2, h3 {
   color: #4a90e2;
   height: auto;
 }
-/* line 235, ../../app/styles/main.scss */
+/* line 310, ../../app/styles/main.scss */
 .middle-feature-container nav ul li:hover, .middle-feature-container nav ul li.active {
   background: transparent;
   color: #999;
 }
-/* line 243, ../../app/styles/main.scss */
+/* line 318, ../../app/styles/main.scss */
 .middle-feature-container .edit-button {
   float: right;
   font-size: 18px;
@@ -1486,23 +1503,23 @@ h1, h2, h3 {
   margin-right: 5px;
   cursor: pointer;
 }
-/* line 249, ../../app/styles/main.scss */
+/* line 324, ../../app/styles/main.scss */
 .middle-feature-container .edit-button:hover {
   color: #999;
 }
-/* line 253, ../../app/styles/main.scss */
+/* line 328, ../../app/styles/main.scss */
 .middle-feature-container .delete-button {
   float: right;
   font-size: 18px;
   color: red;
   cursor: pointer;
 }
-/* line 258, ../../app/styles/main.scss */
+/* line 333, ../../app/styles/main.scss */
 .middle-feature-container .delete-button:hover {
   color: #999;
 }
 
-/* line 269, ../../app/styles/main.scss */
+/* line 344, ../../app/styles/main.scss */
 .left-feature-container,
 .middle-feature-container,
 .right-feature-container {
@@ -1514,29 +1531,34 @@ h1, h2, h3 {
    animate.
   */
 }
-/* line 273, ../../app/styles/main.scss */
-.left-feature-container.col-md-4, .left-feature-container.col-md-8,
+/* line 348, ../../app/styles/main.scss */
+.left-feature-container.col-md-4, .left-feature-container.col-md-8, .left-feature-container.col-md-12,
 .middle-feature-container.col-md-4,
 .middle-feature-container.col-md-8,
+.middle-feature-container.col-md-12,
 .right-feature-container.col-md-4,
-.right-feature-container.col-md-8 {
+.right-feature-container.col-md-8,
+.right-feature-container.col-md-12 {
   height: 575px;
+  margin-bottom: 30px;
 }
-/* line 276, ../../app/styles/main.scss */
-.left-feature-container.col-md-4 .my-children-container-dashboard, .left-feature-container.col-md-8 .my-children-container-dashboard,
+/* line 353, ../../app/styles/main.scss */
+.left-feature-container.col-md-4 .my-children-container-dashboard, .left-feature-container.col-md-8 .my-children-container-dashboard, .left-feature-container.col-md-12 .my-children-container-dashboard,
 .middle-feature-container.col-md-4 .my-children-container-dashboard,
 .middle-feature-container.col-md-8 .my-children-container-dashboard,
+.middle-feature-container.col-md-12 .my-children-container-dashboard,
 .right-feature-container.col-md-4 .my-children-container-dashboard,
-.right-feature-container.col-md-8 .my-children-container-dashboard {
+.right-feature-container.col-md-8 .my-children-container-dashboard,
+.right-feature-container.col-md-12 .my-children-container-dashboard {
   height: 70%;
 }
-/* line 280, ../../app/styles/main.scss */
+/* line 357, ../../app/styles/main.scss */
 .left-feature-container nav ul li,
 .middle-feature-container nav ul li,
 .right-feature-container nav ul li {
   border: none;
 }
-/* line 283, ../../app/styles/main.scss */
+/* line 360, ../../app/styles/main.scss */
 .left-feature-container .glyphicon,
 .left-feature-container .fa,
 .middle-feature-container .glyphicon,
@@ -1544,21 +1566,22 @@ h1, h2, h3 {
 .right-feature-container .glyphicon,
 .right-feature-container .fa {
   font-size: 24px;
+  color: #999;
 }
-/* line 287, ../../app/styles/main.scss */
+/* line 365, ../../app/styles/main.scss */
 .left-feature-container .ng-enter,
 .middle-feature-container .ng-enter,
 .right-feature-container .ng-enter {
   transition: 1s linear all;
   opacity: 0;
 }
-/* line 300, ../../app/styles/main.scss */
+/* line 378, ../../app/styles/main.scss */
 .left-feature-container .ng-enter.ng-enter-active,
 .middle-feature-container .ng-enter.ng-enter-active,
 .right-feature-container .ng-enter.ng-enter-active {
   opacity: 1;
 }
-/* line 303, ../../app/styles/main.scss */
+/* line 381, ../../app/styles/main.scss */
 .left-feature-container .ng-enter, .left-feature-container .ng-leave,
 .middle-feature-container .ng-enter,
 .middle-feature-container .ng-leave,
@@ -1566,7 +1589,7 @@ h1, h2, h3 {
 .right-feature-container .ng-leave {
   transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
 }
-/* line 307, ../../app/styles/main.scss */
+/* line 385, ../../app/styles/main.scss */
 .left-feature-container .ng-enter,
 .left-feature-container .ng-leave.ng-leave-active,
 .middle-feature-container .ng-enter,
@@ -1575,7 +1598,7 @@ h1, h2, h3 {
 .right-feature-container .ng-leave.ng-leave-active {
   opacity: 0;
 }
-/* line 311, ../../app/styles/main.scss */
+/* line 389, ../../app/styles/main.scss */
 .left-feature-container .ng-leave,
 .left-feature-container .ng-enter.ng-enter-active,
 .middle-feature-container .ng-leave,
@@ -1584,7 +1607,7 @@ h1, h2, h3 {
 .right-feature-container .ng-enter.ng-enter-active {
   opacity: 1;
 }
-/* line 315, ../../app/styles/main.scss */
+/* line 393, ../../app/styles/main.scss */
 .left-feature-container hr,
 .middle-feature-container hr,
 .right-feature-container hr {
@@ -1592,7 +1615,7 @@ h1, h2, h3 {
   width: 100%;
   margin-bottom: 0px;
 }
-/* line 320, ../../app/styles/main.scss */
+/* line 398, ../../app/styles/main.scss */
 .left-feature-container h4,
 .middle-feature-container h4,
 .right-feature-container h4 {
@@ -1603,7 +1626,7 @@ h1, h2, h3 {
   text-transform: capitalize;
   font-size: 18px;
 }
-/* line 328, ../../app/styles/main.scss */
+/* line 406, ../../app/styles/main.scss */
 .left-feature-container h4.alt-header,
 .middle-feature-container h4.alt-header,
 .right-feature-container h4.alt-header {
@@ -1614,7 +1637,7 @@ h1, h2, h3 {
   margin-bottom: -10px;
   font-size: 21px;
 }
-/* line 336, ../../app/styles/main.scss */
+/* line 414, ../../app/styles/main.scss */
 .left-feature-container .back-to-main-view,
 .left-feature-container .back-to-sub-view,
 .left-feature-container .add-new,
@@ -1635,7 +1658,7 @@ h1, h2, h3 {
   margin-top: 15px;
   cursor: pointer;
 }
-/* line 349, ../../app/styles/main.scss */
+/* line 427, ../../app/styles/main.scss */
 .left-feature-container .back-to-main-view:hover,
 .left-feature-container .back-to-sub-view:hover,
 .left-feature-container .add-new:hover,
@@ -1647,7 +1670,7 @@ h1, h2, h3 {
 .right-feature-container .add-new:hover {
   color: #999;
 }
-/* line 352, ../../app/styles/main.scss */
+/* line 430, ../../app/styles/main.scss */
 .left-feature-container .back-to-main-view .fa-angle-left,
 .left-feature-container .back-to-sub-view .fa-angle-left,
 .left-feature-container .add-new .fa-angle-left,
@@ -1661,7 +1684,7 @@ h1, h2, h3 {
   font-size: 22px;
   margin-right: 5px;
 }
-/* line 358, ../../app/styles/main.scss */
+/* line 436, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown,
 .middle-feature-container .detail-breakdown,
 .right-feature-container .detail-breakdown {
@@ -1671,7 +1694,7 @@ h1, h2, h3 {
   width: 49%;
   float: left;
 }
-/* line 364, ../../app/styles/main.scss */
+/* line 442, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .detail-label,
 .middle-feature-container .detail-breakdown .detail-label,
 .right-feature-container .detail-breakdown .detail-label {
@@ -1679,20 +1702,20 @@ h1, h2, h3 {
   font-size: 18px;
   float: left;
 }
-/* line 369, ../../app/styles/main.scss */
+/* line 447, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown label,
 .middle-feature-container .detail-breakdown label,
 .right-feature-container .detail-breakdown label {
   font-weight: bold;
   font-size: 18px;
 }
-/* line 373, ../../app/styles/main.scss */
+/* line 451, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .detail-header,
 .middle-feature-container .detail-breakdown .detail-header,
 .right-feature-container .detail-breakdown .detail-header {
   clear: both;
 }
-/* line 376, ../../app/styles/main.scss */
+/* line 454, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .detail-value,
 .middle-feature-container .detail-breakdown .detail-value,
 .right-feature-container .detail-breakdown .detail-value {
@@ -1703,13 +1726,13 @@ h1, h2, h3 {
   color: #224f77;
   text-transform: capitalize;
 }
-/* line 383, ../../app/styles/main.scss */
+/* line 461, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .detail-value.no-cap,
 .middle-feature-container .detail-breakdown .detail-value.no-cap,
 .right-feature-container .detail-breakdown .detail-value.no-cap {
   text-transform: none;
 }
-/* line 387, ../../app/styles/main.scss */
+/* line 465, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .fa-check-circle,
 .left-feature-container .detail-breakdown .good,
 .middle-feature-container .detail-breakdown .fa-check-circle,
@@ -1718,7 +1741,7 @@ h1, h2, h3 {
 .right-feature-container .detail-breakdown .good {
   color: green;
 }
-/* line 391, ../../app/styles/main.scss */
+/* line 469, ../../app/styles/main.scss */
 .left-feature-container .detail-breakdown .fa-times-circle,
 .left-feature-container .detail-breakdown .bad,
 .middle-feature-container .detail-breakdown .fa-times-circle,
@@ -1727,14 +1750,14 @@ h1, h2, h3 {
 .right-feature-container .detail-breakdown .bad {
   color: red;
 }
-/* line 396, ../../app/styles/main.scss */
+/* line 474, ../../app/styles/main.scss */
 .left-feature-container a,
 .middle-feature-container a,
 .right-feature-container a {
   color: #4a90e2;
   font-size: 13px;
 }
-/* line 400, ../../app/styles/main.scss */
+/* line 478, ../../app/styles/main.scss */
 .left-feature-container ul,
 .middle-feature-container ul,
 .right-feature-container ul {
@@ -1743,7 +1766,7 @@ h1, h2, h3 {
   margin: 0px;
   padding: 0px;
 }
-/* line 405, ../../app/styles/main.scss */
+/* line 483, ../../app/styles/main.scss */
 .left-feature-container ul li,
 .middle-feature-container ul li,
 .right-feature-container ul li {
@@ -1753,27 +1776,27 @@ h1, h2, h3 {
   clear: both;
   font-size: 18px;
 }
-/* line 412, ../../app/styles/main.scss */
+/* line 490, ../../app/styles/main.scss */
 .left-feature-container ul li span,
 .middle-feature-container ul li span,
 .right-feature-container ul li span {
   display: block;
   margin-left: 15px;
 }
-/* line 416, ../../app/styles/main.scss */
+/* line 494, ../../app/styles/main.scss */
 .left-feature-container ul li:hover,
 .middle-feature-container ul li:hover,
 .right-feature-container ul li:hover {
   cursor: pointer;
   background-color: #f8f8f8;
 }
-/* line 420, ../../app/styles/main.scss */
+/* line 498, ../../app/styles/main.scss */
 .left-feature-container ul li.taller-li,
 .middle-feature-container ul li.taller-li,
 .right-feature-container ul li.taller-li {
   height: 90px;
 }
-/* line 423, ../../app/styles/main.scss */
+/* line 501, ../../app/styles/main.scss */
 .left-feature-container ul li .fa.fa-angle-right,
 .middle-feature-container ul li .fa.fa-angle-right,
 .right-feature-container ul li .fa.fa-angle-right {
@@ -1782,7 +1805,7 @@ h1, h2, h3 {
   font-size: 35px;
   color: #ccc;
 }
-/* line 430, ../../app/styles/main.scss */
+/* line 508, ../../app/styles/main.scss */
 .left-feature-container ul li div.pull-right a,
 .middle-feature-container ul li div.pull-right a,
 .right-feature-container ul li div.pull-right a {
@@ -1791,7 +1814,7 @@ h1, h2, h3 {
   left: -10px;
   font-size: 16px;
 }
-/* line 439, ../../app/styles/main.scss */
+/* line 517, ../../app/styles/main.scss */
 .left-feature-container .header-border-left,
 .middle-feature-container .header-border-left,
 .right-feature-container .header-border-left {
@@ -1801,74 +1824,74 @@ h1, h2, h3 {
   display: block;
   position: absolute;
 }
-/* line 447, ../../app/styles/main.scss */
+/* line 525, ../../app/styles/main.scss */
 .left-feature-container .header-border-left.pull-outside,
 .middle-feature-container .header-border-left.pull-outside,
 .right-feature-container .header-border-left.pull-outside {
   margin-left: -15px;
 }
-/* line 451, ../../app/styles/main.scss */
+/* line 529, ../../app/styles/main.scss */
 .left-feature-container .mCustomScrollbar,
 .middle-feature-container .mCustomScrollbar,
 .right-feature-container .mCustomScrollbar {
   width: 103%;
   height: 300px !important;
 }
-/* line 454, ../../app/styles/main.scss */
+/* line 532, ../../app/styles/main.scss */
 .left-feature-container .mCustomScrollbar.scroll-wrapper,
 .middle-feature-container .mCustomScrollbar.scroll-wrapper,
 .right-feature-container .mCustomScrollbar.scroll-wrapper {
   height: 95% !important;
 }
-/* line 457, ../../app/styles/main.scss */
+/* line 535, ../../app/styles/main.scss */
 .left-feature-container .mCustomScrollbar.scroll-wrapper-shorter,
 .middle-feature-container .mCustomScrollbar.scroll-wrapper-shorter,
 .right-feature-container .mCustomScrollbar.scroll-wrapper-shorter {
   height: 235px !important;
 }
-/* line 460, ../../app/styles/main.scss */
+/* line 538, ../../app/styles/main.scss */
 .left-feature-container .mCustomScrollbar .mCSB_scrollTools.mCSB_scrollTools_vertical,
 .middle-feature-container .mCustomScrollbar .mCSB_scrollTools.mCSB_scrollTools_vertical,
 .right-feature-container .mCustomScrollbar .mCSB_scrollTools.mCSB_scrollTools_vertical {
   right: 3px;
 }
 
-/* line 466, ../../app/styles/main.scss */
-.box-shadow-container, .left-feature-container,
+/* line 544, ../../app/styles/main.scss */
+.box-shadow-container, .billing-container .col-md-4, .left-feature-container,
 .middle-feature-container {
   box-shadow: 4px 3px 8px 0px rgba(166, 166, 166, 0.5);
 }
 
-/* line 470, ../../app/styles/main.scss */
+/* line 548, ../../app/styles/main.scss */
 .box-shadow-default {
   box-shadow: 2px 2px 2px 0px rgba(166, 166, 166, 0.5);
 }
 
-/* line 474, ../../app/styles/main.scss */
+/* line 552, ../../app/styles/main.scss */
 .form-control[readonly] {
   background-color: #fff;
 }
 
 /* Scroll Bar fix */
-/* line 480, ../../app/styles/main.scss */
+/* line 558, ../../app/styles/main.scss */
 body .mCSB_container,
 body .mCustomScrollBox {
   width: 100% !important;
 }
-/* line 484, ../../app/styles/main.scss */
+/* line 562, ../../app/styles/main.scss */
 body .mCSB_scrollTools .mCSB_buttonUp,
 body .mCSB_scrollTools .mCSB_buttonDown {
   background-position: 0 0 !important;
 }
-/* line 488, ../../app/styles/main.scss */
+/* line 566, ../../app/styles/main.scss */
 body .mCSB_container_wrapper {
   margin-right: 0px;
 }
-/* line 491, ../../app/styles/main.scss */
+/* line 569, ../../app/styles/main.scss */
 body .mCSB_container_wrapper > .mCSB_container {
   padding-right: 10px;
 }
-/* line 494, ../../app/styles/main.scss */
+/* line 572, ../../app/styles/main.scss */
 body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   position: relative;
   width: 2px;
@@ -1918,33 +1941,33 @@ body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   font-weight: normal;
   font-style: normal;
 }
-/* line 557, ../../app/styles/main.scss */
+/* line 635, ../../app/styles/main.scss */
 .capitalize,
 .cap {
   text-transform: capitalize;
 }
 
-/* line 562, ../../app/styles/main.scss */
+/* line 640, ../../app/styles/main.scss */
 .forty-percent-width {
   width: 40%;
 }
 
-/* line 566, ../../app/styles/main.scss */
+/* line 644, ../../app/styles/main.scss */
 .half-width {
   width: 50%;
 }
 
-/* line 570, ../../app/styles/main.scss */
+/* line 648, ../../app/styles/main.scss */
 .red {
   color: red !important;
 }
 
-/* line 574, ../../app/styles/main.scss */
+/* line 652, ../../app/styles/main.scss */
 .blue {
   color: #4a90e2 !important;
 }
 
-/* line 578, ../../app/styles/main.scss */
+/* line 656, ../../app/styles/main.scss */
 .center-align {
   width: 100%;
   text-align: center;
@@ -1952,13 +1975,13 @@ body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* line 585, ../../app/styles/main.scss */
+  /* line 663, ../../app/styles/main.scss */
   .container {
     max-width: 730px;
   }
 
   /* Remove the padding we set earlier */
-  /* line 589, ../../app/styles/main.scss */
+  /* line 667, ../../app/styles/main.scss */
   .header,
   .marketing,
   .footer {
@@ -1967,18 +1990,18 @@ body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   }
 
   /* Space out the masthead */
-  /* line 596, ../../app/styles/main.scss */
+  /* line 674, ../../app/styles/main.scss */
   .header {
     margin-bottom: 30px;
   }
 }
 @media (max-width: 992px) {
-  /* line 602, ../../app/styles/main.scss */
+  /* line 680, ../../app/styles/main.scss */
   footer.footer {
     position: relative;
   }
 
-  /* line 605, ../../app/styles/main.scss */
+  /* line 683, ../../app/styles/main.scss */
   .container.kiteline-content,
   .inner-kiteline-content-container,
   header.header .navbar,
@@ -1988,13 +2011,13 @@ body .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
     height: auto;
   }
 
-  /* line 613, ../../app/styles/main.scss */
+  /* line 691, ../../app/styles/main.scss */
   .right-feature-container {
     padding: 0px;
     margin-top: 30px;
   }
 
-  /* line 617, ../../app/styles/main.scss */
+  /* line 695, ../../app/styles/main.scss */
   .left-feature-container.col-md-8 {
     min-height: 600px;
   }

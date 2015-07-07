@@ -1,0 +1,75 @@
+
+.billing-container{
+	.col-md-4{
+		@extend .box-shadow-container;
+		height: 220px;
+		margin-top: 25px;
+		.fa, .glyphicon{
+			margin-top: 20px;
+			&.glyphicon-bullhorn,
+			&.glyphicon-list-alt{
+				margin-right: 10px;
+			}
+		}
+		h4{
+			margin-top: 23px;
+		}
+
+		&.messages-wrapper{
+			.message-date{
+				margin-top: 30px !important;
+			}
+			.message-headline{
+				margin-top: 5px;
+  				margin-bottom: 5px;
+			}
+			.carousel-indicators {
+				top: 110px !important;
+			}
+		}
+
+		&.outstanding-balance-wrapper{
+			span,
+			a{
+				display: block;
+				margin: 5px 0px;
+			}
+			.see-all-invoice{
+				margin-top: 30px;
+			}
+
+			.amount-owed{
+				color: #e6374f;
+			}
+			.due-date{
+				color: #999; 
+			}
+			.current-balance{
+				color: orange;
+				font-size: 21px;
+				font-family: concourse_c4bold;
+				text-align: center;
+				display: inline-block;
+				width: 100%;
+			}
+			.auto-pay{
+				color: #999;
+				font-weight: bold;
+				font-size: 18px;
+  				margin-top: 0px;
+			}
+		}
+
+		&.payment-activity-wrapper{
+			.fa.fa-check{
+				color: green;
+			}
+			.fa.fa-times{
+				color: red;
+			}
+			.mCustomScrollbar{
+				height: 150px !important;
+			}
+		}
+	}	
+} //.billing-container

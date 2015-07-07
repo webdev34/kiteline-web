@@ -28,43 +28,4 @@
 		height: 330px;
 	}
 
-	.sub-header-wrapper{
-		float: left;
-		width: 100%;
-		height: 80px;
-		.greeting{
-			font-size: 20px;
-		}
-		ul{
-			//margin-left: 10%;
-			li{
-				float: left;
-				list-style: none;
-				color: #4a90e2;
-				margin-right: 3%;
-				p{
-					margin-top: 25px;
-				}
-				img{
-					width: 160px;
-				}
-				.fa, .glyphicon{
-					font-size: 21px;
-					position: relative;
-					left: -2px;
-					top: 3px;
-				}
-				.center-name{
-					margin-top: 13px;
-  					font-size: 16px;
-					span{
-						display: block;
-					}
-				}
-			}
-		}
-	}
-
-
-
 } //.dashboard-container

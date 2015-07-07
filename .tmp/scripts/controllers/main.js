@@ -1,13 +1,13 @@
 (function() {
   'use strict';
   angular.module('kiteLineApp').controller('MainCtrl', function($scope, $rootScope, $location, StorageService) {
-    $rootScope.pageTitle = 'Dashboard';
+    $rootScope.pageTitle = '';
     $rootScope.changePageTitle = function() {
       if ($location.$$path === '/dashboard') {
         $rootScope.pageTitle = 'Dashboard';
       }
-      if ($location.$$path === '/invoices') {
-        $rootScope.pageTitle = 'Invoices';
+      if ($location.$$path === '/billing') {
+        $rootScope.pageTitle = 'Billing';
       }
       if ($location.$$path === '/') {
         $rootScope.pageTitle = 'Kiteline Web';

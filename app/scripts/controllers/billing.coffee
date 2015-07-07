@@ -1,8 +1,8 @@
 'use strict'
-angular.module('kiteLineApp').controller 'InvoicesCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService) ->
-  $rootScope.pageTitle = 'Invoices'
+angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService) ->
+  $rootScope.pageTitle = 'Billing'
   $rootScope.isLoginPage = false
-  $scope.displayView = 'invoices'
+  $scope.currentTab = 'Overview'
   $scope.showBreakDownView = false
   $scope.showItemsMenu = false
   $scope.invoicesArray = []
@@ -10,9 +10,8 @@ angular.module('kiteLineApp').controller 'InvoicesCtrl', ($scope, $rootScope, $f
   $scope.amountBeingPaid = 'payTotalAmountDue'
   LogInService.isLoggedIn()
 
-  $scope.goToViewOutstandingBalance = () ->
-    $scope.showBreakDownView = true
-    $scope.displayView = 'pay outstanding invoice'
+  $scope.goToTab = (tab) ->
+    $scope.currentTab = tab
  
   $scope.goToOutstandingInvoicesView = () ->
     $scope.displayView = 'outstanding invoices'
