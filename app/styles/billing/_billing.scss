@@ -2,8 +2,11 @@
 .billing-container{
 	.col-md-4{
 		@extend .box-shadow-container;
-		height: 220px;
-		margin-top: 25px;
+		height: 250px;
+  		margin-top: 35px;
+		&.shorter{
+			height: 175px;
+		}
 		.fa, .glyphicon{
 			margin-top: 20px;
 			&.glyphicon-bullhorn,
@@ -16,15 +19,17 @@
 		}
 
 		&.messages-wrapper{
-			.message-date{
-				margin-top: 30px !important;
-			}
+
 			.message-headline{
 				margin-top: 5px;
   				margin-bottom: 5px;
 			}
 			.carousel-indicators {
-				top: 110px !important;
+				top: 95px !important;
+			}
+			.carousel-control .glyphicon-chevron-left, 
+			.carousel-control .glyphicon-chevron-right{
+				top: 15%;
 			}
 		}
 
@@ -32,7 +37,7 @@
 			span,
 			a{
 				display: block;
-				margin: 5px 0px;
+				margin: 10px 0px;
 			}
 			.see-all-invoice{
 				margin-top: 30px;
@@ -61,14 +66,62 @@
 		}
 
 		&.payment-activity-wrapper{
-			.fa.fa-check{
-				color: green;
+			.fa{
+				margin-top: 0px;
+				&.fa-check{
+					color: green;
+				}
+				&.fa-times{
+					color: red;
+				}
+				&.fa-usd{
+					margin-top: 20px;
+				}
 			}
-			.fa.fa-times{
-				color: red;
+			table{
+				margin-top: 10px;
+				td, th{
+					padding: 2px;
+				}
 			}
-			.mCustomScrollbar{
-				height: 150px !important;
+			.table > thead > tr > th {
+			    font-size: 16px;
+			}
+		}
+		&.tuition-rates-wrapper{
+			.rounded-img-large{
+				margin: 0 auto;
+			}
+			#myCarousel {
+				.carousel-indicators {
+				  top: 160px;
+				}
+				.child-name{
+					font-size: 18px;
+					margin-top: 5px;
+  					margin-bottom: 0px;
+				}
+			}
+		}
+		&.auto-pay-wrapper{
+			.inner-wrapper{
+				margin-top: 30px;
+				.auto-pay-toggle-btn{
+				    margin-right: 35px;
+  				    margin-left: 25px;
+  				}
+  				p{
+  					font-size: 16px;
+  					span{
+  						font-weight: bold;
+  					}
+  				}
+			}
+		}
+		&.tax-statements-wrapper{
+			.glyphicon.glyphicon-chevron-left,
+			.glyphicon.glyphicon-chevron-right{
+				margin-top: -15px;
 			}
 		}
 	}	

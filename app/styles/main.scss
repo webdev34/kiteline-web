@@ -29,12 +29,14 @@ html {
         .table > tbody > tr > td{
             padding: 0px;
             vertical-align: middle;
-        }
-        .table > thead > tr > th,
-        .table > tbody > tr > td{
             text-align: center;
         }
-        #myCarousel{
+        .table > thead > tr > th{
+            background-color: #ccc;
+            color: #666;
+            text-align: center;
+        }
+        div[id*="myCarousel"]{
             button.carousel-control {
                 background-color: transparent;
                 background-image: none;
@@ -254,6 +256,7 @@ h1, h2, h3 {
                 .fa, .glyphicon {
                     font-size: 12px;
                     margin-right: 2%;
+                    color: white;
                     &.fa-car,
                     &.glyphicon-user {
                         margin-right: 5%;
@@ -631,6 +634,17 @@ body {
     font-style: normal;
 }
 
+.rounded-img{
+    width: 70px;
+    height: 70px !important;
+    border-radius: 35px;
+}
+
+.rounded-img-large{
+    width: 100px;
+    height: 100px !important;
+    border-radius: 50px;
+}
 
 .capitalize,
 .cap {
@@ -677,6 +691,14 @@ body {
 }
 
 @media (max-width: 992px) {
+    .left-feature-container{
+        &.col-md-4,
+        &.col-md-8,
+        &.col-md-12 {
+            height: auto;
+            padding-bottom: 25px;
+        }
+    }
     footer.footer {
         position: relative;
     }

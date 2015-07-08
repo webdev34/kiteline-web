@@ -8,6 +8,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.invoicesArray = []
   $scope.invoiceGrandTotal = 0
   $scope.amountBeingPaid = 'payTotalAmountDue'
+  $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
+
   LogInService.isLoggedIn()
 
   $scope.goToTab = (tab) ->
@@ -68,6 +70,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     CenterInfoService.getCenterDetails(centerId).then (response) ->
       $scope.currentCenterDetails = response.data
       $scope.childrenClasses = []
+
+    CurbSideService.getAllChildren(centerId, familyId).then (response) ->
+      $scope.userChildren = response.data
 
       angular.forEach $scope.userChildren, (value, key) ->
         ChildService.getChildClass(value.ChildId).then (response) ->
