@@ -30,24 +30,15 @@
 		<hr />
 		<!-- MAILING ADDRESS -->
 		<h2>Address</h2>
-		<div class="detail-breakdown">
+		<div class="detail-breakdown longer">
 			<span class="detail-label">Street</span>
 			<span class="detail-value">{{viewEmergencyContact.Street}}</span>
 		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">City</span>
-			<span class="detail-value">{{viewEmergencyContact.City}}</span>
+		<div class="detail-breakdown longer">
+			<span class="detail-label">City, State, Zip</span>
+			<span class="detail-value">{{viewEmergencyContact.City}}, {{viewEmergencyContact.State}} {{viewEmergencyContact.Zip}}</span>
 		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">State</span>
-			<span class="detail-value">{{viewEmergencyContact.State}}</span>
-		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">Zip</span>
-			<span class="detail-value">
-				{{viewEmergencyContact.Zip}}
-			</span>
-		</div>
+
 		<div class="detail-breakdown">
 			<span class="detail-label">Home Phone</span>
 			<span class="detail-value">{{viewEmergencyContact.HomePhone  | tel}}</span>
@@ -64,7 +55,7 @@
 				{{viewEmergencyContact.CellPhone | tel}}
 			</span>
 		</div>
-		<div class="detail-breakdown">
+		<div class="detail-breakdown longer">
 			<span class="detail-label">Email</span>
 			<span class="detail-value no-cap">
 				{{viewEmergencyContact.EmailAddress}}

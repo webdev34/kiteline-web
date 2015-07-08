@@ -437,30 +437,34 @@ h1, h2, h3 {
         }
     }
     .detail-breakdown {
-        margin: 5px 0px;
+        margin: 0px 0px 5px;
         min-height: 25px;
         display: block;
         width: 49%;
         float: left;
+        &.longer{
+            width: 100%;
+        }
         .detail-label {
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
             float: left;
         }
         label {
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
         }
         .detail-header {
             clear: both;
         }
         .detail-value {
-            font-size: 16px;
-            margin-right: 15px;
-            float: right;
+            font-size: 14px;
+            margin-left: 10px;
+            float: left;
             width: 51%;
             color: #224f77;
             text-transform: capitalize;
+              /* margin-top: 1px; */
             &.no-cap {
                 text-transform: none;
             }
@@ -531,7 +535,7 @@ h1, h2, h3 {
     }
     .mCustomScrollbar {
         width: 103%;
-        height: 300px !important;
+        height: 310px !important;
         &.scroll-wrapper {
             height: 95% !important;
         }
