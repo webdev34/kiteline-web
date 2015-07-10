@@ -7,8 +7,7 @@
 	        <li ng-class="{'active': currentTab == 'Overview'}" ng-click="goToTab('Overview');"><a>Overview</a></li>
 	        <li ng-class="{'active': currentTab == 'Transactions'}" ng-click="goToTab('Transactions');"><a>Transactions</a></li>  
 	        <li ng-class="{'active': currentTab == 'Invoices'}" ng-click="goToTab('Invoices');"><a>Invoices</a></li>  
-	        <li ng-class="{'active': currentTab == 'Payment Accounts'}" ng-click="goToTab('Payment Accounts');"><a>Payment Accounts</a></li>
-	        <li ng-class="{'active': currentTab == 'Reports'}" ng-click="goToTab('Reports');"><a>Reports</a></li>                       
+	        <li ng-class="{'active': currentTab == 'Payment Accounts'}" ng-click="goToTab('Payment Accounts');"><a>Payment Accounts</a></li>                  
 	    </ul>
 	    <div class="clearfix"></div>
 		<div ng-include src="'views/billing/overview.html'" ng-show="currentTab == 'Overview'" ></div>
@@ -18,8 +17,6 @@
 	    <!-- Invoices -->
 	    <div ng-include src="'views/billing/payment-accounts.html'" ng-show="currentTab == 'Payment Accounts'"></div>
 	    <!-- Payment Accounts -->
-	    <div ng-include src="'views/billing/reports.html'" ng-show="currentTab == 'Reports'"></div>
-	    <!-- Reports -->
 
 	</div> <!--  Left Feature Container -->
 </div> <!--  Invoices container -->

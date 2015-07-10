@@ -11,7 +11,8 @@ angular.module('kiteLineApp', [
   'ngDialog'
   'toggle-switch'
   'ngMask'
-  'angular-datepicker'
+  '720kb.datepicker'
+  
 ]).config ($routeProvider, ScrollBarsProvider) ->
   $routeProvider.when('/',
     templateUrl: 'views/login.html'

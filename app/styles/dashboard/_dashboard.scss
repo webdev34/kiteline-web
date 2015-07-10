@@ -8,9 +8,7 @@
 @import "messages";
 @import "payments-made";
 
-
 .dashboard-container{
-
 	.my-children-container,
 	.outstanding-balance-container,
 	.outstanding-invoice-container,
@@ -20,12 +18,10 @@
 	.contact-container{
 		position: relative;
 	}
-
 	.my-children-tabs{
 		height: 180px
 	}
 	.dashboard-lower-section{
 		height: 330px;
 	}
-
 } //.dashboard-container

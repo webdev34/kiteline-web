@@ -9,6 +9,10 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.invoiceGrandTotal = 0
   $scope.amountBeingPaid = 'payTotalAmountDue'
   $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
+  $scope.transactionStartDate = '01/01/2015'
+  $scope.transactionEndDate = '07/01/2015'
+  $scope.historicalStartDate = '01/01/2015'
+  $scope.historicalEndDate = '07/01/2015'
 
   LogInService.isLoggedIn()
 
@@ -26,18 +30,23 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.goBackToInvoices = () ->
     $scope.showBreakDownView = false
     $scope.displayView = 'invoices'
-    return
 
   $scope.goToPayment = (payId) ->
     $scope.showBreakDownView = true
     $scope.displayView = 'payments made'
     $scope.viewPayment = $filter('filter')($scope.pastPayments, (d) -> d.PayId == payId)[0]
-    return
+
+  $scope.getTransactions = () ->
+    PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId).then (response) ->
+      $scope.pastTransactions  = response
+
+  $scope.getTransactionsByDate = (startDate, endDate) ->
+    PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId, startDate, endDate).then (response) ->
+      $scope.pastTransactions  = response
 
   $scope.goToInvoiceFromArrayItem = (obj) ->
     $scope.viewInvoice = obj
     $scope.lineItemId = obj.LineItemId
-    return
 
   $scope.goToInvoice = (invoiceId) ->
     $scope.displayView = 'outstanding invoices'
@@ -86,9 +95,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
         $scope.announcements = response.data
       
     PaymentService.getPastPayments(customerId).then (response) ->
-      $scope.pastPayments = response.data
-      if $routeParams.payId
-        $scope.goToPayment(parseInt($routeParams.payId))
+      $scope.pastTransactions = response.data
+      # if $routeParams.payId
+      #   $scope.goToPayment(parseInt($routeParams.payId))
 
     InvoiceService.getOutstandingInvoices(customerId).then (response) ->
       $scope.outstandingInvoices = response.data
@@ -112,4 +121,3 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
             
             if $routeParams.invoiceId
               $scope.goToInvoice(parseInt($routeParams.invoiceId))
-

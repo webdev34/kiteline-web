@@ -26,6 +26,33 @@ html {
             margin-bottom: 5px;
             background-color: #4e99bd;
         }
+        //Date-picker wrapper
+        .input-group {
+            width: 285px;
+            p.pull-left{
+                display: inline-block;
+                margin-right: 9px;
+                margin-top: 9px;
+            }
+            .datepicker-wrapper{
+                float: left;
+                width: 171px;
+            }
+            .input-group-btn{
+                top: -2px;
+                left: -20px;
+                &.in-more{
+                    left: -35px;
+                }
+            }
+            .glyphicon.glyphicon-calendar{
+                font-size: 14px;
+            }
+            .historicalStartDate,
+            .historicalEndDate{
+                height: 34px;
+            }
+        }
         .table > tbody > tr > td{
             padding: 0px;
             vertical-align: middle;
@@ -671,6 +698,13 @@ body {
     color: #4a90e2 !important;
 }
 
+.orange{
+    color: orange !important;
+}
+
+.green{
+    color: green !important;
+}
 .center-align {
     width: 100%;
     text-align: center;
@@ -703,6 +737,17 @@ body {
             padding-bottom: 25px;
         }
     }
+    .billing-container .transactions-breakdown-wrapper .dates-input-wrapper .input-group-addon,
+    .billing-container .transactions-breakdown-wrapper .dates-input-wrapper .input-group-addon.end-date{
+        left: 12px;
+    }
+    .dates-input-wrapper .input-wrapper{
+        float: none !important;
+        &:first-child{
+            margin-right: 25px;
+        }
+    }
+
     footer.footer {
         position: relative;
     }

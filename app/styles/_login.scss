@@ -3,6 +3,9 @@
 body.loginPage {
     background-image: url(../images/background.jpg);
     background-size: cover;
+    .inner-kiteline-content-container{
+        width: auto;
+    }
     .container {
         width: 400px;
         &.kiteline-content {

@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('kiteLineApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'toastr', 'LocalStorageModule', 'ngScrollbars', 'ngDialog', 'toggle-switch', 'ngMask', 'angular-datepicker']).config(function($routeProvider, ScrollBarsProvider) {
+  angular.module('kiteLineApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'toastr', 'LocalStorageModule', 'ngScrollbars', 'ngDialog', 'toggle-switch', 'ngMask', '720kb.datepicker']).config(function($routeProvider, ScrollBarsProvider) {
     $routeProvider.when('/', {
       templateUrl: 'views/login.html',
       controller: 'LoginCtrl'

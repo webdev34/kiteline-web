@@ -1,2 +1,109 @@
 <div class="col-md-12 invoices-breakdown-wrapper" ng-show="currentTab == 'Invoices'">
+    <div class="col-md-6">
+    	<i class="fa fa-usd pull-left"></i>
+		<h4 class="pull-left">
+			Outstanding Invoices
+		</h4> 
+		<p class="pull-right">
+			Total Payments
+			<span class="orange inner-span">$250</span>
+		</p>
+		<div class="clearfix"></div>
+		<span class="pull-right">Auto pay scheduled for July 15 , 2015</span>
+		<div class="clearfix"></div>
+		<button class="pull-right btn btn-primary">Pay Full</button>
+          <table class="table">
+			    <thead>
+			    	<tr>
+				        <th>Invoice Date</th>
+				        <th>Invoice Due Date</th>
+				        <th>Amount Due</th>
+				        <th>Download</th>
+				        <th></th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	<tr ng-animate="'animate'" data-ng-repeat="invoice in outstandingInvoices">
+			        <td>
+			        	{{invoice.InvoiceDate | date}}
+			    	</td>
+			    	<td>
+			    		{{invoice.DueDate | date}}
+			    		
+			    	</td>
+			        <td>
+			        	{{invoice.TotalAmount | currency}}
+			        </td>
+			        <td><a><i class="fa fa-file-pdf-o"></i></a></td>
+			        <td>
+			        	<button class="btn btn-primary">Pay</button>
+					</td>
+			      	</tr>
+			    </tbody>
+		    </table>
+    </div>
+    <div class="col-md-6">
+        <i class="fa fa-usd pull-left"></i>
+		<h4 class="pull-left">
+			Historical Invoices
+		</h4> 
+		<p class="pull-right">
+			Total Payments
+			<span class="inner-span">$250</span>
+		</p>
+		<div class="clearfix"></div>
+		<div class="row">
+		<div class="col-md-6">
+            <div class="input-group">
+	            <p class="pull-left">Start Date</p>
+	        	 <datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+			        <input type="text" ng-model="historicalStartDate" class="historicalStartDate">
+			      </datepicker>
+
+	              <span class="input-group-btn in-more">
+	                <button datepicker-button datepicker-parent="historicalStartDate" type="button" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+	              </span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="input-group">
+            	<p class="pull-left">End Date</p>
+          	 	<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+		        <input type="text" ng-model="historicalEndDate" class="historicalEndDate" >
+		      </datepicker>
+              <span class="input-group-btn in-more">
+                <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-calendar" datepicker-button datepicker-parent="historicalEndDate" ></i></button>
+              </span>
+            </div>
+        </div>
+    </div>
+      <table class="table">
+		    <thead>
+		    	<tr>
+			        <th>Invoice Date</th>
+			        <th>Invoice Due Date</th>
+			        <th>Amount Due</th>
+			        <th>Download</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		    	<tr ng-animate="'animate'" data-ng-repeat="invoice in outstandingInvoices">
+		        <td>
+		        	{{invoice.InvoiceDate | date}}
+		    	</td>
+		    	<td>
+		    		{{invoice.DueDate | date}}
+		    		
+		    	</td>
+		        <td>
+		        	{{invoice.TotalAmount | currency}}
+		        </td>
+		        <td><a><i class="fa fa-file-pdf-o"></i></a></td>
+
+		      	</tr>
+		    </tbody>
+	    </table>
+    </div>
+    <div class="clearfix"></div>
 </div>

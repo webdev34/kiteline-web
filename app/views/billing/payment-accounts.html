@@ -1,2 +1,126 @@
 <div class="col-md-12 payment-accounts-breakdown-wrapper" ng-show="currentTab == 'Payment Accounts'">
+	<div class="col-md-6">
+    	<i class="fa fa-usd pull-left"></i>
+		<h4 class="pull-left">
+			Bank Accounts
+		</h4> 
+		<p class="pull-right auto-pay-para">
+			Auto pay
+			<toggle-switch ng-model="bank_auto_pay" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
+		</p>
+		<div class="clearfix"></div>
+		<button class="pull-left btn btn-primary">Add New</button>
+		<div class="clearfix"></div>
+		
+          <table class="table">
+			    <thead>
+			    	<tr>
+				        <th>Payer Name</th>
+				        <th>Bank Name</th>
+				        <th>Last Four</th>
+				        <th>Default</th>
+				        <th></th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	<tr >
+			        <td>
+			        	Ramesh Ramaraj
+			    	</td>
+			    	<td>
+			    		Wells Fargo
+			    		
+			    	</td>
+			        <td>
+			        	2345
+			        </td>
+			        <td>
+			        	<input type="radio" />
+					</td>
+					<td>
+						<i class="fa fa fa-times red"></i>
+					</td>
+			      	</tr>
+			      	<tr >
+			        <td>
+			        	Ramesh Ramaraj
+			    	</td>
+			    	<td>
+			    		Chase
+			    		
+			    	</td>
+			        <td>
+			        	4535
+			        </td>
+			        <td>
+			        	<input type="radio" />
+					</td>
+					<td>
+						<i class="fa fa-check green"></i>
+					</td>
+			      	</tr>
+			    </tbody>
+		    </table>
+    </div>
+    <div class="col-md-6">
+        <i class="fa fa-usd pull-left"></i>
+		<h4 class="pull-left">
+			Credit Card Accounts
+		</h4> 
+		<p class="pull-right auto-pay-para">
+			Auto pay
+			<toggle-switch ng-model="credit_card_auto_pay" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
+		</p>
+		<div class="clearfix"></div>
+		<button class="pull-left btn btn-primary">Add New</button>
+		<div class="clearfix"></div>
+          <table class="table">
+			    <thead>
+			    	<tr>
+				        <th>Payer Name</th>
+				        <th>Bank Name</th>
+				        <th>Last Four</th>
+				        <th>Default</th>
+				        <th></th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	<tr >
+			        <td>
+			        	Ramesh Ramaraj
+			    	</td>
+			    	<td>
+			    		Visa
+			    	</td>
+			        <td>
+			        	2345
+			        </td>
+			        <td>
+			        	<input type="radio" />
+					</td>
+					<td>
+						<i class="fa fa-check green"></i>
+					</td>
+			      	</tr>
+			      	<tr >
+			        <td>
+			        	Ramesh Ramaraj
+			    	</td>
+			    	<td>
+			    		Mastercard
+			    	</td>
+			        <td>
+			        	4535
+			        </td>
+			        <td>
+			        	<input type="radio" />
+					</td>
+					<td>
+						<i class="fa fa fa-times red"></i>
+					</td>
+			      	</tr>
+			    </tbody>
+		    </table>
+    </div>
+    <div class="clearfix"></div>
 </div>

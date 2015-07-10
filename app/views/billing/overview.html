@@ -71,7 +71,7 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-			    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastPayments | limitTo: 5">
+			    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions | limitTo: 5">
 			        <td>
 			        	{{payment.PaymentDate | date}}
 			    	</td>
@@ -79,8 +79,8 @@
 			    		{{payment.Amount | currency}}
 			    	</td>
 			        <td>
-			        	<span class="fa fa-check" ng-show="payment.PaymentStatus == 'Processed'"></span> 
-						<span class="fa fa-times" ng-show="payment.PaymentStatus != 'Processed'"></span> 
+			        	<span class="fa fa-check green" ng-show="payment.PaymentStatus == 'Processed'"></span> 
+						<span class="fa fa-times red" ng-show="payment.PaymentStatus != 'Processed'"></span> 
 					</td>
 			        <td>{{payment.PaymentType}}</td>
 			      	</tr>
@@ -142,7 +142,7 @@
 		<div class="clearfix"></div>
 		<div id="myCarousel-3" class="carousel slide" data-ride="carousel" style="height: 100px;" interval="-1">
 		  <div class="carousel-inner" role="listbox">
-			    <div class="item" ng-class="{'active': $index == 0}" data-ng-repeat="statement in taxStatements">
+			    <div class="item" ng-class="{'active': $index == 0}" data-ng-repeat="statement in taxStatements" style="margin-top: 30px;">
 			    <button class="btn btn-primary">{{statement[0]}}</button>
 			    <button class="btn btn-primary">{{statement[1]}}</button>
 			    </div>

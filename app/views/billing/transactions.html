@@ -1,2 +1,69 @@
 <div class="col-md-12 transactions-breakdown-wrapper" ng-show="currentTab == 'Transactions'">
+	<div class="dates-input-wrapper col-md-12">
+	<div class="row">
+        <div class="col-md-3">
+            <div class="input-group">
+            	<p class="pull-left">Start Date</p>
+        	 <datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+		        <input type="text" ng-model="transactionStartDate" class="transactionStartDate">
+		      </datepicker>
+
+              <span class="input-group-btn">
+                <button datepicker-button datepicker-parent="transactionStartDate" type="button" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="input-group">
+            	<p class="pull-left">End Date</p>
+          	 	<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+		        <input type="text" ng-model="transactionEndDate" class="transactionEndDate" >
+		      </datepicker>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar" datepicker-button datepicker-parent="transactionEndDate" ></i></button>
+              </span>
+            </div>
+        </div>
+    </div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="transactions-table-wrapper col-md-12">
+		<table class="table">
+			    <thead>
+			    	<tr>
+				        <th>Transactions Date</th>
+				        <th>Payer</th>
+				        <th>Amount</th>
+				        <th>Type</th>
+				        <th>View Bill</th>
+				        <th>E-mail</th>
+				        <th>Status</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions">
+			        <td>
+			        	{{payment.PaymentDate | date}}
+			    	</td>
+			    	<td>
+			    		{{payment.PayerName}}
+			    	</td>
+			    	<td>
+			    		{{payment.Amount | currency}}
+			    	</td>
+			        <td>
+			        	{{payment.PaymentType}}
+			        </td>
+			        <td><a><i class="fa fa-file-pdf-o"></i></a></td>
+			        <td><a><i class="fa fa-envelope-o"></i></a></td>
+			        <td>
+			        	<span class="fa fa-check green" ng-show="payment.PaymentStatus == 'Processed'"></span> 
+						<span class="fa fa-times red" ng-show="payment.PaymentStatus != 'Processed'"></span> 
+					</td>
+			      	</tr>
+			    </tbody>
+		</table>
+	</div>
+
 </div>
