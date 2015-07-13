@@ -7,7 +7,7 @@
 	</span> 
 	<br class="clearfix" />
 
-	<div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 100px;">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 100px;" data-interval="0">
 		  <!-- Indicators -->
 		
 
@@ -21,7 +21,7 @@
 		  </div>
 
 		    <ol class="carousel-indicators">
-		    <li data-target="#myCarousel" data-slide-to="{{$index}}" ng-class="{'active': $index == 0}" data-ng-repeat="announcement in announcements"></li>
+		    <li data-target="#myCarousel" data-slide-to="{{$index}}" ng-class="{'active': $index == 0}" data-ng-repeat="announcement in announcements" data-interval="0"></li>
 		  </ol>
 
 		  

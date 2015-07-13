@@ -4,12 +4,12 @@
         <div class="col-md-3">
             <div class="input-group">
             	<p class="pull-left">Start Date</p>
-        	 <datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
-		        <input type="text" ng-model="transactionStartDate" class="transactionStartDate">
+        	 <datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{billDates.transactionStartDate}}" date-format="M/dd/yyyy">
+		        <input type="text" ng-model="billDates.transactionStartDate" class="transactionStartDate">
 		      </datepicker>
 
               <span class="input-group-btn">
-                <button datepicker-button datepicker-parent="transactionStartDate" type="button" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+                <button datepicker-button datepicker-parent="transactionStartDate" type="button" class="btn btn-default" ><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
             </div>
         </div>
@@ -17,12 +17,17 @@
         <div class="col-md-3">
             <div class="input-group">
             	<p class="pull-left">End Date</p>
-          	 	<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
-		        <input type="text" ng-model="transactionEndDate" class="transactionEndDate" >
+          	 	<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{billDates.transactionEndDate}}" date-format="M/dd/yyyy">
+		        <input type="text" ng-model="billDates.transactionEndDate" class="transactionEndDate" >
 		      </datepicker>
               <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar" datepicker-button datepicker-parent="transactionEndDate" ></i></button>
+                <button type="button" class="btn btn-default" datepicker-button datepicker-parent="transactionEndDate"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="input-group">
+                <button type="button" class="btn btn-default" ng-click="getTransactionsByDate()">Submit</button>
             </div>
         </div>
     </div>
@@ -41,7 +46,10 @@
 				        <th>Status</th>
 			        </tr>
 			    </thead>
-			    <tbody>
+			    <tbody ng-show="noResults">
+					<tr ng-animate="'animate'" ><td colspan="7"><span>No Results</span></td></tr>
+			    </tbody>			    
+			    <tbody ng-hide="noResults">
 			    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions">
 			        <td>
 			        	{{payment.PaymentDate | date}}

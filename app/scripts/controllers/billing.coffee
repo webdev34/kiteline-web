@@ -2,66 +2,44 @@
 angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService) ->
   $rootScope.pageTitle = 'Billing'
   $rootScope.isLoginPage = false
+  $scope.noResults = false
   $scope.currentTab = 'Overview'
-  $scope.showBreakDownView = false
-  $scope.showItemsMenu = false
   $scope.invoicesArray = []
   $scope.invoiceGrandTotal = 0
-  $scope.amountBeingPaid = 'payTotalAmountDue'
+  $scope.bank_auto_pay = true
+  $scope.credit_card_auto_pay = false
   $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
-  $scope.transactionStartDate = '01/01/2015'
-  $scope.transactionEndDate = '07/01/2015'
-  $scope.historicalStartDate = '01/01/2015'
-  $scope.historicalEndDate = '07/01/2015'
+  $scope.billDates = {}
+  $scope.billDates.transactionStartDate = '1/01/2014'
+  $scope.billDates.transactionEndDate = '7/01/2015'
+  $scope.billDates.historicalStartDate = '2/01/2015'
+  $scope.billDates.historicalEndDate = '7/30/2015'
 
   LogInService.isLoggedIn()
 
   $scope.goToTab = (tab) ->
     $scope.currentTab = tab
- 
-  $scope.goToOutstandingInvoicesView = () ->
-    $scope.displayView = 'outstanding invoices'
-    return
 
-  $scope.goToPaymentsMadeView = () ->
-    $scope.displayView = 'payments made'
-    return
-
-  $scope.goBackToInvoices = () ->
-    $scope.showBreakDownView = false
-    $scope.displayView = 'invoices'
-
-  $scope.goToPayment = (payId) ->
-    $scope.showBreakDownView = true
-    $scope.displayView = 'payments made'
-    $scope.viewPayment = $filter('filter')($scope.pastPayments, (d) -> d.PayId == payId)[0]
-
-  $scope.getTransactions = () ->
+  $scope.getPastPayments = () ->
     PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId).then (response) ->
       $scope.pastTransactions  = response
 
-  $scope.getTransactionsByDate = (startDate, endDate) ->
-    PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId, startDate, endDate).then (response) ->
-      $scope.pastTransactions  = response
+  $scope.getTransactionsByDate = (type) ->
+    $scope.noResults = false
+    if type == 'Historical'
+      PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId, $scope.billDates.historicalStartDate, $scope.billDates.historicalEndDate).then (response) ->
+        $scope.historicalTransactions  = response.data
+        console.log $scope.historicalTransactions
+    else
+      PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId, $scope.billDates.transactionStartDate, $scope.billDates.transactionEndDate).then (response) ->
+        $scope.pastTransactions  = response.data
+        console.log $scope.pastTransactions
+        if $scope.pastTransactions.length == 0
+          $scope.noResults = true
 
   $scope.goToInvoiceFromArrayItem = (obj) ->
     $scope.viewInvoice = obj
     $scope.lineItemId = obj.LineItemId
-
-  $scope.goToInvoice = (invoiceId) ->
-    $scope.displayView = 'outstanding invoices'
-    $scope.showItemsMenu = false
-    $scope.showBreakDownView = true
-    $scope.viewInvoice = $filter('filter')($scope.invoicesArray, (d) -> d.InvoiceId == invoiceId)[0]
-
-    if typeof $scope.viewInvoice == 'undefined'
-      $scope.showItemsMenu = true
-      angular.forEach $scope.invoicesArray, (value, key) ->
-        if value instanceof Array
-          if value[0].InvoiceId == invoiceId
-            $scope.viewInvoiceArray = $scope.invoicesArray[key]
-            $scope.goToInvoiceFromArrayItem($scope.invoicesArray[key][0])
-  
 
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
@@ -94,10 +72,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       if $rootScope.announcementCount > 0
         $scope.announcements = response.data
       
-    PaymentService.getPastPayments(customerId).then (response) ->
-      $scope.pastTransactions = response.data
-      # if $routeParams.payId
-      #   $scope.goToPayment(parseInt($routeParams.payId))
+    $scope.getTransactionsByDate(null)
+    $scope.getTransactionsByDate('Historical')
 
     InvoiceService.getOutstandingInvoices(customerId).then (response) ->
       $scope.outstandingInvoices = response.data

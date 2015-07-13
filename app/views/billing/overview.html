@@ -6,7 +6,7 @@
 			Tuition Rates
 		</h4> 
 		<div class="clearfix"></div>
-		<div id="myCarousel" class="carousel slide my-children-carousel" data-ride="carousel" interval="-1" style="height: 100px;">
+		<div id="myCarousel" class="carousel slide my-children-carousel" data-ride="carousel" data-interval="0" style="height: 100px;">
 
 		  <div class="carousel-inner" role="listbox">
 			    <div class="item" ng-class="{'active': $index == 0}"  data-ng-repeat="child in userChildren">
@@ -17,7 +17,7 @@
 			    </div>
 		  </div>
 		  <ol class="carousel-indicators">
-		    <li data-target="#myCarousel" data-slide-to="{{$index}}" ng-class="{'active': $index == 0}"  data-ng-repeat="child in userChildren" interval="-1"></li>
+		    <li data-target="#myCarousel" data-slide-to="{{$index}}" ng-class="{'active': $index == 0}"  data-ng-repeat="child in userChildren" data-interval="0"></li>
 		  </ol>
 		  <button class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -96,7 +96,7 @@
 			Messages
 		</h4> 
 		<div class="clearfix"></div>
-		<div id="myCarousel-2" class="carousel slide" data-ride="carousel" style="height: 100px;" interval="-1">
+		<div id="myCarousel-2" class="carousel slide" data-ride="carousel" style="height: 100px;" data-interval="0">
 		  <div class="carousel-inner" role="listbox">
 			    <div class="item" ng-class="{'active': $index == 0}" data-ng-repeat="announcement in announcements">
 			    <span class="message-date">Posted: {{announcement.MessageDate | date}}</span>  	
@@ -105,7 +105,7 @@
 			    </div>
 		  </div>
 		  <ol class="carousel-indicators">
-		    <li data-target="#myCarousel-2" data-slide-to="{{$index}}" ng-class="{'active': $index == 0}" data-ng-repeat="announcement in announcements" interval="-1"></li>
+		    <li data-target="#myCarousel-2" data-slide-to="{{$index}}" ng-class="{'active': $index == 0}" data-ng-repeat="announcement in announcements" data-interval="0"></li>
 		  </ol>
 		  <button class="left carousel-control" href="#myCarousel-2" role="button" data-slide="prev">
 		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -126,7 +126,7 @@
 		</h4> 
 		<div class="clearfix"></div>
 		<div class="inner-wrapper">
-			<toggle-switch ng-model="new_canPickup" class="switch-success auto-pay-toggle-btn pull-left" on-label="On" off-label="Off"></toggle-switch>
+			<toggle-switch ng-model="bank_auto_pay" class="switch-success auto-pay-toggle-btn pull-left" on-label="On" off-label="Off"></toggle-switch>
 			<p class="pull-left">BANK ACCOUNT  ENDING<br/>
 				IN <span class="red">5666</span></p>
 			<div class="clearfix"></div>
@@ -140,7 +140,7 @@
 			Tax Statement
 		</h4> 
 		<div class="clearfix"></div>
-		<div id="myCarousel-3" class="carousel slide" data-ride="carousel" style="height: 100px;" interval="-1">
+		<div id="myCarousel-3" class="carousel slide" data-ride="carousel" style="height: 100px;"data-interval="0">
 		  <div class="carousel-inner" role="listbox">
 			    <div class="item" ng-class="{'active': $index == 0}" data-ng-repeat="statement in taxStatements" style="margin-top: 30px;">
 			    <button class="btn btn-primary">{{statement[0]}}</button>
@@ -148,7 +148,7 @@
 			    </div>
 		  </div>
 		  <ol class="carousel-indicators">
-		    <li data-target="#myCarousel-3" data-slide-to="{{$index}}" ng-class="{'active': $index == 0}" data-ng-repeat="announcement in announcements" interval="-1"></li>
+		    <li data-target="#myCarousel-3" data-slide-to="{{$index}}" ng-class="{'active': $index == 0}" data-ng-repeat="announcement in announcements" data-interval="0"></li>
 		  </ol>
 		  <button class="left carousel-control" href="#myCarousel-3" role="button" data-slide="prev">
 		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
