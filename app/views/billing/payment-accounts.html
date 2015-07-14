@@ -9,10 +9,10 @@
 			<toggle-switch ng-model="bank_auto_pay" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
 		</p>
 		<div class="clearfix"></div>
-		<button class="pull-left btn btn-primary">Add New</button>
+		<button class="pull-left btn btn-primary" ng-click="addAccount('CC')">Add New</button>
 		<div class="clearfix"></div>
 		
-          <table class="table">
+          <table class="table" ng-hide="addCreditCard">
 			    <thead>
 			    	<tr>
 				        <th>Payer Name</th>
@@ -61,6 +61,10 @@
 			      	</tr>
 			    </tbody>
 		    </table>
+
+		    <div ng-include src="'views/billing/addBankForm.html'" ng-show="addCreditCard" ></div>
+
+
     </div>
     <div class="col-md-6">
         <i class="fa fa-usd pull-left"></i>
@@ -72,9 +76,9 @@
 			<toggle-switch ng-model="credit_card_auto_pay" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
 		</p>
 		<div class="clearfix"></div>
-		<button class="pull-left btn btn-primary">Add New</button>
+		<button class="pull-left btn btn-primary" ng-click="addAccount('Bank')">Add New</button>
 		<div class="clearfix"></div>
-          <table class="table">
+          <table class="table" ng-hide="addBankAccount">
 			    <thead>
 			    	<tr>
 				        <th>Payer Name</th>
@@ -121,6 +125,7 @@
 			      	</tr>
 			    </tbody>
 		    </table>
+		    <div ng-include src="'views/billing/addCCForm.html'" ng-show="addBankAccount" ></div>
     </div>
     <div class="clearfix"></div>
 </div>

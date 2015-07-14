@@ -9,6 +9,10 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.invoiceGrandTotal = 0
   $scope.bank_auto_pay = true
   $scope.credit_card_auto_pay = false
+  $scope.addBankAccount = false
+  $scope.addCreditCard = false
+  $scope.newBankAccount = {}
+  $scope.newCC = {}
   $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
   $scope.billDates = {}
   $scope.billDates.transactionStartDate = '1/01/2014'
@@ -17,6 +21,13 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.billDates.historicalEndDate = '7/30/2015'
 
   LogInService.isLoggedIn()
+
+  $scope.addAccount = (type) ->
+    if type == 'CC'
+      $scope.addCreditCard = true
+    else
+      $scope.addBankAccount = true
+
 
   $scope.goToTab = (tab) ->
     $scope.currentTab = tab
@@ -30,11 +41,10 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     if type == 'Historical'
       PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId, $scope.billDates.historicalStartDate, $scope.billDates.historicalEndDate).then (response) ->
         $scope.historicalTransactions  = response.data
-        console.log $scope.historicalTransactions
     else
       PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId, $scope.billDates.transactionStartDate, $scope.billDates.transactionEndDate).then (response) ->
         $scope.pastTransactions  = response.data
-        console.log $scope.pastTransactions
+
         if $scope.pastTransactions.length == 0
           $scope.noResults = true
 
@@ -78,7 +88,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     InvoiceService.getOutstandingInvoices(customerId).then (response) ->
       $scope.outstandingInvoices = response.data
-      $rootScope.stopSpin()
+      $scope.subscriberId = response.data[0].SubscriberId
 
       angular.forEach $scope.outstandingInvoices, (value, key) ->
         InvoiceDetailService.getInvoiceDetail(value.InvoiceId).then (response) ->
@@ -99,3 +109,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
             
             if $routeParams.invoiceId
               $scope.goToInvoice(parseInt($routeParams.invoiceId))
+
+      # CreditCardService.getCreditCardInfo($scope.subscriberId, customerId).then (response) ->
+      #   console.log response.data
+
+      $rootScope.stopSpin()
