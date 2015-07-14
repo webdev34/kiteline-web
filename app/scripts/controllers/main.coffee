@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $location, StorageService) ->
+angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $location, StorageService, usSpinnerService) ->
   $rootScope.pageTitle = ''
   $rootScope.changePageTitle = () ->
     if $location.$$path is '/dashboard'
@@ -16,6 +16,12 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
 
     if $location.$$path is '/messages'
       $rootScope.pageTitle = 'Messages'
+
+  $rootScope.startSpin = ->
+    usSpinnerService.spin 'spinner-1'
+
+  $rootScope.stopSpin = ->
+    usSpinnerService.stop 'spinner-1'
 
   $rootScope.logOut = () ->
     StorageService.deleteLocalStorage();

@@ -12,7 +12,8 @@ angular.module('kiteLineApp', [
   'toggle-switch'
   'ngMask'
   '720kb.datepicker'
-  
+  'angularSpinner'
+
 ]).config ($routeProvider, ScrollBarsProvider) ->
   $routeProvider.when('/',
     templateUrl: 'views/login.html'
@@ -27,6 +28,13 @@ angular.module('kiteLineApp', [
     controller: 'TOSCtrl').when('/privacy',
     templateUrl: 'views/privacy.html'
     controller: 'PrivacyCtrl').otherwise redirectTo: '/'
+
+  angular.module('kiteLineApp').config [
+    'usSpinnerConfigProvider'
+    (usSpinnerConfigProvider) ->
+      usSpinnerConfigProvider.setDefaults color: 'blue'
+      return
+  ]
     
   ScrollBarsProvider.defaults =
     autoHideScrollbar: false

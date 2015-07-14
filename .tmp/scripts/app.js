@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('kiteLineApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'toastr', 'LocalStorageModule', 'ngScrollbars', 'ngDialog', 'toggle-switch', 'ngMask', '720kb.datepicker']).config(function($routeProvider, ScrollBarsProvider) {
+  angular.module('kiteLineApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'toastr', 'LocalStorageModule', 'ngScrollbars', 'ngDialog', 'toggle-switch', 'ngMask', '720kb.datepicker', 'angularSpinner']).config(function($routeProvider, ScrollBarsProvider) {
     $routeProvider.when('/', {
       templateUrl: 'views/login.html',
       controller: 'LoginCtrl'
@@ -22,6 +22,13 @@
     }).otherwise({
       redirectTo: '/'
     });
+    angular.module('kiteLineApp').config([
+      'usSpinnerConfigProvider', function(usSpinnerConfigProvider) {
+        usSpinnerConfigProvider.setDefaults({
+          color: 'blue'
+        });
+      }
+    ]);
     ScrollBarsProvider.defaults = {
       autoHideScrollbar: false,
       setHeight: 'auto',

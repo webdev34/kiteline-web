@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('kiteLineApp').controller('MainCtrl', function($scope, $rootScope, $location, StorageService) {
+  angular.module('kiteLineApp').controller('MainCtrl', function($scope, $rootScope, $location, StorageService, usSpinnerService) {
     $rootScope.pageTitle = '';
     $rootScope.changePageTitle = function() {
       if ($location.$$path === '/dashboard') {
@@ -18,6 +18,12 @@
       if ($location.$$path === '/messages') {
         return $rootScope.pageTitle = 'Messages';
       }
+    };
+    $rootScope.startSpin = function() {
+      return usSpinnerService.spin('spinner-1');
+    };
+    $rootScope.stopSpin = function() {
+      return usSpinnerService.stop('spinner-1');
     };
     $rootScope.logOut = function() {
       StorageService.deleteLocalStorage();

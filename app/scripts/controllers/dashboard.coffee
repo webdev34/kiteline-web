@@ -1,6 +1,6 @@
 'use strict'
 angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService) ->
-  $rootScope.changePageTitle()
+  $rootScope.startSpin()
   $rootScope.isLoginPage = false
   $scope.showItemsMenu = false
   LogInService.isLoggedIn()
@@ -13,6 +13,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.activePickupContact = "pickup-contact-1"
   #console.log StorageService.getItem('currentCenter')
   # StorageService.deleteLocalStorage();
+
   $scope.changeActivePickupContact = (activePickupContact) ->
     $scope.activePickupContact = activePickupContact
 
@@ -120,4 +121,5 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     ChildPickupService.getAllChildPickupList(familyId).then (response) ->
       $scope.pickupList = response.data
       $scope.goToPickupContact($scope.pickupList[0].ChildPickupId)
+      $rootScope.stopSpin()
       

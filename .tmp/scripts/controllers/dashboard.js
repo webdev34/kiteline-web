@@ -2,7 +2,7 @@
   'use strict';
   angular.module('kiteLineApp').controller('DashboardCtrl', function($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService) {
     var centerId, customerId, familyId;
-    $rootScope.changePageTitle();
+    $rootScope.startSpin();
     $rootScope.isLoginPage = false;
     $scope.showItemsMenu = false;
     LogInService.isLoggedIn();
@@ -130,7 +130,8 @@
       });
       return ChildPickupService.getAllChildPickupList(familyId).then(function(response) {
         $scope.pickupList = response.data;
-        return $scope.goToPickupContact($scope.pickupList[0].ChildPickupId);
+        $scope.goToPickupContact($scope.pickupList[0].ChildPickupId);
+        return $rootScope.stopSpin();
       });
     }
   });

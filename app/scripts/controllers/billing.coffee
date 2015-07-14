@@ -1,5 +1,6 @@
 'use strict'
 angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService) ->
+  $rootScope.startSpin()
   $rootScope.pageTitle = 'Billing'
   $rootScope.isLoginPage = false
   $scope.noResults = false
@@ -77,6 +78,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     InvoiceService.getOutstandingInvoices(customerId).then (response) ->
       $scope.outstandingInvoices = response.data
+      $rootScope.stopSpin()
 
       angular.forEach $scope.outstandingInvoices, (value, key) ->
         InvoiceDetailService.getInvoiceDetail(value.InvoiceId).then (response) ->

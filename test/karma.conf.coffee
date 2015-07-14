@@ -34,6 +34,8 @@ module.exports = (config) ->
       'bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.js'
       'bower_components/angular-mask/dist/ngMask.js'
       'bower_components/angularjs-datepicker/dist/angular-datepicker.min.js'
+      'bower_components/spin.js/spin.js'
+      'bower_components/angular-spinner/angular-spinner.js'
       'bower_components/angular-mocks/angular-mocks.js'
       # endbower
       # bower:coffee

@@ -608,8 +608,38 @@ body {
         width: 2px;
     }
 }
-
 /* Scroll Bar fix */
+
+body{
+    div.spinner{
+    left: 0% !important;
+    top: 0% !important;
+    background-color: #4e99bd;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0.7;
+        div{
+            left: 50% !important;
+            top: 45% !important;
+            background-color: white !important;
+            &:nth-child(1){
+
+                div:after{
+                    content: "Loading...";
+                    top: 35px;
+                    position: relative;
+                    right: 40px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    color: white;
+                    text-shadow: 2px 2px 2px #0c4d6e;
+                }
+            }
+        }
+    }
+}
+
 
 /* Typography */
 @font-face {
