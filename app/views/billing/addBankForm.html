@@ -43,7 +43,7 @@
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-4">
+<div class="control-group col-md-3">
   <label class="control-label" for="BusinessPhone">Billing Phone</label>
   <div class="controls">
     <input id="BusinessPhone" name="BusinessPhone" ng-model="newBankAccount.BusinessPhone" type="text" placeholder="" class="input-xlarge" required="">
@@ -52,7 +52,7 @@
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-4">
+<div class="control-group col-md-3">
   <label class="control-label" for="BusinessEmail">Email</label>
   <div class="controls">
     <input id="BusinessEmail" name="BusinessEmail" ng-model="newBankAccount.BusinessEmail" type="text" placeholder="" class="input-xlarge">
@@ -88,6 +88,16 @@
   <div class="controls">
     <input id="verifyBankAcctNumber" name="VerifyBankAcctNumber" ng-model="newBankAccount.VerifyBankAcctNumber" type="text" placeholder="" class="input-xlarge" required="">
     
+  </div>
+</div>
+
+<!-- Drop Down-->
+<div class="control-group col-md-4">
+  <label class="control-label" for="bankAcctType">Account Type</label>
+  <div class="controls">
+    <select id="bankAcctType" ng-model="newBankAccount.accountTypeId" >
+      <option value="{{option.id}}" data-ng-repeat="option in bankAccountTypes">{{option.name}}</option>
+    </select>
   </div>
 </div>
 

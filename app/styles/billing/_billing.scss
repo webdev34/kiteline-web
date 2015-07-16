@@ -167,6 +167,9 @@
     // PAYMENT ACCOUNTS & INVOICES CSS //
     .payment-accounts-breakdown-wrapper,
     .invoices-breakdown-wrapper {
+        input[type='text']{
+            padding: inherit;
+        }
         .col-md-6 {
             .fa {
                 margin-top: 20px;

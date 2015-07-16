@@ -19,6 +19,36 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.billDates.transactionEndDate = '7/01/2015'
   $scope.billDates.historicalStartDate = '2/01/2015'
   $scope.billDates.historicalEndDate = '7/30/2015'
+  $scope.bankAccountTypes = [
+    {
+      id: '1'
+      name: 'Checking'
+    }
+    {
+      id: '2'
+      name: 'Savings'
+    }
+  ]
+  
+  $scope.creditCardAccountTypes = [
+    {
+      id: '3'
+      name: 'CC - Visa'
+    }
+    {
+      id: '4'
+      name: 'CC - Mastercard'
+    }
+    {
+      id: '5'
+      name: 'CC - Discover'
+    }
+    {
+      id: '6'
+      name: 'CC - AMEX'
+    }
+  ]
+
 
   LogInService.isLoggedIn()
 
