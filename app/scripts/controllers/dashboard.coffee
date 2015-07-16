@@ -82,8 +82,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.goToPickupContact = (contactId) ->
     $scope.viewPickupContact = $filter('filter')($scope.pickupList, (d) -> d.ChildPickupId == contactId)[0]
 
- 
-
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
     $rootScope.currentUserEmail = StorageService.getItem('userEmail')
@@ -94,7 +92,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     customerId = $rootScope.currentCenter.CustomerId
     
     CenterInfoService.getCenterDetails(centerId).then (response) ->
-      console.log response.data
       $scope.currentCenterDetails = response.data
 
       $scope.getChildrenData()

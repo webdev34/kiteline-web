@@ -28,7 +28,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     else
       $scope.addBankAccount = true
 
-
   $scope.goToTab = (tab) ->
     $scope.currentTab = tab
 
@@ -110,7 +109,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
             if $routeParams.invoiceId
               $scope.goToInvoice(parseInt($routeParams.invoiceId))
 
-      # CreditCardService.getCreditCardInfo($scope.subscriberId, customerId).then (response) ->
-      #   console.log response.data
+      CreditCardService.getCreditCardInfo($scope.subscriberId, customerId).then (response) ->
+        console.log response.data
 
       $rootScope.stopSpin()

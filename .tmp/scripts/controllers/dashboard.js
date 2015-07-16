@@ -105,7 +105,6 @@
       familyId = $rootScope.currentCenter.FamilyId;
       customerId = $rootScope.currentCenter.CustomerId;
       CenterInfoService.getCenterDetails(centerId).then(function(response) {
-        console.log(response.data);
         $scope.currentCenterDetails = response.data;
         return $scope.getChildrenData();
       });

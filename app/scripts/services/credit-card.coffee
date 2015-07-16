@@ -157,6 +157,9 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
     $http(
       method: 'GET'
       headers:
+        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Methods': 'OPTIONS,GET,POST,PUT,DELETE'
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
         'Content-Type': 'application/json'
         'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
         'X-SkyChildCareToken': $rootScope.currentUserToken
