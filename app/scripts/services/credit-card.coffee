@@ -152,6 +152,94 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
       toastr.error status, 'Error'
       return
 
+  @getBankAccounts = (familyId, centerId) ->   
+    url = rootUrl+'api/Account/GetBankAccounts?familyId='+familyId+'&centerId='+centerId
+    $http(
+      method: 'GET'
+      headers:
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+        'X-SkyChildCareToken': $rootScope.currentUserToken
+        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
+        'X-SkyChildCareUserId': $rootScope.currentUserEmail
+      url: url).success((data, status, headers, config) ->
+      deferred.resolve data
+
+      return
+    ).error (data, status, headers, config) ->
+      deferred.reject status
+
+      toastr.error status, 'Error'
+      return
+
+  @getCreditCardAccounts = (familyId, centerId) ->   
+    url = rootUrl+'api/Account/GetCreditCardAccounts?familyId='+familyId+'&centerId='+centerId
+    $http(
+      method: 'GET'
+      headers:
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+        'X-SkyChildCareToken': $rootScope.currentUserToken
+        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
+        'X-SkyChildCareUserId': $rootScope.currentUserEmail
+      url: url).success((data, status, headers, config) ->
+      deferred.resolve data
+
+      return
+    ).error (data, status, headers, config) ->
+      deferred.reject status
+
+      toastr.error status, 'Error'
+      return
+
+  @createAccount = (obj) ->
+    url = rootUrl + 'api/Account/CreateAccount'
+    $http(
+      method: 'POST'
+      headers:
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+        'X-SkyChildCareToken': $rootScope.currentUserToken
+        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
+        'X-SkyChildCareUserId': $rootScope.currentUserEmail
+      data:
+        'AccountId': obj.accountId
+        'CreatedOn': obj.createdOn
+        'VerificationYN': obj.verificationYN
+        'RecurringAccountYN': obj.recurringAccountYN
+        'GuardianId': obj.guardianId
+        'PayerId': obj.payerId
+        'PayerName': obj.payerName
+        'PayerEmail': obj.payerEmail
+        'AccountName': obj.accountName
+        'BankName': obj.bankName
+        'DisplayNumbers': obj.displayNumbers
+        'FamilyId': familyId
+        'CenterId': centerId
+        'AccountTypeId': obj.accountTypeId
+        'AccountTypeDescription': obj.accountTypeDescription
+        'StatusFlag': obj.statusFlag
+        'FailedDescription': obj.failedDescription
+        'MailingAddress': obj.mailingAddress
+        'MailingCity': obj.mailingCity
+        'MailingState': obj.mailingState
+        'MailingZip': obj.mailingZip
+        'Phone': obj.phone
+        'UserId': obj.userId
+        'AccountNumber': obj.accountNumber
+        'RoutingNumber': obj.routingNumber
+        'UserHostAddress': userHostAddress
+        'DisplayFlag': obj.displayFlag
+      url: url).success((data, status, headers, config) ->
+      deferred.resolve data
+      
+      return
+    ).error (data, status, headers, config) ->
+      deferred.reject status
+      
+      toastr.error status, 'Error'
+      return
+
   @getCreditCardInfo = (subscriberId, customerId) ->   
     url = rootUrl+'api/CreditCard/GetCCAccount/'+subscriberId+'/'+customerId
     $http(

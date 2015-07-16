@@ -109,7 +109,12 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
             if $routeParams.invoiceId
               $scope.goToInvoice(parseInt($routeParams.invoiceId))
 
-      CreditCardService.getCreditCardInfo($scope.subscriberId, customerId).then (response) ->
-        console.log response.data
+    CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
+      $scope.bankAccounts = response.data
+      console.log response.data
 
-      $rootScope.stopSpin()
+    CreditCardService.getCreditCardAccounts(familyId, centerId).then (response) ->
+      $scope.creditCardAccounts = response.data
+      console.log response.data
+
+    $rootScope.stopSpin()
