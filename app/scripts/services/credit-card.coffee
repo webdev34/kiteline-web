@@ -203,33 +203,33 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'AccountId': obj.accountId
-        'CreatedOn': obj.createdOn
-        'VerificationYN': obj.verificationYN
-        'RecurringAccountYN': obj.recurringAccountYN
-        'GuardianId': obj.guardianId
-        'PayerId': obj.payerId
-        'PayerName': obj.payerName
-        'PayerEmail': obj.payerEmail
-        'AccountName': obj.accountName
-        'BankName': obj.bankName
-        'DisplayNumbers': obj.displayNumbers
-        'FamilyId': familyId
-        'CenterId': centerId
-        'AccountTypeId': obj.accountTypeId
-        'AccountTypeDescription': obj.accountTypeDescription
-        'StatusFlag': obj.statusFlag
-        'FailedDescription': obj.failedDescription
-        'MailingAddress': obj.mailingAddress
-        'MailingCity': obj.mailingCity
-        'MailingState': obj.mailingState
-        'MailingZip': obj.mailingZip
-        'Phone': obj.phone
-        'UserId': obj.userId
-        'AccountNumber': obj.accountNumber
-        'RoutingNumber': obj.routingNumber
-        'UserHostAddress': userHostAddress
-        'DisplayFlag': obj.displayFlag
+        'AccountId': null
+        'CreatedOn': new Date()
+        'VerificationYN': "No"
+        'RecurringAccountYN': "No"
+        'GuardianId': null
+        'PayerId': null
+        'PayerName': obj.PayerName
+        'PayerEmail': obj.PayerEmail
+        'AccountName': obj.AccountName
+        'BankName': obj.BankName
+        'DisplayNumbers': null
+        'FamilyId': $rootScope.currentCenter.FamilyId
+        'CenterId': $rootScope.currentCenter.CenterId
+        'AccountTypeId': obj.AccountTypeId
+        'AccountTypeDescription': null
+        'StatusFlag': null
+        'FailedDescription': null
+        'MailingAddress': obj.MailingAddress
+        'MailingCity': obj.MailingCity
+        'MailingState': obj.MailingState
+        'MailingZip': obj.MailingZip
+        'Phone': obj.BusinessPhone
+        'UserId': $rootScope.currentUserEmail
+        'AccountNumber': obj.AccountNumber
+        'RoutingNumber': obj.RoutingNumber
+        'UserHostAddress': null
+        'DisplayFlag': null
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
       

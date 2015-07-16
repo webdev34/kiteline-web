@@ -1,6 +1,6 @@
 .billing-container {
     input[type='text'] {
-        //width: 70%;
+        text-indent: 10px;
         display: block;
         height: 34px;
         padding: 6px 12px;
@@ -169,6 +169,7 @@
     .invoices-breakdown-wrapper {
         input[type='text']{
             padding: inherit;
+            width: 100%;
         }
         .col-md-6 {
             .fa {
@@ -177,6 +178,15 @@
             }
             h4 {
                 margin-top: 23px;
+            }
+            h5{
+                font-family: concourse_t4regular;
+                text-transform: capitalize;
+                font-size: 16px;
+                color: #999;
+            }
+            .control-group{
+                padding-left: 0px;
             }
             .input-group {
                 margin-bottom: 10px;

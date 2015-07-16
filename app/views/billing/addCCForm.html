@@ -2,60 +2,59 @@
 <fieldset>
 
 <!-- Form Name -->
-<h4>Add Credit Card Account</h4>
+<h5>Add Credit Card Account</h5>
 <div class="clearfix"></div>
+
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="MailingAddress">Billing Address</label>
   <div class="controls">
-    <input id="MailingAddress" name="MailingAddress" ng-model="newCC.MailingAddress" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="MailingAddress" name="MailingAddress" ng-model="newCC.MailingAddress" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="MailingCity">Billing City</label>
   <div class="controls">
-    <input id="MailingCity" name="MailingCity" ng-model="newCC.MailingCity" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="MailingCity" name="MailingCity" ng-model="newCC.MailingCity" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="MailingState">Billing State</label>
   <div class="controls">
-    <input id="MailingState" name="MailingState" ng-model="newCC.MailingState" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="MailingState" name="MailingState" ng-model="newCC.MailingState" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="MailingZip">Billing Zip</label>
   <div class="controls">
-    <input id="MailingZip" name="MailingZip" ng-model="newCC.MailingZip" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="MailingZip" name="MailingZip" ng-model="newCC.MailingZip" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
-<div class="clearfix"></div>
-
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="BusinessPhone">Billing Phone</label>
   <div class="controls">
-    <input id="BusinessPhone" name="BusinessPhone" ng-model="newCC.BusinessPhone" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="BusinessPhone" name="BusinessPhone" ng-model="newCC.BusinessPhone" type="text" class="input-xlarge" required=""  mask="(999) 999-9999" clean="true">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
-  <label class="control-label" for="BusinessEmail">Email</label>
+<div class="control-group col-md-4">
+  <label class="control-label" for="PayerEmail">Email</label>
   <div class="controls">
-    <input id="BusinessEmail" name="BusinessEmail" ng-model="newCC.BusinessEmail" type="text" placeholder="" class="input-xlarge">
+    <input id="PayerEmail" name="PayerEmail" ng-model="newCC.PayerEmail" type="text" class="input-xlarge">
     
   </div>
 </div>
@@ -63,10 +62,19 @@
 <div class="clearfix"></div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
+  <label class="control-label" for="CardName">Card Name</label>
+  <div class="controls">
+    <input id="CardName" name="CardName" ng-model="newCC.AccountName" type="text" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group col-md-4">
   <label class="control-label" for="CardHolderName">Card Holder Name</label>
   <div class="controls">
-    <input id="CardHolderName" name="CardHolderName" ng-model="newCC.CardHolderName" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="PayerName" name="PayerName" ng-model="newCC.PayerName" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
@@ -75,35 +83,39 @@
 <div class="control-group col-md-3">
   <label class="control-label" for="ccType">Account Type</label>
   <div class="controls">
-    <select id="ccType" ng-model="newCC.accountTypeId" >
+    <select id="ccType" ng-model="newCC.AccountTypeId" >
       <option value="{{option.id}}" data-ng-repeat="option in creditCardAccountTypes">{{option.name}}</option>
     </select>
   </div>
 </div>
 
+
+<div class="clearfix"></div>
+
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="CardNumber">Card Number</label>
   <div class="controls">
-    <input id="CardNumber" name="CardNumber" ng-model="newCC.CardNumber" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="CardNumber" name="CardNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="ExpirationDate">Expiration Date</label>
   <div class="controls">
-    <input id="ExpirationDate" name="ExpirationDate" ng-model="newCC.ExpirationDate" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="ExpirationDate" name="ExpirationDate" ng-model="newCC.ExpirationDate" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
+<div class="clearfix"></div>
 <!-- Button -->
 <div class="control-group">
   <label class="control-label" for="addCreditCard"></label>
   <div class="controls">
-    <button id="addCreditCard" name="addCreditCard" class="btn btn-primary">Add Card</button>
+    <button id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC');" >Add Card</button>
   </div>
 </div>
 

@@ -29,7 +29,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       name: 'Savings'
     }
   ]
-  
+
   $scope.creditCardAccountTypes = [
     {
       id: '3'
@@ -57,6 +57,14 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.addCreditCard = true
     else
       $scope.addBankAccount = true
+
+  $scope.submitNewAccount = (type) ->
+    if type == 'CC'
+      CreditCardService.createAccount($scope.newCC).then (response) ->
+        console.log response
+    else
+      CreditCardService.createAccount($scope.newBankAccount).then (response) ->
+        console.log response
 
   $scope.goToTab = (tab) ->
     $scope.currentTab = tab
@@ -96,6 +104,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     CenterInfoService.getCenterDetails(centerId).then (response) ->
       $scope.currentCenterDetails = response.data
+      console.log $scope.currentCenterDetails
       $scope.childrenClasses = []
 
     CurbSideService.getAllChildren(centerId, familyId).then (response) ->
@@ -117,6 +126,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     InvoiceService.getOutstandingInvoices(customerId).then (response) ->
       $scope.outstandingInvoices = response.data
+      console.log response.data
       $scope.subscriberId = response.data[0].SubscriberId
 
       angular.forEach $scope.outstandingInvoices, (value, key) ->
@@ -147,4 +157,4 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.creditCardAccounts = response.data
       console.log response.data
 
-    $rootScope.stopSpin()
+      $rootScope.stopSpin()

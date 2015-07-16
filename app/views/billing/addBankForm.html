@@ -2,60 +2,60 @@
 <fieldset>
 
 <!-- Form Name -->
-<h4>Add Bank Account</h4>
+<h5>Add Bank Account</h5>
 
 <div class="clearfix"></div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="MailingAddress">Billing Address</label>
   <div class="controls">
-    <input id="MailingAddress" name="MailingAddress" ng-model="newBankAccount.MailingAddress" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="MailingAddress" name="MailingAddress" ng-model="newBankAccount.MailingAddress" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="MailingCity">Billing City</label>
   <div class="controls">
-    <input id="MailingCity" name="MailingCity" ng-model="newBankAccount.MailingCity" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="MailingCity" name="MailingCity" ng-model="newBankAccount.MailingCity" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="MailingState">Billing State</label>
   <div class="controls">
-    <input id="MailingState" name="MailingState" ng-model="newBankAccount.MailingState" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="MailingState" name="MailingState" ng-model="newBankAccount.MailingState" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="MailingZip">Billing Zip</label>
   <div class="controls">
-    <input id="MailingZip" name="MailingZip" ng-model="newBankAccount.MailingZip" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="MailingZip" name="MailingZip" ng-model="newBankAccount.MailingZip" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
+<div class="control-group col-md-4">
   <label class="control-label" for="BusinessPhone">Billing Phone</label>
   <div class="controls">
-    <input id="BusinessPhone" name="BusinessPhone" ng-model="newBankAccount.BusinessPhone" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="BusinessPhone" name="BusinessPhone" ng-model="newBankAccount.BusinessPhone" type="text" class="input-xlarge" required="" mask="(999) 999-9999" clean="true">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-3">
-  <label class="control-label" for="BusinessEmail">Email</label>
+<div class="control-group col-md-4">
+  <label class="control-label" for="PayerEmail">Email</label>
   <div class="controls">
-    <input id="BusinessEmail" name="BusinessEmail" ng-model="newBankAccount.BusinessEmail" type="text" placeholder="" class="input-xlarge">
+    <input id="PayerEmail" name="PayerEmail" ng-model="newBankAccount.PayerEmail" type="text" class="input-xlarge">
     
   </div>
 </div>
@@ -64,29 +64,19 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="accountHolderName">Bank Account Holder Name</label>
+  <label class="control-label" for="AccountName">Bank Name</label>
   <div class="controls">
-    <input id="CardHolderName" name="AccountHolderName" ng-model="newBankAccount.AccountHolderName" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="AccountName" name="AccountName" ng-model="newBankAccount.AccountName" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
-<div class="clearfix"></div>
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="bankAcctNumber">Bank Account Number</label>
+  <label class="control-label" for="PayerName">Bank Account Holder's Name</label>
   <div class="controls">
-    <input id="bankAcctNumber" name="BankAcctNumber" ng-model="newBankAccount.BankAcctNumber" type="text" placeholder="" class="input-xlarge" required="">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group col-md-4">
-  <label class="control-label" for="verifyBankAcctNumber">Verify Bank Account Number</label>
-  <div class="controls">
-    <input id="verifyBankAcctNumber" name="VerifyBankAcctNumber" ng-model="newBankAccount.VerifyBankAcctNumber" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="PayerName" name="PayerName" ng-model="newBankAccount.PayerName" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
@@ -95,7 +85,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="bankAcctType">Account Type</label>
   <div class="controls">
-    <select id="bankAcctType" ng-model="newBankAccount.accountTypeId" >
+    <select id="bankAcctType" ng-model="newBankAccount.AccountTypeId" >
       <option value="{{option.id}}" data-ng-repeat="option in bankAccountTypes">{{option.name}}</option>
     </select>
   </div>
@@ -105,9 +95,29 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
+  <label class="control-label" for="bankAcctNumber">Bank Account Number</label>
+  <div class="controls">
+    <input id="bankAcctNumber" name="BankAcctNumber" ng-model="newBankAccount.AccountNumber" type="text" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group col-md-4">
+  <label class="control-label" for="verifyBankAcctNumber">Verify Bank Account Number</label>
+  <div class="controls">
+    <input id="verifyBankAcctNumber" name="VerifyBankAcctNumber" ng-model="newBankAccount.VerifyBankAcctNumber" type="text" class="input-xlarge" required="">
+    
+  </div>
+</div>
+
+<div class="clearfix"></div>
+
+<!-- Text input-->
+<div class="control-group col-md-4">
   <label class="control-label" for="RoutingNumber">Routing Number</label>
   <div class="controls">
-    <input id="RoutingNumber" name="RoutingNumber" ng-model="newBankAccount.RoutingNumber" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="RoutingNumber" name="RoutingNumber" ng-model="newBankAccount.RoutingNumber" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
@@ -117,7 +127,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="verifyRoutingNumber">Verify Routing Number</label>
   <div class="controls">
-    <input id="VerifyRoutingNumber" name="VerifyRoutingNumber" ng-model="newBankAccount.VerifyRoutingNumber" type="text" placeholder="" class="input-xlarge" required="">
+    <input id="VerifyRoutingNumber" name="VerifyRoutingNumber" ng-model="newBankAccount.VerifyRoutingNumber" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
@@ -128,7 +138,7 @@
 <div class="control-group">
   <label class="control-label" for="addCreditCard"></label>
   <div class="controls">
-    <button id="addCreditCard" name="addCreditCard" class="btn btn-primary">Add Card</button>
+    <button id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('Bank');" >Add Card</button>
   </div>
 </div>
 
