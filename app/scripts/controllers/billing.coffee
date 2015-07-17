@@ -1,5 +1,6 @@
 'use strict'
 angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService) ->
+  $rootScope.pageTitle = 'Billing'
   $rootScope.startSpin()
   $rootScope.pageTitle = 'Billing'
   $rootScope.isLoginPage = false
@@ -60,6 +61,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
   $scope.submitNewAccount = (type) ->
     if type == 'CC'
+      $scope.newCC.ExpirationDate = $scope.exp_month+'/'+$scope.exp_year
       CreditCardService.createAccount($scope.newCC).then (response) ->
         console.log response
     else
@@ -68,6 +70,16 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
   $scope.goToTab = (tab) ->
     $scope.currentTab = tab
+
+  $scope.currentCardType = (type) ->
+    if type == 'Visa'
+      $scope.newCC.AccountTypeId = 3
+    else if type == 'Mastercard'
+      $scope.newCC.AccountTypeId = 4
+    else if type == 'Discover'
+      $scope.newCC.AccountTypeId = 5
+    else if type == 'American Express'
+      $scope.newCC.AccountTypeId = 6
 
   $scope.getPastPayments = () ->
     PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId).then (response) ->

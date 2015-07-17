@@ -38,6 +38,11 @@ body.loginPage {
     }
     form {
         margin-top: 25px;
+        &.ng-invalid-email{
+            .fa-envelope-o{
+                color: white;
+            }
+        }
     }
     .form-group {
         position: relative;

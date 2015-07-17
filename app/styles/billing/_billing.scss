@@ -1,5 +1,6 @@
 .billing-container {
-    input[type='text'] {
+    input[type='text'],
+    input[type='email'] {
         text-indent: 10px;
         display: block;
         height: 34px;
@@ -167,9 +168,47 @@
     // PAYMENT ACCOUNTS & INVOICES CSS //
     .payment-accounts-breakdown-wrapper,
     .invoices-breakdown-wrapper {
-        input[type='text']{
+        form{
+            &.ng-invalid{
+                button{
+                    pointer-events: none;
+                    cursor: not-allowed;
+                    filter: alpha(opacity=65);
+                    -webkit-box-shadow: none;
+                    box-shadow: none;
+                    opacity: .65;
+                }
+            }
+
+        }
+        input[type='text'],
+        input[type='email']{
             padding: inherit;
             width: 100%;
+            &.ng-valid-cc-number,
+            &.ng-valid-cc-exp-month,
+            &.ng-valid-cc-exp-year,
+            &.ng-valid.ng-valid-mask,
+            &.ng-dirty.ng-valid-email{
+                border-color: green;
+                outline-color: green;
+            }
+            &.ng-dirty.ng-invalid-cc-number,
+            &.ng-dirty.ng-invalid-cc-exp-month,
+            &.ng-dirty.ng-invalid-cc-exp-year,
+            &.ng-dirty.ng-invalid,
+            &.ng-dirty.ng-invalid-required{
+                border-color: red;
+                outline-color: red;
+            }
+            &.exp-dates{
+                width: 25%;
+            }
+        }
+        .date-split{
+            font-size: 24px;
+            color: #999;
+            margin: 0 5px;
         }
         .col-md-6 {
             .fa {
@@ -187,6 +226,28 @@
             }
             .control-group{
                 padding-left: 0px;
+                .cc-type{
+                    font-weight: bolder;
+                    font-size: 17px;
+                    margin-top: 5px;
+                }
+                .fa{
+                    margin: 0px;
+                    margin-left: 10px;
+                    font-size: 35px;
+                    &.fa-cc-amex{
+                        color: #2489c8;
+                    }
+                    &.fa-cc-discover{
+                        color: orange;
+                    }
+                    &.fa-cc-visa{
+                        color: darkblue;
+                    }
+                    &.fa-cc-mastercard{
+                        color: gold;
+                    }
+                }
             }
             .input-group {
                 margin-bottom: 10px;

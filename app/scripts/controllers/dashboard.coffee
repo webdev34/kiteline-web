@@ -1,5 +1,6 @@
 'use strict'
 angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService) ->
+  $rootScope.pageTitle = 'Dashboard'
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
   $scope.showItemsMenu = false

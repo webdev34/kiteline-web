@@ -13,6 +13,7 @@ angular.module('kiteLineApp', [
   'ngMask'
   '720kb.datepicker'
   'angularSpinner'
+  'credit-cards'
 
 ]).config ($routeProvider, ScrollBarsProvider) ->
   $routeProvider.when('/',

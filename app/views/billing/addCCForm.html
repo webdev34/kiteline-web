@@ -1,4 +1,4 @@
-<form class="form-horizontal">
+<form class="form-horizontal" name="addCCForm">
 <fieldset>
 
 <!-- Form Name -->
@@ -9,7 +9,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="MailingAddress">Billing Address</label>
   <div class="controls">
-    <input id="MailingAddress" name="MailingAddress" ng-model="newCC.MailingAddress" type="text" class="input-xlarge" required="">
+    <input data-ng-change="ccValidationCheck();" id="MailingAddress" name="MailingAddress" ng-model="newCC.MailingAddress" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
@@ -18,7 +18,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="MailingCity">Billing City</label>
   <div class="controls">
-    <input id="MailingCity" name="MailingCity" ng-model="newCC.MailingCity" type="text" class="input-xlarge" required="">
+    <input data-ng-change="ccValidationCheck();" id="MailingCity" name="MailingCity" ng-model="newCC.MailingCity" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
@@ -27,7 +27,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="MailingState">Billing State</label>
   <div class="controls">
-    <input id="MailingState" name="MailingState" ng-model="newCC.MailingState" type="text" class="input-xlarge" required="">
+    <input data-ng-change="ccValidationCheck();" id="MailingState" name="MailingState" ng-model="newCC.MailingState" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
@@ -36,7 +36,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="MailingZip">Billing Zip</label>
   <div class="controls">
-    <input id="MailingZip" name="MailingZip" ng-model="newCC.MailingZip" type="text" class="input-xlarge" required="">
+    <input data-ng-change="ccValidationCheck();" id="MailingZip" name="MailingZip" ng-model="newCC.MailingZip" type="text" class="input-xlarge" required=""  maxlength="5">
     
   </div>
 </div>
@@ -45,7 +45,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="BusinessPhone">Billing Phone</label>
   <div class="controls">
-    <input id="BusinessPhone" name="BusinessPhone" ng-model="newCC.BusinessPhone" type="text" class="input-xlarge" required=""  mask="(999) 999-9999" clean="true">
+    <input data-ng-change="ccValidationCheck();" id="BusinessPhone" name="BusinessPhone" ng-model="newCC.BusinessPhone" type="text" class="input-xlarge" required=""  mask="(999) 999-9999" clean="true">
     
   </div>
 </div>
@@ -54,7 +54,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="PayerEmail">Email</label>
   <div class="controls">
-    <input id="PayerEmail" name="PayerEmail" ng-model="newCC.PayerEmail" type="text" class="input-xlarge">
+    <input data-ng-change="ccValidationCheck();" id="PayerEmail" name="PayerEmail" ng-model="newCC.PayerEmail" type="email" class="input-xlarge" >
     
   </div>
 </div>
@@ -65,7 +65,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="CardName">Card Name</label>
   <div class="controls">
-    <input id="CardName" name="CardName" ng-model="newCC.AccountName" type="text" class="input-xlarge" required="">
+    <input data-ng-change="ccValidationCheck();" id="CardName" name="CardName" ng-model="newCC.AccountName" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
@@ -74,18 +74,8 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="CardHolderName">Card Holder Name</label>
   <div class="controls">
-    <input id="PayerName" name="PayerName" ng-model="newCC.PayerName" type="text" class="input-xlarge" required="">
+    <input data-ng-change="ccValidationCheck();" id="PayerName" name="PayerName" ng-model="newCC.PayerName" type="text" class="input-xlarge" required="">
     
-  </div>
-</div>
-
-<!-- Drop Down-->
-<div class="control-group col-md-3">
-  <label class="control-label" for="ccType">Account Type</label>
-  <div class="controls">
-    <select id="ccType" ng-model="newCC.AccountTypeId" >
-      <option value="{{option.id}}" data-ng-repeat="option in creditCardAccountTypes">{{option.name}}</option>
-    </select>
   </div>
 </div>
 
@@ -94,19 +84,35 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="CardNumber">Card Number</label>
+  <label class="control-label" for="AccountNumber">Card Number</label>
   <div class="controls">
-    <input id="CardNumber" name="CardNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="">
+    <input data-ng-change="ccValidationCheck();" id="AccountNumber" name="AccountNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType"  >
     
   </div>
 </div>
+
 
 <!-- Text input-->
 <div class="control-group col-md-4">
   <label class="control-label" for="ExpirationDate">Expiration Date</label>
   <div class="controls">
-    <input id="ExpirationDate" name="ExpirationDate" ng-model="newCC.ExpirationDate" type="text" class="input-xlarge" required="">
-    
+    <input data-ng-change="ccValidationCheck();" ng-model="exp_month" cc-exp-month type="text" class="input-xlarge exp-dates pull-left" required="" />
+    <span class="pull-left date-split"> / </span>
+    <input data-ng-change="ccValidationCheck();" ng-model="exp_year" cc-exp-year type="text" class="input-xlarge exp-dates" required="" />
+  </div>
+</div>
+
+
+<!-- Drop Down-->
+<div class="control-group col-md-4">
+  <label class="control-label" for="ccType">Account Type</label>
+  <div class="controls">
+      <span class="pull-left cc-type">{{addCCForm.AccountNumber.$ccType}}</span>
+
+      <i ng-show="addCCForm.AccountNumber.$ccType == 'American Express'" class="fa fa-cc-amex"></i>
+      <i ng-show="addCCForm.AccountNumber.$ccType == 'Discover'" class="fa fa-cc-discover"></i>
+      <i ng-show="addCCForm.AccountNumber.$ccType == 'Visa'" class="fa fa-cc-visa"></i>
+      <i ng-show="addCCForm.AccountNumber.$ccType == 'MasterCard'" class="fa fa-cc-mastercard"></i>
   </div>
 </div>
 
@@ -115,7 +121,7 @@
 <div class="control-group">
   <label class="control-label" for="addCreditCard"></label>
   <div class="controls">
-    <button id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC');" >Add Card</button>
+    <button id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC'); currentCardType(addCCForm.AccountNumber.$ccType);" >Add Card</button>
   </div>
 </div>
 
