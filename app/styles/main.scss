@@ -22,6 +22,13 @@ html {
         padding: 0;
         background: #f6f6f6;
         font-family: concourse_t4regular;
+        button{
+            .fa{
+                font-size: inherit !important;
+                color: white !important;
+                margin: 0px !important;
+            }
+        }
         .header {
             margin-bottom: 5px;
             background-color: #4e99bd;

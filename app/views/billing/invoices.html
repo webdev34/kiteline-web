@@ -92,7 +92,10 @@
 			        <th>Download</th>
 		        </tr>
 		    </thead>
-		    <tbody>
+		    <tbody ng-show="noResultsInvoices">
+					<tr ng-animate="'animate'" ><td colspan="7"><span>No Results</span></td></tr>
+			</tbody>
+		    <tbody ng-hide="noResultsInvoices">
 		    	<tr ng-animate="'animate'" data-ng-repeat="transaction in historicalTransactions">
 		        <td>
 		        	{{transaction.PaymentDate | date}}

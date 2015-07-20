@@ -1,5 +1,7 @@
-<form class="form-horizontal">
+<form class="form-horizontal addBankForm" ng-class="{'valid-routing': matchingRoutingNum, 'invalid-routing': !matchingRoutingNum, 'valid-banking' : matchingBankAccount, 'invalid-banking' : !matchingBankAccount }" name="addBankForm" id="addBankForm" novalidate>
 <fieldset>
+{{addBankForm.$pristine}}
+
 
 <!-- Form Name -->
 <h5>Add Bank Account</h5>
@@ -37,7 +39,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="MailingZip">Billing Zip</label>
   <div class="controls">
-    <input id="MailingZip" name="MailingZip" ng-model="newBankAccount.MailingZip" type="text" class="input-xlarge" required="">
+    <input id="MailingZip" name="MailingZip" ng-model="newBankAccount.MailingZip" type="text" class="input-xlarge" required="" maxlength="5">
     
   </div>
 </div>
@@ -55,7 +57,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="PayerEmail">Email</label>
   <div class="controls">
-    <input id="PayerEmail" name="PayerEmail" ng-model="newBankAccount.PayerEmail" type="text" class="input-xlarge">
+    <input id="PayerEmail" name="PayerEmail" ng-model="newBankAccount.PayerEmail" type="email" class="input-xlarge">
     
   </div>
 </div>
@@ -97,7 +99,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="bankAcctNumber">Bank Account Number</label>
   <div class="controls">
-    <input id="bankAcctNumber" name="BankAcctNumber" ng-model="newBankAccount.AccountNumber" type="text" class="input-xlarge" required="">
+    <input id="bankAcctNumber" name="BankAcctNumber" ng-model="newBankAccount.AccountNumber" type="text" class="input-xlarge" required="" ng-change="verifyBanking('Account Number');" >
     
   </div>
 </div>
@@ -106,7 +108,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="verifyBankAcctNumber">Verify Bank Account Number</label>
   <div class="controls">
-    <input id="verifyBankAcctNumber" name="VerifyBankAcctNumber" ng-model="newBankAccount.VerifyBankAcctNumber" type="text" class="input-xlarge" required="">
+    <input id="verifyBankAcctNumber" name="VerifyBankAcctNumber" ng-model="newBankAccount.VerifyBankAcctNumber" type="text" class="input-xlarge" required="" ng-change="verifyBanking('Account Number');">
     
   </div>
 </div>
@@ -117,7 +119,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="RoutingNumber">Routing Number</label>
   <div class="controls">
-    <input id="RoutingNumber" name="RoutingNumber" ng-model="newBankAccount.RoutingNumber" type="text" class="input-xlarge" required="">
+    <input id="RoutingNumber" name="RoutingNumber" ng-model="newBankAccount.RoutingNumber" type="text" class="input-xlarge" required="" maxlength="9" ng-change="verifyBanking('Routing Number');">
     
   </div>
 </div>
@@ -127,7 +129,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="verifyRoutingNumber">Verify Routing Number</label>
   <div class="controls">
-    <input id="VerifyRoutingNumber" name="VerifyRoutingNumber" ng-model="newBankAccount.VerifyRoutingNumber" type="text" class="input-xlarge" required="">
+    <input id="VerifyRoutingNumber" name="VerifyRoutingNumber" ng-model="newBankAccount.VerifyRoutingNumber" type="text" class="input-xlarge" required="" maxlength="9" ng-change="verifyBanking('Routing Number');">
     
   </div>
 </div>
@@ -138,7 +140,10 @@
 <div class="control-group">
   <label class="control-label" for="addCreditCard"></label>
   <div class="controls">
-    <button id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('Bank');" >Add Card</button>
+    <button id="addBankAccount" name="addBankAccount" class="btn btn-primary" ng-click="submitNewAccount('Bank');" ><i class="fa fa-plus"></i> 
+      Add Card
+    </button>
+    <button id="cancelCreditCard" name="addCreditCard" class="btn btn-danger" ng-click="resetAccountForm('Bank', addBankForm);" ><i class="fa fa-times"></i> Cancel</button>
   </div>
 </div>
 

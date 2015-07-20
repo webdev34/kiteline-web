@@ -5,6 +5,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $rootScope.pageTitle = 'Billing'
   $rootScope.isLoginPage = false
   $scope.noResults = false
+  $scope.noResultsInvoices = false
   $scope.currentTab = 'Overview'
   $scope.invoicesArray = []
   $scope.invoiceGrandTotal = 0
@@ -12,8 +13,11 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.credit_card_auto_pay = false
   $scope.addBankAccount = false
   $scope.addCreditCard = false
+  $scope.matchingBankAccount = false
+  $scope.matchingRoutingNum = false
   $scope.newBankAccount = {}
   $scope.newCC = {}
+  $scope.expireDates = {}
   $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
   $scope.billDates = {}
   $scope.billDates.transactionStartDate = '1/01/2014'
@@ -50,8 +54,20 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     }
   ]
 
-
   LogInService.isLoggedIn()
+
+  $scope.verifyBanking = (type) ->
+    if type is 'Routing Number' 
+      if $scope.newBankAccount.RoutingNumber == $scope.newBankAccount.VerifyRoutingNumber and $scope.newBankAccount.VerifyRoutingNumber.length == 9
+        $scope.matchingRoutingNum = true
+      else
+        $scope.matchingRoutingNum = false
+    else
+      if $scope.newBankAccount.AccountNumber == $scope.newBankAccount.VerifyBankAcctNumber and $scope.newBankAccount.VerifyBankAcctNumber.length > 5
+        $scope.matchingBankAccount = true
+      else
+        $scope.matchingBankAccount = false
+
 
   $scope.addAccount = (type) ->
     if type == 'CC'
@@ -59,14 +75,27 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     else
       $scope.addBankAccount = true
 
+  $scope.resetAccountForm = (type, form) ->
+    if type == 'CC'
+      $scope.addCreditCard = false
+      $scope.newCC = {}
+      $scope.newCC.PayerEmail = ''
+      $scope.expireDates = {}
+      $scope.expireDates.month = ''
+      form.$setPristine();
+    else
+      $scope.addBankAccount = false
+      $scope.newBankAccount = {}
+      $scope.newBankAccount.PayerEmail = ''
+      form.$setPristine();
+
   $scope.submitNewAccount = (type) ->
     if type == 'CC'
-      $scope.newCC.ExpirationDate = $scope.exp_month+'/'+$scope.exp_year
+      $scope.newCC.ExpirationDate = $scope.expireDates.month+'/'+$scope.expireDates.year
       CreditCardService.createAccount($scope.newCC).then (response) ->
-        console.log response
     else
       CreditCardService.createAccount($scope.newBankAccount).then (response) ->
-        console.log response
+
 
   $scope.goToTab = (tab) ->
     $scope.currentTab = tab
@@ -86,11 +115,15 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.pastTransactions  = response
 
   $scope.getTransactionsByDate = (type) ->
-    $scope.noResults = false
     if type == 'Historical'
+      $scope.noResultsInvoices = false
       PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId, $scope.billDates.historicalStartDate, $scope.billDates.historicalEndDate).then (response) ->
         $scope.historicalTransactions  = response.data
+
+        if $scope.historicalTransactions.length == 0
+          $scope.noResultsInvoices = true
     else
+      $scope.noResults = false
       PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId, $scope.billDates.transactionStartDate, $scope.billDates.transactionEndDate).then (response) ->
         $scope.pastTransactions  = response.data
 
@@ -116,7 +149,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     CenterInfoService.getCenterDetails(centerId).then (response) ->
       $scope.currentCenterDetails = response.data
-      console.log $scope.currentCenterDetails
       $scope.childrenClasses = []
 
     CurbSideService.getAllChildren(centerId, familyId).then (response) ->
@@ -138,7 +170,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     InvoiceService.getOutstandingInvoices(customerId).then (response) ->
       $scope.outstandingInvoices = response.data
-      console.log response.data
       $scope.subscriberId = response.data[0].SubscriberId
 
       angular.forEach $scope.outstandingInvoices, (value, key) ->
@@ -163,10 +194,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
       $scope.bankAccounts = response.data
-      console.log response.data
 
     CreditCardService.getCreditCardAccounts(familyId, centerId).then (response) ->
       $scope.creditCardAccounts = response.data
-      console.log response.data
 
       $rootScope.stopSpin()

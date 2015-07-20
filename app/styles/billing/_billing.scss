@@ -170,7 +170,7 @@
     .invoices-breakdown-wrapper {
         form{
             &.ng-invalid{
-                button{
+                button.btn-primary{
                     pointer-events: none;
                     cursor: not-allowed;
                     filter: alpha(opacity=65);
@@ -179,7 +179,47 @@
                     opacity: .65;
                 }
             }
-
+            &.ng-valid.invalid-banking.addBankForm,
+            &.ng-valid.invalid-routing.addBankForm,
+            &.ng-invalid.invalid-banking.addBankForm,
+            &.ng-invalid.invalid-routing.addBankForm{
+                button.btn-primary{
+                    pointer-events: none;
+                    cursor: not-allowed;
+                    filter: alpha(opacity=65);
+                    -webkit-box-shadow: none;
+                    box-shadow: none;
+                    opacity: .65;
+                }
+            }           
+            &.valid-banking{
+                #verifyBankAcctNumber,
+                #bankAcctNumber{
+                    border-color: green;
+                    outline-color: green;
+                }
+            }
+            &.valid-routing{
+                #VerifyRoutingNumber,
+                #RoutingNumber{
+                    border-color: green;
+                    outline-color: green;
+                }
+            }
+            &.invalid-banking{
+                #verifyBankAcctNumber.ng-dirty,
+                #bankAcctNumber.ng-dirty{
+                    border-color: red;
+                    outline-color: red;
+                }
+            }
+            &.invalid-routing{
+                #VerifyRoutingNumber.ng-dirty,
+                #RoutingNumber.ng-dirty{
+                    border-color: red;
+                    outline-color: red;
+                }
+            }            
         }
         input[type='text'],
         input[type='email']{
