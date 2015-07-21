@@ -15,6 +15,9 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   #console.log StorageService.getItem('currentCenter')
   # StorageService.deleteLocalStorage();
 
+  $scope.payOutstandingBalance = ->
+    ngDialog.open template: '/views/modals/pay-outstanding-balance.html'
+
   $scope.changeActivePickupContact = (activePickupContact) ->
     $scope.activePickupContact = activePickupContact
 

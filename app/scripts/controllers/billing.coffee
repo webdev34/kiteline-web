@@ -1,8 +1,7 @@
 'use strict'
-angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService) ->
+angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService, ngDialog) ->
   $rootScope.pageTitle = 'Billing'
   $rootScope.startSpin()
-  $rootScope.pageTitle = 'Billing'
   $rootScope.isLoginPage = false
   $scope.noResults = false
   $scope.noResultsInvoices = false
@@ -24,6 +23,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.billDates.transactionEndDate = '7/01/2015'
   $scope.billDates.historicalStartDate = '2/01/2015'
   $scope.billDates.historicalEndDate = '7/30/2015'
+  
+  LogInService.isLoggedIn()
+
   $scope.bankAccountTypes = [
     {
       id: '1'
@@ -54,7 +56,15 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     }
   ]
 
-  LogInService.isLoggedIn()
+  $scope.payOutstandingBalance = ->
+    ngDialog.open template: '/views/modals/pay-outstanding-balance.html'
+
+  $scope.payInvoice = (invoice) ->
+    $rootScope.viewInvoice = $filter('filter')($scope.invoicesArray, (d) -> d.InvoiceId == invoice.InvoiceId)[0]
+    ngDialog.open template: '/views/modals/pay-invoice.html'
+
+  $scope.payOutstandingInvoice = (invoice) ->
+    ngDialog.open template: '/views/modals/pay-outstanding-invoice.html'
 
   $scope.verifyBanking = (type) ->
     if type is 'Routing Number' 
@@ -67,7 +77,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
         $scope.matchingBankAccount = true
       else
         $scope.matchingBankAccount = false
-
 
   $scope.addAccount = (type) ->
     if type == 'CC'

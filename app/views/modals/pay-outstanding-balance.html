@@ -1,0 +1,35 @@
+<div class="overlay-container">
+ 	<section class="overlay-right-col">
+ 		<h3>Payment Amount Due: <span class="orange">{{currentCenter.OutstandingBalance | currency}}</span></h3>
+
+		<!-- Drop Down-->
+		<div class="control-group col-md-4">
+		  <label class="control-label" for="bankDropDown">Saved Bank Accounts</label>
+		  <div class="controls">
+		    <select id="bankDropDown" ng-model="selectedPayment" >
+		      <option value="{{option.id}}" data-ng-repeat="account in bankAccounts">{{account.BankName}}</option>
+		    </select>
+		  </div>
+		</div>
+
+		<!-- Drop Down-->
+		<div class="control-group col-md-4">
+		  <label class="control-label" for="creditCardDropDown">Saved Credit Cards</label>
+		  <div class="controls">
+		    <select id="creditCardDropDown" ng-model="selectedPayment" >
+		      <option value="{{option.id}}" data-ng-repeat="account in creditCardAccounts">{{account.AccountName}}</option>
+		    </select>
+		  </div>
+		</div>
+
+		<div class="clearfix"></div>
+
+		<!-- Drop Down-->
+		<div class="control-group col-md-12">
+		  <label class="control-label" for="">Notes</label>
+		  <div class="controls">
+		    <textarea id="paymentNotes" ng-model="paymentNotes" class="col-md-12" ></textarea>
+		  </div>
+		</div>
+	</section>
+<div>

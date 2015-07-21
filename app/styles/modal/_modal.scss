@@ -12,6 +12,7 @@ body {
                 top: 40px;
                 .overlay-container {
                     height: 100%;
+                    color: white;
                     .overlay-left-col {
                         font-family: "concourse_t4regular";
                         float: left;
@@ -88,11 +89,21 @@ body {
                         display: block;
                         margin: auto;
                         padding: 10px;
+                        textarea{
+                            height: 150px;
+                        }
+                        .control-group{
+                            margin-top: 10px;
+                        }
                         h3 {
                             font-family: "concourse_t4regular";
                             color: white;
-                            text-align: center;
+                            //text-align: center;
                             font-size: 21px;
+                            margin-left: 15px;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            width: 94%;
                         }
                         .glyphicon, .fa {
                             color: white;

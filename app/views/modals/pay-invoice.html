@@ -1,0 +1,28 @@
+<div class="overlay-container" >
+ 	<section class="overlay-right-col">
+ 		<h3>Payment Amount Due: <span class="orange">{{viewInvoice.Amount | currency}}</span> <span class="pull-right">{{viewInvoice.CreatedOn | date}}</span></h3>
+		<!-- Drop Down-->
+		<div class="control-group col-md-4">
+		  <label class="control-label" for="bankDropDown">Saved Bank Accounts</label>
+		  <div class="controls">
+		    <select id="bankDropDown" ng-model="selectedPayment" >
+		      <option value="{{option.id}}" data-ng-repeat="account in bankAccounts">{{account.BankName}}</option>
+		    </select>
+		  </div>
+		</div>
+
+		<!-- Drop Down-->
+		<div class="control-group col-md-4">
+		  <label class="control-label" for="creditCardDropDown">Saved Credit Cards</label>
+		  <div class="controls">
+		    <select id="creditCardDropDown" ng-model="selectedPayment" >
+		      <option value="{{option.id}}" data-ng-repeat="account in creditCardAccounts">{{account.AccountName}}</option>
+		    </select>
+		  </div>
+		</div>
+
+		{{viewInvoice.ItemTypeName}}
+		{{viewInvoice.ChildName}}
+		{{viewInvoice.LineItemNotes}}
+	</section>
+<div>
