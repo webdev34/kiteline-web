@@ -57,14 +57,20 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   ]
 
   $scope.payOutstandingBalance = ->
-    ngDialog.open template: '/views/modals/pay-outstanding-balance.html'
+    ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
 
   $scope.payInvoice = (invoice) ->
     $rootScope.viewInvoice = $filter('filter')($scope.invoicesArray, (d) -> d.InvoiceId == invoice.InvoiceId)[0]
-    ngDialog.open template: '/views/modals/pay-invoice.html'
+    ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-invoice.html'
+    if typeof $scope.viewInvoice == 'undefined'
+      angular.forEach $scope.invoicesArray, (value, key) ->
+        if value instanceof Array
+          if value[0].InvoiceId == invoice.InvoiceId
+            $scope.viewInvoiceArray = $scope.invoicesArray[key]
+            $scope.goToInvoiceFromArrayItem($scope.invoicesArray[key][0])
 
   $scope.payOutstandingInvoice = (invoice) ->
-    ngDialog.open template: '/views/modals/pay-outstanding-invoice.html'
+    ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-invoice.html'
 
   $scope.verifyBanking = (type) ->
     if type is 'Routing Number' 
@@ -105,7 +111,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     else
       CreditCardService.createAccount($scope.newBankAccount).then (response) ->
 
-
   $scope.goToTab = (tab) ->
     $scope.currentTab = tab
 
@@ -140,8 +145,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
           $scope.noResults = true
 
   $scope.goToInvoiceFromArrayItem = (obj) ->
-    $scope.viewInvoice = obj
-    $scope.lineItemId = obj.LineItemId
+    $rootScope.viewInvoice = obj
+    $rootScope.lineItemId = obj.LineItemId
 
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
@@ -153,9 +158,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     customerId = $rootScope.currentCenter.CustomerId
     $scope.outstandingBalance = $rootScope.currentCenter.OutstandingBalance
     
-    if $route.current.$$route.originalPath == "/invoices/outstanding-balance"
-      $scope.goToViewOutstandingBalance()
-
     CenterInfoService.getCenterDetails(centerId).then (response) ->
       $scope.currentCenterDetails = response.data
       $scope.childrenClasses = []
