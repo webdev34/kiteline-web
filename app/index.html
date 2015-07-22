@@ -32,7 +32,7 @@
         <div class="inner-kiteline-content-container" ng-view></div>
     </div>
     <span us-spinner="{shadow: true}" spinner-key="spinner-1"></span>
-    <footer ng-hide="isLoginPage" class="footer" ng-include src="'views/footer.html'"></footer>
+    <footer ng-hide="isLoginPage" ng-show="!isLoading" class="footer" ng-include src="'views/footer.html'"></footer>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){

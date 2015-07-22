@@ -46,7 +46,7 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
       toastr.error status, 'Error'
       return
 
-  @createAccount = (accountId, createdOn, verificationYN, recurringAccountYN, guardianId, payerId, payerName, payerEmail, accountName, bankName, displayNumbers, familyId, centerId, accountTypeId, accountTypeDescription, statusFlag, failedDescription, mailingAddress, mailingCity, mailingState, mailingZip, phone, userId, accountNumber, routingNumber, userHostAddress, displayFlag) ->
+  @createAccount = (obj) ->
     url = rootUrl + 'api/Account/CreateAccount'
     $http(
       method: 'POST'
@@ -57,33 +57,33 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'AccountId': accountId
-        'CreatedOn': createdOn
-        'VerificationYN': verificationYN
-        'RecurringAccountYN': recurringAccountYN
-        'GuardianId': guardianId
-        'PayerId': payerId
-        'PayerName': payerName
-        'PayerEmail': payerEmail
-        'AccountName': accountName
-        'BankName': bankName
-        'DisplayNumbers': displayNumbers
-        'FamilyId': familyId
-        'CenterId': centerId
-        'AccountTypeId': accountTypeId
-        'AccountTypeDescription': accountTypeDescription
-        'StatusFlag': statusFlag
-        'FailedDescription': failedDescription
-        'MailingAddress': mailingAddress
-        'MailingCity': mailingCity
-        'MailingState': mailingState
-        'MailingZip': mailingZip
-        'Phone': phone
-        'UserId': userId
-        'AccountNumber': accountNumber
-        'RoutingNumber': routingNumber
-        'UserHostAddress': userHostAddress
-        'DisplayFlag': displayFlag
+        'AccountId': $rootScope.newAccountId
+        'CreatedOn': new Date()
+        'VerificationYN': "No"
+        'RecurringAccountYN': "No"
+        'GuardianId': $rootScope.guardians[0].GuardianId
+        'PayerId': obj.PayEmail
+        'PayerName': obj.PayerName
+        'PayerEmail': obj.PayerEmail
+        'AccountName': obj.AccountName
+        'BankName': obj.BankName
+        'DisplayNumbers': null
+        'FamilyId': $rootScope.currentCenter.FamilyId
+        'CenterId': $rootScope.currentCenter.CenterId
+        'AccountTypeId': obj.AccountTypeId
+        'AccountTypeDescription': null
+        'StatusFlag': null
+        'FailedDescription': null
+        'MailingAddress': obj.MailingAddress
+        'MailingCity': obj.MailingCity
+        'MailingState': obj.MailingState
+        'MailingZip': obj.MailingZip
+        'Phone': obj.BusinessPhone
+        'UserId': $rootScope.currentUserEmail
+        'AccountNumber': obj.AccountNumber
+        'RoutingNumber': obj.RoutingNumber
+        'UserHostAddress': null
+        'DisplayFlag': 1
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
       

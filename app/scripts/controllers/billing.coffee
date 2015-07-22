@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService, AccountService, ngDialog) ->
+angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService, AccountService, GuardianService, ngDialog) ->
   $rootScope.pageTitle = 'Billing'
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
@@ -116,9 +116,11 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.submitNewAccount = (type) ->
     if type == 'CC'
       $scope.newCC.ExpirationDate = $scope.expireDates.month+'/'+$scope.expireDates.year
-      CreditCardService.createAccount($scope.newCC).then (response) ->
+      AccountService.getAccounts($scope.familyId, $scope.centerId).then (response) ->
+        $rootScope.newAccountId = response.data[response.data.length-1].AccountId+1
+        CreditCardService.addCreditCard($scope.newCC).then (response) ->
     else
-      CreditCardService.createAccount($scope.newBankAccount).then (response) ->
+      AccountService.createAccount($scope.newBankAccount).then (response) ->
 
   $scope.deleteBankAccount = (accountId) ->
     AccountService.deleteAccount($scope.familyId, $scope.centerId, accountId).then (response) ->
@@ -186,6 +188,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.currentCenterDetails = response.data
       $scope.childrenClasses = []
 
+    GuardianService.getAllGuardians($scope.familyId).then (response) ->
+      $rootScope.guardians = response.data
+
     CurbSideService.getAllChildren($scope.centerId, $scope.familyId).then (response) ->
       $scope.userChildren = response.data
 
@@ -205,7 +210,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     InvoiceService.getOutstandingInvoices($scope.customerId).then (response) ->
       $scope.outstandingInvoices = response.data
-      $scope.subscriberId = response.data[0].SubscriberId
+      $rootScope.subscriberId = response.data[0].SubscriberId
 
       angular.forEach $scope.outstandingInvoices, (value, key) ->
         InvoiceDetailService.getInvoiceDetail(value.InvoiceId).then (response) ->

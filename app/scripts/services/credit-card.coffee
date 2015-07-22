@@ -126,21 +126,21 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'AppId': obj
-        'SubscriberId': obj        
-        'CustomerId': obj
-        'userId': obj
-        'LegalBusinessName': obj
-        'MailingAddress': obj
-        'MailingCity': obj
-        'MailingState': obj  
-        'MailingZip': obj
-        'BusinessPhone': obj
-        'BusinessEmail': obj
-        'CardHolderName': obj
-        'CardNumber': obj
-        'ExpirationDate': obj  
-        'BillingZip': obj    
+        'AppId': 3
+        'SubscriberId': $rootScope.subscriberId        
+        'CustomerId': $rootScope.currentCenter.CustomerId
+        'userId': $rootScope.currentUserEmail
+        'LegalBusinessName': obj.PayerName
+        'MailingAddress': obj.MailingAddress
+        'MailingCity': obj.MailingCity
+        'MailingState': obj.MailingState
+        'MailingZip': obj.MailingZip
+        'BusinessPhone': obj.BusinessPhone
+        'BusinessEmail': obj.PayEmail
+        'CardHolderName': obj.PayerName
+        'CardNumber': obj.AccountNumber
+        'ExpirationDate': obj.ExpirationDate
+        'BillingZip': obj.MailingZip    
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
@@ -189,54 +189,6 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
-      return
-
-  @createAccount = (obj) ->
-    url = rootUrl + 'api/Account/CreateAccount'
-    $http(
-      method: 'POST'
-      headers:
-        'Content-Type': 'application/json'
-        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
-        'X-SkyChildCareToken': $rootScope.currentUserToken
-        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
-        'X-SkyChildCareUserId': $rootScope.currentUserEmail
-      data:
-        'AccountId': null
-        'CreatedOn': new Date()
-        'VerificationYN': "No"
-        'RecurringAccountYN': "No"
-        'GuardianId': null
-        'PayerId': null
-        'PayerName': obj.PayerName
-        'PayerEmail': obj.PayerEmail
-        'AccountName': obj.AccountName
-        'BankName': obj.BankName
-        'DisplayNumbers': null
-        'FamilyId': $rootScope.currentCenter.FamilyId
-        'CenterId': $rootScope.currentCenter.CenterId
-        'AccountTypeId': obj.AccountTypeId
-        'AccountTypeDescription': null
-        'StatusFlag': null
-        'FailedDescription': null
-        'MailingAddress': obj.MailingAddress
-        'MailingCity': obj.MailingCity
-        'MailingState': obj.MailingState
-        'MailingZip': obj.MailingZip
-        'Phone': obj.BusinessPhone
-        'UserId': $rootScope.currentUserEmail
-        'AccountNumber': obj.AccountNumber
-        'RoutingNumber': obj.RoutingNumber
-        'UserHostAddress': null
-        'DisplayFlag': null
-      url: url).success((data, status, headers, config) ->
-      deferred.resolve data
-      
-      return
-    ).error (data, status, headers, config) ->
-      deferred.reject status
-      
       toastr.error status, 'Error'
       return
 
