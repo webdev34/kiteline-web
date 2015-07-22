@@ -116,9 +116,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.submitNewAccount = (type) ->
     if type == 'CC'
       $scope.newCC.ExpirationDate = $scope.expireDates.month+'/'+$scope.expireDates.year
-      AccountService.getAccounts($scope.familyId, $scope.centerId).then (response) ->
-        $rootScope.newAccountId = response.data[response.data.length-1].AccountId+1
-        CreditCardService.addCreditCard($scope.newCC).then (response) ->
+      CreditCardService.addCreditCard($scope.newCC).then (response) ->
     else
       AccountService.createAccount($scope.newBankAccount).then (response) ->
 

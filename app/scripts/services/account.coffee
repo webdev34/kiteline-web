@@ -57,7 +57,7 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'AccountId': $rootScope.newAccountId
+        'AccountId': 1
         'CreatedOn': new Date()
         'VerificationYN': "No"
         'RecurringAccountYN': "No"
