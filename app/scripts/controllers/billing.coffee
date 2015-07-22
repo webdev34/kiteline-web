@@ -119,6 +119,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       CreditCardService.addCreditCard($scope.newCC).then (response) ->
     else
       AccountService.createAccount($scope.newBankAccount).then (response) ->
+        $scope.getPaymentAccounts($scope.familyId, $scope.centerId).then (response) ->
+          $scope.addBankAccount = false
 
   $scope.deleteBankAccount = (accountId) ->
     AccountService.deleteAccount($scope.familyId, $scope.centerId, accountId).then (response) ->

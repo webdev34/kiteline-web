@@ -85,7 +85,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="bankAcctType">Account Type</label>
   <div class="controls relative">
-    <select id="bankAcctType" class="bankAcctType" ng-model="newBankAccount.AccountTypeId" >
+    <select id="bankAcctType" class="bankAcctType" ng-model="newBankAccount.AccountTypeId" required="">
       <option value="{{option.id}}" data-ng-repeat="option in bankAccountTypes">{{option.name}}</option>
     </select>
     <i class="fa fa-caret-down" select-button select-id="bankAcctType"></i>

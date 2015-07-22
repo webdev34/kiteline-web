@@ -23,7 +23,9 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-				    <tr data-ng-repeat="account in bankAccounts | limitTo: 5">
+			    	<tr ng-show="bankAccounts.length == 0"><td colspan="7"><span>No Accounts</span></td></tr>
+				    <tr data-ng-repeat="account in bankAccounts | limitTo: 5" ng-show="bankAccounts.length != 0">
+
 				<td>
 					{{account.PayerName}}
 				</td>
@@ -66,7 +68,8 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-				    <tr data-ng-repeat="account in accountTypes">
+			    	<tr ng-show="creditCardAccounts.length == 0"><td colspan="7"><span>No Accounts</span></td></tr>
+				    <tr data-ng-repeat="account in creditCardAccounts">
 						<td>
 							{{account.PayerName}}
 						</td>

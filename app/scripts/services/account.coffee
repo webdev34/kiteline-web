@@ -59,14 +59,14 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
       data:
         'AccountId': 1
         'CreatedOn': new Date()
-        'VerificationYN': "No"
-        'RecurringAccountYN': "No"
+        'VerificationYN': "N"
+        'RecurringAccountYN': "N"
         'GuardianId': $rootScope.guardians[0].GuardianId
         'PayerId': obj.PayEmail
         'PayerName': obj.PayerName
         'PayerEmail': obj.PayerEmail
         'AccountName': obj.AccountName
-        'BankName': obj.BankName
+        'BankName': obj.AccountName
         'DisplayNumbers': null
         'FamilyId': $rootScope.currentCenter.FamilyId
         'CenterId': $rootScope.currentCenter.CenterId
