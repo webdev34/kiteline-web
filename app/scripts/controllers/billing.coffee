@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService, ngDialog) ->
+angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService, AccountService, ngDialog) ->
   $rootScope.pageTitle = 'Billing'
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
@@ -18,11 +18,20 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.newCC = {}
   $scope.expireDates = {}
   $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
+  d = new Date
   $scope.billDates = {}
-  $scope.billDates.transactionStartDate = '1/01/2014'
-  $scope.billDates.transactionEndDate = '7/01/2015'
-  $scope.billDates.historicalStartDate = '2/01/2015'
-  $scope.billDates.historicalEndDate = '7/30/2015'
+  $scope.billDates.transactionStartDate = '1/01/'+d.getFullYear()
+  $scope.billDates.transactionEndDate = [
+    d.getMonth() + 1
+    d.getDate()
+    d.getFullYear()
+  ].join('/')
+  $scope.billDates.historicalStartDate = '1/01/'+d.getFullYear()
+  $scope.billDates.historicalEndDate = [
+    d.getMonth() + 1
+    d.getDate()
+    d.getFullYear()
+  ].join('/')
   
   LogInService.isLoggedIn()
 
@@ -111,6 +120,14 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     else
       CreditCardService.createAccount($scope.newBankAccount).then (response) ->
 
+  $scope.deleteBankAccount = (accountId) ->
+    AccountService.deleteAccount($scope.familyId, $scope.centerId, accountId).then (response) ->
+      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+
+  $scope.deleteCreditCardAccount = (accountId) ->
+    CreditCardService.deleteCreditCard(accountId).then (response) ->
+      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+
   $scope.goToTab = (tab) ->
     $scope.currentTab = tab
 
@@ -148,28 +165,35 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     $rootScope.viewInvoice = obj
     $rootScope.lineItemId = obj.LineItemId
 
+  $scope.getPaymentAccounts = (familyId, centerId) ->
+    CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
+      $rootScope.bankAccounts = response.data
+
+    CreditCardService.getCreditCardAccounts(familyId, centerId).then (response) ->
+      $rootScope.creditCardAccounts = response.data
+
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
     $rootScope.currentUserEmail = StorageService.getItem('userEmail')
     $rootScope.currentUserToken = StorageService.getItem('x-skychildcaretoken')
     
-    centerId = $rootScope.currentCenter.CenterId
-    familyId = $rootScope.currentCenter.FamilyId
-    customerId = $rootScope.currentCenter.CustomerId
+    $scope.centerId = $rootScope.currentCenter.CenterId
+    $scope.familyId = $rootScope.currentCenter.FamilyId
+    $scope.customerId = $rootScope.currentCenter.CustomerId
     $scope.outstandingBalance = $rootScope.currentCenter.OutstandingBalance
     
-    CenterInfoService.getCenterDetails(centerId).then (response) ->
+    CenterInfoService.getCenterDetails($scope.centerId).then (response) ->
       $scope.currentCenterDetails = response.data
       $scope.childrenClasses = []
 
-    CurbSideService.getAllChildren(centerId, familyId).then (response) ->
+    CurbSideService.getAllChildren($scope.centerId, $scope.familyId).then (response) ->
       $scope.userChildren = response.data
 
       angular.forEach $scope.userChildren, (value, key) ->
         ChildService.getChildClass(value.ChildId).then (response) ->
           $scope.childrenClasses.push response.data
 
-    AnnouncementsService.getAnnouncements(customerId).then (response) ->
+    AnnouncementsService.getAnnouncements($scope.customerId).then (response) ->
       $scope.announcements = null
       $rootScope.announcementCount = response.data.length
 
@@ -179,7 +203,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     $scope.getTransactionsByDate(null)
     $scope.getTransactionsByDate('Historical')
 
-    InvoiceService.getOutstandingInvoices(customerId).then (response) ->
+    InvoiceService.getOutstandingInvoices($scope.customerId).then (response) ->
       $scope.outstandingInvoices = response.data
       $scope.subscriberId = response.data[0].SubscriberId
 
@@ -203,10 +227,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
             if $routeParams.invoiceId
               $scope.goToInvoice(parseInt($routeParams.invoiceId))
 
-    CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
-      $scope.bankAccounts = response.data
-
-    CreditCardService.getCreditCardAccounts(familyId, centerId).then (response) ->
-      $scope.creditCardAccounts = response.data
-
+      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+      
       $rootScope.stopSpin()

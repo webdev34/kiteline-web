@@ -14,6 +14,7 @@ angular.module('kiteLineApp', [
   '720kb.datepicker'
   'angularSpinner'
   'credit-cards'
+  'ng.bs.dropdown'
 
 ]).config ($routeProvider, ScrollBarsProvider) ->
   $routeProvider.when('/',

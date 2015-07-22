@@ -84,10 +84,11 @@
 <!-- Drop Down-->
 <div class="control-group col-md-4">
   <label class="control-label" for="bankAcctType">Account Type</label>
-  <div class="controls">
-    <select id="bankAcctType" ng-model="newBankAccount.AccountTypeId" >
+  <div class="controls relative">
+    <select id="bankAcctType" class="bankAcctType" ng-model="newBankAccount.AccountTypeId" >
       <option value="{{option.id}}" data-ng-repeat="option in bankAccountTypes">{{option.name}}</option>
     </select>
+    <i class="fa fa-caret-down" select-button select-id="bankAcctType"></i>
   </div>
 </div>
 

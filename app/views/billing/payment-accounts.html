@@ -23,7 +23,7 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-				    <tr ng-animate="'animate'" data-ng-repeat="account in bankAccounts | limitTo: 5">
+				    <tr data-ng-repeat="account in bankAccounts | limitTo: 5">
 				<td>
 					{{account.PayerName}}
 				</td>
@@ -34,6 +34,7 @@
 					{{account.DisplayNumbers}}
 				</td>
 				<td>{{account.AccountTypeDescription}}</td>
+				<td><a ng-click="deleteBankAccount(account.AccountId)"><i class="fa fa-times-circle red"></i></a></td>
 				</tr>
 			    </tbody>
 		    </table>
@@ -65,7 +66,7 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-				    <tr ng-animate="'animate'" data-ng-repeat="account in accountTypes">
+				    <tr data-ng-repeat="account in accountTypes">
 						<td>
 							{{account.PayerName}}
 						</td>
@@ -79,7 +80,7 @@
 							{{account.StatusFlag}}
 						</td>
 						<td>
-							
+							<a ng-click="deleteCreditCardAccount(account.AccountId)"><i class="fa fa-times-circle red"></i></a>
 						</td>
 					</tr>
 			    </tbody>

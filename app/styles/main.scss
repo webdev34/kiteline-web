@@ -49,7 +49,7 @@ html {
                 top: -2px;
                 left: -20px;
                 &.in-more{
-                    left: -35px;
+                    left: -45px;
                 }
             }
             .glyphicon.glyphicon-calendar{
@@ -647,6 +647,45 @@ body{
     }
 }
 
+.datepicker-wrapper{
+    a{
+        color: #0c4d6e;
+    }
+    .fa{
+        font-size: 16px;
+    }
+    ._720kb-datepicker-calendar-years-pagination{
+        background-color: white;
+    }
+    ._720kb-datepicker-calendar-years-pagination-pages{
+        .fa{
+            font-size: 18px;
+        }
+    }
+    ._720kb-datepicker-calendar-header:nth-child(odd),
+    ._720kb-datepicker-calendar-years-pagination-pages{
+        background-color: #0c4d6e;
+        max-height: 50px;
+    }
+    ._720kb-datepicker-calendar-month {
+      color: #fff;
+      font-family: concourse_t4regular;
+      font-size: 18px;
+      font-weight: bold;
+      top: 8px;
+      position: relative;
+      a{
+        span{
+            font-family: concourse_t4regular;
+            font-size: 14px;
+            color: white;
+        }
+      }
+    }
+    ._720kb-datepicker-calendar-days-header{
+        background-color: #ddd;
+    }
+}
 
 /* Typography */
 @font-face {
@@ -747,6 +786,14 @@ body{
     text-align: center;
 }
 
+.relative{
+    position: relative;
+}
+
+.absolute{
+    position: absolute;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
@@ -802,5 +849,8 @@ body{
     }
     .left-feature-container.col-md-8 {
         min-height: 600px;
+    }
+    .navbar .container{
+        padding-bottom: 15px;
     }
 }

@@ -169,6 +169,27 @@
     .payment-accounts-breakdown-wrapper,
     .invoices-breakdown-wrapper {
         form{
+            select{
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                -ms-appearance: none;
+                -o-appearance: none;
+                appearance: none;
+                height: 33px;
+                width: 100%;
+                background-color: white;
+                border-color: rgb(204, 204, 204);
+                cursor: pointer;
+                text-indent: 10px;
+            }
+            .fa-caret-down{
+                position: absolute;
+                top: 7px;
+                right: 11px;
+                color: black;
+                font-size: 21px !important;
+                cursor: pointer;
+            }
             &.ng-invalid{
                 button.btn-primary{
                     pointer-events: none;
