@@ -1,4 +1,6 @@
+
 <div class="guardian-info-breakdown-view lower-section-wrapper">
+
 
     <div ng-scrollbars ng-scrollbars-config="scrollbarConfig" class="pull-left">
 		<ul>
@@ -12,7 +14,7 @@
 			</li>
 		</ul>
 	</div>
-	<div class="feed-breakdown-view guardian-detail-wrapper"  ng-scrollbars ng-scrollbars-config="scrollbarConfig" >
+	<div   ng-scrollbars class="feed-breakdown-view guardian-detail-wrapper"ng-scrollbars-config="scrollbarConfig" >
 		<div class="detail-breakdown">
 			<span class="detail-label">First Name</span>
 			<span class="detail-value">{{viewGuardian.FirstName}}</span>
@@ -27,21 +29,39 @@
 			<span class="detail-value" ng-show="viewGuardian.RelationShip == 'M'">Mother</span>
 		</div>
 		<div class="detail-breakdown">
-			<span class="detail-label">Legal Custody?</span>
+			<span class="detail-label">Legal Custody? ghfgh</span>
 			<span class="detail-value" ng-show="viewGuardian.LegalCustody == 'Y'">Yes</span>
 			 <span class="detail-value" ng-show="viewGuardian.LegalCustody == 'N'">No</span>
 		</div>
-
+		<div class="detail-breakdown">
+			<span class="detail-label">Employer</span>
+			<span class="detail-value" > {{ viewGuardian.Employer }}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Security PIN</span>
+			<span class="detail-value" > {{ viewGuardian.PIN }}</span>
+		</div>		
 		<hr />
+		
 		<!-- MAILING ADDRESS -->
 		<h2>Address</h2>
-		<div class="detail-breakdown longer">
+		<div class="detail-breakdown">
 			<span class="detail-label">Street</span>
 			<span class="detail-value">{{viewGuardian.Street}}</span>
 		</div>
-		<div class="detail-breakdown longer">
-			<span class="detail-label">City, State, Zip</span>
-			<span class="detail-value">{{viewGuardian.City}}, {{viewGuardian.State}} {{viewGuardian.Zip}}</span>
+		<div class="detail-breakdown">
+			<span class="detail-label">City</span>
+			<span class="detail-value">{{viewGuardian.City}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">State</span>
+			<span class="detail-value">{{viewGuardian.Street}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Zip</span>
+			<span class="detail-value">
+				{{viewGuardian.Zip}}
+			</span>
 		</div>
 		<div class="detail-breakdown">
 			<span class="detail-label">Home Phone</span>
@@ -59,19 +79,19 @@
 				{{viewGuardian.CellPhone | tel}}
 			</span>
 		</div>
-		<div class="detail-breakdown longer">
-			<span class="detail-label">Pref. Method Of Contact</span>
+		<div class="detail-breakdown">
+			<span class="detail-label">Email</span>
+			<span class="detail-value no-cap">
+				{{viewGuardian.EmailAddress}}
+			</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Pref. Method<br/>Of Contact</span>
 			<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'W'">Work Phone</span>
 			<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'S'">SMS</span>
 			<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'H'">Home Phone</span>
 			<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'C'">Cell Phone</span>
 			<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'E'">Email</span>
 		</div>
-		<div class="detail-breakdown longer">
-			<span class="detail-label">Email</span>
-			<span class="detail-value no-cap">
-				{{viewGuardian.EmailAddress}}
-			</span>
-		</div>		
 	</div>
 </div>
