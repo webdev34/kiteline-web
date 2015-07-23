@@ -36,7 +36,7 @@
 					{{account.DisplayNumbers}}
 				</td>
 				<td>{{account.AccountTypeDescription}}</td>
-				<td><a ng-click="deleteBankAccount(account.AccountId)"><i class="fa fa-times-circle red"></i></a></td>
+				<td><a ng-click="deleteBankAccount(account.AccountId)" title="Delete Account"><i class="fa fa-times-circle red"></i></a></td>
 				</tr>
 			    </tbody>
 		    </table>
@@ -83,7 +83,7 @@
 							{{account.StatusFlag}}
 						</td>
 						<td>
-							<a ng-click="deleteCreditCardAccount(account.AccountId)"><i class="fa fa-times-circle red"></i></a>
+							<a ng-click="deleteCreditCardAccount(account.AccountId)" title="Delete Account"><i class="fa fa-times-circle red"></i></a>
 						</td>
 					</tr>
 			    </tbody>

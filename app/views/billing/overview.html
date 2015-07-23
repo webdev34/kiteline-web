@@ -96,7 +96,12 @@
 			Messages
 		</h4> 
 		<div class="clearfix"></div>
-		<div id="myCarousel-2" class="carousel slide" data-ride="carousel" style="height: 100px;" data-interval="0">
+
+		<div ng-show="announcementCount == 0">
+			<p class="no-messages">No Messages</p>
+		</div>
+
+		<div ng-hide="announcementCount == 0" id="myCarousel-2" class="carousel slide" data-ride="carousel" style="height: 100px;" data-interval="0">
 		  <div class="carousel-inner" role="listbox">
 			    <div class="item" ng-class="{'active': $index == 0}" data-ng-repeat="announcement in announcements">
 			    <span class="message-date">Posted: {{announcement.MessageDate | date}}</span>  	

@@ -18,9 +18,11 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
       $rootScope.pageTitle = 'Messages'
 
   $rootScope.startSpin = ->
+    $rootScope.isLoading = true
     usSpinnerService.spin 'spinner-1'
 
   $rootScope.stopSpin = ->
+    $rootScope.isLoading = false
     usSpinnerService.stop 'spinner-1'
 
   $rootScope.logOut = () ->
