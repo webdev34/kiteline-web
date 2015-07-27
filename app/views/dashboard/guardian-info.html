@@ -1,8 +1,6 @@
 
 <div class="guardian-info-breakdown-view lower-section-wrapper">
-
-
-    <div ng-scrollbars ng-scrollbars-config="scrollbarConfig" class="pull-left">
+    <div class="pull-left ul-vertical-nav">
 		<ul>
 	        <li ng-class="{'active': activeGuardian == 'guardian-'+[$index+1]}" data-ng-repeat="guardian in guardians" ng-animate="'animate'" data-ng-repeat="feed in dailyFeed"  ng-click="goToGuardian(guardian.GuardianId); changeActiveGuardian('guardian-'+[$index+1]);">
 				<div class="pull-left">

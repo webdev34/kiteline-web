@@ -1,20 +1,19 @@
 .lower-container-dashboard{
 	ul.nav.nav-tabs{
 		background-color: #ddd;
+		padding-top: 15px;
 	}
 	.feed-breakdown-view{
-		  width: 69%;
+		  width: 72%;
 		  float: left;
-		  border: 2px solid #ddd;
-		  height: 280px;
 		  margin-top: 10px;
 		  padding: 1%;
 		.detail-value{
-		  font-size: 16px;
+		  font-size: 18px;
 		  font-weight: bold;
 		}
 		p{
-			font-size: 16px;
+			font-size: 18px;
 			margin-top: 10px;
 			min-height: 130px;
 		}
@@ -22,17 +21,14 @@
 
 	.guardian-detail-wrapper,
 	.emergency-contact-detail-wrapper{
-		.mCustomScrollbar{
-			height: 325px !important;
-		}
 		hr{
 			width: 99%;
   			margin-left: -5px;
 		}
 		h2{
-          font-size: 19px;
-          margin-top: 7px;
-          margin-bottom: 5px;
+			font-size: 24px;
+			margin-top: 10px;
+			margin-bottom: 10px;
         }
 
 	} 

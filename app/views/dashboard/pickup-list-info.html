@@ -1,5 +1,5 @@
 <div class="pickup-list-contact-breakdown-view lower-section-wrapper">
-    <div ng-scrollbars ng-scrollbars-config="scrollbarConfig" class="pull-left">
+    <div class="pull-left ul-vertical-nav">
 		<ul>
 	        <li  data-ng-repeat="pickupContact in pickupList" ng-click="goToPickupContact(pickupContact.ChildPickupId); changeActivePickupContact('pickup-contact-'+[$index+1]);" class="contact-{{$index+1}}" ng-class="{ 'active': activePickupContact == 'pickup-contact-'+[$index+1]}" >
 				<div class="pull-left">

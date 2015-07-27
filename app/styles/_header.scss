@@ -1,6 +1,6 @@
 header.header {
     .navbar, .navbar-inverse {
-        border-radius: 0;
+        @include border-radius(0px);
         border: none;
         //margin-bottom: 0;
         background-color: #4e99bd;
@@ -10,10 +10,10 @@ header.header {
         .nav {
             .fa,
             .glyphicon {
-                font-size: 16px;
+                font-size: 21px;
                 display: inline-block;
                 position: absolute;
-                top: 23px;
+                top: 18px;
                 left: 8px;
                 &.msg {
                     top: 18px;
@@ -37,7 +37,7 @@ header.header {
         display: inline;
         color: white;
         position: relative;
-        min-width: 80px;
+        min-width: 90px;
         &.active {
             a {
                 background-color: white !important;
@@ -50,7 +50,7 @@ header.header {
         }
         a {
             color: #fff;
-            text-indent: 15px;
+            text-indent: 25px;
             &.msg {
                 text-indent: 30px;
             }
@@ -84,11 +84,11 @@ header.header {
             .msg-count-span {
                 background-color: red;
                 padding: 0px 6px;
-                border-radius: 35px;
+                @include border-radius(35px);
                 position: absolute;
                 top: 10px;
                 left: -5px;
-                font-size: 12px;
+                font-size: 14px;
             }
         }
     }

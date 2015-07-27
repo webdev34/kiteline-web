@@ -27,11 +27,19 @@
 <!-- Text input-->
 <div class="control-group col-md-4">
   <label class="control-label" for="MailingState">Billing State</label>
-  <div class="controls">
-    <input id="MailingState" name="MailingState" ng-model="newBankAccount.MailingState" type="text" class="input-xlarge" required="">
+  <div class="controls relative">
+
+
+ <select id="MailingStateBank" class="MailingState" ng-model="newBankAccount.MailingState" required="">
+      <option value="{{option.abbreviation}}" data-ng-repeat="option in statesDropDown
+">{{option.name}}</option>
+    </select>
+    <i class="fa fa-caret-down" select-button select-id="MailingStateBank"></i>
     
   </div>
 </div>
+
+<div class="clearfix"></div>
 
 <!-- Text input-->
 <div class="control-group col-md-4">

@@ -1,5 +1,5 @@
 <div class="emergency-contact-info-breakdown-view lower-section-wrapper">
-    <div ng-scrollbars ng-scrollbars-config="scrollbarConfig" class="pull-left">
+    <div class="pull-left ul-vertical-nav">
 		<ul>
 	        <li ng-class="{ 'active': activeEmergencyContact == 'contact-'+[$index+1]}"  data-ng-repeat="contact in contacts" ng-animate="'animate'"   ng-click="goToEmergencyContact(contact.EmergencyContactId); changeActiveEmergencyContact('contact-'+[$index+1]);" >
 				<div class="pull-left">
@@ -11,7 +11,12 @@
 			</li>
 		</ul>
 	</div>
-    <div class="emergency-contact-detail-wrapper feed-breakdown-view" ng-scrollbars ng-scrollbars-config="scrollbarConfig" >
+    <div class="emergency-contact-detail-wrapper feed-breakdown-view" 
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+        'X-SkyChildCareToken': $rootScope.currentUserToken
+        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
+        'X-SkyChildCareUserId': $rootScope.currentUserEmail >
 		<div class="detail-breakdown">
 			<span class="detail-label">Name</span>
 			<span class="detail-value">{{viewEmergencyContact.Name}}</span>

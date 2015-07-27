@@ -7,7 +7,12 @@
 		<h4 class="pull-left">
 			{{displayView}}
 		</h4> 
-		<div class="scroll-wrapper" ng-scrollbars ng-scrollbars-config="scrollbarConfig">
+		<div class="scroll-wrapper" 
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+        'X-SkyChildCareToken': $rootScope.currentUserToken
+        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
+        'X-SkyChildCareUserId': $rootScope.currentUserEmail>
 			<ul ng-show="displayView == 'daily activity feed'">
 		        <li data-ng-repeat="feed in dailyFeed" class="taller-li" ng-click="goToFeed(feed.FeedId)">
 					<div class="pull-left">

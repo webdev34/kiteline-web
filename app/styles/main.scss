@@ -16,7 +16,7 @@ $dark-blue: #287194;
 $light-blue: #4e99bd;
 
 html {
-    height: 95%;
+    height: 100%;
     body {
         height: 100%;
         padding: 0;
@@ -29,6 +29,9 @@ html {
                 margin: 0px !important;
             }
         }
+        .btn-primary{
+            font-size: 16px;
+        }
         .header {
             margin-bottom: 5px;
             background-color: #4e99bd;
@@ -40,16 +43,17 @@ html {
                 display: inline-block;
                 margin-right: 9px;
                 margin-top: 9px;
+                font-size: 16px;
             }
             .datepicker-wrapper{
                 float: left;
                 width: 171px;
             }
             .input-group-btn{
-                top: -2px;
+                top: -3px;
                 left: -20px;
                 &.in-more{
-                    left: -45px;
+                    left: -41px;
                 }
             }
             .glyphicon.glyphicon-calendar{
@@ -64,11 +68,14 @@ html {
             padding: 2px;
             vertical-align: middle;
             text-align: center;
+            font-size: 16px;
+            text-transform: capitalize;
         }
         .table > thead > tr > th{
             background-color: #ccc;
             color: #666;
             text-align: center;
+            font-size: 18px;
         }
         div[id*="myCarousel"]{
             button.carousel-control {
@@ -95,7 +102,7 @@ html {
             .message-headline{
                 text-align: center;
                 display: block;
-                font-size: 16px;
+                font-size: 18px;
             }
             .message-date{
                 color: #999;
@@ -109,6 +116,11 @@ html {
     height: 100%;
     width: 1280px;
     margin: 0 auto;
+}
+
+.ul-vertical-nav{
+    width: 28%;
+    border-right: 2px solid #ddd;
 }
 
 a:hover {
@@ -135,7 +147,6 @@ a:hover {
 .container.kiteline-content {
     max-width: 100%;
     width: 100%;
-    height: 84%;
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -170,9 +181,11 @@ h1, h2, h3 {
 .sub-header-wrapper {
     float: left;
     width: 100%;
-    min-height: 80px;
+    min-height: 100px;
+    margin-top: 10px;
     .greeting {
-        font-size: 20px;
+        font-size: 21px;
+        margin-top: 25px;
     }
     ul {
         //margin-left: 10%;
@@ -181,6 +194,7 @@ h1, h2, h3 {
             list-style: none;
             color: #4a90e2;
             margin-right: 3%;
+            font-size: 18px;
             p {
                 margin-top: 25px;
             }
@@ -188,14 +202,14 @@ h1, h2, h3 {
                 width: 160px;
             }
             .fa, .glyphicon {
-                font-size: 21px;
+                font-size: 28px;
                 position: relative;
                 left: -2px;
                 top: 3px;
             }
             .center-name {
                 margin-top: 13px;
-                font-size: 16px;
+                font-size: 18px;
                 span {
                     display: block;
                 }
@@ -207,36 +221,28 @@ h1, h2, h3 {
 .left-feature-container {
     border-right: thin solid #ccc;
     .nav > li > a {
-        padding: 5px 15px;
+        padding: 5px;
     }
     .lower-section-wrapper {
-        .mCustomScrollbar {
-            width: 250px !important;
-            &.feed-breakdown-view {
-                width: 570px !important;
-            }
-        }
+        
         .feed-breakdown-view {
-            .mCustomScrollbar {
-                width: 30% !important;
-                float: left;
-            }
-            .mCSB_draggerContainer {
-                margin-left: 15px !important;
-            }
+            
         }
         ul {
             li {
-                min-height: 100px;
-                font-size: 14px !important;
+                min-height: 110px;
+                font-size: 16px !important;
                 border-bottom: thin solid #224f77;
                 width: 90%;
                 .feed-headline {
                     margin-top: 5%;
+                    width: 82%;
+                    font-size: 18px;
+                    @extend .ellipsis;
                 }
                 .pull-left {
                     width: 100%;
-                    height: 80px;
+                    height: 90px;
                 }
                 &:hover,
                 &.active {
@@ -261,12 +267,7 @@ h1, h2, h3 {
                 }
             }
         }
-        &.mCustomScrollbar {
-            width: 69% !important;
-            .mCSB_scrollTools a + .mCSB_draggerContainer {
-                margin-left: 23px !important;
-            }
-        }
+        
     }
     ul.nav.nav-tabs {
         border-bottom: 1px solid #4e99bd;
@@ -275,20 +276,20 @@ h1, h2, h3 {
             cursor: pointer;
             padding-bottom: 0px;
             height: auto;
-            margin-left: 3%;
+            margin-left: 2%;
             a {
                 background-color: #529acd;
                 color: white;
                 border: none;
-                min-width: 125px;
+                min-width: 135px;
                 text-align: center;
-                font-size: 14px;
+                font-size: 18px;
                 text-transform: capitalize;
                 &:hover {
                     background-color: #224f77;
                 }
                 .fa, .glyphicon {
-                    font-size: 12px;
+                    font-size: 14px;
                     margin-right: 2%;
                     color: white;
                     &.fa-car,
@@ -320,7 +321,7 @@ h1, h2, h3 {
             }
             p {
                 color: #224f77;
-                font-size: 16px;
+                font-size: 18px;
             }
         }
     }
@@ -352,25 +353,25 @@ h1, h2, h3 {
             }
         }
     }
-    .edit-button {
-        float: right;
-        font-size: 18px;
-        margin-top: 25px;
-        margin-right: 5px;
-        cursor: pointer;
-        &:hover {
-            color: #999;
-        }
-    }
-    .delete-button {
-        float: right;
-        font-size: 18px;
-        color: red;
-        cursor: pointer;
-        &:hover {
-            color: #999;
-        }
-    }
+    // .edit-button {
+    //     float: right;
+    //     font-size: 18px;
+    //     margin-top: 25px;
+    //     margin-right: 5px;
+    //     cursor: pointer;
+    //     &:hover {
+    //         color: #999;
+    //     }
+    // }
+    // .delete-button {
+    //     float: right;
+    //     font-size: 18px;
+    //     color: red;
+    //     cursor: pointer;
+    //     &:hover {
+    //         color: #999;
+    //     }
+    // }
 }
 
 .left-feature-container,
@@ -385,10 +386,10 @@ h1, h2, h3 {
     &.col-md-4,
     &.col-md-8,
     &.col-md-12 {
-        height: 575px;
+        min-height: 650px;
         margin-bottom: 30px;
         .my-children-container-dashboard {
-            height: 70%;
+            //height: 70%;
         }
     }
     nav ul li {
@@ -438,7 +439,7 @@ h1, h2, h3 {
         float: left;
         font-family: concourse_t4regular;
         text-transform: capitalize;
-        font-size: 18px;
+        font-size: 22px;
     }
     h4.alt-header {
         color: #287194;
@@ -446,7 +447,6 @@ h1, h2, h3 {
         float: none;
         margin-top: 20px;
         margin-bottom: -10px;
-        font-size: 21px;
     }
     .back-to-main-view,
     .back-to-sub-view,
@@ -471,7 +471,7 @@ h1, h2, h3 {
         }
     }
     .detail-breakdown {
-        margin: 0px 0px 5px;
+        margin: 12px 0px;
         min-height: 25px;
         display: block;
         width: 49%;
@@ -481,24 +481,24 @@ h1, h2, h3 {
         }
         .detail-label {
             font-weight: bold;
-            font-size: 16px;
+            font-size: 18px;
             float: left;
         }
         label {
             font-weight: bold;
-            font-size: 16px;
+            font-size: 18px;
         }
         .detail-header {
             clear: both;
         }
         .detail-value {
-            font-size: 14px;
+            font-size: 16px;
             margin-left: 10px;
             float: left;
-            width: 51%;
+            //width: 51%;
             color: #224f77;
             text-transform: capitalize;
-              /* margin-top: 1px; */
+            margin-top: 1px;
             &.no-cap {
                 text-transform: none;
             }
@@ -514,7 +514,7 @@ h1, h2, h3 {
     }
     a {
         color: #4a90e2;
-        font-size: 13px;
+        font-size: 16px;
     }
     ul {
         clear: both;
@@ -567,19 +567,6 @@ h1, h2, h3 {
             margin-left: -15px;
         }
     }
-    .mCustomScrollbar {
-        width: 103%;
-        height: 310px !important;
-        &.scroll-wrapper {
-            height: 95% !important;
-        }
-        &.scroll-wrapper-shorter {
-            height: 235px !important;
-        }
-        .mCSB_scrollTools.mCSB_scrollTools_vertical {
-            right: 3px;
-        }
-    }
 }
 
 .box-shadow-container {
@@ -595,28 +582,30 @@ h1, h2, h3 {
 }
 
 /* Scroll Bar fix */
-body {
-    .mCSB_container,
-    .mCustomScrollBox {
-        width: 100% !important;
-    }
-    .mCSB_scrollTools .mCSB_buttonUp,
-    .mCSB_scrollTools .mCSB_buttonDown {
-        background-position: 0 0 !important;
-    }
-    .mCSB_container_wrapper {
-        margin-right: 0px;
-    }
-    .mCSB_container_wrapper > .mCSB_container {
-        padding-right: 10px;
-    }
-    .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-        position: relative;
-        width: 2px;
-    }
-}
+// body {
+//     .mCSB_container,
+//     .mCustomScrollBox {
+//         width: 100% !important;
+//     }
+//     .mCSB_scrollTools .mCSB_buttonUp,
+//     .mCSB_scrollTools .mCSB_buttonDown {
+//         background-position: 0 0 !important;
+//     }
+//     .mCSB_container_wrapper {
+//         margin-right: 0px;
+//     }
+//     .mCSB_container_wrapper > .mCSB_container {
+//         padding-right: 10px;
+//     }
+//     .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+//         position: relative;
+//         width: 2px;
+//     }
+// }
 /* Scroll Bar fix */
 
+
+/* Loader */
 body{
     div.spinner{
     left: 0% !important;
@@ -630,7 +619,6 @@ body{
             top: 45% !important;
             background-color: white !important;
             &:nth-child(1){
-
                 div:after{
                     content: "Loading...";
                     top: 35px;
@@ -647,6 +635,8 @@ body{
     }
 }
 
+
+/* Datepicker */
 .datepicker-wrapper{
     a{
         color: #0c4d6e;
@@ -742,15 +732,15 @@ body{
 }
 
 .rounded-img{
-    width: 70px;
-    height: 70px !important;
-    border-radius: 35px;
+    width: 100px;
+    height: 100px !important;
+    @include border-radius(50px);
 }
 
 .rounded-img-large{
-    width: 100px;
-    height: 100px !important;
-    border-radius: 50px;
+    width: 150px;
+    height: 150px !important;
+    @include border-radius(75px);
 }
 
 .capitalize,
@@ -794,7 +784,21 @@ body{
     position: absolute;
 }
 
+.ellipsis{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Responsive: Portrait tablets and up */
+
+@media screen and (max-width: 1330px) {
+header.header,
+footer.footer{
+    width: 130%;
+}
+
+}
 @media screen and (min-width: 768px) {
     .container {
         max-width: 730px;

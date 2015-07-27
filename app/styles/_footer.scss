@@ -4,11 +4,11 @@ footer.footer{
     color: #bac0c0;
 	bottom: 0px;
 	left: 0px;
-	position: absolute;
+	position: relative;
 	width: 100%;
 	a{
 		color: #bac0c0;
-		font-size: 13px;
+		font-size: 16px;
 		&:hover{
 			text-decoration: none;
 		}
@@ -19,15 +19,18 @@ footer.footer{
 		p,div{
 			display: inline;
 			margin-top: 25px;
-			font-size: 13px;
+			font-size: 16px;
 		}
 
 		.reserved-rights{
-			margin-left: 38%;
+			width: 100%;
+			text-align: center;
 		}
 
 		.terms-privacy-container{
-			margin-right: 30px;
+			position: absolute;
+  			width: 100px;
+  			right: 55px;
 		}
 	}
 }

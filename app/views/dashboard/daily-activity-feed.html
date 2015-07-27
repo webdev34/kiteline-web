@@ -1,5 +1,5 @@
 <div class="daily-activity-feed-container-dashboard lower-section-wrapper" >
-	<div ng-scrollbars ng-scrollbars-config="scrollbarConfig" class="pull-left">
+	<div class="pull-left ul-vertical-nav">
 		<ul>
 	        <li ng-class="{'active' : feed.FeedId == viewFeed.FeedId }" ng-animate="'animate'" data-ng-repeat="feed in dailyFeed"  ng-click="goToFeed(feed.FeedId)">
 				<div class="pull-left">
@@ -14,7 +14,7 @@
 	</div>
 
 
-	<div class="feed-breakdown-view"  ng-scrollbars ng-scrollbars-config="scrollbarConfig" >
+	<div class="feed-breakdown-view"  >
 		<div>
 			<h4 class="pull-left">
 				{{viewFeed.FeedTitle}} 

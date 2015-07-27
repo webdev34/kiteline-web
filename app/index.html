@@ -31,8 +31,8 @@
     <div class="container kiteline-content">
         <div class="inner-kiteline-content-container" ng-view></div>
     </div>
-    <span us-spinner="{shadow: true}" spinner-key="spinner-1"></span>
     <footer ng-hide="isLoginPage" ng-show="!isLoading" class="footer" ng-include src="'views/footer.html'"></footer>
+        <span us-spinner="{shadow: true}" spinner-key="spinner-1"></span>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -90,8 +90,7 @@
         <script src="scripts/services/invoice-detail.js"></script>
         <script src="scripts/services/guardian.js"></script>
         <script src="scripts/services/forgot-pin.js"></script>
-       
-        <script src="scripts/services/customer-statistics.js"></script>
+        <script src="scripts/services/customer-statistics.js"></script>       
 
         <script src="scripts/directives/numbersonly.js"></script>
         <script src="scripts/directives/datepickerButton.js"></script>

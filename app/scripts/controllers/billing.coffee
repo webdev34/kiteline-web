@@ -199,7 +199,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
           $scope.childrenClasses.push response.data
 
     AnnouncementsService.getAnnouncements($scope.customerId).then (response) ->
-      console.log response
       $scope.announcements = null
       $rootScope.announcementCount = response.data.length
 

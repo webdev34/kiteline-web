@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService) ->
+angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, CreditCardService) ->
   $rootScope.pageTitle = 'Dashboard'
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
@@ -118,6 +118,12 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     ContactService.getAllContacts(familyId).then (response) ->
       $scope.contacts = response.data
       $scope.goToEmergencyContact($scope.contacts[0].EmergencyContactId)
+
+    CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
+      $rootScope.bankAccounts = response.data
+
+    CreditCardService.getCreditCardAccounts(familyId, centerId).then (response) ->
+      $rootScope.creditCardAccounts = response.data
 
     ChildPickupService.getAllChildPickupList(familyId).then (response) ->
       $scope.pickupList = response.data
