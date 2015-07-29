@@ -1,0 +1,37 @@
+<div class="contact-container white-bg box-shadow-container">
+	    <span class="header-border-left"></span>
+		<span class="glyphicon glyphicon-map-marker pull-left"></span>
+
+		<h4>Contact Your Center</h4>
+		<div class="clearfix"></div>
+		<p class="col-md-12 text-center">
+			{{currentCenterDetails.CenterName}}<br/>
+			{{currentCenterDetails.Street}}<br/>
+			{{currentCenterDetails.City}}, {{currentCenterDetails.State}} {{currentCenterDetails.Zip}}
+		</p>
+		<div class="contact-section-wrapper col-md-6 pull-left">
+			<div class="contact-wrap">
+				<i class="fa fa-globe pull-left"></i>
+				<a href="#">mychildcenter.com</a>
+			</div>	
+			<div class="contact-wrap">
+				<i class="fa fa-mobile pull-left"></i>
+				<a class="phone-number" href="tel:{{currentCenterDetails.Phone}}">{{currentCenterDetails.Phone}}</a>
+			</div>
+			<div class="contact-wrap">
+				<i class="fa fa-at pull-left"></i>
+				<a href="mailto:{{currentCenterDetails.EmailAddress}}">{{currentCenterDetails.EmailAddress}}</a>
+			</div>
+		</div>
+		<p class="day-care-hours col-md-6">
+			<b>Mon:</b> {{currentCenterDetails.MonHours}}<br/>
+			<b>Tues:</b> {{currentCenterDetails.TueHours}}<br/>
+			<b>Wed:</b> {{currentCenterDetails.WedHours}}<br/>
+			<b>Thurs:</b> {{currentCenterDetails.ThurHours}}<br/>
+			<b>Fri:</b> {{currentCenterDetails.FridHours}}<br/>
+			<div ng-show="currentCenterDetails.SatHours.length != 0 || currentCenterDetails.SunHours.length != 0">
+				<b>Sat/Sun:</b> {{currentCenterDetails.SatHours}}/{{currenCenterDetails.SunHours}}
+			</div>
+		</p>
+		<div class="clearfix"></div>
+	</div>

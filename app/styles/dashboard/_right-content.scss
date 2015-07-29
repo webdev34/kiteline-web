@@ -37,3 +37,38 @@
   		margin-bottom: 5px;
 	}
 }
+
+
+.contact-container.white-bg.box-shadow-container{
+	margin-top: 15px;
+	height: auto;
+
+	.text-center{
+	    margin-bottom: 15px;
+	    font-size: 18px;
+	}
+
+	p{
+		font-size: 16px;
+	}
+	.glyphicon{
+		margin-top: 15px;
+    	margin-left: 10px;
+	}
+
+	h4{
+		margin-top: 17px;
+    	margin-left: 5px;
+	}
+
+	.contact-wrap{
+    	margin-bottom: 10px;
+    	@extend .ellipsis;
+	}
+	.day-care-hours{
+		@extend .ellipsis;
+	}
+	.col-md-6{
+		padding-right: 0px;
+	}
+}

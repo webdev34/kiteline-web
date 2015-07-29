@@ -3,8 +3,11 @@
 body.loginPage {
     background-image: url(../images/background.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #e7f5ff;
     .inner-kiteline-content-container{
         width: auto;
+        min-height: auto;
     }
     .container {
         width: 400px;
@@ -17,7 +20,7 @@ body.loginPage {
 }
 
 .log-in-wrapper {
-    margin-top: 35%;
+    margin-top: 25%;
     text-align: center;
     color: white;
     h3 {

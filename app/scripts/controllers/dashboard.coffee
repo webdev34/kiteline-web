@@ -109,7 +109,8 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
 
     DailyActivityFeedService.getActivityFeed(familyId).then (response) ->
       $scope.dailyFeed = response.data
-      $scope.goToFeed($scope.dailyFeed[0].FeedId)
+      if $scope.dailyFeed.length > 0
+        $scope.goToFeed($scope.dailyFeed[0].FeedId)
       
     GuardianService.getAllGuardians(familyId).then (response) ->
       $scope.guardians = response.data
