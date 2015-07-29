@@ -34,9 +34,13 @@
 				<i class="glyphicon glyphicon-list-alt"></i>
 				<a href="#/forms">Forms</a>
 			</li>			
-			<li class="user-profile-img-container">
+			<li class="user-profile-img-container relative">
 				<img src="https://media.licdn.com/media/AAEAAQAAAAAAAAKIAAAAJGU2NDRkZGFkLWI5MGYtNDU3Ny1hYzZhLTEwN2Q2MTA2ODhiNw.jpg" />
-				<i class="fa fa-caret-down" ng-click="logOut()"></i>
+				<i class="fa fa-caret-down" ng-click="showLogOutFunc()"></i>
+
+				<div class="log-out-wrapper" ng-show="showLogOut" >
+					<a ng-click="logOut();">Log Out</a>
+				</div>
 			</li>
 		</ul>
 	</div>

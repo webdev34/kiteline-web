@@ -1,6 +1,8 @@
 'use strict'
 angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $location, StorageService, usSpinnerService) ->
-  $rootScope.pageTitle = ''
+  $rootScope.pageTitle = ' '
+  $rootScope.showLogOut = false
+
   $rootScope.changePageTitle = () ->
     if $location.$$path is '/dashboard'
       $rootScope.pageTitle = 'Dashboard'
@@ -24,6 +26,9 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
   $rootScope.stopSpin = ->
     $rootScope.isLoading = false
     usSpinnerService.stop 'spinner-1'
+
+  $rootScope.showLogOutFunc = () ->
+    $rootScope.showLogOut = true
 
   $rootScope.logOut = () ->
     StorageService.deleteLocalStorage();

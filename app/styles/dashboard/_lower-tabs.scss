@@ -37,5 +37,12 @@
 	.guardian-detail-wrapper,
 	.pickup-list-contact{
 		margin-top: 10px;
+		.detail-label{
+			width: 35%;
+		}
+		.detail-value{
+			width: 60%;
+			@extend .ellipsis;
+		}
 	}
 }

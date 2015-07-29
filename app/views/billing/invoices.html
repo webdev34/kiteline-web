@@ -23,7 +23,7 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-			    	<tr ng-animate="'animate'" data-ng-repeat="invoice in outstandingInvoices">
+			    	<tr ng-animate="'animate'" data-ng-repeat="invoice in outstandingInvoices  |  orderBy:'InvoiceDate':true" ng-show="$index < 10">
 			        <td>
 			        	{{invoice.InvoiceDate | date}}
 			    	</td>
@@ -96,7 +96,7 @@
 					<tr><td colspan="7"><span>No Results</span></td></tr>
 			</tbody>
 		    <tbody ng-hide="noResultsInvoices">
-		    	<tr ng-animate="'animate'" data-ng-repeat="transaction in historicalTransactions">
+		    	<tr ng-animate="'animate'" data-ng-repeat="transaction in historicalTransactions |  orderBy:'PaymentDate':true" ng-show="$index < 10">
 		        <td>
 		        	{{transaction.PaymentDate | date}}
 		    	</td>

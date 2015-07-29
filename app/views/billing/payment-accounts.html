@@ -18,6 +18,7 @@
 				        <th>Payer Name</th>
 				        <th>Bank Name</th>
 				        <th>Last Four</th>
+				        <th>Acct Type</th>
 				        <th>Default</th>
 				        <th></th>
 			        </tr>
@@ -36,6 +37,9 @@
 					{{account.DisplayNumbers}}
 				</td>
 				<td>{{account.AccountTypeDescription}}</td>
+				<td>
+					<toggle-switch ng-model="account.IsDefault" ng-change="setDefaultAccount(account.AccountId);" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
+				</td>
 				<td><a ng-click="deleteBankAccount(account.AccountId)" title="Delete Account"><i class="fa fa-times-circle red"></i></a></td>
 				</tr>
 			    </tbody>

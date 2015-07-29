@@ -27,9 +27,30 @@
 			<br class="clearfix" />
 			<div data-ng-repeat="attachment in viewFeedAttachments" class="attachment-wrapper" >
 				<a class="attachment-title pull-left" target="_blank" href="{{attachment.FileURL}}"><span class="fa fa-paperclip pull-left"></span> {{attachment.FileName}}<a/>
+					{{attachment.FileMimeType}}
 				
 			</div>
 		</div>
 	</div> <!-- .feed-breakdown-view -->
 	<div class="clearfix"></div>
+
+	<nav class="pagination-wrapper">
+	  <ul class="pagination">
+	    <li>
+	      <a href="#" aria-label="Previous">
+	        <span aria-hidden="true">&laquo;</span>
+	      </a>
+	    </li>
+	    <li><a href="#">1</a></li>
+	    <li><a href="#">2</a></li>
+	    <li><a href="#">3</a></li>
+	    <li><a href="#">4</a></li>
+	    <li>
+	      <a href="#" aria-label="Next">
+	        <span aria-hidden="true">&raquo;</span>
+	      </a>
+	    </li>
+	  </ul>
+	</nav>
+
 </div> <!-- .daily-activity-feed-container-dashboard -->

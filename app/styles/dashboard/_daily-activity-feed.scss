@@ -12,4 +12,14 @@
 		@include border-radius(25px);
 		margin-left: 7px;
 	}
+	.pagination-wrapper{
+		margin-top: 15px;
+    	margin-bottom: 15px;
+		.pagination > li > a, 
+		.pagination > li > span {
+    		padding: 5px 10px;
+    		color: #4a90e2;
+    	}
+
+	}
 }

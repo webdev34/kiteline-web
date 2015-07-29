@@ -11,12 +11,7 @@
 		<h4 class="pull-left" ng-show="displayView == 'my children'">
 			{{displayView}}
 		</h4> 
-		<div class="scroll-wrapper" 
-        'Content-Type': 'application/json'
-        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
-        'X-SkyChildCareToken': $rootScope.currentUserToken
-        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
-        'X-SkyChildCareUserId': $rootScope.currentUserEmail>
+		<div class="scroll-wrapper" >
 			<ul ng-show="displayView == 'my children'">
 	            <li data-ng-repeat="child in userChildren" ng-click="goToChild(child.ChildId)">
 	            	<div class="pull-left">
@@ -357,12 +352,7 @@
 			<div class="add-medication-wrapper" ng-show="displaySubView == 'add new medication'">
 				<h4 class="alt-header">Add Medication</h4>
 				<h4>{{viewChild.ChildName}}</h4>
-				<div class="add-medication-scroll-wrapper" 
-        'Content-Type': 'application/json'
-        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
-        'X-SkyChildCareToken': $rootScope.currentUserToken
-        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
-        'X-SkyChildCareUserId': $rootScope.currentUserEmail>
+				<div class="add-medication-scroll-wrapper" >
 					<div class="detail-breakdown">
 							<label>Medication/Dose</label>
 							<input type="text" class="form-control" ng-model="new_medication_name" name="new_medication_name" />
@@ -431,12 +421,7 @@
 			<a ng-click="isEditFunc(true); editChildHistory();" ng-show="!isEdit" ng-hide="isEdit" class="edit-button edit-gen-info">Edit <span class="glyphicon glyphicon-pencil"></span></a>
 
 			<br class="clearfix" />
-			<div id="child-history-breakdown-wrapper" 
-        'Content-Type': 'application/json'
-        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
-        'X-SkyChildCareToken': $rootScope.currentUserToken
-        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
-        'X-SkyChildCareUserId': $rootScope.currentUserEmail ng-show="displayView == 'history info' && !isEdit">
+			<div id="child-history-breakdown-wrapper" ng-show="displayView == 'history info' && !isEdit">
 				<div class="detail-breakdown">
 					<span class="detail-label">Language spoken<br/> at home</span>
 					<span class="detail-value">{{viewChildHistoryInfo.HomeLanguage}}</span>

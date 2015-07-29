@@ -249,12 +249,7 @@
 
 			<!-- NEW PERSONAL INFORMATION -->
 			<div ng-show="displaySubView == 'new alt contact personal information breakdown'" >
-				<div id="new-personal-info-wrapper" 
-        'Content-Type': 'application/json'
-        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
-        'X-SkyChildCareToken': $rootScope.currentUserToken
-        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
-        'X-SkyChildCareUserId': $rootScope.currentUserEmail>
+				<div id="new-personal-info-wrapper" >
 					<div class="detail-breakdown">
 						<label>Name</label>
 						<input type="text" class="form-control" ng-model="new_contact_name" name="new_contact_name" />
@@ -373,12 +368,7 @@
 		<div class="pickup-list-contact-breakdown-view" ng-show="displayView == 'pickup list' && showBreakDownView">
 			<a class="add-new add-new-pickup pull-left" ng-click="goToSubView('add new pickup')" ng-show="displaySubView == 'pickup list breakdown'"><span class="fa fa-plus"></span> Add New Person</a>
 			<br class="clearfix" />
-			<div id="pickup-list-contact-breakdown-wrapper" 
-        'Content-Type': 'application/json'
-        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
-        'X-SkyChildCareToken': $rootScope.currentUserToken
-        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
-        'X-SkyChildCareUserId': $rootScope.currentUserEmail ng-show="displaySubView == 'pickup list breakdown'">
+			<div id="pickup-list-contact-breakdown-wrapper" ng-show="displaySubView == 'pickup list breakdown'">
 				<div data-ng-repeat="pickupContact in pickupList" class="pickup-list-contact" >
 					<div class="detail-breakdown" >
 						<div class="detail-header">

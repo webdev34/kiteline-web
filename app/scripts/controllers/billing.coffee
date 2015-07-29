@@ -20,18 +20,15 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
   d = new Date
   $scope.billDates = {}
-  $scope.billDates.transactionStartDate = '1/01/'+d.getFullYear()
+  $scope.billDates.transactionStartDate = new Date((new Date).setDate((new Date).getDate() - 30))
+  $scope.billDates.transactionStartDate = $filter('date')($scope.billDates.transactionStartDate, 'M/d/yyyy')
+  $scope.billDates.historicalStartDate = $scope.billDates.transactionStartDate
   $scope.billDates.transactionEndDate = [
     d.getMonth() + 1
     d.getDate()
     d.getFullYear()
   ].join('/')
-  $scope.billDates.historicalStartDate = '1/01/'+d.getFullYear()
-  $scope.billDates.historicalEndDate = [
-    d.getMonth() + 1
-    d.getDate()
-    d.getFullYear()
-  ].join('/')
+  $scope.billDates.historicalEndDate = $scope.billDates.transactionEndDate
   
   LogInService.isLoggedIn()
 
@@ -64,6 +61,11 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       name: 'CC - AMEX'
     }
   ]
+
+  $scope.setDefaultAccount = (accountId) ->
+    console.log accountId
+    AccountService.setActiveAccount($scope.familyId, $scope.centerId, accountId).then (response) ->
+      console.log response
 
   $scope.payOutstandingBalance = ->
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
@@ -115,7 +117,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
   $scope.submitNewAccount = (type) ->
     if type == 'CC'
-      $scope.newCC.ExpirationDate = $scope.expireDates.month+'/'+$scope.expireDates.year
+      thisYear = String($scope.expireDates.year)
+      thisYear = thisYear[2]+thisYear[3]
+      $scope.newCC.ExpirationDate = $scope.expireDates.month+'/'+thisYear
       CreditCardService.addCreditCard($scope.newCC).then (response) ->
     else
       AccountService.createAccount($scope.newBankAccount).then (response) ->
@@ -171,7 +175,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
       $rootScope.bankAccounts = response.data
 
-    CreditCardService.getCreditCardAccounts(familyId, centerId).then (response) ->
+    CreditCardService.getCreditCardAccounts($rootScope.subscriberId, centerId).then (response) ->
       $rootScope.creditCardAccounts = response.data
 
   if StorageService.getItem('currentCenter')
@@ -190,9 +194,11 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     GuardianService.getAllGuardians($scope.familyId).then (response) ->
       $rootScope.guardians = response.data
+      console.log response.data
 
     CurbSideService.getAllChildren($scope.centerId, $scope.familyId).then (response) ->
       $scope.userChildren = response.data
+      $scope.userChildrenData = []
 
       angular.forEach $scope.userChildren, (value, key) ->
         ChildService.getChildClass(value.ChildId).then (response) ->

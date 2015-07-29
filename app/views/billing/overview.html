@@ -44,7 +44,7 @@
 			<span class="auto-pay">
 				Auto pay scheduled for July 15 , 2015
 			</span>
-			<a href="#">View Details</a>
+			<a ng-click="goToTab('Invoices');" >View Details</a>
 			<button class="btn btn-primary payment-btn" ng-click="payOutstandingBalance()">
 				Pay With Credit Card
 			</button>
@@ -71,7 +71,7 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-			    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions | limitTo: 5">
+			    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions |  orderBy:'PaymentDate':true" ng-show="$index < 5">
 			        <td>
 			        	{{payment.PaymentDate | date}}
 			    	</td>

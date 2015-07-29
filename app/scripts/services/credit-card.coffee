@@ -172,8 +172,8 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
       toastr.error status, 'Error'
       return
 
-  @getCreditCardAccounts = (familyId, centerId) ->   
-    url = rootUrl+'api/Account/GetCreditCardAccounts?familyId='+familyId+'&centerId='+centerId
+  @getCreditCardAccounts = (subscriberId, centerId) ->   
+    url = rootUrl+'api/CreditCard/GetCCAccount/'+subscriberId+'/'+centerId
     $http(
       method: 'GET'
       headers:
