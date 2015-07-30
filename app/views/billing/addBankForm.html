@@ -92,11 +92,16 @@
 <!-- Drop Down-->
 <div class="control-group col-md-4">
   <label class="control-label" for="bankAcctType">Account Type</label>
-  <div class="controls relative">
-    <select id="bankAcctType" class="bankAcctType" ng-model="newBankAccount.AccountTypeId" required="">
-      <option value="{{option.id}}" data-ng-repeat="option in bankAccountTypes">{{option.name}}</option>
-    </select>
-    <i class="fa fa-caret-down" select-button select-id="bankAcctType"></i>
+  <div class="controls relative" style="margin-top: 10px;">
+     <label>
+          Checking
+          <input type="radio" class="bankAcctType" name="accountType" value="1" ng-model="newBankAccount.AccountTypeId">    
+    </label>
+    
+    <label style="margin-left: 10px;">
+          Saving
+          <input type="radio" class="bankAcctType" name="accountType" value="2" ng-model="newBankAccount.AccountTypeId">    
+    </label>
   </div>
 </div>
 
@@ -106,7 +111,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="bankAcctNumber">Bank Account Number</label>
   <div class="controls">
-    <input id="bankAcctNumber" name="BankAcctNumber" ng-model="newBankAccount.AccountNumber" type="text" class="input-xlarge" required="" ng-change="verifyBanking('Account Number');" >
+    <input id="bankAcctNumber" name="BankAcctNumber" ng-model="newBankAccount.AccountNumber" type="text" class="input-xlarge" required="" ng-change="verifyBanking('Account Number');" ng-paste="$event.preventDefault()" >
     
   </div>
 </div>
@@ -115,7 +120,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="verifyBankAcctNumber">Verify Bank Account Number</label>
   <div class="controls">
-    <input id="verifyBankAcctNumber" name="VerifyBankAcctNumber" ng-model="newBankAccount.VerifyBankAcctNumber" type="text" class="input-xlarge" required="" ng-change="verifyBanking('Account Number');">
+    <input id="verifyBankAcctNumber" name="VerifyBankAcctNumber" ng-model="newBankAccount.VerifyBankAcctNumber" type="text" class="input-xlarge" required="" ng-change="verifyBanking('Account Number');" ng-paste="$event.preventDefault()" >
     
   </div>
 </div>
@@ -126,7 +131,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="RoutingNumber">Routing Number</label>
   <div class="controls">
-    <input id="RoutingNumber" name="RoutingNumber" ng-model="newBankAccount.RoutingNumber" type="text" class="input-xlarge" required="" maxlength="9" ng-change="verifyBanking('Routing Number');">
+    <input id="RoutingNumber" name="RoutingNumber" ng-model="newBankAccount.RoutingNumber" type="text" class="input-xlarge" required="" maxlength="9" ng-change="verifyBanking('Routing Number');" ng-paste="$event.preventDefault()" >
     
   </div>
 </div>
@@ -136,7 +141,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="verifyRoutingNumber">Verify Routing Number</label>
   <div class="controls">
-    <input id="VerifyRoutingNumber" name="VerifyRoutingNumber" ng-model="newBankAccount.VerifyRoutingNumber" type="text" class="input-xlarge" required="" maxlength="9" ng-change="verifyBanking('Routing Number');">
+    <input id="VerifyRoutingNumber" name="VerifyRoutingNumber" ng-model="newBankAccount.VerifyRoutingNumber" type="text" class="input-xlarge" required="" maxlength="9" ng-change="verifyBanking('Routing Number');" ng-paste="$event.preventDefault()" >
     
   </div>
 </div>

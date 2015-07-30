@@ -93,7 +93,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="AccountNumber">Card Number</label>
   <div class="controls">
-    <input id="AccountNumber" name="AccountNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType"  >
+    <input id="AccountNumber" name="AccountNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()" >
     
   </div>
 </div>
@@ -103,9 +103,9 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="ExpirationDate">Expiration Date</label>
   <div class="controls">
-    <input ng-model="expireDates.month" cc-exp-month type="text" class="input-xlarge exp-dates pull-left" required="" />
+    <input placeholder="MM" ng-model="expireDates.month" cc-exp-month type="text" class="input-xlarge exp-dates pull-left" required="" />
     <span class="pull-left date-split"> / </span>
-    <input ng-model="expireDates.year" cc-exp-year type="text" class="input-xlarge exp-dates" required="" />
+    <input placeholder="YY" ng-model="expireDates.year" cc-exp-year type="text" class="input-xlarge exp-dates" required="" />
   </div>
 </div>
 
