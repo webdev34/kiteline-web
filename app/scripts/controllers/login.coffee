@@ -20,7 +20,9 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
 
     $scope.login = ->
       $rootScope.dataLoading = true
-      LogInService.Login $scope.email, $scope.pin, $scope.centerId
+      LogInService.Login($scope.email, $scope.pin, $scope.centerId).then (response) ->
+        $rootScope.dataLoading = false
+        $rootScope.showLogOut = false
       return
 
     $scope.changeView = (view) ->

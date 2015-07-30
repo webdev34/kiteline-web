@@ -23,13 +23,16 @@ angular.module('kiteLineApp', [
     templateUrl: 'views/dashboard/dashboard.html'
     controller: 'DashboardCtrl').when('/billing',
     templateUrl: 'views/billing/billing.html'
+    controller: 'BillingCtrl').when('/billing/invoices',
+    templateUrl: 'views/billing/billing.html'
     controller: 'BillingCtrl').when('/daily-activity-feed',
     templateUrl: 'views/daily-activity-feed/daily-activity-feed.html'
     controller: 'DailyActivityFeedCtrl').when('/terms-of-service',
     templateUrl: 'views/terms-of-service.html'
     controller: 'TOSCtrl').when('/privacy',
     templateUrl: 'views/privacy.html'
-    controller: 'PrivacyCtrl').otherwise redirectTo: '/'
+    controller: 'PrivacyCtrl').otherwise redirectTo: '/dashboard'
+
 
   angular.module('kiteLineApp').config [
     'usSpinnerConfigProvider'

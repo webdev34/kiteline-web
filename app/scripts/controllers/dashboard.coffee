@@ -117,13 +117,13 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     GuardianService.getAllGuardians(familyId).then (response) ->
       $scope.guardians = response.data
       $scope.guardiansPagination = Pagination.getNew()
-      $scope.guardiansFeedPagination.numPages = Math.ceil($scope.guardians.length/$scope.guardiansPagination.perPage)
+      $scope.guardiansPagination.numPages = Math.ceil($scope.guardians.length/$scope.guardiansPagination.perPage)
       $scope.goToGuardian($scope.guardians[0].GuardianId)
 
     ContactService.getAllContacts(familyId).then (response) ->
       $scope.contacts = response.data
       $scope.contactsPagination = Pagination.getNew()
-      $scope.contactsFeedPagination.numPages = Math.ceil($scope.contacts.length/$scope.contactsPagination.perPage)
+      $scope.contactsPagination.numPages = Math.ceil($scope.contacts.length/$scope.contactsPagination.perPage)
       $scope.goToEmergencyContact($scope.contacts[0].EmergencyContactId)
 
     CreditCardService.getBankAccounts(familyId, centerId).then (response) ->

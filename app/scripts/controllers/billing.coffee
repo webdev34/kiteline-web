@@ -236,8 +236,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
           if response.data.length == 1
             $scope.invoicesArray.push response.data[0]
             $scope.invoiceGrandTotal = $scope.invoiceGrandTotal+response.data[0].Amount
-            if $routeParams.invoiceId
-              $scope.goToInvoice(parseInt($routeParams.invoiceId))
 
           else
             arrayHolder = []
@@ -246,10 +244,12 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
               $scope.invoiceGrandTotal = $scope.invoiceGrandTotal+value.Amount
             
             $scope.invoicesArray.push arrayHolder
-            
-            if $routeParams.invoiceId
-              $scope.goToInvoice(parseInt($routeParams.invoiceId))
 
       $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
       
       $rootScope.stopSpin()
+
+      if $route.current.$$route.originalPath == '/billing/invoices'
+        $scope.goToTab('Invoices')
+
+      
