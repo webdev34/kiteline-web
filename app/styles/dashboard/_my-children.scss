@@ -22,6 +22,11 @@
 			}
 		}
 	}
+	span.first-name{
+		@extend .ellipsis;
+		display: inline-block;
+		max-width: 127px;
+	}
 	.fa{
 		  color: #999;
   		  margin-top: 12px;

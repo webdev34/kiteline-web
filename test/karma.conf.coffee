@@ -37,6 +37,7 @@ module.exports = (config) ->
       'bower_components/spin.js/spin.js'
       'bower_components/angular-spinner/angular-spinner.js'
       'bower_components/angular-credit-cards/release/angular-credit-cards.js'
+      'bower_components/ng-simplePagination/simplePagination.js'
       'bower_components/angular-mocks/angular-mocks.js'
       # endbower
       # bower:coffee

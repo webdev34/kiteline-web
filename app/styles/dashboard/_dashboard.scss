@@ -20,5 +20,7 @@
 	}
 	.attachment-title{
 		margin-bottom: 10px;
+		@extend .ellipsis;
+		max-width: 150px;
 	}
 } //.dashboard-container

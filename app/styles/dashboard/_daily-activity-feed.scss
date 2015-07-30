@@ -16,11 +16,8 @@
 		width: 30%;
 		margin-top: 15px;
     	margin-bottom: 15px;
-		.pagination > li > a, 
-		.pagination > li > span {
-    		padding: 5px 7px;
-    		color: #4a90e2;
+    	&.text-center{
+    		width: 100%;
     	}
-
 	}
 }

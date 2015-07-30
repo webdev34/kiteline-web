@@ -23,7 +23,7 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-			    	<tr ng-animate="'animate'" data-ng-repeat="invoice in outstandingInvoices  |  orderBy:'InvoiceDate':true" ng-show="$index < 10">
+			    	<tr ng-animate="'animate'" data-ng-repeat="invoice in outstandingInvoices  |  orderBy:'InvoiceDate':true | startFrom: outstandingInvoicesPagination.page * outstandingInvoicesPagination.perPage | limitTo: outstandingInvoicesPagination.perPage">
 			        <td>
 			        	{{invoice.InvoiceDate | date}}
 			    	</td>
@@ -41,6 +41,20 @@
 			      	</tr>
 			    </tbody>
 		    </table>
+
+			<nav class="pagination-wrapper text-center" ng-show="outstandingInvoices.length > 10">
+				<ul class="pagination">
+					<li>
+						<a href="" ng-click="outstandingInvoicesPagination.prevPage()">&laquo;</a>
+					</li>
+				  	<li ng-repeat="n in [] | range: outstandingInvoicesPagination.numPages" ng-class="{active: n == outstandingInvoicesPagination.page}">
+				  		<a href="" ng-click="outstandingInvoicesPagination.toPageId(n)">{{n + 1}}</a>
+				  	</li>
+				  	<li>
+				  		<a href="" ng-click="outstandingInvoicesPagination.nextPage()">&raquo;</a>
+				  	</li>
+				</ul>
+			</nav>
     </div>
     <div class="col-md-6">
         <i class="fa fa-usd pull-left"></i>
@@ -79,7 +93,7 @@
 	        </div>
 	        <div class="col-md-1">
 	            <div class="input-group">
-	                <button type="button" class="btn btn-primary" ng-click="getTransactionsByDate('Historical')">Submit</button>
+	                <button type="button" class="btn btn-primary" ng-disabled="billDates.queryingHistorical" ng-click="getTransactionsByDate('Historical'); billDates.queryingHistorical = true;">Submit</button>
 	            </div>
 	        </div>
     </div>
@@ -96,7 +110,7 @@
 					<tr><td colspan="7"><span>No Results</span></td></tr>
 			</tbody>
 		    <tbody ng-hide="noResultsInvoices">
-		    	<tr ng-animate="'animate'" data-ng-repeat="transaction in historicalTransactions |  orderBy:'PaymentDate':true" ng-show="$index < 10">
+		    	<tr ng-animate="'animate'" data-ng-repeat="transaction in historicalTransactions |  orderBy:'PaymentDate':true | startFrom: historicalTransactionsPagination.page * historicalTransactionsPagination.perPage | limitTo: historicalTransactionsPagination.perPage">
 		        <td>
 		        	{{transaction.PaymentDate | date}}
 		    	</td>
@@ -111,6 +125,20 @@
 		      	</tr>
 		    </tbody>
 	    </table>
+
+    	<nav class="pagination-wrapper text-center" ng-show="historicalTransactions.length > 10">
+			<ul class="pagination">
+				<li>
+					<a href="" ng-click="historicalTransactionsPagination.prevPage()">&laquo;</a>
+				</li>
+			  	<li ng-repeat="n in [] | range: historicalTransactionsPagination.numPages" ng-class="{active: n == historicalTransactionsPagination.page}">
+			  		<a href="" ng-click="historicalTransactionsPagination.toPageId(n)">{{n + 1}}</a>
+			  	</li>
+			  	<li>
+			  		<a href="" ng-click="historicalTransactionsPagination.nextPage()">&raquo;</a>
+			  	</li>
+			</ul>
+		</nav>
     </div>
     <div class="clearfix"></div>
 </div>

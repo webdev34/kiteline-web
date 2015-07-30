@@ -1,7 +1,7 @@
 <div class="pickup-list-contact-breakdown-view lower-section-wrapper">
     <div class="pull-left ul-vertical-nav">
 		<ul>
-	        <li  data-ng-repeat="pickupContact in pickupList" ng-click="goToPickupContact(pickupContact.ChildPickupId); changeActivePickupContact('pickup-contact-'+[$index+1]);" class="contact-{{$index+1}}" ng-class="{ 'active': activePickupContact == 'pickup-contact-'+[$index+1]}" >
+	        <li  data-ng-repeat="pickupContact in pickupList | startFrom: pickupListPagination.page * pickupListPagination.perPage | limitTo: pickupListPagination.perPage" ng-click="goToPickupContact(pickupContact.ChildPickupId); changeActivePickupContact('pickup-contact-'+[$index+1]);" class="contact-{{$index+1}}" ng-class="{ 'active': activePickupContact == 'pickup-contact-'+[$index+1]}" >
 				<div class="pull-left">
 					<span class="feed-headline cap">Contact {{$index+1}}</span>
 					<span class="feed-headline cap">{{pickupContact.PickupName}}</span>
@@ -10,6 +10,19 @@
 				</div>
 			</li>
 		</ul>
+		<nav class="pagination-wrapper text-center" ng-show="pickupList.length > 5">
+			<ul class="pagination">
+				<li>
+					<a href="" ng-click="pickupListPagination.prevPage()">&laquo;</a>
+				</li>
+			  	<li ng-repeat="n in [] | range: pickupListPagination.numPages" ng-class="{active: n == pickupListPagination.page}">
+			  		<a href="" ng-click="pickupListPagination.toPageId(n)">{{n + 1}}</a>
+			  	</li>
+			  	<li>
+			  		<a href="" ng-click="pickupListPagination.nextPage()">&raquo;</a>
+			  	</li>
+			</ul>
+		</nav>
 	</div>
 
 	<div class="pickup-list-wrapper feed-breakdown-view" >
@@ -23,8 +36,8 @@
 			<span class="detail-value" ng-show="viewPickupContact.CanPickup == 0">No</span>
 		</div>
 		<div class="detail-breakdown longer" >
-			<span class="detail-label">Additional Information</span>
-			<span class="detail-value">{{viewPickupContact.AdditionalInfo}}</span>
+			<span class="detail-label">Notes</span>
+			<span class="detail-value ">{{viewPickupContact.AdditionalInfo}}</span>
 		</div>
 	</div>
 </div>

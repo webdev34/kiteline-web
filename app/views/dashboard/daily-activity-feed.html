@@ -1,7 +1,7 @@
 <div class="daily-activity-feed-container-dashboard lower-section-wrapper" >
 	<div class="pull-left ul-vertical-nav">
 		<ul>
-	        <li ng-class="{'active' : feed.FeedId == viewFeed.FeedId }" ng-animate="'animate'" data-ng-repeat="feed in dailyFeed"  ng-click="goToFeed(feed.FeedId)">
+	        <li ng-class="{'active' : feed.FeedId == viewFeed.FeedId }" data-ng-repeat="feed in dailyFeed | startFrom: dailyFeedPagination.page * dailyFeedPagination.perPage | limitTo: dailyFeedPagination.perPage"  ng-click="goToFeed(feed.FeedId)">
 				<div class="pull-left">
 					<span class="feed-headline">{{feed.FeedTitle}}</span>
 					<span class="feed-date">{{feed.FeedPostedDate | date}}</span>
@@ -11,6 +11,20 @@
 				</div>
 			</li>
 		</ul>
+
+		<nav class="pagination-wrapper text-center" ng-show="dailyFeed.length > 5">
+			<ul class="pagination">
+				<li>
+					<a href="" ng-click="dailyFeedPagination.prevPage()">&laquo;</a>
+				</li>
+			  	<li ng-repeat="n in [] | range: dailyFeedPagination.numPages" ng-class="{active: n == dailyFeedPagination.page}">
+			  		<a href="" ng-click="dailyFeedPagination.toPageId(n)">{{n + 1}}</a>
+			  	</li>
+			  	<li>
+			  		<a href="" ng-click="dailyFeedPagination.nextPage()">&raquo;</a>
+			  	</li>
+			</ul>
+		</nav>
 	</div>
 
 
@@ -46,23 +60,6 @@
 	</div> <!-- .feed-breakdown-view -->
 	<div class="clearfix"></div>
 
-	<nav class="pagination-wrapper" ng-show="dailyFeed.length > 0">
-	  <ul class="pagination">
-	    <li>
-	      <a href="#" aria-label="Previous">
-	        <span aria-hidden="true">&laquo;</span>
-	      </a>
-	    </li>
-	    <li><a href="#">1</a></li>
-	    <li><a href="#">2</a></li>
-	    <li><a href="#">3</a></li>
-	    <li><a href="#">4</a></li>
-	    <li>
-	      <a href="#" aria-label="Next">
-	        <span aria-hidden="true">&raquo;</span>
-	      </a>
-	    </li>
-	  </ul>
-	</nav>
+	
 
 </div> <!-- .daily-activity-feed-container-dashboard -->

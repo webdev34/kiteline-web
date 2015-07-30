@@ -46,6 +46,9 @@
 	.text-center{
 	    margin-bottom: 15px;
 	    font-size: 18px;
+	    span{
+	    	word-wrap: break-word;
+	    }
 	}
 
 	p{
@@ -64,6 +67,10 @@
 	.contact-wrap{
     	margin-bottom: 10px;
     	@extend .ellipsis;
+    	.fa-mobile{
+    		margin-right: 10px;
+    		margin-left: 5px;
+    	}
 	}
 	.day-care-hours{
 		@extend .ellipsis;

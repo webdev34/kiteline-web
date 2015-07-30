@@ -1,8 +1,8 @@
-{{gur}}
+
 <div class="guardian-info-breakdown-view lower-section-wrapper">
     <div class="pull-left ul-vertical-nav">
 		<ul>
-	        <li ng-class="{'active': activeGuardian == 'guardian-'+[$index+1]}" data-ng-repeat="guardian in guardians" ng-animate="'animate'" data-ng-repeat="feed in dailyFeed"  ng-click="goToGuardian(guardian.GuardianId); changeActiveGuardian('guardian-'+[$index+1]);">
+	        <li ng-class="{'active': activeGuardian == 'guardian-'+[$index+1]}" data-ng-repeat="guardian in guardians | startFrom: guardiansPagination.page * guardiansPagination.perPage | limitTo: guardiansPagination.perPage" ng-animate="'animate'" ng-click="goToGuardian(guardian.GuardianId); changeActiveGuardian('guardian-'+[$index+1]);">
 				<div class="pull-left">
 					<span class="feed-headline cap">Guardian {{$index+1}}</span>
 					<span class="feed-headline cap">{{guardian.FullName}}</span>
@@ -11,6 +11,19 @@
 				</div>
 			</li>
 		</ul>
+		<nav class="pagination-wrapper text-center" ng-show="guardians.length > 5">
+			<ul class="pagination">
+				<li>
+					<a href="" ng-click="guardiansPagination.prevPage()">&laquo;</a>
+				</li>
+			  	<li ng-repeat="n in [] | range: guardiansPagination.numPages" ng-class="{active: n == guardiansPagination.page}">
+			  		<a href="" ng-click="guardiansPagination.toPageId(n)">{{n + 1}}</a>
+			  	</li>
+			  	<li>
+			  		<a href="" ng-click="guardiansPagination.nextPage()">&raquo;</a>
+			  	</li>
+			</ul>
+		</nav>
 	</div>
 	<div class="feed-breakdown-view guardian-detail-wrapper" >
 		<div class="detail-breakdown">

@@ -15,7 +15,6 @@
 		p{
 			font-size: 18px;
 			margin-top: 10px;
-			min-height: 130px;
 		}
 	}
 
@@ -35,14 +34,30 @@
 	.medical-info-breakdown-view,
 	.emergency-contact-detail-wrapper,
 	.guardian-detail-wrapper,
-	.pickup-list-contact{
+	.pickup-list-contact,
+	.pickup-list-wrapper{
 		margin-top: 10px;
 		.detail-label{
 			width: 35%;
 		}
 		.detail-value{
 			width: 60%;
-			@extend .ellipsis;
+			word-wrap: break-word;
+			//@extend .ellipsis;
 		}
+	}
+
+	.pickup-list-wrapper{
+		margin-top: 10px;
+		.detail-breakdown.longer{
+			width: 100%;
+			.detail-label{
+				width: 18%;
+			}
+			.detail-value{
+				width: 80%;
+			}
+		}
+
 	}
 }

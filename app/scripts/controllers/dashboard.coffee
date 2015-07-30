@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, CreditCardService) ->
+angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, CreditCardService, Pagination) ->
   $rootScope.pageTitle = 'Dashboard'
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
@@ -109,15 +109,21 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
 
     DailyActivityFeedService.getActivityFeed(familyId).then (response) ->
       $scope.dailyFeed = response.data
+      $scope.dailyFeedPagination = Pagination.getNew()
+      $scope.dailyFeedPagination.numPages = Math.ceil($scope.dailyFeed.length/$scope.dailyFeedPagination.perPage)
       if $scope.dailyFeed.length > 0
         $scope.goToFeed($scope.dailyFeed[0].FeedId)
       
     GuardianService.getAllGuardians(familyId).then (response) ->
       $scope.guardians = response.data
+      $scope.guardiansPagination = Pagination.getNew()
+      $scope.guardiansFeedPagination.numPages = Math.ceil($scope.guardians.length/$scope.guardiansPagination.perPage)
       $scope.goToGuardian($scope.guardians[0].GuardianId)
 
     ContactService.getAllContacts(familyId).then (response) ->
       $scope.contacts = response.data
+      $scope.contactsPagination = Pagination.getNew()
+      $scope.contactsFeedPagination.numPages = Math.ceil($scope.contacts.length/$scope.contactsPagination.perPage)
       $scope.goToEmergencyContact($scope.contacts[0].EmergencyContactId)
 
     CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
@@ -128,6 +134,8 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
 
     ChildPickupService.getAllChildPickupList(familyId).then (response) ->
       $scope.pickupList = response.data
+      $scope.pickupListPagination = Pagination.getNew()
+      $scope.pickupListPagination.numPages = Math.ceil($scope.pickupList.length/$scope.pickupListPagination.perPage)
       $scope.goToPickupContact($scope.pickupList[0].ChildPickupId)
       $rootScope.stopSpin()
       

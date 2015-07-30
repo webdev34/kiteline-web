@@ -239,7 +239,7 @@ h1, h2, h3 {
                 width: 90%;
                 .feed-headline {
                     margin-top: 5%;
-                    width: 82%;
+                    max-width: 82%;
                     font-size: 18px;
                     @extend .ellipsis;
                 }
@@ -420,15 +420,14 @@ h1, h2, h3 {
     .ng-enter.ng-enter-active {
         opacity: 1;
     }
-    .ng-enter, .ng-leave {
+    .ng-enter{
         -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
         transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
     }
-    .ng-enter,
-    .ng-leave.ng-leave-active {
+    .ng-enter{
         opacity: 0;
     }
-    .ng-leave,
+    
     .ng-enter.ng-enter-active {
         opacity: 1;
     }
@@ -480,9 +479,7 @@ h1, h2, h3 {
         display: block;
         width: 49%;
         float: left;
-        &.longer{
-            width: 100%;
-        }
+       
         .detail-label {
             font-weight: bold;
             font-size: 18px;
@@ -507,6 +504,9 @@ h1, h2, h3 {
             &.no-cap {
                 text-transform: none;
             }
+             &.longer{
+                width: 100%;
+            }
         }
         .fa-check-circle,
         .good {
@@ -520,6 +520,9 @@ h1, h2, h3 {
     a {
         color: #4a90e2;
         font-size: 16px;
+        &:hover{
+            color: #224F7C;
+        }
     }
     ul {
         clear: both;
@@ -681,6 +684,27 @@ body{
         background-color: #ddd;
     }
 }
+
+// Pagination
+.pagination-wrapper{
+    width: 30%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    &.text-center{
+        width: 100%;
+    }
+    .pagination > li > a, 
+    .pagination > li > span {
+        padding: 5px 7px;
+        color: white;
+        background-color: #529acd;
+    }
+    .pagination > .active > a{
+        background-color: #224f77;
+        color: white;
+    }
+}
+
 
 /* Typography */
 @font-face {
