@@ -31,6 +31,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.billDates.historicalEndDate = $scope.billDates.transactionEndDate
   $scope.billDates.querying = false
   $scope.billDates.queryingHistorical = false
+  $scope.autofillAddressBank = false  
+  $scope.autofillAddressCC = false
 
   LogInService.isLoggedIn()
 
@@ -63,6 +65,38 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       name: 'CC - AMEX'
     }
   ]
+
+  $scope.autocompleteHomeAddressBank = () ->
+    $scope.autofillAddressBank = !$scope.autofillAddressBank
+
+    if $scope.autofillAddressBank is true
+      $scope.newBankAccount.MailingAddress = 'test'
+      $scope.newBankAccount.MailingCity = 'City'
+      $scope.newBankAccount.MailingState = 'FL'
+      $scope.newBankAccount.MailingZip = 11434
+      $scope.newBankAccount.BusinessPhone = '7185277939'
+    else
+      $scope.newBankAccount.MailingAddress = null
+      $scope.newBankAccount.MailingCity = null
+      $scope.newBankAccount.MailingState = null
+      $scope.newBankAccount.MailingZip = null
+      $scope.newBankAccount.BusinessPhone = null
+
+  $scope.autocompleteHomeAddressCC = () ->
+    $scope.autofillAddressCC = !$scope.autofillAddressCC
+
+    if $scope.autofillAddressCC is true
+      $scope.newCC.MailingAddress = 'test'
+      $scope.newCC.MailingCity = 'City'
+      $scope.newCC.MailingState = 'FL'
+      $scope.newCC.MailingZip = 11434
+      $scope.newCC.BusinessPhone = '7185277939'
+    else
+      $scope.newCC.MailingAddress = null
+      $scope.newCC.MailingCity = null
+      $scope.newCC.MailingState = null
+      $scope.newCC.MailingZip = null
+      $scope.newCC.BusinessPhone = null
 
   $scope.setDefaultAccount = (accountId) ->
     console.log accountId
@@ -203,11 +237,10 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     GuardianService.getAllGuardians($scope.familyId).then (response) ->
       $rootScope.guardians = response.data
-      console.log response.data
+
 
     CurbSideService.getAllChildren($scope.centerId, $scope.familyId).then (response) ->
       $scope.userChildren = response.data
-      $scope.userChildrenData = []
 
       angular.forEach $scope.userChildren, (value, key) ->
         ChildService.getChildClass(value.ChildId).then (response) ->
@@ -249,8 +282,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
       $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
       
-
-
       if $route.current.$$route.originalPath == '/billing/invoices'
         $scope.goToTab('Invoices')
 

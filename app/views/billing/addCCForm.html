@@ -2,7 +2,12 @@
 <fieldset>
 
 <!-- Form Name -->
-<h5>Add Credit Card Account</h5>
+<h5 class="pull-left">Add Credit Card Account</h5>
+<label class="pull-right autofill-address">
+    <input type="checkbox" name="useHomeAddress" ng-model="autofillAddressCC" ng-change="autocompleteHomeAddressCC()" >
+    Autofill Address with saved Address
+</label>
+
 <div class="clearfix"></div>
 
 <!-- Text input-->

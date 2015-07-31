@@ -2,7 +2,11 @@
 <fieldset>
 
 <!-- Form Name -->
-<h5>Add Bank Account</h5>
+<h5 class="pull-left">Add Bank Account</h5>
+<label class="pull-right autofill-address">
+    <input type="checkbox" name="useHomeAddress" ng-model="autofillAddressBank" ng-change="autocompleteHomeAddressBank()" >
+    Autofill Address with saved Address
+</label>
 
 <div class="clearfix"></div>
 
@@ -82,7 +86,7 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="PayerName">Bank Account Holder's Name</label>
+  <label class="control-label" for="PayerName">Account Holder's Name</label>
   <div class="controls">
     <input id="PayerName" name="PayerName" ng-model="newBankAccount.PayerName" type="text" class="input-xlarge" required="">
     
@@ -109,7 +113,7 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="bankAcctNumber">Bank Account Number</label>
+  <label class="control-label" for="bankAcctNumber">Account Number</label>
   <div class="controls">
     <input id="bankAcctNumber" name="BankAcctNumber" ng-model="newBankAccount.AccountNumber" type="text" class="input-xlarge" required="" ng-change="verifyBanking('Account Number');" ng-paste="$event.preventDefault()" >
     
@@ -118,7 +122,7 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="verifyBankAcctNumber">Verify Bank Account Number</label>
+  <label class="control-label" for="verifyBankAcctNumber">Verify Account Number</label>
   <div class="controls">
     <input id="verifyBankAcctNumber" name="VerifyBankAcctNumber" ng-model="newBankAccount.VerifyBankAcctNumber" type="text" class="input-xlarge" required="" ng-change="verifyBanking('Account Number');" ng-paste="$event.preventDefault()" >
     

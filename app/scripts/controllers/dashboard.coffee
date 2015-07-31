@@ -134,8 +134,13 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
 
     ChildPickupService.getAllChildPickupList(familyId).then (response) ->
       $scope.pickupList = response.data
+      if $scope.pickupList == null
+        $scope.pickupList = []
+      else
+        $scope.goToPickupContact($scope.pickupList[0].ChildPickupId)
+        
       $scope.pickupListPagination = Pagination.getNew()
       $scope.pickupListPagination.numPages = Math.ceil($scope.pickupList.length/$scope.pickupListPagination.perPage)
-      $scope.goToPickupContact($scope.pickupList[0].ChildPickupId)
+      
       $rootScope.stopSpin()
       

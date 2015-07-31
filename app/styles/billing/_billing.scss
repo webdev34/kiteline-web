@@ -260,6 +260,13 @@
                 }
             }            
         }
+        label{
+            font-size: 16px;
+        }
+        .autofill-address{
+            margin-right: 20px;
+            margin-top: 10px;
+        }
         input[type='text'],
         input[type='email']{
             padding: inherit;
@@ -305,6 +312,7 @@
             }
             .control-group{
                 padding-left: 0px;
+                margin-bottom: 10px;
                 .cc-type{
                     font-weight: bolder;
                     font-size: 17px;
