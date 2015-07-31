@@ -221,6 +221,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     CreditCardService.getCreditCardAccounts($rootScope.subscriberId, centerId).then (response) ->
       $rootScope.creditCardAccounts = response.data
 
+    AccountService.getAccounts(familyId, centerId).then (response) ->
+      console.log response.data
+
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
     $rootScope.currentUserEmail = StorageService.getItem('userEmail')

@@ -1,25 +1,53 @@
 <div class="overlay-container" >
  	<section class="overlay-right-col">
  		<h3>Payment Amount Due: <span class="orange">{{viewInvoice.Amount | currency}}</span> <span class="pull-right">{{viewInvoice.CreatedOn | date}}</span></h3>
-		<!-- Drop Down-->
-		<div class="control-group col-md-4">
+		<div class="control-group col-md-6">
 		  <label class="control-label" for="bankDropDown">Saved Bank Accounts</label>
-		  <div class="controls">
-		    <select id="bankDropDown" ng-model="selectedPayment" >
-		      <option value="{{option.id}}" data-ng-repeat="account in bankAccounts">{{account.BankName}}</option>
-		    </select>
-		  </div>
+
+		  	<ul class="account-list col-md-12">
+		  		<li data-ng-repeat="account in bankAccounts" ng-click="account.isActive = !account.isActive" ng-class="{active: account.isActive}">
+	  				<a>
+	  					<i class="bank-icon"></i>
+	  					{{account.BankName}} - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
+	  					<i class="fa fa-caret-down pull-right"></i>
+	  				</a>
+	  				<div class="account-info" ng-class="{active: account.isActive}">
+	  					
+	  					<label>Card Holder</label>
+	  					<span>{{account.AccountName}}</span>
+	  					<label>Billing Address</label>
+	  					<span>
+	  						{{account.MailingAddress}}<br/>
+	  						{{account.MailingCity}}, {{account.MailingState}} {{account.MailingZip}}<br/>
+	  						{{account.Phone | tel}}
+	  					</span>
+		  			</div>
+		  	</ul>
+		      
 		</div>
 
-		<!-- Drop Down-->
-		<div class="control-group col-md-4">
+		<div class="control-group col-md-6">
 		  <label class="control-label" for="creditCardDropDown">Saved Credit Cards</label>
-		  <div class="controls">
-		    <select id="creditCardDropDown" ng-model="selectedPayment" >
-		      <option value="{{option.id}}" data-ng-repeat="account in creditCardAccounts">{{account.AccountName}}</option>
-		    </select>
-		  </div>
-		</div>
+		  	<ul class="account-list col-md-12">
+		  		<li data-ng-repeat="account in creditCardAccounts" ng-click="account.isActive = !account.isActive">
+	  				<a>
+	  					<i class="bank-icon"></i>
+	  					{{account.BankName}} - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
+	  					<i class="fa fa-caret-down pull-right"></i>
+	  				<a>
+	  				<div class="account-info" ng-class="{active: account.isActive}">
+	  					
+	  					<label>Card Holder</label>
+	  					<span>{{account.AccountName}}</span>
+	  					<label>Billing Address</label>
+	  					<span>
+	  						{{account.MailingAddress}}<br/>
+	  						{{account.MailingCity}}, {{account.MailingState}} {{account.MailingZip}}<br/>
+	  						{{account.Phone | tel}}
+	  					</span>
+		  			</div>
+		  	</ul>
+		 </div>
 
 		<!-- {{viewInvoice.ItemTypeName}}
 		{{viewInvoice.ChildName}}

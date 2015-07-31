@@ -13,6 +13,46 @@ body {
                 .overlay-container {
                     height: 100%;
                     color: white;
+
+                    ul.account-list{
+                        padding: 0px;
+                        li{
+                            list-style: none;
+                            background-color: #529acd;
+                            margin-bottom: 10px;
+                            padding: 5px;
+                            cursor: pointer;
+                            a{
+                                color: white;
+                                font-weight: bold;
+                                font-size: 16px;
+                                text-transform: capitalize;
+                            }
+                            .bank-icon{
+                                top: 5px;
+                                position: relative;
+                                margin-right: 10px;
+                            }
+                            &:hover,
+                            &.active{
+                                background-color: white;
+                                a, .fa{
+                                    color: #04364c;
+                                }
+                            }
+
+                            .account-info{
+                                display: none;
+                                color: #04364c;
+                                &.active{
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+
+
+
                     .overlay-left-col {
                         font-family: "concourse_t4regular";
                         float: left;
