@@ -70,11 +70,11 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     $scope.autofillAddressBank = !$scope.autofillAddressBank
 
     if $scope.autofillAddressBank is true
-      $scope.newBankAccount.MailingAddress = 'test'
-      $scope.newBankAccount.MailingCity = 'City'
-      $scope.newBankAccount.MailingState = 'FL'
-      $scope.newBankAccount.MailingZip = 11434
-      $scope.newBankAccount.BusinessPhone = '7185277939'
+      $scope.newBankAccount.MailingAddress = $rootScope.headOfHouseHold.Street
+      $scope.newBankAccount.MailingCity = $rootScope.headOfHouseHold.City
+      $scope.newBankAccount.MailingState = $rootScope.headOfHouseHold.State
+      $scope.newBankAccount.MailingZip = $rootScope.headOfHouseHold.Zip
+      $scope.newBankAccount.BusinessPhone = $rootScope.headOfHouseHold.HomePhone
     else
       $scope.newBankAccount.MailingAddress = null
       $scope.newBankAccount.MailingCity = null
@@ -86,11 +86,11 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     $scope.autofillAddressCC = !$scope.autofillAddressCC
 
     if $scope.autofillAddressCC is true
-      $scope.newCC.MailingAddress = 'test'
-      $scope.newCC.MailingCity = 'City'
-      $scope.newCC.MailingState = 'FL'
-      $scope.newCC.MailingZip = 11434
-      $scope.newCC.BusinessPhone = '7185277939'
+      $scope.newCC.MailingAddress = $rootScope.headOfHouseHold.Street
+      $scope.newCC.MailingCity = $rootScope.headOfHouseHold.City
+      $scope.newCC.MailingState = $rootScope.headOfHouseHold.State
+      $scope.newCC.MailingZip = $rootScope.headOfHouseHold.Zip
+      $scope.newCC.BusinessPhone = $rootScope.headOfHouseHold.HomePhone
     else
       $scope.newCC.MailingAddress = null
       $scope.newCC.MailingCity = null
@@ -245,6 +245,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     GuardianService.getAllGuardians($scope.familyId).then (response) ->
       $rootScope.guardians = response.data
+
+      GuardianService.getGuardian($rootScope.guardians[0].GuardianId).then (response) ->
+        $rootScope.headOfHouseHold = response.data
 
     CurbSideService.getAllChildren($scope.centerId, $scope.familyId).then (response) ->
       $scope.userChildren = response.data
