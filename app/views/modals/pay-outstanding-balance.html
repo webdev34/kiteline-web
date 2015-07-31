@@ -6,7 +6,7 @@
 		  <label class="control-label" for="bankDropDown">Saved Bank Accounts</label>
 
 		  	<ul class="account-list col-md-12">
-		  		<li data-ng-repeat="account in bankAccounts" ng-click="account.isActive = !account.isActive" ng-class="{active: account.isActive}">
+		  		<li data-ng-repeat="account in bankAccounts" ng-click="resetActiveAccount('bank'); account.isActive = !account.isActive;" ng-class="{active: account.isActive}">
 	  				<a>
 	  					<i class="bank-icon"></i>
 	  					{{account.BankName}} - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
@@ -30,7 +30,7 @@
 		<div class="control-group col-md-6">
 		  <label class="control-label" for="creditCardDropDown">Saved Credit Cards</label>
 		  	<ul class="account-list col-md-12">
-		  		<li data-ng-repeat="account in creditCardAccounts" ng-click="account.isActive = !account.isActive">
+		  		<li data-ng-repeat="account in creditCardAccounts" ng-click="resetActiveAccount('cc'); account.isActive = !account.isActive;">
 	  				<a>
 	  					<i class="bank-icon"></i>
 	  					{{account.BankName}} - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}

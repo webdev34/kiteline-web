@@ -214,15 +214,20 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     $rootScope.viewInvoice = obj
     $rootScope.lineItemId = obj.LineItemId
 
+  $rootScope.resetActiveAccount = (type) ->
+    if type == 'bank'
+      angular.forEach $rootScope.bankAccounts, (value, key) ->
+        value.isActive = false
+    else
+      angular.forEach $rootScope.creditCardAccounts, (value, key) ->
+        value.isActive = false
+
   $scope.getPaymentAccounts = (familyId, centerId) ->
     CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
       $rootScope.bankAccounts = response.data
 
     CreditCardService.getCreditCardAccounts($rootScope.subscriberId, centerId).then (response) ->
       $rootScope.creditCardAccounts = response.data
-
-    AccountService.getAccounts(familyId, centerId).then (response) ->
-      console.log response.data
 
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
@@ -240,7 +245,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     GuardianService.getAllGuardians($scope.familyId).then (response) ->
       $rootScope.guardians = response.data
-
 
     CurbSideService.getAllChildren($scope.centerId, $scope.familyId).then (response) ->
       $scope.userChildren = response.data
