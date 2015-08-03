@@ -144,31 +144,46 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.newCC.PayerEmail = ''
       $scope.expireDates = {}
       $scope.expireDates.month = ''
+      if $scope.autofillAddressCC is true
+        $scope.autofillAddressCC = !$scope.autofillAddressCC
       form.$setPristine();
     else
       $scope.addBankAccount = false
       $scope.newBankAccount = {}
       $scope.newBankAccount.PayerEmail = ''
+      console.log $scope.autofillAddressBank
+      if $scope.autofillAddressBank is true
+        $scope.autofillAddressBank = false
       form.$setPristine();
 
-  $scope.submitNewAccount = (type) ->
+  $scope.submitNewAccount = (type, form) ->
     if type == 'CC'
       thisYear = String($scope.expireDates.year)
       thisYear = thisYear[2]+thisYear[3]
       $scope.newCC.ExpirationDate = $scope.expireDates.month+'/'+thisYear
       CreditCardService.addCreditCard($scope.newCC).then (response) ->
+        $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+        $scope.resetAccountForm('CC', form)
     else
       AccountService.createAccount($scope.newBankAccount).then (response) ->
-        $scope.getPaymentAccounts($scope.familyId, $scope.centerId).then (response) ->
+        if response.statusText is 'OK'
           $scope.addBankAccount = false
+          $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+          $scope.resetAccountForm('Bank', form)
 
   $scope.deleteBankAccount = (accountId) ->
-    AccountService.deleteAccount($scope.familyId, $scope.centerId, accountId).then (response) ->
-      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
-
+    if confirm('Are you sure you want to delete this?')
+      AccountService.deleteAccount($scope.familyId, $scope.centerId, accountId).then (response) ->
+        $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+    else
+      false
+    
   $scope.deleteCreditCardAccount = (accountId) ->
-    CreditCardService.deleteCreditCard(accountId).then (response) ->
-      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+    if confirm('Are you sure you want to delete this?')
+      CreditCardService.deleteCreditCard(accountId).then (response) ->
+        $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+    else
+      false    
 
   $scope.goToTab = (tab) ->
     $scope.currentTab = tab
@@ -225,9 +240,13 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.getPaymentAccounts = (familyId, centerId) ->
     CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
       $rootScope.bankAccounts = response.data
+      $rootScope.bankAccountsPagination = Pagination.getNew()
+      $rootScope.bankAccountsPagination.numPages = Math.ceil($rootScope.bankAccounts.length/$scope.bankAccountsPagination.perPage)
 
     CreditCardService.getCreditCardAccounts($rootScope.subscriberId, centerId).then (response) ->
       $rootScope.creditCardAccounts = response.data
+      $rootScope.creditCardAccountsPagination = Pagination.getNew()
+      $rootScope.creditCardAccountsPagination.numPages = Math.ceil($rootScope.creditCardAccounts.length/$scope.creditCardAccountsPagination.perPage)
 
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
@@ -287,10 +306,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
               $scope.invoiceGrandTotal = $scope.invoiceGrandTotal+value.Amount
             
             $scope.invoicesArray.push arrayHolder
-      
-      $rootScope.stopSpin()
 
       $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+      $rootScope.stopSpin()
       
       if $route.current.$$route.originalPath == '/billing/invoices'
         $scope.goToTab('Invoices')

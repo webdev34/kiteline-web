@@ -258,7 +258,12 @@
                     border-color: red;
                     outline-color: red;
                 }
-            }            
+            }  
+            &.ng-pristine{
+                input[type='text'].ng-pristine{
+                    border-color: #ccc !important;
+                }
+            }          
         }
         label{
             font-size: 16px;
@@ -266,6 +271,11 @@
         .autofill-address{
             margin-right: 20px;
             margin-top: 10px;
+        }
+        .ats-switch{
+            .switch-animate{
+                font-size: 12px;
+            }
         }
         input[type='text'],
         input[type='email']{

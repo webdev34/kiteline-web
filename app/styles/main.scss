@@ -122,7 +122,9 @@ html {
 .ul-vertical-nav{
     width: 28%;
     border-right: 2px solid #ddd;
-    min-height: 550px;
+    ul:not(.pagination){
+        height: 555px;
+    }
 }
 
 a:hover {

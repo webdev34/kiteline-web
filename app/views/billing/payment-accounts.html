@@ -24,8 +24,8 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-			    	<tr ng-show="bankAccounts.length == 0"><td colspan="7"><span>No Accounts</span></td></tr>
-				    <tr data-ng-repeat="account in bankAccounts | limitTo: 5" ng-show="bankAccounts.length != 0">
+			    <tr ng-show="bankAccounts.length == 0"><td colspan="7"><span>No Accounts</span></td></tr>
+				<tr data-ng-repeat="account in bankAccounts | startFrom: bankAccountsPagination.page * bankAccountsPagination.perPage | limitTo: bankAccountsPagination.perPage" >
 
 				<td>
 					{{account.PayerName}}
@@ -44,6 +44,20 @@
 				</tr>
 			    </tbody>
 		    </table>
+
+		    <nav class="pagination-wrapper text-center" ng-show="bankAccounts.length > 5"  ng-hide="addBankAccount">
+				<ul class="pagination">
+					<li>
+						<a href="" ng-click="bankAccountsPagination.prevPage()">&laquo;</a>
+					</li>
+				  	<li ng-repeat="n in [] | range: bankAccountsPagination.numPages" ng-class="{active: n == bankAccountsPagination.page}">
+				  		<a href="" ng-click="bankAccountsPagination.toPageId(n)">{{n + 1}}</a>
+				  	</li>
+				  	<li>
+				  		<a href="" ng-click="bankAccountsPagination.nextPage()">&raquo;</a>
+				  	</li>
+				</ul>
+			</nav>
 
 		    <div ng-include src="'views/billing/addBankForm.html'" ng-show="addBankAccount" ></div>
 
@@ -73,7 +87,7 @@
 			    </thead>
 			    <tbody>
 			    	<tr ng-show="creditCardAccounts.length == 0"><td colspan="7"><span>No Accounts</span></td></tr>
-				    <tr data-ng-repeat="account in creditCardAccounts">
+				    <tr data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage">
 						<td>
 							{{account.PayerName}}
 						</td>
@@ -91,7 +105,21 @@
 						</td>
 					</tr>
 			    </tbody>
-		    </table>
+		    </table>{{creditCardAccounts}}
+
+		    <nav class="pagination-wrapper text-center" ng-show="creditCardAccounts.length > 5" ng-hide="addCreditCard" >
+				<ul class="pagination">
+					<li>
+						<a href="" ng-click="creditCardAccountsPagination.prevPage()">&laquo;</a>
+					</li>
+				  	<li ng-repeat="n in [] | range: creditCardAccountsPagination.numPages" ng-class="{active: n == creditCardAccountsPagination.page}">
+				  		<a href="" ng-click="creditCardAccountsPagination.toPageId(n)">{{n + 1}}</a>
+				  	</li>
+				  	<li>
+				  		<a href="" ng-click="creditCardAccountsPagination.nextPage()">&raquo;</a>
+				  	</li>
+				</ul>
+			</nav>
 		    <div ng-include src="'views/billing/addCCForm.html'" ng-show="addCreditCard" ></div>
     </div>
     <div class="clearfix"></div>

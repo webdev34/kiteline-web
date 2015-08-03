@@ -6,10 +6,10 @@
 		  <label class="control-label" for="bankDropDown">Saved Bank Accounts</label>
 
 		  	<ul class="account-list col-md-12">
-		  		<li data-ng-repeat="account in bankAccounts" ng-click="resetActiveAccount('bank'); account.isActive = !account.isActive;" ng-class="{active: account.isActive}">
+		  		<li data-ng-repeat="account in bankAccounts | startFrom: bankAccountsPagination.page * bankAccountsPagination.perPage | limitTo: bankAccountsPagination.perPage" ng-click="resetActiveAccount('bank'); account.isActive = !account.isActive;" ng-class="{active: account.isActive}">
 	  				<a>
 	  					<i class="bank-icon"></i>
-	  					{{account.BankName}} - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
+	  					<span class="ellipsis">{{account.BankName}}</span> - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
 	  					<i class="fa fa-caret-down pull-right"></i>
 	  				</a>
 	  				<div class="account-info" ng-class="{active: account.isActive}">
@@ -30,10 +30,10 @@
 		<div class="control-group col-md-6">
 		  <label class="control-label" for="creditCardDropDown">Saved Credit Cards</label>
 		  	<ul class="account-list col-md-12">
-		  		<li data-ng-repeat="account in creditCardAccounts" ng-click="resetActiveAccount('cc'); account.isActive = !account.isActive;">
+		  		<li data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage" ng-click="resetActiveAccount('cc'); account.isActive = !account.isActive;">
 	  				<a>
 	  					<i class="bank-icon"></i>
-	  					{{account.BankName}} - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
+	  					<span class="ellipsis">{{account.BankName}}</span> - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
 	  					<i class="fa fa-caret-down pull-right"></i>
 	  				<a>
 	  				<div class="account-info" ng-class="{active: account.isActive}">
@@ -48,6 +48,19 @@
 	  					</span>
 		  			</div>
 		  	</ul>
+		  	<nav class="pagination-wrapper text-center" ng-show="creditCardAccounts.length > 5">
+				<ul class="pagination">
+					<li>
+						<a href="" ng-click="creditCardAccountsPagination.prevPage()">&laquo;</a>
+					</li>
+				  	<li ng-repeat="n in [] | range: creditCardAccountsPagination.numPages" ng-class="{active: n == creditCardAccountsPagination.page}">
+				  		<a href="" ng-click="creditCardAccountsPagination.toPageId(n)">{{n + 1}}</a>
+				  	</li>
+				  	<li>
+				  		<a href="" ng-click="creditCardAccountsPagination.nextPage()">&raquo;</a>
+				  	</li>
+				</ul>
+			</nav>
 		 </div>
 		  	
 		<div class="clearfix"></div>

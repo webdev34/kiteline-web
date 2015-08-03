@@ -4,7 +4,7 @@
 <!-- Form Name -->
 <h5 class="pull-left">Add Bank Account</h5>
 <label class="pull-right autofill-address">
-    <input type="checkbox" name="useHomeAddress" ng-model="autofillAddressBank" ng-change="autocompleteHomeAddressBank()" >
+    <input type="checkbox" name="useHomeAddress" ng-model="autofillAddressBank" ng-change="autocompleteHomeAddressBank()" ng-true-value="false" ng-false-value="true">{{autofillAddressBank}}
     Autofill Address with saved Address
 </label>
 
@@ -156,7 +156,7 @@
 <div class="control-group">
   <label class="control-label" for="addCreditCard"></label>
   <div class="controls">
-    <button id="addBankAccount" name="addBankAccount" class="btn btn-primary" ng-click="submitNewAccount('Bank');" ><i class="fa fa-plus"></i> 
+    <button id="addBankAccount" name="addBankAccount" class="btn btn-primary" ng-click="submitNewAccount('Bank', addBankForm);" ><i class="fa fa-plus"></i> 
       Add Bank Account
     </button>
     <button id="cancelCreditCard" name="addCreditCard" class="btn btn-danger" ng-click="resetAccountForm('Bank', addBankForm);" ><i class="fa fa-times"></i> Cancel</button>
