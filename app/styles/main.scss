@@ -203,7 +203,7 @@ h1, h2, h3 {
     ul {
         //margin-left: 10%;
         li {
-            float: left;
+            float: right;
             list-style: none;
             color: #4a90e2;
             margin-right: 3%;
@@ -223,6 +223,9 @@ h1, h2, h3 {
             .center-name {
                 margin-top: 28px;
                 font-size: 18px;
+                color: darkgray;
+                text-shadow: 1px 1px 1px #ddd;
+                text-transform: capitalize;
                 span {
                     display: block;
                 }
