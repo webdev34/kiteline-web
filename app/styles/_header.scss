@@ -68,8 +68,14 @@ header.header {
         &.user-profile-img-container {
             cursor: pointer;
             min-width: 90px;
+            span{
+                margin-top: 20px;
+                float: left;
+                margin-left: 10px;
+            }
             .fa {
-                left: 60px;
+                position: relative;
+                float: left;
             }
             &:hover .fa.fa-caret-down {
                 color: #0c4d6e;

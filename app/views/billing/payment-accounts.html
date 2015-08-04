@@ -87,7 +87,7 @@
 			    </thead>
 			    <tbody>
 			    	<tr ng-show="creditCardAccounts.length == 0"><td colspan="7"><span>No Accounts</span></td></tr>
-				    <tr data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage">
+				    <tr data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage" >
 						<td>
 							{{account.PayerName}}
 						</td>
@@ -105,7 +105,7 @@
 						</td>
 					</tr>
 			    </tbody>
-		    </table>{{creditCardAccounts}}
+		    </table>
 
 		    <nav class="pagination-wrapper text-center" ng-show="creditCardAccounts.length > 5" ng-hide="addCreditCard" >
 				<ul class="pagination">

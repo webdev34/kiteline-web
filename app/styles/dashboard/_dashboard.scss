@@ -22,5 +22,6 @@
 		margin-bottom: 10px;
 		@extend .ellipsis;
 		max-width: 150px;
+		text-transform: capitalize;
 	}
 } //.dashboard-container

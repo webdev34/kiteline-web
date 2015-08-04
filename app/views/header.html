@@ -33,11 +33,11 @@
 
 		-->
 			<li  ng-class="{'active': pageTitle == 'Forms'}">
-				<i class="glyphicon glyphicon-list-alt"></i>
+				<i class="fa fa-file-pdf-o"></i>
 				<a href="#/forms">Forms</a>
 			</li>			
 			<li class="user-profile-img-container relative">
-				{{currentCenter.FullName}}
+				<span>{{currentCenter.FullName}}</span>
 				<i class="fa fa-caret-down" ng-click="showLogOutFunc()"></i>
 
 				<div class="log-out-wrapper" ng-show="showLogOut" >

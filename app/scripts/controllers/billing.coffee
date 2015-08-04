@@ -1,6 +1,6 @@
 'use strict'
 angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService, AccountService, GuardianService, ngDialog, Pagination) ->
-  $rootScope.pageTitle = 'Billing'
+  $rootScope.changePageTitle()
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
   $scope.noResults = false

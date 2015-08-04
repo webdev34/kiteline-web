@@ -24,7 +24,7 @@
 	}
 	span.first-name{
 		@extend .ellipsis;
-		display: inline-block;
+		display: block;
 		max-width: 127px;
 		margin: 0px;
 	}

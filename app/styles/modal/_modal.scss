@@ -5,11 +5,11 @@ body {
             width: 100%;
             height: 100%;
             .ngdialog-content {
-                width: 70%;
-                height: 80%;
+                width: 90%;
+                height: 100%;
                 background: #04364c;
                 padding: 0px;
-                top: 40px;
+                top: 0px;
                 .overlay-container {
                     height: 100%;
                     color: white;
@@ -50,11 +50,13 @@ body {
                             .account-info{
                                 display: none;
                                 color: #04364c;
+                                margin-left: 50px;
                                 &.active{
                                     display: inline-block;
                                 }
-                                label{
-                                    
+                                span{
+                                    margin-left: 50px;
+                                    text-transform: capitalize;
                                 }
                             }
                         }
@@ -202,6 +204,11 @@ body {
                                         color: #999;
                                     }
                                 }
+                            }
+                            &.pagination-wrapper{
+                                float: none;
+                                clear: both;
+                                width: 100%;
                             }
                         }
                     }

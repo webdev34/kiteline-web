@@ -45,10 +45,6 @@
 			word-wrap: break-word;
 			//@extend .ellipsis;
 		}
-	}
-
-	.pickup-list-wrapper{
-		margin-top: 10px;
 		.detail-breakdown.longer{
 			width: 100%;
 			.detail-label{
@@ -58,6 +54,6 @@
 				width: 80%;
 			}
 		}
-
 	}
+
 }

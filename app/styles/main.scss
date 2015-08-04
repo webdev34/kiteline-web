@@ -6,10 +6,6 @@
 @import "tos-privacy";
 @import "dashboard/dashboard";
 @import "billing/billing";
-@import "my-children/my-children";
-@import "messages/messages";
-@import "my-accounts/my-accounts";
-@import "daily-activity-feed/daily-activity-feed";
 @import "modal/modal";
 
 $dark-blue: #287194;
@@ -338,6 +334,7 @@ h1, h2, h3 {
             p {
                 color: #224f77;
                 font-size: 18px;
+                text-transform: capitalize;
                 @extend .ellipsis;
             }
         }

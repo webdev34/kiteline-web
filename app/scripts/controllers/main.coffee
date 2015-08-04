@@ -1,9 +1,9 @@
 'use strict'
 angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $location, StorageService, usSpinnerService) ->
   $rootScope.pageTitle = ' '
-  $rootScope.showLogOut = false
 
   $rootScope.changePageTitle = () ->
+    $rootScope.showLogOut = false
     if $location.$$path is '/dashboard'
       $rootScope.pageTitle = 'Dashboard'
 
