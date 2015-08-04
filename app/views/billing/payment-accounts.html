@@ -107,7 +107,8 @@
 							{{account.ccnum}}
 						</td>
 						<td>
-							{{account.expiration}}
+							<span class="green" ng-show="checkExp(account.expiration) == 'Valid'">{{checkExp(account.expiration)}}</span>
+							<span class="red" ng-show="checkExp(account.expiration) == 'Expired'">{{checkExp(account.expiration)}}</span>
 						</td>
 						<td>
 							<toggle-switch ng-model="account.IsDefault" ng-change="setDefaultAccount(account.AccountId);" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>

@@ -7,7 +7,6 @@ angular.module('kiteLineApp', [
   'ngSanitize'
   'toastr'
   'LocalStorageModule'
-  'ngScrollbars'
   'ngDialog'
   'toggle-switch'
   'ngMask'
@@ -16,7 +15,7 @@ angular.module('kiteLineApp', [
   'credit-cards'
   'simplePagination'
 
-]).config ($routeProvider, ScrollBarsProvider) ->
+]).config ($routeProvider) ->
   $routeProvider.when('/',
     templateUrl: 'views/login.html'
     controller: 'LoginCtrl').when('/dashboard',
@@ -33,21 +32,9 @@ angular.module('kiteLineApp', [
     templateUrl: 'views/privacy.html'
     controller: 'PrivacyCtrl').otherwise redirectTo: '/dashboard'
 
-
   angular.module('kiteLineApp').config [
     'usSpinnerConfigProvider'
     (usSpinnerConfigProvider) ->
       usSpinnerConfigProvider.setDefaults color: 'blue'
       return
   ]
-    
-  ScrollBarsProvider.defaults =
-    autoHideScrollbar: false
-    setHeight: 'auto'
-    scrollInertia: 0
-    axis: 'yx'
-    advanced: updateOnContentResize: true
-    scrollButtons:
-      scrollAmount: 'auto'
-      enable: true
-  return

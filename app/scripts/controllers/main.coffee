@@ -5,19 +5,16 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
   $rootScope.changePageTitle = () ->
     $rootScope.showLogOut = false
     if $location.$$path is '/dashboard'
-      $rootScope.pageTitle = 'Dashboard'
+      $rootScope.pageTitle = 'Kiteline Web - Dashboard'
 
     if $location.$$path is '/billing'
-      $rootScope.pageTitle = 'Billing'
+      $rootScope.pageTitle = 'Kiteline Web - Billing'
 
     if $location.$$path is '/'
       $rootScope.pageTitle = 'Kiteline Web'
 
-    if $location.$$path is '/my-children'
-      $rootScope.pageTitle = 'My Children'
-
-    if $location.$$path is '/messages'
-      $rootScope.pageTitle = 'Messages'
+    if $location.$$path is '/forms'
+      $rootScope.pageTitle = 'Kiteline Web - Forms'
 
   $rootScope.startSpin = ->
     $rootScope.isLoading = true
@@ -36,10 +33,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
 
   $rootScope.changePageTitle()
 
-  $rootScope.scrollbarConfig =
-    theme: 'dark'
-    scrollInertia: 500
-
   if window.location.href.indexOf('localhost') > -1
     $rootScope.modalUrl = ''
   else
@@ -51,6 +44,32 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
   $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
 
   $rootScope.footerYear = (new Date).getFullYear()
+
+  $rootScope.normalizeYear = (year) ->
+    # Century fix
+    YEARS_AHEAD = 20
+    if year < 100
+      nowYear = (new Date).getFullYear()
+      year += Math.floor(nowYear / 100) * 100
+      if year > nowYear + YEARS_AHEAD
+        year -= 100
+      else if year <= nowYear - 100 + YEARS_AHEAD
+        year += 100
+    year
+
+  $rootScope.checkExp = (year) ->
+    console.log year
+    match = year.match(/^\s*(0?[1-9]|1[0-2])\/(\d\d|\d{4})\s*$/)
+    if !match
+      alert 'Input string isn\'t match the expiration date format or date fragments are invalid.'
+      return
+    exp = new Date($rootScope.normalizeYear(1 * match[2]), 1 * match[1] - 1, 1).valueOf()
+    now = new Date
+    currMonth = new Date(now.getFullYear(), now.getMonth(), 1).valueOf()
+    if exp <= currMonth
+      return 'Expired'
+    else
+      return 'Valid'
 
   $rootScope.statesDropDown = [
     {
