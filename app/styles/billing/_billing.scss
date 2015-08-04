@@ -186,6 +186,20 @@
     // PAYMENT ACCOUNTS & INVOICES CSS //
     .payment-accounts-breakdown-wrapper,
     .invoices-breakdown-wrapper {
+        .fa{
+            &.fa-cc-amex{
+                color: #2489c8;
+            }
+            &.fa-cc-discover{
+                color: orange;
+            }
+            &.fa-cc-visa{
+                color: darkblue;
+            }
+            &.fa-cc-mastercard{
+                color: gold;
+            }
+        }
         form{
             select{
                 -webkit-appearance: none;
@@ -271,11 +285,6 @@
         .autofill-address{
             margin-right: 20px;
             margin-top: 10px;
-        }
-        .ats-switch{
-            .switch-animate{
-                font-size: 12px;
-            }
         }
         input[type='text'],
         input[type='email']{

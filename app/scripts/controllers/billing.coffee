@@ -153,26 +153,30 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       thisYear = thisYear[2]+thisYear[3]
       $scope.newCC.ExpirationDate = $scope.expireDates.month+'/'+thisYear
       CreditCardService.addCreditCard($scope.newCC).then (response) ->
-        $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+        $scope.getCCAccounts($scope.familyId, $scope.centerId)
         $scope.resetAccountForm('CC', form)
     else
       AccountService.createAccount($scope.newBankAccount).then (response) ->
         if response.statusText is 'OK'
           $scope.addBankAccount = false
-          $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+          $scope.getBankAccounts($scope.familyId, $scope.centerId)
           $scope.resetAccountForm('Bank', form)
 
   $scope.deleteBankAccount = (accountId) ->
     if confirm('Are you sure you want to delete this?')
       AccountService.deleteAccount($scope.familyId, $scope.centerId, accountId).then (response) ->
-        $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+        $scope.getBankAccounts($scope.familyId, $scope.centerId)
     else
       false
     
   $scope.deleteCreditCardAccount = (accountId) ->
     if confirm('Are you sure you want to delete this?')
       CreditCardService.deleteCreditCard(accountId).then (response) ->
-        $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+        console.log response
+      setTimeout (->
+        $scope.getCCAccounts($scope.familyId, $scope.centerId)
+      ), 500
+      
     else
       false    
 
@@ -229,15 +233,20 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
         value.isActive = false
 
   $scope.getPaymentAccounts = (familyId, centerId) ->
+    $scope.getCCAccounts(familyId, centerId)
+    $scope.getBankAccounts(familyId, centerId)
+      
+  $scope.getCCAccounts = (familyId, centerId) ->
+    CreditCardService.getCreditCardAccounts($rootScope.subscriberId, $scope.customerId).then (response) ->
+      $rootScope.creditCardAccounts = response.data
+      $rootScope.creditCardAccountsPagination = Pagination.getNew()
+      $rootScope.creditCardAccountsPagination.numPages = Math.ceil($rootScope.creditCardAccounts.length/$scope.creditCardAccountsPagination.perPage)
+
+  $scope.getBankAccounts = (familyId, centerId) ->
     CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
       $rootScope.bankAccounts = response.data
       $rootScope.bankAccountsPagination = Pagination.getNew()
       $rootScope.bankAccountsPagination.numPages = Math.ceil($rootScope.bankAccounts.length/$scope.bankAccountsPagination.perPage)
-
-    CreditCardService.getCreditCardAccounts($rootScope.subscriberId, centerId).then (response) ->
-      $rootScope.creditCardAccounts = response.data
-      $rootScope.creditCardAccountsPagination = Pagination.getNew()
-      $rootScope.creditCardAccountsPagination.numPages = Math.ceil($rootScope.creditCardAccounts.length/$scope.creditCardAccountsPagination.perPage)
 
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')

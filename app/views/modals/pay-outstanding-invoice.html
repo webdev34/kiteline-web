@@ -12,6 +12,7 @@
 	  					<span class="ellipsis">{{account.BankName}}</span> - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
 	  					<i class="fa fa-caret-down pull-right"></i>
 	  				</a>
+	  				<div class="clearfix"></div>
 	  				<div class="account-info" ng-class="{active: account.isActive}">
 	  					
 	  					<label>Card Holder</label>
@@ -24,6 +25,19 @@
 	  					</span>
 		  			</div>
 		  	</ul>
+		  	<nav class="pagination-wrapper text-center" ng-show="bankAccounts.length > 5">
+				<ul class="pagination">
+					<li>
+						<a href="" ng-click="bankAccountsPagination.prevPage()">&laquo;</a>
+					</li>
+				  	<li ng-repeat="n in [] | range: bankAccountsPagination.numPages" ng-class="{active: n == bankAccountsPagination.page}">
+				  		<a href="" ng-click="bankAccountsPagination.toPageId(n)">{{n + 1}}</a>
+				  	</li>
+				  	<li>
+				  		<a href="" ng-click="bankAccountsPagination.nextPage()">&raquo;</a>
+				  	</li>
+				</ul>
+			</nav>		  	
 		      
 		</div>
 
@@ -36,6 +50,7 @@
 	  					<span class="ellipsis">{{account.BankName}}</span> - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
 	  					<i class="fa fa-caret-down pull-right"></i>
 	  				<a>
+	  				<div class="clearfix"></div>
 	  				<div class="account-info" ng-class="{active: account.isActive}">
 	  					
 	  					<label>Card Holder</label>

@@ -11,8 +11,8 @@
 		<div class="clearfix"></div>
 		<button class="pull-left btn btn-primary" ng-click="addAccount('Bank')"><i class="fa fa-plus"></i>  Add New</button>
 		<div class="clearfix"></div>
-		
-          <table class="table" ng-hide="addBankAccount">
+		<div class="table-wrapper" ng-hide="addBankAccount">
+          <table class="table" >
 			    <thead>
 			    	<tr>
 				        <th>Payer Name</th>
@@ -40,24 +40,28 @@
 				<td>
 					<toggle-switch ng-model="account.IsDefault" ng-change="setDefaultAccount(account.AccountId);" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
 				</td>
-				<td><a ng-click="deleteBankAccount(account.AccountId)" title="Delete Account"><i class="fa fa-times-circle red"></i></a></td>
+				<td>
+					<a ng-click="deleteBankAccount(account.AccountId)" title="Delete Account">
+						<i class="fa fa-times-circle red"></i>
+					</a>
+				</td>
 				</tr>
 			    </tbody>
 		    </table>
-
-		    <nav class="pagination-wrapper text-center" ng-show="bankAccounts.length > 5"  ng-hide="addBankAccount">
-				<ul class="pagination">
-					<li>
-						<a href="" ng-click="bankAccountsPagination.prevPage()">&laquo;</a>
-					</li>
-				  	<li ng-repeat="n in [] | range: bankAccountsPagination.numPages" ng-class="{active: n == bankAccountsPagination.page}">
-				  		<a href="" ng-click="bankAccountsPagination.toPageId(n)">{{n + 1}}</a>
-				  	</li>
-				  	<li>
-				  		<a href="" ng-click="bankAccountsPagination.nextPage()">&raquo;</a>
-				  	</li>
-				</ul>
-			</nav>
+		</div>
+			    <nav class="pagination-wrapper text-center" ng-hide="addBankAccount || bankAccounts.length < 6">
+					<ul class="pagination">
+						<li>
+							<a href="" ng-click="bankAccountsPagination.prevPage()">&laquo;</a>
+						</li>
+					  	<li ng-repeat="n in [] | range: bankAccountsPagination.numPages" ng-class="{active: n == bankAccountsPagination.page}">
+					  		<a href="" ng-click="bankAccountsPagination.toPageId(n)">{{n + 1}}</a>
+					  	</li>
+					  	<li>
+					  		<a href="" ng-click="bankAccountsPagination.nextPage()">&raquo;</a>
+					  	</li>
+					</ul>
+				</nav>
 
 		    <div ng-include src="'views/billing/addBankForm.html'" ng-show="addBankAccount" ></div>
 
@@ -75,12 +79,14 @@
 		<div class="clearfix"></div>
 		<button class="pull-left btn btn-primary" ng-click="addAccount('CC')"><i class="fa fa-plus"></i>  Add New</button>
 		<div class="clearfix"></div>
-          <table class="table" ng-hide="addCreditCard">
+		<div class="table-wrapper" ng-hide="addCreditCard">
+          <table class="table" >
 			    <thead>
 			    	<tr>
 				        <th>Payer Name</th>
-				        <th>Card Name</th>
+				        <th>Type</th>
 				        <th>Last Four</th>
+				        <th>Status</th>
 				        <th>Default</th>
 				        <th></th>
 			        </tr>
@@ -89,16 +95,22 @@
 			    	<tr ng-show="creditCardAccounts.length == 0"><td colspan="7"><span>No Accounts</span></td></tr>
 				    <tr data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage" >
 						<td>
-							{{account.PayerName}}
+							{{account.ccname}}
 						</td>
 						<td>
-							{{account.AccountTypeDescription}}
+							<i ng-show="account.cctype == 'CC - AMEX'" class="fa fa-cc-amex"></i>
+						      <i ng-show="account.cctype == 'CC - Discover'" class="fa fa-cc-discover"></i>
+						      <i ng-show="account.cctype == 'CC - Visa'" class="fa fa-cc-visa"></i>
+						      <i ng-show="account.cctype == 'CC - Mastercard'" class="fa fa-cc-mastercard"></i>
 						</td>
 						<td>					
-							{{account.DisplayNumbers}}
+							{{account.ccnum}}
 						</td>
 						<td>
-							{{account.StatusFlag}}
+							{{account.expiration}}
+						</td>
+						<td>
+							<toggle-switch ng-model="account.IsDefault" ng-change="setDefaultAccount(account.AccountId);" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
 						</td>
 						<td>
 							<a ng-click="deleteCreditCardAccount(account.AccountId)" title="Delete Account"><i class="fa fa-times-circle red"></i></a>
@@ -106,8 +118,8 @@
 					</tr>
 			    </tbody>
 		    </table>
-
-		    <nav class="pagination-wrapper text-center" ng-show="creditCardAccounts.length > 5" ng-hide="addCreditCard" >
+			</div>
+		    <nav class="pagination-wrapper text-center" ng-hide="addCreditCard || creditCardAccounts.length < 6"  >
 				<ul class="pagination">
 					<li>
 						<a href="" ng-click="creditCardAccountsPagination.prevPage()">&laquo;</a>

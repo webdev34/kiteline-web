@@ -27,6 +27,8 @@ body {
                                 font-weight: bold;
                                 font-size: 16px;
                                 text-transform: capitalize;
+                                float: left;
+                                width: 100%;
                                 .ellipsis{
                                     width: 185px;
                                     position: relative;
@@ -153,7 +155,7 @@ body {
                             font-size: 21px;
                             margin-left: 15px;
                             margin-top: 30px;
-                            margin-bottom: 20px;
+                            //margin-bottom: 20px;
                             width: 94%;
                         }
                         .glyphicon, .fa {
@@ -209,6 +211,9 @@ body {
                                 float: none;
                                 clear: both;
                                 width: 100%;
+                                .pagination>li>a{
+                                    border: none;
+                                }
                             }
                         }
                     }
