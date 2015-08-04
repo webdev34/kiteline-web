@@ -31,8 +31,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.billDates.historicalEndDate = $scope.billDates.transactionEndDate
   $scope.billDates.querying = false
   $scope.billDates.queryingHistorical = false
-  $scope.autofillAddressBank = false  
-  $scope.autofillAddressCC = false
 
   LogInService.isLoggedIn()
 
@@ -67,9 +65,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   ]
 
   $scope.autocompleteHomeAddressBank = () ->
-    $scope.autofillAddressBank = !$scope.autofillAddressBank
-
-    if $scope.autofillAddressBank is true
+    if $scope.newBankAccount.autofillAddressBank is true
       $scope.newBankAccount.MailingAddress = $rootScope.headOfHouseHold.Street
       $scope.newBankAccount.MailingCity = $rootScope.headOfHouseHold.City
       $scope.newBankAccount.MailingState = $rootScope.headOfHouseHold.State
@@ -83,9 +79,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.newBankAccount.BusinessPhone = null
 
   $scope.autocompleteHomeAddressCC = () ->
-    $scope.autofillAddressCC = !$scope.autofillAddressCC
-
-    if $scope.autofillAddressCC is true
+    if $scope.newCC.autofillAddressCC is true
       $scope.newCC.MailingAddress = $rootScope.headOfHouseHold.Street
       $scope.newCC.MailingCity = $rootScope.headOfHouseHold.City
       $scope.newCC.MailingState = $rootScope.headOfHouseHold.State
@@ -133,8 +127,10 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
   $scope.addAccount = (type) ->
     if type == 'CC'
+      $scope.newCC.autofillAddressCC = false
       $scope.addCreditCard = true
     else
+      $scope.newBankAccount.autofillAddressBank = false  
       $scope.addBankAccount = true
 
   $scope.resetAccountForm = (type, form) ->
@@ -144,16 +140,11 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.newCC.PayerEmail = ''
       $scope.expireDates = {}
       $scope.expireDates.month = ''
-      if $scope.autofillAddressCC is true
-        $scope.autofillAddressCC = !$scope.autofillAddressCC
       form.$setPristine();
     else
       $scope.addBankAccount = false
       $scope.newBankAccount = {}
       $scope.newBankAccount.PayerEmail = ''
-      console.log $scope.autofillAddressBank
-      if $scope.autofillAddressBank is true
-        $scope.autofillAddressBank = false
       form.$setPristine();
 
   $scope.submitNewAccount = (type, form) ->
