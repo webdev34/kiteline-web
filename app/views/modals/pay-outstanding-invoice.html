@@ -1,30 +1,31 @@
 <div class="overlay-container">
  	<section class="overlay-right-col">
- 		<h3>Payment Amount Due: <span class="orange">{{currentCenter.OutstandingBalance | currency}}</span></h3>
+ 		<h3>Payment Amount Due: <span class="orange">{{outstandingInvoicesTotal | currency}}</span></h3>
 
 		<div class="control-group col-md-6">
 		  <label class="control-label" for="bankDropDown">Saved Bank Accounts</label>
-
-		  	<ul class="account-list col-md-12">
-		  		<li data-ng-repeat="account in bankAccounts | startFrom: bankAccountsPagination.page * bankAccountsPagination.perPage | limitTo: bankAccountsPagination.perPage" ng-click="resetActiveAccount('bank'); account.isActive = !account.isActive" ng-class="{active: account.isActive}">
-	  				<a>
-	  					<i class="bank-icon"></i>
-	  					<span class="ellipsis">{{account.BankName}}</span> - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
-	  					<i class="fa fa-caret-down pull-right"></i>
-	  				</a>
-	  				<div class="clearfix"></div>
-	  				<div class="account-info" ng-class="{active: account.isActive}">
-	  					
-	  					<label>Card Holder</label>
-	  					<span>{{account.AccountName}}</span>
-	  					<label>Billing Address</label>
-	  					<span>
-	  						{{account.MailingAddress}}<br/>
-	  						{{account.MailingCity}}, {{account.MailingState}} {{account.MailingZip}}<br/>
-	  						{{account.Phone | tel}}
-	  					</span>
-		  			</div>
-		  	</ul>
+			<div class="table-wrapper modal-list">
+			  	<ul class="account-list col-md-12">
+			  		<li data-ng-repeat="account in bankAccounts | startFrom: bankAccountsPagination.page * bankAccountsPagination.perPage | limitTo: bankAccountsPagination.perPage" ng-click="resetActiveAccount('bank', account);" ng-class="{active: account.isActive}">
+		  				<a>
+		  					<i class="bank-icon"></i>
+		  					<span class="ellipsis">{{account.BankName}}</span> - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
+		  					<i class="fa fa-caret-down pull-right"></i>
+		  				</a>
+		  				<div class="clearfix"></div>
+		  				<div class="account-info" ng-class="{active: account.isActive}">
+		  					
+		  					<label>Card Holder</label>
+		  					<span>{{account.AccountName}}</span>
+		  					<label>Billing Address</label>
+		  					<span>
+		  						{{account.MailingAddress}}<br/>
+		  						{{account.MailingCity}}, {{account.MailingState}} {{account.MailingZip}}
+		  					</span>
+			  			</div>
+			  		</li>
+			  	</ul>
+		  	</div>
 		  	<nav class="pagination-wrapper text-center" ng-show="bankAccounts.length > 5">
 				<ul class="pagination">
 					<li>
@@ -43,26 +44,39 @@
 
 		<div class="control-group col-md-6">
 		  <label class="control-label" for="creditCardDropDown">Saved Credit Cards</label>
+		  <div class="table-wrapper modal-list">
 		  	<ul class="account-list col-md-12">
-		  		<li data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage"  ng-click="resetActiveAccount('cc'); account.isActive = !account.isActive">
+		  		<li data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage"  ng-click="resetActiveAccount('cc', account);" ng-class="{active: account.isActive}">
 	  				<a>
-	  					<i class="bank-icon"></i>
-	  					<span class="ellipsis">{{account.BankName}}</span> - {{account.AccountTypeDescription}} - {{account.DisplayNumbers}}
+	  					<i ng-show="account.cctype == 'CC - AMEX'" class="fa fa-cc-amex"></i>
+				        <i ng-show="account.cctype == 'CC - Discover'" class="fa fa-cc-discover"></i>
+				        <i ng-show="account.cctype == 'CC - Visa'" class="fa fa-cc-visa"></i>
+				        <i ng-show="account.cctype == 'CC - Mastercard'" class="fa fa-cc-mastercard"></i>
+	  					<span class="ellipsis">{{account.ccname}}</span> - 
+	  					{{account.ccnum}} 
+	  					<span class="green" ng-show="checkExp(account.expiration) == 'Valid'">
+	  						{{checkExp(account.expiration)}}
+	  					</span>
+						<span class="red" ng-show="checkExp(account.expiration) == 'Expired'">
+								{{checkExp(account.expiration)}}
+						</span> 
 	  					<i class="fa fa-caret-down pull-right"></i>
-	  				<a>
+	  				</a>
 	  				<div class="clearfix"></div>
 	  				<div class="account-info" ng-class="{active: account.isActive}">
 	  					
 	  					<label>Card Holder</label>
-	  					<span>{{account.AccountName}}</span>
+	  					<span>{{account.ccname}}</span>
+	  					<div class="clearfix"></div>
 	  					<label>Billing Address</label>
 	  					<span>
 	  						{{account.MailingAddress}}<br/>
-	  						{{account.MailingCity}}, {{account.MailingState}} {{account.MailingZip}}<br/>
-	  						{{account.Phone | tel}}
+	  						{{account.MailingCity}}, {{account.MailingState}} {{account.MailingZip}}
 	  					</span>
 		  			</div>
+		  		</li>
 		  	</ul>
+		  </div>
 		  	<nav class="pagination-wrapper text-center" ng-show="creditCardAccounts.length > 5">
 				<ul class="pagination">
 					<li>

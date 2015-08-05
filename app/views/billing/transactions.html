@@ -34,44 +34,46 @@
 		<div class="clearfix"></div>
 	</div>
 	<div class="transactions-table-wrapper col-md-12">
-		<table class="table">
-			    <thead>
-			    	<tr>
-				        <th>Transactions Date</th>
-				        <th>Payer</th>
-				        <th>Amount</th>
-				        <th>Type</th>
-				        <th>View Bill</th>
-				        <th>E-mail</th>
-				        <th>Status</th>
-			        </tr>
-			    </thead>
-			    <tbody ng-show="noResults">
-					<tr ng-animate="'animate'" ><td colspan="7"><span>No Results</span></td></tr>
-			    </tbody>			    
-			    <tbody ng-hide="noResults">
-			    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions |  orderBy:'PaymentDate':true | startFrom: pastTransactionsPagination.page * pastTransactionsPagination.perPage | limitTo: pastTransactionsPagination.perPage" >
-			        <td>
-			        	{{payment.PaymentDate | date}}
-			    	</td>
-			    	<td>
-			    		{{payment.PayerName}}
-			    	</td>
-			    	<td>
-			    		{{payment.Amount | currency}}
-			    	</td>
-			        <td>
-			        	{{payment.PaymentType}}
-			        </td>
-			        <td><a><i class="fa fa-file-pdf-o"></i></a></td>
-			        <td><a><i class="fa fa-envelope-o"></i></a></td>
-			        <td>
-			        	<span class="fa fa-check green" ng-show="payment.PaymentStatus == 'Processed'"></span> 
-						<span class="fa fa-times red" ng-show="payment.PaymentStatus != 'Processed'"></span> 
-					</td>
-			      	</tr>
-			    </tbody>
-		</table>
+		<div class="table-wrapper longer">
+			<table class="table">
+				    <thead>
+				    	<tr>
+					        <th>Transactions Date</th>
+					        <th>Payer</th>
+					        <th>Amount</th>
+					        <th>Type</th>
+					        <th>View Bill</th>
+					        <th>E-mail</th>
+					        <th>Status</th>
+				        </tr>
+				    </thead>
+				    <tbody ng-show="noResults">
+						<tr ng-animate="'animate'" ><td colspan="7"><span>No Results</span></td></tr>
+				    </tbody>			    
+				    <tbody ng-hide="noResults">
+				    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions |  orderBy:'PaymentDate':true | startFrom: pastTransactionsPagination.page * pastTransactionsPagination.perPage | limitTo: pastTransactionsPagination.perPage" >
+				        <td>
+				        	{{payment.PaymentDate | date}}
+				    	</td>
+				    	<td>
+				    		{{payment.PayerName}}
+				    	</td>
+				    	<td>
+				    		{{payment.Amount | currency}}
+				    	</td>
+				        <td>
+				        	{{payment.PaymentType}}
+				        </td>
+				        <td><a><i class="fa fa-file-pdf-o"></i></a></td>
+				        <td><a><i class="fa fa-envelope-o"></i></a></td>
+				        <td>
+				        	<span class="fa fa-check green" ng-show="payment.PaymentStatus == 'Processed'"></span> 
+							<span class="fa fa-times red" ng-show="payment.PaymentStatus != 'Processed'"></span> 
+						</td>
+				      	</tr>
+				    </tbody>
+			</table>
+		</div>
 
 		<nav class="pagination-wrapper text-center" ng-show="pastTransactions.length > 10">
 			<ul class="pagination">

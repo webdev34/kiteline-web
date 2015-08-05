@@ -84,6 +84,9 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
       $location.path 'dashboard'
     else if StorageService.getItem('currentCenter')
       $rootScope.currentCenter = StorageService.getItem('currentCenter')
-    return
+    else
+      $location.path '/'
+      $rootScope.changePageTitle()
+
 
   return

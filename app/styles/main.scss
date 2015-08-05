@@ -25,6 +25,20 @@ html {
                 margin: 0px !important;
             }
         }
+        .fa{
+            &.fa-cc-amex{
+                color: #2489c8;
+            }
+            &.fa-cc-discover{
+                color: orange;
+            }
+            &.fa-cc-visa{
+                color: darkblue;
+            }
+            &.fa-cc-mastercard{
+                color: gold;
+            }
+        }
         .btn-primary{
             font-size: 16px;
         }
@@ -62,10 +76,17 @@ html {
         }
         .table-wrapper {
             height: 250px;
+            &.longer{
+                height: 515px;
+            }
+            &.modal-list{
+                height: 330px;
+            }
         }
         .table{
+            box-shadow: 2px 2px 2px 1px rgba(166, 166, 166, 0.5);
             tr:nth-child(even) { background: #FFF; border-color: #FFF; }
-            tr:nth-child(odd) { background: #EEE;  border-color: #EEE; }
+            tr:nth-child(odd) { background: whitesmoke;  border-color: whitesmoke; }
         }
         .table > tbody > tr > td{
             padding: 2px;
@@ -811,6 +832,10 @@ body{
 
 .blue {
     color: #4a90e2 !important;
+}
+
+.light-blue {
+    color: #529acd !important;
 }
 
 .orange{

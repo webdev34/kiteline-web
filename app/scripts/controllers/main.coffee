@@ -12,6 +12,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
 
     if $location.$$path is '/'
       $rootScope.pageTitle = 'Kiteline Web'
+      $rootScope.stopSpin()
 
     if $location.$$path is '/forms'
       $rootScope.pageTitle = 'Kiteline Web - Forms'
@@ -58,10 +59,9 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
     year
 
   $rootScope.checkExp = (year) ->
-    console.log year
     match = year.match(/^\s*(0?[1-9]|1[0-2])\/(\d\d|\d{4})\s*$/)
     if !match
-      alert 'Input string isn\'t match the expiration date format or date fragments are invalid.'
+      #alert 'Input string isn\'t match the expiration date format or date fragments are invalid.'
       return
     exp = new Date($rootScope.normalizeYear(1 * match[2]), 1 * match[1] - 1, 1).valueOf()
     now = new Date

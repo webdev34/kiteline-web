@@ -74,6 +74,10 @@
 	}
 	.day-care-hours{
 		@extend .ellipsis;
+		b{
+			width: 40px;
+    		float: left;
+		}
 	}
 	.col-md-6{
 		padding-right: 0px;

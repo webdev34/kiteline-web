@@ -23,7 +23,6 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
       LogInService.Login($scope.email, $scope.pin, $scope.centerId).then (response) ->
         $rootScope.dataLoading = false
         $rootScope.showLogOut = false
-      return
 
     $scope.changeView = (view) ->
       if view == 'forgotPin'
@@ -32,16 +31,13 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
       else
         $scope.showLogIn = true
         $scope.validationCheck()
-      return
 
     $scope.centerSearchFunc = ->
       CenterInfoService.centerSearch $scope.centernameSearch
-      return
 
     $scope.forgotPinFunc = ->
       $rootScope.dataLoading = true
       ForgotPinService.sendForgottenPIN $scope.email, $scope.centerId
-      return
 
     $scope.selectCenter = (centerId, centerName) ->
       $scope.centernameSearch = centerName
@@ -51,21 +47,18 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
         $scope.validationCheck()
       else
         $scope.validationCheckForgotPin()
-      return
 
     $scope.validationCheck = ->
       if $scope.email.length != 0 and $scope.pin.length != 0 and $scope.centerId.length != 0
         $scope.isValid = true
       else
         $scope.isValid = false
-      return
 
     $scope.validationCheckForgotPin = ->
       if $scope.email.length != 0 and $scope.centerId.length != 0
         $scope.isValidForgotPin = true
       else
         $scope.isValidForgotPin = false
-      return
 
     return
 ]

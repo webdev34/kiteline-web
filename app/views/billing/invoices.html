@@ -6,12 +6,14 @@
 		</h4> 
 		<p class="pull-right">
 			Total Payments
-			<span class="orange inner-span">$250</span>
+			<span class="orange inner-span">{{outstandingInvoicesTotal | currency}}</span>
 		</p>
 		<div class="clearfix"></div>
 		<!--<span class="pull-right">Auto pay scheduled for July 15 , 2015</span>-->
 		<div class="clearfix"></div>
 		<button class="pull-right btn btn-primary" ng-click="payOutstandingInvoice();">Pay Full</button>
+		<div class="clearfix"></div>
+          <div class="table-wrapper longer">
           <table class="table">
 			    <thead>
 			    	<tr>
@@ -41,7 +43,7 @@
 			      	</tr>
 			    </tbody>
 		    </table>
-
+			</div>
 			<nav class="pagination-wrapper text-center" ng-show="outstandingInvoices.length > 10">
 				<ul class="pagination">
 					<li>
@@ -63,7 +65,7 @@
 		</h4> 
 		<p class="pull-right">
 			Total Payments
-			<span class="inner-span">$250</span>
+			<span class="inner-span">{{historicalTransactionsTotal | currency}}</span>
 		</p>
 		<div class="clearfix"></div>
 		<div class="row">
@@ -97,6 +99,8 @@
 	            </div>
 	        </div>
     </div>
+    <div class="clearfix"></div>
+    <div class="table-wrapper longer">
       <table class="table">
 		    <thead>
 		    	<tr>
@@ -125,7 +129,7 @@
 		      	</tr>
 		    </tbody>
 	    </table>
-
+		</div>
     	<nav class="pagination-wrapper text-center" ng-show="historicalTransactions.length > 10">
 			<ul class="pagination">
 				<li>

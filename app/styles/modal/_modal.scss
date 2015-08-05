@@ -29,6 +29,7 @@ body {
                                 text-transform: capitalize;
                                 float: left;
                                 width: 100%;
+                                max-height: 28px;
                                 .ellipsis{
                                     width: 185px;
                                     position: relative;
@@ -44,6 +45,7 @@ body {
                             &:hover,
                             &.active{
                                 background-color: white;
+                                max-height: 115px;
                                 a, .fa{
                                     color: #04364c;
                                 }
@@ -55,6 +57,7 @@ body {
                                 margin-left: 50px;
                                 &.active{
                                     display: inline-block;
+                                    max-height: 75px;
                                 }
                                 span{
                                     margin-left: 50px;
@@ -215,6 +218,14 @@ body {
                                     border: none;
                                 }
                             }
+                        }
+                    }
+                    .invoice-break-down{
+                        margin-left: 15px;
+                        margin-bottom: 15px;
+                        font-weight: bold;
+                        span{
+                            text-transform: capitalize;
                         }
                     }
                 }
