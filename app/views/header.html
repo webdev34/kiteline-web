@@ -38,7 +38,7 @@
 			</li>			
 			<li class="user-profile-img-container relative">
 				<span>{{currentCenter.FullName}}</span>
-				<i class="fa fa-caret-down" ng-click="showLogOutFunc()"></i>
+				<i class="fa fa-caret-down" ng-click="showLogOut = !showLogOut" ng-class="{'active': showLogOut}"></i>
 
 				<div class="log-out-wrapper" ng-show="showLogOut" >
 					<a ng-click="logOut();">Log Out</a>

@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, toastr, $location, StorageService) ->
+angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, toastr, $location, StorageService, CustomStatisticsService) ->
   rootUrl =  $rootScope.rootUrl
   self = undefined
   self = this
@@ -28,6 +28,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
       StorageService.setItem 'currentCenter', data
       StorageService.setItem 'x-skychildcaretoken', $rootScope.currentUserToken
       StorageService.setItem 'userEmail', email
+      StorageService.setItem 'userPin', pin
 
       $location.path 'dashboard'
       
@@ -38,6 +39,37 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
       toastr.clear()
       toastr.error data.Message, 'Error'
       return
+
+   @updateStaleData = (email, pin, centerId) ->
+    url = rootUrl+'api/Login'
+    $http(
+      method: 'POST'
+      headers:
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+      data:
+        'CenterId': centerId
+        'GuardianEmail': email
+        'Pin': pin
+      url: url).success((data, status, headers, config) ->
+      deferred.resolve data
+
+      $rootScope.currentCenter = data
+      $rootScope.currentUserEmail = email
+      $rootScope.currentUserToken = headers()['x-skychildcaretoken']
+
+      StorageService.setItem 'currentCenter', data
+      StorageService.setItem 'x-skychildcaretoken', $rootScope.currentUserToken
+      StorageService.setItem 'userEmail', email
+      StorageService.setItem 'userPin', pin
+
+      return
+    ).error (data, status, headers, config) ->
+      deferred.reject status
+      $rootScope.dataLoading = false
+      toastr.clear()
+      toastr.error data.Message, 'Error'
+      return     
 
   @getCenterInfo = (centerId, familyId) ->
     url = rootUrl+'api/Account/GetAccounts?familyId='+familyId+'&centerId='+centerId
@@ -83,7 +115,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
     if StorageService.getItem('currentCenter') and $location.$$path == '/'
       $location.path 'dashboard'
     else if StorageService.getItem('currentCenter')
-      $rootScope.currentCenter = StorageService.getItem('currentCenter')
+      this.updateStaleData(StorageService.getItem('userEmail'), StorageService.getItem('userPin'), StorageService.getItem('currentCenter').CenterId)
     else
       $location.path '/'
       $rootScope.changePageTitle()

@@ -134,21 +134,27 @@ header.header {
             color: white;
         }
     }
-
+    i.fa-caret-down.active{
+        color: white !important;
+    }
     .log-out-wrapper{
         position: absolute;
         height: 30px;
         width: 150px;
         top: 60px;
+        right: -11px;
         background-color: #224f77;
         text-align: center;
 
         a{
             font-size: 16px;
-            top: 4px;
-            position: relative;
+            width: 100%;
+            float: left;
+            margin-top: 5px;
+            left: -10px;
             &:hover{
-                ~ i{
+                color: #4e99bd !important;
+                .log-out-wrapper i.fa.fa-caret-down{
                     color: red !important;
                 }
             }

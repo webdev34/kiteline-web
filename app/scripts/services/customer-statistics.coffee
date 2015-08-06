@@ -9,7 +9,7 @@ angular.module('kiteLineApp').service 'CustomStatisticsService', ($http, $q, $ro
   @customStatistics = (customerId) ->   
     url = rootUrl+'api/Customer/'+customerId+'/Statistics'
     $http(
-      method: 'POST'
+      method: 'GET'
       headers:
         'Content-Type': 'application/json'
         'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'

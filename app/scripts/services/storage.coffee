@@ -6,7 +6,7 @@ angular.module('kiteLineApp').service 'StorageService', ($http, $q, $rootScope, 
 
   @getItem = (item) ->
     # Read that value back
-    value = localStorageService.get(item)
+    value = localStorageService.get(item, 300000, true)
     value
 
   @setItem = (key, value) ->

@@ -148,8 +148,8 @@
 		<div id="myCarousel-3" class="carousel slide" data-ride="carousel" style="height: 100px;"data-interval="0">
 		  <div class="carousel-inner" role="listbox">
 			    <div class="item" ng-class="{'active': $index == 0}" data-ng-repeat="statement in taxStatements" style="margin-top: 30px;">
-			    <button class="btn btn-primary">{{statement[0]}}</button>
-			    <button class="btn btn-primary">{{statement[1]}}</button>
+			    <button class="btn btn-primary" ng-click="getTaxStatement(statement[0])" >{{statement[0]}}</button>
+			    <button class="btn btn-primary" ng-click="getTaxStatement(statement[1])">{{statement[1]}}</button>
 			    </div>
 		  </div>
 		  <ol class="carousel-indicators">
