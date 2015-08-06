@@ -45,7 +45,7 @@ html {
         }
         .header {
             margin-bottom: 5px;
-            background-color: #4e99bd;
+            background-color: $light-blue;
         }
         //Date-picker wrapper
         .input-group {
@@ -90,7 +90,7 @@ html {
             tr:nth-child(odd) { background: whitesmoke;  border-color: whitesmoke; }
         }
         .table > tbody > tr > td{
-            padding: 2px;
+            padding: 2px 6px;
             vertical-align: middle;
             text-align: center;
             font-size: 16px;
@@ -214,7 +214,7 @@ a:hover {
 }
 
 h1, h2, h3 {
-    color: #287194;
+    color: $dark-blue;
     font-family: concourse_c4regular;
 }
 
@@ -314,7 +314,7 @@ h1, h2, h3 {
         
     }
     ul.nav.nav-tabs {
-        border-bottom: 1px solid #4e99bd;
+        border-bottom: 1px solid $light-blue;
         li {
             clear: none;
             cursor: pointer;
@@ -487,7 +487,7 @@ h1, h2, h3 {
         font-size: 22px;
     }
     h4.alt-header {
-        color: #287194;
+        color: $dark-blue;
         font-family: concourse_c4regular;
         float: none;
         margin-top: 20px;
@@ -660,7 +660,7 @@ body{
     div.spinner{
     left: 0% !important;
     top: 0% !important;
-    background-color: #4e99bd;
+    background-color: $light-blue;
     width: 100% !important;
     height: 100% !important;
     opacity: 0.7;
@@ -846,6 +846,11 @@ body{
 .green{
     color: green !important;
 }
+
+.dark-green{
+    color: darkgreen !important;
+}
+
 .center-align {
     width: 100%;
     text-align: center;

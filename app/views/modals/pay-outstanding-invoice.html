@@ -54,7 +54,7 @@
 				        <i ng-show="account.cctype == 'CC - Mastercard'" class="fa fa-cc-mastercard"></i>
 	  					<span class="ellipsis">{{account.ccname}}</span> - 
 	  					{{account.ccnum}} 
-	  					<span class="green" ng-show="checkExp(account.expiration) == 'Valid'">
+	  					<span class="dark-green" ng-show="checkExp(account.expiration) == 'Valid'">
 	  						{{checkExp(account.expiration)}}
 	  					</span>
 						<span class="red" ng-show="checkExp(account.expiration) == 'Expired'">

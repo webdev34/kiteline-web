@@ -6,6 +6,28 @@
 
 
  		 <span class="pull-right">{{viewInvoice.CreatedOn | date}}</span></h3>
+ 		 <div class="clearfix"></div>
+		 <div class="invoice-cycle-wrapper">
+		 	<ul>
+		 		<li class="pull-left" ng-show="previousInvoice">
+				 	<a href="" data-ng-click="payInvoice(previousInvoice, true)">
+				 		<i class="fa fa-arrow-left "></i> 
+				 		<span class="prev">
+				 			Previous Invoice
+				 		</span>
+				 	</a>
+				 </li>
+		 		<li class="pull-right" ng-show="nextInvoice">
+				 	<a href="" data-ng-click="payInvoice(nextInvoice, true)">
+				 		<span class="next">
+				 			Next Invoice 
+				 		</span>
+				 		<i class="fa fa-arrow-right "></i>
+				 	</a>
+				 </li>
+			</ul>
+		 </div>
+
 		<div class="control-group col-md-6">
 		  <label class="control-label" for="bankDropDown">Saved Bank Accounts</label>
 		  <div class="table-wrapper modal-list">
@@ -59,7 +81,7 @@
 				        <i ng-show="account.cctype == 'CC - Mastercard'" class="fa fa-cc-mastercard"></i>
 	  					<span class="ellipsis">{{account.ccname}}</span> - 
 	  					{{account.ccnum}} 
-	  					<span class="green" ng-show="checkExp(account.expiration) == 'Valid'">
+	  					<span class="dark-green" ng-show="checkExp(account.expiration) == 'Valid'">
 	  						{{checkExp(account.expiration)}}
 	  					</span>
 						<span class="red" ng-show="checkExp(account.expiration) == 'Expired'">
@@ -105,5 +127,7 @@
 			{{viewInvoice.ChildName}} - {{viewInvoice.ClassName}} - {{viewInvoice.ItemTypeName}} -  <span class="orange">{{viewInvoice.Amount | currency}} </span> {{viewInvoice.CreatedOn | date}}<br/>
 					 	<span class="light-blue">{{viewInvoice.LineItemNotes}}</span>
 		 </div>
+
+		
 	</section>
 <div>

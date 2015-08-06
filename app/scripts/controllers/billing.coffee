@@ -97,20 +97,43 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.payOutstandingBalance = ->
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
 
-  $scope.payInvoice = (invoice) ->
+  $rootScope.nextAndPreviousInvoices = (currentInvoice) ->
+    angular.forEach $rootScope.arrayOfinvoices, (value, key) ->
+      if value == currentInvoice.InvoiceId
+        $rootScope.previousInvoice = $rootScope.arrayOfinvoices[key-1]
+        $rootScope.nextInvoice = $rootScope.arrayOfinvoices[key+1]
+
+  $rootScope.invoicesArrayed = () ->
+    $rootScope.arrayOfinvoices = []
+    angular.forEach $rootScope.invoicesArray, (value, key) ->
+      if value instanceof Array
+        $rootScope.arrayOfinvoices.push value[0].InvoiceId
+      else
+        $rootScope.arrayOfinvoices.push value.InvoiceId
+
+  $rootScope.payInvoice = (invoiceId, fromModal) ->
+    $rootScope.invoicesArrayed()
     $rootScope.viewInvoiceArray = null
     $rootScope.viewInvoiceArrayTotal = 0
     $rootScope.viewInvoice = null
-    $rootScope.viewInvoice = $filter('filter')($rootScope.invoicesArray, (d) -> d.InvoiceId == invoice.InvoiceId)[0]
-    ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-invoice.html'
+    $rootScope.viewInvoice = $filter('filter')($rootScope.invoicesArray, (d) -> d.InvoiceId == invoiceId)[0]
+    
+    if !fromModal
+      ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-invoice.html'
+
     if typeof $scope.viewInvoice == 'undefined'
       angular.forEach $rootScope.invoicesArray, (value, key) ->
         if value instanceof Array
-          if value[0].InvoiceId == invoice.InvoiceId
+          if value[0].InvoiceId == invoiceId
+            $scope.currentInvoice = $rootScope.invoicesArray[key][0]
             $rootScope.viewInvoiceArray = $rootScope.invoicesArray[key]
             $scope.goToInvoiceFromArrayItem($rootScope.invoicesArray[key][0])
+            
             angular.forEach $rootScope.viewInvoiceArray , (value, key) ->
               $rootScope.viewInvoiceArrayTotal += value.Amount
+      $rootScope.nextAndPreviousInvoices($scope.currentInvoice)
+    else
+      $rootScope.nextAndPreviousInvoices($rootScope.viewInvoice)
 
   $scope.payOutstandingInvoice = (invoice) ->
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-invoice.html'
@@ -174,11 +197,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.deleteCreditCardAccount = (accountId) ->
     if confirm('Are you sure you want to delete this?')
       CreditCardService.deleteCreditCard(accountId).then (response) ->
-        console.log response
       setTimeout (->
         $scope.getCCAccounts($scope.familyId, $scope.centerId)
       ), 500
-      
     else
       false    
 
@@ -265,16 +286,21 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.setPagination()
       
   $scope.setPagination = () ->
-    $rootScope.bankAccountsPagination = Pagination.getNew()
-    $rootScope.bankAccountsPagination.numPages = Math.ceil($rootScope.bankAccounts.length/$scope.bankAccountsPagination.perPage)
-    $rootScope.creditCardAccountsPagination = Pagination.getNew()
-    $rootScope.creditCardAccountsPagination.numPages = Math.ceil($rootScope.creditCardAccounts.length/$scope.creditCardAccountsPagination.perPage)
-    $scope.pastTransactionsPagination = Pagination.getNew(10)
-    $scope.pastTransactionsPagination.numPages = Math.ceil($scope.pastTransactions.length/$scope.pastTransactionsPagination.perPage)
-    $scope.historicalTransactionsPagination = Pagination.getNew(10)
-    $scope.historicalTransactionsPagination.numPages = Math.ceil($scope.historicalTransactions.length/$scope.historicalTransactionsPagination.perPage)
-    $scope.outstandingInvoicesPagination = Pagination.getNew(10)
-    $scope.outstandingInvoicesPagination.numPages = Math.ceil($scope.outstandingInvoices.length/$scope.outstandingInvoicesPagination.perPage)
+    if $scope.pastTransactions
+      $scope.pastTransactionsPagination = Pagination.getNew(10)
+      $scope.pastTransactionsPagination.numPages = Math.ceil($scope.pastTransactions.length/$scope.pastTransactionsPagination.perPage)
+    if $scope.historicalTransactions
+      $scope.historicalTransactionsPagination = Pagination.getNew(10)
+      $scope.historicalTransactionsPagination.numPages = Math.ceil($scope.historicalTransactions.length/$scope.historicalTransactionsPagination.perPage)
+    if $scope.outstandingInvoices  
+      $scope.outstandingInvoicesPagination = Pagination.getNew(10)
+      $scope.outstandingInvoicesPagination.numPages = Math.ceil($scope.outstandingInvoices.length/$scope.outstandingInvoicesPagination.perPage)
+    if $rootScope.bankAccounts 
+      $rootScope.bankAccountsPagination = Pagination.getNew()
+      $rootScope.bankAccountsPagination.numPages = Math.ceil($rootScope.bankAccounts.length/$scope.bankAccountsPagination.perPage)
+    if $rootScope.creditCardAccounts  
+      $rootScope.creditCardAccountsPagination = Pagination.getNew()
+      $rootScope.creditCardAccountsPagination.numPages = Math.ceil($rootScope.creditCardAccounts.length/$scope.creditCardAccountsPagination.perPage)
 
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
@@ -333,7 +359,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
               $scope.invoiceGrandTotal = $scope.invoiceGrandTotal+value.Amount
             
             $rootScope.invoicesArray.push arrayHolder
-
+      
       $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
       $rootScope.stopSpin()
       

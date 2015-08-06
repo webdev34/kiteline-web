@@ -42,7 +42,7 @@
 				</td>
 				<td>
 					<a ng-click="deleteBankAccount(account.AccountId)" title="Delete Account">
-						<i class="fa fa-times-circle red"></i>
+						<i class="fa fa-trash red"></i>
 					</a>
 				</td>
 				</tr>
@@ -114,7 +114,7 @@
 							<toggle-switch ng-model="account.IsDefault" ng-change="setDefaultAccount(account.AccountId);" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
 						</td>
 						<td>
-							<a ng-click="deleteCreditCardAccount(account.AccountId)" title="Delete Account"><i class="fa fa-times-circle red"></i></a>
+							<a ng-click="deleteCreditCardAccount(account.AccountId)" title="Delete Account"><i class="fa fa-trash red"></i></a>
 						</td>
 					</tr>
 			    </tbody>
