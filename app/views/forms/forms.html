@@ -1,0 +1,54 @@
+<div class="forms-wrapper col-md-12">
+	<p>
+		The following forms & documents can be used by parents in their parent portal.
+	</p>
+	<button class="pull-left btn btn-primary">
+		<i class="fa fa-plus"></i>
+		Add
+	</button>
+	<div class="clearfix"></div> 
+	<div class="table-wrapper longer">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>File Name</th>
+					<th>Description</th>
+					<th>Last Updated</th>
+					<th>Download</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-show="currentCenterFiles.length == 0"><td colspan="5"><span>No Files</span></td></tr>
+				<tr  data-ng-repeat="file in currentCenterFiles | startFrom: currentCenterFilesPagination.page * currentCenterFilesPagination.perPage | limitTo: currentCenterFilesPagination.perPage">
+					<td>{{file.FileName}}</td>
+					<td>{{file.Description}}</td>
+					<td>{{file.EditedOn}}</td>
+					<td>
+						<a href="{{file.FileURL}}">
+							<i class="fa fa-download blue"></i>
+						</a>
+					</td>
+					<td>
+						<a ng-click="deleteFile(file.CenterFileId)" title="Delete File">
+							<i class="fa fa-times-circle red"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+    <nav class="pagination-wrapper text-center" ng-show="currentCenterFiles.length > 10">
+		<ul class="pagination">
+			<li>
+				<a href="" ng-click="currentCenterFilesPagination.prevPage()">&laquo;</a>
+			</li>
+		  	<li ng-repeat="n in [] | range: currentCenterFilesPagination.numPages" ng-class="{active: n == currentCenterFilesPagination.page}">
+		  		<a href="" ng-click="currentCenterFilesPagination.toPageId(n)">{{n + 1}}</a>
+		  	</li>
+		  	<li>
+		  		<a href="" ng-click="currentCenterFilesPagination.nextPage()">&raquo;</a>
+		  	</li>
+		</ul>
+	</nav>
+</div>
