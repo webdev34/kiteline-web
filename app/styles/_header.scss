@@ -152,6 +152,7 @@ header.header {
             float: left;
             margin-top: 5px;
             left: -10px;
+            text-indent: 0px !important;
             &:hover{
                 color: #4e99bd !important;
                 .log-out-wrapper i.fa.fa-caret-down{

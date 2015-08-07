@@ -104,8 +104,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $rootScope.nextAndPreviousInvoices = (currentInvoice) ->
     angular.forEach $rootScope.arrayOfinvoices, (value, key) ->
       if value == currentInvoice.InvoiceId
-        $rootScope.previousInvoice = $rootScope.arrayOfinvoices[key-1]
-        $rootScope.nextInvoice = $rootScope.arrayOfinvoices[key+1]
+        $rootScope.nextInvoice = $rootScope.arrayOfinvoices[key-1] 
+        $rootScope.previousInvoice = $rootScope.arrayOfinvoices[key+1]
 
   $rootScope.invoicesArrayed = () ->
     $rootScope.arrayOfinvoices = []
