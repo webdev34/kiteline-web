@@ -1,0 +1,32 @@
+﻿<div class="overlay-container" >
+        <div id="reportViewer1" class="k-widget" style="height: 800px;">
+            loading...
+        </div>
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#reportViewer1")
+            .telerik_ReportViewer({
+                serviceUrl: "http://localhost/SkyChildCare.KiteLine/api/reports/",
+                templateUrl: '/views/telerikReportViewerTemplate-9.0.15.324.html',
+                reportSource: {
+                    report: "Invoice.trdx",
+                    //report: "MAP.SkyCare.Reports.Invoice, MAP.SkyCare.Reports, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d6ffd24b2ed3c2d1",
+                    parameters: {
+                        InvoiceId: "355"
+                    }
+                }
+            });
+
+        // $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+
+        //     jqXHR.setRequestHeader("X-SkyChildCareApiKey", "{34D53D20-4592-41AA-BEB0-0084AF29488E}");
+        //     jqXHR.setRequestHeader("X-SkyChildCareToken", "F3JQ50z5YHUq9Jmj6Jj/bOqZ40c9cCjX9qrwY0i+hg426Tt3pnpLcT5NbXYnrXibr57iHcLANJmnfIo+nN2xj4JhLufX/KBYMA2hpUV55cQ=");
+        //     jqXHR.setRequestHeader("X-SkyChildCareCenterId", "551");
+        //     jqXHR.setRequestHeader("X-SkyChildCareUserId", "ayodele34@gmail.com");
+
+        // });
+    });
+    </script>
+</div>

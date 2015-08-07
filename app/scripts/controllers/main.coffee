@@ -35,7 +35,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
   $rootScope.changePageTitle()
 
   if window.location.href.indexOf('localhost') > -1
-    $rootScope.modalUrl = ''
+    $rootScope.modalUrl = 'http://localhost:9000'
   else
     $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb'
 
