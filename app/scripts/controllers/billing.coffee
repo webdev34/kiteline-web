@@ -104,16 +104,23 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $rootScope.nextAndPreviousInvoices = (currentInvoice) ->
     angular.forEach $rootScope.arrayOfinvoices, (value, key) ->
       if value == currentInvoice.InvoiceId
-        $rootScope.nextInvoice = $rootScope.arrayOfinvoices[key-1] 
-        $rootScope.previousInvoice = $rootScope.arrayOfinvoices[key+1]
+        $rootScope.nextInvoice = $rootScope.arrayOfinvoices[key+1] 
+        $rootScope.previousInvoice = $rootScope.arrayOfinvoices[key-1]
 
   $rootScope.invoicesArrayed = () ->
+    $rootScope.arrayOfinvoicesHolder = []
     $rootScope.arrayOfinvoices = []
+
     angular.forEach $rootScope.invoicesArray, (value, key) ->
       if value instanceof Array
-        $rootScope.arrayOfinvoices.push value[0].InvoiceId
+        $rootScope.arrayOfinvoicesHolder.push value[0]
       else
-        $rootScope.arrayOfinvoices.push value.InvoiceId
+        $rootScope.arrayOfinvoicesHolder.push value
+
+    $rootScope.arrayOfinvoicesHolder = $filter('orderBy')($rootScope.arrayOfinvoicesHolder, 'CreatedOn', true)
+
+    angular.forEach $rootScope.arrayOfinvoicesHolder, (value, key) ->
+      $rootScope.arrayOfinvoices.push value.InvoiceId
 
   $rootScope.payInvoice = (invoiceId, fromModal) ->
     $rootScope.invoicesArrayed()
@@ -318,7 +325,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     
     CenterInfoService.getCenterDetails($scope.centerId).then (response) ->
       $scope.currentCenterDetails = response.data
-      $scope.childrenClasses = []
 
     GuardianService.getAllGuardians($scope.familyId).then (response) ->
       $rootScope.guardians = response.data
@@ -329,9 +335,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     CurbSideService.getAllChildren($scope.centerId, $scope.familyId).then (response) ->
       $scope.userChildren = response.data
 
-      angular.forEach $scope.userChildren, (value, key) ->
-        ChildService.getChildClass(value.ChildId).then (response) ->
-          $scope.childrenClasses.push response.data
+    PaymentService.getChildrenTuiton($scope.familyId).then (response) ->
+      $scope.userChildrenTuition = response.data
 
     AnnouncementsService.getAnnouncements($scope.customerId).then (response) ->
       $scope.announcements = null

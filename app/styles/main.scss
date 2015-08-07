@@ -901,6 +901,21 @@ body{
                 width: 80%;
             }
         }
+
+        ul.nav.nav-tabs li a{
+            font-size: 16px;
+            min-width: 125px;
+        }
+
+    }
+    .contact-container{
+        .text-center,
+        .contact-section-wrapper,
+        .day-care-hours
+        {
+            width: 33%;
+            float: left;
+        }
     }
     .billing-container .transactions-breakdown-wrapper .dates-input-wrapper .input-group-addon,
     .billing-container .transactions-breakdown-wrapper .dates-input-wrapper .input-group-addon.end-date{
@@ -930,8 +945,13 @@ body{
     }
     .left-feature-container.col-md-8 {
         min-height: 1055px;
+        overflow: auto;
     }
-    .navbar .container{
-        padding-bottom: 15px;
+
+    .kiteline-logo{
+        height: 36px;
+        background-size: contain;
+        margin-top: 5px;
+        margin-left: 10px;
     }
 }
