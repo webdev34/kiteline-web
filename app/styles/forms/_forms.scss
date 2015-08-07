@@ -6,4 +6,15 @@
 	button{
 		margin-bottom: 25px;
 	}
+	.table{
+		tr{
+			td{
+				.file-name{
+					max-width: 250px;
+				    text-align: center;
+				    display: inline-block;
+				}
+			}
+		}
+	}
 }

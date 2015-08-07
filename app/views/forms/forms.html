@@ -21,11 +21,11 @@
 			<tbody>
 				<tr ng-show="currentCenterFiles.length == 0"><td colspan="5"><span>No Files</span></td></tr>
 				<tr  data-ng-repeat="file in currentCenterFiles | startFrom: currentCenterFilesPagination.page * currentCenterFilesPagination.perPage | limitTo: currentCenterFilesPagination.perPage">
-					<td>{{file.FileName}}</td>
+					<td><p class="file-name ellipsis">{{file.FileName}}</p></td>
 					<td>{{file.Description}}</td>
 					<td>{{file.EditedOn}}</td>
 					<td>
-						<a href="{{file.FileURL}}">
+						<a href="{{file.FileURL}}" download>
 							<i class="fa fa-download blue"></i>
 						</a>
 					</td>

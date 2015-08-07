@@ -29,6 +29,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
       StorageService.setItem 'x-skychildcaretoken', $rootScope.currentUserToken
       StorageService.setItem 'userEmail', email
       StorageService.setItem 'userPin', pin
+      self.setTimeStamp()
 
       $location.path 'dashboard'
       
@@ -57,7 +58,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
       $rootScope.currentCenter = data
       $rootScope.currentUserEmail = email
       $rootScope.currentUserToken = headers()['x-skychildcaretoken']
-
+      self.checkTimeStamp()
       StorageService.setItem 'currentCenter', data
       StorageService.setItem 'x-skychildcaretoken', $rootScope.currentUserToken
       StorageService.setItem 'userEmail', email
@@ -112,6 +113,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
       return
 
   @isLoggedIn = ->
+    self.checkTimeStamp()
     if StorageService.getItem('currentCenter') and $location.$$path == '/'
       $location.path 'dashboard'
     else if StorageService.getItem('currentCenter')
@@ -120,5 +122,19 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
       $location.path '/'
       $rootScope.changePageTitle()
 
+  @setTimeStamp = ->
+    timeNow = new Date
+    StorageService.setItem 'time-stamp', timeNow
+
+  @checkTimeStamp = ->
+    millennium = new Date(StorageService.getItem('time-stamp'))
+    today = new Date
+    miliseconds = today - millennium
+    seconds = miliseconds / 1000
+    minutes = seconds / 60
+    hours = minutes / 60
+    if hours > 7
+      StorageService.deleteLocalStorage()
+      $location.path '/'
 
   return

@@ -6,7 +6,7 @@ angular.module('kiteLineApp').service 'StorageService', ($http, $q, $rootScope, 
 
   @getItem = (item) ->
     # Read that value back
-    value = localStorageService.get(item, 300000, true)
+    value = localStorageService.get(item)
     value
 
   @setItem = (key, value) ->
@@ -19,7 +19,7 @@ angular.module('kiteLineApp').service 'StorageService', ($http, $q, $rootScope, 
     localStorageService.remove key
     return
 
-  @deleteLocalStorage = (key) ->
+  @deleteLocalStorage = () ->
     # To remove a local storage
     localStorageService.clearAll()
     return
