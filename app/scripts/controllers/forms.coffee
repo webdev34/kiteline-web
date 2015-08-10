@@ -4,12 +4,6 @@ angular.module('kiteLineApp').controller 'FormsCtrl', ($scope, $rootScope, $filt
   $rootScope.changePageTitle()
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
-  #console.log StorageService.getItem('currentCenter')
-  # StorageService.deleteLocalStorage();
-
-  $scope.deleteFile = (fileId) ->
-
-  $scope.addFile = () ->
   
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
@@ -27,6 +21,5 @@ angular.module('kiteLineApp').controller 'FormsCtrl', ($scope, $rootScope, $filt
       $scope.currentCenterFiles = response.data
       $scope.currentCenterFilesPagination = Pagination.getNew(10)
       $scope.currentCenterFilesPagination.numPages = Math.ceil($scope.currentCenterFiles.length/$scope.currentCenterFilesPagination.perPage)
-     
       $rootScope.stopSpin()
       

@@ -2,10 +2,6 @@
 	<p>
 		The following forms & documents can be used by parents in their parent portal.
 	</p>
-	<button class="pull-left btn btn-primary">
-		<i class="fa fa-plus"></i>
-		Add
-	</button>
 	<div class="clearfix"></div> 
 	<div class="table-wrapper longer">
 		<table class="table">
@@ -15,7 +11,6 @@
 					<th>Description</th>
 					<th>Last Updated</th>
 					<th>Download</th>
-					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,15 +18,10 @@
 				<tr  data-ng-repeat="file in currentCenterFiles | startFrom: currentCenterFilesPagination.page * currentCenterFilesPagination.perPage | limitTo: currentCenterFilesPagination.perPage">
 					<td><p class="file-name ellipsis">{{file.FileName}}</p></td>
 					<td>{{file.Description}}</td>
-					<td>{{file.EditedOn}}</td>
+					<td>{{file.EditedOn | date}}</td>
 					<td>
-						<a href="{{file.FileURL}}" download>
+						<a href="{{file.FileURL}}" target="_blank" download>
 							<i class="fa fa-download blue"></i>
-						</a>
-					</td>
-					<td>
-						<a ng-click="deleteFile(file.CenterFileId)" title="Delete File">
-							<i class="fa fa-trash red"></i>
 						</a>
 					</td>
 				</tr>
