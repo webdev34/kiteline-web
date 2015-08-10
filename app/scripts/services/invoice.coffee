@@ -26,9 +26,6 @@ angular.module('kiteLineApp').service 'InvoiceService', ($http, $q, $rootScope, 
       toastr.error status, 'Error'
       return
 
-  @reportInvoice = (invoiceId) -> 
-    alert(invoiceId)
-
   @getPaidInvoices = (customerId) ->   
     url = rootUrl+'api/Customer/'+customerId+'/Invoices/PaidInvoices'
     $http(
