@@ -171,6 +171,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     if !fromModal
       ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-invoice.html'
 
+
     if typeof $scope.viewInvoice == 'undefined'
       angular.forEach $rootScope.invoicesArray, (value, key) ->
         if value instanceof Array
@@ -185,15 +186,15 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     else
       $rootScope.nextAndPreviousInvoices($rootScope.viewInvoice)
 
-  $scope.reportInvoice = (invoice) ->
-    $rootScope.viewInvoice = $filter('filter')($scope.invoicesArray, (d) -> d.InvoiceId == invoice.InvoiceId)[0]
+  $rootScope.reportInvoice = (invoiceId, fromModal) ->
+    $rootScope.invoicesArrayed()
+    $rootScope.viewInvoiceArray = null
+    $rootScope.viewInvoiceArrayTotal = 0
+    $rootScope.viewInvoice = null
+    $rootScope.viewInvoice = $filter('filter')($rootScope.invoicesArray, (d) -> d.InvoiceId == invoiceId)[0]
+    
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/report-invoice.html'
-    if typeof $scope.viewInvoice == 'undefined'
-      angular.forEach $scope.invoicesArray, (value, key) ->
-        if value instanceof Array
-          if value[0].InvoiceId == invoice.InvoiceId
-            $scope.viewInvoiceArray = $scope.invoicesArray[key]
-            $scope.goToInvoiceFromArrayItem($scope.invoicesArray[key][0])
+    InvoiceService.reportInvoice(invoiceId)
 
   $scope.payOutstandingInvoice = (invoice) ->
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-invoice.html'
