@@ -7,7 +7,7 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
   'CenterInfoService'
   'ForgotPinService'
   ($scope, $rootScope, $location, LogInService, CenterInfoService, ForgotPinService) ->
-    LogInService.isLoggedIn()
+    # LogInService.isLoggedIn()
     $rootScope.isLoggedIn = false
     $rootScope.isLoginPage = true
     $scope.isValid = false
@@ -62,3 +62,7 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
 
     return
 ]
+
+
+angular.module('kiteLineApp').controller 'InvalidCtrl', ($scope, $rootScope, $location) ->
+  $rootScope.widerContainer = true

@@ -28,7 +28,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <header  class="header" ng-include src="'views/header.html'" ng-hide="isLoginPage"></header>
-    <div class="container kiteline-content">
+    <div class="container kiteline-content" ng-class="{wider: widerContainer}"  >
         <div class="inner-kiteline-content-container" ng-view></div>
     </div>
     <footer ng-hide="isLoginPage" ng-show="!isLoading" class="footer" ng-include src="'views/footer.html'"></footer>

@@ -20,18 +20,20 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
         'Pin': pin
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
+      
+      if data.SubscriptionTypeName is 'bronze'
+        $location.path 'invalid-subscription'
+      else
+        $rootScope.currentCenter = data
+        $rootScope.currentUserEmail = email
+        $rootScope.currentUserToken = headers()['x-skychildcaretoken']
 
-      $rootScope.currentCenter = data
-      $rootScope.currentUserEmail = email
-      $rootScope.currentUserToken = headers()['x-skychildcaretoken']
-
-      StorageService.setItem 'currentCenter', data
-      StorageService.setItem 'x-skychildcaretoken', $rootScope.currentUserToken
-      StorageService.setItem 'userEmail', email
-      StorageService.setItem 'userPin', pin
-      self.setTimeStamp()
-
-      $location.path 'dashboard'
+        StorageService.setItem 'currentCenter', data
+        StorageService.setItem 'x-skychildcaretoken', $rootScope.currentUserToken
+        StorageService.setItem 'userEmail', email
+        StorageService.setItem 'userPin', pin
+        self.setTimeStamp()
+        $location.path 'dashboard'
       
       return
     ).error (data, status, headers, config) ->

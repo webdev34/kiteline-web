@@ -12,8 +12,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.activeGuardian = "guardian-1"
   $scope.activeEmergencyContact = "contact-1"
   $scope.activePickupContact = "pickup-contact-1"
-  #console.log StorageService.getItem('currentCenter')
-  # StorageService.deleteLocalStorage();
 
   $scope.payOutstandingBalance = ->
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'

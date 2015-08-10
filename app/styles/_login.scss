@@ -16,6 +16,10 @@ body.loginPage {
             padding-right: 15px;
             margin-top: 10%;
         }
+        &.wider{
+            width: 100% ;
+            max-width: 100% !important; 
+        }
     }
 }
 
@@ -23,6 +27,21 @@ body.loginPage {
     margin-top: 25%;
     text-align: center;
     color: white;
+    &.invalid-sub{
+        width: 500px;
+
+        p{
+            color: black;
+            padding: 15px;
+            font-size: 15px;
+        }
+        a{
+            color: #529acd;
+            &:hover{
+                color: #287194;
+            }
+        }
+    }
     h3 {
         font-family: arial;
         font-weight: lighter;

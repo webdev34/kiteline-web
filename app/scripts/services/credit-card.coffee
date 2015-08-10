@@ -237,4 +237,46 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
       toastr.error status, 'Error'
       return      
 
+  @setDefaultCreditCard = (subscriberId, customerId, accountId) ->   
+    url = rootUrl+'api/CreditCard/SetDefaultCCAccount?SubscriberId='+subscriberId+'&CustomerId='+customerId+'&accountId='+accountId
+    $http(
+      method: 'POST'
+      headers:
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+        'X-SkyChildCareToken': $rootScope.currentUserToken
+        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
+        'X-SkyChildCareUserId': $rootScope.currentUserEmail  
+
+      url: url).success((data, status, headers, config) ->
+      deferred.resolve data
+
+      return
+    ).error (data, status, headers, config) ->
+      deferred.reject status
+
+      toastr.error status, 'Error'
+      return   
+
+  @getDefaultCreditCard = (subscriberId, customerId) ->   
+    url = rootUrl+'api/CreditCard/GetDefaultCCAccount?SubscriberId='+subscriberId+'&CustomerId='+customerId
+    $http(
+      method: 'GET'
+      headers:
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+        'X-SkyChildCareToken': $rootScope.currentUserToken
+        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
+        'X-SkyChildCareUserId': $rootScope.currentUserEmail  
+
+      url: url).success((data, status, headers, config) ->
+      deferred.resolve data
+
+      return
+    ).error (data, status, headers, config) ->
+      deferred.reject status
+
+      toastr.error status, 'Error'
+      return  
+
   return

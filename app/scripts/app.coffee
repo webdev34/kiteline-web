@@ -18,6 +18,8 @@ angular.module('kiteLineApp', [
 ]).config ($routeProvider) ->
   $routeProvider.when('/',
     templateUrl: 'views/login.html'
+    controller: 'LoginCtrl').when('/invalid-subscription',
+    templateUrl: 'views/invalid-subscription.html'
     controller: 'LoginCtrl').when('/dashboard',
     templateUrl: 'views/dashboard/dashboard.html'
     controller: 'DashboardCtrl').when('/billing',

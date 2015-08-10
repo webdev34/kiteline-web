@@ -18,6 +18,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.newBankAccount = {}
   $scope.newCC = {}
   $scope.expireDates = {}
+  $scope.defaultCC = null
   $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
   d = new Date
   $scope.billDates = {}
@@ -95,7 +96,10 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.newCC.MailingZip = null
       $scope.newCC.BusinessPhone = null
 
-  $scope.setDefaultAccount = (accountId) ->
+  $scope.setDefaultCCAccount = (accountId) ->
+    CreditCardService.setDefaultCreditCard($scope.familyId, $scope.centerId, accountId).then (response) ->
+
+  $scope.setDefaultBankAccount = (accountId) ->
     AccountService.setActiveAccount($scope.familyId, $scope.centerId, accountId).then (response) ->
 
   $scope.payOutstandingBalance = ->
@@ -289,11 +293,20 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.getCCAccounts = (familyId, centerId) ->
     CreditCardService.getCreditCardAccounts($rootScope.subscriberId, $scope.customerId).then (response) ->
       $rootScope.creditCardAccounts = response.data
+      angular.forEach $rootScope.creditCardAccounts, (value, key) ->
+        value.RecurringAccountYN = false
+
       $scope.setPagination()
       
   $scope.getBankAccounts = (familyId, centerId) ->
     CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
       $rootScope.bankAccounts = response.data
+      angular.forEach $rootScope.bankAccounts, (value, key) ->
+        if value.RecurringAccountYN == 'Yes'
+          value.RecurringAccountYN = true
+        else
+          value.RecurringAccountYN = false
+
       $scope.setPagination()
       
   $scope.setPagination = () ->
