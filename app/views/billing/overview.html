@@ -131,10 +131,17 @@
 			Auto Pay
 		</h4> 
 		<div class="clearfix"></div>
-		<div class="inner-wrapper">
-			<toggle-switch ng-model="bank_auto_pay" class="switch-success auto-pay-toggle-btn pull-left" on-label="On" off-label="Off"></toggle-switch>
+		<div class="inner-wrapper" ng-show="defaultAccount.AccountTypeDescription">
+			<toggle-switch ng-model="defaultAccount.RecurringAccount" class="switch-success auto-pay-toggle-btn pull-left" on-label="On" off-label="Off"></toggle-switch>
 			<p class="pull-left">BANK ACCOUNT  ENDING<br/>
-				IN <span class="red">5666</span></p>
+				IN <span class="red">{{defaultAccount.DisplayNumbers}}</span></p>
+				
+			<div class="clearfix"></div>
+		</div>
+		<div class="inner-wrapper" ng-show="!defaultAccount.AccountTypeDescription">
+			<toggle-switch ng-model="defaultAccount.RecurringAccount" class="switch-success auto-pay-toggle-btn pull-left" on-label="On" off-label="Off"></toggle-switch>
+			<p class="pull-left">CARD ENDING<br/>
+				IN <span class="red">{{defaultAccount.ccnum}}</span></p>
 			<div class="clearfix"></div>
 		</div>
 	</div>
