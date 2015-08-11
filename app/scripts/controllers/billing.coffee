@@ -64,36 +64,49 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     }
   ]
 
+  $rootScope.processPayment = (type) ->
+    console.log $rootScope.activePaymentAccount
+    if type == 'outstanding balance'
+
+    else
+
+  $rootScope.processInvoicePayment = () ->
+    console.log $rootScope.activePaymentAccount
+    if $rootScope.viewInvoiceArray is null
+      console.log $rootScope.viewInvoice
+    else
+      console.log $rootScope.viewInvoiceArray
+
   $scope.getTaxStatement = (year) ->
     PaymentService.getTaxStatment($scope.familyId, $scope.customerId, year).then (response) ->
       $scope.taxStatements = response.data
 
   $scope.autocompleteHomeAddressBank = () ->
     if $scope.newBankAccount.autofillAddressBank is true
-      $scope.newBankAccount.MailingAddress = $rootScope.headOfHouseHold.Street
-      $scope.newBankAccount.MailingCity = $rootScope.headOfHouseHold.City
-      $scope.newBankAccount.MailingState = $rootScope.headOfHouseHold.State
-      $scope.newBankAccount.MailingZip = $rootScope.headOfHouseHold.Zip
+      $scope.newBankAccount.BillingAddress = $rootScope.headOfHouseHold.Street
+      $scope.newBankAccount.BillingCity = $rootScope.headOfHouseHold.City
+      $scope.newBankAccount.BillingState = $rootScope.headOfHouseHold.State
+      $scope.newBankAccount.BillingZip = $rootScope.headOfHouseHold.Zip
       $scope.newBankAccount.BusinessPhone = $rootScope.headOfHouseHold.HomePhone
     else
-      $scope.newBankAccount.MailingAddress = null
-      $scope.newBankAccount.MailingCity = null
-      $scope.newBankAccount.MailingState = null
-      $scope.newBankAccount.MailingZip = null
+      $scope.newBankAccount.BillingAddress = null
+      $scope.newBankAccount.BillingCity = null
+      $scope.newBankAccount.BillingState = null
+      $scope.newBankAccount.BillingZip = null
       $scope.newBankAccount.BusinessPhone = null
 
   $scope.autocompleteHomeAddressCC = () ->
     if $scope.newCC.autofillAddressCC is true
-      $scope.newCC.MailingAddress = $rootScope.headOfHouseHold.Street
-      $scope.newCC.MailingCity = $rootScope.headOfHouseHold.City
-      $scope.newCC.MailingState = $rootScope.headOfHouseHold.State
-      $scope.newCC.MailingZip = $rootScope.headOfHouseHold.Zip
+      $scope.newCC.BillingAddress = $rootScope.headOfHouseHold.Street
+      $scope.newCC.BillingCity = $rootScope.headOfHouseHold.City
+      $scope.newCC.BillingState = $rootScope.headOfHouseHold.State
+      $scope.newCC.BillingZip = $rootScope.headOfHouseHold.Zip
       $scope.newCC.BusinessPhone = $rootScope.headOfHouseHold.HomePhone
     else
-      $scope.newCC.MailingAddress = null
-      $scope.newCC.MailingCity = null
-      $scope.newCC.MailingState = null
-      $scope.newCC.MailingZip = null
+      $scope.newCC.BillingAddress = null
+      $scope.newCC.BillingCity = null
+      $scope.newCC.BillingState = null
+      $scope.newCC.BillingZip = null
       $scope.newCC.BusinessPhone = null
 
   $scope.setDefaultCCAccount = (accountId) ->
@@ -170,7 +183,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.newCC.autofillAddressCC = false
       $scope.addCreditCard = true
     else
-      $scope.newBankAccount.autofillAddressBank = false  
+      $scope.newBankAccount.autofillAddressBank = false 
       $scope.addBankAccount = true
 
   $scope.resetAccountForm = (type, form) ->
@@ -180,11 +193,13 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.newCC.PayerEmail = ''
       $scope.expireDates = {}
       $scope.expireDates.month = ''
+      $scope.newCC.RecurringAccount = false
       form.$setPristine();
     else
       $scope.addBankAccount = false
       $scope.newBankAccount = {}
       $scope.newBankAccount.PayerEmail = ''
+      $scope.newBankAccount.RecurringAccount = false 
       form.$setPristine();
 
   $scope.submitNewAccount = (type, form) ->
@@ -192,10 +207,13 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       thisYear = String($scope.expireDates.year)
       thisYear = thisYear[2]+thisYear[3]
       $scope.newCC.ExpirationDate = $scope.expireDates.month+'/'+thisYear
+      console.log 'submit'
+      console.log $scope.newCC
       CreditCardService.addCreditCard($scope.newCC).then (response) ->
         $scope.getCCAccounts($scope.familyId, $scope.centerId)
         $scope.resetAccountForm('CC', form)
     else
+      console.log $scope.newBankAccount
       AccountService.createAccount($scope.newBankAccount).then (response) ->
         if response.statusText is 'OK'
           $scope.addBankAccount = false
@@ -273,6 +291,10 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       angular.forEach $rootScope.bankAccounts, (value, key) ->
         if account.AccountId is value.AccountId
           account.isActive = !account.isActive;
+          if account.isActive == false
+            $rootScope.activePaymentAccount = null
+          else
+            $rootScope.activePaymentAccount = account
         else
           value.isActive = false
       angular.forEach $rootScope.creditCardAccounts, (value, key) ->
@@ -281,6 +303,10 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       angular.forEach $rootScope.creditCardAccounts, (value, key) ->
         if account.AccountId is value.AccountId
           account.isActive = !account.isActive;
+          if account.isActive == false
+            $rootScope.activePaymentAccount = null
+          else
+            $rootScope.activePaymentAccount = account
         else
           value.isActive = false
       angular.forEach $rootScope.bankAccounts, (value, key) ->
@@ -293,20 +319,13 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.getCCAccounts = (familyId, centerId) ->
     CreditCardService.getCreditCardAccounts($rootScope.subscriberId, $scope.customerId).then (response) ->
       $rootScope.creditCardAccounts = response.data
-      angular.forEach $rootScope.creditCardAccounts, (value, key) ->
-        value.RecurringAccountYN = false
-
+      console.log $rootScope.creditCardAccounts
       $scope.setPagination()
       
   $scope.getBankAccounts = (familyId, centerId) ->
-    CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
+    AccountService.getAccounts(familyId, centerId).then (response) ->
       $rootScope.bankAccounts = response.data
-      angular.forEach $rootScope.bankAccounts, (value, key) ->
-        if value.RecurringAccountYN == 'Yes'
-          value.RecurringAccountYN = true
-        else
-          value.RecurringAccountYN = false
-
+      console.log $rootScope.bankAccounts
       $scope.setPagination()
       
   $scope.setPagination = () ->

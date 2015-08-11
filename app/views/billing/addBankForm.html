@@ -12,33 +12,33 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="MailingAddress">Billing Address</label>
+  <label class="control-label" for="BillingAddress">Billing Address</label>
   <div class="controls">
-    <input id="MailingAddress" name="MailingAddress" ng-model="newBankAccount.MailingAddress" type="text" class="input-xlarge" required="">
+    <input id="BillingAddress" name="BillingAddress" ng-model="newBankAccount.BillingAddress" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="MailingCity">Billing City</label>
+  <label class="control-label" for="BillingCity">Billing City</label>
   <div class="controls">
-    <input id="MailingCity" name="MailingCity" ng-model="newBankAccount.MailingCity" type="text" class="input-xlarge" required="">
+    <input id="BillingCity" name="BillingCity" ng-model="newBankAccount.BillingCity" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="MailingState">Billing State</label>
+  <label class="control-label" for="BillingState">Billing State</label>
   <div class="controls relative">
 
 
- <select id="MailingStateBank" class="MailingState" ng-model="newBankAccount.MailingState" required="">
+ <select id="BillingStateBank" class="BillingState" ng-model="newBankAccount.BillingState" required="">
       <option value="{{option.abbreviation}}" data-ng-repeat="option in statesDropDown
 ">{{option.name}}</option>
     </select>
-    <i class="fa fa-caret-down" select-button select-id="MailingStateBank"></i>
+    <i class="fa fa-caret-down" select-button select-id="BillingStateBank"></i>
     
   </div>
 </div>
@@ -47,9 +47,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="MailingZip">Billing Zip</label>
+  <label class="control-label" for="BillingZip">Billing Zip</label>
   <div class="controls">
-    <input id="MailingZip" name="MailingZip" ng-model="newBankAccount.MailingZip" type="text" class="input-xlarge" required="" maxlength="5">
+    <input id="BillingZip" name="BillingZip" ng-model="newBankAccount.BillingZip" type="text" class="input-xlarge" required="" maxlength="5">
     
   </div>
 </div>
@@ -151,6 +151,12 @@
 </div>
 
 <div class="clearfix"></div>
+<div class="control-group">
+  <label class="">
+      <input type="checkbox" name="RecurringAccount" ng-model="newBankAccount.RecurringAccount"  ng-true-value="true" ng-false-value="false" >
+      Default Account
+  </label>
+</div>
 
 <!-- Button -->
 <div class="control-group">

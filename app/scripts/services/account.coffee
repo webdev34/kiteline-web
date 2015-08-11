@@ -60,7 +60,7 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
         'AccountId': 1
         'CreatedOn': new Date()
         'VerificationYN': "N"
-        'RecurringAccountYN': "N"
+        'RecurringAccount': "N"
         'GuardianId': $rootScope.guardians[0].GuardianId
         'PayerId': obj.PayEmail
         'PayerName': obj.PayerName
@@ -74,10 +74,10 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
         'AccountTypeDescription': null
         'StatusFlag': null
         'FailedDescription': null
-        'MailingAddress': obj.MailingAddress
-        'MailingCity': obj.MailingCity
-        'MailingState': obj.MailingState
-        'MailingZip': obj.MailingZip
+        'BillingAddress': obj.BillingAddress
+        'BillingCity': obj.BillingCity
+        'BillingState': obj.BillingState
+        'BillingZip': obj.BillingZip
         'Phone': obj.BusinessPhone
         'UserId': $rootScope.currentUserEmail
         'AccountNumber': obj.AccountNumber

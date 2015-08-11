@@ -131,16 +131,16 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
         'CustomerId': $rootScope.currentCenter.CustomerId
         'userId': $rootScope.currentUserEmail
         'LegalBusinessName': obj.PayerName
-        'MailingAddress': obj.MailingAddress
-        'MailingCity': obj.MailingCity
-        'MailingState': obj.MailingState
-        'MailingZip': obj.MailingZip
+        'BillingAddress': obj.BillingAddress
+        'BillingCity': obj.BillingCity
+        'BillingState': obj.BillingState
+        'BillingZip': obj.BillingZip
         'BusinessPhone': obj.BusinessPhone
         'BusinessEmail': obj.PayEmail
         'CardHolderName': obj.PayerName
         'CardNumber': obj.AccountNumber
         'ExpirationDate': obj.ExpirationDate
-        'BillingZip': obj.MailingZip    
+        'BillingZip': obj.BillingZip    
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data

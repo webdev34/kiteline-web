@@ -1,0 +1,47 @@
+		  <label class="control-label" for="creditCardDropDown">Saved Credit Cards</label>
+		  <div class="table-wrapper modal-list">
+		  	<ul class="account-list col-md-12">
+		  		<li data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage"  ng-click="resetActiveAccount('cc', account);" ng-class="{active: account.isActive}">
+	  				<a>
+	  					<i ng-show="account.cctype == 'CC - AMEX'" class="fa fa-cc-amex"></i>
+				        <i ng-show="account.cctype == 'CC - Discover'" class="fa fa-cc-discover"></i>
+				        <i ng-show="account.cctype == 'CC - Visa'" class="fa fa-cc-visa"></i>
+				        <i ng-show="account.cctype == 'CC - Mastercard'" class="fa fa-cc-mastercard"></i>
+	  					<span class="ellipsis">{{account.ccname}}</span> - 
+	  					{{account.ccnum}} 
+	  					<span class="dark-green" ng-show="checkExp(account.expiration) == 'Valid'">
+	  						{{checkExp(account.expiration)}}
+	  					</span>
+						<span class="red" ng-show="checkExp(account.expiration) == 'Expired'">
+								{{checkExp(account.expiration)}}
+						</span> 
+	  					<i class="fa fa-caret-down pull-right"></i>
+	  				</a>
+	  				<div class="clearfix"></div>
+	  				<div class="account-info" ng-class="{active: account.isActive}">
+	  					
+	  					<label>Card Holder</label>
+	  					<span class="card-holder">{{account.ccname}}</span>
+	  					<div class="clearfix"></div>
+	  					<label>Billing Address</label>
+	  					<span>
+	  						{{account.BillingAddress}}<br/>
+	  						{{account.BillingCity}}, {{account.BillingState}} {{account.BillingZip}}
+	  					</span>
+		  			</div>
+		  		</li>
+		  	</ul>
+		  </div>
+		  	<nav class="pagination-wrapper text-center" ng-show="creditCardAccounts.length > 5">
+				<ul class="pagination">
+					<li>
+						<a href="" ng-click="creditCardAccountsPagination.prevPage()">&laquo;</a>
+					</li>
+				  	<li ng-repeat="n in [] | range: creditCardAccountsPagination.numPages" ng-class="{active: n == creditCardAccountsPagination.page}">
+				  		<a href="" ng-click="creditCardAccountsPagination.toPageId(n)">{{n + 1}}</a>
+				  	</li>
+				  	<li>
+				  		<a href="" ng-click="creditCardAccountsPagination.nextPage()">&raquo;</a>
+				  	</li>
+				</ul>
+			</nav>
