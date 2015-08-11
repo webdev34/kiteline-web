@@ -95,7 +95,7 @@
 			    	<tr ng-show="creditCardAccounts.length == 0"><td colspan="7"><span>No Accounts</span></td></tr>
 				    <tr data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage" >
 						<td>
-							{{account.ccname}}
+							{{account.CardHoldersName}}
 						</td>
 						<td>
 							  <i ng-show="account.cctype == 'CC - AMEX'" class="fa fa-cc-amex"></i>

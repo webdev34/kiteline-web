@@ -127,10 +127,11 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
         'AppId': 3
-        'SubscriberId': $rootScope.subscriberId        
+        'SubscriberId': $rootScope.subscriberId   
+        'RecurringAccount': obj.RecurringAccount     
         'CustomerId': $rootScope.currentCenter.CustomerId
         'userId': $rootScope.currentUserEmail
-        'LegalBusinessName': obj.PayerName
+        'CardHoldersName': obj.PayerName
         'BillingAddress': obj.BillingAddress
         'BillingCity': obj.BillingCity
         'BillingState': obj.BillingState

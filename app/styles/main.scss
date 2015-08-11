@@ -872,6 +872,29 @@ body{
 }
 
 /* Responsive: Portrait tablets and up */
+@media screen and (max-device-width: 480px){
+  body {
+    .container.kiteline-content{
+        padding: 10px;
+    }
+    .sub-header-wrapper{
+        margin-bottom: -40px;
+        margin-top: 0px;
+        ul {
+            margin-left: -25px;
+            li{
+                float: left !important;
+                text-align: center;
+                width: 100%;
+                margin-bottom: 25px;
+                .center-name{
+                    margin-top: 0px;
+                }           
+            }
+        }
+    }
+  }
+}
 
 @media screen and (min-width: 768px) {
     .container {

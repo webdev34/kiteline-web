@@ -110,10 +110,14 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.newCC.BusinessPhone = null
 
   $scope.setDefaultCCAccount = (accountId) ->
-    CreditCardService.setDefaultCreditCard($scope.familyId, $scope.centerId, accountId).then (response) ->
+    console.log 'default cc'
+    CreditCardService.setDefaultCreditCard($rootScope.subscriberId, $scope.customerId, accountId).then (response) ->
+      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
 
   $scope.setDefaultBankAccount = (accountId) ->
+    console.log 'default bank'
     AccountService.setActiveAccount($scope.familyId, $scope.centerId, accountId).then (response) ->
+      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
 
   $scope.payOutstandingBalance = ->
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
@@ -193,13 +197,11 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.newCC.PayerEmail = ''
       $scope.expireDates = {}
       $scope.expireDates.month = ''
-      $scope.newCC.RecurringAccount = false
       form.$setPristine();
     else
       $scope.addBankAccount = false
       $scope.newBankAccount = {}
       $scope.newBankAccount.PayerEmail = ''
-      $scope.newBankAccount.RecurringAccount = false 
       form.$setPristine();
 
   $scope.submitNewAccount = (type, form) ->
@@ -210,14 +212,14 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       console.log 'submit'
       console.log $scope.newCC
       CreditCardService.addCreditCard($scope.newCC).then (response) ->
-        $scope.getCCAccounts($scope.familyId, $scope.centerId)
+        $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
         $scope.resetAccountForm('CC', form)
     else
       console.log $scope.newBankAccount
       AccountService.createAccount($scope.newBankAccount).then (response) ->
         if response.statusText is 'OK'
           $scope.addBankAccount = false
-          $scope.getBankAccounts($scope.familyId, $scope.centerId)
+          $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
           $scope.resetAccountForm('Bank', form)
 
   $scope.deleteBankAccount = (accountId) ->
