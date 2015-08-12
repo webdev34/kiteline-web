@@ -186,7 +186,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     else
       $rootScope.nextAndPreviousInvoices($rootScope.viewInvoice)
 
-  $rootScope.reportInvoice = (invoiceId, fromModal) ->
+  $rootScope.reportInvoice = (invoice) ->
+    $rootScope.currentInvoiceID = invoice.InvoiceId
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/report-invoice.html'
 
   $scope.payOutstandingInvoice = (invoice) ->
