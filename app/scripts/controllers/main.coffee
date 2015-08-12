@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $location, StorageService, usSpinnerService) ->
+angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $location, StorageService, usSpinnerService, $window) ->
   $rootScope.pageTitle = ' '
 
   $rootScope.changePageTitle = () ->
@@ -30,7 +30,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
 
   $rootScope.logOut = () ->
     StorageService.deleteLocalStorage();
-    $location.path '/'
+    $window.location.href = '/'
 
   $rootScope.changePageTitle()
 

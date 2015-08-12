@@ -108,6 +108,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     $scope.centerId = $rootScope.currentCenter.CenterId
     $scope.familyId = $rootScope.currentCenter.FamilyId
     $scope.customerId = $rootScope.currentCenter.CustomerId
+    $rootScope.showLogOut = false
    
     CenterInfoService.getCenterDetails($scope.centerId).then (response) ->
       $scope.currentCenterDetails = response.data

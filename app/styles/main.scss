@@ -19,28 +19,28 @@ html {
         padding: 0;
         background: #f6f6f6;
         font-family: concourse_t4regular;
-        button{
-            .fa{
+        button {
+            .fa {
                 font-size: inherit !important;
                 color: white !important;
                 margin: 0px !important;
             }
         }
-        .fa{
-            &.fa-cc-amex{
+        .fa {
+            &.fa-cc-amex {
                 color: #2489c8;
             }
-            &.fa-cc-discover{
+            &.fa-cc-discover {
                 color: orange;
             }
-            &.fa-cc-visa{
+            &.fa-cc-visa {
                 color: darkblue;
             }
-            &.fa-cc-mastercard{
+            &.fa-cc-mastercard {
                 color: gold;
             }
         }
-        .btn-primary{
+        .btn-primary {
             font-size: 16px;
         }
         .header {
@@ -50,46 +50,52 @@ html {
         //Date-picker wrapper
         .input-group {
             width: 285px;
-            p.pull-left{
+            p.pull-left {
                 display: inline-block;
                 margin-right: 9px;
                 margin-top: 9px;
                 font-size: 16px;
             }
-            .datepicker-wrapper{
+            .datepicker-wrapper {
                 float: left;
                 width: 171px;
             }
-            .input-group-btn{
+            .input-group-btn {
                 top: -3px;
                 left: -20px;
-                &.in-more{
+                &.in-more {
                     left: -41px;
                 }
             }
-            .glyphicon.glyphicon-calendar{
+            .glyphicon.glyphicon-calendar {
                 font-size: 14px;
             }
             .historicalStartDate,
-            .historicalEndDate{
+            .historicalEndDate {
                 height: 34px;
             }
         }
         .table-wrapper {
             height: 250px;
-            &.longer{
+            &.longer {
                 height: 515px;
             }
-            &.modal-list{
+            &.modal-list {
                 height: 330px;
             }
         }
-        .table{
+        .table {
             box-shadow: 2px 2px 2px 1px rgba(166, 166, 166, 0.5);
-            tr:nth-child(even) { background: #FFF; border-color: #FFF; }
-            tr:nth-child(odd) { background: whitesmoke;  border-color: whitesmoke; }
+            tr:nth-child(even) {
+                background: #FFF;
+                border-color: #FFF;
+            }
+            tr:nth-child(odd) {
+                background: whitesmoke;
+                border-color: whitesmoke;
+            }
         }
-        .table > tbody > tr > td{
+        .table > tbody > tr > td {
             padding: 2px 6px;
             vertical-align: middle;
             text-align: center;
@@ -97,41 +103,41 @@ html {
             text-transform: capitalize;
             border: none;
         }
-        .table > thead > tr > th{
+        .table > thead > tr > th {
             background-color: #ccc;
             color: #666;
             text-align: center;
             font-size: 18px;
             border: none;
         }
-        div[id*="myCarousel"]{
+        div[id*="myCarousel"] {
             button.carousel-control {
                 background-color: transparent;
                 background-image: none;
                 border: none;
-                .glyphicon{
+                .glyphicon {
                     color: #999;
                 }
             }
-            .carousel-indicators{
+            .carousel-indicators {
                 top: 80px;
-                li{
+                li {
                     border: thin solid #999;
-                    &.active{
+                    &.active {
                         background-color: #999;
                     }
                 }
-            } 
-            .carousel-inner{
+            }
+            .carousel-inner {
                 text-align: center;
             }
             .message-date,
-            .message-headline{
+            .message-headline {
                 text-align: center;
                 display: block;
                 font-size: 18px;
             }
-            .message-date{
+            .message-date {
                 color: #999;
                 margin-top: 10px;
             }
@@ -146,10 +152,10 @@ html {
     margin: 0 auto;
 }
 
-.ul-vertical-nav{
+.ul-vertical-nav {
     width: 28%;
     border-right: 2px solid #ddd;
-    ul:not(.pagination){
+    ul:not(.pagination) {
         height: 555px;
     }
 }
@@ -205,7 +211,7 @@ a:hover {
     left: 10px;
 }
 
-.bank-icon{
+.bank-icon {
     background: url(../images/bank-icon.png);
     background-repeat: no-repeat;
     height: 21px;
@@ -268,10 +274,7 @@ h1, h2, h3 {
         padding: 5px;
     }
     .lower-section-wrapper {
-        
-        .feed-breakdown-view {
-            
-        }
+        .feed-breakdown-view {}
         ul {
             li {
                 min-height: 110px;
@@ -311,7 +314,6 @@ h1, h2, h3 {
                 }
             }
         }
-        
     }
     ul.nav.nav-tabs {
         border-bottom: 1px solid $light-blue;
@@ -436,6 +438,7 @@ h1, h2, h3 {
         margin-bottom: 30px;
         .my-children-container-dashboard {
             //height: 70%;
+       
         }
     }
     nav ul li {
@@ -462,14 +465,13 @@ h1, h2, h3 {
     .ng-enter.ng-enter-active {
         opacity: 1;
     }
-    .ng-enter{
+    .ng-enter {
         -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
         transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
     }
-    .ng-enter{
+    .ng-enter {
         opacity: 0;
     }
-    
     .ng-enter.ng-enter-active {
         opacity: 1;
     }
@@ -521,12 +523,12 @@ h1, h2, h3 {
         display: block;
         width: 49%;
         float: left;
-       
         .detail-label {
             font-weight: bold;
             font-size: 18px;
             float: left;
             //width: 38%;
+       
         }
         label {
             font-weight: bold;
@@ -546,7 +548,7 @@ h1, h2, h3 {
             &.no-cap {
                 text-transform: none;
             }
-             &.longer{
+            &.longer {
                 width: 100%;
             }
         }
@@ -562,7 +564,7 @@ h1, h2, h3 {
     a {
         color: #4a90e2;
         font-size: 16px;
-        &:hover{
+        &:hover {
             color: #224F7C;
         }
     }
@@ -654,23 +656,22 @@ h1, h2, h3 {
 // }
 /* Scroll Bar fix */
 
-
 /* Loader */
-body{
-    div.spinner{
-    left: 0% !important;
-    top: 0% !important;
-    background-color: $light-blue;
-    width: 100% !important;
-    height: 100% !important;
-    opacity: 0.9;
-    position: fixed !important;
-        div{
+body {
+    div.spinner {
+        left: 0% !important;
+        top: 0% !important;
+        background-color: $light-blue;
+        width: 100% !important;
+        height: 100% !important;
+        opacity: 0.9;
+        position: fixed !important;
+        div {
             left: 50% !important;
             top: 45% !important;
             background-color: white !important;
-            &:nth-child(1){
-                div:after{
+            &:nth-child(1) {
+                div:after {
                     content: "Loading...";
                     top: 35px;
                     position: relative;
@@ -686,68 +687,66 @@ body{
     }
 }
 
-
 /* Datepicker */
-.datepicker-wrapper{
-    a{
+.datepicker-wrapper {
+    a {
         color: #0c4d6e;
     }
-    .fa{
+    .fa {
         font-size: 16px;
     }
-    ._720kb-datepicker-calendar-years-pagination{
+    ._720kb-datepicker-calendar-years-pagination {
         background-color: white;
     }
-    ._720kb-datepicker-calendar-years-pagination-pages{
-        .fa{
+    ._720kb-datepicker-calendar-years-pagination-pages {
+        .fa {
             font-size: 18px;
         }
     }
     ._720kb-datepicker-calendar-header:nth-child(odd),
-    ._720kb-datepicker-calendar-years-pagination-pages{
+    ._720kb-datepicker-calendar-years-pagination-pages {
         background-color: #0c4d6e;
         max-height: 50px;
     }
     ._720kb-datepicker-calendar-month {
-      color: #fff;
-      font-family: concourse_t4regular;
-      font-size: 18px;
-      font-weight: bold;
-      top: 8px;
-      position: relative;
-      a{
-        span{
-            font-family: concourse_t4regular;
-            font-size: 14px;
-            color: white;
+        color: #fff;
+        font-family: concourse_t4regular;
+        font-size: 18px;
+        font-weight: bold;
+        top: 8px;
+        position: relative;
+        a {
+            span {
+                font-family: concourse_t4regular;
+                font-size: 14px;
+                color: white;
+            }
         }
-      }
     }
-    ._720kb-datepicker-calendar-days-header{
+    ._720kb-datepicker-calendar-days-header {
         background-color: #ddd;
     }
 }
 
 // Pagination
-.pagination-wrapper{
+.pagination-wrapper {
     width: 30%;
     margin-top: 15px;
     margin-bottom: 15px;
-    &.text-center{
+    &.text-center {
         width: 100%;
     }
-    .pagination > li > a, 
+    .pagination > li > a,
     .pagination > li > span {
         padding: 5px 7px;
         color: white;
         background-color: #529acd;
     }
-    .pagination > .active > a{
+    .pagination > .active > a {
         background-color: #224f77;
         color: white;
     }
 }
-
 
 /* Typography */
 @font-face {
@@ -803,13 +802,14 @@ body{
     font-style: normal;
 }
 
-.rounded-img{
+
+.rounded-img {
     width: 100px;
     height: 100px !important;
     @include border-radius(50px);
 }
 
-.rounded-img-large{
+.rounded-img-large {
     width: 150px;
     height: 150px !important;
     @include border-radius(75px);
@@ -840,15 +840,15 @@ body{
     color: #529acd !important;
 }
 
-.orange{
+.orange {
     color: orange !important;
 }
 
-.green{
+.green {
     color: green !important;
 }
 
-.dark-green{
+.dark-green {
     color: darkgreen !important;
 }
 
@@ -857,43 +857,67 @@ body{
     text-align: center;
 }
 
-.relative{
+.relative {
     position: relative;
 }
 
-.absolute{
+.absolute {
     position: absolute;
 }
 
-.ellipsis{
+.ellipsis {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (max-device-width: 480px){
-  body {
-    .container.kiteline-content{
-        padding: 10px;
-    }
-    .sub-header-wrapper{
-        margin-bottom: -40px;
-        margin-top: 0px;
-        ul {
-            margin-left: -25px;
-            li{
-                float: left !important;
-                text-align: center;
-                width: 100%;
-                margin-bottom: 25px;
-                .center-name{
-                    margin-top: 0px;
-                }           
+@media screen and (max-device-width: 480px) {
+    body {
+        .container.kiteline-content {
+            padding: 10px;
+        }
+        .sub-header-wrapper {
+            margin-bottom: -40px;
+            margin-top: 0px;
+            ul {
+                margin-left: -25px;
+                li {
+                    float: left !important;
+                    text-align: center;
+                    width: 100%;
+                    margin-bottom: 25px;
+                    .center-name {
+                        margin-top: 0px;
+                    }
+                }
             }
         }
+        .billing-container {
+            .tile.col-md-4 {
+                &.auto-pay-wrapper {
+                    .inner-wrapper p {
+                        width: 25%;
+                    }
+                }
+            }
+        }
+        footer.footer .footer-container {
+            .terms-privacy-container {
+                right: 20px;
+                font-size: 14px;
+            }
+            .reserved-rights {
+                text-align: left;
+                margin-left: 15px;
+                font-size: 14px;
+            }
+        }
+        footer.footer a{
+            font-size: 14px;
+        }
     }
-  }
+    //body
 }
 
 @media screen and (min-width: 768px) {
@@ -914,43 +938,43 @@ body{
 }
 
 @media (max-width: 992px) {
-    .left-feature-container{
+    .left-feature-container {
         &.col-md-4,
         &.col-md-8,
         &.col-md-12 {
             height: auto;
             padding-bottom: 25px;
-            .child-name-wrapper{
+            .child-name-wrapper {
                 width: 80%;
             }
         }
-
-        ul.nav.nav-tabs li a{
+        ul.nav.nav-tabs li a {
             font-size: 16px;
             min-width: 125px;
         }
-
+         ul.nav.nav-tabs.billing-tab li a {
+            font-size: 14px;
+            min-width: 120px;
+        }
     }
-    .contact-container{
+    .contact-container {
         .text-center,
         .contact-section-wrapper,
-        .day-care-hours
-        {
+        .day-care-hours {
             width: 33%;
             float: left;
         }
     }
     .billing-container .transactions-breakdown-wrapper .dates-input-wrapper .input-group-addon,
-    .billing-container .transactions-breakdown-wrapper .dates-input-wrapper .input-group-addon.end-date{
+    .billing-container .transactions-breakdown-wrapper .dates-input-wrapper .input-group-addon.end-date {
         left: 12px;
     }
-    .dates-input-wrapper .input-wrapper{
+    .dates-input-wrapper .input-wrapper {
         float: none !important;
-        &:first-child{
+        &:first-child {
             margin-right: 25px;
         }
     }
-
     footer.footer {
         position: relative;
     }
@@ -970,8 +994,7 @@ body{
         min-height: 1055px;
         overflow: auto;
     }
-
-    .kiteline-logo{
+    .kiteline-logo {
         height: 36px;
         background-size: contain;
         margin-top: 5px;

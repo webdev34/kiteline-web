@@ -15,8 +15,8 @@
 		    <textarea id="paymentNotes" ng-model="paymentNotes" class="col-md-12" ></textarea>
 		  </div>
 		</div>
-		<div class="control-group col-md-8">
-			<button class="btn btn-primary pull-right" ng-click="processPayment('outstanding balance')">Charge</button>
+		<div class="control-group col-md-2">
+			<button class="btn btn-primary pull-right" ng-click="processPayment('outstanding balance')" ng-disabled="!activePaymentAccount">Charge</button>
 		</div>
 		<div class="clearfix"></div>
 	</section>
