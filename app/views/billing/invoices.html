@@ -105,7 +105,7 @@
 		    <thead>
 		    	<tr>
 			        <th>Invoice Date</th>
-			        <th>Status</th>
+			        <th>Invoice Due Date</th>
 			        <th>Amount Due</th>
 			        <th>Download</th>
 		        </tr>
@@ -116,15 +116,15 @@
 		    <tbody ng-hide="noResultsInvoices">
 		    	<tr ng-animate="'animate'" data-ng-repeat="transaction in historicalTransactions |  orderBy:'PaymentDate':true | startFrom: historicalTransactionsPagination.page * historicalTransactionsPagination.perPage | limitTo: historicalTransactionsPagination.perPage">
 		        <td>
-		        	{{transaction.PaymentDate | date}}
+		        	{{transaction.InvoiceDate | date}}
 		    	</td>
 				<td>
-		        	{{transaction.PaymentStatus}}
+		        	{{transaction.DueDate | date}}
 				</td>
 		        <td>
-		        	{{transaction.Amount | currency}}
+		        	{{transaction.TotalAmount | currency}}
 		        </td>
-		        <td><a><i class="fa fa-file-pdf-o"></i></a></td>
+		        <td><i class="fa fa-file-pdf-o" ng-click="reportInvoice(transaction)"></i></td>
 
 		      	</tr>
 		    </tbody>
