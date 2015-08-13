@@ -132,16 +132,26 @@
 		</h4> 
 		<div class="clearfix"></div>
 		<div class="inner-wrapper" ng-show="defaultAccount.AccountTypeDescription">
-			<toggle-switch ng-model="defaultAccount.RecurringAccount" class="switch-success auto-pay-toggle-btn pull-left" on-label="On" off-label="Off"></toggle-switch>
+			<toggle-switch ng-model="defaultAccount.RecurringAccount" class="switch-success auto-pay-toggle-btn pull-left" on-label="On" off-label="Off" on-change="deleteDefaultAccount(defaultAccount)"></toggle-switch>
 			<p class="pull-left">BANK ACCOUNT  ENDING<br/>
 				IN <span class="red">{{defaultAccount.DisplayNumbers}}</span></p>
 				
 			<div class="clearfix"></div>
 		</div>
-		<div class="inner-wrapper" ng-show="!defaultAccount.AccountTypeDescription">
-			<toggle-switch ng-model="defaultAccount.RecurringAccount" class="switch-success auto-pay-toggle-btn pull-left" on-label="On" off-label="Off"></toggle-switch>
-			<p class="pull-left">CARD ENDING<br/>
+		<div class="inner-wrapper" ng-show="defaultAccount.ccnum.length == 4" >
+			<toggle-switch ng-model="defaultAccount.RecurringAccount" class="switch-success auto-pay-toggle-btn pull-left" on-label="On" off-label="Off" on-change="deleteDefaultAccount(defaultAccount)"></toggle-switch>
+			<p class="pull-left pull-up">
+			  <i ng-show="defaultAccount.cctype == 'CC - AMEX'" class="fa fa-cc-amex"></i>
+		      <i ng-show="defaultAccount.cctype == 'CC - Discover'" class="fa fa-cc-discover"></i>
+		      <i ng-show="defaultAccount.cctype == 'CC - Visa'" class="fa fa-cc-visa"></i>
+		      <i ng-show="defaultAccount.cctype == 'CC - Mastercard'" class="fa fa-cc-mastercard"></i>
+
+				CARD ENDING<br/>
 				IN <span class="red">{{defaultAccount.ccnum}}</span></p>
+			<div class="clearfix"></div>
+		</div>
+		<div class="inner-wrapper"  ng-show="defaultAccount.RecurringAccount == null">
+			<a ng-click="goToTab('Payment Accounts');" >Set default account for auto pay</a>
 			<div class="clearfix"></div>
 		</div>
 	</div>

@@ -156,6 +156,26 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
       toastr.error status, 'Error'
       return    
 
+  @deleteActiveAccount = (subscriberId, customerId) ->  
+    url = rootUrl+'api/CreditCard/RemoveDefaultAccount?SubscriberId='+subscriberId+'&CustomerId='+customerId
+    $http(
+      method: 'POST'
+      headers:
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+        'X-SkyChildCareToken': $rootScope.currentUserToken
+        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
+        'X-SkyChildCareUserId': $rootScope.currentUserEmail
+      url: url).success((data, status, headers, config) ->
+      deferred.resolve data
+      
+      return
+    ).error (data, status, headers, config) ->
+      deferred.reject status
+      
+      toastr.error status, 'Error'
+      return
+
   @getPayers = (customerId) ->  
     url = rootUrl+'api/Account/GetPayers?customerId='+customerId
     $http(

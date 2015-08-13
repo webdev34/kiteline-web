@@ -26,6 +26,8 @@ angular.module('kiteLineApp', [
     templateUrl: 'views/billing/billing.html'
     controller: 'BillingCtrl').when('/billing/invoices',
     templateUrl: 'views/billing/billing.html'
+    controller: 'BillingCtrl').when('/billing/payment-accounts',
+    templateUrl: 'views/billing/billing.html'    
     controller: 'BillingCtrl').when('/forms',
     templateUrl: 'views/forms/forms.html'
     controller: 'FormsCtrl').when('/terms-of-service',

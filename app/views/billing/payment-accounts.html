@@ -38,7 +38,7 @@
 				</td>
 				<td>{{account.AccountTypeDescription}}</td>
 				<td>
-					<toggle-switch ng-model="account.RecurringAccount" ng-change="setDefaultBankAccount(account.AccountId);" class="switch-success auto-pay-toggle-btn" on-label="Yes" off-label="No"></toggle-switch>
+					<toggle-switch ng-model="account.RecurringAccount" ng-change="setDefaultBankAccount(account);" class="switch-success auto-pay-toggle-btn" on-label="Yes" off-label="No"></toggle-switch>
 				</td>
 				<td>
 					<a ng-click="deleteBankAccount(account.AccountId)" title="Delete Account">
@@ -111,7 +111,7 @@
 							<span class="red" ng-show="checkExp(account.expiration) == 'Expired'">{{checkExp(account.expiration)}}</span>
 						</td>
 						<td>
-							<toggle-switch ng-model="account.RecurringAccount" on-change="setDefaultCCAccount(account.AccountId);" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
+							<toggle-switch ng-model="account.RecurringAccount" on-change="setDefaultCCAccount(account);" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
 						</td>
 						<td>
 							<a ng-click="deleteCreditCardAccount(account.AccountId)" title="Delete Account"><i class="fa fa-trash red"></i></a>

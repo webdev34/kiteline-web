@@ -109,13 +109,33 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.newCC.BillingZip = null
       $scope.newCC.BusinessPhone = null
 
-  $scope.setDefaultCCAccount = (accountId) ->
-    CreditCardService.setDefaultCreditCard($rootScope.subscriberId, $scope.customerId, accountId).then (response) ->
-      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+  $scope.setDefaultAccount = () ->
+    $scope.defaultAccount = null
+    angular.forEach $rootScope.bankAccounts, (value, key) ->
+      if value.RecurringAccount == true
+        $scope.defaultAccount = value
 
-  $scope.setDefaultBankAccount = (accountId) ->
-    AccountService.setActiveAccount($scope.familyId, $scope.centerId, accountId).then (response) ->
-      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+    angular.forEach $rootScope.creditCardAccounts, (value, key) ->
+      if value.RecurringAccount == true
+        $scope.defaultAccount = value
+
+  $scope.deleteDefaultAccount = () ->
+    AccountService.deleteActiveAccount($rootScope.subscriberId, $scope.customerId).then (response) ->
+      $scope.defaultAccount = null
+
+  $scope.setDefaultCCAccount = (account) ->
+    if account.RecurringAccount == false
+      $scope.deleteDefaultAccount()
+    else
+      CreditCardService.setDefaultCreditCard($rootScope.subscriberId, $scope.customerId, account.AccountId).then (response) ->
+        $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+
+  $scope.setDefaultBankAccount = (account) ->
+    if account.RecurringAccount == false
+      $scope.deleteDefaultAccount()
+    else
+      AccountService.setActiveAccount($scope.familyId, $scope.centerId, account.AccountId).then (response) ->
+        $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
 
   $scope.payOutstandingBalance = ->
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
@@ -328,16 +348,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.setPagination()
       $scope.setDefaultAccount()
 
-  $scope.setDefaultAccount = () ->
-    $scope.defaultAccount = null
-    angular.forEach $rootScope.bankAccounts, (value, key) ->
-      if value.RecurringAccount == true
-        $scope.defaultAccount = value
-
-    angular.forEach $rootScope.creditCardAccounts, (value, key) ->
-      if value.RecurringAccount == true
-        $scope.defaultAccount = value
-
   $scope.setPagination = () ->
     if $scope.pastTransactions
       $scope.pastTransactionsPagination = Pagination.getNew(10)
@@ -415,4 +425,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $rootScope.stopSpin()
       
       if $route.current.$$route.originalPath == '/billing/invoices'
+        $scope.goToTab('Invoices')
+      else if $route.current.$$route.originalPath == '/billing/payment-accounts'
         $scope.goToTab('Invoices')
