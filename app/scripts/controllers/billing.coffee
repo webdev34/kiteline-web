@@ -80,7 +80,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.getTaxStatement = (year) ->
     $rootScope.currentFamilyID = $scope.familyId
     $rootScope.selectedYear = year
-    ngDialog.open template: $rootScope.modalUrl+'/views/modals/report-statement.html'
+    ngDialog.open
+      template: $rootScope.modalUrl+'/views/modals/report-statement.html'
+      className: 'ngdialog-theme-default ngdialog-pdf'
   
   $scope.autocompleteHomeAddressBank = () ->
     if $scope.newBankAccount.autofillAddressBank is true
@@ -189,7 +191,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
   $rootScope.reportInvoice = (invoice) ->
     $rootScope.currentInvoiceID = invoice.InvoiceId
-    ngDialog.open template: $rootScope.modalUrl+'/views/modals/report-invoice.html'
+    ngDialog.open
+      template: $rootScope.modalUrl+'/views/modals/report-invoice.html'
+      className: 'ngdialog-theme-default ngdialog-pdf'
 
   $scope.reportInvoice = (invoice) ->
     $rootScope.viewInvoice = $filter('filter')($scope.invoicesArray, (d) -> d.InvoiceId == invoice.InvoiceId)[0]
@@ -294,7 +298,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.getTransactionsByDate = (type) ->
     if type == 'Historical'
       $scope.noResultsInvoices = false
-      PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId, $scope.billDates.historicalStartDate, $scope.billDates.historicalEndDate).then (response) ->
+      InvoiceService.getPaidInvoicesByDate($rootScope.currentCenter.CustomerId, $scope.billDates.historicalStartDate, $scope.billDates.historicalEndDate).then (response) ->
         $scope.historicalTransactions  = response.data
         $scope.historicalTransactionsTotal = 0
         $scope.billDates.queryingHistorical = false

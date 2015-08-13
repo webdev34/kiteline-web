@@ -46,7 +46,7 @@ angular.module('kiteLineApp').service 'InvoiceService', ($http, $q, $rootScope, 
       toastr.error status, 'Error'
       return
 
-  @getPaidInvoicesByDate = (startDate, endDate, customerId) ->   
+  @getPaidInvoicesByDate = (customerId, startDate, endDate) ->   
     url = rootUrl+'api/Customer/'+customerId+'/Invoices/PaidInvoicesByDate?startDate='+startDate+'&endDate='+endDate
     $http(
       method: 'GET'

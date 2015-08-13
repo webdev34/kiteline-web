@@ -1,9 +1,16 @@
 body {
     .ngdialog {
+
         &.ngdialog-theme-default {
             padding: 10px;
             width: 100%;
             height: 100%;
+            &.ngdialog-pdf{
+                .ngdialog-content{
+                    width: 48%;
+                    height: 82%;
+                }
+            }
             .ngdialog-content {
                 width: 95%;
                 height: 95%;
