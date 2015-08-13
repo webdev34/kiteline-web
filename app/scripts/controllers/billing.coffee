@@ -78,9 +78,10 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       console.log $rootScope.viewInvoiceArray
 
   $scope.getTaxStatement = (year) ->
-    PaymentService.getTaxStatment($scope.familyId, $scope.customerId, year).then (response) ->
-      $scope.taxStatements = response.data
-
+    $rootScope.currentFamilyID = $scope.familyId
+    $rootScope.selectedYear = year
+    ngDialog.open template: $rootScope.modalUrl+'/views/modals/report-statement.html'
+  
   $scope.autocompleteHomeAddressBank = () ->
     if $scope.newBankAccount.autofillAddressBank is true
       $scope.newBankAccount.BillingAddress = $rootScope.headOfHouseHold.Street
