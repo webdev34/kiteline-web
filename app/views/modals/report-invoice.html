@@ -1,24 +1,25 @@
 ﻿<div class="overlay-container" >
+        <div id="currentInvoiceID" style="">{{currentInvoiceID}}</div>
         <div id="reportViewer1" class="k-widget" style="height: 800px;">
             loading...
-
-            <div id="currentInvoiceID">{{currentInvoiceID}}</div>
         </div>
         <script type="text/javascript">
+          // Handler for .ready() called.
 
-    $("#reportViewer1")
-        .telerik_ReportViewer({
-            serviceUrl: "https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/api/reports/",
-            templateUrl: '/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html',
-            reportSource: {
-                report: "Invoice.trdx",
-                //report: "MAP.SkyCare.Reports.Invoice, MAP.SkyCare.Reports, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d6ffd24b2ed3c2d1",
-                parameters: {
-                    InvoiceId: parseInt($('#currentInvoiceID').html())
-                }
-            }
-        });
 
+            setTimeout(function(){
+                 $("#reportViewer1").telerik_ReportViewer({
+                    serviceUrl: "https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/api/reports/",
+                    templateUrl: '/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html',
+                    reportSource: {
+                        report: "Invoice.trdx",
+                        //report: "MAP.SkyCare.Reports.Invoice, MAP.SkyCare.Reports, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d6ffd24b2ed3c2d1",
+                        parameters: {
+                            InvoiceId: $("#currentInvoiceID").html()
+                        }
+                    }
+                });
+            }, 1000)
      
-    </script>
+        </script>
 </div>

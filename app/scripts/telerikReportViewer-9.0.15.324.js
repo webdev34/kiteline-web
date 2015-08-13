@@ -330,6 +330,7 @@
             registerClient: function(settings) {
                 var ajaxSettings = $.extend({}, settings, {
                     type: HTTP_POST,
+                    headers: authHeaders,
                     url: urlFromTemplate("{baseUrl}/clients"),
                     dataType: "json",
                     data: JSON.stringify({
@@ -342,6 +343,7 @@
                 validateClientID(clientID);
                 var ajaxSettings = $.extend({}, settings, {
                     type: HTTP_DELETE,
+                    headers: authHeaders,
                     url: urlFromTemplate("{baseUrl}/clients/{clientID}", {
                         clientID: clientID
                     })
@@ -352,6 +354,7 @@
                 validateClientID(clientID);
                 var ajaxSettings = $.extend({}, settings, {
                     type: HTTP_POST,
+                    headers: authHeaders,
                     url: urlFromTemplate("{baseUrl}/clients/{clientID}/parameters", {
                         clientID: clientID
                     }),
@@ -368,6 +371,7 @@
                 validateClientID(clientID);
                 var ajaxSettings = $.extend({}, settings, {
                     type: HTTP_POST,
+                    headers: authHeaders,
                     url: urlFromTemplate("{baseUrl}/clients/{clientID}/instances", {
                         clientID: clientID
                     }),
@@ -384,6 +388,7 @@
                 validateClientID(clientID);
                 var ajaxSettings = $.extend({}, settings, {
                     type: HTTP_DELETE,
+                    headers: authHeaders,
                     url: urlFromTemplate("{baseUrl}/clients/{clientID}/instances/{instanceID}", {
                         clientID: clientID,
                         instanceID: instanceID
@@ -397,6 +402,7 @@
                 deviceInfo["BasePath"] = baseUrl;
                 var ajaxSettings = $.extend({}, settings, {
                     type: HTTP_POST,
+                    headers: authHeaders,
                     url: urlFromTemplate("{baseUrl}/clients/{clientID}/instances/{instanceID}/documents", {
                         clientID: clientID,
                         instanceID: instanceID
@@ -414,6 +420,7 @@
                 validateClientID(clientID);
                 var ajaxSettings = $.extend({}, settings, {
                     type: HTTP_DELETE,
+                    headers: authHeaders,
                     url: urlFromTemplate("{baseUrl}/clients/{clientID}/instances/{instanceID}/documents/{documentID}", {
                         clientID: clientID,
                         instanceID: instanceID,
@@ -426,6 +433,7 @@
                 validateClientID(clientID);
                 var ajaxSettings = $.extend({}, settings, {
                     type: HTTP_GET,
+                    headers: authHeaders,
                     url: urlFromTemplate("{baseUrl}/clients/{clientID}/instances/{instanceID}/documents/{documentID}/info", {
                         clientID: clientID,
                         instanceID: instanceID,
@@ -439,6 +447,7 @@
                 validateClientID(clientID);
                 var ajaxSettings = $.extend({}, settings, {
                     type: HTTP_GET,
+                    headers: authHeaders,
                     url: urlFromTemplate("{baseUrl}/clients/{clientID}/instances/{instanceID}/documents/{documentID}/pages/{pageNumber}", {
                         clientID: clientID,
                         instanceID: instanceID,
@@ -453,6 +462,7 @@
                 validateClientID(clientID);
                 var ajaxSettings = $.extend({}, settings, {
                     type: HTTP_PUT,
+                    headers: authHeaders,
                     url: urlFromTemplate("{baseUrl}/clients/{clientID}/instances/{instanceID}/documents/{documentID}/actions/{actionID}", {
                         clientID: clientID,
                         instanceID: instanceID,
@@ -476,6 +486,7 @@
             getDocumentFormats: function(settings) {
                 var ajaxSettings = $.extend({}, settings, {
                     type: HTTP_GET,
+                    headers: authHeaders,
                     url: urlFromTemplate("{baseUrl}/formats")
                 });
                 return $.ajax(ajaxSettings);
@@ -3531,6 +3542,7 @@
     var defaultOptions = {
         id: null,
         serviceUrl: null,
+        authHeaders: null,
         templateUrl: null,
         reportSource: null,
         scale: 1,
