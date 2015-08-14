@@ -84,6 +84,13 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       template: $rootScope.modalUrl+'/views/modals/report-statement.html'
       className: 'ngdialog-theme-default ngdialog-pdf'
   
+  $scope.reportPayment = (payment) ->
+    $rootScope.currentFamilyID = $scope.familyId
+    $rootScope.currentTransactionID = payment.PayId
+    ngDialog.open
+      template: $rootScope.modalUrl+'/views/modals/report-transaction.html'
+      className: 'ngdialog-theme-default ngdialog-pdf'
+
   $scope.autocompleteHomeAddressBank = () ->
     if $scope.newBankAccount.autofillAddressBank is true
       $scope.newBankAccount.BillingAddress = $rootScope.headOfHouseHold.Street

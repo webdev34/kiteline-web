@@ -64,7 +64,7 @@
 				        <td>
 				        	{{payment.PaymentType}}
 				        </td>
-				        <td><a><i class="fa fa-file-pdf-o"></i></a></td>
+				        <td><i class="fa fa-file-pdf-o" ng-click="reportPayment(payment)"></i></td>
 				        <td><a><i class="fa fa-envelope-o"></i></a></td>
 				        <td>
 				        	<span class="fa fa-check green" ng-show="payment.PaymentStatus == 'Processed'"></span> 

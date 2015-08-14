@@ -1,0 +1,28 @@
+﻿<div class="overlay-container" >
+        <div id="currentFamilyID" style="display:none;">{{currentFamilyID}}</div>
+        <div id="currentTransactionID" style="display:none;">{{currentTransactionID}}</div>
+        <div id="reportViewer1" class="k-widget" style="height: 800px;">
+            loading...
+        </div>
+        <script type="text/javascript">
+          // Handler for .ready() called.
+
+
+            setTimeout(function(){
+
+                 $("#reportViewer1").telerik_ReportViewer({
+                    serviceUrl: "http://localhost/SkyChildCare.KiteLine/api/reports/",
+                    templateUrl: '/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html',
+                    reportSource: {
+                        report: "PaymentStatement.trdx",
+                        //report: "MAP.SkyCare.Reports.Invoice, MAP.SkyCare.Reports, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d6ffd24b2ed3c2d1",
+                        parameters: {
+                            FAMILY_ID: $("#currentFamilyID").html(),
+                            TransactionId: $("#currentTransactionID").html()
+                        }
+                    }
+                });
+            }, 1000)
+     
+        </script>
+</div>
