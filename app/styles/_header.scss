@@ -7,6 +7,9 @@ header.header {
         height: 60px;
         width: 1280px;
         margin: 0 auto;
+        .navbar-toggle{
+            border-color: white;
+        }
         .nav {
             .fa,
             .glyphicon {
@@ -34,7 +37,7 @@ header.header {
         }
     }
     .nav li {
-        display: inline;
+        //display: inline;
         color: white;
         position: relative;
         min-width: 90px;
@@ -161,4 +164,12 @@ header.header {
             }
         }
     }
+}
+
+
+.navbar-collapse.pull-right.collapse.in{
+    margin-left: 0px;
+    float: left !important;
+    width: 100%;
+    border: none !important;
 }

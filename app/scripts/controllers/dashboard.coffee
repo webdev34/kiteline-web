@@ -112,8 +112,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
    
     CenterInfoService.getCenterDetails($scope.centerId).then (response) ->
       $rootScope.currentCenterDetails = response.data
-      console.log response.data
-
+    
       $scope.getChildrenData()
           
     AnnouncementsService.getAnnouncements($scope.customerId).then (response) ->
@@ -158,4 +157,3 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.pickupListPagination.numPages = Math.ceil($scope.pickupList.length/$scope.pickupListPagination.perPage)
       
       $rootScope.stopSpin()
-      

@@ -12,7 +12,8 @@
 		<div class="contact-section-wrapper col-md-6 pull-left">
 			<div class="contact-wrap">
 				<i class="fa fa-globe pull-left"></i>
-				<a href="#">mychildcenter.com</a>
+				<a href="{{currentCenterDetails.SiteURL}}">{{currentCenterDetails.SiteURL}}</a>
+				<p ng-show="currentCenterDetails.SiteURL.length == 0">No Center URL</p>
 			</div>	
 			<div class="contact-wrap">
 				<i class="fa fa-mobile pull-left"></i>
