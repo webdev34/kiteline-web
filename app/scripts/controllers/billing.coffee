@@ -1,9 +1,9 @@
 'use strict'
-angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService, AccountService, GuardianService, ngDialog, Pagination) ->
-  LogInService.isLoggedIn()
+angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, $document, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService, AccountService, GuardianService, ngDialog, Pagination) ->
   $rootScope.changePageTitle()
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
+  LogInService.isLoggedIn()
   $scope.noResults = false
   $scope.noResultsInvoices = false
   $scope.currentTab = 'Overview'
@@ -276,6 +276,13 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.goToTab = (tab) ->
     $scope.setPagination()
     $scope.currentTab = tab
+    top = 0
+    duration = 2000
+    #milliseconds 
+    #Scroll to the exact position 
+    $document.scrollTop(top, duration).then ->
+      console and console.log('You just scrolled to the top!')
+      return
 
   $scope.currentCardType = (type) ->
     if type == 'Visa'

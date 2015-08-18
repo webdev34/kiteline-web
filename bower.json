@@ -18,7 +18,8 @@
     "angularjs-datepicker": "~0.2.5",
     "angular-spinner": "~0.6.2",
     "angular-credit-cards": "~2.3.5",
-    "ng-simplePagination": "~1.0.3"
+    "ng-simplePagination": "~1.0.3",
+    "angular-scroll": "~0.7.2"
   },
   "devDependencies": {
     "angular": "^1.3.0",
@@ -38,7 +39,8 @@
     "angularjs-datepicker": "~0.2.5",
     "angular-spinner": "~0.6.2",
     "angular-credit-cards": "~2.3.5",
-    "ng-simplePagination": "~1.0.3"
+    "ng-simplePagination": "~1.0.3",
+    "angular-scroll": "~0.7.2"
   },
   "appPath": "app",
   "moduleName": "kiteLineApp"

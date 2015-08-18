@@ -121,6 +121,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
     else if StorageService.getItem('currentCenter')
       this.updateStaleData(StorageService.getItem('userEmail'), StorageService.getItem('userPin'), StorageService.getItem('currentCenter').CenterId)
     else
+      $rootScope.stopSpin()
       $location.path '/'
       $rootScope.changePageTitle()
 

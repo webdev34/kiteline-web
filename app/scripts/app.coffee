@@ -14,6 +14,7 @@ angular.module('kiteLineApp', [
   'angularSpinner'
   'credit-cards'
   'simplePagination'
+  'duScroll'
 
 ]).config ($routeProvider) ->
   $routeProvider.when('/',

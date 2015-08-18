@@ -1001,3 +1001,20 @@ body {
         margin-left: 10px;
     }
 }
+
+
+//Firefox
+@-moz-document url-prefix() {
+    .input-group-btn .btn.btn-default{
+        margin-top: -2px;
+    }
+
+    .billing-container .payment-accounts-breakdown-wrapper form select, 
+    .billing-container .invoices-breakdown-wrapper form select{
+        text-indent: 0px;
+        border-radius: 4px;
+        border: 1px solid rgb(204, 204, 204);
+    }
+
+
+}
