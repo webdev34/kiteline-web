@@ -278,11 +278,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     $scope.currentTab = tab
     top = 0
     duration = 2000
-    #milliseconds 
-    #Scroll to the exact position 
     $document.scrollTop(top, duration).then ->
-      console and console.log('You just scrolled to the top!')
-      return
 
   $scope.currentCardType = (type) ->
     if type == 'Visa'
