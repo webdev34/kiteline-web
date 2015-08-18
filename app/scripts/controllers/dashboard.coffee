@@ -104,6 +104,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
     $rootScope.currentUserEmail = StorageService.getItem('userEmail')
     $rootScope.currentUserToken = StorageService.getItem('x-skychildcaretoken')
+    $rootScope.LastLoginInfo = StorageService.getItem('LastLoginInfo')
     
     $scope.centerId = $rootScope.currentCenter.CenterId
     $scope.familyId = $rootScope.currentCenter.FamilyId

@@ -18,8 +18,10 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
         'CenterId': centerId
         'GuardianEmail': email
         'Pin': pin
+        'InitialLogin': true
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
+      console.log data
       
       if data.SubscriptionTypeName is 'bronze'
         $location.path 'invalid-subscription'
@@ -32,6 +34,8 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
         StorageService.setItem 'x-skychildcaretoken', $rootScope.currentUserToken
         StorageService.setItem 'userEmail', email
         StorageService.setItem 'userPin', pin
+        StorageService.setItem 'LastLoginInfo', data.LastLoginInfo
+        
         self.setTimeStamp()
         $location.path 'dashboard'
       
@@ -54,6 +58,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
         'CenterId': centerId
         'GuardianEmail': email
         'Pin': pin
+        'InitialLogin': false
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
 
