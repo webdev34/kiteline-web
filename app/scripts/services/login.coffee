@@ -6,6 +6,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
   url = undefined
   deferred = undefined
   deferred = $q.defer()
+  $rootScope.invalidCenter = null
   
   @Login = (email, pin, centerId) ->
     url = rootUrl+'api/Login'
@@ -24,6 +25,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
       console.log data
       
       if data.SubscriptionTypeName is 'bronze'
+        $rootScope.invalidCenter = data
         $location.path 'invalid-subscription'
       else
         $rootScope.currentCenter = data
@@ -144,5 +146,24 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
     if hours > 7
       StorageService.deleteLocalStorage()
       $location.path '/'
+
+  @sendRequestEmail = (centerId, familyId) ->
+    url = rootUrl+'api/Login/SendRequestEmail?centerid='+centerId+'&familyid='+familyId
+    $http(
+      method: 'POST'
+      headers:
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+      url: url).success((data, status, headers, config) ->
+      deferred.resolve data
+      toastr.success 'E-mail has been sent'
+      return
+    ).error (data, status, headers, config) ->
+      deferred.reject status
+      $rootScope.currentCenterInfo = null
+      toastr.error status, 'Error'
+      return
+
+
 
   return

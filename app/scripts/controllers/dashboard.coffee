@@ -13,6 +13,17 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.activeEmergencyContact = "contact-1"
   $scope.activePickupContact = "pickup-contact-1"
 
+
+  $scope.setDefaultAccount = () ->
+    $scope.defaultAccount = null
+    angular.forEach $rootScope.bankAccounts, (value, key) ->
+      if value.RecurringAccount == true
+        $scope.defaultAccount = value
+
+    angular.forEach $rootScope.creditCardAccounts, (value, key) ->
+      if value.RecurringAccount == true
+        $scope.defaultAccount = value
+
   $scope.payOutstandingBalance = ->
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
 
@@ -87,6 +98,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.getPaymentAccounts = (familyId, centerId) ->
     $scope.getCCAccounts(familyId, centerId)
     $scope.getBankAccounts(familyId, centerId)
+    $scope.setDefaultAccount()
       
   $scope.getCCAccounts = (familyId, centerId) ->
     CreditCardService.getCreditCardAccounts($rootScope.subscriberId, $scope.customerId).then (response) ->

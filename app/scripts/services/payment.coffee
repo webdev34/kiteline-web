@@ -185,4 +185,25 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
       toastr.error status, 'Error'
       return
 
+  @emailInvoice = (tranId, familyId, centerId) ->  
+    url = rootUrl+'api/Payment/SendPaymentEmail?tranId='+tranId+'&familyId='+familyId+'&centerid='+centerId
+    $http(
+      method: 'POST'
+      headers:
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+        'X-SkyChildCareToken': $rootScope.currentUserToken
+        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
+        'X-SkyChildCareUserId': $rootScope.currentUserEmail
+      url: url).success((data, status, headers, config) ->
+      deferred.resolve data
+      toastr.success 'E-mail has been sent'
+      
+      return
+    ).error (data, status, headers, config) ->
+      deferred.reject status
+      
+      toastr.error status, 'Error'
+      return      
+
   return

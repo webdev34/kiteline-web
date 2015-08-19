@@ -9,9 +9,9 @@
 		<span class="current-balance">
 			{{currentCenter.OutstandingBalance | currency}}
 		</span> 
-		<!--<span class="auto-pay">
-			Auto pay scheduled for July 15 , 2015
-		</span> -->
+		<span class="auto-pay" ng-show="defaultAccount.RecurringAccount != null">
+			Auto pay scheduled for {{currentCenter.NextPayDate}}
+		</span> 
 		<a href="#/billing/invoices">View Details</a>
 		<button class="btn btn-primary payment-btn" ng-click="payOutstandingBalance();">
 			Make Payment

@@ -3,8 +3,9 @@
     <h3>Kiteline</h3>
   <section class="container wider">
 
+    <p ng-show="!requestSent">Your center does not support the KiteLine Parent website.<br/> Click <a ng-click="requestUpgrade(invalidCenter.CenterId, invalidCenter.FamilyId);">here</a> to ask them to upgrade so you can use KiteLine Parent for free.</p>
 
-    <p>Your center does not support the KiteLine Parent website.<br/> Click <a href="">here</a> to ask them to upgrade so you can use KiteLine Parent for free.</p>
+    <p ng-show="requestSent">Your center has been notified.</p>
 </section> 
     
 </div>

@@ -77,6 +77,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     else
       console.log $rootScope.viewInvoiceArray
 
+  $scope.emailInvoiceToUser = (tranId) ->
+    PaymentService.emailInvoice(tranId, $scope.familyId, $scope.centerId).then (response) ->
+  
   $scope.getTaxStatement = (year) ->
     $rootScope.currentFamilyID = $scope.familyId
     $rootScope.selectedYear = year

@@ -6,7 +6,7 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
   'LogInService'
   'CenterInfoService'
   'ForgotPinService'
-  ($scope, $rootScope, $location, LogInService, CenterInfoService, ForgotPinService) ->
+  ($scope, $rootScope, $location, LogInService, CenterInfoService, ForgotPinService, StorageService) ->
     # LogInService.isLoggedIn()
     $rootScope.isLoggedIn = false
     $rootScope.isLoginPage = true
@@ -17,6 +17,15 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
     $scope.pin = ''
     $scope.centerId = ''
     $scope.emailForgotPin = ''
+    $scope.requestSent = false
+
+    if $location.$$path == '/invalid-subscription'
+      if $rootScope.invalidCenter is null
+        $location.path '/'
+
+    $scope.requestUpgrade = (centerId, familyId) ->
+      LogInService.sendRequestEmail(centerId, familyId).then (response) ->
+        $scope.requestSent = true
 
     $scope.login = ->
       $rootScope.dataLoading = true
