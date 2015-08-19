@@ -1,10 +1,10 @@
 'use strict'
 angular.module('kiteLineApp').controller 'FormsCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, CreditCardService, Pagination) ->
-  LogInService.isLoggedIn()
   $rootScope.changePageTitle()
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
-  
+  LogInService.isLoggedIn()
+
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
     $rootScope.currentUserEmail = StorageService.getItem('userEmail')
