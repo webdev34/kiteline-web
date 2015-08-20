@@ -7,6 +7,12 @@
 
  		 <span class="pull-right">{{viewInvoice.CreatedOn | date}}</span></h3>
  		 <div class="clearfix"></div>
+ 		 <a class="new-credit-card" ng-click="addCreditCardFromModal = true" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
+			<!-- <i class="fa fa-plus"></i> -->
+			 Pay With New Credit Card
+ 		</a>
+
+		<div class="clearfix"></div>
 		 <div class="invoice-cycle-wrapper">
 		 	<ul>
 		 		<li class="pull-left" ng-show="previousInvoice">
@@ -28,13 +34,18 @@
 			</ul>
 		 </div>
 
-		 <!-- Banking dropdown -->
-		<div class="control-group col-md-6" ng-include src="'views/common/banking-dropdown.html'"></div>
+		 <div class="clearfix"></div>
+		 
+
+	<div ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0" class="payment-wrapper">
 		 <!-- CC dropdown -->
 		<div class="control-group col-md-6"  ng-include src="'views/common/cc-dropdown.html'"></div>
+	</div>
+	<div ng-show="addCreditCardFromModal || creditCardAccounts.length == 0" class="add-credit-card-wrapper">
+		<div class="control-group col-md-6"  ng-include src="'views/billing/payCCForm.html'"></div>
+	</div>
 
-		 <div class="clearfix"></div>
-		<div class="control-group col-md-6">
+	<div class="control-group col-md-4">
 			 <div data-ng-repeat="invoice in viewInvoiceArray" class="pull-left clearfix invoice-break-down" ng-hide="viewInvoiceArrayTotal == 0">
 			 	{{invoice.ChildName}} - {{invoice.ClassName}} - {{invoice.ItemTypeName}} -  <span class="orange">{{invoice.Amount | currency}} </span> {{invoice.CreatedOn | date}}<br/>
 			 	<span class="light-blue">{{invoice.LineItemNotes}}</span>
@@ -42,19 +53,13 @@
 			 <div class="invoice-break-down" ng-hide="viewInvoiceArrayTotal != 0">
 				{{viewInvoice.ChildName}} - {{viewInvoice.ClassName}} - {{viewInvoice.ItemTypeName}} -  <span class="orange">{{viewInvoice.Amount | currency}} </span> {{viewInvoice.CreatedOn | date}}<br/>
 						 	<span class="light-blue">{{viewInvoice.LineItemNotes}}</span>
-			 </div>
-		</div>
-		<!-- Notes -->
-		<div class="control-group col-md-4">
-		  <label class="control-label" for="">Notes</label>
-		  <div class="controls">
-		    <textarea id="paymentNotes" ng-model="paymentNotes" class="col-md-12" ></textarea>
-		  </div>
-		</div>
+		 </div>
+	</div>
+		
 
-		<div class="control-group col-md-2">
-			<button class="btn btn-primary pull-right" ng-click="processInvoicePayment()" ng-disabled="!activePaymentAccount">Charge</button>
-		</div>
+	<div class="control-group col-md-2">
+		<button class="btn btn-primary pull-right process-payment-btn" ng-click="processInvoicePayment()" ng-disabled="!activePaymentAccount">Charge</button>
+	</div>
 				<div class="clearfix"></div>
 	</section>
 <div>

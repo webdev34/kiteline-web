@@ -12,13 +12,18 @@ body {
             }
             .ngdialog-content {
                 width: 95%;
-                height: 95%;
+                height: 80%;
                 background: #04364c;
                 padding: 0px;
-                top: 0px;
+                top: 5%;
                 .overlay-container {
                     height: 100%;
                     color: white;
+                    h5{
+                        font-weight: bold;
+                        margin-left: 15px;
+                        font-size: 18px;
+                    }
                     .btn.process-payment-btn {
                         margin-top: 70%;
                         margin-right: 10%;

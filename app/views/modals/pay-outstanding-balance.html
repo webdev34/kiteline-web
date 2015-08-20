@@ -10,7 +10,7 @@
 			 Pay With New Credit Card
  		</a>
 
-<div class="clearfix"></div>
+		<div class="clearfix"></div>
 
 		<div ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0" class="payment-wrapper">
 			 <!-- CC dropdown -->
@@ -22,21 +22,11 @@
 		</div>
 
 
-			<!-- Notes -->
-			<div class="control-group col-md-4">
-			  <label class="control-label" for="">Notes</label>
-			  <div class="controls">
-			    <textarea id="paymentNotes" ng-model="paymentNotes" class="col-md-12" ></textarea>
-			  </div>
-			</div>
+			
 			<div class="control-group col-md-2">
 				<button class="btn btn-primary pull-right process-payment-btn" ng-click="processPayment('outstanding balance')" ng-disabled="!activePaymentAccount">Charge</button>
 			</div>
 		</div>
-
-		
-
-
 
 	</section>
 <div>
