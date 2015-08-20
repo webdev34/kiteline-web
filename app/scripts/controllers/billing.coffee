@@ -8,6 +8,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.noResultsInvoices = false
   $scope.currentTab = 'Overview'
   $rootScope.invoicesArray = []
+  $rootScope.addCreditCardFromModal = false
   $scope.invoiceGrandTotal = 0
   $scope.bank_auto_pay = true
   $scope.credit_card_auto_pay = false
@@ -17,6 +18,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.matchingRoutingNum = false
   $scope.newBankAccount = {}
   $scope.newCC = {}
+  $rootScope.paymentCC = {}
   $scope.expireDates = {}
   $scope.defaultCC = null
   $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
@@ -122,6 +124,20 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.newCC.BillingZip = null
       $scope.newCC.BusinessPhone = null
 
+  $rootScope.autocompleteHomeAddressCCPayment = () ->
+    if $rootScope.paymentCC.autofillAddressCC is true
+      $rootScope.paymentCC.BillingAddress = $rootScope.headOfHouseHold.Street
+      $rootScope.paymentCC.BillingCity = $rootScope.headOfHouseHold.City
+      $rootScope.paymentCC.BillingState = $rootScope.headOfHouseHold.State
+      $rootScope.paymentCC.BillingZip = $rootScope.headOfHouseHold.Zip
+      $rootScope.paymentCC.BusinessPhone = $rootScope.headOfHouseHold.HomePhone
+    else
+      $rootScope.paymentCC.BillingAddress = null
+      $rootScope.paymentCC.BillingCity = null
+      $rootScope.paymentCC.BillingState = null
+      $rootScope.paymentCC.BillingZip = null
+      $rootScope.paymentCC.BusinessPhone = null      
+
   $scope.setDefaultAccount = () ->
     $scope.defaultAccount = null
     angular.forEach $rootScope.bankAccounts, (value, key) ->
@@ -151,6 +167,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
         $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
 
   $scope.payOutstandingBalance = ->
+    $rootScope.resetAccountForm('CC Payment')
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
 
   $rootScope.nextAndPreviousInvoices = (currentInvoice) ->
@@ -183,7 +200,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     
     if !fromModal
       ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-invoice.html'
-
 
     if typeof $scope.viewInvoice == 'undefined'
       angular.forEach $rootScope.invoicesArray, (value, key) ->
@@ -222,38 +238,58 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
   $scope.addAccount = (type) ->
     if type == 'CC'
+      $scope.autocompleteHomeAddressCC()
       $scope.newCC.autofillAddressCC = false
       $scope.addCreditCard = true
+
+    else if type == 'CC Payment'
+      $rootScope.autocompleteHomeAddressCCPayment()
+      $rootScope.paymentCC.autofillAddressCC = false
+
     else
+      $scope.autocompleteHomeAddressBank()
       $scope.newBankAccount.autofillAddressBank = false 
       $scope.addBankAccount = true
 
-  $scope.resetAccountForm = (type, form) ->
+  $rootScope.resetAccountForm = (type, form) ->
     if type == 'CC'
       $scope.addCreditCard = false
       $scope.newCC = {}
       $scope.newCC.PayerEmail = ''
       $scope.expireDates = {}
       $scope.expireDates.month = ''
-      form.$setPristine();
+
+    else if type == 'CC Payment'
+      $scope.addCreditCard = false
+      $scope.newCC = {}
+      $scope.newCC.PayerEmail = ''
+      $scope.expireDates = {}
+      $scope.expireDates.month = ''
+
     else
       $scope.addBankAccount = false
       $scope.newBankAccount = {}
       $scope.newBankAccount.PayerEmail = ''
+      
+    if form      
       form.$setPristine();
 
-  $scope.submitNewAccount = (type, form) ->
+  $rootScope.submitNewAccount = (type, form) ->
     if type == 'CC'
       thisYear = String($scope.expireDates.year)
       thisYear = thisYear[2]+thisYear[3]
       $scope.newCC.ExpirationDate = $scope.expireDates.month+'/'+thisYear
-      console.log 'submit'
-      console.log $scope.newCC
       CreditCardService.addCreditCard($scope.newCC).then (response) ->
         $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
         $scope.resetAccountForm('CC', form)
+    else if type == 'CC'
+      thisYear = String($scope.expireDates.year)
+      thisYear = thisYear[2]+thisYear[3]
+      $rootScope.paymentCC.ExpirationDate = $scope.expireDates.month+'/'+thisYear
+      CreditCardService.addCreditCard($scope.paymentCC).then (response) ->
+        $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+        $scope.resetAccountForm('CC', form)
     else
-      console.log $scope.newBankAccount
       AccountService.createAccount($scope.newBankAccount).then (response) ->
         if response.statusText is 'OK'
           $scope.addBankAccount = false
@@ -279,6 +315,10 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.goToTab = (tab) ->
     $scope.setPagination()
     $scope.currentTab = tab
+    $scope.addCreditCard = false
+    $scope.addBankAccount = false
+    $rootScope.resetAccountForm('CC')
+    $rootScope.resetAccountForm('Bank')
     top = 0
     duration = 2000
     $document.scrollTop(top, duration).then ->

@@ -28,16 +28,16 @@ html {
         }
         .fa {
             &.fa-cc-amex {
-                color: #2489c8;
+                color: #2489c8 !important;
             }
             &.fa-cc-discover {
-                color: orange;
+                color: orange !important;
             }
             &.fa-cc-visa {
-                color: darkblue;
+                color: darkblue !important;
             }
             &.fa-cc-mastercard {
-                color: gold;
+                color: gold !important;
             }
         }
         .btn-primary {
@@ -802,6 +802,11 @@ body {
     font-style: normal;
 }
 
+.margin-left-5{ margin-left: 5px; }
+.margin-left-10{ margin-left: 10px; }
+.margin-left-15{ margin-left: 15px; }
+.margin-left-20{ margin-left: 20px; }
+.margin-left-25{ margin-left: 25px; }
 
 .rounded-img {
     width: 100px;

@@ -7,7 +7,7 @@
 				        <i ng-show="account.cctype == 'CC - Discover'" class="fa fa-cc-discover"></i>
 				        <i ng-show="account.cctype == 'CC - Visa'" class="fa fa-cc-visa"></i>
 				        <i ng-show="account.cctype == 'CC - Mastercard'" class="fa fa-cc-mastercard"></i>
-	  					<span class="ellipsis">{{account.ccname}}</span> - 
+	  					<span class="ellipsis">{{account.AccountName}}</span> - 
 	  					{{account.ccnum}} 
 	  					<span class="dark-green" ng-show="checkExp(account.expiration) == 'Valid'">
 	  						{{checkExp(account.expiration)}}
@@ -21,12 +21,12 @@
 	  				<div class="account-info" ng-class="{active: account.isActive}">
 	  					
 	  					<label>Card Holder</label>
-	  					<span class="card-holder">{{account.ccname}}</span>
+	  					<span class="card-holder">{{account.CardHoldersName}}</span>
 	  					<div class="clearfix"></div>
 	  					<label>Billing Address</label>
 	  					<span>
-	  						{{account.BillingAddress}}<br/>
-	  						{{account.BillingCity}}, {{account.BillingState}} {{account.BillingZip}}
+	  						{{account.street}}<br/>
+	  						{{account.city}}, {{account.state}} {{account.zip}}
 	  					</span>
 		  			</div>
 		  		</li>

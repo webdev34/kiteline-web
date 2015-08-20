@@ -129,7 +129,7 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
         'RecurringAccount': obj.RecurringAccount
         'CustomerId': $rootScope.currentCenter.CustomerId
         'userId': $rootScope.currentUserEmail
-        'CardHoldersName': obj.PayerName
+        'LegalBusinessName': obj.PayerName
         'BillingAddress': obj.BillingAddress
         'BillingCity': obj.BillingCity
         'BillingState': obj.BillingState
@@ -137,6 +137,7 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
         'BusinessPhone': obj.BusinessPhone
         'BusinessEmail': obj.PayEmail
         'CardHolderName': obj.PayerName
+        'AccountName': obj.AccountName
         'CardNumber': obj.AccountNumber
         'ExpirationDate': obj.ExpirationDate
         'BillingZip': obj.BillingZip

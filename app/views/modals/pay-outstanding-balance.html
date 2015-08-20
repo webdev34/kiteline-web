@@ -1,23 +1,42 @@
 <div class="overlay-container outstanding-balance">
  	<section class="overlay-right-col">
- 		<h3>Payment Amount Due: <span class="orange">{{currentCenter.OutstandingBalance | currency}}</span></h3>
+ 		<h3>
+ 			Payment Amount Due: 
+ 			<span class="orange">{{currentCenter.OutstandingBalance | currency}}</span>
+ 		</h3>
 
-		<!-- Banking dropdown -->
-		<div class="control-group col-md-6" ng-include src="'views/common/banking-dropdown.html'"></div>
-		 <!-- CC dropdown -->
-		<div class="control-group col-md-6"  ng-include src="'views/common/cc-dropdown.html'"></div>
-		  	
-		<div class="clearfix"></div>
-		<!-- Notes -->
-		<div class="control-group col-md-4">
-		  <label class="control-label" for="">Notes</label>
-		  <div class="controls">
-		    <textarea id="paymentNotes" ng-model="paymentNotes" class="col-md-12" ></textarea>
-		  </div>
+ 		<a class="new-credit-card" ng-click="addCreditCardFromModal = true" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
+			<!-- <i class="fa fa-plus"></i> -->
+			 Pay With New Credit Card
+ 		</a>
+
+<div class="clearfix"></div>
+
+		<div ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0" class="payment-wrapper">
+			 <!-- CC dropdown -->
+			<div class="control-group col-md-6"  ng-include src="'views/common/cc-dropdown.html'"></div>
 		</div>
-		<div class="control-group col-md-2">
-			<button class="btn btn-primary pull-right" ng-click="processPayment('outstanding balance')" ng-disabled="!activePaymentAccount">Charge</button>
+
+		<div ng-show="addCreditCardFromModal || creditCardAccounts.length == 0" class="add-credit-card-wrapper">
+			<div class="control-group col-md-6"  ng-include src="'views/billing/payCCForm.html'"></div>
 		</div>
-		<div class="clearfix"></div>
+
+
+			<!-- Notes -->
+			<div class="control-group col-md-4">
+			  <label class="control-label" for="">Notes</label>
+			  <div class="controls">
+			    <textarea id="paymentNotes" ng-model="paymentNotes" class="col-md-12" ></textarea>
+			  </div>
+			</div>
+			<div class="control-group col-md-2">
+				<button class="btn btn-primary pull-right process-payment-btn" ng-click="processPayment('outstanding balance')" ng-disabled="!activePaymentAccount">Charge</button>
+			</div>
+		</div>
+
+		
+
+
+
 	</section>
 <div>
