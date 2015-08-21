@@ -12,6 +12,11 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.activeGuardian = "guardian-1"
   $scope.activeEmergencyContact = "contact-1"
   $scope.activePickupContact = "pickup-contact-1"
+  $rootScope.paymentCC = {}
+  $rootScope.expireDatesPayment = {}
+  $rootScope.matchingBankAccount = false
+  $rootScope.matchingRoutingNum = false
+  $rootScope.addCreditCardFromModal = false
 
 
   $scope.setDefaultAccount = () ->
@@ -25,8 +30,34 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
         $scope.defaultAccount = value
 
   $scope.payOutstandingBalance = ->
+    $rootScope.currentPaymentModal = 'Outstanding Balance'
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
 
+  $rootScope.addAccountModal = () ->
+    $rootScope.autocompleteHomeAddressCCPayment()
+    $rootScope.paymentCC.autofillAddressCC = false
+    $rootScope.addCreditCardFromModal = true; 
+    $rootScope.activePaymentAccount = true;
+
+  $rootScope.resetAccountForm = (type, form) ->
+    $rootScope.addCreditCardFromModal = false
+    $rootScope.activePaymentAccount = false
+    $rootScope.paymentCC = {}
+    $rootScope.paymentCC.PayerEmail = ''
+    $rootScope.expireDatesPayment = {}
+    $rootScope.expireDatesPayment.month = ''
+    if form      
+      form.$setPristine();
+
+  $rootScope.submitNewAccount = (type, form) ->
+    thisYear = String($rootScope.expireDatesPayment.year)
+    thisYear = thisYear[2]+thisYear[3]
+    $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month+'/'+thisYear
+    CreditCardService.addCreditCard($rootScope.paymentCC).then (response) ->
+      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+      $scope.resetAccountForm('CC Payment', form)
+      ngDialog.closeAll(1)
+  
   $scope.changeActivePickupContact = (activePickupContact) ->
     $scope.activePickupContact = activePickupContact
 

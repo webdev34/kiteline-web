@@ -14,8 +14,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.credit_card_auto_pay = false
   $scope.addBankAccount = false
   $scope.addCreditCard = false
-  $scope.matchingBankAccount = false
-  $scope.matchingRoutingNum = false
+  $rootScope.matchingBankAccount = false
+  $rootScope.matchingRoutingNum = false
   $scope.newBankAccount = {}
   $scope.newCC = {}
   $rootScope.paymentCC = {}
@@ -37,36 +37,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.billDates.historicalEndDate = $scope.billDates.transactionEndDate
   $scope.billDates.querying = false
   $scope.billDates.queryingHistorical = false
-
-  $scope.bankAccountTypes = [
-    {
-      id: '1'
-      name: 'Checking'
-    }
-    {
-      id: '2'
-      name: 'Savings'
-    }
-  ]
-
-  $scope.creditCardAccountTypes = [
-    {
-      id: '3'
-      name: 'CC - Visa'
-    }
-    {
-      id: '4'
-      name: 'CC - Mastercard'
-    }
-    {
-      id: '5'
-      name: 'CC - Discover'
-    }
-    {
-      id: '6'
-      name: 'CC - AMEX'
-    }
-  ]
 
   $rootScope.processPayment = (type) ->
     console.log $rootScope.activePaymentAccount
@@ -127,21 +97,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $scope.newCC.BillingCity = null
       $scope.newCC.BillingState = null
       $scope.newCC.BillingZip = null
-      $scope.newCC.BusinessPhone = null
-
-  $rootScope.autocompleteHomeAddressCCPayment = () ->
-    if $rootScope.paymentCC.autofillAddressCC is true
-      $rootScope.paymentCC.BillingAddress = $rootScope.headOfHouseHold.Street
-      $rootScope.paymentCC.BillingCity = $rootScope.headOfHouseHold.City
-      $rootScope.paymentCC.BillingState = $rootScope.headOfHouseHold.State
-      $rootScope.paymentCC.BillingZip = $rootScope.headOfHouseHold.Zip
-      $rootScope.paymentCC.BusinessPhone = $rootScope.headOfHouseHold.HomePhone
-    else
-      $rootScope.paymentCC.BillingAddress = null
-      $rootScope.paymentCC.BillingCity = null
-      $rootScope.paymentCC.BillingState = null
-      $rootScope.paymentCC.BillingZip = null
-      $rootScope.paymentCC.BusinessPhone = null      
+      $scope.newCC.BusinessPhone = null   
 
   $scope.setDefaultAccount = () ->
     $scope.defaultAccount = null

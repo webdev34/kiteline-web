@@ -68,6 +68,50 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
     else
       return 'Valid'
 
+  $rootScope.autocompleteHomeAddressCCPayment = () ->
+    if $rootScope.paymentCC.autofillAddressCC is true
+      $rootScope.paymentCC.BillingAddress = $rootScope.headOfHouseHold.Street
+      $rootScope.paymentCC.BillingCity = $rootScope.headOfHouseHold.City
+      $rootScope.paymentCC.BillingState = $rootScope.headOfHouseHold.State
+      $rootScope.paymentCC.BillingZip = $rootScope.headOfHouseHold.Zip
+      $rootScope.paymentCC.BusinessPhone = $rootScope.headOfHouseHold.HomePhone
+    else
+      $rootScope.paymentCC.BillingAddress = null
+      $rootScope.paymentCC.BillingCity = null
+      $rootScope.paymentCC.BillingState = null
+      $rootScope.paymentCC.BillingZip = null
+      $rootScope.paymentCC.BusinessPhone = null   
+
+  $rootScope.bankAccountTypes = [
+    {
+      id: '1'
+      name: 'Checking'
+    }
+    {
+      id: '2'
+      name: 'Savings'
+    }
+  ]
+
+  $rootScope.creditCardAccountTypes = [
+    {
+      id: '3'
+      name: 'CC - Visa'
+    }
+    {
+      id: '4'
+      name: 'CC - Mastercard'
+    }
+    {
+      id: '5'
+      name: 'CC - Discover'
+    }
+    {
+      id: '6'
+      name: 'CC - AMEX'
+    }
+  ]
+
   $rootScope.statesDropDown = [
     {
       name: 'Alabama'
