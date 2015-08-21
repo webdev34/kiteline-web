@@ -40,6 +40,20 @@ html {
                 color: gold !important;
             }
         }
+        .payment-CC-Form,
+        .account-list{
+            .fa {
+                &.fa-cc-amex,
+                &.fa-cc-discover,
+                &.fa-cc-visa,
+                &.fa-cc-mastercard {
+                    color: white !important;
+                } 
+             }
+             #addCreditCard{
+                margin-right: 10px;
+             }
+        }
         h5{
             font-family: concourse_t4regular;
             text-transform: capitalize;

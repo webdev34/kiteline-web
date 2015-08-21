@@ -1,7 +1,7 @@
 <div class="overlay-container">
  	<section class="overlay-right-col">
  		<h3>Payment Amount Due: <span class="orange">{{outstandingInvoicesTotal | currency}}</span></h3>
- 		 <a class="new-credit-card" ng-click="addCreditCardFromModal = true" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
+ 		 <a class="btn btn-primary new-credit-card" ng-click="addAccountModal()" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
 			<!-- <i class="fa fa-plus"></i> -->
 			 Pay With New Credit Card
  		</a>
@@ -17,8 +17,8 @@
 		<div class="control-group col-md-6"  ng-include src="'views/billing/payCCForm.html'"></div>
 	</div>
 
-		<div class="control-group col-md-2">
-			<button class="btn btn-primary pull-right" ng-click="processPayment('outstanding invoice')" ng-disabled="!activePaymentAccount">Charge</button>
+		<div class="control-group col-md-2"  ng-hide="addCreditCardFromModal">
+			<button class="btn btn-primary pull-right" ng-click="processPayment('outstanding invoice')"  ng-disabled="!activePaymentAccount">Charge</button>
 		</div>
 		<div class="clearfix"></div>
 	</section>

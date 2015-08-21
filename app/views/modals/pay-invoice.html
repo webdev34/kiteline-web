@@ -7,7 +7,7 @@
 
  		 <span class="pull-right">{{viewInvoice.CreatedOn | date}}</span></h3>
  		 <div class="clearfix"></div>
- 		 <a class="new-credit-card" ng-click="addCreditCardFromModal = true" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
+ 		 <a class="btn btn-primary new-credit-card" ng-click="addAccountModal()" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
 			<!-- <i class="fa fa-plus"></i> -->
 			 Pay With New Credit Card
  		</a>
@@ -56,9 +56,10 @@
 		 </div>
 	</div>
 		
-
-	<div class="control-group col-md-2">
+	<div class="control-group col-md-2" ng-hide="addCreditCardFromModal">
 		<button class="btn btn-primary pull-right process-payment-btn" ng-click="processInvoicePayment()" ng-disabled="!activePaymentAccount">Charge</button>
+
+
 	</div>
 				<div class="clearfix"></div>
 	</section>

@@ -1,4 +1,4 @@
-<form class="form-horizontal" name="paymentCCForm"  novalidate>
+<form class="form-horizontal payment-CC-Form" name="paymentCCForm"  novalidate>
 <fieldset>
 
 <!-- Form Name -->
@@ -12,32 +12,31 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingAddress">Billing Address</label>
+  <label class="control-label" for="BillingAddressPayment">Billing Address</label>
   <div class="controls">
-    <input id="BillingAddress" name="BillingAddress" ng-model="paymentCC.BillingAddress" type="text" class="input-xlarge" required="">
+    <input id="BillingAddressPayment" name="BillingAddressPayment" ng-model="paymentCC.BillingAddress" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingCity">Billing City</label>
+  <label class="control-label" for="BillingCityPayment">Billing City</label>
   <div class="controls">
-    <input id="BillingCity" name="BillingCity" ng-model="paymentCC.BillingCity" type="text" class="input-xlarge" required="">
+    <input id="BillingCityPayment" name="BillingCityPayment" ng-model="paymentCC.BillingCity" type="text" class="input-xlarge" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingState">Billing State</label>
+  <label class="control-label" for="BillingStateCCPayment">Billing State</label>
   <div class="controls relative">
-
- <select id="BillingStateCC" class="BillingState" ng-model="paymentCC.BillingState" required="">
+ <select id="BillingStateCCPayment" class="BillingState" ng-model="paymentCC.BillingState" required="">
       <option value="{{option.abbreviation}}" data-ng-repeat="option in statesDropDown
 " >{{option.name}}</option>
     </select>
-    <i class="fa fa-caret-down" select-button select-id="BillingStateCC"></i>
+    <i class="fa fa-caret-down" select-button select-id="BillingStateCCPayment"></i>
     
   </div>
 </div>
@@ -46,27 +45,27 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingZip">Billing Zip</label>
+  <label class="control-label" for="BillingZipPayment">Billing Zip</label>
   <div class="controls">
-    <input id="BillingZip" name="BillingZip" ng-model="paymentCC.BillingZip" type="text" class="input-xlarge" required=""  maxlength="5">
+    <input id="BillingZipPayment" name="BillingZipPayment" ng-model="paymentCC.BillingZip" type="text" class="input-xlarge" required=""  maxlength="5">
     
   </div>
 </div>
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BusinessPhone">Billing Phone</label>
+  <label class="control-label" for="BusinessPhonePayment">Billing Phone</label>
   <div class="controls">
-    <input id="BusinessPhone" name="BusinessPhone" ng-model="paymentCC.BusinessPhone" type="text" class="input-xlarge" required=""  mask="(999) 999-9999" clean="true">
+    <input id="BusinessPhonePayment" name="BusinessPhonePayment" ng-model="paymentCC.BusinessPhone" type="text" class="input-xlarge" required=""  mask="(999) 999-9999" clean="true">
     
   </div>
 </div>
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="PayerEmail">Email</label>
+  <label class="control-label" for="PayerEmailPayment">Email</label>
   <div class="controls">
-    <input id="PayerEmail" name="PayerEmail" ng-model="paymentCC.PayerEmail" type="email" class="input-xlarge" >
+    <input id="PayerEmailPayment" name="PayerEmailPayment" ng-model="paymentCC.PayerEmail" type="email" class="input-xlarge" >
     
   </div>
 </div>
@@ -108,9 +107,9 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="ExpirationDate">Expiration Date</label>
   <div class="controls" cc-exp>
-    <input placeholder="MM" ng-model="expireDates.month" cc-exp-month type="text" class="input-xlarge exp-dates pull-left" required="" />
+    <input placeholder="MM" ng-model="expireDatesPayment.month" cc-exp-month type="text" class="input-xlarge exp-dates pull-left" required="" />
     <span class="pull-left date-split"> / </span>
-    <input placeholder="YY" ng-model="expireDates.year" cc-exp-year type="text" class="input-xlarge exp-dates" required="" />
+    <input placeholder="YY" ng-model="expireDatesPayment.year" cc-exp-year type="text" class="input-xlarge exp-dates" required="" />
   </div>
 </div>
 
@@ -121,10 +120,10 @@
   <div class="controls">
       <span class="pull-left cc-type">{{addCCForm.AccountNumber.$ccType}}</span>
 
-      <i ng-show="addCCForm.AccountNumber.$ccType == 'American Express'" class="fa fa-cc-amex"></i>
-      <i ng-show="addCCForm.AccountNumber.$ccType == 'Discover'" class="fa fa-cc-discover"></i>
-      <i ng-show="addCCForm.AccountNumber.$ccType == 'Visa'" class="fa fa-cc-visa"></i>
-      <i ng-show="addCCForm.AccountNumber.$ccType == 'MasterCard'" class="fa fa-cc-mastercard"></i>
+      <i ng-show="paymentCCForm.AccountNumber.$ccType == 'American Express'" class="fa fa-cc-amex"></i>
+      <i ng-show="paymentCCForm.AccountNumber.$ccType == 'Discover'" class="fa fa-cc-discover"></i>
+      <i ng-show="paymentCCForm.AccountNumber.$ccType == 'Visa'" class="fa fa-cc-visa"></i>
+      <i ng-show="paymentCCForm.AccountNumber.$ccType == 'MasterCard'" class="fa fa-cc-mastercard"></i>
   </div>
 </div>
 
@@ -132,7 +131,7 @@
 
 <div class="control-group margin-left-15">
   <label class="">
-      <input type="checkbox" name="RecurringAccount" ng-model="paymentCC.RecurringAccount"  ng-true-value="true" ng-false-value="false" >
+      <input type="checkbox" name="saveAccount" ng-model="paymentCC.saveAccount"  ng-true-value="true" ng-false-value="false" >
       Save Account
   </label>
 </div>
@@ -141,10 +140,13 @@
 <div class="control-group margin-left-15">
   <label class="control-label" for="addCreditCard"></label>
   <div class="controls">
-    <!-- <button id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC', addCCForm); currentCardType(addCCForm.AccountNumber.$ccType);" ><i class="fa fa-plus"></i> 
-      Pay with Credit Card</button> 
-    <button id="cancelCreditCard" name="cancelCreditCard" class="btn btn-danger" ng-click="resetAccountForm('CC', addCCForm);" ><i class="fa fa-times"></i> Cancel</button>
-  -->
+    <button ng-show="paymentCC.saveAccount" id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC Payment', paymentCCForm); currentCardType(paymentCCForm.AccountNumber.$ccType);  " >
+      Pay New Credit Card</button> 
+
+ <button ng-show="!paymentCC.saveAccount" id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="currentCardType(paymentCCForm.AccountNumber.$ccType);  " >
+      Pay New Credit Card</button> 
+
+    <button id="cancelCreditCard" name="cancelCreditCard" class="btn btn-danger" ng-click="resetAccountForm('CC Payment', paymentCCForm);" ><i class="fa fa-times"></i> Cancel</button>
   </div>
 </div>
 

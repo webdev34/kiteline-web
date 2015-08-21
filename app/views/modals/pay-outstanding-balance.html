@@ -5,7 +5,7 @@
  			<span class="orange">{{currentCenter.OutstandingBalance | currency}}</span>
  		</h3>
 
- 		<a class="new-credit-card" ng-click="addCreditCardFromModal = true" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
+ 		<a class="btn btn-primary new-credit-card" ng-click="addAccountModal()" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
 			<!-- <i class="fa fa-plus"></i> -->
 			 Pay With New Credit Card
  		</a>
@@ -24,7 +24,7 @@
 
 			
 			<div class="control-group col-md-2">
-				<button class="btn btn-primary pull-right process-payment-btn" ng-click="processPayment('outstanding balance')" ng-disabled="!activePaymentAccount">Charge</button>
+				<button class="btn btn-primary pull-right process-payment-btn" ng-click="processPayment('outstanding balance')"  ng-disabled="!activePaymentAccount">Charge</button>
 			</div>
 		</div>
 
