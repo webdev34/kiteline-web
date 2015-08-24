@@ -126,8 +126,8 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
       toastr.error status, 'Error'
       return
 
-  @payInvoice = (amount, customerId, invoiceId, cardType, transactionTag, authorizationNum, mobilePaymentTypeId, payerName) ->  
-    url = rootUrl+'api/Payment/PayInvoice'
+  @makePaymentWithAccountId = (accountId, customerId, amount, invoiceId) ->  
+    url = rootUrl+'api/Payment/MakePayment?accountId='+accountId+'&customerId='+customerId+'&amount='+amount+'&invoiceid='+invoiceId
     $http(
       method: 'POST'
       headers:
@@ -136,16 +136,6 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
         'X-SkyChildCareToken': $rootScope.currentUserToken
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
-      data:
-        'Amount': amount
-        'CustomerId': customerId
-        'InvoiceId': invoiceId
-        'CardType': cardType
-        'TransactionTag': transactionTag
-        'AuthorizationNum': authorizationNum
-        'MobilePaymentTypeId': mobilePaymentTypeId
-        'PayerName': payerName
-    
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
       

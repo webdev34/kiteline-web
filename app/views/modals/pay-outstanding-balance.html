@@ -1,4 +1,4 @@
-<div class="overlay-container outstanding-balance">
+<div class="overlay-container outstanding-balance"  ng-hide="paymentMSG">
  	<section class="overlay-right-col">
  		<h3>
  			Payment Amount Due: 
@@ -23,10 +23,13 @@
 
 
 			
-			<div class="control-group col-md-2">
+			<div class="control-group col-md-2" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
 				<button class="btn btn-primary pull-right process-payment-btn" ng-click="processPayment('outstanding balance')"  ng-disabled="!activePaymentAccount">Charge</button>
 			</div>
 		</div>
 
+	</section>
+	<section ng-show="paymentMSG">
+		<div class="paymentMSG" ng-bind-html="paymentMSG"></div>
 	</section>
 <div>

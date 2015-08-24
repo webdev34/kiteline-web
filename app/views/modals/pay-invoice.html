@@ -1,5 +1,5 @@
 <div class="overlay-container" >
- 	<section class="overlay-right-col">
+ 	<section class="overlay-right-col" ng-hide="paymentMSG">
  		<h3>Payment Amount Due: 
  			<span class="orange" ng-hide="viewInvoiceArrayTotal != 0">{{viewInvoice.Amount | currency}}</span>
  			<span class="orange" ng-hide="viewInvoiceArrayTotal == 0">{{viewInvoiceArrayTotal | currency}}</span>
@@ -56,11 +56,14 @@
 		 </div>
 	</div>
 		
-	<div class="control-group col-md-2" ng-hide="addCreditCardFromModal">
-		<button class="btn btn-primary pull-right process-payment-btn" ng-click="processInvoicePayment()" ng-disabled="!activePaymentAccount">Charge</button>
+	<div class="control-group col-md-2" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
+		<button class="btn btn-primary pull-right process-payment-btn" ng-click="processInvoicePayment(false)" ng-disabled="!activePaymentAccount">Charge</button>
 
 
 	</div>
 				<div class="clearfix"></div>
+	</section>
+	<section ng-show="paymentMSG">
+		<div class="paymentMSG" ng-bind-html="paymentMSG"></div>
 	</section>
 <div>

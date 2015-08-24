@@ -80,7 +80,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
       $rootScope.paymentCC.BillingCity = null
       $rootScope.paymentCC.BillingState = null
       $rootScope.paymentCC.BillingZip = null
-      $rootScope.paymentCC.BusinessPhone = null   
+      $rootScope.paymentCC.BusinessPhone = null  
+  
 
   $rootScope.bankAccountTypes = [
     {

@@ -1,5 +1,10 @@
 body {
     .ngdialog {
+        .paymentMSG{
+            white-space: pre-line;
+            width: 100%;
+            text-align: center;
+        }
         &.ngdialog-theme-default {
             padding: 10px;
             width: 100%;

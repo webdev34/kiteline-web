@@ -1,7 +1,6 @@
 'use strict'
 angular.module('kiteLineApp', [
   'ngAnimate'
-  'ngCookies'
   'ngResource'
   'ngRoute'
   'ngSanitize'
