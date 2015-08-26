@@ -337,6 +337,7 @@ h1, h2, h3 {
     }
     ul.nav.nav-tabs {
         border-bottom: 1px solid $light-blue;
+        border-radius: 10px 10px 0 0;
         li {
             clear: none;
             cursor: pointer;

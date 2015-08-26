@@ -26,9 +26,6 @@ module.exports = (config) ->
       'bower_components/angular-sanitize/angular-sanitize.js'
       'bower_components/angular-toastr/dist/angular-toastr.tpls.js'
       'bower_components/angular-local-storage/dist/angular-local-storage.js'
-      'bower_components/jquery-mousewheel/jquery.mousewheel.js'
-      'bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js'
-      'bower_components/ng-scrollbars/dist/scrollbars.min.js'
       'bower_components/ngDialog/js/ngDialog.js'
       'bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.js'
       'bower_components/angular-mask/dist/ngMask.js'
@@ -37,7 +34,6 @@ module.exports = (config) ->
       'bower_components/angular-spinner/angular-spinner.js'
       'bower_components/angular-credit-cards/release/angular-credit-cards.js'
       'bower_components/ng-simplePagination/simplePagination.js'
-      'bower_components/angular-scroll/angular-scroll.js'
       'bower_components/angular-mocks/angular-mocks.js'
       # endbower
       # bower:coffee

@@ -91,6 +91,7 @@
 </div>
 
 
+
 <div class="clearfix"></div>
 
 <!-- Text input-->
@@ -104,7 +105,7 @@
 
 
 <!-- Text input-->
-<div class="control-group col-md-4">
+<div class="control-group col-md-3">
   <label class="control-label" for="ExpirationDate">Expiration Date</label>
   <div class="controls" cc-exp>
     <input placeholder="MM" ng-model="expireDatesPayment.month" cc-exp-month type="text" class="input-xlarge exp-dates pull-left" required="" />
@@ -113,9 +114,16 @@
   </div>
 </div>
 
-
+<!-- Text input-->
+<div class="control-group col-md-3 cvv">
+  <label class="control-label" for="CVV">CVV</label>
+  <div class="controls">
+    <input id="CVV" name="CVV" ng-model="paymentCC.CVV" type="text" class="input-xlarge" required="" cc-cvc>
+    
+  </div>
+</div>
 <!-- Drop Down-->
-<div class="control-group col-md-4">
+<div class="control-group col-md-3">
   <label class="control-label" for="ccType">Account Type</label>
   <div class="controls">
       <span class="pull-left cc-type">{{addCCForm.AccountNumber.$ccType}}</span>
@@ -140,10 +148,10 @@
 <div class="control-group margin-left-15">
   <label class="control-label" for="addCreditCard"></label>
   <div class="controls">
-    <button ng-show="paymentCC.saveAccount" id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC Payment', paymentCCForm); currentCardType(paymentCCForm.AccountNumber.$ccType);  " >
+    <button ng-show="paymentCC.saveAccount" id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC Payment', paymentCCForm); currentCardType(paymentCCForm.AccountNumber.$ccType);  processPayment(); " >
       Pay New Credit Card</button> 
 
- <button ng-show="!paymentCC.saveAccount" id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="currentCardType(paymentCCForm.AccountNumber.$ccType);  " >
+ <button ng-show="!paymentCC.saveAccount" id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="currentCardType(paymentCCForm.AccountNumber.$ccType); processPayment();" >
       Pay New Credit Card</button> 
 
     <button id="cancelCreditCard" name="cancelCreditCard" class="btn btn-danger" ng-click="resetAccountForm('CC Payment', paymentCCForm);" ><i class="fa fa-times"></i> Cancel</button>

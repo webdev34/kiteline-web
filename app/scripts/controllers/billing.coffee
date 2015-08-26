@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, $document, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService, AccountService, GuardianService, ngDialog, Pagination) ->
+angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, CenterInfoService, ChildService, PaymentService, InvoiceService, InvoiceDetailService, AnnouncementsService, CurbSideService, CreditCardService, AccountService, GuardianService, ngDialog, Pagination) ->
   $rootScope.changePageTitle()
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
@@ -40,15 +40,26 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.billDates.queryingHistorical = false
 
   $rootScope.addNewAccountDuringPaymentCheck = () ->
-    if $rootScope.activePaymentAccount is true
+    if $rootScope.activePaymentAccount
       if $rootScope.paymentCC.RecurringAccount is true
         $rootScope.submitNewAccount('CC Payment', '')
 
-  $rootScope.processPayment = (type) ->
-    console.log $rootScope.activePaymentAccount
-    if type == 'outstanding balance'
+  $rootScope.processPayment = () ->
+    invoiceId = 0
+    if $rootScope.currentPaymentModal == 'Outstanding Balance'
+      amount = $rootScope.currentCenter.OutstandingBalance
+    else if $rootScope.currentPaymentModal == 'Multiple Line Item Invoice'
+      amount = $rootScope.viewInvoiceArrayTotal
+    else if $rootScope.currentPaymentModal = 'Single Invoice'
+      amount = $rootScope.viewInvoice.DueAmount
 
+    if $rootScope.activePaymentAccount 
+      accountId = $rootScope.activePaymentAccount.AccountId
+      PaymentService.makePaymentWithAccountId(accountId, $scope.customerId, amount, invoiceId).then (response) ->
+        $rootScope.paymentMSG = response.data
     else
+      PaymentService.makePaymentWithCC($scope.familyId, $scope.centerId, invoiceId, $scope.customerId, amount, $rootScope.paymentCC).then (response) ->
+        $rootScope.paymentMSG = response.data
 
   $rootScope.processInvoicePayment = (payingFromNewAccount, accountId) ->
     if !payingFromNewAccount
@@ -57,14 +68,12 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     if $rootScope.viewInvoiceArray is null
       amount = $rootScope.viewInvoice.Amount
-      customerId = $rootScope.viewInvoice.CustomerId
       invoiceId = $rootScope.viewInvoice.InvoiceId
     else
       amount = $rootScope.viewInvoiceArrayTotal
-      customerId = $rootScope.viewInvoiceArray[0].CustomerId
       invoiceId = $rootScope.viewInvoiceArray[0].InvoiceId
 
-    PaymentService.makePaymentWithAccountId(accountId, customerId, amount, invoiceId).then (response) ->
+    PaymentService.makePaymentWithAccountId(accountId, $scope.customerId, amount, invoiceId).then (response) ->
       $rootScope.paymentMSG = response.data
 
   $scope.emailInvoiceToUser = (tranId) ->
@@ -189,9 +198,13 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
             angular.forEach $rootScope.viewInvoiceArray , (value, key) ->
               $rootScope.viewInvoiceArrayTotal += value.Amount
       $rootScope.nextAndPreviousInvoices($scope.currentInvoice)
+      $rootScope.currentPaymentModal = 'Multiple Line Item Invoice'
     else
       $rootScope.nextAndPreviousInvoices($rootScope.viewInvoice)
 
+    PaymentService.getPartialPaymentsByInvoiceId($scope.customerId, invoiceId, $scope.customerId).then (response) ->
+      $rootScope.PartialPaymentsMade = response.data
+     
   $rootScope.reportInvoice = (invoice) ->
     $rootScope.currentInvoiceID = invoice.InvoiceId
     ngDialog.open
@@ -227,8 +240,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $rootScope.addAccountModal = () ->
     $rootScope.autocompleteHomeAddressCCPayment()
     $rootScope.paymentCC.autofillAddressCC = false
-    $rootScope.addCreditCardFromModal = true; 
-    $rootScope.activePaymentAccount = true;
+    $rootScope.addCreditCardFromModal = true
+    $rootScope.activePaymentAccount = true
+    $rootScope.resetActiveAccount(null, true)
 
   $rootScope.resetAccountForm = (type, form) ->
     $rootScope.paymentMSG = null
@@ -263,7 +277,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       CreditCardService.addCreditCard($scope.newCC).then (response) ->
         $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
         $scope.resetAccountForm('CC', form)
-    else if type == 'CC Payment'
+    else if type == 'CC Payment' and $rootScope.paymentCC.saveAccount
       thisYear = String($rootScope.expireDatesPayment.year)
       thisYear = thisYear[2]+thisYear[3]
       $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month+'/'+thisYear
@@ -271,7 +285,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
         $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
         accountId = response.data
         $scope.resetAccountForm('CC Payment', form)
-        $rootScope.processInvoicePayment(true, accountId)
+        if $rootScope.currentPaymentModal is 'Single Invoice'
+          $rootScope.processInvoicePayment(true, accountId)
         # ngDialog.closeAll(1)
     else
       AccountService.createAccount($scope.newBankAccount).then (response) ->
@@ -303,19 +318,17 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     $scope.addBankAccount = false
     $rootScope.resetAccountForm('CC')
     $rootScope.resetAccountForm('Bank')
-    top = 0
-    duration = 2000
-    $document.scrollTop(top, duration).then ->
+    document.body.scrollTop = document.documentElement.scrollTop = 0
 
-  $scope.currentCardType = (type) ->
+  $rootScope.currentCardType = (type) ->
     if type == 'Visa'
-      $scope.newCC.AccountTypeId = 3
+      $rootScope.newCCAccountTypeId = 3
     else if type == 'Mastercard'
-      $scope.newCC.AccountTypeId = 4
+      $rootScope.newCCAccountTypeId = 4
     else if type == 'Discover'
-      $scope.newCC.AccountTypeId = 5
+      $rootScope.newCCAccountTypeId = 5
     else if type == 'American Express'
-      $scope.newCC.AccountTypeId = 6
+      $rootScope.newCCAccountTypeId = 6
 
   $scope.getPastPayments = () ->
     PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId).then (response) ->
@@ -353,17 +366,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     $rootScope.viewInvoice = obj
     $rootScope.lineItemId = obj.LineItemId
 
-  $rootScope.resetActiveAccount = (type, account) ->
-    if type == 'bank'
-      angular.forEach $rootScope.bankAccounts, (value, key) ->
-        if account.AccountId is value.AccountId
-          account.isActive = !account.isActive;
-          if account.isActive == false
-            $rootScope.activePaymentAccount = null
-          else
-            $rootScope.activePaymentAccount = account
-        else
-          value.isActive = false
+  $rootScope.resetActiveAccount = (account, payWithNewCC) ->
+    if payWithNewCC == true
+      $rootScope.activePaymentAccount = null
       angular.forEach $rootScope.creditCardAccounts, (value, key) ->
         value.isActive = false
     else
@@ -376,9 +381,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
             $rootScope.activePaymentAccount = account
         else
           value.isActive = false
-      angular.forEach $rootScope.bankAccounts, (value, key) ->
-        value.isActive = false
-
+   
   $scope.getPaymentAccounts = (familyId, centerId) ->
     $scope.getCCAccounts(familyId, centerId)
     $scope.getBankAccounts(familyId, centerId)
@@ -449,11 +452,13 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
     InvoiceService.getOutstandingInvoices($scope.customerId).then (response) ->
       $scope.outstandingInvoices = response.data
+      $rootScope.outstandingInvoicesDueTotal = 0
       $rootScope.outstandingInvoicesTotal = 0
       $rootScope.subscriberId = response.data[0].SubscriberId
 
       angular.forEach $scope.outstandingInvoices, (value, key) ->
-        $rootScope.outstandingInvoicesTotal += value.DueAmount
+        $rootScope.outstandingInvoicesDueTotal += value.DueAmount
+        $rootScope.outstandingInvoicesTotal += value.TotalAmount
         InvoiceDetailService.getInvoiceDetail(value.InvoiceId).then (response) ->
           
           if response.data.length == 1

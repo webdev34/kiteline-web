@@ -58,10 +58,11 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
         $scope.validationCheckForgotPin()
 
     $scope.validationCheck = ->
-      if $scope.email.length != 0 and $scope.pin.length != 0 and $scope.centerId.length != 0
-        $scope.isValid = true
-      else
-        $scope.isValid = false
+      if $scope.email
+        if $scope.email.length != 0 and $scope.pin.length != 0 and $scope.centerId.length != 0
+          $scope.isValid = true
+        else
+          $scope.isValid = false
 
     $scope.validationCheckForgotPin = ->
       if $scope.email.length != 0 and $scope.centerId.length != 0

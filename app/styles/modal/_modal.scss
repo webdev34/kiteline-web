@@ -59,13 +59,14 @@ body {
                         -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
                         transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
                         &.exp-dates {
-                            width: 25%;
+                            width: 34%;
                         }
                         &.ng-valid-cc-number,
                         &.ng-valid-cc-exp-month,
                         &.ng-valid-cc-exp-year,
                         &.ng-valid.ng-valid-mask,
-                        &.ng-dirty.ng-valid-email {
+                        &.ng-dirty.ng-valid-email,
+                        &.ng-valid-cc-cvc {
                             border-color: green;
                             outline-color: green;
                         }
@@ -172,6 +173,12 @@ body {
                         .cc-type{
                             margin-right: 10px;
                         }
+                        .cvv{
+                            width: 15%;
+                            input{
+                                width: 85%;
+                            }
+                        }
                     }
                     
                     ul.account-list {
@@ -207,7 +214,7 @@ body {
                                 background-color: white;
                                 max-height: 115px;
                                 a, .fa {
-                                    color: #04364c;
+                                    color: #04364c !important;
                                 }
                             }
                             .account-info {

@@ -6,7 +6,7 @@
 		</h4> 
 		<p class="pull-right">
 			Total Payments
-			<span class="orange inner-span">{{outstandingInvoicesTotal | currency}}</span>
+			<span class="orange inner-span">{{outstandingInvoicesDueTotal | currency}}</span>
 		</p>
 		<div class="clearfix"></div>
 		<!--<span class="pull-right">Auto pay scheduled for July 15 , 2015</span>-->
@@ -34,7 +34,7 @@
 			    		
 			    	</td>
 			        <td>
-			        	{{invoice.TotalAmount | currency}}
+			        	{{invoice.DueAmount | currency}}
 			        </td>
 			        <td><i class="fa fa-file-pdf-o" ng-click="reportInvoice(invoice)"></i></td>
 			        <td>

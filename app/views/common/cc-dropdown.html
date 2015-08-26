@@ -1,14 +1,14 @@
 		  <label class="control-label" for="creditCardDropDown">Saved Credit Cards</label>
 		  <div class="table-wrapper modal-list">
-		  	<ul class="account-list col-md-12">
-		  		<li data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage"  ng-click="resetActiveAccount('cc', account);" ng-class="{active: account.isActive}">
+		  	<ul class="account-list col-md-8">
+		  		<li data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage"  ng-click="resetActiveAccount(account, false);" ng-class="{active: account.isActive}">
 	  				<a>
 	  					<i ng-show="account.cctype == 'CC - AMEX'" class="fa fa-cc-amex"></i>
 				        <i ng-show="account.cctype == 'CC - Discover'" class="fa fa-cc-discover"></i>
 				        <i ng-show="account.cctype == 'CC - Visa'" class="fa fa-cc-visa"></i>
 				        <i ng-show="account.cctype == 'CC - Mastercard'" class="fa fa-cc-mastercard"></i>
-	  					<span class="ellipsis">{{account.AccountName}}</span> - 
-	  					{{account.ccnum}} 
+	  					 {{account.ccnum}} - 
+	  					<span class="ellipsis">{{account.AccountName}}</span> 
 	  					<span class="dark-green" ng-show="checkExp(account.expiration) == 'Valid'">
 	  						{{checkExp(account.expiration)}}
 	  					</span>

@@ -146,8 +146,8 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
       toastr.error status, 'Error'
       return  
 
-  @payOutstandingInvoices = (amount, customerId, cardType, transactionTag, authorizationNum, mobilePaymentTypeId, payerName) ->  
-    url = rootUrl+'api/Payment/PayOutstandingInvoices'
+  @makePaymentWithCC = (familyId, centerId, invoiceId, customerId, amount, accountObj) ->  
+    url = rootUrl+'api/CreditCard/ProcessCC'
     $http(
       method: 'POST'
       headers:
@@ -157,13 +157,23 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'Amount': amount
-        'CustomerId': customerId
-        'CardType': cardType
-        'TransactionTag': transactionTag
-        'AuthorizationNum': authorizationNum
-        'MobilePaymentTypeId': mobilePaymentTypeId
-        'PayerName': payerName
+        'familyId': familyId
+        'centerId': centerId
+        'invoiceId': invoiceId                        
+        'customerId': customerId        
+        'amount': amount
+        'ccname': accountObj.PayerName
+        'ccnum': accountObj.AccountNumber
+        'cctype': $rootScope.newCCAccountTypeId
+        'expiration': accountObj.ExpirationDate
+        'cvv': accountObj.CVV
+        'street': accountObj.BillingAddress
+        'city': accountObj.BillingCity
+        'state': accountObj.BillingState
+        'zip': accountObj.BillingZip
+        'trackData': null          
+        'SessionID': null  
+        'OriginationIP': document.getElementById('user-ip').value    
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data

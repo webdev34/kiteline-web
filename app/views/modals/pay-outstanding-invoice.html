@@ -1,6 +1,6 @@
 <div class="overlay-container">
  	<section class="overlay-right-col"  ng-hide="paymentMSG">
- 		<h3>Payment Amount Due: <span class="orange">{{outstandingInvoicesTotal | currency}}</span></h3>
+ 		<h3>Payment Amount Due: <span class="orange">{{outstandingInvoicesDueTotal | currency}}</span></h3>
  		 <a class="btn btn-primary new-credit-card" ng-click="addAccountModal()" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
 			<!-- <i class="fa fa-plus"></i> -->
 			 Pay With New Credit Card
