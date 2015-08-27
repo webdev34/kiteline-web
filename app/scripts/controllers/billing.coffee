@@ -143,7 +143,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.payOutstandingBalance = ->
     $rootScope.resetAccountForm('CC Payment')
     $rootScope.currentPaymentModal = 'Outstanding Balance'
-    $rootScope.paymentAmount = $rootScope.currentCenter.OutstandingBalance
+    $rootScope.paymentAmount = $rootScope.outstandingInvoicesDueTotal 
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
 
   $rootScope.nextAndPreviousInvoices = (currentInvoice) ->
