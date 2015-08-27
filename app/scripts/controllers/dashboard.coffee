@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, CreditCardService, Pagination, InvoiceService) ->
+angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, CreditCardService, Pagination, InvoiceService, InvoiceDetailService, PaymentService) ->
   $rootScope.changePageTitle()
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
@@ -17,7 +17,34 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $rootScope.matchingBankAccount = false
   $rootScope.matchingRoutingNum = false
   $rootScope.addCreditCardFromModal = false
+  $rootScope.invoicesArray = []
+  $scope.invoiceGrandTotal = 0
+  $rootScope.paymentAmount = 0
+  $scope.addBankAccount = false
+  $scope.addCreditCard = false
+  $rootScope.paymentMSG = null
+  $rootScope.matchingBankAccount = false
+  $rootScope.matchingRoutingNum = false
+  $rootScope.currentPaymentModal =  null
 
+  $rootScope.processPayment = (accountId, invoiceId) ->
+    if !invoiceId
+      invoiceId = 0
+    
+    if $rootScope.addCreditCardFromModal
+      if $rootScope.paymentCC.RecurringAccount is true
+        $rootScope.submitNewAccount('CC Payment', '')
+      thisYear = String($rootScope.expireDatesPayment.year)
+      thisYear = thisYear[2]+thisYear[3]
+      $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month+'/'+thisYear
+      
+      PaymentService.makePaymentWithCC($scope.familyId, $scope.centerId, invoiceId, $scope.customerId, $rootScope.paymentCC).then (response) ->
+        $rootScope.paymentMSG = response.data
+        $scope.getInvoiceData()
+    else
+      PaymentService.makePaymentWithAccountId(accountId, $scope.customerId, invoiceId).then (response) ->
+        $rootScope.paymentMSG = response.data
+        $scope.getInvoiceData()
 
   $scope.setDefaultAccount = () ->
     $scope.defaultAccount = null
@@ -30,7 +57,9 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
         $scope.defaultAccount = value
 
   $scope.payOutstandingBalance = ->
+    $rootScope.resetAccountForm('CC Payment')
     $rootScope.currentPaymentModal = 'Outstanding Balance'
+    $rootScope.paymentAmount = $rootScope.outstandingInvoicesDueTotal 
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
 
   $rootScope.addAccountModal = () ->
@@ -128,7 +157,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
 
   $scope.getPaymentAccounts = (familyId, centerId) ->
     $scope.getCCAccounts(familyId, centerId)
-    $scope.getBankAccounts(familyId, centerId)
     $scope.setDefaultAccount()
       
   $scope.getCCAccounts = (familyId, centerId) ->
@@ -136,12 +164,33 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $rootScope.creditCardAccounts = response.data
       $rootScope.creditCardAccountsPagination = Pagination.getNew()
       $rootScope.creditCardAccountsPagination.numPages = Math.ceil($rootScope.creditCardAccounts.length/$scope.creditCardAccountsPagination.perPage)
-  
-  $scope.getBankAccounts = (familyId, centerId) ->
-    CreditCardService.getBankAccounts(familyId, centerId).then (response) ->
-      $rootScope.bankAccounts = response.data
-      $rootScope.bankAccountsPagination = Pagination.getNew()
-      $rootScope.bankAccountsPagination.numPages = Math.ceil($rootScope.bankAccounts.length/$scope.bankAccountsPagination.perPage)
+ 
+  $scope.getInvoiceData = () ->
+    InvoiceService.getOutstandingInvoices($scope.customerId).then (response) ->
+      $rootScope.outstandingInvoices = response.data
+      $rootScope.outstandingInvoicesDueTotal = 0
+      $rootScope.outstandingInvoicesTotal = 0
+      $scope.outstandingBalance = 0
+      
+      angular.forEach $rootScope.outstandingInvoices, (value, key) ->
+        $rootScope.outstandingInvoicesDueTotal += value.DueAmount
+        $rootScope.outstandingInvoicesTotal += value.TotalAmount
+        InvoiceDetailService.getInvoiceDetail(value.InvoiceId).then (response) ->
+          
+          if response.data.length == 1
+            $rootScope.invoicesArray.push response.data[0]
+            $scope.invoiceGrandTotal = $scope.invoiceGrandTotal+response.data[0].Amount
+            $scope.outstandingBalance = $scope.invoiceGrandTotal
+
+          else
+            arrayHolder = []
+            angular.forEach response.data, (value, key) ->
+              arrayHolder.push value
+              $scope.invoiceGrandTotal = $scope.invoiceGrandTotal+value.Amount
+              $scope.outstandingBalance = $scope.invoiceGrandTotal
+            
+            $rootScope.invoicesArray.push arrayHolder   
+
 
   if StorageService.getItem('currentCenter')
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
@@ -156,6 +205,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
    
     CenterInfoService.getCenterDetails($scope.centerId).then (response) ->
       $rootScope.currentCenterDetails = response.data
+      $rootScope.subscriberId = response.data.SubscriberId
     
       $scope.getChildrenData()
           
@@ -185,10 +235,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.contactsPagination.numPages = Math.ceil($scope.contacts.length/$scope.contactsPagination.perPage)
       $scope.goToEmergencyContact($scope.contacts[0].EmergencyContactId)
 
-    InvoiceService.getOutstandingInvoices($scope.customerId).then (response) ->
-      $scope.outstandingInvoices = response.data
-      $rootScope.subscriberId = response.data[0].SubscriberId
-      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
+    $scope.getInvoiceData()
 
     ChildPickupService.getAllChildPickupList($scope.familyId).then (response) ->
       $scope.pickupList = response.data
@@ -200,4 +247,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.pickupListPagination = Pagination.getNew()
       $scope.pickupListPagination.numPages = Math.ceil($scope.pickupList.length/$scope.pickupListPagination.perPage)
       
+      setTimeout (->
+        $scope.getPaymentAccounts()
+      ), 250
       $rootScope.stopSpin()

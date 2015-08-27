@@ -7,7 +7,7 @@
 	<div class="clearfix"></div>
 	<div class="center-align">
 		<span class="current-balance">
-			{{currentCenter.OutstandingBalance | currency}}
+			{{outstandingInvoicesDueTotal | currency}}
 		</span> 
 		<span class="auto-pay" ng-show="defaultAccount.RecurringAccount != null">
 			Auto pay scheduled for {{currentCenter.NextPayDate}}

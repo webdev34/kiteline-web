@@ -65,7 +65,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     else
       invoiceId = $rootScope.viewInvoiceArray[0].InvoiceId
 
-    $rootScope.processPayment(accountId, invoiceId, null)
+    $rootScope.processPayment(accountId, invoiceId)
 
   $scope.emailInvoiceToUser = (tranId) ->
     PaymentService.emailInvoice(tranId, $scope.familyId, $scope.centerId).then (response) ->
@@ -271,8 +271,8 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
         $scope.getPaymentAccounts()
         accountId = response.data
         $scope.resetAccountForm('CC Payment', form)
-        if $rootScope.currentPaymentModal is 'Single Invoice'
-          $rootScope.processInvoicePayment(true, accountId)
+        if $rootScope.currentPaymentModal isnt 'Outstanding Balance'
+          $rootScope.processInvoicePayment(accountId)
         # ngDialog.closeAll(1)
     else
       AccountService.createAccount($scope.newBankAccount).then (response) ->
@@ -374,8 +374,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $rootScope.outstandingInvoicesDueTotal = 0
       $rootScope.outstandingInvoicesTotal = 0
       $scope.outstandingBalance = 0
-      $rootScope.subscriberId = response.data[0].SubscriberId
-
+      
       angular.forEach $rootScope.outstandingInvoices, (value, key) ->
         $rootScope.outstandingInvoicesDueTotal += value.DueAmount
         $rootScope.outstandingInvoicesTotal += value.TotalAmount
@@ -440,6 +439,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     
     CenterInfoService.getCenterDetails($scope.centerId).then (response) ->
       $scope.currentCenterDetails = response.data
+      $rootScope.subscriberId = response.data.SubscriberId
 
     GuardianService.getAllGuardians($scope.familyId).then (response) ->
       $rootScope.guardians = response.data

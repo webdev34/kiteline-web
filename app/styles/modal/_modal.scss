@@ -25,6 +25,9 @@ body {
                 .overlay-container {
                     height: 100%;
                     color: white;
+                    .table-wrapper.modal-list {
+                        min-height: 280px;
+                    }
                     table{
                         box-shadow: none;
                         tr:nth-child(even),
@@ -432,7 +435,7 @@ body {
                                     float: left;
                                     clear: none;
                                     font-size: 14px;
-                                    margin-right: 10px;
+                                    //margin-right: 10px;
                                     padding: 0px;
                                     color: #9CCAE3;
                                     height: auto;
@@ -448,9 +451,9 @@ body {
                                 float: none;
                                 clear: both;
                                 width: 100%;
-                                .pagination > li > a {
-                                    border: none;
-                                }
+                                // .pagination > li > a {
+                                //     border: none;
+                                // }
                             }
                         }
                     }

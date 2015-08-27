@@ -96,12 +96,12 @@ html {
             }
         }
         .table-wrapper {
-            height: 250px;
+            min-height: 330px;
             &.longer {
-                height: 515px;
+                min-height: 460px;
             }
-            &.modal-list {
-                height: 330px;
+            &.shorter {
+                min-height: 250px;
             }
         }
         .table {
