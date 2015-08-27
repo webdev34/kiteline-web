@@ -11,16 +11,17 @@
 		<div class="clearfix"></div>
 		<!--<span class="pull-right">Auto pay scheduled for July 15 , 2015</span>-->
 		<div class="clearfix"></div>
-		<button class="pull-right btn btn-primary" ng-click="payOutstandingInvoice();">Pay Full</button>
+		<button class="pull-right btn btn-primary" ng-click="payOutstandingBalance();">Pay Outstanding Invoice Balance</button>
 		<div class="clearfix"></div>
           <div class="table-wrapper longer">
           <table class="table">
 			    <thead>
 			    	<tr>
 				        <th>Invoice Date</th>
-				        <th>Invoice Due Date</th>
+				        <th>Due Date</th>
 				        <th>Amount Due</th>
 				        <th>Download</th>
+				        <th>Payment Detail</th>
 				        <th></th>
 			        </tr>
 			    </thead>
@@ -36,9 +37,10 @@
 			        <td>
 			        	{{invoice.DueAmount | currency}}
 			        </td>
+			        <td><i class="fa fa-list"></i></td>
 			        <td><i class="fa fa-file-pdf-o" ng-click="reportInvoice(invoice)"></i></td>
 			        <td>
-			        	<button class="btn btn-primary" ng-click="payInvoice(invoice.InvoiceId, false)">Pay</button>
+			        	<button class="btn btn-primary" ng-click="payInvoice(invoice.InvoiceId, false, invoice.DueAmount)">Pay</button>
 					</td>
 			      	</tr>
 			    </tbody>

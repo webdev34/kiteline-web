@@ -4,6 +4,7 @@ body {
             white-space: pre-line;
             width: 100%;
             text-align: center;
+            color: white;
         }
         &.ngdialog-theme-default {
             padding: 10px;
@@ -16,7 +17,7 @@ body {
                 }
             }
             .ngdialog-content {
-                width: 95%;
+                width: 60%;
                 height: 80%;
                 background: #04364c;
                 padding: 0px;
@@ -24,6 +25,27 @@ body {
                 .overlay-container {
                     height: 100%;
                     color: white;
+                    table{
+                        box-shadow: none;
+                        tr:nth-child(even),
+                        tr:nth-child(odd){
+                            background-color: white;
+                            border-bottom: #666666 thin solid;
+                            &:hover{
+                                cursor: pointer;
+                            }
+                            &.active{
+                                background: #4e99bd !important;
+                            }
+                            th{
+                                font-size: 16px;
+                            }
+                            td{
+                                color: #666666;
+                                font-size: 14px;
+                            }
+                        }
+                    }
                     h5{
                         font-weight: bold;
                         margin-left: 15px;
@@ -37,8 +59,12 @@ body {
                         float: left;
                         margin-left: 15px;
                         font-weight: bold;
-                        margin-top: 10px;
+                        margin-top: 0px;
                         margin-bottom: 10px;
+                    }
+                    input[type='text'].payment-amount{
+                        display: inline-block;
+                        margin-left: 80px;
                     }
                     input[type='text'],
                     input[type='email'] {
@@ -242,7 +268,7 @@ body {
                         ul {
                             width: 350px;
                             height: 50px;
-                            margin: 0 auto;
+                            margin: 20px auto 0;
                             li {
                                 list-style: none;
                                 a {
@@ -355,8 +381,9 @@ body {
                         textarea {
                             height: 230px;
                         }
-                        .control-group {
-                            margin-top: 10px;
+                    
+                        .payment-wrapper .control-group {
+                            margin: 10px 15px;
                         }
                         h3 {
                             font-family: "concourse_t4regular";

@@ -1,36 +1,73 @@
-		  <label class="control-label" for="creditCardDropDown">Saved Credit Cards</label>
-		  <div class="table-wrapper modal-list">
-		  	<ul class="account-list col-md-8">
-		  		<li data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage"  ng-click="resetActiveAccount(account, false);" ng-class="{active: account.isActive}">
-	  				<a>
-	  					<i ng-show="account.cctype == 'CC - AMEX'" class="fa fa-cc-amex"></i>
-				        <i ng-show="account.cctype == 'CC - Discover'" class="fa fa-cc-discover"></i>
-				        <i ng-show="account.cctype == 'CC - Visa'" class="fa fa-cc-visa"></i>
-				        <i ng-show="account.cctype == 'CC - Mastercard'" class="fa fa-cc-mastercard"></i>
-	  					 {{account.ccnum}} - 
-	  					<span class="ellipsis">{{account.AccountName}}</span> 
-	  					<span class="dark-green" ng-show="checkExp(account.expiration) == 'Valid'">
-	  						{{checkExp(account.expiration)}}
-	  					</span>
-						<span class="red" ng-show="checkExp(account.expiration) == 'Expired'">
-								{{checkExp(account.expiration)}}
-						</span> 
-	  					<i class="fa fa-caret-down pull-right"></i>
-	  				</a>
-	  				<div class="clearfix"></div>
-	  				<div class="account-info" ng-class="{active: account.isActive}">
-	  					
-	  					<label>Card Holder</label>
-	  					<span class="card-holder">{{account.CardHoldersName}}</span>
-	  					<div class="clearfix"></div>
-	  					<label>Billing Address</label>
-	  					<span>
-	  						{{account.street}}<br/>
-	  						{{account.city}}, {{account.state}} {{account.zip}}
-	  					</span>
-		  			</div>
-		  		</li>
-		  	</ul>
+		  <label class="control-label pull-left" for="creditCardDropDown">Saved Credit Cards</label>
+		  <a class="btn btn-primary new-credit-card pull-right" ng-click="addAccountModal()" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
+			 Pay With New Credit Card
+ 			</a>
+
+
+
+		  <div class="table-wrapper modal-list clearfix">
+
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							Account
+						</th>
+						<th>
+							Account NickName
+						</th>
+						<th>
+							Billing Address
+						</th>
+						<th>
+							Last 4
+						</th>
+						<th>
+							Active/Expired
+						</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage"  ng-click="resetActiveAccount(account, false);" ng-class="{active: account.isActive}">
+						<td>
+							<a>
+			  					<i ng-show="account.cctype == 'CC - AMEX'" class="fa fa-cc-amex"></i>
+						        <i ng-show="account.cctype == 'CC - Discover'" class="fa fa-cc-discover"></i>
+						        <i ng-show="account.cctype == 'CC - Visa'" class="fa fa-cc-visa"></i>
+						        <i ng-show="account.cctype == 'CC - Mastercard'" class="fa fa-cc-mastercard"></i>
+			  				</a>
+						</td>
+						<td>
+							<span class="ellipsis">{{account.AccountName}}</span>
+						</td>
+						<td>
+							{{account.street}}<br/>
+				  			{{account.city}}, {{account.state}} {{account.zip}}
+						</td>
+						<td>
+							{{account.ccnum}}
+						</td>
+						<td>
+							<span class="dark-green" ng-show="checkExp(account.expiration) == 'Valid'">
+				  				{{checkExp(account.expiration)}}
+				  			</span>
+							<span class="red" ng-show="checkExp(account.expiration) == 'Expired'">
+									{{checkExp(account.expiration)}}
+							</span> 
+						</td>
+						<td>
+
+							<button ng-show="currentPaymentModal == 'Outstanding Balance'" class="btn btn-primary pull-right" ng-click="processPayment(account.AccountId, false, false)" ng-disabled="checkExp(account.expiration) == 'Expired'">Pay</button>
+
+							<button ng-show="currentPaymentModal == 'Multiple Line Item Invoice' || currentPaymentModal == 'Single Invoice'" class="btn btn-primary pull-right" ng-click="processInvoicePayment(account.AccountId)" ng-disabled="checkExp(account.expiration) == 'Expired'">Pay</button>
+
+							
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		  </div>
 		  	<nav class="pagination-wrapper text-center" ng-show="creditCardAccounts.length > 5">
 				<ul class="pagination">

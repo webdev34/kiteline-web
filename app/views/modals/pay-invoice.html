@@ -1,19 +1,19 @@
-<div class="overlay-container" >
- 	<section class="overlay-right-col" ng-hide="paymentMSG">
- 		<h3>Payment Amount Due: 
+<div class="overlay-container outstanding-balance"  ng-hide="paymentMSG">
+ 	<section class="overlay-right-col">
+ 		<h3>
+ 			Payment Amount Due: 
  			<span class="orange" ng-hide="viewInvoiceArrayTotal != 0">{{viewInvoice.Amount | currency}}</span>
  			<span class="orange" ng-hide="viewInvoiceArrayTotal == 0">{{viewInvoiceArrayTotal | currency}}</span>
+ 			<span class="pull-right">{{viewInvoice.CreatedOn | date}}</span>
+ 		</h3>
 
-
- 		 <span class="pull-right">{{viewInvoice.CreatedOn | date}}</span></h3>
- 		 <div class="clearfix"></div>
- 		 <a class="btn btn-primary new-credit-card" ng-click="addAccountModal()" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
-			<!-- <i class="fa fa-plus"></i> -->
-			 Pay With New Credit Card
- 		</a>
+ 		<h3 class="margin-top-0">
+ 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text" />
+ 		</h3>
 
 		<div class="clearfix"></div>
-		 <div class="invoice-cycle-wrapper">
+
+		<div class="invoice-cycle-wrapper" ng-show="outstandingInvoices.length > 1">
 		 	<ul>
 		 		<li class="pull-left" ng-show="previousInvoice">
 				 	<a href="" data-ng-click="payInvoice(previousInvoice, true)">
@@ -35,33 +35,33 @@
 		 </div>
 
 		 <div class="clearfix"></div>
-		 
 
-	<div ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0" class="payment-wrapper">
-		 <!-- CC dropdown -->
-		<div class="control-group col-md-6"  ng-include src="'views/common/cc-dropdown.html'"></div>
-	</div>
-	<div ng-show="addCreditCardFromModal || creditCardAccounts.length == 0" class="add-credit-card-wrapper">
-		<div class="control-group col-md-6"  ng-include src="'views/billing/payCCForm.html'"></div>
-	</div>
+		<div ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0" class="payment-wrapper">
 
-	<div class="control-group col-md-4">
-			 <div data-ng-repeat="invoice in viewInvoiceArray" class="pull-left clearfix invoice-break-down" ng-hide="viewInvoiceArrayTotal == 0">
-			 	{{invoice.ChildName}} - {{invoice.ClassName}} - {{invoice.ItemTypeName}} -  <span class="orange">{{invoice.Amount | currency}} </span> {{invoice.CreatedOn | date}}<br/>
-			 	<span class="light-blue">{{invoice.LineItemNotes}}</span>
-			 </div>
-			 <div class="invoice-break-down" ng-hide="viewInvoiceArrayTotal != 0">
-				{{viewInvoice.ChildName}} - {{viewInvoice.ClassName}} - {{viewInvoice.ItemTypeName}} -  <span class="orange">{{viewInvoice.Amount | currency}} </span> {{viewInvoice.CreatedOn | date}}<br/>
-						 	<span class="light-blue">{{viewInvoice.LineItemNotes}}</span>
-		 </div>
-	</div>
-		
-	<div class="control-group col-md-2" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
-		<button class="btn btn-primary pull-right process-payment-btn" ng-click="processInvoicePayment(false)" ng-disabled="!activePaymentAccount">Charge</button>
+			<div class="control-group">
+				 <div data-ng-repeat="invoice in viewInvoiceArray" class="pull-left invoice-break-down" ng-hide="viewInvoiceArrayTotal == 0">
+			 	<span>{{invoice.ChildName}}</span> 
+			 	<div class="clearfix"></div>
+			 	<span>{{invoice.ItemTypeName}} -  <span class="orange">{{invoice.Amount | currency}} </span> {{invoice.CreatedOn | date}}</span>
+			 	</div>
+			 	<div class="invoice-break-down" ng-hide="viewInvoiceArrayTotal != 0">
+			 		<span>{{viewInvoice.ChildName}}</span> 
+				 	<div class="clearfix"></div>
+				 	<span>{{viewInvoice.ItemTypeName}} -  <span class="orange">{{viewInvoice.Amount | currency}} </span> {{viewInvoice.CreatedOn | date}}</span>
+		 		</div>
+			</div>
 
+			 <div class="clearfix"></div>
+			 <!-- CC dropdown -->
+			<div class="control-group"  ng-include src="'views/common/cc-dropdown.html'"></div>
+		</div>
 
-	</div>
-				<div class="clearfix"></div>
+		<div ng-show="addCreditCardFromModal || creditCardAccounts.length == 0" class="add-credit-card-wrapper">
+			<div class="control-group pay-cc-wrapper"  ng-include src="'views/billing/payCCForm.html'"></div>
+		</div>
+
+		</div>
+
 	</section>
 	<section ng-show="paymentMSG">
 		<div class="paymentMSG" ng-bind-html="paymentMSG"></div>

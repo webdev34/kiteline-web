@@ -126,7 +126,8 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
       toastr.error status, 'Error'
       return
 
-  @makePaymentWithAccountId = (accountId, customerId, amount, invoiceId) ->  
+  @makePaymentWithAccountId = (accountId, customerId, invoiceId) ->  
+    amount = document.getElementById('payment-amount').value 
     url = rootUrl+'api/Payment/MakePayment?accountId='+accountId+'&customerId='+customerId+'&amount='+amount+'&invoiceid='+invoiceId
     $http(
       method: 'POST'
@@ -146,7 +147,7 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
       toastr.error status, 'Error'
       return  
 
-  @makePaymentWithCC = (familyId, centerId, invoiceId, customerId, amount, accountObj) ->  
+  @makePaymentWithCC = (familyId, centerId, invoiceId, customerId, accountObj) ->  
     url = rootUrl+'api/CreditCard/ProcessCC'
     $http(
       method: 'POST'
@@ -161,7 +162,7 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
         'centerId': centerId
         'invoiceId': invoiceId                        
         'customerId': customerId        
-        'amount': amount
+        'amount': document.getElementById('payment-amount').value 
         'ccname': accountObj.PayerName
         'ccnum': accountObj.AccountNumber
         'cctype': $rootScope.newCCAccountTypeId
