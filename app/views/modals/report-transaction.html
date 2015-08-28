@@ -9,6 +9,12 @@
 
 
             setTimeout(function(){
+                 var serviceUrl;
+                if (window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > -1) {
+                  serviceUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/';
+                } else {
+                  serviceUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/';
+                }
 
                  $("#reportViewer1").telerik_ReportViewer({
                     serviceUrl: "https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/api/reports/",

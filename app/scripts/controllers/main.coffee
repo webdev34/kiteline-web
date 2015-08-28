@@ -39,7 +39,11 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
   else
     $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb'
 
-  $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
+  if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > -1
+    $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
+  else
+    $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
+
 
   $rootScope.footerYear = (new Date).getFullYear()
 
