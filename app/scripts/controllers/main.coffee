@@ -43,6 +43,32 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
 
   $rootScope.footerYear = (new Date).getFullYear()
 
+  $rootScope.isMobileFunc = () ->
+    if sessionStorage.desktop
+      return false
+    else if localStorage.mobile
+      return true
+    # alternative
+    mobile = [
+      'iphone'
+      'ipad'
+      'android'
+      'blackberry'
+      'nokia'
+      'opera mini'
+      'windows mobile'
+      'windows phone'
+      'iemobile'
+    ]
+    for i of mobile
+      if navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0
+        $rootScope.mobileType = mobile[i].toLowerCase()
+        return true
+    # nothing found.. assume desktop
+    false
+
+  $rootScope.isMobile = $rootScope.isMobileFunc()
+
   $rootScope.normalizeYear = (year) ->
     # Century fix
     YEARS_AHEAD = 20
