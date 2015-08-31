@@ -13,16 +13,24 @@
                 var startDate = new Date(year,0,1);
                 var endDate = new Date(year,11,31);
 
-                var serviceUrl;
-                if (window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > -1) {
+                var serviceUrl, templateUrl;
+
+                if (window.location.href.indexOf('cloud') > -1) {
                   serviceUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/';
-                } else {
-                  serviceUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/';
+                  templateUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html';
+                } else if (window.location.href.indexOf('localhost') > -1 ) {
+                  serviceUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/';
+                  templateUrl = 'http://localhost:9000/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html'
                 }
+                else  {
+                  serviceUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/';
+                  templateUrl = 'https://uat.skychildcare.com/parentportal/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html'
+                }
+
 
                  $("#reportViewer1").telerik_ReportViewer({
                     serviceUrl:  serviceUrl+"api/reports/",
-                    templateUrl: 'https://cloud.spinsys.com/skychildcare/kitelineweb/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html',
+                    templateUrl: templateUrl,
                     reportSource: {
                         report: "FamilyStatement.trdx",
                         //report: "MAP.SkyCare.Reports.Invoice, MAP.SkyCare.Reports, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d6ffd24b2ed3c2d1",

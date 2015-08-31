@@ -59,9 +59,9 @@
 						</td>
 						<td>
 
-							<button ng-show="currentPaymentModal == 'Outstanding Balance'" class="btn btn-primary pull-right" ng-click="processPayment(account.AccountId, false, false)" ng-disabled="checkExp(account.expiration) == 'Expired'">Pay</button>
+							<button ng-show="currentPaymentModal == 'Outstanding Balance'" class="btn btn-primary pull-right" ng-click="processPayment(account.AccountId, false, false)" ng-disabled="checkExp(account.expiration) == 'Expired' || processingPayment">Pay</button>
 
-							<button ng-show="currentPaymentModal == 'Multiple Line Item Invoice' || currentPaymentModal == 'Single Invoice'" class="btn btn-primary pull-right" ng-click="processInvoicePayment(account.AccountId)" ng-disabled="checkExp(account.expiration) == 'Expired'">Pay</button>
+							<button ng-show="currentPaymentModal == 'Multiple Line Item Invoice' || currentPaymentModal == 'Single Invoice'" class="btn btn-primary pull-right" ng-click="processInvoicePayment(account.AccountId)" ng-disabled="checkExp(account.expiration) == 'Expired' || processingPayment">Pay</button>
 
 							
 						</td>

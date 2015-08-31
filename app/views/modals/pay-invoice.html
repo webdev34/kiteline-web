@@ -5,6 +5,8 @@
  			<span class="orange" ng-hide="viewInvoiceArrayTotal != 0">{{viewInvoice.Amount | currency}}</span>
  			<span class="orange" ng-hide="viewInvoiceArrayTotal == 0">{{viewInvoiceArrayTotal | currency}}</span>
  			<span class="pull-right">{{viewInvoice.CreatedOn | date}}</span>
+
+ 			{{PartialPaymentsMade}}
  		</h3>
 
  		<h3 class="margin-top-0">

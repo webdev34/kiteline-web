@@ -22,6 +22,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.expireDates = {}
   $rootScope.expireDatesPayment = {}
   $rootScope.currentPaymentModal =  null
+  $rootScope.processingPayment =  null
   $scope.defaultCC = null
   $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
   d = new Date
@@ -39,6 +40,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.billDates.queryingHistorical = false
 
   $rootScope.processPayment = (accountId, invoiceId) ->
+    $rootScope.processingPayment = true
     if !invoiceId
       invoiceId = 0
     
@@ -51,15 +53,19 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       
       PaymentService.makePaymentWithCC($scope.familyId, $scope.centerId, invoiceId, $scope.customerId, $rootScope.paymentCC).then (response) ->
         $rootScope.paymentMSG = response.data
+        $rootScope.processingPayment = false
         $scope.getInvoiceData()
     else
       PaymentService.makePaymentWithAccountId(accountId, $scope.customerId, invoiceId).then (response) ->
         $rootScope.paymentMSG = response.data
+        $rootScope.processingPayment = false
         $scope.getTransactionsByDate(null)
         $scope.getTransactionsByDate('Historical')
         $scope.getInvoiceData()
+        $rootScope.stopSpin()
       
   $rootScope.processInvoicePayment = (accountId) ->
+    $rootScope.processingPayment = true
     if $rootScope.viewInvoiceArray is null
       invoiceId = $rootScope.viewInvoice.InvoiceId
     else
@@ -143,7 +149,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.payOutstandingBalance = ->
     $rootScope.resetAccountForm('CC Payment')
     $rootScope.currentPaymentModal = 'Outstanding Balance'
-    $rootScope.paymentAmount = $rootScope.outstandingInvoicesDueTotal 
+    $rootScope.paymentAmount = $rootScope.outstandingInvoicesDueTotal.toFixed 2 
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
 
   $rootScope.nextAndPreviousInvoices = (currentInvoice) ->
@@ -173,7 +179,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     $rootScope.currentPaymentModal = 'Single Invoice'
     $rootScope.viewInvoiceArray = null
     $rootScope.viewInvoiceArrayTotal = trueAmount
-    $rootScope.paymentAmount = trueAmount
+    $rootScope.paymentAmount = trueAmount.toFixed 2 
     $rootScope.viewInvoice = null
     $rootScope.viewInvoice = $filter('filter')($rootScope.invoicesArray, (d) -> d.InvoiceId == invoiceId)[0]
     
