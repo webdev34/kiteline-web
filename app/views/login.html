@@ -20,7 +20,7 @@
             <i class="fa fa-map-marker"></i>
             <input type="text" data-ng-keyup="centerSearchFunc(centernameSearch);" placeholder="Child Care Center Name" name="centernameSearch" id="centernameSearch" class="form-control" data-ng-model="centernameSearch" />
             <span ng-show="form.centernameSearch.$dirty && form.centernameSearch.$error.required" class="help-block">Center is required</span>
-            <ul class="list-group">
+            <ul class="list-group" ng-hide="!centernameSearch">
                 <li class="list-group-item list-group-item-info" data-ng-repeat="centername in careCenters | limitTo: 5" data-center-id="{{centername.CenterId}}" data-center-name="{{centername.CenterName}}" ng-click="selectCenter(centername.CenterId, centername.CenterName)">
                     {{centername.CenterName}} - {{centername.City}}, {{centername.State}}, {{centername.Zip}}
                 </li>
@@ -54,7 +54,7 @@
             <i class="fa fa-map-marker"></i>
             <input type="text" data-ng-keyup="centerSearchFunc(centernameSearch);" placeholder="Child Care Center Name" name="centernameSearch" id="centernameSearch" class="form-control" data-ng-model="centernameSearch" />
             <span ng-show="form.centernameSearch.$dirty && form.centernameSearch.$error.required" class="help-block">Center is required</span>
-            <ul class="list-group">
+            <ul class="list-group" ng-hide="!centernameSearch">
                 <li class="list-group-item list-group-item-info" data-ng-repeat="centername in careCenters | limitTo: 5" data-center-id="{{centername.CenterId}}" data-center-name="{{centername.CenterName}}" ng-click="selectCenter(centername.CenterId, centername.CenterName)">
                     {{centername.CenterName}} - {{centername.City}}, {{centername.State}}, {{centername.Zip}}
                 </li>
