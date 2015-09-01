@@ -303,6 +303,8 @@
             &.ng-dirty.ng-invalid-required{
                 border-color: red;
                 outline-color: red;
+                background-color: #ff6666;
+                color: white;
             }
             &.exp-dates{
                 width: 25%;

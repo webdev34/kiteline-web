@@ -1,0 +1,29 @@
+<div class="overlay-container invoice-history"  ng-hide="paymentMSG">
+ 	<section class="overlay-right-col">
+ 		<h3>
+ 			Payment Amount Due: 
+ 			<span class="orange">{{viewInvoiceHistoryAmount | currency}}</span>
+ 		</h3>
+
+		<div class="clearfix"></div>
+
+		<div class="payment-wrapper">
+
+			<div class="control-group">
+				 <div data-ng-repeat="payment in PartialPaymentsMade" class="pull-left history-break-down" >
+
+			 <span>{{payment.PayerName}} -  {{payment.PaymentType}}</span> 
+			 	<div class="clearfix"></div>
+			 	<span>
+			 		<span class="orange">{{payment.Amount | currency}} </span> 
+			 		<span> {{payment.PaymentStatus}} on {{payment.PaymentDate | date}}
+
+
+			 	</span>
+			</div>
+
+			 <div class="clearfix"></div>
+		</div>
+
+	</section>
+<div>

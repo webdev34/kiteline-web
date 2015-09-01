@@ -30,7 +30,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage"  ng-click="resetActiveAccount(account, false);" ng-class="{active: account.isActive}">
+					<tr data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage"  ng-click="resetActiveAccount(account, false);" ng-class="{isactive: account.isActive}">
 						<td>
 							<a>
 			  					<i ng-show="account.cctype == 'CC - AMEX'" class="fa fa-cc-amex"></i>
@@ -59,9 +59,9 @@
 						</td>
 						<td>
 
-							<button ng-show="currentPaymentModal == 'Outstanding Balance'" class="btn btn-primary pull-right" ng-click="processPayment(account.AccountId, false, false)" ng-disabled="checkExp(account.expiration) == 'Expired' || processingPayment">Pay</button>
+							<button ng-show="currentPaymentModal == 'Outstanding Balance'" class="btn btn-primary pull-right" ng-click="processPayment(account.AccountId, false, false)" ng-disabled="checkExp(account.expiration) == 'Expired' || processingPayment || paymentGreaterThanAmount">Pay</button>
 
-							<button ng-show="currentPaymentModal == 'Multiple Line Item Invoice' || currentPaymentModal == 'Single Invoice'" class="btn btn-primary pull-right" ng-click="processInvoicePayment(account.AccountId)" ng-disabled="checkExp(account.expiration) == 'Expired' || processingPayment">Pay</button>
+							<button ng-show="currentPaymentModal == 'Multiple Line Item Invoice' || currentPaymentModal == 'Single Invoice'" class="btn btn-primary pull-right" ng-click="processInvoicePayment(account.AccountId)" ng-disabled="checkExp(account.expiration) == 'Expired' || processingPayment || paymentGreaterThanAmount">Pay</button>
 
 							
 						</td>

@@ -25,6 +25,12 @@ body {
                 .overlay-container {
                     height: 100%;
                     color: white;
+
+                    &.invoice-history{
+                        .control-group{
+                            margin: 0px;
+                        }
+                    }
                     .table-wrapper.modal-list {
                         min-height: 280px;
                     }
@@ -88,7 +94,7 @@ body {
                         -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
                         transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
                         &.exp-dates {
-                            width: 34%;
+                            width: 50px;
                         }
                         &.ng-valid-cc-number,
                         &.ng-valid-cc-exp-month,
@@ -106,6 +112,8 @@ body {
                         &.ng-dirty.ng-invalid-required {
                             border-color: red;
                             outline-color: red;
+                            background-color: #f66;
+                            color: white;
                         }
                     }
                     form {
@@ -460,6 +468,15 @@ body {
                     .invoice-break-down {
                         margin-left: 15px;
                         margin-bottom: 15px;
+                        font-weight: bold;
+                        span {
+                            text-transform: capitalize;
+                        }
+                    }
+
+                    .history-break-down {
+                        margin-left: 15px;
+                        margin-bottom: 30px;
                         font-weight: bold;
                         span {
                             text-transform: capitalize;

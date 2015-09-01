@@ -37,7 +37,7 @@
 			        <td>
 			        	{{invoice.DueAmount | currency}}
 			        </td>
-			        <td><i class="fa fa-list"></i></td>
+			        <td><i class="fa fa-list" ng-click="viewInvoiceHistory(invoice.InvoiceId)"></i></td>
 			        <td><i class="fa fa-file-pdf-o" ng-click="reportInvoice(invoice)"></i></td>
 			        <td>
 			        	<button class="btn btn-primary" ng-click="payInvoice(invoice.InvoiceId, false, invoice.DueAmount)">Pay</button>

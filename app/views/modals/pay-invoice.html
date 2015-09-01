@@ -6,11 +6,13 @@
  			<span class="orange" ng-hide="viewInvoiceArrayTotal == 0">{{viewInvoiceArrayTotal | currency}}</span>
  			<span class="pull-right">{{viewInvoice.CreatedOn | date}}</span>
 
- 			{{PartialPaymentsMade}}
+
  		</h3>
 
  		<h3 class="margin-top-0">
- 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text" />
+ 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text" numbers-only ng-change="checkPaymentAmount()"/>
+ 			<span class="red" ng-show="paymentGreaterThanAmount">Payment can not exceed Payment Amount due</span>
+
  		</h3>
 
 		<div class="clearfix"></div>

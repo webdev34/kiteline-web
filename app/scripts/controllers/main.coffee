@@ -29,15 +29,23 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
     $rootScope.showLogOut = true
 
   $rootScope.logOut = () ->
+    $rootScope.showLogOut = false
     StorageService.deleteLocalStorage();
-    $window.location.href = '/'
+    if window.location.href.indexOf('localhost') > -1
+      $window.location.href = '/'
+    else if window.location.href.indexOf('cloud') > -1
+      $window.location.href = 'https://cloud.spinsys.com/skychildcare/kitelineweb/#/'
+    else
+      $window.location.href = 'https://uat.skychildcare.com/parentportal/#/'
 
   $rootScope.changePageTitle()
 
   if window.location.href.indexOf('localhost') > -1
     $rootScope.modalUrl = 'http://localhost:9000'
-  else
+  else if window.location.href.indexOf('cloud') > -1
     $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb'
+  else
+    $rootScope.modalUrl = 'https://uat.skychildcare.com/parentportal'
 
   if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > -1
     $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'

@@ -53,6 +53,13 @@ html {
              #addCreditCard{
                 margin-right: 10px;
              }
+            input[type="text"],
+            input[type="email"]{
+                width: 100%
+            }
+            #CVV{
+                width: 60px;
+            }
         }
         h5{
             font-family: concourse_t4regular;
@@ -66,6 +73,10 @@ html {
         .header {
             margin-bottom: 5px;
             background-color: $light-blue;
+        }
+
+        input{
+            color: #555;
         }
         //Date-picker wrapper
         .input-group {
@@ -119,7 +130,7 @@ html {
             padding: 2px 6px;
             vertical-align: middle;
             text-align: center;
-            font-size: 16px;
+            font-size: 15px;
             text-transform: capitalize;
             border: none;
         }
@@ -127,8 +138,12 @@ html {
             background-color: #ccc;
             color: #666;
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
             border: none;
+        }
+       button:disabled,
+       input:disabled{
+            pointer: none;
         }
         div[id*="myCarousel"] {
             button.carousel-control {
@@ -265,7 +280,8 @@ h1, h2, h3 {
                 margin-top: 25px;
             }
             img {
-                width: 120px;
+                width: 150px;
+                padding-bottom: 15px;
             }
             .fa, .glyphicon {
                 font-size: 28px;
@@ -898,6 +914,21 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.ng-dirty.ng-invalid::-webkit-input-placeholder {
+    color: white;
+}
+.ng-dirty.ng-invalid::-moz-placeholder {
+    /* Firefox 19+ */
+    color: white;
+}
+.ng-dirty.ng-invalid:-ms-input-placeholder {
+    color: white;
+}
+.ng-dirty.ng-invalid:-moz-placeholder {
+    color: white;
+    /* Firefox 18- */
 }
 
 /* Responsive: Portrait tablets and up */

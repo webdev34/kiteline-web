@@ -37,7 +37,7 @@ body.loginPage {
         text-align: center;
         margin-top: 25%;
     }
-    p,a, div{
+    p,a:not(.btn), div{
         color: white;
         font-size: 16px;
         margin: 15px auto;
@@ -59,7 +59,7 @@ body.loginPage {
             margin-right: 5px;
         }
     }
-    button{
+    a.btn{
         width: 85%;
         margin-bottom: 15px;
         margin-left: 9%;
@@ -197,6 +197,7 @@ body.loginPage {
         color: #498DB1;
         /* Firefox 18- */
     }
+
     .help-block {
         color: red;
         position: absolute;

@@ -3,7 +3,7 @@
 		<ul>
 	        <li  data-ng-repeat="pickupContact in pickupList | startFrom: pickupListPagination.page * pickupListPagination.perPage | limitTo: pickupListPagination.perPage" ng-click="goToPickupContact(pickupContact.ChildPickupId); changeActivePickupContact('pickup-contact-'+[$index+1]);" class="contact-{{$index+1}}" ng-class="{ 'active': activePickupContact == 'pickup-contact-'+[$index+1]}" >
 				<div class="pull-left">
-					<span class="feed-headline cap">Contact {{$index+1}}</span>
+					<span class="feed-headline cap hide">Contact {{$index+1}}</span>
 					<span class="feed-headline cap">{{pickupContact.PickupName}}</span>
 				</div>
 				<div class="pointer pull-right">

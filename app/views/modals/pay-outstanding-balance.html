@@ -2,11 +2,12 @@
  	<section class="overlay-right-col">
  		<h3>
  			Payment Amount Due: 
- 			<span class="orange">{{outstandingInvoicesDueTotal | currency}}</span>
+ 			<span class="orange outstandingInvoicesDueTotal">{{outstandingInvoicesDueTotal | currency}}</span>
  		</h3>
 
  		<h3 class="margin-top-0">
- 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text" ng-currency />
+ 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text" numbers-only ng-change="checkPaymentAmount()"/>
+ 			<em class="red" ng-show="paymentGreaterThanAmount">Payment can not exceed Payment Amount due</em>
  			
  		</h3>
 
