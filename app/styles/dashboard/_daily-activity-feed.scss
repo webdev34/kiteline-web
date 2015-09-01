@@ -20,4 +20,19 @@
     		width: 100%;
     	}
 	}
+
+	.feed-breakdown-view{
+		height: 600px;
+    	width: 590px;
+
+    	.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+    		background-color: #224f77;
+    	}
+    	.mCSB_scrollTools .mCSB_draggerRail{
+    		background-color: #529acd;
+    	}
+		#mCSB_1_container{
+			width: 100% !important;
+		}
+	}
 }

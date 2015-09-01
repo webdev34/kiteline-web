@@ -13,6 +13,7 @@ angular.module('kiteLineApp', [
   'angularSpinner'
   'credit-cards'
   'simplePagination'
+  'ngScrollbars'
 
 ]).config ($routeProvider) ->
   $routeProvider.when('/',
@@ -41,3 +42,15 @@ angular.module('kiteLineApp', [
       usSpinnerConfigProvider.setDefaults color: 'blue'
       return
   ]
+
+  angular.module('kiteLineApp').config (ScrollBarsProvider) ->
+    ScrollBarsProvider.defaults =
+      autoHideScrollbar: false
+      setHeight: 'auto'
+      scrollInertia: 0
+      axis: 'yx'
+      advanced: updateOnContentResize: true
+      scrollButtons:
+        scrollAmount: 'auto'
+        enable: true
+    return

@@ -34,6 +34,9 @@ module.exports = (config) ->
       'bower_components/angular-spinner/angular-spinner.js'
       'bower_components/angular-credit-cards/release/angular-credit-cards.js'
       'bower_components/ng-simplePagination/simplePagination.js'
+      'bower_components/jquery-mousewheel/jquery.mousewheel.js'
+      'bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js'
+      'bower_components/ng-scrollbars/dist/scrollbars.min.js'
       'bower_components/angular-mocks/angular-mocks.js'
       # endbower
       # bower:coffee
