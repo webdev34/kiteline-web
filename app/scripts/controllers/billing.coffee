@@ -87,6 +87,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.reportPayment = (payment) ->
     $rootScope.currentFamilyID = $scope.familyId
     $rootScope.currentTransactionID = payment.PayId
+    $rootScope.currentTranType = payment.PaymentType
     ngDialog.open
       template: $rootScope.modalUrl+'/views/modals/report-transaction.html'
       className: 'ngdialog-theme-default ngdialog-pdf'

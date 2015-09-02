@@ -1,6 +1,7 @@
 ﻿<div class="overlay-container" >
         <div id="currentFamilyID" style="display:none;">{{currentFamilyID}}</div>
         <div id="currentTransactionID" style="display:none;">{{currentTransactionID}}</div>
+        <div id="currentTranType" style="display:none;">{{currentTranType}}</div>
         <div id="reportViewer1" class="k-widget" style="height: 800px;">
             loading...
         </div>
@@ -31,7 +32,8 @@
                         //report: "MAP.SkyCare.Reports.Invoice, MAP.SkyCare.Reports, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d6ffd24b2ed3c2d1",
                         parameters: {
                             FAMILY_ID: $("#currentFamilyID").html(),
-                            TransactionId: $("#currentTransactionID").html()
+                            TransactionId: $("#currentTransactionID").html(),
+                            TranType: $("#currentTranType").html()
                         }
                     }
                 });
