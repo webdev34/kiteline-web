@@ -29,6 +29,9 @@
 						<th></th>
 					</tr>
 				</thead>
+				<tbody ng-show="pastTransactions.length == 0">
+					<tr ng-animate="'animate'" ><td colspan="7"><span>No Saved Credit Cards</span></td></tr>
+				</tbody>
 				<tbody>
 					<tr data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage"  ng-click="resetActiveAccount(account, false);" ng-class="{isactive: account.isActive}">
 						<td>

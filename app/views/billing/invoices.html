@@ -20,11 +20,15 @@
 				        <th>Invoice Date</th>
 				        <th>Due Date</th>
 				        <th>Amount Due</th>
-				        <th>Payment History</th>
+				        <th>Billed Amount</th>
+				        <th>Payments Made</th>
 				        <th>Payment Detail</th>
 				        <th></th>
 			        </tr>
 			    </thead>
+			   <tbody ng-show="outstandingInvoices.length == 0">
+					<tr><td colspan="7"><span>No Current Invoices</span></td></tr>
+				</tbody>
 			    <tbody>
 			    	<tr ng-animate="'animate'" data-ng-repeat="invoice in outstandingInvoices  |  orderBy:'InvoiceDate':true | startFrom: outstandingInvoicesPagination.page * outstandingInvoicesPagination.perPage | limitTo: outstandingInvoicesPagination.perPage">
 			        <td>
@@ -36,8 +40,12 @@
 			    	</td>
 			        <td>
 			        	{{invoice.DueAmount | currency}}
+
 			        </td>
-			        <td><i class="fa fa-list" ng-click="viewInvoiceHistory(invoice.InvoiceId)"></i></td>
+			         <td>
+			        	{{invoice.TotalAmount | currency}}
+			        </td>
+			        <td><i class="fa fa-list" ng-show="invoice.hasHistory"  ng-click="viewInvoiceHistory(invoice.InvoiceId)"></i></td>
 			        <td><i class="fa fa-file-pdf-o" ng-click="reportInvoice(invoice)"></i></td>
 			        <td>
 			        	<button class="btn btn-primary" ng-click="payInvoice(invoice.InvoiceId, false, invoice.DueAmount)">Pay</button>
@@ -113,7 +121,7 @@
 		        </tr>
 		    </thead>
 		    <tbody ng-show="noResultsInvoices">
-					<tr><td colspan="7"><span>No Results</span></td></tr>
+					<tr><td colspan="7"><span>No Past Invoices from <span class="red">{{billDates.historicalStartDate | date}}</span> to <span class="red">{{billDates.historicalEndDate | date}}</span></span></td></tr>
 			</tbody>
 		    <tbody ng-hide="noResultsInvoices">
 		    	<tr ng-animate="'animate'" data-ng-repeat="transaction in historicalTransactions |  orderBy:'PaymentDate':true | startFrom: historicalTransactionsPagination.page * historicalTransactionsPagination.perPage | limitTo: historicalTransactionsPagination.perPage">

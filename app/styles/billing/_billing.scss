@@ -262,6 +262,8 @@
                 #bankAcctNumber.ng-dirty{
                     border-color: red;
                     outline-color: red;
+                    background-color: #ff6666;
+                    color: white;
                 }
             }
             &.invalid-routing{
@@ -269,6 +271,8 @@
                 #RoutingNumber.ng-dirty{
                     border-color: red;
                     outline-color: red;
+                    background-color: #ff6666;
+                    color: white;
                 }
             }  
             &.ng-pristine{

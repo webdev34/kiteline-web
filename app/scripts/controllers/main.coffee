@@ -1,6 +1,7 @@
 'use strict'
-angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $location, StorageService, usSpinnerService, $window) ->
+angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScope, $location, StorageService, usSpinnerService, $window) ->
   $rootScope.pageTitle = ' '
+  $rootScope.paymentGreaterThanAmount = false
 
   $rootScope.changePageTitle = () ->
     $rootScope.showLogOut = false
@@ -37,6 +38,37 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($scope, $rootScope, $locat
       $window.location.href = 'https://cloud.spinsys.com/skychildcare/kitelineweb/#/'
     else
       $window.location.href = 'https://uat.skychildcare.com/parentportal/#/'
+
+  isNumeric = (n) ->
+    !isNaN(parseFloat(n)) and isFinite(n)
+
+  $rootScope.makeFloat = () ->
+    if isNumeric(document.getElementById('payment-amount').value)
+      document.getElementById('payment-amount').value = $filter('currency') document.getElementById('payment-amount').value, ''
+    else
+      if $rootScope.currentPaymentModal == 'Outstanding Balance'
+        document.getElementById('payment-amount').value = $filter('currency') $rootScope.outstandingInvoicesDueTotal, ''
+      else if $rootScope.currentPaymentModal = 'Single Invoice'
+        document.getElementById('payment-amount').value = $filter('currency') $rootScope.viewInvoice.Amount, ''
+      else
+        document.getElementById('payment-amount').value = $filter('currency') $rootScope.viewInvoiceTotal, ''
+
+  $rootScope.checkPaymentAmount = () ->
+    $rootScope.paymentGreaterThanAmount = false
+    paymentAmount = parseFloat document.getElementById('payment-amount').value 
+    if $rootScope.currentPaymentModal == 'Outstanding Balance'
+      outstandingBalance = parseFloat $rootScope.outstandingInvoicesDueTotal
+      $rootScope.paymentAmount = parseFloat $rootScope.outstandingInvoicesDueTotal
+    else if $rootScope.currentPaymentModal = 'Single Invoice'
+      outstandingBalance = parseFloat $rootScope.viewInvoice.Amount
+      $rootScope.paymentAmount = parseFloat $rootScope.viewInvoice.Amount
+    else
+      outstandingBalance = parseFloat $rootScope.viewInvoiceTotal
+      $rootScope.paymentAmount = parseFloat 0.00
+   
+    if paymentAmount > outstandingBalance
+      $rootScope.paymentGreaterThanAmount = true
+      document.getElementById('payment-amount').value = $filter('currency') $rootScope.outstandingInvoicesDueTotal, '' 
 
   $rootScope.changePageTitle()
 

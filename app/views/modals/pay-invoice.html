@@ -2,15 +2,13 @@
  	<section class="overlay-right-col">
  		<h3>
  			Payment Amount Due: 
- 			<span class="orange" ng-hide="viewInvoiceArrayTotal != 0">{{viewInvoice.Amount | currency}}</span>
- 			<span class="orange" ng-hide="viewInvoiceArrayTotal == 0">{{viewInvoiceArrayTotal | currency}}</span>
+ 			<span class="orange">{{viewInvoiceTotal | currency}}</span>
+ 			
  			<span class="pull-right">{{viewInvoice.CreatedOn | date}}</span>
-
-
  		</h3>
 
  		<h3 class="margin-top-0">
- 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text" numbers-only ng-change="checkPaymentAmount()"/>
+ 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text" ng-blur="checkPaymentAmount(); makeFloat();" ng-change="checkPaymentAmount()"/>
  			<span class="red" ng-show="paymentGreaterThanAmount">Payment can not exceed Payment Amount due</span>
 
  		</h3>
@@ -43,12 +41,12 @@
 		<div ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0" class="payment-wrapper">
 
 			<div class="control-group">
-				 <div data-ng-repeat="invoice in viewInvoiceArray" class="pull-left invoice-break-down" ng-hide="viewInvoiceArrayTotal == 0">
+				 <div data-ng-repeat="invoice in viewInvoiceArray" class="pull-left invoice-break-down" ng-hide="viewInvoiceTotal == 0">
 			 	<span>{{invoice.ChildName}}</span> 
 			 	<div class="clearfix"></div>
 			 	<span>{{invoice.ItemTypeName}} -  <span class="orange">{{invoice.Amount | currency}} </span> {{invoice.CreatedOn | date}}</span>
 			 	</div>
-			 	<div class="invoice-break-down" ng-hide="viewInvoiceArrayTotal != 0">
+			 	<div class="invoice-break-down" ng-hide="viewInvoiceTotal != 0">
 			 		<span>{{viewInvoice.ChildName}}</span> 
 				 	<div class="clearfix"></div>
 				 	<span>{{viewInvoice.ItemTypeName}} -  <span class="orange">{{viewInvoice.Amount | currency}} </span> {{viewInvoice.CreatedOn | date}}</span>

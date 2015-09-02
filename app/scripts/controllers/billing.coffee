@@ -17,7 +17,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $rootScope.paymentMSG = null
   $rootScope.matchingBankAccount = false
   $rootScope.matchingRoutingNum = false
-  $rootScope.paymentGreaterThanAmount = false
   $scope.newBankAccount = {}
   $scope.newCC = {}
   $rootScope.paymentCC = {}
@@ -40,20 +39,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.billDates.historicalEndDate = $scope.billDates.transactionEndDate
   $scope.billDates.querying = false
   $scope.billDates.queryingHistorical = false
-
-  $rootScope.checkPaymentAmount = () ->
-    $rootScope.paymentGreaterThanAmount = false
-    paymentAmount = parseInt document.getElementById('payment-amount').value 
-    if $rootScope.currentPaymentModal == 'Outstanding Balance'
-      outstandingBalance = parseInt $rootScope.outstandingInvoicesDueTotal
-    else if $rootScope.currentPaymentModal = 'Single Invoice'
-      outstandingBalance = parseInt $rootScope.viewInvoice.Amount
-    else
-      outstandingBalance = parseInt $rootScope.viewInvoiceArrayTotal
-
-    if paymentAmount > outstandingBalance
-      $rootScope.paymentGreaterThanAmount = true
-
 
   $rootScope.processPayment = (accountId, invoiceId) ->
     $rootScope.processingPayment = true
@@ -168,10 +153,18 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     $rootScope.paymentAmount = $rootScope.outstandingInvoicesDueTotal.toFixed 2 
     ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
 
-  $scope.viewInvoiceHistory = (invoiceId) ->
-    ngDialog.open template: $rootScope.modalUrl+'/views/modals/invoice-history.html'
+  $scope.viewInvoiceHistoryCheck = (invoice) ->
+    PaymentService.getPartialPaymentsByInvoiceId($scope.customerId, invoice.InvoiceId, $scope.centerId).then (response) ->
+      if response.data.length == 0
+        invoice.hasHistory = false
+      else
+        invoice.hasHistory = true
+
+  $scope.viewInvoiceHistory = (invoiceId) ->  
     PaymentService.getPartialPaymentsByInvoiceId($scope.customerId, invoiceId, $scope.centerId).then (response) ->
       $rootScope.PartialPaymentsMade = response.data
+      ngDialog.open template: $rootScope.modalUrl+'/views/modals/invoice-history.html'
+      
 
   $rootScope.nextAndPreviousInvoices = (currentInvoice) ->
     angular.forEach $rootScope.arrayOfinvoices, (value, key) ->
@@ -199,8 +192,9 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
     $rootScope.invoicesArrayed()
     $rootScope.currentPaymentModal = 'Single Invoice'
     $rootScope.viewInvoiceArray = null
-    $rootScope.viewInvoiceArrayTotal = trueAmount
-    $rootScope.paymentAmount = trueAmount.toFixed 2 
+
+    $rootScope.viewInvoiceTotal = trueAmount
+    $rootScope.paymentAmount = trueAmount 
     $rootScope.viewInvoice = null
     $rootScope.viewInvoice = $filter('filter')($rootScope.invoicesArray, (d) -> d.InvoiceId == invoiceId)[0]
     
@@ -256,6 +250,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
   $rootScope.resetAccountForm = (type, form) ->
     $rootScope.paymentMSG = null
+    $rootScope.paymentGreaterThanAmount = false
     if type == 'CC'
       $scope.addCreditCard = false
       $scope.newCC = {}
@@ -402,6 +397,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       angular.forEach $rootScope.outstandingInvoices, (value, key) ->
         $rootScope.outstandingInvoicesDueTotal += value.DueAmount
         $rootScope.outstandingInvoicesTotal += value.TotalAmount
+        $scope.viewInvoiceHistoryCheck(value)
         InvoiceDetailService.getInvoiceDetail(value.InvoiceId).then (response) ->
           
           if response.data.length == 1

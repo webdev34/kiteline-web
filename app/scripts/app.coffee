@@ -14,6 +14,7 @@ angular.module('kiteLineApp', [
   'credit-cards'
   'simplePagination'
   'ngScrollbars'
+  'ng-currency'
 
 ]).config ($routeProvider) ->
   $routeProvider.when('/',

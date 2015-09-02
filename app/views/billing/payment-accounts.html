@@ -24,7 +24,7 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-			    <tr ng-show="bankAccounts.length == 0"><td colspan="7"><span>No Accounts</span></td></tr>
+			    <tr ng-show="bankAccounts.length == 0"><td colspan="7"><span>No Bank Accounts</span></td></tr>
 				<tr data-ng-repeat="account in bankAccounts | startFrom: bankAccountsPagination.page * bankAccountsPagination.perPage | limitTo: bankAccountsPagination.perPage" >
 
 				<td>
@@ -92,7 +92,7 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-			    	<tr ng-show="creditCardAccounts.length == 0"><td colspan="7"><span>No Accounts</span></td></tr>
+			    	<tr ng-show="creditCardAccounts.length == 0"><td colspan="7"><span>No Credit Card Accounts</span></td></tr>
 				    <tr data-ng-repeat="account in creditCardAccounts | startFrom: creditCardAccountsPagination.page * creditCardAccountsPagination.perPage | limitTo: creditCardAccountsPagination.perPage" >
 						<td>
 							{{account.CardHoldersName}}

@@ -47,8 +47,8 @@
 					        <th>Status</th>
 				        </tr>
 				    </thead>
-				    <tbody ng-show="noResults">
-						<tr ng-animate="'animate'" ><td colspan="7"><span>No Results</span></td></tr>
+				    <tbody ng-show="pastTransactions.length == 0">
+						<tr ng-animate="'animate'" ><td colspan="7"><span>No Past Transactions</span></td></tr>
 				    </tbody>			    
 				    <tbody ng-hide="noResults">
 				    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions |  orderBy:'PaymentDate':true | startFrom: pastTransactionsPagination.page * pastTransactionsPagination.perPage | limitTo: pastTransactionsPagination.perPage" >

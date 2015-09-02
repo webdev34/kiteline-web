@@ -8,7 +8,6 @@ angular.module('kiteLineApp').directive 'numbersOnly', ->
         transformedInput = undefined
         if inputValue == undefined
           return ''
-
         transformedInput = inputValue.replace(/[^0-9]/g, '')
         if transformedInput != inputValue
           modelCtrl.$setViewValue transformedInput

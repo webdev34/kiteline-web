@@ -98,24 +98,24 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="AccountNumber">Card Number</label>
   <div class="controls">
-    <input id="AccountNumber" name="AccountNumber" ng-model="paymentCC.AccountNumber" type="text" class="input-xlarge" required="" numbers-only cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()"  maxlength="19">
+    <input id="AccountNumber" name="AccountNumber" ng-model="paymentCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()"  maxlength="19">
     
   </div>
 </div>
 
 
 <!-- Text input-->
-<div class="control-group col-md-2">
+<div class="control-group col-md-3" style="width: 22%;">
   <label class="control-label" for="ExpirationDate">Expiration Date</label>
   <div class="controls" cc-exp>
-    <input placeholder="MM" ng-model="expireDatesPayment.month" cc-exp-month type="text" class="input-xlarge exp-dates pull-left" required=""  />
+    <input placeholder="MM" ng-model="expireDatesPayment.month" cc-exp-month type="text" class="input-xlarge exp-dates pull-left" required="" />
     <span class="pull-left date-split"> / </span>
-    <input placeholder="YY" ng-model="expireDatesPayment.year" cc-exp-year type="text" class="input-xlarge exp-dates" required=""  />
+    <input placeholder="YY" ng-model="expireDatesPayment.year" cc-exp-year type="text" class="input-xlarge exp-dates" required="" />
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group col-md-3 cvv">
+<div class="control-group col-md-2 cvv">
   <label class="control-label" for="CVV">CVV</label>
   <div class="controls">
     <input id="CVV" name="CVV" ng-model="paymentCC.CVV" type="text" class="input-xlarge" required="" cc-cvc numbers-only >
