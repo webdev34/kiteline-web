@@ -5,13 +5,23 @@ angular.module('kiteLineApp').directive 'numbersOnly', ->
     link: (scope, element, attrs, modelCtrl) ->
 
       modelCtrl.$parsers.push (inputValue) ->
-        transformedInput = undefined
-        if inputValue == undefined
-          return ''
-        transformedInput = inputValue.replace(/[^0-9]/g, '')
-        if transformedInput != inputValue
-          modelCtrl.$setViewValue transformedInput
+        if isNaN(modelCtrl.$viewValue)
+          modelCtrl.$setViewValue inputValue
           modelCtrl.$render()
+        inputValue
+      return
+
+  }
+
+angular.module('kiteLineApp').directive 'numericOnly', ->
+  {
+    require: 'ngModel'
+    link: (scope, element, attrs, modelCtrl) ->
+
+      modelCtrl.$parsers.push (inputValue) ->
+        transformedInput = modelCtrl.$viewValue.replace(/[^0-9]/g, '')
+        modelCtrl.$setViewValue transformedInput
+        modelCtrl.$render()
         transformedInput
       return
 

@@ -48,7 +48,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="BillingZip">Billing Zip</label>
   <div class="controls">
-    <input id="BillingZip" name="BillingZip" ng-model="newCC.BillingZip" type="text" class="input-xlarge" required=""  maxlength="5">
+    <input numeric-only id="BillingZip" name="BillingZip" ng-model="newCC.BillingZip" type="text" class="input-xlarge" required=""  maxlength="5"  />
     
   </div>
 </div>
@@ -98,7 +98,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="AccountNumber">Card Number</label>
   <div class="controls">
-    <input id="AccountNumber" name="AccountNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()" numbers-only acct-num="{{newCC.AccountNumber}}" maxlength="19">
+    <input id="AccountNumber" name="AccountNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()" acct-num="{{newCC.AccountNumber}}" maxlength="19" numbers-only />
     
   </div>
 </div>
@@ -108,9 +108,9 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="ExpirationDate">Expiration Date</label>
   <div class="controls" cc-exp>
-    <input placeholder="MM" ng-model="expireDates.month" cc-exp-month type="text" class="input-xlarge exp-dates pull-left" required=""/>
+    <input placeholder="MM" ng-model="expireDates.month" cc-exp-month type="text" class="input-xlarge exp-dates pull-left" required="" />
     <span class="pull-left date-split"> / </span>
-    <input placeholder="YY" ng-model="expireDates.year" cc-exp-year type="text" class="input-xlarge exp-dates" required=""/>
+    <input placeholder="YY" ng-model="expireDates.year" cc-exp-year type="text" class="input-xlarge exp-dates" required="" />
   </div>
 </div>
 

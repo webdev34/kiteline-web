@@ -47,7 +47,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="BillingZipPayment">Billing Zip</label>
   <div class="controls">
-    <input id="BillingZipPayment" name="BillingZipPayment" ng-model="paymentCC.BillingZip" type="text" class="input-xlarge" required=""  maxlength="5">
+    <input id="BillingZipPayment" name="BillingZipPayment" ng-model="paymentCC.BillingZip" type="text" class="input-xlarge" required=""  maxlength="5" numeric-only />
     
   </div>
 </div>
@@ -98,7 +98,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="AccountNumber">Card Number</label>
   <div class="controls">
-    <input id="AccountNumber" name="AccountNumber" ng-model="paymentCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()"  maxlength="19">
+    <input id="AccountNumber" name="AccountNumber" ng-model="paymentCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()"  maxlength="19" numbers-only />
     
   </div>
 </div>
@@ -118,7 +118,7 @@
 <div class="control-group col-md-2 cvv">
   <label class="control-label" for="CVV">CVV</label>
   <div class="controls">
-    <input id="CVV" name="CVV" ng-model="paymentCC.CVV" type="text" class="input-xlarge" required="" cc-cvc numbers-only >
+    <input id="CVV" name="CVV" ng-model="paymentCC.CVV" type="text" class="input-xlarge" required="" cc-cvc numeric-only >
     
   </div>
 </div>
