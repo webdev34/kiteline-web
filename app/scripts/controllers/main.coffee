@@ -1,14 +1,26 @@
 'use strict'
-angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScope, $location, StorageService, usSpinnerService, $window) ->
+angular.module('kiteLineApp').controller 'MainCtrl', (PaymentService, $filter, $scope, $rootScope, $location, StorageService, usSpinnerService, $window, ngDialog) ->
   $rootScope.pageTitle = ' '
   $rootScope.paymentGreaterThanAmount = false
+  $rootScope.processingPayment = false
+  if window.location.href.indexOf('localhost') > -1
+    $rootScope.modalUrl = 'http://localhost:9000'
+  else if window.location.href.indexOf('cloud') > -1
+    $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb'
+  else
+    $rootScope.modalUrl = 'https://uat.skychildcare.com/parentportal'
+
+  if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > -1
+    $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
+  else
+    $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
 
   $rootScope.changePageTitle = () ->
     $rootScope.showLogOut = false
     if $location.$$path is '/dashboard'
       $rootScope.pageTitle = 'Kiteline Web - Dashboard'
 
-    if $location.$$path is '/billing'
+    if $location.$$path is '/billing' || $location.$$path is '/billing/invoices' || $location.$$path is '/billing/payment-accounts'
       $rootScope.pageTitle = 'Kiteline Web - Billing'
 
     if $location.$$path is '/'
@@ -17,7 +29,9 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
     if $location.$$path is '/forms'
       $rootScope.pageTitle = 'Kiteline Web - Forms'
-
+  
+  $rootScope.changePageTitle()
+  
   $rootScope.startSpin = ->
     $rootScope.isLoading = true
     usSpinnerService.spin 'spinner-1'
@@ -48,43 +62,100 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     else
       if $rootScope.currentPaymentModal == 'Outstanding Balance'
         document.getElementById('payment-amount').value = $filter('currency') $rootScope.outstandingInvoicesDueTotal, ''
-      else if $rootScope.currentPaymentModal = 'Single Invoice'
-        document.getElementById('payment-amount').value = $filter('currency') $rootScope.viewInvoice.Amount, ''
       else
-        document.getElementById('payment-amount').value = $filter('currency') $rootScope.viewInvoiceTotal, ''
+        document.getElementById('payment-amount').value = $filter('currency') $rootScope.viewInvoice.DueAmount, ''
 
-  $rootScope.checkPaymentAmount = () ->
+  $rootScope.checkPaymentAmount = (fromModal) ->
     $rootScope.paymentGreaterThanAmount = false
-    paymentAmount = parseFloat document.getElementById('payment-amount').value 
+    paymentAmount = parseFloat document.getElementById('payment-amount').value
     if $rootScope.currentPaymentModal == 'Outstanding Balance'
       outstandingBalance = parseFloat $rootScope.outstandingInvoicesDueTotal
       $rootScope.paymentAmount = parseFloat $rootScope.outstandingInvoicesDueTotal
-    else if $rootScope.currentPaymentModal = 'Single Invoice'
-      outstandingBalance = parseFloat $rootScope.viewInvoice.Amount
-      $rootScope.paymentAmount = parseFloat $rootScope.viewInvoice.Amount
+      trueTotal = outstandingBalance
     else
-      outstandingBalance = parseFloat $rootScope.viewInvoiceTotal
-      $rootScope.paymentAmount = parseFloat 0.00
-   
+      outstandingBalance = parseFloat $rootScope.viewInvoice.DueAmount
+      $rootScope.paymentAmount = parseFloat $rootScope.viewInvoice.DueAmount
+      trueTotal = outstandingBalance
+    
     if paymentAmount > outstandingBalance
+      document.getElementById('payment-amount').value = $filter('currency') trueTotal, '' 
       $rootScope.paymentGreaterThanAmount = true
-      document.getElementById('payment-amount').value = $filter('currency') $rootScope.outstandingInvoicesDueTotal, '' 
 
-  $rootScope.changePageTitle()
+  $rootScope.paymentCleared = () ->
+    $rootScope.processingPayment = false
+    $rootScope.getTransactionsByDate(null)
+    $rootScope.getTransactionsByDate('Historical')
+    $rootScope.getInvoiceData()
+    $rootScope.stopSpin()
+    $rootScope.resetAccountForm('CC Payment')
 
-  if window.location.href.indexOf('localhost') > -1
-    $rootScope.modalUrl = 'http://localhost:9000'
-  else if window.location.href.indexOf('cloud') > -1
-    $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb'
-  else
-    $rootScope.modalUrl = 'https://uat.skychildcare.com/parentportal'
+  $rootScope.paymentClearedDashboard = () ->
+    $rootScope.processingPayment = false
+    $rootScope.resetAccountForm('CC Payment')
+    $rootScope.getInvoiceData()
+    
+  $rootScope.processPayment = (accountId, invoiceId) ->
+    $rootScope.processingPayment = true
+    if !invoiceId
+      invoiceId = 0
+    if $rootScope.addCreditCardFromModal
+      if $rootScope.paymentCC.RecurringAccount is true
+        $rootScope.submitNewAccount('CC Payment', '')
 
-  if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > -1
-    $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
-  else
-    $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
+      thisYear = String($rootScope.expireDatesPayment.year)
+      thisYear = thisYear[2]+thisYear[3]
+      $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month+'/'+thisYear
+      if $rootScope.paymentCC.ExpirationDate.length == 4
+        $rootScope.paymentCC.ExpirationDate = "0"+$rootScope.paymentCC.ExpirationDate
 
-  $rootScope.footerYear = (new Date).getFullYear()
+      PaymentService.makePaymentWithCC($rootScope.currentCenter.FamilyId, $rootScope.currentCenter.CenterId, invoiceId, $rootScope.currentCenter.CustomerId, $rootScope.paymentCC).then (response) ->
+        $rootScope.paymentMSG = response.data
+        if $rootScope.currentPaymentModal == 'Outstanding Balance'
+          $rootScope.paymentClearedDashboard()
+        else
+          $rootScope.paymentCleared()
+    else
+      PaymentService.makePaymentWithAccountId(accountId, $rootScope.currentCenter.CustomerId, invoiceId).then (response) ->
+        $rootScope.paymentMSG = response.data
+        if $rootScope.currentPaymentModal == 'Outstanding Balance'
+          $rootScope.paymentClearedDashboard()
+        else
+          $rootScope.paymentCleared()
+
+  $rootScope.payOutstandingBalance = ->
+    $rootScope.resetAccountForm('CC Payment')
+    $rootScope.currentPaymentModal = 'Outstanding Balance'
+    $rootScope.paymentAmount = $rootScope.outstandingInvoicesDueTotal.toFixed 2 
+    $rootScope.paymentMSG = null
+    ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
+
+  $rootScope.resetAccountForm = (type, form) ->
+      # $rootScope.paymentMSG = null
+      $rootScope.paymentGreaterThanAmount = false
+      if type == 'CC'
+        $scope.addCreditCard = false
+        $scope.newCC = {}
+        $scope.newCC.PayerEmail = ''
+        $scope.expireDates = {}
+        $scope.expireDates.month = ''
+        $scope.expireDates.year = ''
+
+      else if type == 'CC Payment'
+        $rootScope.addCreditCardFromModal = false
+        $rootScope.activePaymentAccount = false
+        $rootScope.paymentCC = {}
+        $rootScope.paymentCC.PayerEmail = ''
+        $rootScope.expireDatesPayment = {}
+        $rootScope.expireDatesPayment.month = ''
+        $rootScope.expireDatesPayment.year = ''
+
+      else
+        $scope.addBankAccount = false
+        $scope.newBankAccount = {}
+        $scope.newBankAccount.PayerEmail = ''
+        
+      if form      
+        form.$setPristine();
 
   $rootScope.isMobileFunc = () ->
     if sessionStorage.desktop
@@ -150,7 +221,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       $rootScope.paymentCC.BillingState = null
       $rootScope.paymentCC.BillingZip = null
       $rootScope.paymentCC.BusinessPhone = null  
-  
+
+  $rootScope.footerYear = (new Date).getFullYear()
 
   $rootScope.bankAccountTypes = [
     {

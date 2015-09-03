@@ -27,25 +27,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $rootScope.matchingRoutingNum = false
   $rootScope.currentPaymentModal =  null
 
-  $rootScope.processPayment = (accountId, invoiceId) ->
-    if !invoiceId
-      invoiceId = 0
-    
-    if $rootScope.addCreditCardFromModal
-      if $rootScope.paymentCC.RecurringAccount is true
-        $rootScope.submitNewAccount('CC Payment', '')
-      thisYear = String($rootScope.expireDatesPayment.year)
-      thisYear = thisYear[2]+thisYear[3]
-      $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month+'/'+thisYear
-      
-      PaymentService.makePaymentWithCC($scope.familyId, $scope.centerId, invoiceId, $scope.customerId, $rootScope.paymentCC).then (response) ->
-        $rootScope.paymentMSG = response.data
-        $scope.getInvoiceData()
-    else
-      PaymentService.makePaymentWithAccountId(accountId, $scope.customerId, invoiceId).then (response) ->
-        $rootScope.paymentMSG = response.data
-        $scope.getInvoiceData()
-
   $scope.setDefaultAccount = () ->
     $scope.defaultAccount = null
     angular.forEach $rootScope.bankAccounts, (value, key) ->
@@ -55,12 +36,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     angular.forEach $rootScope.creditCardAccounts, (value, key) ->
       if value.RecurringAccount == true
         $scope.defaultAccount = value
-
-  $scope.payOutstandingBalance = ->
-    $rootScope.resetAccountForm('CC Payment')
-    $rootScope.currentPaymentModal = 'Outstanding Balance'
-    $rootScope.paymentAmount = $rootScope.outstandingInvoicesDueTotal.toFixed 2 
-    ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
 
   $rootScope.addAccountModal = () ->
     $rootScope.autocompleteHomeAddressCCPayment()
@@ -79,13 +54,35 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       form.$setPristine();
 
   $rootScope.submitNewAccount = (type, form) ->
-    thisYear = String($rootScope.expireDatesPayment.year)
-    thisYear = thisYear[2]+thisYear[3]
-    $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month+'/'+thisYear
-    CreditCardService.addCreditCard($rootScope.paymentCC).then (response) ->
-      $scope.getPaymentAccounts($scope.familyId, $scope.centerId)
-      $scope.resetAccountForm('CC Payment', form)
-      ngDialog.closeAll(1)
+    if type == 'CC'
+      thisYear = String($scope.expireDates.year)
+      thisYear = thisYear[2]+thisYear[3]
+      $scope.newCC.ExpirationDate = $scope.expireDates.month+'/'+thisYear
+      if $scope.newCC.ExpirationDate.length == 4
+        $scope.newCC.ExpirationDate = "0"+$scope.newCC.ExpirationDate
+      CreditCardService.addCreditCard($scope.newCC).then (response) ->
+        $scope.getPaymentAccounts()
+        $scope.resetAccountForm('CC', form)
+    else if type == 'CC Payment' and $rootScope.paymentCC.saveAccount
+      thisYear = String($rootScope.expireDatesPayment.year)
+      thisYear = thisYear[2]+thisYear[3]
+      $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month+'/'+thisYear
+      if $rootScope.paymentCC.ExpirationDate.length == 4
+        $rootScope.paymentCC.ExpirationDate = "0"+$rootScope.paymentCC.ExpirationDate
+     
+      CreditCardService.addCreditCard($rootScope.paymentCC).then (response) ->
+        $scope.getPaymentAccounts()
+        accountId = response.data
+        $scope.resetAccountForm('CC Payment', form)
+        # if $rootScope.currentPaymentModal isnt 'Outstanding Balance'
+        #   $rootScope.processInvoicePayment(accountId)
+        # ngDialog.closeAll(1)
+    else
+      AccountService.createAccount($scope.newBankAccount).then (response) ->
+        if response.statusText is 'OK'
+          $scope.addBankAccount = false
+          $scope.getPaymentAccounts()
+          $scope.resetAccountForm('Bank', form)
   
   $scope.changeActivePickupContact = (activePickupContact) ->
     $scope.activePickupContact = activePickupContact
@@ -147,6 +144,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.goToGuardian = (guardianId) ->
     GuardianService.getGuardian(guardianId).then (response) ->
       $scope.viewGuardian = response.data
+      $rootScope.headOfHouseHold = $scope.viewGuardian
 
   $scope.goToEmergencyContact = (contactId) ->
     ContactService.getContact(contactId).then (response) ->
@@ -165,7 +163,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $rootScope.creditCardAccountsPagination = Pagination.getNew()
       $rootScope.creditCardAccountsPagination.numPages = Math.ceil($rootScope.creditCardAccounts.length/$scope.creditCardAccountsPagination.perPage)
  
-  $scope.getInvoiceData = () ->
+  $rootScope.getInvoiceData = () ->
     InvoiceService.getOutstandingInvoices($scope.customerId).then (response) ->
       $rootScope.outstandingInvoices = response.data
       $rootScope.outstandingInvoicesDueTotal = 0
@@ -235,7 +233,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.contactsPagination.numPages = Math.ceil($scope.contacts.length/$scope.contactsPagination.perPage)
       $scope.goToEmergencyContact($scope.contacts[0].EmergencyContactId)
 
-    $scope.getInvoiceData()
+    $rootScope.getInvoiceData()
 
     ChildPickupService.getAllChildPickupList($scope.familyId).then (response) ->
       $scope.pickupList = response.data

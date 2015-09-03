@@ -103,21 +103,10 @@
   </div>
 </div>
 
-
-<!-- Text input-->
-<div class="control-group col-md-3 hide" style="width: 22%;">
-  <label class="control-label" for="ExpirationDate">Expiration Date</label>
-  <div class="controls" cc-exp>
-    <input placeholder="MM" ng-model="expireDatesPayment.month" cc-exp-month type="text" class="input-xlarge exp-dates pull-left" required="" />
-    <span class="pull-left date-split"> / </span>
-    <input placeholder="YY" ng-model="expireDatesPayment.year" cc-exp-year type="text" class="input-xlarge exp-dates" required="" />
-  </div>
-</div>
-
-<div class="control-group col-md-4 expire-dates-wrapper" cc-exp>
+<div class="control-group col-md-4 expire-dates-wrapper" >
   <label class="control-label" for="ExpirationDate">Expiration Date</label>
   <div class="controls relative expire-month-wrapper" >
-    <select id="expireMonth" class="expireMonth"  ng-model="expireDatesPayment.mont" cc-exp-month required="">
+    <select id="expireMonth" class="expireMonth"  ng-model="expireDatesPayment.month" cc-exp-month required="">
         <option value="01">01 - Jan</option>
         <option value="02">02 - Feb</option>
         <option value="03">03 - March</option>

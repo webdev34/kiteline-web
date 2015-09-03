@@ -1,14 +1,15 @@
-<div class="overlay-container outstanding-balance"  ng-hide="paymentMSG">
- 	<section class="overlay-right-col">
+<div class="overlay-container outstanding-balance" ng-hide="paymentMSG">
+ 	<section class="overlay-right-col" >
  		<h3>
+
+ 			{{addCreditCardFromModal}}
  			Payment Amount Due: 
- 			<span class="orange">{{viewInvoiceTotal | currency}}</span>
+ 			<span class="orange">{{viewInvoice.DueAmount | currency}}</span>
  			
  			<span class="pull-right">{{viewInvoice.CreatedOn | date}}</span>
  		</h3>
-
  		<h3 class="margin-top-0">
- 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text" ng-blur="checkPaymentAmount(); makeFloat();" ng-change="checkPaymentAmount()"/>
+ 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text" ng-blur="checkPaymentAmount(true); makeFloat();" ng-change="checkPaymentAmount(true)"/>
  			<span class="red" ng-show="paymentGreaterThanAmount">Payment can not exceed Payment Amount due</span>
 
  		</h3>
@@ -18,7 +19,7 @@
 		<div class="invoice-cycle-wrapper" ng-show="outstandingInvoices.length > 1">
 		 	<ul>
 		 		<li class="pull-left" ng-show="previousInvoice">
-				 	<a href="" data-ng-click="payInvoice(previousInvoice, true)">
+				 	<a href="" data-ng-click="payInvoice(previousInvoice, true, viewInvoiceTotal)">
 				 		<i class="fa fa-arrow-left "></i> 
 				 		<span class="prev">
 				 			Previous Invoice
@@ -26,7 +27,7 @@
 				 	</a>
 				 </li>
 		 		<li class="pull-right" ng-show="nextInvoice">
-				 	<a href="" data-ng-click="payInvoice(nextInvoice, true)">
+				 	<a href="" data-ng-click="payInvoice(nextInvoice, true, viewInvoiceTotal)">
 				 		<span class="next">
 				 			Next Invoice 
 				 		</span>
@@ -62,10 +63,8 @@
 			<div class="control-group pay-cc-wrapper"  ng-include src="'views/billing/payCCForm.html'"></div>
 		</div>
 
-		</div>
-
-	</section>
-	<section ng-show="paymentMSG">
-		<div class="paymentMSG" ng-bind-html="paymentMSG"></div>
 	</section>
 <div>
+<section ng-show="paymentMSG">
+	<div class="paymentMSG" ng-bind-html="paymentMSG"></div>
+</section>

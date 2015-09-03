@@ -1,5 +1,9 @@
 'use strict'
 angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, toastr, $location) ->
+  if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > -1
+    $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
+  else
+    $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
   rootUrl =  $rootScope.rootUrl
   self = undefined
   self = this

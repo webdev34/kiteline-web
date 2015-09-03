@@ -105,7 +105,7 @@
 
 
 <!-- Text input-->
-<div class="control-group col-md-6 expire-dates-wrapper" cc-exp>
+<div class="control-group col-md-6 expire-dates-wrapper" >
   <label class="control-label" for="ExpirationDate">Expiration Date</label>
   <div class="controls relative expire-month-wrapper" >
     <select id="expireMonth" class="expireMonth"  ng-model="expireDates.month" cc-exp-month required="">
@@ -171,7 +171,7 @@
 <div class="control-group">
   <label class="control-label" for="addCreditCard"></label>
   <div class="controls">
-    <button id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC', addCCForm); currentCardType(addCCForm.AccountNumber.$ccType); processPayment();" ><i class="fa fa-plus"></i> 
+    <button id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC', addCCForm); currentCardType(addCCForm.AccountNumber.$ccType);" ><i class="fa fa-plus"></i> 
       Add Card</button>
     <button id="cancelCreditCard" name="cancelCreditCard" class="btn btn-danger" ng-click="resetAccountForm('CC', addCCForm);" ><i class="fa fa-times"></i> Cancel</button>
   </div>

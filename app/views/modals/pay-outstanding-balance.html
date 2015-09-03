@@ -1,12 +1,12 @@
 <div class="overlay-container outstanding-balance"  ng-hide="paymentMSG">
- 	<section class="overlay-right-col">
+ 	<section class="overlay-right-col" >
  		<h3>
  			Payment Amount Due: 
  			<span class="orange outstandingInvoicesDueTotal">{{outstandingInvoicesDueTotal | currency}}</span>
  		</h3>
 
  		<h3 class="margin-top-0">
- 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text"  ng-blur="checkPaymentAmount(); makeFloat();" ng-change="checkPaymentAmount(); "/>
+ 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text"  ng-blur="checkPaymentAmount(true); makeFloat();" ng-change="checkPaymentAmount(true); "/>
  			<em class="red" ng-show="paymentGreaterThanAmount">Payment can not exceed Payment Amount due</em>
  			
  		</h3>
@@ -25,7 +25,8 @@
 		</div>
 
 	</section>
-	<section ng-show="paymentMSG">
-		<div class="paymentMSG" ng-bind-html="paymentMSG"></div>
-	</section>
+	
 <div>
+<section ng-show="paymentMSG">
+	<div class="paymentMSG" ng-bind-html="paymentMSG"></div>
+</section>

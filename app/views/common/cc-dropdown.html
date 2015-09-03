@@ -1,5 +1,5 @@
 		  <label class="control-label pull-left" for="creditCardDropDown">Saved Credit Cards</label>
-		  <a class="btn btn-primary new-credit-card pull-right" ng-click="addAccountModal()" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0">
+		  <a class="btn btn-primary new-credit-card pull-right" ng-click="addAccountModal()" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0 " ng-disabled="processingPayment">
 			 Pay With New Credit Card
  			</a>
 
