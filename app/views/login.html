@@ -35,7 +35,7 @@
         <div class="form-group">
             <label for="pin">Pin</label>
             <i class="fa fa-lock" data-ng-class="{'ng-invalid' : pin.length != 0 && pin.length < 4}"></i>
-            <input type="password" placeholder="PIN" maxlength="4" name="pin" id="pin" class="form-control" data-ng-change="validationCheck();" ng-model="pin" data-ng-class="{'ng-invalid-pin ng-invalid' : pin.length != 0 && pin.length < 4}"  numbers-only/>
+            <input type="password" placeholder="PIN" maxlength="4" name="pin" id="pin" class="form-control" data-ng-change="validationCheck();" ng-model="pin" data-ng-class="{'ng-invalid-pin ng-invalid' : pin.length != 0 && pin.length < 4}"  numeric-only />
             <span ng-show="form.pin.$dirty && form.pin.$error.required" class="help-block" style="right: -99px;">PIN is required</span>
         </div>
         <div class="form-actions">
