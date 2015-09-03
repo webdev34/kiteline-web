@@ -220,6 +220,42 @@
                 font-size: 21px !important;
                 cursor: pointer;
             }
+
+            .expire-dates-wrapper{
+                label{
+                        float: left;
+                        clear: both;
+                        width: 100%;
+                        text-align: left;
+                    }
+                .expire-month-wrapper{
+                    width: 115px;
+                    margin-bottom: 10px;
+                    display: inline-block;
+                    
+                    select{
+                        width: 110px;
+                        float: left;
+                    }
+                    .fa-caret-down{
+                        right: 15px;
+                    }
+                }
+
+                .expire-year-wrapper{
+                    width: 85px;
+                    display: inline-block;
+                    top: -11px;
+                    select{
+                        width: 80px;
+                        float: left;
+                    }
+                    .fa-caret-down{
+                        right: 15px;
+                    }
+                }
+            }
+
             &.ng-invalid{
                 button.btn-primary{
                     pointer-events: none;
@@ -276,7 +312,8 @@
                 }
             }  
             &.ng-pristine{
-                input[type='text'].ng-pristine{
+                input[type='text'].ng-pristine,
+                select.ng-pristine{
                     border-color: #ccc !important;
                 }
             }          
@@ -289,7 +326,8 @@
             margin-top: 10px;
         }
         input[type='text'],
-        input[type='email']{
+        input[type='email'],
+        select{
             padding: inherit;
             width: 100%;
             &.ng-valid-cc-number,

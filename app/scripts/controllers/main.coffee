@@ -84,7 +84,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   else
     $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
 
-
   $rootScope.footerYear = (new Date).getFullYear()
 
   $rootScope.isMobileFunc = () ->

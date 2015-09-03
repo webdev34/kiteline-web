@@ -76,7 +76,8 @@ body {
                         margin-left: 80px;
                     }
                     input[type='text'],
-                    input[type='email'] {
+                    input[type='email'],
+                    select {
                         text-indent: 10px;
                         display: block;
                         height: 34px;
@@ -139,6 +140,42 @@ body {
                             font-size: 21px !important;
                             cursor: pointer;
                         }
+
+                        .expire-dates-wrapper{
+                            label{
+                                    float: left;
+                                    clear: both;
+                                    width: 100%;
+                                    text-align: left;
+                                }
+                            .expire-month-wrapper{
+                                width: 115px;
+                                margin-bottom: 10px;
+                                display: inline-block;
+                                
+                                select{
+                                    width: 110px;
+                                    float: left;
+                                }
+                                .fa-caret-down{
+                                    right: -5px;
+                                }
+                            }
+
+                            .expire-year-wrapper{
+                                width: 85px;
+                                display: inline-block;
+                                top: -11px;
+                                select{
+                                    width: 80px;
+                                    float: left;
+                                }
+                                .fa-caret-down{
+                                    right: -5px;
+                                }
+                            }
+                        }
+
                         .date-split {
                             font-size: 24px;
                             color: #999;
