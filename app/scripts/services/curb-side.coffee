@@ -29,7 +29,7 @@ angular.module('kiteLineApp').service 'CurbSideService', ($http, $q, $rootScope,
     ).error (data, status, headers, config) ->
       deferred.reject status
      
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @getAllChildren = (centerId, familyId) ->
@@ -49,7 +49,7 @@ angular.module('kiteLineApp').service 'CurbSideService', ($http, $q, $rootScope,
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   return

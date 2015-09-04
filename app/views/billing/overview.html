@@ -141,7 +141,8 @@
 				
 			<div class="clearfix"></div>
 		</div>
-		<div class="inner-wrapper" ng-show="defaultAccount.ccnum.length == 4" >
+		<div class="inner-wrapper" ng-show="defaultAccount.ccnum.length == 4 && checkExp(defaultAccount.expiration) != 'Expired'" >
+
 			<toggle-switch ng-model="defaultAccount.RecurringAccount" class="switch-success auto-pay-toggle-btn pull-left" on-label="On" off-label="Off" on-change="deleteDefaultAccount(defaultAccount)"></toggle-switch>
 			<p class="pull-left pull-up">
 			  <i ng-show="defaultAccount.cctype == 'CC - AMEX'" class="fa fa-cc-amex"></i>
@@ -153,7 +154,7 @@
 				IN <span class="red">{{defaultAccount.ccnum}}</span></p>
 			<div class="clearfix"></div>
 		</div>
-		<div class="inner-wrapper"  ng-show="defaultAccount.RecurringAccount == null">
+		<div class="inner-wrapper"  ng-show="defaultAccount.RecurringAccount == null || checkExp(defaultAccount.expiration) == 'Expired'">
 			<a ng-click="goToTab('Payment Accounts');" >Set default account for auto pay</a>
 			<div class="clearfix"></div>
 		</div>

@@ -1,6 +1,5 @@
 'use strict'
 angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, PaymentService, CurbSideService, CreditCardService, AccountService, ngDialog, Pagination) ->
-  $rootScope.changePageTitle()
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
   LogInService.isLoggedIn()
@@ -8,6 +7,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $rootScope.addBankAccount = false
   $rootScope.newBankAccount = {}
   $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
+  $rootScope.changePageTitle()
 
   $rootScope.processInvoicePayment = (accountId) ->
     $rootScope.processingPayment = true

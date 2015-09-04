@@ -44,6 +44,7 @@ html {
             }
             &.fa-paper-plane{
                 color: $dark-blue !important;
+                cursor: wait !important;
             }
             &.fa-caret-up,
             &.fa-caret-down{
@@ -59,6 +60,18 @@ html {
                 &.dead{
                     visibility: hidden;
                 }
+            }
+        }
+        #toast-container{
+            width: 100%;
+            top: 60px;
+            &> div{
+                width: 600px;
+                left: 30%;
+                font-size: 18px;
+            }
+            &> .toast-success{
+                text-align: center;
             }
         }
         .payment-CC-Form,

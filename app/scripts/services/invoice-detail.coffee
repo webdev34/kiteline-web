@@ -23,7 +23,7 @@ angular.module('kiteLineApp').service 'InvoiceDetailService', ($http, $q, $rootS
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   return

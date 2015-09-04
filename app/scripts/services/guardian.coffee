@@ -23,7 +23,7 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return  
 
   @getGuardian = (guardianId) ->  
@@ -43,7 +43,7 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @updatePersonalInfo = (guardianId, firstName, lastName, relationship, legalCustody, employer) ->
@@ -70,7 +70,7 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @updateMailingAddress = (guardianId, street, city, state, zip) ->   
@@ -97,7 +97,7 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @updateContactInfo = (guardianId, homePhone, cellPhone, workPhone, email, prefMethodOfContact) ->  
@@ -125,7 +125,7 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   return

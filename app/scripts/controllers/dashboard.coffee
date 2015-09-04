@@ -1,6 +1,6 @@
 'use strict'
 angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, ChildService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, Pagination) ->
-  $rootScope.changePageTitle()
+  
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
   $scope.showItemsMenu = false
@@ -12,6 +12,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.activeGuardian = "guardian-1"
   $scope.activeEmergencyContact = "contact-1"
   $scope.activePickupContact = "pickup-contact-1"
+  $rootScope.changePageTitle()
   
   $scope.changeActivePickupContact = (activePickupContact) ->
     $scope.activePickupContact = activePickupContact

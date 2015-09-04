@@ -70,8 +70,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     if $location.$$path is '/forms'
       $rootScope.pageTitle = 'Kiteline Web - Forms'
 
-  $rootScope.changePageTitle()
-
   $rootScope.startSpin = ->
     $rootScope.isLoading = true
     usSpinnerService.spin 'spinner-1'

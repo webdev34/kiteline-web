@@ -24,7 +24,7 @@ angular.module('kiteLineApp').service 'DailyActivityFeedService', ($http, $q, $r
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @getFeedTitlesByChild = (childId) ->   
@@ -44,7 +44,7 @@ angular.module('kiteLineApp').service 'DailyActivityFeedService', ($http, $q, $r
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @getFeedDetail = (feedId, feedType) ->   
@@ -64,7 +64,7 @@ angular.module('kiteLineApp').service 'DailyActivityFeedService', ($http, $q, $r
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @getFeedFiles = (feedId, feedType) ->   
@@ -84,7 +84,7 @@ angular.module('kiteLineApp').service 'DailyActivityFeedService', ($http, $q, $r
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   return

@@ -19,6 +19,8 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
     $scope.emailForgotPin = ''
     $scope.requestSent = false
     LogInService.isLoggedIn()
+    $rootScope.changePageTitle()
+
 
     if $location.$$path == '/invalid-subscription'
       if $rootScope.invalidCenter is null

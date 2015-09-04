@@ -23,7 +23,7 @@ angular.module('kiteLineApp').service 'ForgotPinService', ($http, $q, $rootScope
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @sendForgottenPIN = (email, centerId) ->   
@@ -44,7 +44,7 @@ angular.module('kiteLineApp').service 'ForgotPinService', ($http, $q, $rootScope
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   return

@@ -29,7 +29,7 @@ angular.module('kiteLineApp').service 'ContactService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @updateMailingAddress = (obj) ->
@@ -55,7 +55,7 @@ angular.module('kiteLineApp').service 'ContactService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @updateContactInfo = (obj) ->
@@ -81,7 +81,7 @@ angular.module('kiteLineApp').service 'ContactService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @deleteContact = (centerId, emergencyContactId) ->
@@ -101,7 +101,7 @@ angular.module('kiteLineApp').service 'ContactService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @getAllContacts = (familyId) ->
@@ -121,7 +121,7 @@ angular.module('kiteLineApp').service 'ContactService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @getContact = (emergencyContactId) ->
@@ -141,7 +141,7 @@ angular.module('kiteLineApp').service 'ContactService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   return

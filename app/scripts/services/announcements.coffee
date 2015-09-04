@@ -23,7 +23,7 @@ angular.module('kiteLineApp').service 'AnnouncementsService', ($http, $q, $rootS
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   @getAnnouncementsCount = (customerId) ->   
@@ -43,7 +43,7 @@ angular.module('kiteLineApp').service 'AnnouncementsService', ($http, $q, $rootS
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error status, 'Error'
+      toastr.error data.Message, 'Error'
       return
 
   return

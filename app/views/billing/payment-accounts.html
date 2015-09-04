@@ -110,8 +110,8 @@
 							<span class="green" ng-show="checkExp(account.expiration) == 'Valid'">{{checkExp(account.expiration)}}</span>
 							<span class="red" ng-show="checkExp(account.expiration) == 'Expired'">{{checkExp(account.expiration)}}</span>
 						</td>
-						<td>
-							<toggle-switch ng-model="account.RecurringAccount" on-change="setDefaultCCAccount(account);" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
+						<td> 
+							<toggle-switch ng-hide="checkExp(account.expiration) == 'Expired'" ng-model="account.RecurringAccount" on-change="setDefaultCCAccount(account);" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
 						</td>
 						<td>
 							<a ng-click="deleteCreditCardAccount(account.AccountId)" title="Delete Account"><i class="fa fa-trash red"></i></a>
