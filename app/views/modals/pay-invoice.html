@@ -1,8 +1,6 @@
-<div class="overlay-container outstanding-balance" ng-hide="paymentMSG">
- 	<section class="overlay-right-col" >
+<div class="overlay-container outstanding-balance">
+ 	<section class="overlay-right-col"  ng-hide="paymentMSG">
  		<h3>
-
- 			{{addCreditCardFromModal}}
  			Payment Amount Due: 
  			<span class="orange">{{viewInvoice.DueAmount | currency}}</span>
  			
@@ -65,6 +63,6 @@
 
 	</section>
 <div>
-<section ng-show="paymentMSG">
+<section ng-show="paymentMSG" >
 	<div class="paymentMSG" ng-bind-html="paymentMSG"></div>
 </section>

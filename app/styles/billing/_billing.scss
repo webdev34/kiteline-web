@@ -189,6 +189,23 @@
                     }
                     th {
                         font-size: 18px;
+                        position: relative;
+                        padding: 0px;
+                        padding-top: 10px;
+                        span.pull-right{
+                            position: relative;
+                            top: -5px;
+                            width: 6px;
+                            right: 20%;
+                        }
+                        .fa-caret-up,
+                        .fa-caret-down{
+                            float: left;
+                        }
+                        .fa-caret-up{
+                            clear: both;
+                            margin-bottom: -10px;
+                        }
                     }
                 }
             }

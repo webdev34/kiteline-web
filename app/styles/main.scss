@@ -25,6 +25,9 @@ html {
                 color: white !important;
                 margin: 0px !important;
             }
+            &.dead:hover{
+                cursor: default;
+            }
         }
         .fa {
             &.fa-cc-amex {
@@ -38,6 +41,24 @@ html {
             }
             &.fa-cc-mastercard {
                 color: gold !important;
+            }
+            &.fa-paper-plane{
+                color: $dark-blue !important;
+            }
+            &.fa-caret-up,
+            &.fa-caret-down{
+                color: $light-blue;
+                display: table-header-group;
+                &:hover{
+                    cursor: pointer;
+                    color: $dark-blue;
+                }
+                &.active{
+                   color: $dark-blue; 
+                }
+                &.dead{
+                    visibility: hidden;
+                }
             }
         }
         .payment-CC-Form,

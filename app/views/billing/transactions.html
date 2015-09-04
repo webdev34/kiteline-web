@@ -38,20 +38,67 @@
 			<table class="table">
 				    <thead>
 				    	<tr>
-					        <th>Transactions Date</th>
-					        <th>Payer</th>
-					        <th>Amount</th>
-					        <th>Type</th>
-					        <th>View Bill</th>
-					        <th>E-mail</th>
-					        <th>Status</th>
+					        <th>
+					        	Transaction Date
+					        	<span class="pull-right trans-payment-date">
+						      		<i class="fa fa-caret-up" ng-class="{active: sortOrderBy == 'PaymentDate' && reverse == false}" ng-click="sortByFunc('PaymentDate',false);"></i>
+						      		<i class="fa fa-caret-down" ng-class="{active: sortOrderBy == 'PaymentDate' && reverse == true}" ng-click="sortByFunc('PaymentDate',true);"></i>
+						      	</span>
+						      	<div class="clearfix"></div>
+					        </th>
+					        <th>
+					        	Payer
+					        	<span class="pull-right payer">
+						      		<i class="fa fa-caret-up" ng-class="{active: sortOrderBy == 'PayerName' && reverse == false}" ng-click="sortByFunc('PayerName',false);"></i>
+						      		<i class="fa fa-caret-down" ng-class="{active: sortOrderBy == 'PayerName' && reverse == true}" ng-click="sortByFunc('PayerName',true);"></i>
+						      	</span>
+						      	<div class="clearfix"></div>
+					        </th>
+					        <th>
+					        	Amount
+					        	<span class="pull-right transaction-amount">
+						      		<i class="fa fa-caret-up" ng-class="{active: sortOrderBy == 'Amount' && reverse == false}" ng-click="sortByFunc('Amount',false);"></i>
+						      		<i class="fa fa-caret-down" ng-class="{active: sortOrderBy == 'Amount' && reverse == true}" ng-click="sortByFunc('Amount',true);"></i>
+						      	</span>
+						      	<div class="clearfix"></div>
+					        </th>
+					        <th>
+					        	Type
+					        	<span class="pull-right type">
+						      		<i class="fa fa-caret-up" ng-class="{active: sortOrderBy == 'PaymentType' && reverse == false}" ng-click="sortByFunc('PaymentType',false);"></i>
+						      		<i class="fa fa-caret-down" ng-class="{active: sortOrderBy == 'PaymentType' && reverse == true}" ng-click="sortByFunc('PaymentType',true);"></i>
+						      	</span>
+						      	<div class="clearfix"></div>
+					        </th>
+					        <th>
+					        	View Bill
+					        	<span class="pull-right">
+						      		<i class="fa fa-caret-up dead"></i>
+						      		<i class="fa fa-caret-down dead"></i>
+						      	</span>
+					        </th>
+					        <th>
+					        	E-mail
+					        	<span class="pull-right">
+						      		<i class="fa fa-caret-up dead"></i>
+						      		<i class="fa fa-caret-down dead"></i>
+						      	</span>
+					        </th>
+					        <th>
+					        	Status
+					        	<span class="pull-right status">
+						      		<i class="fa fa-caret-up" ng-class="{active: sortOrderBy == 'PaymentStatus' && reverse == false}" ng-click="sortByFunc('PaymentStatus',false);"></i>
+						      		<i class="fa fa-caret-down" ng-class="{active: sortOrderBy == 'PaymentStatus' && reverse == true}" ng-click="sortByFunc('PaymentStatus',true);"></i>
+						      	</span>
+						      	<div class="clearfix"></div>
+					        </th>
 				        </tr>
 				    </thead>
 				    <tbody ng-show="pastTransactions.length == 0">
 						<tr ng-animate="'animate'" ><td colspan="7"><span>No Past Transactions</span></td></tr>
 				    </tbody>			    
 				    <tbody ng-hide="noResults">
-				    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions |  orderBy:'PaymentDate':true | startFrom: pastTransactionsPagination.page * pastTransactionsPagination.perPage | limitTo: pastTransactionsPagination.perPage" >
+				    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions |  orderBy:sortOrderBy:reverse | startFrom: pastTransactionsPagination.page * pastTransactionsPagination.perPage | limitTo: pastTransactionsPagination.perPage" >
 				        <td>
 				        	{{payment.PaymentDate | date}}
 				    	</td>
@@ -65,7 +112,7 @@
 				        	{{payment.PaymentType}}
 				        </td>
 				        <td><i class="fa fa-file-pdf-o" ng-click="reportPayment(payment)"></i></td>
-				        <td><a ng-click="emailInvoiceToUser(payment.PayId)"><i class="fa fa-envelope-o"></i></a></td>
+				        <td><a ng-click="emailInvoiceToUser(payment)"><i ng-hide="payment.sendingEmail" class="fa fa-envelope-o"></i><i ng-show="payment.sendingEmail" class="fa fa-paper-plane"></i></a></td>
 				        <td>
 				        	<span class="fa fa-check green" ng-show="payment.PaymentStatus == 'Processed'"></span> 
 							<span class="fa fa-times red" ng-show="payment.PaymentStatus != 'Processed'"></span> 

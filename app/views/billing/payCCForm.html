@@ -32,7 +32,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="BillingStateCCPayment">Billing State</label>
   <div class="controls relative">
- <select size="10" id="BillingStateCCPayment" class="BillingState" ng-model="paymentCC.BillingState" required="">
+ <select id="BillingStateCCPayment" class="BillingState" ng-model="paymentCC.BillingState" required="">
       <option value="{{option.abbreviation}}" data-ng-repeat="option in statesDropDown
 " >{{option.name}}</option>
     </select>
@@ -72,14 +72,6 @@
 
 <div class="clearfix"></div>
 
-<!-- Text input-->
-<div class="control-group col-md-4">
-  <label class="control-label" for="CardName">Card Name</label>
-  <div class="controls">
-    <input id="CardName" name="CardName" ng-model="paymentCC.AccountName" type="text" class="input-xlarge" required="">
-    
-  </div>
-</div>
 
 <!-- Text input-->
 <div class="control-group col-md-4">
@@ -89,13 +81,8 @@
     
   </div>
 </div>
-
-
-
-<div class="clearfix"></div>
-
 <!-- Text input-->
-<div class="control-group col-md-4">
+<div class="control-group col-md-3">
   <label class="control-label" for="AccountNumber">Card Number</label>
   <div class="controls">
     <input id="AccountNumber" name="AccountNumber" ng-model="paymentCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()"  maxlength="16" numbers-only />
@@ -125,7 +112,6 @@
 
   <div class="controls relative expire-year-wrapper" >
     <select id="expireYear" class="expireYear"  ng-model="expireDatesPayment.year" cc-exp-year required="">
-          <option value="14">2014</option>
           <option value="15">2015</option>
           <option value="16">2016</option>
           <option value="17">2017</option>
@@ -177,10 +163,10 @@
   <label class="control-label" for="addCreditCard"></label>
   <div class="controls">
     <button ng-show="paymentCC.saveAccount" id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC Payment', paymentCCForm); currentCardType(paymentCCForm.AccountNumber.$ccType);  processPayment();" ng-disabled="processingPayment || paymentGreaterThanAmount" >
-      Pay New Credit Card</button> 
+      Pay with New Credit Card</button> 
 
  <button ng-show="!paymentCC.saveAccount" id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="currentCardType(paymentCCForm.AccountNumber.$ccType); processPayment();" ng-disabled="processingPayment || paymentGreaterThanAmount" >
-      Pay New Credit Card</button> 
+      Pay with New Credit Card</button> 
 
     <button id="cancelCreditCard" name="cancelCreditCard" class="btn btn-danger" ng-click="resetAccountForm('CC Payment', paymentCCForm);" ><i class="fa fa-times"></i> Cancel</button>
   </div>

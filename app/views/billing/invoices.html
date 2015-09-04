@@ -5,13 +5,16 @@
 			Outstanding Invoices
 		</h4> 
 		<p class="pull-right">
-			Total Payments
+			Current Balance
 			<span class="orange inner-span">{{outstandingInvoicesDueTotal | currency}}</span>
 		</p>
 		<div class="clearfix"></div>
 		<!--<span class="pull-right">Auto pay scheduled for July 15 , 2015</span>-->
 		<div class="clearfix"></div>
-		<button class="pull-right btn btn-primary" ng-click="payOutstandingBalance();">Pay Outstanding Invoice Balance</button>
+		<button ng-hide="outstandingInvoicesDueTotal == 0" class="pull-right btn btn-primary" ng-click="payOutstandingBalance();">Pay Outstanding Invoice Balance</button>
+		<button ng-show="outstandingInvoicesDueTotal == 0" class="pull-right btn btn-primary payment-btn dead" tooltips title="You do not have any balance to pay">
+				Pay Outstanding Invoice Balance
+			</button>
 		<div class="clearfix"></div>
           <div class="table-wrapper longer">
           <table class="table">
@@ -45,7 +48,7 @@
 			         <td>
 			        	{{invoice.TotalAmount | currency}}
 			        </td>
-			        <td><i class="fa fa-list" ng-click="viewInvoiceHistory(invoice.InvoiceId)"></i></td>
+			        <td><i class="fa fa-list" ng-show="invoice.hasHistory"  ng-click="viewInvoiceHistory(invoice)"></i></td>
 			        <td><i class="fa fa-file-pdf-o" ng-click="reportInvoice(invoice)"></i></td>
 			        <td>
 			        	<button class="btn btn-primary" ng-click="payInvoice(invoice.InvoiceId, false, invoice.DueAmount)">Pay</button>

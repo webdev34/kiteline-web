@@ -23,9 +23,11 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       
     $rootScope.processPayment(accountId, invoiceId)
 
-  $scope.emailInvoiceToUser = (tranId) ->
-    PaymentService.emailInvoice(tranId, $rootScope.familyId, $rootScope.centerId).then (response) ->
-  
+  $scope.emailInvoiceToUser = (transaction) ->
+    transaction.sendingEmail = true
+    PaymentService.emailInvoice(transaction.PayId, $rootScope.familyId, $rootScope.centerId).then (response) ->
+      transaction.sendingEmail = false
+
   $scope.getTaxStatement = (year) ->
     $rootScope.currentFamilyID = $rootScope.familyId
     $rootScope.selectedYear = year
@@ -210,6 +212,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $rootScope.getTransactionsByDate(null)
       $rootScope.getTransactionsByDate('Historical')
       $rootScope.getPaymentAccounts()
+      $rootScope.getGuardianData()
       $rootScope.getInvoiceData().then (response) ->
         $rootScope.stopSpin()
     

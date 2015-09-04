@@ -13,9 +13,12 @@
 			Auto pay scheduled for {{currentCenter.NextPayDate}}
 		</span> 
 		<a href="#/billing/invoices">View Details</a>
-		<button class="btn btn-primary payment-btn" ng-click="payOutstandingBalance();">
+		<button ng-hide="outstandingInvoicesDueTotal == 0" class="btn btn-primary payment-btn" ng-click="payOutstandingBalance();">
 			Make Payment
 		</button>
+		<button ng-show="outstandingInvoicesDueTotal == 0" class="btn btn-primary payment-btn dead" tooltips title="You do not have any balance to pay">
+				Make Payment
+			</button>
 		<a href="#/billing/">View Payment Activity</a>
 	</div>
 </div>

@@ -1,8 +1,13 @@
 <div class="overlay-container invoice-history"  ng-hide="paymentMSG">
  	<section class="overlay-right-col">
  		<h3>
+ 			Payment Amount Billed: 
+ 			<span class="orange">{{viewInvoiceHistoryAmountBilled | currency}}</span>
+ 			<span class="pull-right">{{viewInvoiceHistoryDate| date}}</span>
+ 			<div class="clearfix"></div>
+ 			<br/>
  			Payment Amount Due: 
- 			<span class="orange">{{viewInvoiceHistoryAmount | currency}}</span>
+ 			<span class="orange">{{viewInvoiceHistoryDueAmount | currency}}</span>
  		</h3>
 
 		<div class="clearfix"></div>

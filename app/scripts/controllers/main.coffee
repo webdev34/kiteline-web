@@ -19,7 +19,9 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   $rootScope.paymentAmount = 0
   $rootScope.paymentMSG = null
   $rootScope.newCC = {}
+  $rootScope.newCC.AccountName = null
   $rootScope.paymentCC = {}
+  $rootScope.paymentCC.AccountName = null
   $rootScope.expireDates = {}
   $rootScope.expireDatesPayment = {}
   $rootScope.currentPaymentModal = null
@@ -29,6 +31,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   $rootScope.matchingRoutingNum = false
   $rootScope.addCreditCardFromModal = false
   $rootScope.addCreditCard = false
+  $rootScope.reverse = false
+  $rootScope.sortOrderBy = 'PaymentDate'
   $rootScope.invoiceGrandTotal = 0
   $rootScope.invoicesArray = []
 
@@ -89,6 +93,10 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     else
       $window.location.href = 'https://uat.skychildcare.com/parentportal/#/'
 
+  $rootScope.sortByFunc = (sortBy, reverse) ->
+    $rootScope.sortOrderBy = sortBy
+    $rootScope.reverse = reverse
+
   isNumeric = (n) ->
     !isNaN(parseFloat(n) ) and isFinite(n)
 
@@ -127,15 +135,14 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
   $rootScope.paymentClearedDashboard = () ->
     $rootScope.processingPayment = false
-    $rootScope.resetAccountForm('CC Payment')
     $rootScope.getInvoiceData()
+    $rootScope.resetAccountForm('CC Payment')
 
   $rootScope.processPayment = (accountId, invoiceId) ->
     $rootScope.processingPayment = true
     if !invoiceId
       invoiceId = 0
     if $rootScope.addCreditCardFromModal
-
 
       thisYear = String($rootScope.expireDatesPayment.year)
       thisYear = thisYear[2] + thisYear[3]
@@ -156,6 +163,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       PaymentService.makePaymentWithAccountId(accountId, $rootScope.currentCenter.CustomerId, invoiceId).then (response) ->
         $rootScope.paymentMSG = response.data
         if $rootScope.currentPaymentModal == 'Outstanding Balance'
+          
           $rootScope.paymentClearedDashboard()
         else
           $rootScope.paymentCleared()
@@ -240,6 +248,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
   $rootScope.getPaymentAccounts = (familyId, centerId) ->
     $rootScope.getCCAccounts(familyId, centerId)
+    $rootScope.getBankAccounts()
     $rootScope.setDefaultAccount()
 
   $rootScope.getCCAccounts = (familyId, centerId) ->
@@ -291,9 +300,12 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       else
         invoice.hasHistory = true
 
-  $scope.viewInvoiceHistory = (invoiceId) ->  
+  $scope.viewInvoiceHistory = (invoice) ->  
     $rootScope.paymentMSG = null
-    PaymentService.getPartialPaymentsByInvoiceId($rootScope.customerId, invoiceId, $rootScope.centerId).then (response) ->
+    $rootScope.viewInvoiceHistoryDueAmount  = invoice.DueAmount
+    $rootScope.viewInvoiceHistoryAmountBilled = invoice.TotalAmount
+    $rootScope.viewInvoiceHistoryDate = invoice.CreatedOn
+    PaymentService.getPartialPaymentsByInvoiceId($rootScope.customerId, invoice.InvoiceId, $rootScope.centerId).then (response) ->
       $rootScope.PartialPaymentsMade = response.data
       ngDialog.open template: $rootScope.modalUrl+'/views/modals/invoice-history.html' 
 
@@ -305,6 +317,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       $scope.outstandingBalance = 0
 
       angular.forEach $rootScope.outstandingInvoices, (value, key) ->
+        $scope.viewInvoiceHistoryCheck(value)
         $rootScope.outstandingInvoicesDueTotal += value.DueAmount
         $rootScope.outstandingInvoicesTotal += value.TotalAmount
         InvoiceDetailService.getInvoiceDetail(value.InvoiceId).then (response) ->

@@ -137,7 +137,7 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
         'BusinessPhone': obj.BusinessPhone
         'BusinessEmail': obj.PayEmail
         'CardHolderName': obj.PayerName
-        'AccountName': obj.AccountName
+        'AccountName': ''
         'CardNumber': obj.AccountNumber
         'ExpirationDate': obj.ExpirationDate
         'BillingZip': obj.BillingZip

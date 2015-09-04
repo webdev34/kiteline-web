@@ -10,6 +10,7 @@ angular.module('kiteLineApp', [
   'toggle-switch'
   'ngMask'
   '720kb.datepicker'
+  '720kb.tooltips'
   'angularSpinner'
   'credit-cards'
   'simplePagination'
