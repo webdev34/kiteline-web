@@ -32,7 +32,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="BillingStateCCPayment">Billing State</label>
   <div class="controls relative">
- <select id="BillingStateCCPayment" class="BillingState" ng-model="paymentCC.BillingState" required="">
+ <select size="10" id="BillingStateCCPayment" class="BillingState" ng-model="paymentCC.BillingState" required="">
       <option value="{{option.abbreviation}}" data-ng-repeat="option in statesDropDown
 " >{{option.name}}</option>
     </select>
@@ -98,7 +98,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="AccountNumber">Card Number</label>
   <div class="controls">
-    <input id="AccountNumber" name="AccountNumber" ng-model="paymentCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()"  maxlength="19" numbers-only />
+    <input id="AccountNumber" name="AccountNumber" ng-model="paymentCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()"  maxlength="16" numbers-only />
     
   </div>
 </div>

@@ -15,7 +15,7 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
     $scope.showLogIn = true
     $scope.email = ''
     $scope.pin = ''
-    $scope.centerId = ''
+    $rootScope.centerId = ''
     $scope.emailForgotPin = ''
     $scope.requestSent = false
     LogInService.isLoggedIn()
@@ -30,7 +30,7 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
 
     $scope.login = ->
       $rootScope.dataLoading = true
-      LogInService.Login($scope.email, $scope.pin, $scope.centerId).then (response) ->
+      LogInService.Login($scope.email, $scope.pin, $rootScope.centerId).then (response) ->
         $rootScope.dataLoading = false
         $rootScope.showLogOut = false
 
@@ -47,11 +47,11 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
 
     $scope.forgotPinFunc = ->
       $rootScope.dataLoading = true
-      ForgotPinService.sendForgottenPIN $scope.email, $scope.centerId
+      ForgotPinService.sendForgottenPIN $scope.email, $rootScope.centerId
 
     $scope.selectCenter = (centerId, centerName) ->
       $scope.centernameSearch = centerName
-      $scope.centerId = centerId
+      $rootScope.centerId = centerId
       $rootScope.careCenters = null
       if $scope.showLogIn == true
         $scope.validationCheck()
@@ -60,13 +60,13 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
 
     $scope.validationCheck = ->
       if $scope.email
-        if $scope.email.length != 0 and $scope.pin.length != 0 and $scope.centerId.length != 0
+        if $scope.email.length != 0 and $scope.pin.length != 0 and $rootScope.centerId.length != 0
           $scope.isValid = true
         else
           $scope.isValid = false
 
     $scope.validationCheckForgotPin = ->
-      if $scope.email.length != 0 and $scope.centerId.length != 0
+      if $scope.email.length != 0 and $rootScope.centerId.length != 0
         $scope.isValidForgotPin = true
       else
         $scope.isValidForgotPin = false

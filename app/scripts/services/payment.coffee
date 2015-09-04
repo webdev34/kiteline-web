@@ -186,6 +186,10 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
       return
     ).error (data, status, headers, config) ->
       deferred.reject status
+      console.log data
+      console.log headers
+      console.log config
+      $rootScope.processingPayment = false
       
       toastr.error status, 'Error'
       return

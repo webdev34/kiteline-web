@@ -98,7 +98,7 @@
 <div class="control-group col-md-4">
   <label class="control-label" for="AccountNumber">Card Number</label>
   <div class="controls">
-    <input id="AccountNumber" name="AccountNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()" acct-num="{{newCC.AccountNumber}}" maxlength="19" numbers-only />
+    <input id="AccountNumber" name="AccountNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()" acct-num="{{newCC.AccountNumber}}" maxlength="16" numbers-only />
     
   </div>
 </div>
@@ -111,13 +111,13 @@
     <select id="expireMonth" class="expireMonth"  ng-model="expireDates.month" cc-exp-month required="">
         <option value="01">01 - Jan</option>
         <option value="02">02 - Feb</option>
-        <option value="03">03 - March</option>
-        <option value="04">04 - April</option>
+        <option value="03">03 - Mar</option>
+        <option value="04">04 - Apr</option>
         <option value="05">05 - May</option>
-        <option value="06">06 - June</option>
-        <option value="07">07 - July</option>
+        <option value="06">06 - Jun</option>
+        <option value="07">07 - Jul</option>
         <option value="08">08 - Aug</option>
-        <option value="09">09 - Sept</option>
+        <option value="09">09 - Sep</option>
         <option value="10">10 - Oct</option>
         <option value="11">11 - Nov</option>
         <option value="12">12 - Dec</option>
@@ -127,7 +127,6 @@
 
   <div class="controls relative expire-year-wrapper" >
     <select id="expireYear" class="expireYear"  ng-model="expireDates.year" cc-exp-year required="">
-          <option value="14">2014</option>
           <option value="15">2015</option>
           <option value="16">2016</option>
           <option value="17">2017</option>

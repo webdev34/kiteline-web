@@ -1,19 +1,55 @@
 'use strict'
-angular.module('kiteLineApp').controller 'MainCtrl', (PaymentService, $filter, $scope, $rootScope, $location, StorageService, usSpinnerService, $window, ngDialog) ->
-  $rootScope.pageTitle = ' '
-  $rootScope.paymentGreaterThanAmount = false
-  $rootScope.processingPayment = false
-  if window.location.href.indexOf('localhost') > -1
+angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScope, $location, StorageService, CenterInfoService, PaymentService, AnnouncementsService, CreditCardService, InvoiceDetailService, InvoiceService, GuardianService, AccountService, usSpinnerService, $window, ngDialog, Pagination) ->
+  
+  if window.location.href.indexOf('localhost') > - 1
     $rootScope.modalUrl = 'http://localhost:9000'
-  else if window.location.href.indexOf('cloud') > -1
+  else if window.location.href.indexOf('cloud') > - 1
     $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb'
   else
     $rootScope.modalUrl = 'https://uat.skychildcare.com/parentportal'
 
-  if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > -1
+  if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > - 1
     $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
   else
     $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
+
+  $rootScope.pageTitle = ' '
+  $rootScope.paymentGreaterThanAmount = false
+  $rootScope.processingPayment = false
+  $rootScope.paymentAmount = 0
+  $rootScope.paymentMSG = null
+  $rootScope.newCC = {}
+  $rootScope.paymentCC = {}
+  $rootScope.expireDates = {}
+  $rootScope.expireDatesPayment = {}
+  $rootScope.currentPaymentModal = null
+  $rootScope.processingPayment = null
+  $rootScope.matchingBankAccount = false
+  $rootScope.PartialPaymentsMade = null
+  $rootScope.matchingRoutingNum = false
+  $rootScope.addCreditCardFromModal = false
+  $rootScope.addCreditCard = false
+  $rootScope.invoiceGrandTotal = 0
+  $rootScope.invoicesArray = []
+
+  d = new Date
+  $scope.billDates = {}
+  $scope.billDates.transactionStartDate = new Date((new Date).setDate((new Date).getDate() - 30))
+  $scope.billDates.transactionStartDate = $filter('date')($scope.billDates.transactionStartDate, 'M/d/yyyy')
+  $scope.billDates.historicalStartDate = $scope.billDates.transactionStartDate
+  $scope.billDates.transactionEndDate = [
+    d.getMonth() + 1
+    d.getDate()
+    d.getFullYear()
+  ].join('/')
+  $scope.billDates.historicalEndDate = $scope.billDates.transactionEndDate
+  $scope.billDates.querying = false
+  $scope.billDates.queryingHistorical = false
+  $scope.noResults = false
+  $scope.noResultsInvoices = false
+  $scope.invoiceGrandTotal = 0
+  $scope.defaultCC = null
+
 
   $rootScope.changePageTitle = () ->
     $rootScope.showLogOut = false
@@ -29,9 +65,9 @@ angular.module('kiteLineApp').controller 'MainCtrl', (PaymentService, $filter, $
 
     if $location.$$path is '/forms'
       $rootScope.pageTitle = 'Kiteline Web - Forms'
-  
+
   $rootScope.changePageTitle()
-  
+
   $rootScope.startSpin = ->
     $rootScope.isLoading = true
     usSpinnerService.spin 'spinner-1'
@@ -45,16 +81,16 @@ angular.module('kiteLineApp').controller 'MainCtrl', (PaymentService, $filter, $
 
   $rootScope.logOut = () ->
     $rootScope.showLogOut = false
-    StorageService.deleteLocalStorage();
-    if window.location.href.indexOf('localhost') > -1
+    StorageService.deleteLocalStorage() ;
+    if window.location.href.indexOf('localhost') > - 1
       $window.location.href = '/'
-    else if window.location.href.indexOf('cloud') > -1
+    else if window.location.href.indexOf('cloud') > - 1
       $window.location.href = 'https://cloud.spinsys.com/skychildcare/kitelineweb/#/'
     else
       $window.location.href = 'https://uat.skychildcare.com/parentportal/#/'
 
   isNumeric = (n) ->
-    !isNaN(parseFloat(n)) and isFinite(n)
+    !isNaN(parseFloat(n) ) and isFinite(n)
 
   $rootScope.makeFloat = () ->
     if isNumeric(document.getElementById('payment-amount').value)
@@ -76,9 +112,9 @@ angular.module('kiteLineApp').controller 'MainCtrl', (PaymentService, $filter, $
       outstandingBalance = parseFloat $rootScope.viewInvoice.DueAmount
       $rootScope.paymentAmount = parseFloat $rootScope.viewInvoice.DueAmount
       trueTotal = outstandingBalance
-    
+
     if paymentAmount > outstandingBalance
-      document.getElementById('payment-amount').value = $filter('currency') trueTotal, '' 
+      document.getElementById('payment-amount').value = $filter('currency') trueTotal, ''
       $rootScope.paymentGreaterThanAmount = true
 
   $rootScope.paymentCleared = () ->
@@ -93,27 +129,29 @@ angular.module('kiteLineApp').controller 'MainCtrl', (PaymentService, $filter, $
     $rootScope.processingPayment = false
     $rootScope.resetAccountForm('CC Payment')
     $rootScope.getInvoiceData()
-    
+
   $rootScope.processPayment = (accountId, invoiceId) ->
     $rootScope.processingPayment = true
     if !invoiceId
       invoiceId = 0
     if $rootScope.addCreditCardFromModal
-      if $rootScope.paymentCC.RecurringAccount is true
-        $rootScope.submitNewAccount('CC Payment', '')
+
 
       thisYear = String($rootScope.expireDatesPayment.year)
-      thisYear = thisYear[2]+thisYear[3]
-      $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month+'/'+thisYear
+      thisYear = thisYear[2] + thisYear[3]
+      $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month + '/' + thisYear
       if $rootScope.paymentCC.ExpirationDate.length == 4
-        $rootScope.paymentCC.ExpirationDate = "0"+$rootScope.paymentCC.ExpirationDate
+        $rootScope.paymentCC.ExpirationDate = "0" + $rootScope.paymentCC.ExpirationDate
 
-      PaymentService.makePaymentWithCC($rootScope.currentCenter.FamilyId, $rootScope.currentCenter.CenterId, invoiceId, $rootScope.currentCenter.CustomerId, $rootScope.paymentCC).then (response) ->
-        $rootScope.paymentMSG = response.data
-        if $rootScope.currentPaymentModal == 'Outstanding Balance'
-          $rootScope.paymentClearedDashboard()
-        else
-          $rootScope.paymentCleared()
+      if $rootScope.paymentCC.RecurringAccount is true
+        $rootScope.submitNewAccount('CC Payment', '')
+      else
+        PaymentService.makePaymentWithCC($rootScope.currentCenter.FamilyId, $rootScope.currentCenter.CenterId, invoiceId, $rootScope.currentCenter.CustomerId, $rootScope.paymentCC).then (response) ->
+          $rootScope.paymentMSG = response.data
+          if $rootScope.currentPaymentModal == 'Outstanding Balance'
+            $rootScope.paymentClearedDashboard()
+          else
+            $rootScope.paymentCleared()
     else
       PaymentService.makePaymentWithAccountId(accountId, $rootScope.currentCenter.CustomerId, invoiceId).then (response) ->
         $rootScope.paymentMSG = response.data
@@ -125,20 +163,63 @@ angular.module('kiteLineApp').controller 'MainCtrl', (PaymentService, $filter, $
   $rootScope.payOutstandingBalance = ->
     $rootScope.resetAccountForm('CC Payment')
     $rootScope.currentPaymentModal = 'Outstanding Balance'
-    $rootScope.paymentAmount = $rootScope.outstandingInvoicesDueTotal.toFixed 2 
+    $rootScope.paymentAmount = $rootScope.outstandingInvoicesDueTotal.toFixed 2
     $rootScope.paymentMSG = null
-    ngDialog.open template: $rootScope.modalUrl+'/views/modals/pay-outstanding-balance.html'
+    ngDialog.open template: $rootScope.modalUrl + '/views/modals/pay-outstanding-balance.html'
+
+  $rootScope.addAccountModal = () ->
+    $rootScope.autocompleteHomeAddressCCPayment()
+    $rootScope.paymentCC.autofillAddressCC = false
+    $rootScope.addCreditCardFromModal = true;
+    $rootScope.activePaymentAccount = true;
 
   $rootScope.resetAccountForm = (type, form) ->
-      # $rootScope.paymentMSG = null
+    $rootScope.addCreditCardFromModal = false
+    $rootScope.activePaymentAccount = false
+    $rootScope.paymentCC = {}
+    $rootScope.paymentCC.PayerEmail = ''
+    $rootScope.expireDatesPayment = {}
+    $rootScope.expireDatesPayment.month = ''
+    if form
+      form.$setPristine() ;
+
+  $rootScope.submitNewAccount = (type, form) ->
+    if type == 'CC'
+      thisYear = String($rootScope.expireDates.year)
+      thisYear = thisYear[2] + thisYear[3]
+      $rootScope.newCC.ExpirationDate = $rootScope.expireDates.month + '/' + thisYear
+      if $rootScope.newCC.ExpirationDate.length == 4
+        $rootScope.newCC.ExpirationDate = "0" + $rootScope.newCC.ExpirationDate
+      CreditCardService.addCreditCard($rootScope.newCC).then (response) ->
+        $rootScope.getPaymentAccounts()
+        $scope.resetAccountForm('CC', form)
+    else if type == 'CC Payment' and $rootScope.paymentCC.saveAccount
+      thisYear = String($rootScope.expireDatesPayment.year)
+      thisYear = thisYear[2] + thisYear[3]
+      $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month + '/' + thisYear
+      if $rootScope.paymentCC.ExpirationDate.length == 4
+        $rootScope.paymentCC.ExpirationDate = "0" + $rootScope.paymentCC.ExpirationDate
+
+      CreditCardService.addCreditCard($rootScope.paymentCC).then (response) ->
+        $rootScope.getPaymentAccounts()
+        accountId = response.data
+        $scope.resetAccountForm('CC Payment', form)
+    else
+      AccountService.createAccount($rootScope.newBankAccount).then (response) ->
+        if response.statusText is 'OK'
+          $rootScope.addBankAccount = false
+          $rootScope.getPaymentAccounts()
+          $scope.resetAccountForm('Bank', form)
+
+  $rootScope.resetAccountForm = (type, form) ->
       $rootScope.paymentGreaterThanAmount = false
       if type == 'CC'
-        $scope.addCreditCard = false
-        $scope.newCC = {}
-        $scope.newCC.PayerEmail = ''
-        $scope.expireDates = {}
-        $scope.expireDates.month = ''
-        $scope.expireDates.year = ''
+        $rootScope.addCreditCard = false
+        $rootScope.newCC = {}
+        $rootScope.newCC.PayerEmail = ''
+        $rootScope.expireDates = {}
+        $rootScope.expireDates.month = ''
+        $rootScope.expireDates.year = ''
 
       else if type == 'CC Payment'
         $rootScope.addCreditCardFromModal = false
@@ -150,12 +231,194 @@ angular.module('kiteLineApp').controller 'MainCtrl', (PaymentService, $filter, $
         $rootScope.expireDatesPayment.year = ''
 
       else
-        $scope.addBankAccount = false
-        $scope.newBankAccount = {}
-        $scope.newBankAccount.PayerEmail = ''
-        
-      if form      
-        form.$setPristine();
+        $rootScope.addBankAccount = false
+        $rootScope.newBankAccount = {}
+        $rootScope.newBankAccount.PayerEmail = ''
+
+      if form
+        form.$setPristine() ;
+
+  $rootScope.getPaymentAccounts = (familyId, centerId) ->
+    $rootScope.getCCAccounts(familyId, centerId)
+    $rootScope.setDefaultAccount()
+
+  $rootScope.getCCAccounts = (familyId, centerId) ->
+    CreditCardService.getCreditCardAccounts($rootScope.subscriberId, $rootScope.customerId).then (response) ->
+      $rootScope.creditCardAccounts = response.data
+      $rootScope.creditCardAccountsPagination = Pagination.getNew()
+      $rootScope.creditCardAccountsPagination.numPages = Math.ceil($rootScope.creditCardAccounts.length / $scope.creditCardAccountsPagination.perPage)
+      $rootScope.setDefaultAccount()
+
+  $rootScope.getBankAccounts = () ->
+    AccountService.getAccounts($rootScope.familyId, $rootScope.centerId).then (response) ->
+      $rootScope.bankAccounts = response.data
+      $scope.setPagination()
+      $rootScope.setDefaultAccount()
+
+  $rootScope.setDefaultAccount = () ->
+    $rootScope.defaultAccount = null
+    angular.forEach $rootScope.bankAccounts, (value, key) ->
+      if value.RecurringAccount == true
+        $rootScope.defaultAccount = value
+
+    angular.forEach $rootScope.creditCardAccounts, (value, key) ->
+      if value.RecurringAccount == true
+        $rootScope.defaultAccount = value
+
+  $scope.deleteDefaultAccount = () ->
+    AccountService.deleteActiveAccount($rootScope.subscriberId, $rootScope.customerId).then (response) ->
+      $rootScope.defaultAccount = null
+
+  $rootScope.setDefaultCCAccount = (account) ->
+    if account.RecurringAccount == false
+      $scope.deleteDefaultAccount()
+    else
+      CreditCardService.setDefaultCreditCard($rootScope.subscriberId, $rootScope.customerId, account.AccountId).then (response) ->
+        $rootScope.getPaymentAccounts()
+
+  $scope.setDefaultBankAccount = (account) ->
+    if account.RecurringAccount == false
+      $scope.deleteDefaultAccount()
+    else
+      AccountService.setActiveAccount($rootScope.familyId, $rootScope.centerId, account.AccountId).then (response) ->
+        $rootScope.getPaymentAccounts()
+
+
+  $scope.viewInvoiceHistoryCheck = (invoice) ->
+    PaymentService.getPartialPaymentsByInvoiceId($rootScope.customerId, invoice.InvoiceId, $rootScope.centerId).then (response) ->
+      if response.data.length == 0
+        invoice.hasHistory = false
+      else
+        invoice.hasHistory = true
+
+  $scope.viewInvoiceHistory = (invoiceId) ->  
+    $rootScope.paymentMSG = null
+    PaymentService.getPartialPaymentsByInvoiceId($rootScope.customerId, invoiceId, $rootScope.centerId).then (response) ->
+      $rootScope.PartialPaymentsMade = response.data
+      ngDialog.open template: $rootScope.modalUrl+'/views/modals/invoice-history.html' 
+
+  $rootScope.getInvoiceData = () ->
+    InvoiceService.getOutstandingInvoices($rootScope.customerId).then (response) ->
+      $rootScope.outstandingInvoices = response.data
+      $rootScope.outstandingInvoicesDueTotal = 0
+      $rootScope.outstandingInvoicesTotal = 0
+      $scope.outstandingBalance = 0
+
+      angular.forEach $rootScope.outstandingInvoices, (value, key) ->
+        $rootScope.outstandingInvoicesDueTotal += value.DueAmount
+        $rootScope.outstandingInvoicesTotal += value.TotalAmount
+        InvoiceDetailService.getInvoiceDetail(value.InvoiceId).then (response) ->
+
+          if response.data.length == 1
+            $rootScope.invoicesArray.push response.data[0]
+            $scope.invoiceGrandTotal = $scope.invoiceGrandTotal + response.data[0].Amount
+            $scope.outstandingBalance = $scope.invoiceGrandTotal
+
+          else
+            arrayHolder = []
+            angular.forEach response.data, (value, key) ->
+              arrayHolder.push value
+              $scope.invoiceGrandTotal = $scope.invoiceGrandTotal + value.Amount
+              $scope.outstandingBalance = $scope.invoiceGrandTotal
+
+            $rootScope.invoicesArray.push arrayHolder
+
+  $rootScope.invoicesArrayed = () ->
+    $rootScope.arrayOfinvoicesHolder = []
+    $rootScope.arrayOfinvoices = []
+
+    angular.forEach $rootScope.invoicesArray, (value, key) ->
+      if value instanceof Array
+        $rootScope.arrayOfinvoicesHolder.push value[0]
+      else
+        $rootScope.arrayOfinvoicesHolder.push value
+
+    $rootScope.arrayOfinvoicesHolder = $filter('orderBy')($rootScope.arrayOfinvoicesHolder, 'CreatedOn', true)
+
+    angular.forEach $rootScope.arrayOfinvoicesHolder, (value, key) ->
+      $rootScope.arrayOfinvoices.push value.InvoiceId
+
+  $rootScope.getUserData = () ->
+    $rootScope.currentCenter = StorageService.getItem('currentCenter')
+    $rootScope.currentUserEmail = StorageService.getItem('userEmail')
+    $rootScope.currentUserToken = StorageService.getItem('x-skychildcaretoken')
+    $rootScope.LastLoginInfo = StorageService.getItem('LastLoginInfo')
+    $rootScope.centerId = $rootScope.currentCenter.CenterId
+    $rootScope.familyId = $rootScope.currentCenter.FamilyId
+    $rootScope.customerId = $rootScope.currentCenter.CustomerId
+    $rootScope.showLogOut = false
+
+    CenterInfoService.getCenterDetails($rootScope.centerId).then (response) ->
+      $rootScope.currentCenterDetails = response.data
+      $rootScope.subscriberId = response.data.SubscriberId
+
+  $rootScope.getMessages = () ->
+    AnnouncementsService.getAnnouncements($rootScope.customerId).then (response) ->
+      $rootScope.announcements = null
+      $rootScope.announcementCount = response.data.length
+
+      if $rootScope.announcementCount > 0
+        $rootScope.announcements = response.data
+
+  $rootScope.getGuardianData = () ->
+    GuardianService.getAllGuardians($rootScope.familyId).then (response) ->
+      $rootScope.guardians = response.data
+      $rootScope.guardiansPagination = Pagination.getNew()
+      $rootScope.guardiansPagination.numPages = Math.ceil($rootScope.guardians.length / $rootScope.guardiansPagination.perPage)
+
+      GuardianService.getGuardian($rootScope.guardians[0].GuardianId).then (response) ->
+        $rootScope.headOfHouseHold = response.data
+
+  $scope.getPastPayments = () ->
+    PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId).then (response) ->
+      $scope.pastTransactions  = response
+      $scope.setPagination()
+
+
+  $rootScope.getTransactionsByDate = (type) ->
+    if type == 'Historical'
+      $scope.noResultsInvoices = false
+      InvoiceService.getPaidInvoicesByDate($rootScope.currentCenter.CustomerId, $scope.billDates.historicalStartDate, $scope.billDates.historicalEndDate).then (response) ->
+        $scope.historicalTransactions  = response.data
+        $scope.historicalTransactionsTotal = 0
+        $scope.billDates.queryingHistorical = false
+    
+        angular.forEach $scope.historicalTransactions, (value, key) ->
+          $scope.historicalTransactionsTotal += value.TotalAmount
+
+        if $scope.historicalTransactions.length == 0
+          $scope.noResultsInvoices = true
+        else
+          $scope.setPagination()
+
+    else
+      $scope.noResults = false
+      PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId, $scope.billDates.transactionStartDate, $scope.billDates.transactionEndDate).then (response) ->
+        $scope.pastTransactions  = response.data
+        $scope.billDates.querying = false
+
+        if $scope.pastTransactions.length == 0
+          $scope.noResults = true
+        else
+          $scope.setPagination()
+
+  $scope.setPagination = () ->
+    if $scope.pastTransactions
+      $scope.pastTransactionsPagination = Pagination.getNew(10)
+      $scope.pastTransactionsPagination.numPages = Math.ceil($scope.pastTransactions.length / $scope.pastTransactionsPagination.perPage)
+    if $scope.historicalTransactions
+      $scope.historicalTransactionsPagination = Pagination.getNew(10)
+      $scope.historicalTransactionsPagination.numPages = Math.ceil($scope.historicalTransactions.length / $scope.historicalTransactionsPagination.perPage)
+    if $rootScope.outstandingInvoices
+      $rootScope.outstandingInvoicesPagination = Pagination.getNew(10)
+      $rootScope.outstandingInvoicesPagination.numPages = Math.ceil($rootScope.outstandingInvoices.length / $rootScope.outstandingInvoicesPagination.perPage)
+    if $rootScope.bankAccounts
+      $rootScope.bankAccountsPagination = Pagination.getNew()
+      $rootScope.bankAccountsPagination.numPages = Math.ceil($rootScope.bankAccounts.length / $scope.bankAccountsPagination.perPage)
+    if $rootScope.creditCardAccounts
+      $rootScope.creditCardAccountsPagination = Pagination.getNew()
+      $rootScope.creditCardAccountsPagination.numPages = Math.ceil($rootScope.creditCardAccounts.length / $scope.creditCardAccountsPagination.perPage)
+
 
   $rootScope.isMobileFunc = () ->
     if sessionStorage.desktop
@@ -175,7 +438,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', (PaymentService, $filter, $
       'iemobile'
     ]
     for i of mobile
-      if navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0
+      if navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase() ) > 0
         $rootScope.mobileType = mobile[i].toLowerCase()
         return true
     # nothing found.. assume desktop
@@ -220,7 +483,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', (PaymentService, $filter, $
       $rootScope.paymentCC.BillingCity = null
       $rootScope.paymentCC.BillingState = null
       $rootScope.paymentCC.BillingZip = null
-      $rootScope.paymentCC.BusinessPhone = null  
+      $rootScope.paymentCC.BusinessPhone = null
 
   $rootScope.footerYear = (new Date).getFullYear()
 
