@@ -58,16 +58,20 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   $rootScope.changePageTitle = () ->
     if $location.$$path is '/dashboard'
       $rootScope.pageTitle = 'Kiteline Web - Dashboard'
+      document.title = 'Kiteline Web - Dashboard'
 
     if $location.$$path is '/billing' || $location.$$path is '/billing/invoices' || $location.$$path is '/billing/payment-accounts'
       $rootScope.pageTitle = 'Kiteline Web - Billing'
+      document.title = 'Kiteline Web - Billing'
 
     if $location.$$path is '/'
       $rootScope.pageTitle = 'Kiteline Web'
+      document.title = 'Kiteline Web - Log In'
       $rootScope.stopSpin()
 
     if $location.$$path is '/forms'
       $rootScope.pageTitle = 'Kiteline Web - Forms'
+      document.title = 'Kiteline Web - Forms'
 
   $rootScope.startSpin = ->
     $rootScope.isLoading = true
