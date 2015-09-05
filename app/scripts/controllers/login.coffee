@@ -34,7 +34,6 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
       $rootScope.dataLoading = true
       LogInService.Login($scope.email, $scope.pin, $rootScope.centerId).then (response) ->
         $rootScope.dataLoading = false
-        $rootScope.showLogOut = false
 
     $scope.changeView = (view) ->
       if view == 'forgotPin'

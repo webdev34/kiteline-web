@@ -44,7 +44,7 @@ html {
             }
             &.fa-paper-plane{
                 color: $dark-blue !important;
-                cursor: wait !important;
+                
             }
             &.fa-caret-up,
             &.fa-caret-down{
@@ -54,13 +54,18 @@ html {
                     cursor: pointer;
                     color: $dark-blue;
                 }
-                &.active{
+                &.active,
+                &.dark-blue{
                    color: $dark-blue; 
                 }
                 &.dead{
                     visibility: hidden;
                 }
             }
+        }
+        .waiting{
+            cursor: wait !important;
+            pointer-events: auto !important;
         }
         #toast-container{
             width: 100%;

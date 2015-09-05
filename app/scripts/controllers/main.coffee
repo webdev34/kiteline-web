@@ -56,7 +56,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
 
   $rootScope.changePageTitle = () ->
-    $rootScope.showLogOut = false
     if $location.$$path is '/dashboard'
       $rootScope.pageTitle = 'Kiteline Web - Dashboard'
 
@@ -90,6 +89,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       $window.location.href = 'https://cloud.spinsys.com/skychildcare/kitelineweb/#/'
     else
       $window.location.href = 'https://uat.skychildcare.com/parentportal/#/'
+
+    
 
   $rootScope.sortByFunc = (sortBy, reverse) ->
     $rootScope.sortOrderBy = sortBy
@@ -290,7 +291,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       AccountService.setActiveAccount($rootScope.familyId, $rootScope.centerId, account.AccountId).then (response) ->
         $rootScope.getPaymentAccounts()
 
-
   $scope.viewInvoiceHistoryCheck = (invoice) ->
     PaymentService.getPartialPaymentsByInvoiceId($rootScope.customerId, invoice.InvoiceId, $rootScope.centerId).then (response) ->
       if response.data.length == 0
@@ -470,17 +470,20 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     year
 
   $rootScope.checkExp = (year) ->
-    match = year.match(/^\s*(0?[1-9]|1[0-2])\/(\d\d|\d{4})\s*$/)
-    if !match
-      #alert 'Input string isn\'t match the expiration date format or date fragments are invalid.'
-      return
-    exp = new Date($rootScope.normalizeYear(1 * match[2]), 1 * match[1] - 1, 1).valueOf()
-    now = new Date
-    currMonth = new Date(now.getFullYear(), now.getMonth(), 1).valueOf()
-    if exp <= currMonth
-      return 'Expired'
+    if typeof year == 'undefined'
+      return 'Bank'
     else
-      return 'Valid'
+      match = year.match(/^\s*(0?[1-9]|1[0-2])\/(\d\d|\d{4})\s*$/)
+      if !match
+        #alert 'Input string isn\'t match the expiration date format or date fragments are invalid.'
+        return
+      exp = new Date($rootScope.normalizeYear(1 * match[2]), 1 * match[1] - 1, 1).valueOf()
+      now = new Date
+      currMonth = new Date(now.getFullYear(), now.getMonth(), 1).valueOf()
+      if exp <= currMonth
+        return 'Expired'
+      else
+        return 'Valid'
 
   $rootScope.autocompleteHomeAddressCCPayment = () ->
     if $rootScope.paymentCC.autofillAddressCC is true

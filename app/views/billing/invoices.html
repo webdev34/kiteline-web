@@ -108,7 +108,7 @@
 	        </div>
 	        <div class="col-md-1">
 	            <div class="input-group">
-	                <button type="button" class="btn btn-primary" ng-disabled="billDates.queryingHistorical" ng-click="getTransactionsByDate('Historical'); billDates.queryingHistorical = true;">Submit</button>
+	                <button type="button" class="btn btn-primary" ng-class="{'waiting': billDates.queryingHistorical}" ng-disabled="billDates.queryingHistorical" ng-click="getTransactionsByDate('Historical'); billDates.queryingHistorical = true;">Submit</button>
 	            </div>
 	        </div>
     </div>
