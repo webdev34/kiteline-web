@@ -7,7 +7,7 @@
  			<span class="pull-right">{{viewInvoice.CreatedOn | date}}</span>
  		</h3>
  		<h3 class="margin-top-0">
- 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-model="paymentAmount" name="paymentAmount" type="text" ng-blur="checkPaymentAmount(true); makeFloat();" ng-change="checkPaymentAmount(true)"/>
+ 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-class="{'ng-error-input': paymentGreaterThanAmount}" ng-model="paymentAmount" name="paymentAmount" type="text" ng-blur="checkPaymentAmount(true); makeFloat();" ng-change="checkPaymentAmount(true)"/>
  			<span class="red" ng-show="paymentGreaterThanAmount">Payment can not exceed Payment Amount due</span>
 
  		</h3>

@@ -126,7 +126,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       trueTotal = outstandingBalance
 
     if paymentAmount > outstandingBalance
-      document.getElementById('payment-amount').value = $filter('currency') trueTotal, ''
+      document.getElementById('payment-amount').blur()
+      # document.getElementById('payment-amount').value = $filter('currency') trueTotal, ''
       $rootScope.paymentGreaterThanAmount = true
 
   $rootScope.paymentCleared = () ->

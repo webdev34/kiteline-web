@@ -112,12 +112,14 @@ body {
                         &.ng-dirty.ng-invalid-cc-exp-month,
                         &.ng-dirty.ng-invalid-cc-exp-year,
                         &.ng-dirty.ng-invalid,
-                        &.ng-dirty.ng-invalid-required {
+                        &.ng-dirty.ng-invalid-required,
+                        &.ng-error-input {
                             border-color: red;
                             outline-color: red;
                             background-color: #f66;
                             color: white;
                         }
+                       
                     }
                     form {
                         select {
