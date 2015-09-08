@@ -14,6 +14,10 @@ $light-blue: #4e99bd;
 
 html {
     height: 100%;
+    width: 100%;
+    &.tablet{
+        display: flex;   
+    }
     body {
         height: 100%;
         padding: 0;
@@ -77,6 +81,13 @@ html {
             }
             &> .toast-success{
                 text-align: center;
+            }
+        }
+        ._720kb-tooltip{
+            background-color: $light-blue; 
+            ._720kb-tooltip-caret:after,
+            ._720kb-tooltip-caret:before{
+                border-top-color: $light-blue;
             }
         }
         .payment-CC-Form,

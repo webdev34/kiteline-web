@@ -13,6 +13,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   else
     $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
 
+  $rootScope.isTablet = false
   $rootScope.pageTitle = ' '
   $rootScope.paymentGreaterThanAmount = false
   $rootScope.processingPayment = false
@@ -454,8 +455,12 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     ]
     for i of mobile
       if navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase() ) > 0
-        $rootScope.mobileType = mobile[i].toLowerCase()
-        return true
+        if mobile[i] != 'ipad'
+          $rootScope.mobileType = mobile[i].toLowerCase()
+          return true
+        else
+          $rootScope.isTablet = true
+
     # nothing found.. assume desktop
     false
 
