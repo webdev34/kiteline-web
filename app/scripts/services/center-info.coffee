@@ -4,7 +4,7 @@ angular.module('kiteLineApp').service 'CenterInfoService', ($http, $q, $rootScop
   if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > - 1
     $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
   else if window.location.href.indexOf('parent') > - 1
-    $rootScope.rootUrl = 'https://app.skychildcare.com/services/kiteline/v2.0'
+    $rootScope.rootUrl = 'https://app.skychildcare.com/services/kiteline/v2.0/'
   else
     $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
 
