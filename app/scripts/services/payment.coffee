@@ -30,7 +30,11 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getPastPaymentsByDate = (customerId, startDate, endDate) ->   
@@ -50,7 +54,11 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getRecentPayments = (customerId) ->  
@@ -70,7 +78,11 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getChildrenTuiton = (familyId) ->  
@@ -90,7 +102,11 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getTaxStatment = (familyId, customerId, year) ->  
@@ -110,7 +126,11 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getPartialPaymentsByInvoiceId = (customerId, invoiceId, centerId) ->  
@@ -130,7 +150,11 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @makePaymentWithAccountId = (accountId, customerId, invoiceId) ->  
@@ -151,7 +175,11 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return  
 
   @makePaymentWithCC = (familyId, centerId, invoiceId, customerId, accountObj) ->  
@@ -194,7 +222,11 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
       console.log config
       $rootScope.processingPayment = false
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @emailInvoice = (tranId, familyId, centerId) ->  
@@ -215,7 +247,11 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return      
 
   return

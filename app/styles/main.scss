@@ -723,26 +723,26 @@ h1, h2, h3 {
 }
 
 /* Scroll Bar fix */
-// body {
-//     .mCSB_container,
-//     .mCustomScrollBox {
-//         width: 100% !important;
-//     }
-//     .mCSB_scrollTools .mCSB_buttonUp,
-//     .mCSB_scrollTools .mCSB_buttonDown {
-//         background-position: 0 0 !important;
-//     }
-//     .mCSB_container_wrapper {
-//         margin-right: 0px;
-//     }
-//     .mCSB_container_wrapper > .mCSB_container {
-//         padding-right: 10px;
-//     }
-//     .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-//         position: relative;
-//         width: 2px;
-//     }
-// }
+body {
+    .mCSB_container,
+    .mCustomScrollBox {
+        width: 100% !important;
+    }
+    // .mCSB_scrollTools .mCSB_buttonUp,
+    // .mCSB_scrollTools .mCSB_buttonDown {
+    //     background-position: 0 0 !important;
+    // }
+    // .mCSB_container_wrapper {
+    //     margin-right: 0px;
+    // }
+    // .mCSB_container_wrapper > .mCSB_container {
+    //     padding-right: 10px;
+    // }
+    // .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    //     position: relative;
+    //     width: 2px;
+    // }
+}
 /* Scroll Bar fix */
 
 /* Loader */

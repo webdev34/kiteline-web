@@ -35,7 +35,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @updateChildMedInfo = (obj) ->   
@@ -65,7 +69,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @updateChildHistory = (obj) ->  
@@ -98,7 +106,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @updateMedication = (childMedicationId, childId, centerId, medicationName, frequency, startDate, endDate, expiration, instructions, openUID, openDate, editUID, editDate) ->  
@@ -133,7 +145,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return  
 
   @addMedication = (childMedicationId, childId, centerId, medicationName, frequency, startDate, endDate, expiration, instructions, openUID, openDate, editUID, editDate) ->  
@@ -168,7 +184,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @updateAllergy = (childAllergyId, childId, centerId, allergyName, severity, action, openUID, openDate, editUID, editDate) ->  
@@ -200,7 +220,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @addAllergy = (childAllergyId, childId, centerId, allergyName, severity, action, openUID, openDate, editUID, editDate) ->  
@@ -232,7 +256,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getChildClass = (childId) ->  
@@ -252,7 +280,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getChildren = (familyId) ->  
@@ -272,7 +304,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getChildGenInfo = (childId) ->  
@@ -292,7 +328,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getChildMedInfo = (childId) ->  
@@ -312,7 +352,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getChildHistory = (childId) ->  
@@ -332,7 +376,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getMedications = (childId) ->  
@@ -352,7 +400,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @deleteMedications = (childMedicationId) ->  
@@ -372,7 +424,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getAllergies = (childId) ->  
@@ -392,7 +448,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @deleteAllergy = (childAllergyId) ->  
@@ -412,7 +472,11 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
       
   return

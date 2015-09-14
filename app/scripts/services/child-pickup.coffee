@@ -23,7 +23,11 @@ angular.module('kiteLineApp').service 'ChildPickupService', ($http, $q, $rootSco
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @addChildPickUpRecord = (obj) ->
@@ -49,7 +53,11 @@ angular.module('kiteLineApp').service 'ChildPickupService', ($http, $q, $rootSco
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @updateChildPickupInfo = (obj) ->
@@ -76,7 +84,11 @@ angular.module('kiteLineApp').service 'ChildPickupService', ($http, $q, $rootSco
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @deleteChildPickupListItem = (centerId, childPickupId) ->
@@ -96,7 +108,11 @@ angular.module('kiteLineApp').service 'ChildPickupService', ($http, $q, $rootSco
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   return

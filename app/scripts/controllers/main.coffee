@@ -96,6 +96,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       $window.location.href = '/'
     else if window.location.href.indexOf('cloud') > - 1
       $window.location.href = 'https://cloud.spinsys.com/skychildcare/kitelineweb/#/'
+    else if window.location.href.indexOf('parent') > - 1
+      $window.location.href = 'https://parent.skychildcare.com/#/'
     else
       $window.location.href = 'https://uat.skychildcare.com/parentportal/#/'
 

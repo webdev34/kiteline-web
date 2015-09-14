@@ -23,7 +23,11 @@ angular.module('kiteLineApp').service 'CustomStatisticsService', ($http, $q, $ro
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   return

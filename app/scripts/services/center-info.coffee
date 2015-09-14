@@ -27,7 +27,11 @@ angular.module('kiteLineApp').service 'CenterInfoService', ($http, $q, $rootScop
       return
     ).error (data, status, headers, config) ->
       deferred.reject status
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @centerSearch = (text) ->
@@ -64,7 +68,11 @@ angular.module('kiteLineApp').service 'CenterInfoService', ($http, $q, $rootScop
       return
     ).error (data, status, headers, config) ->
       deferred.reject status
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getCenterFiles = (centerId) ->
@@ -82,7 +90,11 @@ angular.module('kiteLineApp').service 'CenterInfoService', ($http, $q, $rootScop
       return
     ).error (data, status, headers, config) ->
       deferred.reject status
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   return

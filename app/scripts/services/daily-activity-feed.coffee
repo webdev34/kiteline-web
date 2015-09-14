@@ -24,7 +24,11 @@ angular.module('kiteLineApp').service 'DailyActivityFeedService', ($http, $q, $r
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getFeedTitlesByChild = (childId) ->   

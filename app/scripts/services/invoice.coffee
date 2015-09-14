@@ -23,7 +23,11 @@ angular.module('kiteLineApp').service 'InvoiceService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getPaidInvoices = (customerId) ->   
@@ -43,7 +47,11 @@ angular.module('kiteLineApp').service 'InvoiceService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getPaidInvoicesByDate = (customerId, startDate, endDate) ->   
@@ -63,7 +71,11 @@ angular.module('kiteLineApp').service 'InvoiceService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   return

@@ -23,7 +23,11 @@ angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootSc
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @createImmunization = (childImmunizationId, childId, centerId, immunizationName, description, doses, dateReceived, expiryDate, userId) ->   
@@ -53,7 +57,11 @@ angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootSc
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @updateImmunization = (childImmunizationId, childId, centerId, immunizationName, description, doses, dateReceived, expiryDate, userId) ->   
@@ -83,7 +91,11 @@ angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootSc
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @deleteImmunization = (childImmunizationId, childId, centerId, immunizationName, description, doses, dateReceived, expiryDate, userId) ->   
@@ -113,7 +125,11 @@ angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootSc
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   return

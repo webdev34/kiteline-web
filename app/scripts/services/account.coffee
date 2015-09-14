@@ -23,7 +23,11 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getAccount = (familyId, centerId, accountId) ->   
@@ -43,7 +47,11 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @createAccount = (obj) ->
@@ -91,7 +99,11 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
     
@@ -113,7 +125,11 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getDefaultAccount = (familyId, centerId) ->  
@@ -133,7 +149,11 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @setActiveAccount = (familyId, centerId, accountId) ->  
@@ -153,7 +173,11 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return    
 
   @deleteActiveAccount = (subscriberId, customerId) ->  
@@ -173,7 +197,11 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @getPayers = (customerId) ->  
@@ -193,7 +221,11 @@ angular.module('kiteLineApp').service 'AccountService', ($http, $q, $rootScope, 
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   return

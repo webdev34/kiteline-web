@@ -44,8 +44,12 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       $rootScope.dataLoading = false
-      toastr.clear()
-      toastr.error data.Message, 'Error'
+
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+
       return
 
    @updateStaleData = (email, pin, centerId) ->
@@ -76,8 +80,12 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       $rootScope.dataLoading = false
-      toastr.clear()
-      toastr.error data.Message, 'Error'
+
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+
       return     
 
   @getCenterInfo = (centerId, familyId) ->
@@ -94,7 +102,11 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       $rootScope.currentCenterInfo = null
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @ForgotPin = (email, centerId) ->
@@ -116,8 +128,11 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       $rootScope.dataLoading = false
-      toastr.clear()
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
 
   @isLoggedIn = ->
@@ -161,9 +176,11 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
     ).error (data, status, headers, config) ->
       deferred.reject status
       $rootScope.currentCenterInfo = null
-      toastr.error data.Message, 'Error'
+      if data.Message isnt null
+        toastr.error data.Message, 'Error'
+      else
+        toastr.error data.Message, 'Error'
+        
       return
-
-
 
   return
