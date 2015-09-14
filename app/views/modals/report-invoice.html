@@ -16,6 +16,9 @@
                 } else if (window.location.href.indexOf('localhost') > -1 ) {
                   serviceUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/';
                   templateUrl = 'http://localhost:9000/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html'
+                } else if (window.location.href.indexOf('parent') > -1 ) {
+                  serviceUrl = 'https://app.skychildcare.com/services/kiteline/v2.0/';
+                  templateUrl = 'https://parent.skychildcare.com/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html'
                 }
                 else  {
                   serviceUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/';

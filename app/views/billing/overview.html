@@ -10,7 +10,11 @@
 
 		  <div class="carousel-inner" role="listbox">
 			    <div class="item" ng-class="{'active': $index == 0}"  data-ng-repeat="child in userChildrenTuition">
-			  	<img class="box-shadow-default rounded-img-large" ng-src="{{child.PhotoURL}}" onerror="this.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDYSw3KB9amgYnaFZ1hTsUwl5kVag7MpoWcBF9IUVH-tEPDOmbPQ'"/>
+
+			  	<img ng-if="child.Sex == 'M'" class="box-shadow-default rounded-img-large" ng-src="{{child.PhotoUrl}}" onerror="this.src = 'images/male.svg'; this.classList.remove('box-shadow-default');" />
+				<img ng-if="child.Sex == 'F'" class="box-shadow-default rounded-img-large" ng-src="{{child.PhotoUrl}}" onerror="this.src = 'images/female.svg'; this.classList.remove('box-shadow-default');" />
+
+
 				<p class="child-name">{{child.FullName}}</p>
 				
 				<p class="tuition-rate">{{child.ClassName}} - {{child.TuitionAmount | currency}} <span>{{child.RateInterval}}</span></p>
