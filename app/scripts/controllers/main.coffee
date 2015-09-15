@@ -101,8 +101,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     else
       $window.location.href = 'https://uat.skychildcare.com/parentportal/#/'
 
-    
-
   $rootScope.sortByFunc = (sortBy, reverse) ->
     $rootScope.sortOrderBy = sortBy
     $rootScope.reverse = reverse

@@ -18,9 +18,9 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
     $rootScope.centerId = ''
     $scope.emailForgotPin = ''
     $scope.requestSent = false
+    $scope.currentActive = 0
     LogInService.isLoggedIn()
     $rootScope.changePageTitle()
-
 
     if $location.$$path == '/invalid-subscription'
       if $rootScope.invalidCenter is null
@@ -43,8 +43,9 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
         $scope.showLogIn = true
         $scope.validationCheck()
 
-    $scope.centerSearchFunc = ->
-      CenterInfoService.centerSearch $scope.centernameSearch
+    $scope.centerSearchFunc = ($event)->
+      if $scope.centernameSearch && $event.keyCode != 38 && $event.keyCode != 40
+        CenterInfoService.centerSearch $scope.centernameSearch
 
     $scope.forgotPinFunc = ->
       $rootScope.dataLoading = true
@@ -54,10 +55,38 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
       $scope.centernameSearch = centerName
       $rootScope.centerId = centerId
       $rootScope.careCenters = null
+      $scope.currentActive = 0
+      document.getElementById('centernameSearch').blur()
+      
       if $scope.showLogIn == true
         $scope.validationCheck()
       else
         $scope.validationCheckForgotPin()
+
+    $scope.key = ($event) ->
+      $scope.hideList = false
+      if $scope.centernameSearch && $event.keyCode == 13
+        angular.forEach $rootScope.careCenters, (value, key) ->
+          if $rootScope.careCenters isnt null
+            if $rootScope.careCenters[key].isActive == true
+              $scope.hideList = true
+              $scope.selectCenter($rootScope.careCenters[key].CenterId, $rootScope.careCenters[key].CenterName)
+
+      else if $scope.centernameSearch && $event.keyCode == 38 || $event.keyCode == 40 
+        angular.forEach $rootScope.careCenters, (value, key) ->
+          $rootScope.careCenters[key].isActive = false
+
+        if $event.keyCode == 38 && $scope.currentActive != 0
+          $scope.currentActive--
+          $rootScope.careCenters[$scope.currentActive].isActive = true  
+        else if $event.keyCode == 40 && $scope.currentActive <= 3 && $scope.currentActive != 0
+          $rootScope.careCenters[$scope.currentActive].isActive = true
+          $scope.currentActive++ 
+        else if $event.keyCode == 40 && $scope.currentActive <= 3 && $scope.currentActive == 0
+          $scope.currentActive++
+          $rootScope.careCenters[0].isActive = true
+        else
+          $rootScope.careCenters[$scope.currentActive].isActive = true
 
     $scope.validationCheck = ->
       if $scope.email

@@ -1,16 +1,21 @@
 @import "compass/css3/box-shadow";
 
 body.loginPage {
-    background-image: url(../images/background.jpg);
-    background-size: cover;
+    background-image: url(../images/kiteline_loginBG.jpg);
     background-repeat: no-repeat;
-    background-color: #e7f5ff;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    position: relative;
+    background-color: #4b7eb7;
     .inner-kiteline-content-container{
         width: auto;
         min-height: auto;
+        position: relative;
     }
     .container {
-        width: 400px;
+        //width: 400px;
         &.kiteline-content {
             padding-left: 15px;
             padding-right: 15px;
@@ -23,9 +28,13 @@ body.loginPage {
         .disclaimer{
             padding: 15px;
             text-align: left; 
-            background-color: #287194;
             p{
                 width: 345px; 
+            }
+            h5{
+                color: white;
+                font-weight: bolder;
+                text-transform: none;
             }
         }
     }
@@ -75,9 +84,11 @@ body.loginPage {
 }
 
 .log-in-wrapper {
-    margin-top: 25%;
+    margin-top: 18%;
     text-align: center;
     color: white;
+    position: absolute;
+    right: 2%;
     &.invalid-sub{
         width: 500px;
 
@@ -92,6 +103,16 @@ body.loginPage {
                 color: #287194;
             }
         }
+    }
+    .log-in-light-bkgd{
+        position: absolute;
+        height: 425px;
+        margin-top: 15px;
+        width: 453px;
+        margin-left: -35px;
+        background-color: white;
+        z-index: -1;
+        opacity: .2;
     }
     h3 {
         font-family: arial;
@@ -130,7 +151,9 @@ body.loginPage {
         width: 370px;
         z-index: 1000;
         li.list-group-item-info:hover {
-            background-color: white;
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #337ab7;
             cursor: pointer;
         }
     }
@@ -140,7 +163,7 @@ body.loginPage {
         display: block;
         margin-top: 10px;
     }
-    .btn-warning {
+    .btn-primary {
         width: 370px;
         margin-top: 15px;
     }

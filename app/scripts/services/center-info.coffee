@@ -45,6 +45,9 @@ angular.module('kiteLineApp').service 'CenterInfoService', ($http, $q, $rootScop
         url: url).success((data, status, headers, config) ->
         deferred.resolve data
         $rootScope.careCenters = data
+        angular.forEach $rootScope.careCenters, (value, key) ->
+          $rootScope.careCenters[key].isActive = false
+          
         return
       ).error((data, status, headers, config) ->
         deferred.reject status
