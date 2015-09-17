@@ -361,6 +361,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
   $rootScope.getUserData = () ->
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
+    console.log $rootScope.currentCenter
     $rootScope.currentUserEmail = StorageService.getItem('userEmail')
     $rootScope.currentUserToken = StorageService.getItem('x-skychildcaretoken')
     $rootScope.LastLoginInfo = StorageService.getItem('LastLoginInfo')
@@ -370,6 +371,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     $rootScope.showLogOut = false
 
     CenterInfoService.getCenterDetails($rootScope.centerId).then (response) ->
+      console.log response
       $rootScope.currentCenterDetails = response.data
       $rootScope.subscriberId = response.data.SubscriberId
 

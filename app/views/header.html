@@ -11,33 +11,20 @@
     	</div>
     <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
-			<li  ng-class="{'active': pageTitle == 'Kiteline Web - Dashboard' || pageTitle == 'Kiteline Web'}">
+			<li  ng-class="{'active': pageTitle == 'Dashboard'}">
 				<i class="fa fa-home"></i>
 				<a href="#/dashboard"  ng-click="showLogOut = false;">Home</a>
 			</li>
-			<li  ng-class="{'active': pageTitle == 'Kiteline Web - Billing'}">
+			<li  ng-class="{'active': pageTitle == 'Billing'}">
 				<i class="glyphicon glyphicon-list-alt"></i>
 				<a href="#/billing"  ng-click="showLogOut = false;">Billing</a>
 			</li>
-		<!--	<li ng-class="{'active': pageTitle == 'Messages'}">
-				<div class="msg-count-wrapper">
-  					<i class="glyphicon glyphicon-bullhorn msg"></i>
-  					<span class="msg-count-span">{{announcementCount}}</span>
-				</div>
-				<a class="msg" href="#/messages">Messages</a>
-			</li>
-			<li ng-class="{'active': pageTitle == 'Daily Activity Feed'}">
-  				<i class="fa fa-sun-o"></i>
-				<a class="activity-feed-link" href="#/daily-activity-feed">Updates</a>
-			</li>
-
-		-->
-			<li  ng-class="{'active': pageTitle == 'Kiteline Web - Forms'}">
+			<li  ng-class="{'active': pageTitle == 'Forms'}">
 				<i class="fa fa-file-pdf-o"></i>
 				<a href="#/forms"  ng-click="showLogOut = false;">Forms</a>
 			</li>			
 			<li class="user-profile-img-container relative">
-				<span>{{currentCenter.FullName}}</span>
+				<span class="ellipsis">{{currentCenter.FullName}}</span>
 				<i class="fa fa-caret-down dark-blue" ng-click="showLogOut = !showLogOut" ng-class="{'active': showLogOut}"></i>
 
 				<div class="log-out-wrapper" ng-show="showLogOut" >

@@ -1,6 +1,4 @@
 <div class="my-children-container-dashboard">
-	<span class="header-border-left pull-outside"></span>
-	<i class="fa fa-child pull-left" ></i>
 	<h4 class="my-children-header pull-left">Children</h4>
 	<div class="clearfix" ></div>
     <ul class="nav nav-tabs">
@@ -8,8 +6,12 @@
     </ul>
 	<div class="col-md-12 child-breakdown-wrapper">
 		<div class="pull-left">
-			<img ng-if="viewChildGeneralInfo.Sex == 'M'" class="box-shadow-default" ng-src="{{viewChild.PhotoUrl}}" onerror="this.src = 'images/male.svg'; this.classList.remove('box-shadow-default');" />
-			<img ng-if="viewChildGeneralInfo.Sex == 'F'" class="box-shadow-default" ng-src="{{viewChild.PhotoUrl}}" onerror="this.src = 'images/female.svg'; this.classList.remove('box-shadow-default');" />
+			<img ng-if="viewChildGeneralInfo.Sex == 'M' && viewChild.PhotoUrl.length != 0" class="box-shadow-default" ng-src="{{viewChild.PhotoUrl}}" onerror="this.src = 'images/male.svg'; this.classList.remove('box-shadow-default');" />
+			<img ng-if="viewChildGeneralInfo.Sex == 'M' && viewChild.PhotoUrl.length == 0" class="" src="images/male.svg" />
+
+
+			<img ng-if="viewChildGeneralInfo.Sex == 'F'  && viewChild.PhotoUrl.length != 0" class="box-shadow-default" ng-src="{{viewChild.PhotoUrl}}" onerror="this.src = 'images/female.svg'; this.classList.remove('box-shadow-default');" />
+			<img ng-if="viewChildGeneralInfo.Sex == 'F' && viewChild.PhotoUrl.length == 0" class="" src="images/female.svg" />
 		</div>
 		<div class="pull-left child-name-wrapper col-md-10">
 			<div class="name-block col-md-3">
@@ -29,6 +31,5 @@
 				<p>{{viewChildGeneralInfo.DOB | date}}</p>
 			</div>
 		</div>
-		<p class="clearfix last-checked-in">{{LastLoginInfo}}</p>
 	</div>
 </div>

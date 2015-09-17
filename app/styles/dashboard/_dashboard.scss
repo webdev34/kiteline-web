@@ -18,6 +18,50 @@
 	.contact-container{
 		position: relative;
 	}
+
+	.contact-container{
+		color: #ccc;
+		font-size: 16px;
+		a, .fa{
+			color: #ccc;
+			&.fa-globe{
+			    margin-left: -6px;
+			}
+			&.fa-at{
+			    margin-left: -5px;
+			}
+			&.fa-mobile{
+			    margin-left: -2px;
+			    font-size: 30px;
+			}
+
+		}
+
+		.contact-wrap{
+			margin: 5px;
+			float: left;
+			.phone-wrapper{
+				margin: 5px 0px;
+			}
+			
+			a{
+				float: left;
+				&:hover{
+					color: #4e99bd;
+				}
+				&.phone-number{
+					margin-top: 4px;
+				}
+			}
+		}
+		.col-md-12 {
+		    padding-left: 0px;
+		}
+
+		.center-hours{
+			margin-top: 10px;
+		}
+	}
 	.attachment-wrapper:hover{
 		.attachment-title,
 		.fa{

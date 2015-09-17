@@ -26,39 +26,89 @@
 		</nav>
 	</div>
 	<div class="feed-breakdown-view guardian-detail-wrapper" >
-		<div class="detail-breakdown">
-			<span class="detail-label">First Name</span>
-			<span class="detail-value">{{viewGuardian.FirstName}}</span>
+		<button class="btn btn-primary pull-right edit-guardian-btn edit-btn" ng-click="editGuardian = true;" ng-hide="editGuardian">Edit</button>
+		<div class="clearfix"></div>
+		<div class="view-guardian-info" ng-hide="editGuardian">
+			<div class="detail-breakdown">
+				<span class="detail-label">First Name</span>
+				<span class="detail-value">{{viewGuardian.FirstName}}</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Last Name</span>
+				<span class="detail-value">{{viewGuardian.LastName}}</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Relationship</span>
+				<span class="detail-value" ng-show="viewGuardian.RelationShip == 'F'">Father</span>
+				<span class="detail-value" ng-show="viewGuardian.RelationShip == 'M'">Mother</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Legal Custody?</span>
+				<span class="detail-value" ng-show="viewGuardian.LegalCustody == 'Y'">Yes</span>
+				 <span class="detail-value" ng-show="viewGuardian.LegalCustody == 'N'">No</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Employer</span>
+				<span class="detail-value" > {{ viewGuardian.Employer }}</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Security PIN</span>
+				<span class="detail-value" > {{ viewGuardian.PIN }}</span>
+			</div>	
 		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">Last Name</span>
-			<span class="detail-value">{{viewGuardian.LastName}}</span>
+
+		<!-- Edit -->
+
+		<div class="edit-guardian-info" ng-show="editGuardian">
+			<div class="detail-breakdown">
+				<span class="detail-label">First Name</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.FirstName" name="guardian_first_name" />
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Last Name</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.LastName" name="guardian_last_name" />
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Relationship</span>
+				<span class="detail-value controls relative">
+					<select id="edit-relationship" class="form-control" ng-model="viewGuardianEdit.RelationShip" >
+     					<option value="F">Father</option>
+     					<option value="M">Mom</option>
+    				</select>
+    				<i class="fa fa-caret-down" select-button select-id="edit-relationship"></i>
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Legal Custody?</span>
+				 <span class="detail-value controls relative">
+					<select id="edit-custody" class="form-control" ng-model="viewGuardianEdit.LegalCustody" >
+     					<option value="Y">Yes</option>
+     					<option value="N">No</option>
+    				</select>
+    				<i class="fa fa-caret-down" select-button select-id="edit-custody"></i>
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Employer</span>
+				<span class="detail-value" >
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.Employer" name="guardian_employer" /></span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Security PIN</span>
+				<span class="detail-value" > {{ viewGuardian.PIN }}</span>
+			</div>	
 		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">Relationship</span>
-			<span class="detail-value" ng-show="viewGuardian.RelationShip == 'F'">Father</span>
-			<span class="detail-value" ng-show="viewGuardian.RelationShip == 'M'">Mother</span>
-		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">Legal Custody?</span>
-			<span class="detail-value" ng-show="viewGuardian.LegalCustody == 'Y'">Yes</span>
-			 <span class="detail-value" ng-show="viewGuardian.LegalCustody == 'N'">No</span>
-		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">Employer</span>
-			<span class="detail-value" > {{ viewGuardian.Employer }}</span>
-		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">Security PIN</span>
-			<span class="detail-value" > {{ viewGuardian.PIN }}</span>
-		</div>	
+		<!-- Edit -->
+
 		<div class="clearfix"></div>	
 		<hr />
 		
 		<!-- MAILING ADDRESS -->
 		<h2 class="pull-left">Address</h2>
-		<button class="btn btn-primary pull-right edit-guardian-btn" ng-click="editGuardian = true;" ng-hide="editGuardian">Edit</button>
-		
 		<div class="clearfix"></div>
 		<div class="guardian-address-wrapper" ng-hide="editGuardian">
 			<div class="detail-breakdown">
@@ -177,8 +227,7 @@
 					<input type="text" class="form-control" ng-model="viewGuardianEdit.EmailAddress" name="guardian_email" tel />
 				</span>
 			</div>
-			<div class="clearfix"></div>
-			<div class="button-wrapper">
+			<div class="button-wrapper detail-breakdown">
 				<button class="btn btn-primary" ng-click="editGuardianInfo(); editGuardian = false;">Save</button>
 				<button class="btn btn-danger" ng-click="editGuardian = false;">Cancel</button>
 			</div>

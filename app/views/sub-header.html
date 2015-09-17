@@ -1,13 +1,15 @@
 <div class="sub-header-wrapper">
 	<ul>
-		<li class="pull-left"><img src="{{currentCenterDetails.LogoURL}}" /></li>
+		<li class="pull-left">
+			<span class="pull-left">{{pageTitle}}</span>
+		</li>
+
 		<li class="pull-right">
-			<h4 class="center-name">
-				
-					{{currentCenterDetails.CenterName}}<br/>
-					<span>{{currentCenterDetails.City}}, {{currentCenterDetails.State}} 
-				</span>
-			</h4>
+			<span class="pull-left center-info">{{currentCenter.CenterName}} - {{currentCenter.CenterCity}}, {{currentCenter.CenterState}}
+				<span class="last-logged-in">{{LastLoginInfo}}</span>
+			</span>
+			
+			<img src="{{currentCenter.CenterLogoURL}}" onerror="this.src = 'http://vignette2.wikia.nocookie.net/legendmarielu/images/b/b4/No_image_available.jpg/revision/latest?cb=20130511180903'; this.classList.remove('box-shadow-default');" />
 		</li>
 	</ul>
 </div>

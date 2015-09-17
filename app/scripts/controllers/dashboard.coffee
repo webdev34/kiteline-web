@@ -80,16 +80,44 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $rootScope.headOfHouseHold = $scope.viewGuardian
 
   $scope.editGuardianInfo = () ->
-    GuardianService.updateMailingAddress($scope.viewGuardianEdit).then (response) ->
-      GuardianService.updateContactInfo($scope.viewGuardianEdit).then (response) ->
-        $scope.goToGuardian($scope.viewGuardianEdit.GuardianId)
+    GuardianService.updatePersonalInfo($scope.viewGuardianEdit)
+    GuardianService.updateMailingAddress($scope.viewGuardianEdit)
+    GuardianService.updateContactInfo($scope.viewGuardianEdit).then (response) ->
+      $rootScope.getGuardianData(true)
+      $scope.goToGuardian($scope.viewGuardianEdit.GuardianId)
 
   $scope.goToEmergencyContact = (contactId) ->
     ContactService.getContact(contactId).then (response) ->
       $scope.viewEmergencyContact = response.data
+      $scope.viewEmergencyContactEdit = angular.copy $scope.viewEmergencyContact
+
+  $scope.editContactInfo = () ->
+    ContactService.updatePersonalInfo($scope.viewEmergencyContactEdit)
+    ContactService.updateMailingAddress($scope.viewEmergencyContactEdit)
+    ContactService.updateContactInfo($scope.viewEmergencyContactEdit).then (response) ->
+      $scope.getContactData(true)
+      $scope.goToEmergencyContact($scope.viewEmergencyContactEdit.EmergencyContactId)
 
   $scope.goToPickupContact = (contactId) ->
     $scope.viewPickupContact = $filter('filter')($scope.pickupList, (d) -> d.ChildPickupId == contactId)[0]  
+
+  $scope.getContactData = (isUpdated) ->
+    ContactService.getAllContacts($rootScope.familyId).then (response) ->
+      $scope.contacts = response.data
+      $scope.contactsPagination = Pagination.getNew()
+      $scope.contactsPagination.numPages = Math.ceil($scope.contacts.length/$scope.contactsPagination.perPage)
+      $scope.goToEmergencyContact($scope.viewEmergencyContactEdit.EmergencyContactId)
+
+  $scope.getPickListData = () ->
+    ChildPickupService.getAllChildPickupList($rootScope.familyId).then (response) ->
+      $scope.pickupList = response.data
+      if $scope.pickupList == null
+        $scope.pickupList = []
+      else
+        $scope.goToPickupContact($scope.pickupList[0].ChildPickupId)
+        
+      $scope.pickupListPagination = Pagination.getNew()
+      $scope.pickupListPagination.numPages = Math.ceil($scope.pickupList.length/$scope.pickupListPagination.perPage)
 
   if StorageService.getItem('currentCenter')
     $rootScope.getUserData()
@@ -103,28 +131,19 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       if $scope.dailyFeed.length > 0
         $scope.goToFeed($scope.dailyFeed[0].FeedId)
       
-        $rootScope.getGuardianData().then (response) ->
+      $rootScope.getGuardianData(false).then (response) ->
+        if $rootScope.guardians.length > 0
           $scope.goToGuardian($rootScope.guardians[0].GuardianId)
 
-    ContactService.getAllContacts($rootScope.familyId).then (response) ->
-      $scope.contacts = response.data
-      $scope.contactsPagination = Pagination.getNew()
-      $scope.contactsPagination.numPages = Math.ceil($scope.contacts.length/$scope.contactsPagination.perPage)
-      $scope.goToEmergencyContact($scope.contacts[0].EmergencyContactId)
+      $scope.getContactData(false).then (response) ->
+        if $scope.contacts.length > 0
+          $scope.goToEmergencyContact($scope.contacts[0].EmergencyContactId)d)
 
-    $rootScope.getInvoiceData()
-
-    ChildPickupService.getAllChildPickupList($rootScope.familyId).then (response) ->
-      $scope.pickupList = response.data
-      if $scope.pickupList == null
-        $scope.pickupList = []
-      else
-        $scope.goToPickupContact($scope.pickupList[0].ChildPickupId)
-        
-      $scope.pickupListPagination = Pagination.getNew()
-      $scope.pickupListPagination.numPages = Math.ceil($scope.pickupList.length/$scope.pickupListPagination.perPage)
+      $scope.getPickListData()
+      $rootScope.getInvoiceData()
       
       setTimeout (->
         $rootScope.getPaymentAccounts()
-      ), 250
-      $rootScope.stopSpin()
+        $rootScope.stopSpin()
+      ), 1000
+        

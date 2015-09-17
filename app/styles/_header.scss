@@ -2,11 +2,11 @@ header.header {
     .navbar, .navbar-inverse {
         @include border-radius(0px);
         border: none;
-        //margin-bottom: 0;
         background-color: #064c70;
         height: 60px;
-        width: 1280px;
         margin: 0 auto;
+        position: relative;
+        padding: 0 50px;
         .navbar-toggle{
             border-color: white;
         }
@@ -70,19 +70,19 @@ header.header {
         }
         &.user-profile-img-container {
             cursor: pointer;
-            min-width: 90px;
-            // span{
-            //     margin-top: 20px;
-            //     float: left;
-            //     margin-left: 10px;
-            // }
+            width: 200px;
             .fa {
-                // position: relative;
-                // float: left;
-                left: 60px;
+                position: relative;
+                color: white;
             }
             &:hover .fa.fa-caret-down {
                 color: #0c4d6e;
+            }
+            .ellipsis{
+                float: left;
+                margin-top: 20px;
+                width: 140px;
+                text-align: right;
             }
         }
         .msg-count-wrapper {
@@ -167,7 +167,6 @@ header.header {
         }
     }
 }
-
 
 .navbar-collapse.pull-right.collapse.in{
     margin-left: 0px;

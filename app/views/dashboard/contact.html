@@ -1,37 +1,54 @@
 <div class="contact-container">
-
-
 		<h4>Contact Your Center</h4>
 		<div class="clearfix"></div>
-		<p class="col-md-12 text-center">
-			<span>{{currentCenterDetails.CenterName}}</span><br/>
-			{{currentCenterDetails.Street}}<br/>
-			{{currentCenterDetails.City}}, {{currentCenterDetails.State}} {{currentCenterDetails.Zip}}
-		</p>
-		<div class="contact-section-wrapper col-md-6 pull-left">
-			<div class="contact-wrap">
-				<i class="fa fa-globe pull-left"></i>
-				<a href="{{currentCenterDetails.SiteURL}}" target="_blank">{{currentCenterDetails.SiteURL}}</a>
-				<p ng-show="currentCenterDetails.SiteURL.length == 0">No Center URL</p>
-			</div>	
-			<div class="contact-wrap">
-				<i class="fa fa-mobile pull-left"></i>
-				<a class="phone-number" href="tel:{{currentCenterDetails.Phone}}">{{currentCenterDetails.Phone}}</a>
+		<div class="center-info">
+			<p class="col-md-12">
+
+				<span>{{currentCenter.CenterName}}</span><br/>
+				{{currentCenter.CenterStreet}}<br/>
+				{{currentCenter.CenterCity}}, {{currentCenter.CenterState}} {{currentCenter.CenterZip}}
+			</p>
+			<div class="contact-section-wrapper col-md-12 pull-left">
+				<div class="contact-wrap">
+					<i class="fa fa-globe pull-left"></i>
+					<a href="{{currentCenter.WebSiteURL}}" target="_blank" ng-hide="currentCenter.WebSiteURL.length == 0">{{currentCenter.WebSiteURL}}</a>
+					<p ng-show="currentCenter.WebSiteURL.length == 0">No Website Listed</p>
+				</div>	
+				<div class="contact-wrap phone-wrapper clearfix">
+					<i class="fa fa-mobile pull-left"></i>
+					<a class="phone-number" href="tel:{{currentCenter.CenterPhone}}" ng-hide="currentCenter.CenterPhone.length == 0">{{currentCenter.CenterPhone}}</a>
+					<p ng-show="currentCenter.CenterPhone.length == 0">No Number Listed</p>
+				</div>
+				<div class="contact-wrap clearfix">
+					<i class="fa fa-at pull-left"></i>
+					<a href="mailto:{{currentCenter.EmailAddress}}" ng-hide="currentCenter.CenterPhone.length == 0">{{currentCenter.CenterEmail}}</a>
+					<p ng-show="currentCenter.EmailAddress.length == 0">No Email Listed</p>
+				</div>
 			</div>
-			<div class="contact-wrap">
-				<i class="fa fa-at pull-left"></i>
-				<a href="mailto:{{currentCenterDetails.EmailAddress}}">{{currentCenterDetails.EmailAddress}}</a>
-			</div>
+			<p class="day-care-hours col-md-12 clearfix">
+				<span ng-show="currentCenter.MondayStart.length != 0">
+					<b>Monday: </b> {{currentCenter.MondayStart}} - {{currentCenter.MondayEnd}}
+				</span><br/>
+				<span ng-show="currentCenter.TuesdayStart.length != 0">
+					<b>Tuesday: </b> {{currentCenter.TuesdayStart}} - {{currentCenter.TuesdayEnd}}
+				</span><br/>
+				<span ng-show="currentCenter.WednesdayStart.length != 0">
+					<b>Wednesday: </b> {{currentCenter.WednesdayStart}} - {{currentCenter.WednesdayEnd}}
+				</span><br/>
+				<span ng-show="currentCenter.ThursdayStart.length != 0">
+					<b>Thursday: </b> {{currentCenter.ThursdayStart}} - {{currentCenter.ThursdayEnd}}
+				</span><br/>
+				<span ng-show="currentCenter.FridayStart.length != 0">
+					<b>Friday: </b> {{currentCenter.FridayStart}} - {{currentCenter.FridayEnd}}
+				</span><br/>
+				<span ng-show="currentCenter.SaturdayStart.length != 0">
+					<b>Saturday: </b> {{currentCenter.SaturdayStart}} - {{currentCenter.SaturdayEnd}}
+				</span><br/>
+
+				<span ng-show="currentCenter.SundayStart.length != 0">
+					<b>Sunday:</b> {{currentCenter.SundayStart}} - {{currentCenter.SundayEnd}}
+				</span>
+			</p>
 		</div>
-		<p class="day-care-hours col-md-6">
-			<b>Mon: </b> {{currentCenterDetails.MonHours}}<br/>
-			<b>Tue: </b> {{currentCenterDetails.TueHours}}<br/>
-			<b>Wed: </b> {{currentCenterDetails.WedHours}}<br/>
-			<b>Thu: </b> {{currentCenterDetails.ThurHours}}<br/>
-			<b>Fri: </b> {{currentCenterDetails.FridHours}}<br/>
-			<div ng-show="currentCenterDetails.SatHours.length != 0 || currentCenterDetails.SunHours.length != 0">
-				<b>Sat/Sun:</b> {{currentCenterDetails.SatHours}}/{{currenCenterDetails.SunHours}}
-			</div>
-		</p>
 		<div class="clearfix"></div>
 	</div>

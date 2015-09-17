@@ -55,6 +55,8 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
       return
 
   @updatePersonalInfo = (obj) ->
+    console.log obj
+    url = rootUrl+'api/Guardian/UpdatePersonalInfo'
     $http(
       method: 'POST'
       headers:
@@ -67,7 +69,7 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
         'GuardianId': obj.GuardianId
         'FirstName': obj.FirstName
         'LastName': obj.LastName
-        'RelationShip': obj.Relationship
+        'RelationShip': obj.RelationShip
         'LegalCustody': obj.LegalCustody
         'Employer': obj.Employer
 

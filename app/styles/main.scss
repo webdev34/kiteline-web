@@ -31,8 +31,12 @@ html {
                 margin: 0px !important;
             }
             &.dead:hover{
-                cursor: default;
+                cursor: not-allowed;
             }
+        }
+        input.form-control,
+        select.form-control{
+            color: #287194;
         }
         .fa {
             &.fa-cc-amex {
@@ -258,9 +262,7 @@ html {
 }
 
 .inner-kiteline-content-container {
-    //height: 100%;
     min-height: 1050px;
-    //width: 1280px;
     margin: 0 auto;
 }
 
@@ -281,7 +283,6 @@ a:hover {
     margin: 30px 0;
 }
 
-/* Supporting marketing content */
 .marketing {
     margin: 40px 0;
 }
@@ -297,7 +298,6 @@ a:hover {
 .container.kiteline-content {
     max-width: 100%;
     width: 100%;
-    height: 84%;
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -317,11 +317,10 @@ a:hover {
 .kiteline-logo {
     background: url(../images/kiteline-logo.png);
     background-repeat: no-repeat;
-    width: 155px;
-    height: 43px;
+    width: 192px;
+    height: 49px;
     position: absolute;
-    top: 8px;
-    left: 10px;
+    top: 3px;
 }
 
 .bank-icon {
@@ -340,26 +339,47 @@ h1, h2, h3 {
 .sub-header-wrapper {
     float: left;
     width: 100%;
-    min-height: 100px;
-    margin-top: 10px;
+    margin-top: 35px;
+    margin-bottom: 20px;
     .greeting {
         font-size: 21px;
         margin-top: 25px;
     }
     ul {
-        //margin-left: 10%;
+        background-color: #07405e;
+        height: 60px;
         li {
             float: right;
             list-style: none;
-            color: #4a90e2;
+            color: #ccc;
             margin-right: 3%;
-            font-size: 18px;
+            font-size: 16px;
             p {
                 margin-top: 25px;
             }
+            .center-info{
+                margin-top: 7px;
+            }
+            span{
+                margin-top: 18px;
+                font-size: 18px;
+                .last-logged-in{
+                    display: list-item;
+                    font-size: 14px;
+                    width: 100%;
+                    text-align: right;
+                    margin-top: 0px;
+                }
+            }
             img {
-                width: 150px;
-                padding-bottom: 15px;
+                width: 100px;
+                background-color: white;
+                padding: 5px;
+                border-radius: 15px;
+                margin-top: -25px;
+                position: relative;
+                margin-right: -42px;
+                margin-left: 25px;
             }
             .fa, .glyphicon {
                 font-size: 28px;
@@ -380,6 +400,15 @@ h1, h2, h3 {
             }
         }
     }
+}
+
+.left-feature-container.col-md-8.white-bg{
+    width: 75%;
+}
+.right-feature-container.col-md-4{
+    width: 22%;
+    margin-left: 20px;
+    padding-right: 0;
 }
 
 .left-feature-container {
@@ -490,8 +519,6 @@ h1, h2, h3 {
     }
 }
 
-//.left-feature-container
-
 .middle-feature-container {
     nav {
         float: right;
@@ -516,25 +543,7 @@ h1, h2, h3 {
             }
         }
     }
-    // .edit-button {
-    //     float: right;
-    //     font-size: 18px;
-    //     margin-top: 25px;
-    //     margin-right: 5px;
-    //     cursor: pointer;
-    //     &:hover {
-    //         color: #999;
-    //     }
-    // }
-    // .delete-button {
-    //     float: right;
-    //     font-size: 18px;
-    //     color: red;
-    //     cursor: pointer;
-    //     &:hover {
-    //         color: #999;
-    //     }
-    // }
+
 }
 
 .left-feature-container,
@@ -955,6 +964,10 @@ body {
     width: 50%;
 }
 
+.light-gray{
+    color: #ccc;
+}
+
 .red {
     color: red !important;
 }
@@ -1080,6 +1093,10 @@ body {
 }
 
 @media (max-width: 992px) {
+    .left-feature-container.col-md-8.white-bg,
+    .right-feature-container.col-md-4{
+        width: auto;
+    }
     .left-feature-container {
         &.col-md-4,
         &.col-md-8,
@@ -1126,7 +1143,7 @@ body {
     header.header .navbar-inverse,
     footer.footer .footer-container {
         width: auto;
-        height: auto;
+        //height: auto;
     }
     .right-feature-container {
         padding: 0px;
@@ -1136,12 +1153,12 @@ body {
         min-height: 1055px;
         overflow: auto;
     }
-    .kiteline-logo {
-        height: 36px;
-        background-size: contain;
-        margin-top: 5px;
-        margin-left: 10px;
-    }
+    // .kiteline-logo {
+    //     height: 36px;
+    //     background-size: contain;
+    //     margin-top: 5px;
+    //     margin-left: 10px;
+    // }
 }
 
 

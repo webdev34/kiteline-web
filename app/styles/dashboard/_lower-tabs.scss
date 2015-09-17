@@ -30,11 +30,21 @@
 			margin-bottom: 10px;
         }
         .edit-guardian-btn{
-        	margin-top: 5px;
+        	margin-top: -10px;
         }
-        .edit-guardian-address-wrapper{
+        .edit-guardian-address-wrapper,
+        .edit-guardian-info{
         	.detail-label{
         		width: 30%;
+        	}
+        }
+        .button-wrapper.detail-breakdown{
+        	text-align: right;
+        	.btn-primary{
+        		margin-right: 15px;
+        	}
+        	.btn-danger{
+        		margin-right: 35px;
         	}
         }
 
@@ -46,7 +56,7 @@
 	.pickup-list-wrapper{
 		margin-top: 10px;
 		.detail-label{
-			width: 35%;
+			width: 30%;
 		}
 		.detail-value{
 			width: 60%;
