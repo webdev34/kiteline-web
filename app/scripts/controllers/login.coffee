@@ -69,6 +69,7 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
         angular.forEach $rootScope.careCenters, (value, key) ->
           if $rootScope.careCenters isnt null
             if $rootScope.careCenters[key].isActive == true
+              $('#email').focus()
               $scope.hideList = true
               $scope.selectCenter($rootScope.careCenters[key].CenterId, $rootScope.careCenters[key].CenterName)
 

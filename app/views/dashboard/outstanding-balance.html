@@ -1,6 +1,5 @@
-<div class="outstanding-balance-container white-bg box-shadow-container" >
-	<span class="header-border-left"></span>
-	<i class="fa fa-usd pull-left"></i>
+<div class="outstanding-balance-container" >
+
 	<h4 class="pull-left">
 		Outstanding Balance
 	</h4> 
@@ -9,9 +8,7 @@
 		<span class="current-balance">
 			{{outstandingInvoicesDueTotal | currency}}
 		</span> 
-		<span class="auto-pay" ng-show="defaultAccount.RecurringAccount != null">
-			Auto pay scheduled for {{currentCenter.NextPayDate}}
-		</span> 
+		<span class="auto-pay ng-hide" ng-show="defaultAccount.RecurringAccount != null">Auto pay scheduled for {{currentCenter.NextPayDate}}</span> 
 		<a href="#/billing/invoices">View Details</a>
 		<button ng-hide="outstandingInvoicesDueTotal == 0" class="btn btn-primary payment-btn" ng-click="payOutstandingBalance();">
 			Make Payment

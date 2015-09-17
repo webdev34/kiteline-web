@@ -1,6 +1,6 @@
 footer.footer{
 	height: 60px;
-	background-color: #0c4d6e;
+
     color: #bac0c0;
 	bottom: 0px;
 	left: 0px;
@@ -8,29 +8,24 @@ footer.footer{
 	width: 100%;
 	a{
 		color: #bac0c0;
-		font-size: 16px;
+		font-size: 13px;
 		&:hover{
 			text-decoration: none;
 		}
 	}
 	.footer-container{
-		width: 1280px;
-  		margin: 0 auto;
 		p,div{
 			display: inline;
 			margin-top: 25px;
-			font-size: 16px;
+			font-size: 13px;
 		}
 
 		.reserved-rights{
-			width: 100%;
-			text-align: center;
+			margin-left: 38%;
 		}
 
 		.terms-privacy-container{
-			position: absolute;
-  			width: 100px;
-  			right: 55px;
+			margin-right: 30px;
 		}
 	}
 }

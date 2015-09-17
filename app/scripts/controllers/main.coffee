@@ -62,11 +62,11 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
   $rootScope.changePageTitle = () ->
     if $location.$$path is '/dashboard'
-      $rootScope.pageTitle = 'Kiteline Web - Dashboard'
+      $rootScope.pageTitle = 'Dashboard'
       document.title = 'Kiteline Web - Dashboard'
 
     if $location.$$path is '/billing' || $location.$$path is '/billing/invoices' || $location.$$path is '/billing/payment-accounts'
-      $rootScope.pageTitle = 'Kiteline Web - Billing'
+      $rootScope.pageTitle = 'Billing'
       document.title = 'Kiteline Web - Billing'
 
     if $location.$$path is '/'
@@ -75,7 +75,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       $rootScope.stopSpin()
 
     if $location.$$path is '/forms'
-      $rootScope.pageTitle = 'Kiteline Web - Forms'
+      $rootScope.pageTitle = 'Forms'
       document.title = 'Kiteline Web - Forms'
 
   $rootScope.startSpin = ->

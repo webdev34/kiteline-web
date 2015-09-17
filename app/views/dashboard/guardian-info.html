@@ -56,54 +56,132 @@
 		<hr />
 		
 		<!-- MAILING ADDRESS -->
-		<h2>Address</h2>
-		<div class="detail-breakdown">
-			<span class="detail-label">Street</span>
-			<span class="detail-value">{{viewGuardian.Street}}</span>
+		<h2 class="pull-left">Address</h2>
+		<button class="btn btn-primary pull-right edit-guardian-btn" ng-click="editGuardian = true;" ng-hide="editGuardian">Edit</button>
+		
+		<div class="clearfix"></div>
+		<div class="guardian-address-wrapper" ng-hide="editGuardian">
+			<div class="detail-breakdown">
+				<span class="detail-label">Street</span>
+				<span class="detail-value">{{viewGuardian.Street}}</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">City</span>
+				<span class="detail-value">{{viewGuardian.City}}</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">State</span>
+				<span class="detail-value">{{viewGuardian.State}}</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Zip</span>
+				<span class="detail-value">
+					{{viewGuardian.Zip}}
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Home Phone</span>
+				<span class="detail-value">{{viewGuardian.HomePhone  | tel}}</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Work Phone</span>
+				<span class="detail-value">
+					{{viewGuardian.WorkPhone | tel}}
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Cell Phone</span>
+				<span class="detail-value">
+					{{viewGuardian.CellPhone | tel}}
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Pref. Method<br/>Of Contact</span>
+				<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'W'">Work Phone</span>
+				<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'S'">SMS</span>
+				<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'H'">Home Phone</span>
+				<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'C'">Cell Phone</span>
+				<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'E'">Email</span>
+			</div>
+			<div class="detail-breakdown longer">
+				<span class="detail-label">Email</span>
+				<span class="detail-value no-cap">
+					{{viewGuardian.EmailAddress}}
+				</span>
+			</div>
 		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">City</span>
-			<span class="detail-value">{{viewGuardian.City}}</span>
-		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">State</span>
-			<span class="detail-value">{{viewGuardian.State}}</span>
-		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">Zip</span>
-			<span class="detail-value">
-				{{viewGuardian.Zip}}
-			</span>
-		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">Home Phone</span>
-			<span class="detail-value">{{viewGuardian.HomePhone  | tel}}</span>
-		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">Work Phone</span>
-			<span class="detail-value">
-				{{viewGuardian.WorkPhone | tel}}
-			</span>
-		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">Cell Phone</span>
-			<span class="detail-value">
-				{{viewGuardian.CellPhone | tel}}
-			</span>
-		</div>
-		<div class="detail-breakdown">
-			<span class="detail-label">Pref. Method<br/>Of Contact</span>
-			<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'W'">Work Phone</span>
-			<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'S'">SMS</span>
-			<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'H'">Home Phone</span>
-			<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'C'">Cell Phone</span>
-			<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'E'">Email</span>
-		</div>
-		<div class="detail-breakdown longer">
-			<span class="detail-label">Email</span>
-			<span class="detail-value no-cap">
-				{{viewGuardian.EmailAddress}}
-			</span>
+
+		<!-- EDIT GUARDIAN ADDRESS -->
+		<div class="edit-guardian-address-wrapper" ng-show="editGuardian">
+			<div class="detail-breakdown">
+				<span class="detail-label">Street</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.Street" name="guardian_street" />
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">City</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.City" name="guardian_city" />
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">State</span>
+				<span class="detail-value controls relative">
+					<select id="edit-guardian-state" class="form-control" ng-model="viewGuardianEdit.State" >
+     					<option value="{{option.abbreviation}}" data-ng-repeat="option in statesDropDown" >{{option.name}}</option>
+    				</select>
+    				<i class="fa fa-caret-down" select-button select-id="edit-guardian-state"></i>
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Zip</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.Zip" name="guardian_zip" />
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Home Phone</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.HomePhone" name="guardian_home_phone" tel />
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Work Phone</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.WorkPhone" name="guardian_work_phone" tel />
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Cell Phone</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.CellPhone" name="guardian_cell_phone" tel />
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Pref. Method<br/>Of Contact</span>
+				<span class="detail-value controls relative">
+					<select id="edit-method-of-contact" class="form-control" ng-model="viewGuardianEdit.PrefMethodOfContact" >
+						<option value="C">Cell Phone</option>
+						<option value="H">Home Phone</option>
+     					<option value="W">Work Phone</option>
+     					<option value="E">Email</option>
+     					<option value="S">SMS</option>
+    				</select>
+    				<i class="fa fa-caret-down" select-button select-id="edit-method-of-contact"></i>
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Email</span>
+				<span class="detail-value no-cap">
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.EmailAddress" name="guardian_email" tel />
+				</span>
+			</div>
+			<div class="clearfix"></div>
+			<div class="button-wrapper">
+				<button class="btn btn-primary" ng-click="editGuardianInfo(); editGuardian = false;">Save</button>
+				<button class="btn btn-danger" ng-click="editGuardian = false;">Cancel</button>
+			</div>
 		</div>
 	</div>
 </div>

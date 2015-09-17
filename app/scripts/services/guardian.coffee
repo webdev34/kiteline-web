@@ -54,7 +54,7 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
         
       return
 
-  @updatePersonalInfo = (guardianId, firstName, lastName, relationship, legalCustody, employer) ->
+  @updatePersonalInfo = (obj) ->
     $http(
       method: 'POST'
       headers:
@@ -64,12 +64,12 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'GuardianId': guardianId
-        'FirstName': firstName
-        'LastName': lastName
-        'RelationShip': relationship
-        'LegalCustody': legalCustody
-        'Employer': employer
+        'GuardianId': obj.GuardianId
+        'FirstName': obj.FirstName
+        'LastName': obj.LastName
+        'RelationShip': obj.Relationship
+        'LegalCustody': obj.LegalCustody
+        'Employer': obj.Employer
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
@@ -78,14 +78,10 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      if data.Message isnt null
-        toastr.error data.Message, 'Error'
-      else
-        toastr.error data.Message, 'Error'
-        
+      toastr.error status, 'Error'
       return
 
-  @updateMailingAddress = (guardianId, street, city, state, zip) ->   
+  @updateMailingAddress = (obj) ->   
     url = rootUrl+'api/Guardian/UpdateMailingAddress'
     $http(
       method: 'POST'
@@ -96,11 +92,11 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'GuardianId': guardianId
-        'Street': street
-        'City': city
-        'State': state
-        'Zip': zip
+        'GuardianId': obj.GuardianId
+        'Street': obj.Street
+        'City': obj.City
+        'State': obj.State
+        'Zip': obj.Zip
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
@@ -109,14 +105,10 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      if data.Message isnt null
-        toastr.error data.Message, 'Error'
-      else
-        toastr.error data.Message, 'Error'
-        
+      toastr.error status, 'Error'
       return
 
-  @updateContactInfo = (guardianId, homePhone, cellPhone, workPhone, email, prefMethodOfContact) ->  
+  @updateContactInfo = (obj) ->  
     url = rootUrl+'api/Guardian/UpdateContactInfo'
     $http(
       method: 'POST'
@@ -127,12 +119,12 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'GuardianId': guardianId
-        'HomePhone': homePhone
-        'CellPhone': cellPhone
-        'WorkPhone': workPhone
-        'EmailAddress': email
-        'PrefMethodOfContact': prefMethodOfContact
+        'GuardianId': obj.GuardianId
+        'HomePhone': obj.HomePhone
+        'CellPhone': obj.CellPhone
+        'WorkPhone': obj.WorkPhone
+        'EmailAddress': obj.EmailAddress
+        'PrefMethodOfContact': obj.PrefMethodOfContact
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
@@ -141,11 +133,7 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
     ).error (data, status, headers, config) ->
       deferred.reject status
       
-      if data.Message isnt null
-        toastr.error data.Message, 'Error'
-      else
-        toastr.error data.Message, 'Error'
-        
+      toastr.error status, 'Error'
       return
 
   return

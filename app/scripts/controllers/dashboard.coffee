@@ -7,6 +7,8 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   LogInService.isLoggedIn()
   $scope.userChildren = null
   $scope.viewChild = null
+  $scope.editGuardian = false;
+  $scope.editContact = false;
   $scope.currentLowerTab = "Updates"
   $scope.activeChild = "child-1"
   $scope.activeGuardian = "guardian-1"
@@ -74,7 +76,13 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.goToGuardian = (guardianId) ->
     GuardianService.getGuardian(guardianId).then (response) ->
       $scope.viewGuardian = response.data
+      $scope.viewGuardianEdit = angular.copy $scope.viewGuardian
       $rootScope.headOfHouseHold = $scope.viewGuardian
+
+  $scope.editGuardianInfo = () ->
+    GuardianService.updateMailingAddress($scope.viewGuardianEdit).then (response) ->
+      GuardianService.updateContactInfo($scope.viewGuardianEdit).then (response) ->
+        $scope.goToGuardian($scope.viewGuardianEdit.GuardianId)
 
   $scope.goToEmergencyContact = (contactId) ->
     ContactService.getContact(contactId).then (response) ->

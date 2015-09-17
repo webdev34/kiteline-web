@@ -18,10 +18,21 @@
 	.contact-container{
 		position: relative;
 	}
+	.attachment-wrapper:hover{
+		.attachment-title,
+		.fa{
+			color: #287194 !important;
+		}
+	}
 	.attachment-title{
 		margin-bottom: 10px;
 		@extend .ellipsis;
 		max-width: 150px;
 		text-transform: capitalize;
+		color: #529acd !important;
+		
+		.fa{
+			color: #529acd !important;
+		}
 	}
 } //.dashboard-container
