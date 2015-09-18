@@ -89,10 +89,19 @@ html {
             }
         }
         ._720kb-tooltip{
-            background-color: $light-blue; 
-            ._720kb-tooltip-caret:after,
-            ._720kb-tooltip-caret:before{
-                border-top-color: $light-blue;
+             &._720kb-tooltip-top{
+                background-color: $light-blue; 
+                ._720kb-tooltip-caret:after,
+                ._720kb-tooltip-caret:before{
+                    border-top-color: $light-blue;
+                }
+            }
+             &._720kb-tooltip-bottom{
+                background-color: $light-blue; 
+                ._720kb-tooltip-caret:after,
+                ._720kb-tooltip-caret:before{
+                    border-bottom-color: $light-blue;
+                }
             }
         }
         .payment-CC-Form,
@@ -350,13 +359,13 @@ h1, h2, h3 {
     width: 100%;
     margin-top: 35px;
     margin-bottom: 20px;
+    background-color: #07405e;
+    min-height: 60px;
     .greeting {
         font-size: 21px;
         margin-top: 25px;
     }
     ul {
-        background-color: #07405e;
-        height: 60px;
         li {
             float: right;
             list-style: none;
@@ -1138,14 +1147,6 @@ body {
          ul.nav.nav-tabs.billing-tab li a {
             font-size: 14px;
             min-width: 120px;
-        }
-    }
-    .contact-container {
-        .text-center,
-        .contact-section-wrapper,
-        .day-care-hours {
-            width: 33%;
-            float: left;
         }
     }
     .billing-container .transactions-breakdown-wrapper .dates-input-wrapper .input-group-addon,
