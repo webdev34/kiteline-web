@@ -1,33 +1,100 @@
 <div class="medical-info-breakdown-view">
-	<div class="detail-breakdown">
-		<span class="detail-label">Doctor Name</span>
-		<span class="detail-value">{{viewChildMedicalInfo.DoctorName}}</span>
+	    	<button class="btn btn-primary pull-right edit-medical-btn edit-btn" ng-click="editMedicalInfo = true;" ng-hide="editMedicalInfo">Edit</button>
+	    	<div class="clearfix"></div>
+	
+
+	<div class="medical-info-view" ng-hide="editMedicalInfo">
+		<div class="detail-breakdown">
+			<span class="detail-label">Doctor Name</span>
+			<span class="detail-value">{{viewChildMedicalInfo.DoctorName}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Doctor Phone</span>
+			<span class="detail-value">{{viewChildMedicalInfo.DoctorPhone | tel}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Last Physical Date</span>
+			<span class="detail-value">{{viewChildMedicalInfo.PhysicalDate | date}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Immunized?</span>
+			<span class="detail-value">
+				<span ng-show="viewChildMedicalInfo.Immunized == 'Y'">Yes</span>
+				<span ng-show="viewChildMedicalInfo.Immunized == 'N'">No</span>
+			</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Insurance Company</span>
+			<span class="detail-value">{{viewChildMedicalInfo.InsuranceCompany}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Policy Number</span>
+			<span class="detail-value">{{viewChildMedicalInfo.PolicyNumber}}</span>
+		</div>
+		<div class="detail-breakdown">
+			<span class="detail-label">Group Number</span>
+			<span class="detail-value">{{viewChildMedicalInfo.GroupNumber}}</span>
+		</div>
 	</div>
-	<div class="detail-breakdown">
-		<span class="detail-label">Doctor Phone</span>
-		<span class="detail-value">{{viewChildMedicalInfo.DoctorPhone}}</span>
-	</div>
-	<div class="detail-breakdown">
-		<span class="detail-label">Last Physical Date</span>
-		<span class="detail-value">{{viewChildMedicalInfo.PhysicalDate | date}}</span>
-	</div>
-	<div class="detail-breakdown">
-		<span class="detail-label">Immunized?</span>
-		<span class="detail-value">
-			<span ng-show="viewChildMedicalInfo.Immunized == 'Y'">Yes</span>
-			<span ng-show="viewChildMedicalInfo.Immunized == 'N'">No</span>
-		</span>
-	</div>
-	<div class="detail-breakdown">
-		<span class="detail-label">Insurance Company</span>
-		<span class="detail-value">{{viewChildMedicalInfo.InsuranceCompany}}</span>
-	</div>
-	<div class="detail-breakdown">
-		<span class="detail-label">Policy Number</span>
-		<span class="detail-value">{{viewChildMedicalInfo.PolicyNumber}}</span>
-	</div>
-	<div class="detail-breakdown">
-		<span class="detail-label">Group Number</span>
-		<span class="detail-value">{{viewChildMedicalInfo.GroupNumber}}</span>
+
+
+	<!-- EDIT -->
+
+	<div class="medical-info-edit" ng-show="editMedicalInfo">
+		<form name="editMedicalInfoForm">
+			<div class="detail-breakdown">
+				<span class="detail-label">Doctor Name</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.DoctorName" name="doctor_name" />
+					</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Doctor Phone</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.DoctorPhone" name="doctor_number" mask="(999) 999-9999" clean="true" />
+					</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Last Physical Date</span>
+				<span class="detail-value">
+					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-format="M/dd/yyyy">
+			        <input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.PhysicalDate" name="physical_date">
+			      </datepicker>
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Immunized?</span>
+				<span class="detail-value controls relative">
+					<select id="edit-immunized" class="form-control" ng-model="viewChildMedicalInfoEdit.Immunized" >
+	 					<option value="Y">Yes</option>
+	 					<option value="N">No</option>
+					</select>
+					<i class="fa fa-caret-down" select-button select-id="edit-immunized"></i>
+				</span>
+			</div>
+			<div class="clearfix"></div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Insurance Company</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.InsuranceCompany" name="insurance_company" />
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Policy Number</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.PolicyNumber" name="policy_number" />
+				</span>
+			</div>
+			<div class="detail-breakdown">
+				<span class="detail-label">Group Number</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.GroupNumber" name="group_number" />
+				</span>
+			</div>
+			<div class="button-wrapper detail-breakdown right-align">
+				<button class="btn btn-primary" ng-click="editMedInfo(); editMedicalInfo = false;" ng-disabled="editMedicalInfoForm.doctor_number.$invalid">Save</button>
+				<button class="btn btn-danger" ng-click="editMedicalInfo = false;">Cancel</button>
+			</div>
+		</form>
 	</div>
 </div><!-- medical-info-breakdown-view -->

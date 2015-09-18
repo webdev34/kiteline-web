@@ -9,6 +9,8 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.viewChild = null
   $scope.editGuardian = false;
   $scope.editContact = false;
+  $scope.editMedicalInfo = false;
+  $scope.editPickupList = false;
   $scope.currentLowerTab = "Updates"
   $scope.activeChild = "child-1"
   $scope.activeGuardian = "guardian-1"
@@ -31,7 +33,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.changeActiveLowerTab = (activeTab) ->
     $scope.currentLowerTab = activeTab
   
-  $scope.getChildrenData = () ->
+  $scope.getChildrenData = (refreshingData) ->
     CurbSideService.getAllChildren($rootScope.centerId, $rootScope.familyId).then (response) ->
       $scope.userChildren = response.data
       $scope.childrenClasses = []
@@ -54,12 +56,22 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
 
                 if key == 0 && $scope.viewChild == null
                   $scope.goToChild(value.ChildId)
+                else if refreshingData
+                  $scope.goToChild(value.ChildId, true)
 
-  $scope.goToChild = (childId) ->
+  $scope.editMedInfo = () ->
+    ChildService.updateChildMedInfo($scope.viewChildMedicalInfoEdit).then (response) ->
+      $scope.getChildrenData(true)
+
+  $scope.goToChild = (childId, refreshingData) ->
     $scope.viewChild = $filter('filter')($scope.userChildren, (d) -> d.ChildId == childId)[0]
     $scope.viewChildMedicalInfo = $filter('filter')($scope.childrenMedicalInfo, (d) -> d.ChildId == childId)[0]
+    $scope.viewChildMedicalInfoEdit = angular.copy $scope.viewChildMedicalInfo
+    $scope.viewChildMedicalInfoEdit.PhysicalDate = $filter('date') $scope.viewChildMedicalInfoEdit.PhysicalDate, 'M/dd/yyyy'
     $scope.viewChildGeneralInfo = $filter('filter')($scope.childrenGenInfo, (d) -> d.ChildId == childId)[0]
     $scope.viewChildHistoryInfo = $filter('filter')($scope.childrenHistoryInfo, (d) -> d.ChildId == childId)[0]
+    if refreshingData
+      $scope.changeActiveLowerTab('Medical Info')
 
   $scope.goToFeed = (feedId) ->
     $scope.viewFeedAttachments = null
@@ -106,7 +118,10 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.contacts = response.data
       $scope.contactsPagination = Pagination.getNew()
       $scope.contactsPagination.numPages = Math.ceil($scope.contacts.length/$scope.contactsPagination.perPage)
-      $scope.goToEmergencyContact($scope.viewEmergencyContactEdit.EmergencyContactId)
+      if !isUpdated
+        $scope.goToEmergencyContact($scope.contacts[0].EmergencyContactId)
+      else
+        $scope.goToEmergencyContact($scope.viewEmergencyContactEdit.EmergencyContactId)
 
   $scope.getPickListData = () ->
     ChildPickupService.getAllChildPickupList($rootScope.familyId).then (response) ->
@@ -136,8 +151,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
           $scope.goToGuardian($rootScope.guardians[0].GuardianId)
 
       $scope.getContactData(false).then (response) ->
-        if $scope.contacts.length > 0
-          $scope.goToEmergencyContact($scope.contacts[0].EmergencyContactId)d)
 
       $scope.getPickListData()
       $rootScope.getInvoiceData()

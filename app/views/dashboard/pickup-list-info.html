@@ -25,7 +25,11 @@
 		</nav>
 	</div>
 
-	<div class="pickup-list-wrapper feed-breakdown-view" >
+	<div class="pickup-list-wrapper feed-breakdown-view"  ng-show="pickupList.length == 0">
+		<p class="no-updates text-center">No One has been added to pick up list at this time</p>
+	</div>
+
+	<div class="pickup-list-wrapper feed-breakdown-view"  ng-show="pickupList.length != 0">
 		<div class="detail-breakdown" >
 			<span class="detail-label">Name</span>
 			<span class="detail-value capitalize">{{viewPickupContact.PickupName}}</span>

@@ -163,74 +163,76 @@
 
 		<!-- EDIT GUARDIAN ADDRESS -->
 		<div class="edit-guardian-address-wrapper" ng-show="editGuardian">
-			<div class="detail-breakdown">
-				<span class="detail-label">Street</span>
-				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.Street" name="guardian_street" />
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">City</span>
-				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.City" name="guardian_city" />
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">State</span>
-				<span class="detail-value controls relative">
-					<select id="edit-guardian-state" class="form-control" ng-model="viewGuardianEdit.State" >
-     					<option value="{{option.abbreviation}}" data-ng-repeat="option in statesDropDown" >{{option.name}}</option>
-    				</select>
-    				<i class="fa fa-caret-down" select-button select-id="edit-guardian-state"></i>
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">Zip</span>
-				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.Zip" name="guardian_zip" />
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">Home Phone</span>
-				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.HomePhone" name="guardian_home_phone" tel />
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">Work Phone</span>
-				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.WorkPhone" name="guardian_work_phone" tel />
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">Cell Phone</span>
-				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.CellPhone" name="guardian_cell_phone" tel />
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">Pref. Method<br/>Of Contact</span>
-				<span class="detail-value controls relative">
-					<select id="edit-method-of-contact" class="form-control" ng-model="viewGuardianEdit.PrefMethodOfContact" >
-						<option value="C">Cell Phone</option>
-						<option value="H">Home Phone</option>
-     					<option value="W">Work Phone</option>
-     					<option value="E">Email</option>
-     					<option value="S">SMS</option>
-    				</select>
-    				<i class="fa fa-caret-down" select-button select-id="edit-method-of-contact"></i>
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">Email</span>
-				<span class="detail-value no-cap">
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.EmailAddress" name="guardian_email" tel />
-				</span>
-			</div>
-			<div class="button-wrapper detail-breakdown">
-				<button class="btn btn-primary" ng-click="editGuardianInfo(); editGuardian = false;">Save</button>
-				<button class="btn btn-danger" ng-click="editGuardian = false;">Cancel</button>
-			</div>
+			<form name="editGuardianForm">
+				<div class="detail-breakdown">
+					<span class="detail-label">Street</span>
+					<span class="detail-value">
+						<input type="text" class="form-control" ng-model="viewGuardianEdit.Street" name="guardian_street" />
+					</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">City</span>
+					<span class="detail-value">
+						<input type="text" class="form-control" ng-model="viewGuardianEdit.City" name="guardian_city" />
+					</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">State</span>
+					<span class="detail-value controls relative">
+						<select id="edit-guardian-state" class="form-control" ng-model="viewGuardianEdit.State" >
+	     					<option value="{{option.abbreviation}}" data-ng-repeat="option in statesDropDown" >{{option.name}}</option>
+	    				</select>
+	    				<i class="fa fa-caret-down" select-button select-id="edit-guardian-state"></i>
+					</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Zip</span>
+					<span class="detail-value">
+						<input type="text" class="form-control" ng-model="viewGuardianEdit.Zip" name="guardian_zip" maxlength="5" numeric-only />
+					</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Home Phone</span>
+					<span class="detail-value">
+						<input type="text" class="form-control" ng-model="viewGuardianEdit.HomePhone" name="guardian_home_phone" mask="(999) 999-9999" clean="true"  />
+					</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Work Phone</span>
+					<span class="detail-value">
+						<input type="text" class="form-control" ng-model="viewGuardianEdit.WorkPhone" name="guardian_work_phone" mask="(999) 999-9999" clean="true"  />
+					</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Cell Phone</span>
+					<span class="detail-value">
+						<input type="text" class="form-control" ng-model="viewGuardianEdit.CellPhone" name="guardian_cell_phone" mask="(999) 999-9999" clean="true"  />
+					</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Pref. Method<br/>Of Contact</span>
+					<span class="detail-value controls relative">
+						<select id="edit-method-of-contact" class="form-control" ng-model="viewGuardianEdit.PrefMethodOfContact" >
+							<option value="C">Cell Phone</option>
+							<option value="H">Home Phone</option>
+	     					<option value="W">Work Phone</option>
+	     					<option value="E">Email</option>
+	     					<option value="S">SMS</option>
+	    				</select>
+	    				<i class="fa fa-caret-down" select-button select-id="edit-method-of-contact"></i>
+					</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Email</span>
+					<span class="detail-value no-cap">
+						<input type="email" class="form-control" ng-model="viewGuardianEdit.EmailAddress" name="guardian_email" />
+					</span>
+				</div>
+				<div class="button-wrapper detail-breakdown">
+					<button class="btn btn-primary" ng-click="editGuardianInfo(); editGuardian = false;" ng-disabled="!editGuardianForm.$valid">Save</button>
+					<button class="btn btn-danger" ng-click="editGuardian = false;">Cancel</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

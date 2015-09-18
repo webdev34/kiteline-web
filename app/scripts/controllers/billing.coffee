@@ -214,7 +214,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $rootScope.getPaymentAccounts()
       $rootScope.getGuardianData()
       $rootScope.getInvoiceData().then (response) ->
-        $rootScope.stopSpin()
+      $rootScope.stopSpin()
     
     if $route.current.$$route.originalPath == '/billing/invoices'
       $scope.goToTab('Invoices')

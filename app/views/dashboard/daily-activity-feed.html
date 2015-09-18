@@ -27,9 +27,11 @@
 		</nav>
 	</div>
 
+	<div class="feed-breakdown-view"  ng-show="dailyFeed.length == 0">
+		<p class="no-updates text-center">No Updates At This Time</p>
+	</div>
 
-	<div class="feed-breakdown-view" ng-scrollbars ng-scrollbars-config="config" >
-		<p class="no-updates text-center" ng-hide="dailyFeed.length > 0">No Updates At This Time</p>
+	<div class="feed-breakdown-view" ng-scrollbars ng-scrollbars-config="config" ng-hide="dailyFeed.length == 0" >
 		<div>
 			<h4 class="pull-left">
 				{{viewFeed.FeedTitle}} 

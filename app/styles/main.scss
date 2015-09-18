@@ -279,6 +279,15 @@ a:hover {
     cursor: pointer;
 }
 
+input.ng-invalid-mask,
+input.ng-invalid-email,
+input.ng-invalid-maxlength{
+    border-color: red !important;
+    outline-color: red !important;
+    background-color: #f66;
+    color: white !important;
+}
+
 .container-narrow > hr {
     margin: 30px 0;
 }
@@ -417,7 +426,14 @@ h1, h2, h3 {
         padding: 5px;
     }
     .lower-section-wrapper {
-        .feed-breakdown-view {}
+        .feed-breakdown-view {
+            .edit-btn{
+                margin-top: -10px;
+                margin-bottom: -10px;
+                margin-right: -10px;
+                width: 48px;
+            }
+        }
         ul {
             li {
                 min-height: 110px;
@@ -995,6 +1011,14 @@ body {
 .center-align {
     width: 100%;
     text-align: center;
+}
+
+.left-align{
+    text-align: left;
+}
+
+.right-align{
+    text-align: right;
 }
 
 .relative {

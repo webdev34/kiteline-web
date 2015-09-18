@@ -59,7 +59,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   $scope.invoiceGrandTotal = 0
   $scope.defaultCC = null
 
-
   $rootScope.changePageTitle = () ->
     if $location.$$path is '/dashboard'
       $rootScope.pageTitle = 'Dashboard'
@@ -371,7 +370,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     $rootScope.showLogOut = false
 
     CenterInfoService.getCenterDetails($rootScope.centerId).then (response) ->
-      console.log response
+      console.log response.data
       $rootScope.currentCenterDetails = response.data
       $rootScope.subscriberId = response.data.SubscriberId
 
