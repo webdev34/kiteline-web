@@ -90,12 +90,12 @@ body.loginPage {
     position: absolute;
     right: 2%;
     &.invalid-sub{
-        width: 500px;
+        width: 60%;
 
         p{
             color: black;
-            padding: 15px;
-            font-size: 15px;
+            padding: 25px;
+            font-size: 18px;
         }
         a{
             color: #529acd;

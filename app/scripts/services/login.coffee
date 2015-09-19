@@ -22,11 +22,13 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
         'InitialLogin': true
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
-      
-      if data.SubscriptionTypeName is 'bronze'
+      console.log data
+      if data.SubscriptionTypeName == 'Bronze'
+        $rootScope.isBronze = true
         $rootScope.invalidCenter = data
-        $location.path 'invalid-subscription'
+        $location.path '/invalid-subscription'
       else
+        $rootScope.isBronze = false
         $rootScope.currentCenter = data
         $rootScope.currentUserEmail = email
         $rootScope.currentUserToken = headers()['x-skychildcaretoken']

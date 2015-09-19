@@ -9,8 +9,21 @@
     </div>
 </div>
 
+<div class="log-in-wrapper invalid-sub" ng-show="isBronze">
 
-<div class="log-in-wrapper" ng-hide="isMobile">
+  <section class="container wider">
+
+    <p ng-show="!requestSent">Your center does not support the KiteLine Parent website.<br/> Click <a ng-click="requestUpgrade(invalidCenter.CenterId, invalidCenter.FamilyId);">here</a> to ask them to upgrade so you can use KiteLine Parent for free.</p>
+
+    <p ng-show="requestSent">Your center has been notified.</p>
+</section> 
+    
+</div>
+
+
+
+
+<div class="log-in-wrapper" ng-hide="isMobile || isBronze">
     <div class="log-in-light-bkgd"></div>
 
     <form name="form" ng-submit="login()" role="form" autocomplete="off" ng-show="showLogIn">
@@ -51,7 +64,7 @@
         </div>
     </form>
 
-    <form name="form" ng-submit="forgotPinFunc()" role="form" ng-hide="showLogIn">
+    <form name="form" ng-submit="forgotPinFunc()" role="form" ng-hide="showLogIn || isBronze">
         <div class="disclaimer">
             <h5>Parent Login Here to SkyChildcare Kiteline</h5>
             <p>KiteLine allows parents to view invoices, and view and update their children's medical and contact records in your enrolled child care center.</p>

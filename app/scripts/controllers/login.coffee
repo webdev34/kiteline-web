@@ -22,9 +22,11 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
     LogInService.isLoggedIn()
     $rootScope.changePageTitle()
 
+
     if $location.$$path == '/invalid-subscription'
-      if $rootScope.invalidCenter is null
-        $location.path '/'
+      console.log 'invalid'
+    #   # if $rootScope.invalidCenter is null
+      #   $location.path '/'
 
     $scope.requestUpgrade = (centerId, familyId) ->
       LogInService.sendRequestEmail(centerId, familyId).then (response) ->
@@ -108,3 +110,4 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
 
 angular.module('kiteLineApp').controller 'InvalidCtrl', ($scope, $rootScope, $location) ->
   $rootScope.widerContainer = true
+  console.log here
