@@ -11,9 +11,20 @@
 		  <div class="carousel-inner" role="listbox">
 			    <div class="item" ng-class="{'active': $index == 0}"  data-ng-repeat="child in userChildrenTuition">
 
-			  	<img ng-if="child.Sex == 'M'" class="box-shadow-default rounded-img-large" ng-src="{{child.PhotoUrl}}" onerror="this.src = 'images/male.svg'; this.classList.remove('box-shadow-default');" />
-				<img ng-if="child.Sex == 'F'" class="box-shadow-default rounded-img-large" ng-src="{{child.PhotoUrl}}" onerror="this.src = 'images/female.svg'; this.classList.remove('box-shadow-default');" />
+				<img ng-if="child.Sex == 'M' && child.PhotoUrl == ''" class="box-shadow-default rounded-img-large" ng-src="{{child.PhotoUrl}}" onerror="this.src = 'images/male.svg'; this.classList.remove('box-shadow-default');" />
+				<img ng-if="child.Sex == 'M' && child.PhotoUrl != ''" class="rounded-img-large" src="images/male.svg" />
 
+
+				<img ng-if="child.Sex == 'F'  && child.PhotoUrl == ''" class="box-shadow-default rounded-img-large" ng-src="{{child.PhotoUrl}}" onerror="this.src = 'images/female.svg'; this.classList.remove('box-shadow-default');" />
+				<img ng-if="child.Sex == 'F' && child.PhotoUrl != ''" class="rounded-img-large" src="images/female.svg" />
+
+
+			<img ng-if="child.Sex == 'M' && child.PhotoUrl.length != 0" class="box-shadow-default" ng-src="{{child.PhotoUrl}}" onerror="this.src = 'images/male.svg'; this.classList.remove('box-shadow-default');" />
+			<img ng-if="child.Sex == 'M' && child.PhotoUrl.length == 0" class="" src="images/male.svg" />
+
+
+			<img ng-if="child.Sex == 'F'  && child.PhotoUrl.length != 0" class="box-shadow-default" ng-src="{{child.PhotoUrl}}" onerror="this.src = 'images/female.svg'; this.classList.remove('box-shadow-default');" />
+			<img ng-if="child.Sex == 'F' && child.PhotoUrl.length == 0" class="" src="images/female.svg" />
 
 				<p class="child-name">{{child.FullName}}</p>
 				
@@ -78,6 +89,9 @@
 				        <th>Payment Type</th>
 			        </tr>
 			    </thead>
+			    <tbody ng-show="pastTransactions.length == 0">
+						<tr ng-animate="'animate'" ><td colspan="4"><span>No Past Transactions</span></td></tr>
+				</tbody>
 			    <tbody>
 			    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions |  orderBy:'PaymentDate':true" ng-show="$index < 5">
 			        <td>

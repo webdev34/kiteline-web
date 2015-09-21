@@ -437,10 +437,15 @@ h1, h2, h3 {
     .lower-section-wrapper {
         .feed-breakdown-view {
             .edit-btn{
-                margin-top: -10px;
+                margin-top: -5px;
                 margin-bottom: -10px;
                 margin-right: -10px;
-                width: 48px;
+            }
+            .delete-btn{
+                margin-top: -5px;
+                margin-bottom: -10px;
+                margin-right: -5px;
+                margin-left: 20px;
             }
         }
         ul {
@@ -786,26 +791,27 @@ h1, h2, h3 {
     background-color: #fff;
 }
 
+.popover-title{
+    display: none;
+}
+
+.popover-content{
+    p{
+        @extend h3;
+        text-align: center;
+        font-size: 16px;
+    }
+    button.btn{
+        font-size: 12px;
+    }
+}
+
 /* Scroll Bar fix */
 body {
     .mCSB_container,
     .mCustomScrollBox {
         width: 100% !important;
     }
-    // .mCSB_scrollTools .mCSB_buttonUp,
-    // .mCSB_scrollTools .mCSB_buttonDown {
-    //     background-position: 0 0 !important;
-    // }
-    // .mCSB_container_wrapper {
-    //     margin-right: 0px;
-    // }
-    // .mCSB_container_wrapper > .mCSB_container {
-    //     padding-right: 10px;
-    // }
-    // .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-    //     position: relative;
-    //     width: 2px;
-    // }
 }
 /* Scroll Bar fix */
 

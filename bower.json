@@ -18,7 +18,10 @@
     "angular-credit-cards": "~2.3.5",
     "ng-simplePagination": "~1.0.3",
     "ng-scrollbars": "~0.0.5",
-    "angular-tooltips": "~0.1.22"
+    "angular-tooltips": "~0.1.22",
+    "angular-bootstrap-confirm": "~0.3.1",
+    "angular-bootstrap": "~0.13.4",
+    "angucomplete-alt": "~1.2.2"
   },
   "devDependencies": {
     "angular": "^1.3.0",
@@ -38,7 +41,10 @@
     "angular-credit-cards": "~2.3.5",
     "ng-simplePagination": "~1.0.3",
     "ng-scrollbars": "~0.0.5",
-    "angular-tooltips": "~0.1.22"
+    "angular-tooltips": "~0.1.22",
+    "angular-bootstrap-confirm": "~0.3.1",
+    "angular-bootstrap": "~0.13.4",
+    "angucomplete-alt": "~1.2.2"
   },
   "appPath": "app",
   "moduleName": "kiteLineApp"

@@ -96,7 +96,7 @@ angular.module('kiteLineApp').service 'ContactService', ($http, $q, $rootScope, 
         
       return
 
-  @deleteContact = (centerId, emergencyContactId) ->
+  @deleteContact = (emergencyContactId, centerId) ->
     url = rootUrl+'api/Contact/DeleteContact?EmergencyContactId='+emergencyContactId+'&centerId='+centerId
     $http(
       method: 'POST'

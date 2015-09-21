@@ -38,6 +38,9 @@ module.exports = (config) ->
       'bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js'
       'bower_components/ng-scrollbars/dist/scrollbars.min.js'
       'bower_components/angular-tooltips/dist/angular-tooltips.min.js'
+      'bower_components/angular-bootstrap-confirm/dist/angular-bootstrap-confirm.js'
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js'
+      'bower_components/angucomplete-alt/angucomplete-alt.js'
       'bower_components/angular-mocks/angular-mocks.js'
       # endbower
       # bower:coffee

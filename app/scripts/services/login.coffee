@@ -1,5 +1,13 @@
 'use strict'
 angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, toastr, $location, StorageService, CustomStatisticsService) ->
+  
+  if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > - 1
+    $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
+  else if window.location.href.indexOf('parent') > - 1
+    $rootScope.rootUrl = 'https://app.skychildcare.com/services/kiteline/v2.0/'
+  else
+    $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
+
   rootUrl =  $rootScope.rootUrl
   self = undefined
   self = this
@@ -7,6 +15,30 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
   deferred = undefined
   deferred = $q.defer()
   $rootScope.invalidCenter = null
+
+  $rootScope.searchAPI = () ->
+    if !$rootScope.showLogIn
+      thisString = document.getElementById('centernameSearchForgotPin_value').value.trim()
+    else
+      thisString = document.getElementById('centernameSearch_value').value.trim()
+
+    url = $rootScope.rootUrl+'api/CenterInfo/GetCenters?searchText='+thisString
+
+    return $http(
+          method: 'GET'
+          headers:
+            'Content-Type': 'application/json'
+            'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+          url: url).success((data, status, headers, config) ->
+          deferred.resolve data
+          $rootScope.careCenters = data
+ 
+          return
+        ).error((data, status, headers, config) ->
+          deferred.reject status
+          $rootScope.careCenters = null
+          return
+        )
   
   @Login = (email, pin, centerId) ->
     url = rootUrl+'api/Login'
@@ -23,7 +55,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
       console.log data
-      if data.SubscriptionTypeName == 'Bronze'
+      if data.SubscriptionTypeName == 'bronze'
         $rootScope.isBronze = true
         $rootScope.invalidCenter = data
         $location.path '/invalid-subscription'

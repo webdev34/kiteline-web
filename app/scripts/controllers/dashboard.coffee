@@ -17,7 +17,11 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.activeEmergencyContact = "contact-1"
   $scope.activePickupContact = "pickup-contact-1"
   $rootScope.changePageTitle()
-  
+
+  $scope.deleteEmergencyContact = (contactId) ->
+    ContactService.deleteContact(contactId, $rootScope.centerId).then (response) ->
+      $scope.getContactData(false)
+
   $scope.changeActivePickupContact = (activePickupContact) ->
     $scope.activePickupContact = activePickupContact
 
@@ -116,6 +120,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.getContactData = (isUpdated) ->
     ContactService.getAllContacts($rootScope.familyId).then (response) ->
       $scope.contacts = response.data
+      console.log $scope.contacts
       $scope.contactsPagination = Pagination.getNew()
       $scope.contactsPagination.numPages = Math.ceil($scope.contacts.length/$scope.contactsPagination.perPage)
       if !isUpdated

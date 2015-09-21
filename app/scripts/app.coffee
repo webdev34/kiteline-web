@@ -16,6 +16,8 @@ angular.module('kiteLineApp', [
   'simplePagination'
   'ngScrollbars'
   'ng-currency'
+  'mwl.confirm'
+  'angucomplete-alt'
 
 ]).config ($routeProvider) ->
   $routeProvider.when('/',

@@ -20,13 +20,10 @@
     
 </div>
 
-
-
-
 <div class="log-in-wrapper" ng-hide="isMobile || isBronze">
     <div class="log-in-light-bkgd"></div>
 
-    <form name="form" ng-submit="login()" role="form" autocomplete="off" ng-show="showLogIn">
+    <form name="logInform" ng-submit="login()" role="form" autocomplete="off" ng-show="showLogIn">
         <div class="disclaimer">
             <h5>Parent Login Here to SkyChildcare Kiteline</h5>
             <p>KiteLine allows parents to view invoices, and view and update their children's medical and contact records in your enrolled child care center.</p>
@@ -34,37 +31,36 @@
         <div class="form-group">
             <label for="username">Child Care Center Name</label>
             <i class="fa fa-map-marker"></i>
-            <input type="text" data-ng-keyup="centerSearchFunc($event); key($event);" placeholder="Child Care Center Name" name="centernameSearch" id="centernameSearch" class="form-control" data-ng-model="centernameSearch" />
-            <span ng-show="form.centernameSearch.$dirty && form.centernameSearch.$error.required" class="help-block">Center is required</span>
-            <ul class="list-group" ng-hide="!centernameSearch || hideList">
-                <li class="list-group-item list-group-item-info" data-ng-repeat="centername in careCenters | limitTo: 5" data-center-id="{{centername.CenterId}}" data-center-name="{{centername.CenterName}}" ng-click="selectCenter(centername.CenterId, centername.CenterName)" ng-class="{'active': centername.isActive}">
-                    {{centername.CenterName}} - {{centername.City}}, {{centername.State}}, {{centername.Zip}}
-                </li>
-            </ul>    
+           <angucomplete-alt id="centernameSearch"
+              placeholder="Child Care Center Name"
+              pause="250"
+              minlength="1"
+              selected-object="centernameSearch"
+              remote-api-handler="searchAPI"
+              title-field="CenterName,City,State"
+              input-class="form-control form-control-small" field-required="true" match-class="highlight" /> 
         </div>
         <div class="form-group">
             <label for="username">Email</label>
-            <i class="fa fa-envelope-o" data-ng-class="{'ng-invalid': form.email.$invalid}"></i>
-            <input type="email" placeholder="Email Address" name="email" id="email" class="form-control" ng-model="email" data-ng-change="validationCheck();" />
-            <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block" style="right: -113px;">Email is required</span>
+            <i class="fa fa-envelope-o"></i>
+            <input type="email" placeholder="Email Address" name="email" id="email" class="form-control" ng-model="email" required />
         </div>
         <div class="form-group">
             <label for="pin">Pin</label>
-            <i class="fa fa-lock" data-ng-class="{'ng-invalid' : pin.length != 0 && pin.length < 4}"></i>
-            <input type="password" placeholder="PIN" maxlength="4" name="pin" id="pin" class="form-control" data-ng-change="validationCheck();" ng-model="pin" data-ng-class="{'ng-invalid-pin ng-invalid' : pin.length != 0 && pin.length < 4}"  numeric-only />
-            <span ng-show="form.pin.$dirty && form.pin.$error.required" class="help-block" style="right: -99px;">PIN is required</span>
+            <i class="fa fa-lock"></i>
+            <input type="password" placeholder="PIN" maxlength="4" name="pin" id="pin" class="form-control" ng-model="pin" numeric-only  required />
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary" data-ng-disabled="!isValid">Login</button>
+            <button type="submit" class="btn btn-primary" data-ng-disabled="!logInform.$valid">Login</button>
             <img ng-if="dataLoading"  class="preloader" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
             <a ng-click="changeView('forgotPin')" class="forgot-pin-link">Forgot PIN?</a>
             <div class="terms-wrapper"> 
-                <a href="https://cloud.spinsys.com/skychildcare/kitelineweb/#/terms-of-service" class="terms-link" target="_blank" data-ng-onclick="changePageTitle('Kiteline Terms Of Service');">Terms</a> | <a href="https://cloud.spinsys.com/skychildcare/kitelineweb/#/privacy" class="privacy-link" target="_blank"  data-ng-onclick="changePageTitle('Kiteline Privacy');">Privacy</a>
+                <a href="#/terms-of-service" class="terms-link" target="_blank" data-ng-onclick="changePageTitle('Kiteline Terms Of Service');">Terms</a> | <a href="#/privacy" class="privacy-link" target="_blank"  data-ng-onclick="changePageTitle('Kiteline Privacy');">Privacy</a>
             </div>
         </div>
     </form>
 
-    <form name="form" ng-submit="forgotPinFunc()" role="form" ng-hide="showLogIn || isBronze">
+    <form name="forgotPinform" ng-submit="forgotPinFunc()" role="form" ng-hide="showLogIn || isBronze">
         <div class="disclaimer">
             <h5>Parent Login Here to SkyChildcare Kiteline</h5>
             <p>KiteLine allows parents to view invoices, and view and update their children's medical and contact records in your enrolled child care center.</p>
@@ -72,29 +68,29 @@
         <div class="form-group">
             <label for="username">Child Care Center Name</label>
             <i class="fa fa-map-marker"></i>
-            <input type="text" data-ng-keyup="centerSearchFunc($event);" placeholder="Child Care Center Name" name="centernameSearch" id="centernameSearch" class="form-control" data-ng-model="centernameSearch" />
-            <span ng-show="form.centernameSearch.$dirty && form.centernameSearch.$error.required" class="help-block">Center is required</span>
-            <ul class="list-group" ng-hide="!centernameSearch || careCenters == null">
-                <li class="list-group-item list-group-item-info" data-ng-repeat="centername in careCenters | limitTo: 5" data-center-id="{{centername.CenterId}}" data-center-name="{{centername.CenterName}}" ng-click="selectCenter(centername.CenterId, centername.CenterName)">
-                    {{centername.CenterName}} - {{centername.City}}, {{centername.State}}, {{centername.Zip}}
-                </li>
-            </ul>    
+            <angucomplete-alt id="centernameSearchForgotPin"
+              placeholder="Child Care Center Name"
+              pause="250"
+              minlength="1"
+              selected-object="centernameSearch"
+              remote-api-handler="searchAPI"
+              title-field="CenterName,City,State"
+              input-class="form-control form-control-small" field-required="true" match-class="highlight"/> 
         </div>
 
          <div class="form-group">
             <label for="username">Email</label>
-            <i class="fa fa-envelope-o" data-ng-class="{'ng-invalid': form.email.$invalid}"></i>
-            <input type="email" placeholder="Email Address" name="email" id="email" class="form-control" ng-model="email" data-ng-change="validationCheckForgotPin();" />
-            <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block" style="right: -113px;">Email is required</span>
+            <i class="fa fa-envelope-o"></i>
+            <input type="email" placeholder="Email Address" name="email" id="email" class="form-control" ng-model="email" required/>
         </div>
        
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary" data-ng-disabled="!isValidForgotPin">Resend PIN</button>
+            <button type="submit" class="btn btn-primary" data-ng-disabled="!forgotPinform.$valid">Resend PIN</button>
             <img ng-if="dataLoading" class="preloader" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
             <a ng-click="changeView('login')" class="login-link">Login</a>
         </div>
          <div class="terms-wrapper"> 
-                <a href="https://cloud.spinsys.com/skychildcare/kitelineweb/#/terms-of-service" class="terms-link" target="_blank" data-ng-onclick="changePageTitle('Kiteline Terms Of Service');">Terms</a> | <a href="https://cloud.spinsys.com/skychildcare/kitelineweb/#/privacy" class="privacy-link" target="_blank"  data-ng-onclick="changePageTitle('Kiteline Privacy');">Privacy</a>
+                <a href="#/terms-of-service" class="terms-link" target="_blank" data-ng-onclick="changePageTitle('Kiteline Terms Of Service');">Terms</a> | <a href="#/privacy" class="privacy-link" target="_blank"  data-ng-onclick="changePageTitle('Kiteline Privacy');">Privacy</a>
         </div>
 
     </form>

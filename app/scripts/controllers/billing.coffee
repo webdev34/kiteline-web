@@ -145,20 +145,14 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $rootScope.addBankAccount = true
 
   $scope.deleteBankAccount = (accountId) ->
-    if confirm('Are you sure you want to delete this?')
-      AccountService.deleteAccount($rootScope.familyId, $rootScope.centerId, accountId).then (response) ->
-        $rootScope.getBankAccounts()
-    else
-      false
+    AccountService.deleteAccount($rootScope.familyId, $rootScope.centerId, accountId).then (response) ->
+      $rootScope.getBankAccounts()
     
   $scope.deleteCreditCardAccount = (accountId) ->
-    if confirm('Are you sure you want to delete this?')
-      CreditCardService.deleteCreditCard(accountId).then (response) ->
-      setTimeout (->
-        $rootScope.getCCAccounts()
-      ), 500
-    else
-      false    
+    CreditCardService.deleteCreditCard(accountId).then (response) ->
+    setTimeout (->
+      $rootScope.getCCAccounts()
+    ), 500
 
   $scope.goToTab = (tab) ->
     $scope.setPagination()

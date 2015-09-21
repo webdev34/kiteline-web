@@ -30,7 +30,20 @@
 	</div>
 
     <div class="emergency-contact-detail-wrapper feed-breakdown-view" >
-    	<button class="btn btn-primary pull-right edit-contact-btn edit-btn" ng-click="editContact = true;" ng-hide="editContact">Edit</button>
+    	<button
+		  class="btn btn-danger pull-right delete-btn"
+		  mwl-confirm
+		  message="Confirm Delete"
+		  confirm-text="Delete"
+		  cancel-text="Cancel"
+		  placement="top"
+		  on-confirm="deleteEmergencyContact(viewEmergencyContact.EmergencyContactId)"
+		  on-cancel=""
+		  confirm-button-type="primary"
+		  cancel-button-type="danger" ng-hide="editContact">
+		  Delete Contact
+		</button>
+    	<button class="btn btn-primary pull-right edit-contact-btn edit-btn" ng-click="editContact = true;" ng-hide="editContact">Edit Contact</button>
     	<div class="clearfix"></div>
 		<div class="view-contact-info" ng-hide="editContact">
 			<div class="detail-breakdown">

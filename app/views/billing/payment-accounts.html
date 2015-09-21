@@ -41,8 +41,17 @@
 					<toggle-switch ng-model="account.RecurringAccount" ng-change="setDefaultBankAccount(account);" class="switch-success auto-pay-toggle-btn" on-label="Yes" off-label="No"></toggle-switch>
 				</td>
 				<td>
-					<a ng-click="deleteBankAccount(account.AccountId)" title="Delete Account">
-						<i class="fa fa-trash red"></i>
+					<a title="Delete Account">
+						<i class="fa fa-trash red"  
+						  mwl-confirm
+						  message="Confirm Delete"
+						  confirm-text="Delete"
+						  cancel-text="Cancel"
+						  placement="top"
+						  on-confirm="deleteBankAccount(account.AccountId)"
+						  on-cancel=""
+						  confirm-button-type="primary"
+						  cancel-button-type="danger"></i>
 					</a>
 				</td>
 				</tr>
@@ -114,7 +123,18 @@
 							<toggle-switch ng-hide="checkExp(account.expiration) == 'Expired'" ng-model="account.RecurringAccount" on-change="setDefaultCCAccount(account);" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
 						</td>
 						<td>
-							<a ng-click="deleteCreditCardAccount(account.AccountId)" title="Delete Account"><i class="fa fa-trash red"></i></a>
+							<a title="Delete Account">
+								<i class="fa fa-trash red"  
+								  mwl-confirm
+								  message="Confirm Delete"
+								  confirm-text="Delete"
+								  cancel-text="Cancel"
+								  placement="top"
+								  on-confirm="deleteCreditCardAccount(account.AccountId)"
+								  on-cancel=""
+								  confirm-button-type="primary"
+								  cancel-button-type="danger"></i>
+							</a>
 						</td>
 					</tr>
 			    </tbody>

@@ -15,7 +15,6 @@ body.loginPage {
         position: relative;
     }
     .container {
-        //width: 400px;
         &.kiteline-content {
             padding-left: 15px;
             padding-right: 15px;
@@ -144,19 +143,26 @@ body.loginPage {
             display: none;
         }
     }
-    .list-group {
-        position: absolute;
-        left: 0px;
-        top: 23px;
+
+    .angucomplete-dropdown{
         width: 370px;
-        z-index: 1000;
-        li.list-group-item-info:hover {
-            color: #fff;
-            background-color: #337ab7;
-            border-color: #337ab7;
-            cursor: pointer;
+        .highlight,
+        .angucomplete-searching{
+           color: #064c70;
+           font-weight: bold;
         }
+        .angucomplete-row{
+            color: #498DB1;
+            border-bottom: thin solid #498DB1;
+            &.angucomplete-selected-row{
+                color: #fff;
+                background-color: #498DB1;
+                border-color: #498DB1;
+            }
+        }
+
     }
+
     .forgot-pin-link,
     .list-group {
         color: white;
@@ -189,9 +195,6 @@ body.loginPage {
     input:-webkit-autofill,
     input:-webkit-autofill:focus {
         @include box-shadow(0, 0, 0, 1000px, white, inset);
-        //-webkit-box-shadow: 0 0 0 1000px white inset;
-        //-moz-box-shadow: 0 0 0 1000px white inset;
-        //box-shadow: 0 0 0 1000px white inset;
         color: #498DB1;
         background-color: white;
         -moz-text-fill-color: #498DB1;
@@ -215,17 +218,18 @@ body.loginPage {
         border-color: red;
     }
     input::-webkit-input-placeholder {
-        color: #498DB1;
+        color: #498DB1 !important;
+        opacity: 1 !important; /* for chrome */
     }
     input::-moz-placeholder {
         /* Firefox 19+ */
-        color: #498DB1;
+        color: #498DB1 !important;
     }
     input:-ms-input-placeholder {
-        color: #498DB1;
+        color: #498DB1 !important;
     }
     input:-moz-placeholder {
-        color: #498DB1;
+        color: #498DB1 !important;
         /* Firefox 18- */
     }
 
