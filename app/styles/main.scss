@@ -35,7 +35,8 @@ html {
             }
         }
         input.form-control,
-        select.form-control{
+        select.form-control,
+        textarea.form-control{
             color: #287194;
         }
         .fa {
@@ -436,6 +437,11 @@ h1, h2, h3 {
     }
     .lower-section-wrapper {
         .feed-breakdown-view {
+            .new-btn{
+                margin-top: -5px;
+                margin-bottom: -10px;
+                margin-right: 10px;
+            }
             .edit-btn{
                 margin-top: -5px;
                 margin-bottom: -10px;

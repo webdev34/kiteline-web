@@ -30,7 +30,7 @@ angular.module('kiteLineApp').service 'ChildPickupService', ($http, $q, $rootSco
         
       return
 
-  @addChildPickUpRecord = (obj) ->
+  @addChildPickUpRecord = (obj, childId) ->
     url = rootUrl + 'api/ChildPickup/AddChildPickUpRecord'
     $http(
       method: 'POST'
@@ -42,10 +42,10 @@ angular.module('kiteLineApp').service 'ChildPickupService', ($http, $q, $rootSco
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
         'CenterId': $rootScope.currentCenter.CenterId
-        'ChildId': obj.childId
-        'PickupName': obj.name
-        'CanPickup': obj.canPickup
-        'AdditionalInfo': obj.additionalInfo
+        'ChildId': childId
+        'PickupName': obj.PickupName
+        'CanPickup': obj.CanPickup
+        'AdditionalInfo': obj.AdditionalInfo
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
       
@@ -60,7 +60,7 @@ angular.module('kiteLineApp').service 'ChildPickupService', ($http, $q, $rootSco
         
       return
 
-  @updateChildPickupInfo = (obj) ->
+  @updateChildPickupInfo = (childId, obj) ->
     url = rootUrl + 'api/ChildPickup/UpdateChildPickupInfo'
     $http(
       method: 'POST'
@@ -71,12 +71,12 @@ angular.module('kiteLineApp').service 'ChildPickupService', ($http, $q, $rootSco
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'ChildPickupId': obj.childPickupId
+        'ChildPickupId': obj.ChildPickupId
         'CenterId': $rootScope.currentCenter.CenterId
-        'ChildId': obj.childId
-        'PickupName': obj.name
-        'CanPickup': obj.canPickup
-        'AdditionalInfo': obj.additionalInfo
+        'ChildId': childId
+        'PickupName': obj.PickupName
+        'CanPickup': obj.CanPickup
+        'AdditionalInfo': obj.AdditionalInfo
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
       
@@ -91,7 +91,7 @@ angular.module('kiteLineApp').service 'ChildPickupService', ($http, $q, $rootSco
         
       return
 
-  @deleteChildPickupListItem = (centerId, childPickupId) ->
+  @deleteChildPickupListItem = (childPickupId, centerId) ->
     url = rootUrl + 'api/ChildPickup/DeleteChildPickupListItem?ChildPickupId='+childPickupId+'&CenterId='+centerId
     $http(
       method: 'POST'

@@ -1,5 +1,5 @@
 <div class="medical-info-breakdown-view">
-	    	<button class="btn btn-primary pull-right edit-medical-btn edit-btn" ng-click="editMedicalInfo = true;" ng-hide="editMedicalInfo">Edit</button>
+	    	<button class="btn btn-primary pull-right edit-medical-btn edit-btn" ng-click="editSection('Medical Info')" ng-hide="editMedicalInfo">Edit</button>
 	    	<div class="clearfix"></div>
 	
 
@@ -64,12 +64,14 @@
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Immunized?</span>
-				<span class="detail-value controls relative">
-					<select id="edit-immunized" class="form-control" ng-model="viewChildMedicalInfoEdit.Immunized" >
-	 					<option value="Y">Yes</option>
-	 					<option value="N">No</option>
-					</select>
-					<i class="fa fa-caret-down" select-button select-id="edit-immunized"></i>
+				<span class="detail-value">
+					<span class="radio-btn-wrapper">Yes
+						<input type="radio" class="form-control" ng-model="viewChildMedicalInfoEdit.Immunized" name="Immunized_yes" value="Y" />
+					</span>
+					<span class="radio-btn-wrapper">No
+						<input type="radio" class="form-control" ng-model="viewChildMedicalInfoEdit.Immunized" name="Immunized_no" value="N" />
+					</span>
+					<div class="clearfix"></div>
 				</span>
 			</div>
 			<div class="clearfix"></div>
@@ -92,8 +94,9 @@
 				</span>
 			</div>
 			<div class="button-wrapper detail-breakdown right-align">
-				<button class="btn btn-primary" ng-click="editMedInfo(); editMedicalInfo = false;" ng-disabled="editMedicalInfoForm.doctor_number.$invalid">Save</button>
-				<button class="btn btn-danger" ng-click="editMedicalInfo = false;">Cancel</button>
+				<img ng-if="buttonDisable"  class="preloader" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+				<button class="btn btn-primary" ng-click="editMedInfo();" ng-disabled="editMedicalInfoForm.doctor_number.$invalid || buttonDisable">Save</button>
+				<button class="btn btn-danger" ng-click="editSection('Medical Info')">Cancel</button>
 			</div>
 		</form>
 	</div>

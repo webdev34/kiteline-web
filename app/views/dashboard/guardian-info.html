@@ -1,11 +1,11 @@
 
 <div class="guardian-info-breakdown-view lower-section-wrapper">
-    <div class="pull-left ul-vertical-nav">
+    <div class="pull-left ul-vertical-nav" >
 		<ul>
 	        <li ng-class="{'active': activeGuardian == 'guardian-'+[$index+1]}" data-ng-repeat="guardian in guardians | startFrom: guardiansPagination.page * guardiansPagination.perPage | limitTo: guardiansPagination.perPage" ng-animate="'animate'" ng-click="goToGuardian(guardian.GuardianId); changeActiveGuardian('guardian-'+[$index+1]);">
 				<div class="pull-left">
 					<span class="feed-headline cap">Guardian {{$index+1}}</span>
-					<span class="feed-headline cap">{{guardian.FullName}}</span>
+					<span class="feed-headline cap">{{guardian.FullName || '(Not Set)'}}</span>
 				</div>
 				<div class="pointer pull-right">
 				</div>
@@ -27,16 +27,16 @@
 	</div>
 	<div class="feed-breakdown-view guardian-detail-wrapper" >
 		
-		<button class="btn btn-primary pull-right edit-guardian-btn edit-btn" ng-click="editGuardian = true;" ng-hide="editGuardian">Edit Contact</button>
+		<button class="btn btn-primary pull-right edit-guardian-btn edit-btn" ng-click="editSection('Guardian Info')" ng-hide="editGuardian">Edit Contact</button>
 		<div class="clearfix"></div>
 		<div class="view-guardian-info" ng-hide="editGuardian">
 			<div class="detail-breakdown">
 				<span class="detail-label">First Name</span>
-				<span class="detail-value">{{viewGuardian.FirstName}}</span>
+				<span class="detail-value">{{viewGuardian.FirstName || '(Not Set)'}}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Last Name</span>
-				<span class="detail-value">{{viewGuardian.LastName}}</span>
+				<span class="detail-value">{{viewGuardian.LastName || '(Not Set)'}}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Relationship</span>
@@ -50,11 +50,11 @@
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Employer</span>
-				<span class="detail-value" > {{ viewGuardian.Employer }}</span>
+				<span class="detail-value" > {{ viewGuardian.Employer || '(Not Set)' }}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Security PIN</span>
-				<span class="detail-value" > {{ viewGuardian.PIN }}</span>
+				<span class="detail-value" > {{ viewGuardian.PIN || '(Not Set)' }}</span>
 			</div>	
 		</div>
 
@@ -75,22 +75,26 @@
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Relationship</span>
-				<span class="detail-value controls relative">
-					<select id="edit-relationship" class="form-control" ng-model="viewGuardianEdit.RelationShip" >
-     					<option value="F">Father</option>
-     					<option value="M">Mom</option>
-    				</select>
-    				<i class="fa fa-caret-down" select-button select-id="edit-relationship"></i>
+				<span class="detail-value">
+					<span class="radio-btn-wrapper wide">Mother
+						<input type="radio" class="form-control" ng-model="viewGuardianEdit.RelationShip" name="relationship_m" value="M" />
+					</span>
+					<span class="radio-btn-wrapper wide">Father
+						<input type="radio" class="form-control" ng-model="viewGuardianEdit.RelationShip" name="relationship_f" value="F" />
+					</span>
+					<div class="clearfix"></div>
 				</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Legal Custody?</span>
-				 <span class="detail-value controls relative">
-					<select id="edit-custody" class="form-control" ng-model="viewGuardianEdit.LegalCustody" >
-     					<option value="Y">Yes</option>
-     					<option value="N">No</option>
-    				</select>
-    				<i class="fa fa-caret-down" select-button select-id="edit-custody"></i>
+				<span class="detail-value">
+					<span class="radio-btn-wrapper">Yes
+						<input type="radio" class="form-control" ng-model="viewGuardianEdit.LegalCustody" name="has_custody_yes" value="Y" />
+					</span>
+					<span class="radio-btn-wrapper">No
+						<input type="radio" class="form-control" ng-model="viewGuardianEdit.LegalCustody" name="has_custody_no" value="N" />
+					</span>
+					<div class="clearfix"></div>
 				</span>
 			</div>
 			<div class="detail-breakdown">
@@ -114,11 +118,11 @@
 		<div class="guardian-address-wrapper" ng-hide="editGuardian">
 			<div class="detail-breakdown">
 				<span class="detail-label">Street</span>
-				<span class="detail-value">{{viewGuardian.Street}}</span>
+				<span class="detail-value">{{viewGuardian.Street || '(Not Set)'}}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">City</span>
-				<span class="detail-value">{{viewGuardian.City}}</span>
+				<span class="detail-value">{{viewGuardian.City || '(Not Set)' }}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">State</span>
@@ -127,23 +131,23 @@
 			<div class="detail-breakdown">
 				<span class="detail-label">Zip</span>
 				<span class="detail-value">
-					{{viewGuardian.Zip}}
+					{{viewGuardian.Zip || '(Not Set)'}}
 				</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Home Phone</span>
-				<span class="detail-value">{{viewGuardian.HomePhone  | tel}}</span>
+				<span class="detail-value">{{viewGuardian.HomePhone  | tel || '(Not Set)'}}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Work Phone</span>
 				<span class="detail-value">
-					{{viewGuardian.WorkPhone | tel}}
+					{{viewGuardian.WorkPhone | tel || '(Not Set)'}}
 				</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Cell Phone</span>
 				<span class="detail-value">
-					{{viewGuardian.CellPhone | tel}}
+					{{viewGuardian.CellPhone | tel || '(Not Set)'}}
 				</span>
 			</div>
 			<div class="detail-breakdown">
@@ -157,7 +161,7 @@
 			<div class="detail-breakdown longer">
 				<span class="detail-label">Email</span>
 				<span class="detail-value no-cap">
-					{{viewGuardian.EmailAddress}}
+					{{viewGuardian.EmailAddress || '(Not Set)'}}
 				</span>
 			</div>
 		</div>
@@ -230,8 +234,9 @@
 					</span>
 				</div>
 				<div class="button-wrapper detail-breakdown">
-					<button class="btn btn-primary" ng-click="editGuardianInfo(); editGuardian = false;" ng-disabled="!editGuardianForm.$valid">Save</button>
-					<button class="btn btn-danger" ng-click="editGuardian = false;">Cancel</button>
+					<img ng-if="buttonDisable"  class="preloader" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+					<button class="btn btn-primary" ng-click="editGuardianInfo();" ng-disabled="!editGuardianForm.$valid || buttonDisabled">Save</button>
+					<button class="btn btn-danger" ng-click="editSection('Guardian Info')">Cancel</button>
 				</div>
 			</form>
 		</div>

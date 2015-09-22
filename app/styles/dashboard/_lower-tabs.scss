@@ -8,6 +8,9 @@
 		  float: left;
 		  margin-top: 10px;
 		  padding: 1%;
+		  &.empty{
+		  	width: 100%;
+		  }
 		.detail-value{
 		  font-size: 18px;
 		  font-weight: bold;
@@ -16,10 +19,32 @@
 			font-size: 18px;
 			margin-top: 10px;
 		}
+
+		.no-results{
+			text-align: left;
+    		color: #999;
+    		font-weight: bold;
+		}
 	}
 
 	.medical-info-view{
 		margin-top: -30px;
+	}
+
+	input[type="radio"]{
+	    width: auto;
+	    height: auto;
+	}
+	.radio-btn-wrapper{
+		float: left;
+		width: 60px;
+		&.wide{
+			width: 95px;
+		}
+		input{
+			display: inline-block;
+			margin-left: 2px;
+		}
 	}
 
 	.guardian-detail-wrapper,
@@ -58,9 +83,27 @@
 
 	} 
 	.view-guardian-info,
-	.view-contact-info{
-		margin-top: 15px;
+	.view-contact-info,
+	.view-pickup-list-contact{
+		margin-top: 20px;
 	}
+
+	.pickup-list-wrapper{
+		&.full-width{
+			width: 100%;
+		}
+
+		.can-pickup{
+			.detail-value{
+				width: 200px;
+			}
+			.detail-label{
+				width: 100px;
+			}
+
+		}
+	}
+
 	.medical-info-breakdown-view,
 	.emergency-contact-detail-wrapper,
 	.guardian-detail-wrapper,

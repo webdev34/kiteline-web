@@ -1,5 +1,5 @@
 <div class="pickup-list-contact-breakdown-view lower-section-wrapper">
-    <div class="pull-left ul-vertical-nav">
+    <div class="pull-left ul-vertical-nav"  ng-hide="pickupList.length === 0">
 		<ul>
 	        <li  data-ng-repeat="pickupContact in pickupList | startFrom: pickupListPagination.page * pickupListPagination.perPage | limitTo: pickupListPagination.perPage" ng-click="goToPickupContact(pickupContact.ChildPickupId); changeActivePickupContact('pickup-contact-'+[$index+1]);" class="contact-{{$index+1}}" ng-class="{ 'active': activePickupContact == 'pickup-contact-'+[$index+1]}" >
 				<div class="pull-left">
@@ -25,23 +25,114 @@
 		</nav>
 	</div>
 
-	<div class="pickup-list-wrapper feed-breakdown-view"  ng-show="pickupList.length == 0">
-		<p class="no-updates text-center">No One has been added to pick up list at this time</p>
+	<div class="pickup-list-wrapper feed-breakdown-view empty"  ng-show="pickupList.length === 0">
+		<button class="btn btn-primary pull-right new-contact-btn new-btn" ng-click="newPickupContact = true;" ng-hide="editPickupList || newPickupContact">New Contact</button>
+		<p class="no-updates no-results">No One has been added to pick up list at this time</p>
 	</div>
 
-	<div class="pickup-list-wrapper feed-breakdown-view"  ng-show="pickupList.length != 0">
-		<div class="detail-breakdown" >
-			<span class="detail-label">Name</span>
-			<span class="detail-value capitalize">{{viewPickupContact.PickupName}}</span>
+	<div class="pickup-list-wrapper feed-breakdown-view"  ng-show="pickupList.length != 0 || editPickupList || newPickupContact">
+		<button
+		  class="btn btn-danger pull-right delete-btn"
+		  mwl-confirm
+		  message="Confirm Delete"
+		  confirm-text="Delete"
+		  cancel-text="Cancel"
+		  placement="top"
+		  on-confirm="deletePickupListContact(viewPickupContact.ChildPickupId)"
+		  on-cancel=""
+		  confirm-button-type="primary"
+		  cancel-button-type="danger" ng-hide="editPickupList || newPickupContact">
+		  Delete Contact
+		</button>
+    	<button class="btn btn-primary pull-right edit-contact-btn edit-btn" ng-click="editPickupList = true;" ng-hide="editPickupList || newPickupContact">Edit Contact</button>
+		
+		<button class="btn btn-primary pull-right new-contact-btn new-btn" ng-click="newPickupContact = true;" ng-hide="editPickupList || newPickupContact">New Contact</button>
+		<div class="clearfix"></div>
+
+    	<div class="view-pickup-list-contact pickup-list" ng-hide="editPickupList || newPickupContact">
+			<div class="detail-breakdown" >
+				<span class="detail-label">Name</span>
+				<span class="detail-value capitalize">{{viewPickupContact.PickupName}}</span>
+			</div>
+			<div class="detail-breakdown can-pickup" >
+				<span class="detail-label">Can Pickup?</span>
+				<span class="detail-value" ng-show="viewPickupContact.CanPickup == 'Y'">Yes</span>
+				<span class="detail-value" ng-show="viewPickupContact.CanPickup == 'N'">No</span>
+			</div>
+			<div class="detail-breakdown longer" >
+				<span class="detail-label">Notes</span>
+				<span class="detail-value ">{{viewPickupContact.AdditionalInfo}}</span>
+			</div>
 		</div>
-		<div class="detail-breakdown can-pickup" >
-			<span class="detail-label">Can Pickup?</span>
-			<span class="detail-value" ng-show="viewPickupContact.CanPickup == 'Y'">Yes</span>
-			<span class="detail-value" ng-show="viewPickupContact.CanPickup == 'N'">No</span>
+
+		<div class="edit-pickup-list-contact pickup-list" ng-show="editPickupList">
+			<div class="detail-breakdown" >
+				<span class="detail-label">Name</span>
+				<span class="detail-value">
+					<input type="text" class="form-control" ng-model="viewPickupContactEdit.PickupName" name="pickup_name" />
+				</span>
+			</div>
+			<div class="detail-breakdown can-pickup" >
+				<span class="detail-label">Can Pickup?</span>
+				<span class="detail-value">
+					<span class="radio-btn-wrapper">Yes
+						<input type="radio" class="form-control" ng-model="viewPickupContactEdit.CanPickup" name="pickup_can_pickup" value="Y" />
+					</span>
+					<span class="radio-btn-wrapper">No
+						<input type="radio" class="form-control" ng-model="viewPickupContactEdit.CanPickup" name="pickup_can_pickup" value="N" />
+					</span>
+					<div class="clearfix"></div>
+				</span>
+				</div>
+			<div class="detail-breakdown longer" >
+				<span class="detail-label">Notes</span>
+				<span class="detail-value longer">
+					<textarea class="form-control" ng-model="viewPickupContactEdit.AdditionalInfo" name="pickup_notes"></textarea>
+				</span>
+			</div>
+			<div class="button-wrapper detail-breakdown" >
+					<button class="btn btn-primary" ng-click="editPickupContactInfo(); editPickupList = false;">Save</button>
+					<button class="btn btn-danger" ng-click="editPickupList = false;">Cancel</button>
+				</div>
 		</div>
-		<div class="detail-breakdown longer" >
-			<span class="detail-label">Notes</span>
-			<span class="detail-value ">{{viewPickupContact.AdditionalInfo}}</span>
+
+
+		<div class="pickup-list-wrapper feed-breakdown-view full-width" ng-show="newPickupContact" >
+
+			<div class="new-pickup-list-contact pickup-list">
+				<div class="detail-breakdown" >
+					<span class="detail-label">Name</span>
+					<span class="detail-value">
+						<input type="text" class="form-control" ng-model="viewPickupContactNew.PickupName" name="pickup_name" />
+					</span>
+				</div>
+				<div class="detail-breakdown can-pickup" >
+					<span class="detail-label">Can Pickup?</span>
+					<span class="detail-value">
+						<span class="radio-btn-wrapper">Yes
+							<input type="radio" class="form-control" ng-model="viewPickupContactNew.CanPickup" name="pickup_can_pickup" value="Y" />
+						</span>
+						<span class="radio-btn-wrapper">No
+							<input type="radio" class="form-control" ng-model="viewPickupContactNew.CanPickup" name="pickup_can_pickup" value="N" />
+						</span>
+						<div class="clearfix"></div>
+					</span>
+				</div>
+				<div class="detail-breakdown longer" >
+					<span class="detail-label">Notes</span>
+					<span class="detail-value longer">
+						<textarea class="form-control" ng-model="viewPickupContactNew.AdditionalInfo" name="pickup_notes"></textarea>
+
+					</span>
+				</div>
+				<div class="button-wrapper detail-breakdown" >
+					<button class="btn btn-primary" ng-click="newPickupListContact(); newPickupContact = false;">Save</button>
+					<button class="btn btn-danger" ng-click="newPickupContact = false;">Cancel</button>
+				</div>
+			</div>
 		</div>
+
 	</div>
+
+
 </div>

@@ -1,5 +1,5 @@
 <div class="daily-activity-feed-container-dashboard lower-section-wrapper" >
-	<div class="pull-left ul-vertical-nav">
+	<div class="pull-left ul-vertical-nav" ng-hide="dailyFeed.length == 0">
 		<ul>
 	        <li ng-class="{'active' : feed.FeedId == viewFeed.FeedId }" data-ng-repeat="feed in dailyFeed | startFrom: dailyFeedPagination.page * dailyFeedPagination.perPage | limitTo: dailyFeedPagination.perPage"  ng-click="goToFeed(feed.FeedId)">
 				<div class="pull-left">
@@ -27,8 +27,8 @@
 		</nav>
 	</div>
 
-	<div class="feed-breakdown-view"  ng-show="dailyFeed.length == 0">
-		<p class="no-updates text-center">No Updates At This Time</p>
+	<div class="feed-breakdown-view empty"  ng-show="dailyFeed.length == 0">
+		<p class="no-updates no-results">No Updates At This Time</p>
 	</div>
 
 	<div class="feed-breakdown-view" ng-scrollbars ng-scrollbars-config="config" ng-hide="dailyFeed.length == 0" >

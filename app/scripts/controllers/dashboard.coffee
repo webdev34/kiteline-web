@@ -11,16 +11,58 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.editContact = false;
   $scope.editMedicalInfo = false;
   $scope.editPickupList = false;
+  $scope.newPickupContact = false;
+  $scope.buttonDisable = false;
   $scope.currentLowerTab = "Updates"
   $scope.activeChild = "child-1"
   $scope.activeGuardian = "guardian-1"
   $scope.activeEmergencyContact = "contact-1"
   $scope.activePickupContact = "pickup-contact-1"
+  $scope.viewPickupContactNew = {}
   $rootScope.changePageTitle()
+
+
+  $scope.editSection = (editMe) ->
+    if editMe == 'Medical Info'
+      $scope.editMedicalInfo = !$scope.editMedicalInfo
+    else if editMe == 'Guardian Info'
+      $scope.editGuardian = !$scope.editGuardian
+    else if editMe == 'Contact Info'
+      $scope.editContact = !$scope.editContact
+
 
   $scope.deleteEmergencyContact = (contactId) ->
     ContactService.deleteContact(contactId, $rootScope.centerId).then (response) ->
       $scope.getContactData(false)
+      $scope.activeEmergencyContact = "contact-1"
+
+  $scope.deletePickupListContact = (contactId) -> 
+    ChildPickupService.deleteChildPickupListItem(contactId, $rootScope.centerId).then (response) ->
+      $scope.getPickListData()
+      $scope.activePickupContact = "pickup-contact-1"
+
+  $scope.newPickupListContact = () ->
+    ChildPickupService.addChildPickUpRecord($scope.viewPickupContactNew, $scope.viewChild.ChildId).then (response) ->
+      $scope.getPickListData(true)
+
+  $scope.editMedInfo = () ->
+    $scope.buttonDisable = true
+    ChildService.updateChildMedInfo($scope.viewChildMedicalInfoEdit).then (response) ->
+      ChildService.getChildMedInfo($scope.viewChildMedicalInfoEdit.ChildId).then (response) ->
+        $scope.childrenMedicalInfo = []
+        $scope.childrenMedicalInfo.push response.data
+        $scope.viewChildMedicalInfo = $filter('filter')($scope.childrenMedicalInfo, (d) -> d.ChildId == $scope.viewChildMedicalInfoEdit.ChildId)[0]
+        $scope.viewChildMedicalInfoEdit = angular.copy $scope.viewChildMedicalInfo
+        $scope.viewChildMedicalInfoEdit.PhysicalDate = $filter('date') $scope.viewChildMedicalInfoEdit.PhysicalDate, 'M/dd/yyyy'
+        $scope.editMedicalInfo = false
+        $scope.buttonDisable = false
+
+  $scope.editPickupContactInfo = () ->
+    ChildPickupService.updateChildPickupInfo($scope.viewChild.ChildId, $scope.viewPickupContactEdit).then (response) ->
+      $scope.getPickListData().then (response) ->
+        angular.forEach $scope.pickupList, (value, key) ->
+          if value.PickupName == $scope.viewPickupContactEdit
+            $scope.goToPickupContact(value.ChildPickupId)
 
   $scope.changeActivePickupContact = (activePickupContact) ->
     $scope.activePickupContact = activePickupContact
@@ -63,11 +105,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
                 else if refreshingData
                   $scope.goToChild(value.ChildId, true)
 
-  $scope.editMedInfo = () ->
-    ChildService.updateChildMedInfo($scope.viewChildMedicalInfoEdit).then (response) ->
-      $scope.getChildrenData(true)
-
-  $scope.goToChild = (childId, refreshingData) ->
+  $scope.goToChild = (childId, refreshingData, tabToShow) ->
     $scope.viewChild = $filter('filter')($scope.userChildren, (d) -> d.ChildId == childId)[0]
     $scope.viewChildMedicalInfo = $filter('filter')($scope.childrenMedicalInfo, (d) -> d.ChildId == childId)[0]
     $scope.viewChildMedicalInfoEdit = angular.copy $scope.viewChildMedicalInfo
@@ -75,7 +113,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     $scope.viewChildGeneralInfo = $filter('filter')($scope.childrenGenInfo, (d) -> d.ChildId == childId)[0]
     $scope.viewChildHistoryInfo = $filter('filter')($scope.childrenHistoryInfo, (d) -> d.ChildId == childId)[0]
     if refreshingData
-      $scope.changeActiveLowerTab('Medical Info')
+      $scope.changeActiveLowerTab(tabToShow)
 
   $scope.goToFeed = (feedId) ->
     $scope.viewFeedAttachments = null
@@ -96,11 +134,14 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $rootScope.headOfHouseHold = $scope.viewGuardian
 
   $scope.editGuardianInfo = () ->
+    $scope.buttonDisable = true
     GuardianService.updatePersonalInfo($scope.viewGuardianEdit)
     GuardianService.updateMailingAddress($scope.viewGuardianEdit)
     GuardianService.updateContactInfo($scope.viewGuardianEdit).then (response) ->
       $rootScope.getGuardianData(true)
       $scope.goToGuardian($scope.viewGuardianEdit.GuardianId)
+      $scope.editGuardian = false
+      $scope.buttonDisable = false
 
   $scope.goToEmergencyContact = (contactId) ->
     ContactService.getContact(contactId).then (response) ->
@@ -108,14 +149,18 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.viewEmergencyContactEdit = angular.copy $scope.viewEmergencyContact
 
   $scope.editContactInfo = () ->
+    $scope.buttonDisable = true
     ContactService.updatePersonalInfo($scope.viewEmergencyContactEdit)
     ContactService.updateMailingAddress($scope.viewEmergencyContactEdit)
     ContactService.updateContactInfo($scope.viewEmergencyContactEdit).then (response) ->
       $scope.getContactData(true)
       $scope.goToEmergencyContact($scope.viewEmergencyContactEdit.EmergencyContactId)
+      $scope.editContact = false
+      $scope.buttonDisable = false
 
   $scope.goToPickupContact = (contactId) ->
     $scope.viewPickupContact = $filter('filter')($scope.pickupList, (d) -> d.ChildPickupId == contactId)[0]  
+    $scope.viewPickupContactEdit = angular.copy $scope.viewPickupContact
 
   $scope.getContactData = (isUpdated) ->
     ContactService.getAllContacts($rootScope.familyId).then (response) ->
@@ -128,11 +173,13 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       else
         $scope.goToEmergencyContact($scope.viewEmergencyContactEdit.EmergencyContactId)
 
-  $scope.getPickListData = () ->
+  $scope.getPickListData = (refreshed, childPickupId) ->
     ChildPickupService.getAllChildPickupList($rootScope.familyId).then (response) ->
       $scope.pickupList = response.data
       if $scope.pickupList == null
         $scope.pickupList = []
+      else if refreshed
+        $scope.goToPickupContact($scope.pickupList[$scope.pickupList.length-1].ChildPickupId)
       else
         $scope.goToPickupContact($scope.pickupList[0].ChildPickupId)
         

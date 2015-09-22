@@ -1,10 +1,10 @@
 <div class="emergency-contact-info-breakdown-view lower-section-wrapper">
-    <div class="pull-left ul-vertical-nav">
+    <div class="pull-left ul-vertical-nav"  ng-hide="contacts.length == 0">
 		<ul>
 	        <li ng-class="{ 'active': activeEmergencyContact == 'contact-'+[$index+1]}"  data-ng-repeat="contact in contacts | startFrom: contactsPagination.page * contactsPagination.perPage | limitTo: contactsPagination.perPage" ng-animate="'animate'"   ng-click="goToEmergencyContact(contact.EmergencyContactId); changeActiveEmergencyContact('contact-'+[$index+1]);" >
 				<div class="pull-left">
 					<span class="feed-headline cap">Contact {{$index+1}}</span>
-					<span class="feed-headline cap">{{contact.Name}}</span>
+					<span class="feed-headline cap">{{contact.Name || '(Not Set)'}}</span>
 				</div>
 				<div class="pointer pull-right">
 				</div>
@@ -25,8 +25,8 @@
 		</nav>
 	</div>
 
-	<div class="emergency-contact-detail-wrapper feed-breakdown-view"  ng-show="contacts.length == 0">
-		<p class="no-updates text-center">No One has been added to contacts at this time</p>
+	<div class="emergency-contact-detail-wrapper feed-breakdown-view empty"  ng-show="contacts.length == 0">
+		<p class="no-updates no-results">No One has been added to contacts at this time</p>
 	</div>
 
     <div class="emergency-contact-detail-wrapper feed-breakdown-view" >
@@ -43,7 +43,7 @@
 		  cancel-button-type="danger" ng-hide="editContact">
 		  Delete Contact
 		</button>
-    	<button class="btn btn-primary pull-right edit-contact-btn edit-btn" ng-click="editContact = true;" ng-hide="editContact">Edit Contact</button>
+    	<button class="btn btn-primary pull-right edit-contact-btn edit-btn" ng-click="editSection('Contact Info')" ng-hide="editContact">Edit Contact</button>
     	<div class="clearfix"></div>
 		<div class="view-contact-info" ng-hide="editContact">
 			<div class="detail-breakdown">
@@ -191,8 +191,9 @@
 					</span>
 				</div>
 				<div class="button-wrapper detail-breakdown" >
-					<button class="btn btn-primary" ng-click="editContactInfo(); editContact = false;" ng-disabled="!editContactForm.$valid">Save</button>
-					<button class="btn btn-danger" ng-click="editContact = false;">Cancel</button>
+					<img ng-if="buttonDisable"  class="preloader" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+					<button class="btn btn-primary" ng-click="editContactInfo();" ng-disabled="!editContactForm.$valid || buttonDisable">Save</button>
+					<button class="btn btn-danger" ng-click="editSection('Contact Info');">Cancel</button>
 				</div>
 			</form>
 		</div>
