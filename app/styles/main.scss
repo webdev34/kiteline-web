@@ -77,6 +77,12 @@ html {
             cursor: wait !important;
             pointer-events: auto !important;
         }
+        .required{
+            color: red;
+            font-size: 12px;
+            position: relative;
+            top: -5px;
+        }
         #toast-container{
             width: 100%;
             top: 60px;
@@ -291,7 +297,8 @@ a:hover {
 
 input.ng-invalid-mask,
 input.ng-invalid-email,
-input.ng-invalid-maxlength{
+input.ng-invalid-maxlength,
+input.ng-invalid-minlength{
     border-color: red !important;
     outline-color: red !important;
     background-color: #f66;

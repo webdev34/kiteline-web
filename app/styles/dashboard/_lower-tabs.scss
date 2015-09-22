@@ -117,6 +117,17 @@
 			width: 60%;
 			word-wrap: break-word;
 			//@extend .ellipsis;
+			&.PIN{
+				input{
+					width: 65px;
+    				float: left;
+				}
+				.required{
+					float: left;
+				    margin-top: 15px;
+				    margin-left: 10px;
+				}
+			}
 		}
 		.detail-breakdown.longer{
 			width: 100%;

@@ -7,12 +7,13 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   LogInService.isLoggedIn()
   $scope.userChildren = null
   $scope.viewChild = null
-  $scope.editGuardian = false;
-  $scope.editContact = false;
-  $scope.editMedicalInfo = false;
-  $scope.editPickupList = false;
-  $scope.newPickupContact = false;
-  $scope.buttonDisable = false;
+  $scope.editGuardian = false
+  $scope.editContact = false
+  $scope.editMedicalInfo = false
+  $scope.editPickupList = false
+  $scope.newPickupContact = false
+  $scope.buttonDisable = false
+  $scope.isPinValid = false
   $scope.currentLowerTab = "Updates"
   $scope.activeChild = "child-1"
   $scope.activeGuardian = "guardian-1"
@@ -22,6 +23,14 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $rootScope.changePageTitle()
 
 
+  $scope.pinValidation = ()->
+    if $scope.viewEmergencyContactEdit.Pin 
+      if $scope.viewEmergencyContactEdit.Pin.length == 4
+        $scope.isPinValid = true
+      else
+        editContactFormTop.pin.$invalid = true
+        $scope.isPinValid = false
+
   $scope.editSection = (editMe) ->
     if editMe == 'Medical Info'
       $scope.editMedicalInfo = !$scope.editMedicalInfo
@@ -29,7 +38,11 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.editGuardian = !$scope.editGuardian
     else if editMe == 'Contact Info'
       $scope.editContact = !$scope.editContact
-
+    else if editMe == 'Picklist Info'
+      $scope.editPickupList = !$scope.editPickupList
+    else if editMe == 'New Picklist Info'
+      $scope.newPickupContact = !$scope.newPickupContact
+      $scope.viewPickupContactNew = {}
 
   $scope.deleteEmergencyContact = (contactId) ->
     ContactService.deleteContact(contactId, $rootScope.centerId).then (response) ->
@@ -42,8 +55,13 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.activePickupContact = "pickup-contact-1"
 
   $scope.newPickupListContact = () ->
+    $scope.buttonDisable = true
     ChildPickupService.addChildPickUpRecord($scope.viewPickupContactNew, $scope.viewChild.ChildId).then (response) ->
       $scope.getPickListData(true)
+      $scope.buttonDisable = false
+      $scope.newPickupContact = false
+      thisIndex = $scope.pickupList.length+1
+      $scope.changeActivePickupContact('pickup-contact-'+thisIndex)
 
   $scope.editMedInfo = () ->
     $scope.buttonDisable = true
@@ -58,11 +76,15 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
         $scope.buttonDisable = false
 
   $scope.editPickupContactInfo = () ->
+    $scope.buttonDisable = true
     ChildPickupService.updateChildPickupInfo($scope.viewChild.ChildId, $scope.viewPickupContactEdit).then (response) ->
       $scope.getPickListData().then (response) ->
-        angular.forEach $scope.pickupList, (value, key) ->
-          if value.PickupName == $scope.viewPickupContactEdit
-            $scope.goToPickupContact(value.ChildPickupId)
+      $scope.buttonDisable = false
+      $scope.editPickupList = false
+      angular.forEach $scope.pickupList, (value, key) ->
+        if value.PickupName == $scope.viewPickupContactEdit
+          $scope.goToPickupContact(value.ChildPickupId)
+
 
   $scope.changeActivePickupContact = (activePickupContact) ->
     $scope.activePickupContact = activePickupContact
@@ -147,6 +169,8 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     ContactService.getContact(contactId).then (response) ->
       $scope.viewEmergencyContact = response.data
       $scope.viewEmergencyContactEdit = angular.copy $scope.viewEmergencyContact
+      if $scope.viewEmergencyContactEdit.Pin == '(Not Set)' || $scope.viewEmergencyContactEdit.Pin == '(not set)' 
+        $scope.viewEmergencyContactEdit.Pin = null
 
   $scope.editContactInfo = () ->
     $scope.buttonDisable = true
@@ -165,7 +189,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.getContactData = (isUpdated) ->
     ContactService.getAllContacts($rootScope.familyId).then (response) ->
       $scope.contacts = response.data
-      console.log $scope.contacts
       $scope.contactsPagination = Pagination.getNew()
       $scope.contactsPagination.numPages = Math.ceil($scope.contacts.length/$scope.contactsPagination.perPage)
       if !isUpdated

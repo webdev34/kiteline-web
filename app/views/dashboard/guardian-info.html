@@ -62,25 +62,30 @@
 
 		<div class="edit-guardian-info" ng-show="editGuardian">
 			<div class="detail-breakdown">
-				<span class="detail-label">First Name</span>
+				<span class="detail-label">
+					<span class="required">*</span>
+					First Name</span>
 				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.FirstName" name="guardian_first_name" />
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.FirstName" name="guardian_first_name" required />
 				</span>
 			</div>
 			<div class="detail-breakdown">
+				<span class="required">*</span>
 				<span class="detail-label">Last Name</span>
 				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.LastName" name="guardian_last_name" />
+					<input type="text" class="form-control" ng-model="viewGuardianEdit.LastName" name="guardian_last_name" required/>
 				</span>
 			</div>
 			<div class="detail-breakdown">
-				<span class="detail-label">Relationship</span>
+				<span class="detail-label">
+					<span class="required">*</span>
+					Relationship</span>
 				<span class="detail-value">
 					<span class="radio-btn-wrapper wide">Mother
-						<input type="radio" class="form-control" ng-model="viewGuardianEdit.RelationShip" name="relationship_m" value="M" />
+						<input type="radio" class="form-control" ng-model="viewGuardianEdit.RelationShip" name="relationship_m" value="M" required/>
 					</span>
 					<span class="radio-btn-wrapper wide">Father
-						<input type="radio" class="form-control" ng-model="viewGuardianEdit.RelationShip" name="relationship_f" value="F" />
+						<input type="radio" class="form-control" ng-model="viewGuardianEdit.RelationShip" name="relationship_f" value="F" required/>
 					</span>
 					<div class="clearfix"></div>
 				</span>
@@ -136,18 +141,18 @@
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Home Phone</span>
-				<span class="detail-value">{{viewGuardian.HomePhone  | tel || '(Not Set)'}}</span>
+				<span class="detail-value">{{viewGuardian.HomePhone  | tel}}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Work Phone</span>
 				<span class="detail-value">
-					{{viewGuardian.WorkPhone | tel || '(Not Set)'}}
+					{{viewGuardian.WorkPhone | tel}}
 				</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Cell Phone</span>
 				<span class="detail-value">
-					{{viewGuardian.CellPhone | tel || '(Not Set)'}}
+					{{viewGuardian.CellPhone | tel}}
 				</span>
 			</div>
 			<div class="detail-breakdown">

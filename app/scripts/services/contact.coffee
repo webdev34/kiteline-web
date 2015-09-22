@@ -8,7 +8,6 @@ angular.module('kiteLineApp').service 'ContactService', ($http, $q, $rootScope, 
 
   @updatePersonalInfo = (obj) ->   
     url = rootUrl+'api/Contact/UpdatePersonalInfo'
-    console.log obj
     $http(
       method: 'POST'
       headers:
@@ -24,7 +23,7 @@ angular.module('kiteLineApp').service 'ContactService', ($http, $q, $rootScope, 
         'Pin': obj.Pin
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
-      console.log data
+
       return
     ).error (data, status, headers, config) ->
       deferred.reject status

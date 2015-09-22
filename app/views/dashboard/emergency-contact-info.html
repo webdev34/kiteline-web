@@ -48,40 +48,50 @@
 		<div class="view-contact-info" ng-hide="editContact">
 			<div class="detail-breakdown">
 				<span class="detail-label">Name</span>
-				<span class="detail-value">{{viewEmergencyContact.Name}}</span>
+				<span class="detail-value">{{viewEmergencyContact.Name || '(Not Set)'}}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Relationship</span>
-				<span class="detail-value">{{viewEmergencyContact.RelationShip}}</span>
+				<span class="detail-value">{{viewEmergencyContact.RelationShip || '(Not Set)'}}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Security Pin</span>
 				<span class="detail-value">
-					{{viewEmergencyContact.Pin}}
+					{{viewEmergencyContact.Pin || '(Not Set)'}}
 				</span>
 			</div>
 		</div>
 
 		<!-- Edit -->
 		<div class="edit-contact-info" ng-show="editContact">
-			<div class="detail-breakdown">
-				<span class="detail-label">Name</span>
-				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.Name" name="contact_name" />
+			<form name="editContactFormTop">
+				<div class="detail-breakdown">
+					<span class="detail-label">
+						<span class="required">*</span>
+						Name</span>
+					<span class="detail-value">
+						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.Name" name="contact_name" required />
+						</span>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">
+						<span class="required">*</span>
+						Relationship</span>
+					<span class="detail-value">
+						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.RelationShip" name="contact_name" required/>
 					</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">Relationship</span>
-				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.RelationShip" name="contact_name" />
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">Security Pin</span>
-				<span class="detail-value">
-					{{viewEmergencyContact.Pin}}
-				</span>
-			</div>
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">
+						<span class="required">*</span>
+						Security Pin
+					</span>
+					<span class="detail-value PIN">
+						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.Pin" name="pin" numeric-only required maxlength="4" minlength="4" ng-keyup="pinValidation()" ng-class="{'ng-invalid': !isPinValid}" /> 
+						<span class="required" ng-show="editContactFormTop.pin.$invalid && editContactFormTop.pin.$dirty" >PIN must be 4 digits</span>
+					</span>
+				</div>
+			</form>
 		</div>
 		<!-- Edit -->
 
@@ -94,20 +104,20 @@
 		<div class="contact-address-wrapper" ng-hide="editContact">
 			<div class="detail-breakdown">
 				<span class="detail-label">Street</span>
-				<span class="detail-value">{{viewEmergencyContact.Street}}</span>
+				<span class="detail-value">{{viewEmergencyContact.Street || '(Not Set)'}}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">City</span>
-				<span class="detail-value">{{viewEmergencyContact.City}}</span>
+				<span class="detail-value">{{viewEmergencyContact.City || '(Not Set)'}}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">State</span>
-				<span class="detail-value">{{viewEmergencyContact.State}}</span>
+				<span class="detail-value">{{viewEmergencyContact.State || '(Not Set)'}}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Zip</span>
 				<span class="detail-value">
-					{{viewEmergencyContact.Zip}}
+					{{viewEmergencyContact.Zip || '(Not Set)'}}
 				</span>
 			</div>
 			<div class="detail-breakdown">
@@ -130,7 +140,7 @@
 			<div class="detail-breakdown">
 				<span class="detail-label">Email</span>
 				<span class="detail-value no-cap">
-					{{viewEmergencyContact.EmailAddress}}
+					{{viewEmergencyContact.EmailAddress || '(Not Set)'}}
 				</span>
 			</div>
 		</div>
@@ -192,7 +202,7 @@
 				</div>
 				<div class="button-wrapper detail-breakdown" >
 					<img ng-if="buttonDisable"  class="preloader" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
-					<button class="btn btn-primary" ng-click="editContactInfo();" ng-disabled="!editContactForm.$valid || buttonDisable">Save</button>
+					<button class="btn btn-primary" ng-click="editContactInfo();" ng-disabled="!editContactForm.$valid || !editContactFormTop.$valid || buttonDisable">Save</button>
 					<button class="btn btn-danger" ng-click="editSection('Contact Info');">Cancel</button>
 				</div>
 			</form>
