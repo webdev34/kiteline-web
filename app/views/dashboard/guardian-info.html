@@ -42,11 +42,13 @@
 				<span class="detail-label">Relationship</span>
 				<span class="detail-value" ng-show="viewGuardian.RelationShip == 'F'">Father</span>
 				<span class="detail-value" ng-show="viewGuardian.RelationShip == 'M'">Mother</span>
+				<span class="detail-value" ng-show="viewGuardian.RelationShip.length == 0">(Not Set)</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Legal Custody?</span>
 				<span class="detail-value" ng-show="viewGuardian.LegalCustody == 'Y'">Yes</span>
 				 <span class="detail-value" ng-show="viewGuardian.LegalCustody == 'N'">No</span>
+				 <span class="detail-value" ng-show="viewGuardian.LegalCustody.length == 0">(Not Set)</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Employer</span>
@@ -131,7 +133,7 @@
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">State</span>
-				<span class="detail-value">{{viewGuardian.State}}</span>
+				<span class="detail-value">{{viewGuardian.State  || '(Not Set)'}}</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Zip</span>
@@ -141,18 +143,27 @@
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Home Phone</span>
-				<span class="detail-value">{{viewGuardian.HomePhone  | tel}}</span>
+				<span class="detail-value" ng-if="viewGuardian.HomePhone.length > 0">{{viewGuardian.HomePhone  | tel}}</span>
+				<span class="detail-value" ng-if="viewGuardian.HomePhone.length == 0" >
+					(Not Set)
+				</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Work Phone</span>
-				<span class="detail-value">
+				<span class="detail-value" ng-if="viewGuardian.WorkPhone.length > 0" >
 					{{viewGuardian.WorkPhone | tel}}
+				</span>
+				<span class="detail-value" ng-if="viewGuardian.WorkPhone.length == 0" >
+					(Not Set)
 				</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Cell Phone</span>
-				<span class="detail-value">
+				<span class="detail-value" ng-if="viewGuardian.CellPhone.length > 0" >
 					{{viewGuardian.CellPhone | tel}}
+				</span>
+				<span class="detail-value" ng-if="viewGuardian.CellPhone.length == 0" >
+					(Not Set)
 				</span>
 			</div>
 			<div class="detail-breakdown">
@@ -162,6 +173,8 @@
 				<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'H'">Home Phone</span>
 				<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'C'">Cell Phone</span>
 				<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact == 'E'">Email</span>
+				<span class="detail-value" ng-show="viewGuardian.PrefMethodOfContact.length == 0">(Not Set)</span>
+
 			</div>
 			<div class="detail-breakdown longer">
 				<span class="detail-label">Email</span>

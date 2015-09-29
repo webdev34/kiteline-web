@@ -2,7 +2,7 @@
 angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScope, $location, StorageService, CenterInfoService, PaymentService, AnnouncementsService, CreditCardService, InvoiceDetailService, InvoiceService, GuardianService, AccountService, usSpinnerService, $window, ngDialog, Pagination) ->
   
   if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > - 1
-    $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
+    $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V2.0/'
   else if window.location.href.indexOf('parent') > - 1
     $rootScope.rootUrl = 'https://app.skychildcare.com/services/kiteline/v2.0/'
   else
@@ -159,6 +159,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
         $rootScope.paymentCC.ExpirationDate = "0" + $rootScope.paymentCC.ExpirationDate
 
       if $rootScope.paymentCC.RecurringAccount is true
+        console.log 'saving new card'
         $rootScope.submitNewAccount('CC Payment', '')
       else
         PaymentService.makePaymentWithCC($rootScope.currentCenter.FamilyId, $rootScope.currentCenter.CenterId, invoiceId, $rootScope.currentCenter.CustomerId, $rootScope.paymentCC).then (response) ->
@@ -181,6 +182,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     $rootScope.currentPaymentModal = 'Outstanding Balance'
     $rootScope.paymentAmount = $rootScope.outstandingInvoicesDueTotal.toFixed 2
     $rootScope.paymentMSG = null
+    if $rootScope.creditCardAccounts.length == 0
+      $rootScope.addCreditCardFromModal = true
     ngDialog.open template: $rootScope.modalUrl + '/views/modals/pay-outstanding-balance.html'
 
   $rootScope.addAccountModal = () ->
@@ -210,6 +213,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
         $rootScope.getPaymentAccounts()
         $scope.resetAccountForm('CC', form)
     else if type == 'CC Payment' and $rootScope.paymentCC.saveAccount
+      console.log 'right track'
       thisYear = String($rootScope.expireDatesPayment.year)
       thisYear = thisYear[2] + thisYear[3]
       $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month + '/' + thisYear
@@ -360,7 +364,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
   $rootScope.getUserData = () ->
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
-    console.log $rootScope.currentCenter
     $rootScope.currentUserEmail = StorageService.getItem('userEmail')
     $rootScope.currentUserToken = StorageService.getItem('x-skychildcaretoken')
     $rootScope.LastLoginInfo = StorageService.getItem('LastLoginInfo')
@@ -370,7 +373,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     $rootScope.showLogOut = false
 
     CenterInfoService.getCenterDetails($rootScope.centerId).then (response) ->
-      console.log response.data
       $rootScope.currentCenterDetails = response.data
       $rootScope.subscriberId = response.data.SubscriberId
 

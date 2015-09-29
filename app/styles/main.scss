@@ -158,6 +158,8 @@ html {
                 margin-right: 9px;
                 margin-top: 9px;
                 font-size: 16px;
+                color: #666;
+                font-weight: bold;
             }
             .datepicker-wrapper {
                 float: left;
@@ -187,7 +189,12 @@ html {
                 min-height: 250px;
             }
         }
-        .table {
+        .table{
+            tr{
+                border-bottom: thin solid #ccc;
+            }
+        }
+        .table.shadow {
             box-shadow: 2px 2px 2px 1px rgba(166, 166, 166, 0.5);
             tr:nth-child(even) {
                 background: #FFF;
@@ -208,7 +215,7 @@ html {
             cursor: default;
         }
         .table > thead > tr > th {
-            background-color: #ccc;
+            background-color: transparent;
             color: #666;
             text-align: center;
             font-size: 16px;
@@ -399,6 +406,7 @@ h1, h2, h3 {
             }
             img {
                 width: 100px;
+                height: 90px;
                 background-color: white;
                 padding: 5px;
                 border-radius: 15px;
@@ -406,6 +414,7 @@ h1, h2, h3 {
                 position: relative;
                 margin-right: -42px;
                 margin-left: 25px;
+                top: 10px;
             }
             .fa, .glyphicon {
                 font-size: 28px;
@@ -465,7 +474,7 @@ h1, h2, h3 {
             li {
                 min-height: 110px;
                 font-size: 16px !important;
-                border-bottom: thin solid #224f77;
+                border-bottom: 2px solid #224f77;
                 width: 90%;
                 .feed-headline {
                     margin-top: 5%;
@@ -601,7 +610,7 @@ h1, h2, h3 {
     &.col-md-4,
     &.col-md-8,
     &.col-md-12 {
-        min-height: 935px;
+        //min-height: 935px;
         margin-bottom: 30px;
         .my-children-container-dashboard {
             //height: 70%;
@@ -1034,6 +1043,22 @@ body {
 
 .dark-green {
     color: darkgreen !important;
+}
+
+.lime-green{
+    background-color: #99cc33 !important;
+    &:before,
+    &:after{
+        color: white !important;
+    }
+}
+
+.fa-times.red{
+    background-color: red;
+    &:before,
+    &:after{
+        color: white !important;
+    }
 }
 
 .center-align {

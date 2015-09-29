@@ -1,0 +1,24 @@
+<div class="col-md-6 tile even outstanding-balance-wrapper">
+	<h4 class="pull-left">
+		Outstanding Balance
+	</h4> 
+	<div class="clearfix"></div>
+	<img src="images/icon-poll-220x220@2x.png" class="pull-left payment-amount-graph">
+	<div class="current-balance-wrapper">
+		<span class="current-balance">
+			{{outstandingInvoicesDueTotal | currency}}
+		</span> 
+		<a ng-click="goToTab('Invoices');" class="view-details" >View Details</a>
+	</div>
+	<span class="auto-pay ng-hide" ng-show="defaultAccount.RecurringAccount != null">
+			Auto pay scheduled for {{currentCenter.NextPayDate}}
+	</span> 
+	<div class="outstanding-balance-button-wrapper">
+		<button ng-hide="outstandingInvoicesDueTotal == 0" class="btn btn-primary payment-btn" ng-click="payOutstandingBalance()"  >
+			Pay Outstanding Invoice Balance
+		</button>
+		<button ng-show="outstandingInvoicesDueTotal == 0" class="btn btn-primary payment-btn dead" tooltips title="You do not have any balance to pay">
+			Pay Outstanding Invoice Balance
+		</button>
+	</div>
+</div>

@@ -4,7 +4,13 @@ body {
             white-space: pre-line;
             width: 100%;
             text-align: center;
-            color: white;
+            color: #287194;
+        }
+        .ngdialog-close{
+            color: #287194;
+            &.hover{
+                 color: #4e99bd;
+            }
         }
         &.ngdialog-theme-default {
             padding: 10px;
@@ -16,18 +22,27 @@ body {
                     //height: 82%;
                 }
             }
+
+            .ngdialog-close:before {
+                background: black;
+                border: thin solid white;
+                @include border-radius(15px);
+                right: -15px;
+                top: -15px;
+            }
+
             .ngdialog-content {
                 width: 60%;
                 height: auto;
-                background: #04364c;
+                background: white;
                 padding: 0px;
                 top: 5%;
                 padding-bottom: 40px;
                 margin-top: 110px;
                 .overlay-container {
                     height: 100%;
-                    color: white;
-
+                    background-color: white;
+                    color: #529acd;
                     &.invoice-history{
                         .control-group{
                             margin: 0px;
@@ -35,6 +50,16 @@ body {
                     }
                     .table-wrapper.modal-list {
                         min-height: 280px;
+                    }
+
+                    .payment-amount-graph{
+                        width: 75px;
+                        margin-left: 15px;
+                        margin-right: 15px;
+                        margin-top: -15px;
+                    }
+                    .outstandingInvoicesDueTotal{
+                        margin-top: 20px !important;
                     }
                     table{
                         box-shadow: none;
@@ -50,10 +75,15 @@ body {
                             }
                             th{
                                 font-size: 16px;
+                                background-color: transparent;
                             }
                             td{
                                 color: #666666;
                                 font-size: 14px;
+                                .account-name{
+                                    position: relative;
+                                    top: -5px;
+                                }
                             }
                         }
                     }
@@ -445,7 +475,7 @@ body {
                         }
                         h3 {
                             font-family: "concourse_t4regular";
-                            color: white;
+                            color: #529acd;
                             //text-align: center;
                             font-size: 21px;
                             margin-left: 15px;

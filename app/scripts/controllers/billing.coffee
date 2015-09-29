@@ -6,7 +6,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.currentTab = 'Overview'
   $rootScope.addBankAccount = false
   $rootScope.newBankAccount = {}
-  $scope.taxStatements = [ [2015,2014],[2013,2012],[2011,2010]]
+  $scope.taxStatements = [2015,2014,2013,2012,2011,2010,2009,2008,2007]
   $rootScope.changePageTitle()
 
   $rootScope.processInvoicePayment = (accountId) ->

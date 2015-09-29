@@ -2,7 +2,7 @@
 	<h4 class="my-children-header pull-left">Children</h4>
 	<div class="clearfix" ></div>
     <ul class="nav nav-tabs">
-        <li ng-animate="'animate'" data-ng-repeat="child in userChildren" ng-click="goToChild(child.ChildId); changeActiveChild('child-'+[$index+1]);" class="child-{{$index+1}}" ng-class="{ 'active': activeChild == 'child-'+[$index+1]}"><a><span class="first-name">{{child.ChildName.split(' ')[0]}}</span></a></li>
+        <li ng-animate="'animate'" data-ng-repeat="child in userChildren track by $index" ng-click="goToChild(child.ChildId); changeActiveChild('child-'+[$index+1]);" class="child-{{$index+1}}" ng-class="{ 'active': activeChild == 'child-'+[$index+1]}"><a><span class="first-name">{{child.ChildName.split(' ')[0]}}</span></a></li>
     </ul>
 	<div class="col-md-12 child-breakdown-wrapper">
 		<div class="pull-left">

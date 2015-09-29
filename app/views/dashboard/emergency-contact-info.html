@@ -122,18 +122,23 @@
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Home Phone</span>
-				<span class="detail-value">{{viewEmergencyContact.HomePhone  | tel}}</span>
+				<span class="detail-value"  ng-if="viewEmergencyContact.HomePhone.length > 0">{{viewEmergencyContact.HomePhone  | tel}}</span>
+				<span class="detail-value" ng-if="viewEmergencyContact.HomePhone.length == 0" >(Not Set)</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Work Phone</span>
-				<span class="detail-value">
+				<span class="detail-value" ng-if="viewEmergencyContact.WorkPhone.length > 0">
 					{{viewEmergencyContact.WorkPhone | tel}}
 				</span>
+				<span class="detail-value" ng-if="viewEmergencyContact.WorkPhone.length == 0" >(Not Set)</span>
 			</div>
 			<div class="detail-breakdown">
 				<span class="detail-label">Cell Phone</span>
-				<span class="detail-value">
+				<span class="detail-value"  ng-if="viewEmergencyContact.CellPhone.length > 0">
 					{{viewEmergencyContact.CellPhone | tel}}
+				</span>
+				<span class="detail-value" ng-if="viewEmergencyContact.CellPhone.length == 0">
+					(Not Set)
 				</span>
 			</div>
 			<div class="clearfix"></div>

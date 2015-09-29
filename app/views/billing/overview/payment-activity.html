@@ -1,0 +1,38 @@
+<div class="col-md-6 tile even payment-activity-wrapper">
+	
+	<h4 class="pull-left">
+		Payment Activity
+	</h4> 
+	<div class="clearfix"></div>
+
+	<div>
+		<table class="table">
+		    <thead>
+		    	<tr>
+			        <th>Date</th>
+			        <th>Amount</th>
+			        <th>Status</th>
+			        <th>Payment Type</th>
+		        </tr>
+		    </thead>
+		    <tbody ng-show="pastTransactions.length == 0">
+					<tr ng-animate="'animate'" ><td colspan="4"><span>No Past Transactions</span></td></tr>
+			</tbody>
+		    <tbody>
+		    	<tr ng-animate="'animate'" data-ng-repeat="payment in pastTransactions |  orderBy:'PaymentDate':true" ng-show="$index < 5">
+		        <td>
+		        	{{payment.PaymentDate | date}}
+		    	</td>
+		    	<td>
+		    		{{payment.Amount | currency}}
+		    	</td>
+		        <td>
+		        	<span class="fa fa-check lime-green" ng-show="payment.PaymentStatus == 'Processed'"></span> 
+					<span class="fa fa-times red" ng-show="payment.PaymentStatus != 'Processed'"></span> 
+				</td>
+		        <td>{{payment.PaymentType}}</td>
+		      	</tr>
+		    </tbody>
+		</table>
+	</div>
+</div>

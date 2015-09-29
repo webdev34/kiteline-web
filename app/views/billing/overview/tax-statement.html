@@ -1,0 +1,12 @@
+<div class="col-md-6 tile even tax-statements-wrapper">
+	<h4 class="pull-left">
+		Tax Statement
+	</h4> 
+	<div class="clearfix"></div>
+
+	  <ul class="tax-inner" role="listbox">
+		    <li class="tax-year" data-ng-repeat="statement in taxStatements" >
+		    	<button class="btn btn-primary tax-btn" ng-click="getTaxStatement(statement)" >{{statement}}</button>
+		    </li>
+	  </ul>
+</div>

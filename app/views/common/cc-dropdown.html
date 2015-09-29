@@ -12,13 +12,13 @@
 				<thead>
 					<tr>
 						<th>
-							Account
+							Account Name 
 						</th>
 						<th>
 							Billing Address
 						</th>
 						<th>
-							Last 4
+							Last 4 Digits
 						</th>
 						<th>
 							Active/Expired
@@ -38,6 +38,8 @@
 						        <i ng-show="account.cctype == 'CC - Visa'" class="fa fa-cc-visa"></i>
 						        <i ng-show="account.cctype == 'CC - Mastercard'" class="fa fa-cc-mastercard"></i>
 			  				</a>
+
+			  				 <span class="account-name"> {{account.AccountName || '(Not Set)'}} </span>
 						</td>
 						<td>
 							{{account.street}}<br/>

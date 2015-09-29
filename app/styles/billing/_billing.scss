@@ -18,146 +18,192 @@
         -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
         transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     }
-    .billing-tab{
+    .billing-tab {
         margin-top: 25px;
     }
-    .left-feature-container.col-md-12{
-        min-height: 836px;
+    .overview-breakdown-wrapper,
+    .transactions-breakdown-wrapper,
+    .invoices-breakdown-wrapper,
+    .payment-accounts-breakdown-wrapper {
+        background-color: white;
+        padding-bottom: 25px;
     }
-    .tile.col-md-4 {
-        @extend .box-shadow-container;
-        height: 320px;
-        margin-top: 75px;
-        padding: 20px;
-        &.shorter {
-            height: 240px;
-            margin-bottom: 50px;
+    .left-feature-container.col-md-12 {
+        background-color: transparent;
+        border: none;
+        ul.nav.nav-tabs li.active a {
+            background-color: white;
+            color: black;
         }
-        .fa, .glyphicon {
-            margin-top: 20px;
-            &.glyphicon-bullhorn,
-            &.glyphicon-list-alt {
-                margin-right: 10px;
+        .tile.col-md-6 {
+            //@extend .box-shadow-container;
+            //min-height: 300px;
+            padding: 5px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 25px;
+            width: 43%;
+            margin-right: 8%;
+            margin-left: 2%;
+            &.even {
+                margin-right: 0%;
             }
-        }
-        h4 {
-            margin-top: 23px;
-        }
-        // OVERVIEW CSS //
-        &.messages-wrapper {
-            .message-headline {
-                margin-top: 5px;
-                margin-bottom: 5px;
+            .fa, .glyphicon {
+                margin-top: 20px;
             }
-            .carousel-indicators {
-                top: 95px !important;
-            }
-            .carousel-control .glyphicon-chevron-left,
-            .carousel-control .glyphicon-chevron-right {
-                top: 15%;
-            }
-            .no-messages{
-              text-align: center;
-              font-size: 18px;
-              margin-top: 30px;
-            }
-        }
-        &.outstanding-balance-wrapper {
-            span,
-            a {
-                display: block;
-                margin: 10px 0px;
-            }
-            .see-all-invoice {
-                margin-top: 30px;
-            }
-            .amount-owed {
-                color: #e6374f;
-            }
-            .due-date {
-                color: #999;
-            }
-            .current-balance {
-                color: orange;
-                font-size: 24px;
-                font-family: concourse_c4bold;
-                text-align: center;
-                display: inline-block;
+            h4 {
+                color: #4e99bd;
+                border-bottom: thin solid #ccc;
                 width: 100%;
+                padding-bottom: 5px;
+                font-size: 21px;
             }
-            .auto-pay {
-                color: #999;
-                font-weight: bold;
-                font-size: 18px;
-                margin-top: 0px;
-
-            }
-        }
-        &.payment-activity-wrapper {
-            .fa {
-                margin-top: 0px;
-                &.fa-usd {
-                    margin-top: 20px;
-                }
-            }
-            table {
-                margin-top: 10px;
-                td, th {
-                    padding: 2px;
-                }
-                td{
-                    font-size: 16px;
-                }
-            }
-            .table > thead > tr > th {
-                font-size: 18px;
-            }
-        }
-        &.tuition-rates-wrapper {
-            .rounded-img-large {
-                margin: 0 auto;
-            }
-            #myCarousel {
-                .carousel-indicators {
-                    top: 205px;
-                }
-                .child-name {
-                    font-size: 18px;
+            // OVERVIEW CSS //
+            &.messages-wrapper {
+                .message-headline {
                     margin-top: 5px;
-                    margin-bottom: 0px;
+                    margin-bottom: 5px;
+                }
+                .carousel-indicators {
+                    top: 95px !important;
+                }
+                .carousel-control .glyphicon-chevron-left,
+                .carousel-control .glyphicon-chevron-right {
+                    top: 15%;
+                }
+                .no-messages {
+                    text-align: center;
+                    font-size: 18px;
+                    margin-top: 30px;
                 }
             }
-        }
-        &.auto-pay-wrapper {
-            .inner-wrapper {
-                margin-top: 30px;
-                a{
-                    width: 100%;
-                    text-align: center;
+            &.outstanding-balance-wrapper {
+                border-bottom: thin solid #ccc;
+                min-height: auto;
+                span{
+                    display: block;
+                    margin: 10px 0px;
+                }
+                a.view-details{
+                    margin-left: 10px;
+                    margin-top: -10px;
                     display: block;
                 }
-                .auto-pay-toggle-btn {
-                    margin-right: 35px;
-                    margin-left: 25px;
+                .see-all-invoice {
+                    margin-top: 30px;
                 }
-                p {
-                    font-size: 16px;
-                    span {
-                        font-weight: bold;
+                .amount-owed {
+                    color: #e6374f;
+                }
+                .due-date {
+                    color: #999;
+                }
+                .current-balance {
+                    color: orange;
+                    font-size: 21px;
+                    font-family: concourse_c4bold;
+                    display: inline-block;
+                    margin-top: -3px;
+                    margin-left: 10px;
+                }
+                .current-balance-wrapper{
+                    float: left;
+                }
+                .auto-pay {
+                    color: #999;
+                    font-weight: bold;
+                    font-size: 18px;
+                    margin-top: 0px;
+                }
+                .payment-amount-graph{
+                    width: 75px;
+                    margin-top: -15px;
+                    margin-right: 20px;
+                }
+                .outstanding-balance-button-wrapper{
+                    margin-left: 50px;
+                    margin-top: 10px;
+                    float: left;
+                }
+            }
+            &.payment-activity-wrapper {
+                margin-top: -150px;
+                .fa {
+                    margin-top: 0px;
+                    padding: 2px;
+                    font-size: 18px;
+                }
+                table {
+                    margin-top: 10px;
+                    th{
+                        padding: 2px;
+                        background-color: white;
+                        font-size: 18px;
                     }
-                    &.pull-up{
-                        margin-top: -25px;
-                    }
-                    i{
-                        margin-right: 5px;
+                    td {
+                        font-size: 16px;
+                        padding: 2px;
                     }
                 }
             }
-        }
-        &.tax-statements-wrapper {
-            .glyphicon.glyphicon-chevron-left,
-            .glyphicon.glyphicon-chevron-right {
-                margin-top: -15px;
+            &.tuition-rates-wrapper {
+               .tuition-list{
+                    li{
+                        height: 70px;
+                        padding-top: 5px;
+                        border-bottom: thin solid #ccc;
+                        img{
+                            width: 50px;
+                        }
+                        span{
+                            display: inline-block;
+                            color: #666;
+                            &.child-name{
+                                font-weight: bold;
+                            }
+                        }
+                        &:hover{
+                            cursor: default;
+                            background-color: white;
+                        }
+                    }
+               }
+            }
+            &.auto-pay-wrapper {
+                .inner-wrapper {
+                    margin-top: 30px;
+                    a {
+                        width: 100%;
+                        text-align: center;
+                        display: block;
+                    }
+                    .auto-pay-toggle-btn {
+                        margin-right: 35px;
+                        margin-left: 25px;
+                    }
+                    p {
+                        font-size: 16px;
+                        span {
+                            font-weight: bold;
+                        }
+                        &.pull-up {
+                            margin-top: -25px;
+                        }
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+            &.tax-statements-wrapper {
+                .tax-inner{
+                    li{
+                        width: 50px;
+                        margin-right: 20px;
+                        clear: none;
+                        float: left;
+                    }
+                }
             }
         }
     }
@@ -192,17 +238,17 @@
                         position: relative;
                         padding: 0px;
                         padding-top: 10px;
-                        span.pull-right{
+                        span.pull-right {
                             position: relative;
                             top: -5px;
                             width: 6px;
                             right: 20%;
                         }
                         .fa-caret-up,
-                        .fa-caret-down{
+                        .fa-caret-down {
                             float: left;
                         }
-                        .fa-caret-up{
+                        .fa-caret-up {
                             clear: both;
                             margin-bottom: -10px;
                         }
@@ -215,8 +261,8 @@
     // PAYMENT ACCOUNTS & INVOICES CSS //
     .payment-accounts-breakdown-wrapper,
     .invoices-breakdown-wrapper {
-        form{
-            select{
+        form {
+            select {
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 -ms-appearance: none;
@@ -229,7 +275,7 @@
                 cursor: pointer;
                 text-indent: 10px;
             }
-            .fa-caret-down{
+            .fa-caret-down {
                 position: absolute;
                 top: 7px;
                 right: 11px;
@@ -237,47 +283,43 @@
                 font-size: 21px !important;
                 cursor: pointer;
             }
-
-            .expire-dates-wrapper{
-                label{
-                        float: left;
-                        clear: both;
-                        width: 100%;
-                        text-align: left;
-                    }
-                .expire-month-wrapper{
+            .expire-dates-wrapper {
+                label {
+                    float: left;
+                    clear: both;
+                    width: 100%;
+                    text-align: left;
+                }
+                .expire-month-wrapper {
                     width: 115px;
                     margin-bottom: 10px;
                     display: inline-block;
-                    
-                    select{
+                    select {
                         width: 110px;
                         float: left;
                     }
-                    .fa-caret-down{
+                    .fa-caret-down {
                         right: 15px;
                     }
                 }
-
-                .expire-year-wrapper{
+                .expire-year-wrapper {
                     width: 85px;
                     display: inline-block;
                     top: -11px;
-                    select{
+                    select {
                         width: 80px;
                         float: left;
                     }
-                    .fa-caret-down{
+                    .fa-caret-down {
                         right: 15px;
                     }
                 }
             }
-
-            &.ng-invalid{
-                button.btn-primary{
+            &.ng-invalid {
+                button.btn-primary {
                     pointer-events: none;
                     cursor: not-allowed;
-                    filter: alpha(opacity=65);
+                    filter: alpha(opacity = 65);
                     -webkit-box-shadow: none;
                     box-shadow: none;
                     opacity: .65;
@@ -286,72 +328,72 @@
             &.ng-valid.invalid-banking.addBankForm,
             &.ng-valid.invalid-routing.addBankForm,
             &.ng-invalid.invalid-banking.addBankForm,
-            &.ng-invalid.invalid-routing.addBankForm{
-                button.btn-primary{
+            &.ng-invalid.invalid-routing.addBankForm {
+                button.btn-primary {
                     pointer-events: none;
                     cursor: not-allowed;
-                    filter: alpha(opacity=65);
+                    filter: alpha(opacity = 65);
                     -webkit-box-shadow: none;
                     box-shadow: none;
                     opacity: .65;
                 }
-            }           
-            &.valid-banking{
+            }
+            &.valid-banking {
                 #verifyBankAcctNumber,
-                #bankAcctNumber{
+                #bankAcctNumber {
                     border-color: green;
                     outline-color: green;
                 }
             }
-            &.valid-routing{
+            &.valid-routing {
                 #VerifyRoutingNumber,
-                #RoutingNumber{
+                #RoutingNumber {
                     border-color: green;
                     outline-color: green;
                 }
             }
-            &.invalid-banking{
+            &.invalid-banking {
                 #verifyBankAcctNumber.ng-dirty,
-                #bankAcctNumber.ng-dirty{
+                #bankAcctNumber.ng-dirty {
                     border-color: red;
                     outline-color: red;
                     background-color: #ff6666;
                     color: white;
                 }
             }
-            &.invalid-routing{
+            &.invalid-routing {
                 #VerifyRoutingNumber.ng-dirty,
-                #RoutingNumber.ng-dirty{
+                #RoutingNumber.ng-dirty {
                     border-color: red;
                     outline-color: red;
                     background-color: #ff6666;
                     color: white;
                 }
-            }  
-            &.ng-pristine{
+            }
+            &.ng-pristine {
                 input[type='text'].ng-pristine,
-                select.ng-pristine{
+                select.ng-pristine {
                     border-color: #ccc !important;
                 }
-            }          
+            }
         }
-        label{
+        label {
             font-size: 16px;
         }
-        .autofill-address{
+        .autofill-address {
             margin-right: 20px;
             margin-top: 10px;
         }
         input[type='text'],
         input[type='email'],
-        select{
+        select {
             padding: inherit;
             width: 100%;
             &.ng-valid-cc-number,
             &.ng-valid-cc-exp-month,
             &.ng-valid-cc-exp-year,
             &.ng-valid.ng-valid-mask,
-            &.ng-dirty.ng-valid-email{
+            &.ng-dirty.ng-valid-email {
                 border-color: green;
                 outline-color: green;
             }
@@ -359,17 +401,17 @@
             &.ng-dirty.ng-invalid-cc-exp-month,
             &.ng-dirty.ng-invalid-cc-exp-year,
             &.ng-dirty.ng-invalid,
-            &.ng-dirty.ng-invalid-required{
+            &.ng-dirty.ng-invalid-required {
                 border-color: red;
                 outline-color: red;
                 background-color: #ff6666;
                 color: white;
             }
-            &.exp-dates{
+            &.exp-dates {
                 width: 25%;
             }
         }
-        .date-split{
+        .date-split {
             font-size: 24px;
             color: #999;
             margin: 0 5px;
@@ -380,17 +422,17 @@
                 margin-bottom: 30px;
             }
             h4 {
-                margin-top: 23px;
+               // margin-top: 23px;
             }
-            .control-group{
+            .control-group {
                 padding-left: 0px;
                 margin-bottom: 10px;
-                .cc-type{
+                .cc-type {
                     font-weight: bolder;
                     font-size: 17px;
                     margin-top: 5px;
                 }
-                .fa{
+                .fa {
                     margin: 0px;
                     margin-left: 10px;
                     font-size: 35px;

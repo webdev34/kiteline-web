@@ -3,10 +3,10 @@
 body.loginPage {
     background-image: url(../images/kiteline_loginBG.jpg);
     background-repeat: no-repeat;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    -webkit-background-size: 100%;
-    background-size: 100%;
+    -moz-background-size: 65%;
+    -o-background-size: 65%;
+    -webkit-background-size: 65%;
+    background-size: 65%;
     position: relative;
     background-color: #4b7eb7;
     .inner-kiteline-content-container{
@@ -83,11 +83,11 @@ body.loginPage {
 }
 
 .log-in-wrapper {
-    margin-top: 15%;
+    margin-top: 10%;
     text-align: center;
     color: white;
     position: absolute;
-    right: 2%;
+    right: 5%;
     &.invalid-sub{
         width: 60%;
 
@@ -145,7 +145,7 @@ body.loginPage {
     }
 
     .angucomplete-dropdown{
-        width: 370px;
+        width: 375px;
         .highlight,
         .angucomplete-searching{
            color: #064c70;

@@ -1,39 +1,42 @@
 <div class="medical-info-breakdown-view">
-	    	<button class="btn btn-primary pull-right edit-medical-btn edit-btn" ng-click="editSection('Medical Info')" ng-hide="editMedicalInfo">Edit</button>
+	    	<button class="btn btn-primary pull-right edit-medical-btn edit-btn" ng-click="editSection('Medical Info')" ng-hide="editMedicalInfo">Edit Medical Info</button>
 	    	<div class="clearfix"></div>
 	
 
 	<div class="medical-info-view" ng-hide="editMedicalInfo">
 		<div class="detail-breakdown">
 			<span class="detail-label">Doctor Name</span>
-			<span class="detail-value">{{viewChildMedicalInfo.DoctorName}}</span>
+			<span class="detail-value">{{viewChildMedicalInfo.DoctorName || '(Not Set)'}}</span>
 		</div>
 		<div class="detail-breakdown">
 			<span class="detail-label">Doctor Phone</span>
-			<span class="detail-value">{{viewChildMedicalInfo.DoctorPhone | tel}}</span>
+			<span class="detail-value" ng-if="viewChildMedicalInfo.DoctorPhone.length > 0">{{viewChildMedicalInfo.DoctorPhone | tel}}</span>
+			<span class="detail-value" ng-if="viewChildMedicalInfo.DoctorPhone.length == 0" >(Not Set)</span>
 		</div>
 		<div class="detail-breakdown">
 			<span class="detail-label">Last Physical Date</span>
-			<span class="detail-value">{{viewChildMedicalInfo.PhysicalDate | date}}</span>
+			<span class="detail-value" ng-if="viewChildMedicalInfo.PhysicalDate.length != ''" >{{viewChildMedicalInfo.PhysicalDate | date}}</span>
+			<span class="detail-value" ng-if="viewChildMedicalInfo.PhysicalDate.length == ''" >(Not Set)</span>
 		</div>
 		<div class="detail-breakdown">
 			<span class="detail-label">Immunized?</span>
 			<span class="detail-value">
 				<span ng-show="viewChildMedicalInfo.Immunized == 'Y'">Yes</span>
 				<span ng-show="viewChildMedicalInfo.Immunized == 'N'">No</span>
+				<span ng-show="viewChildMedicalInfo.Immunized.length == 0">(Not Set)</span>
 			</span>
 		</div>
 		<div class="detail-breakdown">
 			<span class="detail-label">Insurance Company</span>
-			<span class="detail-value">{{viewChildMedicalInfo.InsuranceCompany}}</span>
+			<span class="detail-value">{{viewChildMedicalInfo.InsuranceCompany || '(Not Set)'}}</span>
 		</div>
 		<div class="detail-breakdown">
 			<span class="detail-label">Policy Number</span>
-			<span class="detail-value">{{viewChildMedicalInfo.PolicyNumber}}</span>
+			<span class="detail-value">{{viewChildMedicalInfo.PolicyNumber || '(Not Set)'}}</span>
 		</div>
 		<div class="detail-breakdown">
 			<span class="detail-label">Group Number</span>
-			<span class="detail-value">{{viewChildMedicalInfo.GroupNumber}}</span>
+			<span class="detail-value">{{viewChildMedicalInfo.GroupNumber || '(Not Set)'}}</span>
 		</div>
 	</div>
 

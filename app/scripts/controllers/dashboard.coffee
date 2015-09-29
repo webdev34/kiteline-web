@@ -104,6 +104,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.getChildrenData = (refreshingData) ->
     CurbSideService.getAllChildren($rootScope.centerId, $rootScope.familyId).then (response) ->
       $scope.userChildren = response.data
+      
       $scope.childrenClasses = []
       $scope.childrenGenInfo = []
       $scope.childrenMedicalInfo = []
