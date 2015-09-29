@@ -1,21 +1,21 @@
 'use strict'
 angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScope, $location, StorageService, CenterInfoService, PaymentService, AnnouncementsService, CreditCardService, InvoiceDetailService, InvoiceService, GuardianService, AccountService, usSpinnerService, $window, ngDialog, Pagination) ->
   
-  if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > - 1
-    $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V2.0/'
-  else if window.location.href.indexOf('parent') > - 1
-    $rootScope.rootUrl = 'https://app.skychildcare.com/services/kiteline/v2.0/'
-  else
-    $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
-
-  if window.location.href.indexOf('localhost') > - 1
+  if window.location.href.indexOf('localhost:9000') > - 1
     $rootScope.modalUrl = 'http://localhost:9000'
-  else if window.location.href.indexOf('cloud') > - 1
+  else if window.location.href.indexOf('cloud.spinsys.com') > - 1
     $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb'
-  else if window.location.href.indexOf('parent') > - 1
-    $rootScope.modalUrl = 'https://parent.skychildcare.com'
-  else
+  else if window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
     $rootScope.modalUrl = 'https://uat.skychildcare.com/parentportal'
+  else if window.location.href.indexOf('parent.skychildcare.com') > - 1
+    $rootScope.modalUrl = 'https://parent.skychildcare.com'
+  
+  if window.location.href.indexOf('localhost:9000') > -1 || window.location.href.indexOf('cloud.spinsys.com') > - 1
+    $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
+  else if window.location.href.indexOf('parent.skychildcare.com') > - 1
+    $rootScope.rootUrl = 'https://app.skychildcare.com/services/kiteline/v2.0/'
+  else if window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
+    $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
 
   $rootScope.isTablet = false
   $rootScope.pageTitle = ' '

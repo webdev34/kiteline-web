@@ -10,17 +10,18 @@
             setTimeout(function(){
                 var serviceUrl, templateUrl;
 
-                if (window.location.href.indexOf('cloud') > -1) {
+                 if (window.location.href.indexOf('cloud.spinsys.com') > -1) {
                   serviceUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/';
                   templateUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html';
-                } else if (window.location.href.indexOf('localhost') > -1 ) {
+                } else if (window.location.href.indexOf('localhost:9000') > -1 ) {
                   serviceUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/';
                   templateUrl = 'http://localhost:9000/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html'
-                } else if (window.location.href.indexOf('parent') > -1 ) {
+                }
+                 else if (window.location.href.indexOf('parent.skychildcare.com') > -1 ) {
                   serviceUrl = 'https://app.skychildcare.com/services/kiteline/v2.0/';
                   templateUrl = 'https://parent.skychildcare.com/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html'
                 }
-                else  {
+                else if (window.location.href.indexOf('uat.skychildcare.com/parentportal') > -1 ) {
                   serviceUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/';
                   templateUrl = 'https://uat.skychildcare.com/parentportal/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html'
                 }

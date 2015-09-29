@@ -1,11 +1,11 @@
 'use strict'
 angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, toastr, $location, StorageService, CustomStatisticsService) ->
   
-  if window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('cloud') > - 1
+  if window.location.href.indexOf('localhost:9000') > -1 || window.location.href.indexOf('cloud.spinsys.com') > - 1
     $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
-  else if window.location.href.indexOf('parent') > - 1
+  else if window.location.href.indexOf('parent.skychildcare.com') > - 1
     $rootScope.rootUrl = 'https://app.skychildcare.com/services/kiteline/v2.0/'
-  else
+  else if window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
     $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
 
   rootUrl =  $rootScope.rootUrl
