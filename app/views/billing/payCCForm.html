@@ -12,7 +12,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingAddressPayment">Billing Address</label>
+  <label class="control-label" for="BillingAddressPayment">
+    <span class="required">*</span>
+    Billing Address</label>
   <div class="controls">
     <input id="BillingAddressPayment" name="BillingAddressPayment" ng-model="paymentCC.BillingAddress" type="text" class="input-xlarge" required="">
     
@@ -21,7 +23,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingCityPayment">Billing City</label>
+  <label class="control-label" for="BillingCityPayment">
+    <span class="required">*</span>
+    Billing City</label>
   <div class="controls">
     <input id="BillingCityPayment" name="BillingCityPayment" ng-model="paymentCC.BillingCity" type="text" class="input-xlarge" required="">
     
@@ -30,7 +34,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingStateCCPayment">Billing State</label>
+  <label class="control-label" for="BillingStateCCPayment">
+    <span class="required">*</span>
+    Billing State</label>
   <div class="controls relative">
  <select id="BillingStateCCPayment" class="BillingState" ng-model="paymentCC.BillingState" required="">
       <option value="{{option.abbreviation}}" data-ng-repeat="option in statesDropDown
@@ -45,7 +51,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingZipPayment">Billing Zip</label>
+  <label class="control-label" for="BillingZipPayment">
+    <span class="required">*</span>
+    Billing Zip</label>
   <div class="controls">
     <input id="BillingZipPayment" name="BillingZipPayment" ng-model="paymentCC.BillingZip" type="text" class="input-xlarge" required=""  maxlength="5" numeric-only />
     
@@ -54,7 +62,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BusinessPhonePayment">Billing Phone</label>
+  <label class="control-label" for="BusinessPhonePayment">
+    <span class="required">*</span>
+    Billing Phone</label>
   <div class="controls">
     <input id="BusinessPhonePayment" name="BusinessPhonePayment" ng-model="paymentCC.BusinessPhone" type="text" class="input-xlarge" required=""  mask="(999) 999-9999" clean="true">
     
@@ -75,7 +85,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="CardHolderName">Card Holder Name</label>
+  <label class="control-label" for="CardHolderName">
+    <span class="required">*</span>
+    Card Holder Name</label>
   <div class="controls">
     <input id="PayerName" name="PayerName" ng-model="paymentCC.PayerName" type="text" class="input-xlarge" required="">
     
@@ -83,7 +95,9 @@
 </div>
 <!-- Text input-->
 <div class="control-group col-md-3">
-  <label class="control-label" for="AccountNumber">Card Number</label>
+  <label class="control-label" for="AccountNumber">
+    <span class="required">*</span>
+    Card Number</label>
   <div class="controls">
     <input id="AccountNumber" name="AccountNumber" ng-model="paymentCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()"  maxlength="16" numbers-only />
     
@@ -91,7 +105,9 @@
 </div>
 
 <div class="control-group col-md-4 expire-dates-wrapper" >
-  <label class="control-label" for="ExpirationDate">Expiration Date</label>
+  <label class="control-label" for="ExpirationDate">
+    <span class="required">*</span>
+    Expiration Date</label>
   <div class="controls relative expire-month-wrapper" >
     <select id="expireMonth" class="expireMonth"  ng-model="expireDatesPayment.month" cc-exp-month required="">
         <option value="01">01 - Jan</option>
@@ -130,7 +146,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-2 cvv">
-  <label class="control-label" for="CVV">CVV</label>
+  <label class="control-label" for="CVV">
+    <span class="required">*</span>
+    CVV</label>
   <div class="controls">
     <input id="CVV" name="CVV" ng-model="paymentCC.CVV" type="text" class="input-xlarge" required="" cc-cvc numeric-only >
     

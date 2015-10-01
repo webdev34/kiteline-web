@@ -10,9 +10,7 @@
 		</span> 
 		<a ng-click="goToTab('Invoices');" class="view-details" >View Details</a>
 	</div>
-	<span class="auto-pay ng-hide" ng-show="defaultAccount.RecurringAccount != null">
-			Auto pay scheduled for {{currentCenter.NextPayDate}}
-	</span> 
+
 	<div class="outstanding-balance-button-wrapper">
 		<button ng-hide="outstandingInvoicesDueTotal == 0" class="btn btn-primary payment-btn" ng-click="payOutstandingBalance()"  >
 			Pay Outstanding Invoice Balance
@@ -21,4 +19,8 @@
 			Pay Outstanding Invoice Balance
 		</button>
 	</div>
+	<div class="clearfix"></div>
+	<span class="auto-pay" ng-show="defaultAccount.RecurringAccount != null">
+			Auto pay scheduled for {{currentCenter.NextPayDate}}
+	</span> 
 </div>

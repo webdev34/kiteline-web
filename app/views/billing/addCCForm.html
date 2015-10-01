@@ -12,7 +12,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingAddress">Billing Address</label>
+  <label class="control-label" for="BillingAddress">
+    <span class="required">*</span>
+    Billing Address</label>
   <div class="controls">
     <input id="BillingAddress" name="BillingAddress" ng-model="newCC.BillingAddress" type="text" class="input-xlarge" required="">
     
@@ -21,7 +23,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingCity">Billing City</label>
+  <label class="control-label" for="BillingCity">
+    <span class="required">*</span>
+    Billing City</label>
   <div class="controls">
     <input id="BillingCity" name="BillingCity" ng-model="newCC.BillingCity" type="text" class="input-xlarge" required="">
     
@@ -30,7 +34,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingStateCC">Billing State</label>
+  <label class="control-label" for="BillingStateCC">
+    <span class="required">*</span>
+    Billing State</label>
   <div class="controls relative">
 
  <select id="BillingStateCC" class="BillingState" ng-model="newCC.BillingState" required="">
@@ -46,7 +52,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingZip">Billing Zip</label>
+  <label class="control-label" for="BillingZip">
+    <span class="required">*</span>
+    Billing Zip</label>
   <div class="controls">
     <input numeric-only id="BillingZip" name="BillingZip" ng-model="newCC.BillingZip" type="text" class="input-xlarge" required=""  maxlength="5"  />
     
@@ -55,7 +63,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BusinessPhone">Billing Phone</label>
+  <label class="control-label" for="BusinessPhone">
+    <span class="required">*</span>
+    Billing Phone</label>
   <div class="controls">
     <input id="BusinessPhone" name="BusinessPhone" ng-model="newCC.BusinessPhone" type="text" class="input-xlarge" required=""  mask="(999) 999-9999" clean="true">
     
@@ -75,7 +85,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="CardHolderName">Card Holder Name</label>
+  <label class="control-label" for="CardHolderName">
+    <span class="required">*</span>
+    Card Holder Name</label>
   <div class="controls">
     <input id="PayerName" name="PayerName" ng-model="newCC.PayerName" type="text" class="input-xlarge" required="">
     
@@ -84,7 +96,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-3">
-  <label class="control-label" for="AccountNumber">Card Number</label>
+  <label class="control-label" for="AccountNumber">
+    <span class="required">*</span>
+    Card Number</label>
   <div class="controls">
     <input id="AccountNumber" name="AccountNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()" acct-num="{{newCC.AccountNumber}}" maxlength="16" numbers-only />
     
@@ -94,7 +108,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-5 expire-dates-wrapper" >
-  <label class="control-label" for="ExpirationDate">Expiration Date</label>
+  <label class="control-label" for="ExpirationDate">
+    <span class="required">*</span>
+    Expiration Date</label>
   <div class="controls relative expire-month-wrapper" >
     <select id="expireMonth" class="expireMonth"  ng-model="expireDates.month" cc-exp-month required="">
         <option value="01">01 - Jan</option>
@@ -150,7 +166,7 @@
 <div class="control-group">
   <label class="">
       <input type="checkbox" name="RecurringAccount" ng-model="newCC.RecurringAccount"  ng-true-value="true" ng-false-value="false" >
-      Default Account
+      Default Payment Account
   </label>
 </div>
 

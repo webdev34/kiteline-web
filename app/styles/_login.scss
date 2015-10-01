@@ -3,10 +3,10 @@
 body.loginPage {
     background-image: url(../images/kiteline_loginBG.jpg);
     background-repeat: no-repeat;
-    -moz-background-size: 65%;
-    -o-background-size: 65%;
-    -webkit-background-size: 65%;
-    background-size: 65%;
+    -moz-background-size: 60%;
+    -o-background-size: 60%;
+    -webkit-background-size: 60%;
+    background-size: 60%;
     position: relative;
     background-color: #4b7eb7;
     .inner-kiteline-content-container{
@@ -83,7 +83,7 @@ body.loginPage {
 }
 
 .log-in-wrapper {
-    margin-top: 10%;
+    margin-top: 6%;
     text-align: center;
     color: white;
     position: absolute;
@@ -103,16 +103,45 @@ body.loginPage {
             }
         }
     }
-    .log-in-light-bkgd{
-        position: absolute;
-        height: 425px;
+
+    .login-form,
+    .forgot-pin-form{
+        min-height: 425px;
         margin-top: 15px;
         width: 453px;
         margin-left: -35px;
-        background-color: white;
+        background-color: #6f97c5;
         z-index: -1;
-        opacity: .2;
+        padding: 0px 40px;
+        box-shadow: 0px 0px 4px 0px whitesmoke;
     }
+
+    .kiteline-app-buttons-wrapper{
+        margin-top: 30px;
+        position: relative;
+        img{
+            margin-top: 10px;
+        }
+        a{
+          margin-right: 15px;  
+        }
+        .kiteline-app-button{
+            width: 55px;
+            margin-right: 5px;
+            margin-top: 0px;
+        }
+        span{
+            position: absolute;
+            width: 200px;
+            left: 140px;
+            top: -6px;
+        }
+    }
+
+    .center-contact{
+        margin-bottom: 0px;
+    }
+
     h3 {
         font-family: arial;
         font-weight: lighter;
@@ -243,11 +272,11 @@ body.loginPage {
     .preloader {
         float: right;
         margin-right: -25px;
-        margin-top: -25px;
+        margin-top: 24px;
     }
     .terms-wrapper {
         margin-top: 15px;
-        margin-bottom: 30px;
+        padding-bottom: 15px;
     }
     .login-link {
         margin-top: 10px;

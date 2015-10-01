@@ -136,12 +136,12 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
   $scope.addAccount = (type) ->
     if type == 'CC'
+      $rootScope.newCC.autofillAddressCC = true
       $scope.autocompleteHomeAddressCC()
-      $rootScope.newCC.autofillAddressCC = false
       $rootScope.addCreditCard = true
     else
+      $rootScope.newBankAccount.autofillAddressBank = true
       $scope.autocompleteHomeAddressBank()
-      $rootScope.newBankAccount.autofillAddressBank = false 
       $rootScope.addBankAccount = true
 
   $scope.deleteBankAccount = (accountId) ->

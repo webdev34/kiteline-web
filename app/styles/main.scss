@@ -82,6 +82,7 @@ html {
             font-size: 12px;
             position: relative;
             top: -5px;
+            margin-left: -10px;
         }
         #toast-container{
             width: 100%;
@@ -285,7 +286,7 @@ html {
 }
 
 .inner-kiteline-content-container {
-    min-height: 1050px;
+    min-height: 850px;
     margin: 0 auto;
 }
 
@@ -414,12 +415,12 @@ h1, h2, h3 {
                 position: relative;
                 margin-right: -42px;
                 margin-left: 25px;
-                top: 10px;
+                top: 11px;
             }
             .fa, .glyphicon {
-                font-size: 28px;
+                font-size: 21px;
                 position: relative;
-                left: -2px;
+                left: -10px;
                 top: 3px;
             }
             .center-name {
@@ -439,6 +440,7 @@ h1, h2, h3 {
 
 .left-feature-container.col-md-8.white-bg{
     width: 75%;
+    min-height: 900px;
 }
 .right-feature-container.col-md-4{
     width: 22%;
@@ -1055,6 +1057,7 @@ body {
 
 .fa-times.red{
     background-color: red;
+    padding: 3px !important;
     &:before,
     &:after{
         color: white !important;

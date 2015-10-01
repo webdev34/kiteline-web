@@ -23,13 +23,8 @@
 				<i class="fa fa-file-pdf-o"></i>
 				<a href="#/forms"  ng-click="showLogOut = false;">Forms</a>
 			</li>			
-			<li class="user-profile-img-container relative">
-				<span class="ellipsis">{{currentCenter.FullName}}</span>
-				<i class="fa fa-caret-down dark-blue" ng-click="showLogOut = !showLogOut" ng-class="{'active': showLogOut}"></i>
-
-				<div class="log-out-wrapper" ng-show="showLogOut" >
-					<a ng-click="showLogOut = false; logOut();">Log Out</a>
-				</div>
+			<li  class="logout">
+				<a ng-click="showLogOut = false; logOut();">Log Out</a>
 			</li>
 		</ul>
 	</div>

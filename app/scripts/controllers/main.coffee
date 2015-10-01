@@ -36,7 +36,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   $rootScope.matchingRoutingNum = false
   $rootScope.addCreditCardFromModal = false
   $rootScope.addCreditCard = false
-  $rootScope.reverse = false
+  $rootScope.reverse = true
   $rootScope.sortOrderBy = 'PaymentDate'
   $rootScope.invoiceGrandTotal = 0
   $rootScope.invoicesArray = []
@@ -187,8 +187,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     ngDialog.open template: $rootScope.modalUrl + '/views/modals/pay-outstanding-balance.html'
 
   $rootScope.addAccountModal = () ->
+    $rootScope.paymentCC.autofillAddressCC = true
     $rootScope.autocompleteHomeAddressCCPayment()
-    $rootScope.paymentCC.autofillAddressCC = false
     $rootScope.addCreditCardFromModal = true;
     $rootScope.activePaymentAccount = true;
 

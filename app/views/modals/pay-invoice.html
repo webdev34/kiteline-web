@@ -1,20 +1,22 @@
 <div class="overlay-container outstanding-balance">
  	<section class="overlay-right-col"  ng-hide="paymentMSG">
- 		<h3>
- 			Payment Amount Due: 
- 			<span class="orange">{{viewInvoice.DueAmount | currency}}</span>
- 			
- 			<span class="pull-right">{{viewInvoice.CreatedOn | date}}</span>
- 		</h3>
- 		<h3 class="margin-top-0">
- 			Pay Amount: <input id="payment-amount" class="payment-amount" ng-class="{'ng-error-input': paymentGreaterThanAmount}" ng-model="paymentAmount" name="paymentAmount" type="text" ng-blur="checkPaymentAmount(true); makeFloat();" ng-change="checkPaymentAmount(true)"/>
- 			<span class="red" ng-show="paymentGreaterThanAmount">Payment can not exceed Payment Amount due</span>
 
- 		</h3>
+ 		<div class="pull-left">
+	 		<h3>Payment Amount Due</h3>
+	 		<img src="images/icon-poll-220x220@2x.png" class="pull-left payment-amount-graph"> 
+			<h3 class="orange outstandingInvoicesDueTotal">{{viewInvoice.DueAmount | currency}}</h3>
+ 			<span class="pull-right hide">{{viewInvoice.CreatedOn | date}}</span>
+		</div>
+		<div class="pull-left pay-this-amount-wrapper">
+	 		<h3>
+	 			Pay This Amount <input id="payment-amount" class="payment-amount" ng-class="{'ng-error-input': paymentGreaterThanAmount}" ng-model="paymentAmount" name="paymentAmount" type="text" ng-blur="checkPaymentAmount(true); makeFloat();" ng-change="checkPaymentAmount(true)"/>
+ 				<em class="red" ng-show="paymentGreaterThanAmount">Payment can not exceed Payment Amount due</em>
+	 		</h3>
+ 		</div>
 
 		<div class="clearfix"></div>
 
-		<div class="invoice-cycle-wrapper" ng-show="outstandingInvoices.length > 1">
+		<div class="invoice-cycle-wrapper hide" ng-show="outstandingInvoices.length > 1">
 		 	<ul>
 		 		<li class="pull-left" ng-show="previousInvoice">
 				 	<a href="" data-ng-click="payInvoice(previousInvoice, true, viewInvoiceTotal)">
@@ -40,6 +42,7 @@
 		<div ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0" class="payment-wrapper">
 
 			<div class="control-group">
+				<h3 class="margin-top-0" ng-hide="viewInvoiceTotal == 0">Invoice Breakdown</h3>
 				 <div data-ng-repeat="invoice in viewInvoiceArray" class="pull-left invoice-break-down" ng-hide="viewInvoiceTotal == 0">
 			 	<span>{{invoice.ChildName}}</span> 
 			 	<div class="clearfix"></div>

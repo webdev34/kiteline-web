@@ -12,7 +12,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingAddress">Billing Address</label>
+  <label class="control-label" for="BillingAddress">
+    <span class="required">*</span>
+    Billing Address</label>
   <div class="controls">
     <input id="BillingAddress" name="BillingAddress" ng-model="newBankAccount.BillingAddress" type="text" class="input-xlarge" required="">
     
@@ -21,7 +23,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingCity">Billing City</label>
+  <label class="control-label" for="BillingCity">
+    <span class="required">*</span>
+    Billing City</label>
   <div class="controls">
     <input id="BillingCity" name="BillingCity" ng-model="newBankAccount.BillingCity" type="text" class="input-xlarge" required="">
     
@@ -30,7 +34,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingState">Billing State</label>
+  <label class="control-label" for="BillingState">
+    <span class="required">*</span>
+    Billing State</label>
   <div class="controls relative">
 
 
@@ -47,7 +53,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BillingZip">Billing Zip</label>
+  <label class="control-label" for="BillingZip">
+    <span class="required">*</span>
+    Billing Zip</label>
   <div class="controls">
     <input id="BillingZip" name="BillingZip" ng-model="newBankAccount.BillingZip" type="text" class="input-xlarge" required="" maxlength="5" numeric-only />
     
@@ -56,7 +64,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="BusinessPhone">Billing Phone</label>
+  <label class="control-label" for="BusinessPhone">
+    <span class="required">*</span>
+    Billing Phone</label>
   <div class="controls">
     <input id="BusinessPhone" name="BusinessPhone" ng-model="newBankAccount.BusinessPhone" type="text" class="input-xlarge" required="" mask="(999) 999-9999" clean="true">
     
@@ -76,7 +86,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="AccountName">Bank Name</label>
+  <label class="control-label" for="AccountName">
+    <span class="required">*</span>
+    Bank Name</label>
   <div class="controls">
     <input id="AccountName" name="AccountName" ng-model="newBankAccount.AccountName" type="text" class="input-xlarge" required="">
     
@@ -86,7 +98,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="PayerName">Account Holder's Name</label>
+  <label class="control-label" for="PayerName">
+    <span class="required">*</span>
+    Account Holder's Name</label>
   <div class="controls">
     <input id="PayerName" name="PayerName" ng-model="newBankAccount.PayerName" type="text" class="input-xlarge" required="">
     
@@ -95,7 +109,9 @@
 
 <!-- Drop Down-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="bankAcctType">Account Type</label>
+  <label class="control-label" for="bankAcctType">
+    <span class="required">*</span>
+    Account Type</label>
   <div class="controls relative" style="margin-top: 10px;">
      <label>
           Checking
@@ -113,7 +129,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="bankAcctNumber">Account Number</label>
+  <label class="control-label" for="bankAcctNumber">
+    <span class="required">*</span>
+    Account Number</label>
   <div class="controls">
     <input id="bankAcctNumber" name="BankAcctNumber" ng-model="newBankAccount.AccountNumber" type="text" class="input-xlarge" required="" ng-change="verifyBanking('Account Number');" ng-paste="$event.preventDefault()" numeric-only maxlength="12"/ >
     
@@ -122,7 +140,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="verifyBankAcctNumber">Verify Account Number</label>
+  <label class="control-label" for="verifyBankAcctNumber">
+    <span class="required">*</span>
+    Verify Account Number</label>
   <div class="controls">
     <input id="verifyBankAcctNumber" name="VerifyBankAcctNumber" ng-model="newBankAccount.VerifyBankAcctNumber" type="text" class="input-xlarge" required="" ng-change="verifyBanking('Account Number');" ng-paste="$event.preventDefault()" numeric-only maxlength="12" >
     
@@ -133,7 +153,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="RoutingNumber">Routing Number</label>
+  <label class="control-label" for="RoutingNumber">
+    <span class="required">*</span>
+    Routing Number</label>
   <div class="controls">
     <input id="RoutingNumber" name="RoutingNumber" ng-model="newBankAccount.RoutingNumber" type="text" class="input-xlarge" required="" maxlength="9" ng-change="verifyBanking('Routing Number');" ng-paste="$event.preventDefault()" numeric-only >
     
@@ -143,7 +165,9 @@
 
 <!-- Text input-->
 <div class="control-group col-md-4">
-  <label class="control-label" for="verifyRoutingNumber">Verify Routing Number</label>
+  <label class="control-label" for="verifyRoutingNumber">
+    <span class="required">*</span>
+    Verify Routing Number</label>
   <div class="controls">
     <input id="VerifyRoutingNumber" name="VerifyRoutingNumber" ng-model="newBankAccount.VerifyRoutingNumber" type="text" class="input-xlarge" required="" maxlength="9" ng-change="verifyBanking('Routing Number');" ng-paste="$event.preventDefault()" numeric-only >
     
@@ -154,7 +178,7 @@
 <div class="control-group">
   <label class="">
       <input type="checkbox" name="RecurringAccount" ng-model="newBankAccount.RecurringAccount"  ng-true-value="true" ng-false-value="false" >
-      Default Account
+      Default Payment Account
   </label>
 </div>
 

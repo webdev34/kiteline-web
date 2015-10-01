@@ -21,12 +21,13 @@
 </div>
 
 <div class="log-in-wrapper" ng-hide="isMobile || isBronze">
-    <div class="log-in-light-bkgd"></div>
 
-    <form name="logInform" ng-submit="login()" role="form" autocomplete="off" ng-show="showLogIn">
+    <form class="login-form" name="logInform" ng-submit="login()" role="form" autocomplete="off" ng-show="showLogIn">
         <div class="disclaimer">
             <h5>Parent Login Here to SkyChildcare Kiteline</h5>
             <p>KiteLine allows parents to view invoices, and view and update their children's medical and contact records in your enrolled child care center.</p>
+
+            <p class="center-contact" ng-show="centernameSearch.description">Contact {{centernameSearch.description.CenterName}} at <span>{{centernameSearch.description.Phone}}</span> <a href="mailto:{{centernameSearch.EmailAddress}}">{{centernameSearch.description.EmailAddress}}</a> with any questions </p>
         </div>
         <div class="form-group">
             <label for="username">Child Care Center Name</label>
@@ -60,7 +61,7 @@
         </div>
     </form>
 
-    <form name="forgotPinform" ng-submit="forgotPinFunc()" role="form" ng-hide="showLogIn || isBronze">
+    <form class="forgot-pin-form"  name="forgotPinform" ng-submit="forgotPinFunc()" role="form" ng-hide="showLogIn || isBronze">
         <div class="disclaimer">
             <h5>Parent Login Here to SkyChildcare Kiteline</h5>
             <p>KiteLine allows parents to view invoices, and view and update their children's medical and contact records in your enrolled child care center.</p>
@@ -94,4 +95,19 @@
         </div>
 
     </form>
+
+    <div class="kiteline-app-buttons-wrapper">
+
+      <img src="images/kitelineappBtn.png" class="kiteline-app-button" /> 
+      <span>Kiteline App for your mobile phone</span>
+      <a href="https://itunes.apple.com/us/app/skychildcare-kiteline/id963210802?mt=8" target="_blank">
+        <img src="images/kiteline_appStore.png" /> 
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.skychildcare.kiteline&hl=en" target="_blank">
+        <img src="images/kiteline_GooglePlay.png" /> 
+      </a>
+    </div>
+
+
+
 </div>

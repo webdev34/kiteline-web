@@ -68,21 +68,9 @@ header.header {
             margin-left: 5px;
             @include border-radius(25px);
         }
-        &.user-profile-img-container {
-            cursor: pointer;
-            width: 200px;
-            .fa {
-                position: relative;
-                color: white;
-            }
-            &:hover .fa.fa-caret-down {
-                color: #0c4d6e;
-            }
-            .ellipsis{
-                float: left;
-                margin-top: 20px;
-                width: 140px;
-                text-align: right;
+        &.logout{
+            a{
+                text-indent: 6px;
             }
         }
         .msg-count-wrapper {
