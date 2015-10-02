@@ -11,16 +11,32 @@
 				</div>
 			</li>
 		</ul>
+
 		<nav class="pagination-wrapper text-center" ng-show="guardians.length > 5">
+			<span>
+				{{(guardiansPagination.page * guardiansPagination.perPage)+1}}
+			</span>
+			-
+			<span ng-hide="((guardiansPagination.page+1) * guardiansPagination.perPage) >  guardiansPagination.perPage">
+				{{((guardiansPagination.page+1) * guardiansPagination.perPage)}}
+			</span>
+			<span ng-if="((guardiansPagination.page+1) * guardiansPagination.perPage) >  guardiansPagination.perPage">
+				{{((guardians.length - ((guardiansPagination.page * guardiansPagination.perPage)+1))) + ((guardiansPagination.page * guardiansPagination.perPage)+1)}}
+			</span>
+
+			<span> of {{guardians.length}}</span>
+
 			<ul class="pagination">
-				<li>
-					<a href="" ng-click="guardiansPagination.prevPage()">&laquo;</a>
-				</li>
-			  	<li ng-repeat="n in [] | range: guardiansPagination.numPages" ng-class="{active: n == guardiansPagination.page}">
-			  		<a href="" ng-click="guardiansPagination.toPageId(n)">{{n + 1}}</a>
+			  	<li class="ng-hide" ng-repeat="n in [] | range: guardiansPagination.numPages" ng-class="{active: n == guardiansPagination.page}">
+			  		<a href="" ng-click="guardiansPagination.toPageId(n);">{{n + 1}}</a>
 			  	</li>
-			  	<li>
-			  		<a href="" ng-click="guardiansPagination.nextPage()">&raquo;</a>
+			  	<li class="prev-next-wrapper">
+			  		<a class="prev" ng-click="guardiansPagination.prevPage()">
+						<i class="fa fa-caret-left"></i>
+					</a>
+					<a class="next" ng-click="guardiansPagination.nextPage()">
+						<i class="fa fa-caret-right"></i>
+					</a>
 			  	</li>
 			</ul>
 		</nav>

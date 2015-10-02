@@ -10,19 +10,37 @@
 				</div>
 			</li>
 		</ul>
+
 		<nav class="pagination-wrapper text-center" ng-show="pickupList.length > 5">
+			<span>
+				{{(pickupListPagination.page * pickupListPagination.perPage)+1}}
+			</span>
+			-
+			<span ng-hide="((pickupListPagination.page+1) * pickupListPagination.perPage) >  pickupListPagination.perPage">
+				{{((pickupListPagination.page+1) * pickupListPagination.perPage)}}
+			</span>
+			<span ng-if="((pickupListPagination.page+1) * pickupListPagination.perPage) >  pickupListPagination.perPage">
+				{{((pickupList.length - ((pickupListPagination.page * pickupListPagination.perPage)+1))) + ((pickupListPagination.page * pickupListPagination.perPage)+1)}}
+			</span>
+
+			<span> of {{pickupList.length}}</span>
+
 			<ul class="pagination">
-				<li>
-					<a href="" ng-click="pickupListPagination.prevPage()">&laquo;</a>
-				</li>
-			  	<li ng-repeat="n in [] | range: pickupListPagination.numPages" ng-class="{active: n == pickupListPagination.page}">
-			  		<a href="" ng-click="pickupListPagination.toPageId(n)">{{n + 1}}</a>
+			  	<li class="ng-hide" ng-repeat="n in [] | range: pickupListPagination.numPages" ng-class="{active: n == pickupListPagination.page}">
+			  		<a href="" ng-click="pickupListPagination.toPageId(n);">{{n + 1}}</a>
 			  	</li>
-			  	<li>
-			  		<a href="" ng-click="pickupListPagination.nextPage()">&raquo;</a>
+			  	<li class="prev-next-wrapper">
+			  		<a class="prev" ng-click="pickupListPagination.prevPage()">
+						<i class="fa fa-caret-left"></i>
+					</a>
+					<a class="next" ng-click="pickupListPagination.nextPage()">
+						<i class="fa fa-caret-right"></i>
+					</a>
 			  	</li>
 			</ul>
 		</nav>
+
+
 	</div>
 
 	<div class="pickup-list-wrapper feed-breakdown-view empty" ng-hide="editPickupList || newPickupContact || pickupList.length != 0" ng-show="pickupList.length == 0">

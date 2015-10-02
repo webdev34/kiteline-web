@@ -13,15 +13,30 @@
 		</ul>
 
 		<nav class="pagination-wrapper text-center" ng-show="dailyFeed.length > 5">
+			<span>
+				{{(dailyFeedPagination.page * dailyFeedPagination.perPage)+1}}
+			</span>
+			-
+			<span ng-hide="((dailyFeedPagination.page+1) * dailyFeedPagination.perPage) >  dailyFeedPagination.perPage">
+				{{((dailyFeedPagination.page+1) * dailyFeedPagination.perPage)}}
+			</span>
+			<span ng-if="((dailyFeedPagination.page+1) * dailyFeedPagination.perPage) >  dailyFeedPagination.perPage">
+				{{((dailyFeed.length - ((dailyFeedPagination.page * dailyFeedPagination.perPage)+1))) + ((dailyFeedPagination.page * dailyFeedPagination.perPage)+1)}}
+			</span>
+
+			<span> of {{dailyFeed.length}}</span>
+
 			<ul class="pagination">
-				<li>
-					<a href="" ng-click="dailyFeedPagination.prevPage()">&laquo;</a>
-				</li>
-			  	<li ng-repeat="n in [] | range: dailyFeedPagination.numPages" ng-class="{active: n == dailyFeedPagination.page}">
-			  		<a href="" ng-click="dailyFeedPagination.toPageId(n)">{{n + 1}}</a>
+			  	<li class="ng-hide" ng-repeat="n in [] | range: dailyFeedPagination.numPages" ng-class="{active: n == dailyFeedPagination.page}">
+			  		<a href="" ng-click="dailyFeedPagination.toPageId(n);">{{n + 1}}</a>
 			  	</li>
-			  	<li>
-			  		<a href="" ng-click="dailyFeedPagination.nextPage()">&raquo;</a>
+			  	<li class="prev-next-wrapper">
+			  		<a class="prev" ng-click="dailyFeedPagination.prevPage()">
+						<i class="fa fa-caret-left"></i>
+					</a>
+					<a class="next" ng-click="dailyFeedPagination.nextPage()">
+						<i class="fa fa-caret-right"></i>
+					</a>
 			  	</li>
 			</ul>
 		</nav>

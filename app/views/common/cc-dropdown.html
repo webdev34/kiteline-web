@@ -55,16 +55,32 @@
 				</tbody>
 			</table>
 		  </div>
-		  	<nav class="pagination-wrapper text-center" ng-show="creditCardAccounts.length > 5">
-				<ul class="pagination">
-					<li>
-						<a href="" ng-click="creditCardAccountsPagination.prevPage()">&laquo;</a>
-					</li>
-				  	<li ng-repeat="n in [] | range: creditCardAccountsPagination.numPages" ng-class="{active: n == creditCardAccountsPagination.page}">
-				  		<a href="" ng-click="creditCardAccountsPagination.toPageId(n)">{{n + 1}}</a>
-				  	</li>
-				  	<li>
-				  		<a href="" ng-click="creditCardAccountsPagination.nextPage()">&raquo;</a>
-				  	</li>
-				</ul>
-			</nav>
+
+		<nav class="pagination-wrapper text-center" ng-show="creditCardAccounts.length > 5">
+			<span>
+				{{(creditCardAccountsPagination.page * creditCardAccountsPagination.perPage)+1}}
+			</span>
+			-
+			<span ng-hide="((creditCardAccountsPagination.page+1) * creditCardAccountsPagination.perPage) >  creditCardAccountsPagination.perPage">
+				{{((creditCardAccountsPagination.page+1) * creditCardAccountsPagination.perPage)}}
+			</span>
+			<span ng-if="((creditCardAccountsPagination.page+1) * creditCardAccountsPagination.perPage) >  creditCardAccountsPagination.perPage">
+				{{((creditCardAccounts.length - ((creditCardAccountsPagination.page * creditCardAccountsPagination.perPage)+1))) + ((creditCardAccountsPagination.page * creditCardAccountsPagination.perPage)+1)}}
+			</span>
+
+			<span> of {{creditCardAccounts.length}}</span>
+
+			<ul class="pagination">
+			  	<li class="ng-hide" ng-repeat="n in [] | range: creditCardAccountsPagination.numPages" ng-class="{active: n == creditCardAccountsPagination.page}">
+			  		<a href="" ng-click="creditCardAccountsPagination.toPageId(n);">{{n + 1}}</a>
+			  	</li>
+			  	<li class="prev-next-wrapper">
+			  		<a class="prev" ng-click="creditCardAccountsPagination.prevPage()">
+						<i class="fa fa-caret-left"></i>
+					</a>
+					<a class="next" ng-click="creditCardAccountsPagination.nextPage()">
+						<i class="fa fa-caret-right"></i>
+					</a>
+			  	</li>
+			</ul>
+		</nav>

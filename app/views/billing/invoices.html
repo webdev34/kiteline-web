@@ -58,18 +58,37 @@
 		    </table>
 			</div>
 			<nav class="pagination-wrapper text-center" ng-show="outstandingInvoices.length > 10">
+				<span>
+					{{(outstandingInvoicesPagination.page * outstandingInvoicesPagination.perPage)+1}}
+				</span>
+				-
+				<span ng-hide="((outstandingInvoicesPagination.page+1) * outstandingInvoicesPagination.perPage) >  outstandingInvoicesPagination.perPage">
+					{{((outstandingInvoicesPagination.page+1) * outstandingInvoicesPagination.perPage)}}
+				</span>
+				<span ng-if="((outstandingInvoicesPagination.page+1) * outstandingInvoicesPagination.perPage) >  outstandingInvoicesPagination.perPage">
+					{{((outstandingInvoices.length - ((outstandingInvoicesPagination.page * outstandingInvoicesPagination.perPage)+1))) + ((outstandingInvoicesPagination.page * outstandingInvoicesPagination.perPage)+1)}}
+				</span>
+
+				<span> of {{outstandingInvoices.length}}</span>
+
 				<ul class="pagination">
-					<li>
-						<a href="" ng-click="outstandingInvoicesPagination.prevPage()">&laquo;</a>
-					</li>
-				  	<li ng-repeat="n in [] | range: outstandingInvoicesPagination.numPages" ng-class="{active: n == outstandingInvoicesPagination.page}">
-				  		<a href="" ng-click="outstandingInvoicesPagination.toPageId(n)">{{n + 1}}</a>
+				  	<li class="ng-hide" ng-repeat="n in [] | range: outstandingInvoicesPagination.numPages" ng-class="{active: n == outstandingInvoicesPagination.page}">
+				  		<a href="" ng-click="outstandingInvoicesPagination.toPageId(n);">{{n + 1}}</a>
 				  	</li>
-				  	<li>
-				  		<a href="" ng-click="outstandingInvoicesPagination.nextPage()">&raquo;</a>
+				  	<li class="prev-next-wrapper">
+				  		<a class="prev" ng-click="outstandingInvoicesPagination.prevPage()">
+							<i class="fa fa-caret-left"></i>
+						</a>
+						<a class="next" ng-click="outstandingInvoicesPagination.nextPage()">
+							<i class="fa fa-caret-right"></i>
+						</a>
 				  	</li>
 				</ul>
 			</nav>
+
+
+
+
     </div>
     <div class="col-md-6">
         <i class="fa fa-usd pull-left"></i>
@@ -143,19 +162,39 @@
 		    </tbody>
 	    </table>
 		</div>
-    	<nav class="pagination-wrapper text-center" ng-show="historicalTransactions.length > 10">
+
+		<nav class="pagination-wrapper text-center" ng-show="historicalTransactions.length > 10">
+			<span>
+				{{(historicalTransactionsPagination.page * historicalTransactionsPagination.perPage)+1}}
+			</span>
+			-
+			<span ng-hide="((historicalTransactionsPagination.page+1) * historicalTransactionsPagination.perPage) >  historicalTransactionsPagination.perPage">
+				{{((historicalTransactionsPagination.page+1) * historicalTransactionsPagination.perPage)}}
+			</span>
+			<span ng-if="((historicalTransactionsPagination.page+1) * historicalTransactionsPagination.perPage) >  historicalTransactionsPagination.perPage">
+				{{((historicalTransactions.length - ((historicalTransactionsPagination.page * historicalTransactionsPagination.perPage)+1))) + ((historicalTransactionsPagination.page * historicalTransactionsPagination.perPage)+1)}}
+			</span>
+
+			<span> of {{historicalTransactions.length}}</span>
+
 			<ul class="pagination">
-				<li>
-					<a href="" ng-click="historicalTransactionsPagination.prevPage()">&laquo;</a>
-				</li>
-			  	<li ng-repeat="n in [] | range: historicalTransactionsPagination.numPages" ng-class="{active: n == historicalTransactionsPagination.page}">
-			  		<a href="" ng-click="historicalTransactionsPagination.toPageId(n)">{{n + 1}}</a>
+			  	<li class="ng-hide" ng-repeat="n in [] | range: historicalTransactionsPagination.numPages" ng-class="{active: n == historicalTransactionsPagination.page}">
+			  		<a href="" ng-click="historicalTransactionsPagination.toPageId(n);">{{n + 1}}</a>
 			  	</li>
-			  	<li>
-			  		<a href="" ng-click="historicalTransactionsPagination.nextPage()">&raquo;</a>
+			  	<li class="prev-next-wrapper">
+			  		<a class="prev" ng-click="historicalTransactionsPagination.prevPage()">
+						<i class="fa fa-caret-left"></i>
+					</a>
+					<a class="next" ng-click="historicalTransactionsPagination.nextPage()">
+						<i class="fa fa-caret-right"></i>
+					</a>
 			  	</li>
 			</ul>
 		</nav>
+
+
+
+
     </div>
     <div class="clearfix"></div>
 </div>

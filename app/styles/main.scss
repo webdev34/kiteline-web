@@ -916,8 +916,16 @@ body {
     width: 30%;
     margin-top: 15px;
     margin-bottom: 15px;
+    .pagination{
+        position: relative;
+        top: 10px;
+        left: 5px;
+    }
     &.text-center {
         width: 100%;
+    }
+    span{
+        margin-top: -5px;
     }
     .pagination > li > a,
     .pagination > li > span {
@@ -928,6 +936,35 @@ body {
     .pagination > .active > a {
         background-color: #224f77;
         color: white;
+    }
+
+    .prev-next-wrapper{
+        a.prev{
+
+        }
+        a.next{
+            padding: 5px 10px 2px;
+        }
+        a{
+            border: thin solid #999;
+            padding: 5px 12px 3px !important;
+            border-radius: 15px;
+            border-top-right-radius: 15px !important;
+            border-bottom-right-radius: 15px !important;
+            background-color: white !important;
+            margin-left: 5px;
+        }
+        i.fa{
+            font-size: 18px;
+            position: relative;
+            &.fa-caret-left{
+                left: -2px;
+            }
+            &.fa-caret-right{
+                left: 1px;
+            }
+
+        }
     }
 }
 

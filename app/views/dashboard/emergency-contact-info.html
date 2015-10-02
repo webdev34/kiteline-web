@@ -23,6 +23,35 @@
 			  	</li>
 			</ul>
 		</nav>
+
+		<nav class="pagination-wrapper text-center" ng-show="contacts.length > 5">
+			<span>
+				{{(contactsPagination.page * contactsPagination.perPage)+1}}
+			</span>
+			-
+			<span ng-hide="((contactsPagination.page+1) * contactsPagination.perPage) >  contactsPagination.perPage">
+				{{((contactsPagination.page+1) * contactsPagination.perPage)}}
+			</span>
+			<span ng-if="((contactsPagination.page+1) * contactsPagination.perPage) >  contactsPagination.perPage">
+				{{((contacts.length - ((contactsPagination.page * contactsPagination.perPage)+1))) + ((contactsPagination.page * contactsPagination.perPage)+1)}}
+			</span>
+
+			<span> of {{contacts.length}}</span>
+
+			<ul class="pagination">
+			  	<li class="ng-hide" ng-repeat="n in [] | range: contactsPagination.numPages" ng-class="{active: n == contactsPagination.page}">
+			  		<a href="" ng-click="contactsPagination.toPageId(n);">{{n + 1}}</a>
+			  	</li>
+			  	<li class="prev-next-wrapper">
+			  		<a class="prev" ng-click="contactsPagination.prevPage()">
+						<i class="fa fa-caret-left"></i>
+					</a>
+					<a class="next" ng-click="contactsPagination.nextPage()">
+						<i class="fa fa-caret-right"></i>
+					</a>
+			  	</li>
+			</ul>
+		</nav>
 	</div>
 
 	<div class="emergency-contact-detail-wrapper feed-breakdown-view empty"  ng-show="contacts.length == 0">

@@ -28,16 +28,32 @@
 			</tbody>
 		</table>
 	</div>
-    <nav class="pagination-wrapper text-center" ng-show="currentCenterFiles.length > 10">
+
+	<nav class="pagination-wrapper text-center" ng-show="currentCenterFiles.length > 5">
+		<span>
+			{{(currentCenterFilesPagination.page * currentCenterFilesPagination.perPage)+1}}
+		</span>
+		-
+		<span ng-hide="((currentCenterFilesPagination.page+1) * currentCenterFilesPagination.perPage) >  currentCenterFilesPagination.perPage">
+			{{((currentCenterFilesPagination.page+1) * currentCenterFilesPagination.perPage)}}
+		</span>
+		<span ng-if="((currentCenterFilesPagination.page+1) * currentCenterFilesPagination.perPage) >  currentCenterFilesPagination.perPage">
+			{{((currentCenterFiles.length - ((currentCenterFilesPagination.page * currentCenterFilesPagination.perPage)+1))) + ((currentCenterFilesPagination.page * currentCenterFilesPagination.perPage)+1)}}
+		</span>
+
+		<span> of {{currentCenterFiles.length}}</span>
+
 		<ul class="pagination">
-			<li>
-				<a href="" ng-click="currentCenterFilesPagination.prevPage()">&laquo;</a>
-			</li>
-		  	<li ng-repeat="n in [] | range: currentCenterFilesPagination.numPages" ng-class="{active: n == currentCenterFilesPagination.page}">
-		  		<a href="" ng-click="currentCenterFilesPagination.toPageId(n)">{{n + 1}}</a>
+		  	<li class="ng-hide" ng-repeat="n in [] | range: currentCenterFilesPagination.numPages" ng-class="{active: n == currentCenterFilesPagination.page}">
+		  		<a href="" ng-click="currentCenterFilesPagination.toPageId(n);">{{n + 1}}</a>
 		  	</li>
-		  	<li>
-		  		<a href="" ng-click="currentCenterFilesPagination.nextPage()">&raquo;</a>
+		  	<li class="prev-next-wrapper">
+		  		<a class="prev" ng-click="currentCenterFilesPagination.prevPage()">
+					<i class="fa fa-caret-left"></i>
+				</a>
+				<a class="next" ng-click="currentCenterFilesPagination.nextPage()">
+					<i class="fa fa-caret-right"></i>
+				</a>
 		  	</li>
 		</ul>
 	</nav>

@@ -427,8 +427,10 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
           $scope.setPagination()
 
   $scope.setPagination = () ->
+
     if $scope.pastTransactions
       $scope.pastTransactionsPagination = Pagination.getNew(10)
+      console.log $scope.pastTransactionsPagination
       $scope.pastTransactionsPagination.numPages = Math.ceil($scope.pastTransactions.length / $scope.pastTransactionsPagination.perPage)
     if $scope.historicalTransactions
       $scope.historicalTransactionsPagination = Pagination.getNew(10)

@@ -123,18 +123,34 @@
 		</div>
 
 		<nav class="pagination-wrapper text-center" ng-show="pastTransactions.length > 10">
+			<span>
+				{{(pastTransactionsPagination.page * pastTransactionsPagination.perPage)+1}}
+			</span>
+			-
+			<span ng-hide="((pastTransactionsPagination.page+1) * pastTransactionsPagination.perPage) >  pastTransactionsPagination.perPage">
+				{{((pastTransactionsPagination.page+1) * pastTransactionsPagination.perPage)}}
+			</span>
+			<span ng-if="((pastTransactionsPagination.page+1) * pastTransactionsPagination.perPage) >  pastTransactionsPagination.perPage">
+				{{((pastTransactions.length - ((pastTransactionsPagination.page * pastTransactionsPagination.perPage)+1))) + ((pastTransactionsPagination.page * pastTransactionsPagination.perPage)+1)}}
+			</span>
+
+			<span> of {{pastTransactions.length}}</span>
+
 			<ul class="pagination">
-				<li>
-					<a href="" ng-click="pastTransactionsPagination.prevPage()">&laquo;</a>
-				</li>
-			  	<li ng-repeat="n in [] | range: pastTransactionsPagination.numPages" ng-class="{active: n == pastTransactionsPagination.page}">
-			  		<a href="" ng-click="pastTransactionsPagination.toPageId(n)">{{n + 1}}</a>
+			  	<li class="ng-hide" ng-repeat="n in [] | range: pastTransactionsPagination.numPages" ng-class="{active: n == pastTransactionsPagination.page}">
+			  		<a href="" ng-click="pastTransactionsPagination.toPageId(n);">{{n + 1}}</a>
 			  	</li>
-			  	<li>
-			  		<a href="" ng-click="pastTransactionsPagination.nextPage()">&raquo;</a>
+			  	<li class="prev-next-wrapper">
+			  		<a class="prev" ng-click="pastTransactionsPagination.prevPage()">
+						<i class="fa fa-caret-left"></i>
+					</a>
+					<a class="next" ng-click="pastTransactionsPagination.nextPage()">
+						<i class="fa fa-caret-right"></i>
+					</a>
 			  	</li>
 			</ul>
 		</nav>
+		
 	</div>
 
 </div>
