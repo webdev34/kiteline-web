@@ -43,7 +43,7 @@
     }
     </script>
   </head>
-  <body ng-class="{loginPage: isLoginPage}" >
+  <body ng-class="{'loginPage': isLoginPage, 'privacy': isPrivacy, 'terms-of-service': isTOS}" >
 
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -52,11 +52,13 @@
     <div class="container kiteline-content" ng-class="{wider: widerContainer}"  >
         <div class="inner-kiteline-content-container" ng-view></div>
     </div>
+
     <footer ng-hide="isLoginPage" ng-show="!isLoading" class="footer" ng-include src="'views/footer.html'"></footer>
     
     <input id="user-ip" type="hidden" />
+    <span us-spinner="{shadow: true}" spinner-key="spinner-1"></span>
 
-        <span us-spinner="{shadow: true}" spinner-key="spinner-1"></span>
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){

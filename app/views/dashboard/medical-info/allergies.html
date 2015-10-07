@@ -1,0 +1,194 @@
+<div class="table-wrapper allergy-table" ng-show="!newAllergy || !editAllergy" ng-hide="newAllergy || editAllergy || editMedicalInfo" >
+	<a class="add-btn add-allergies-btn" ng-click="toggleNewMedicalInfo('allergy')">+ Add Allergy</a>
+	
+	<div class="table-wrap">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						Allergy
+					</th>
+					<th>
+						Severity
+					</th>
+					<th>
+						Action
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-if="childrenAllergyInfo.length == 0">
+					<td colspan="3" class="left-aligned-empty-msg">
+						<span>No Allergy Information</span>
+					</td>
+				</tr>  
+				<tr ng-animate="'animate'" data-ng-repeat="allergy in childrenAllergyInfo |  orderBy:sortOrderBy:reverse | startFrom: childrenAllergyInfoPagination.page * childrenAllergyInfoPagination.perPage | limitTo: childrenAllergyInfoPagination.perPage">
+					<td>{{allergy.AllergyName}}</td>
+					<td>
+						<span ng-if="allergy.Severity == 'E'">Severe</span>
+						<span ng-if="allergy.Severity == 'S'">Seasonal</span>
+						<span ng-if="allergy.Severity == 'M'">Mild</span>
+
+					</td>
+					<td>{{allergy.Action}}</td>
+					<td class="pull-right">
+						<a class="edit" title="Edit Allergy" ng-click="toggleEditMedicalInfo('allergy', allergy);">
+							<i class="fa fa-pencil-square-o"></i>
+						</a>
+						<a title="Delete Allergy">
+							<i class="fa fa-trash red"
+							mwl-confirm
+							message="Confirm Delete"
+							confirm-text="Delete"
+							cancel-text="Cancel"
+							placement="top"
+							on-confirm="deleteAllergy(allergy)"
+							on-cancel=""
+							confirm-button-type="primary"
+							cancel-button-type="danger"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+	<nav class="pagination-wrapper text-center" ng-show="childrenAllergyInfo.length > 5" >
+		<span>
+			{{(childrenAllergyInfoPagination.page * childrenAllergyInfoPagination.perPage)+1}}
+		</span>
+		-
+		<span ng-hide="((childrenAllergyInfoPagination.page+1) * childrenAllergyInfoPagination.perPage) >  childrenAllergyInfoPagination.perPage">
+			{{((childrenAllergyInfoPagination.page+1) * childrenAllergyInfoPagination.perPage)}}
+		</span>
+		<span ng-if="((childrenAllergyInfoPagination.page+1) * childrenAllergyInfoPagination.perPage) >  childrenAllergyInfoPagination.perPage">
+			{{((childrenAllergyInfo.length - ((childrenAllergyInfoPagination.page * childrenAllergyInfoPagination.perPage)+1))) + ((childrenAllergyInfoPagination.page * childrenAllergyInfoPagination.perPage)+1)}}
+		</span>
+		<span> of {{childrenAllergyInfo.length}}</span>
+		<ul class="pagination">
+			<li class="ng-hide" ng-repeat="n in [] | range: childrenAllergyInfoPagination.numPages">
+				<a href="" ng-click="childrenAllergyInfoPagination.toPageId(n);">{{n + 1}}</a>
+			</li>
+			<li class="prev-next-wrapper">
+				<a class="prev" ng-click="childrenAllergyInfoPagination.prevPage()">
+					<i class="fa fa-caret-left"></i>
+				</a>
+				<a class="next" ng-click="childrenAllergyInfoPagination.nextPage()">
+					<i class="fa fa-caret-right"></i>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+
+<!-- New Allergy Form -->
+<div class="new-allergy-form" ng-show="newAllergy">
+	<form class="form-horizontal" name="addNewAllergyForm"  novalidate>
+		<fieldset>
+			<h5 class="pull-left">Add New Allergy</h5>
+			<div class="clearfix"></div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="newAllergyName">
+					<span class="required">*</span>
+				Allergy Name</label>
+				<div class="controls">
+					<input id="newAllergyName" name="newAllergyName" ng-model="newAllergyObj.AllergyName" type="text" class="input-xlarge form-control" required="">
+				</div>
+			</div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="newAllergyFrequency">
+					<span class="required">*</span>Frequency
+				</label>
+				<div class="controls relative">
+					<select id="newAllergySeverity" name="newAllergySeverity" class="severity form-control" ng-model="newAllergyObj.Severity" required="">
+						<option value="M" >Mild</option>
+						<option value="S" >Seasonal</option>
+						<option value="E" >Severe</option>
+					</select>
+					<i class="fa fa-caret-down" select-button select-id="newAllergySeverity"></i>
+					
+				</div>
+			</div>
+			
+			<div class="control-group col-md-4">
+				<label class="control-label" for="newAllergyInstructions">
+					Action
+				</label>
+				<div class="controls">
+					<textarea id="newAllergyAction" name="newAllergyAction" ng-model="newAllergyObj.Action" class="form-control" ></textarea>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+			<!-- Button -->
+			<div class="control-group button-wrapper">
+				<div class="controls">
+					<button id="addNewAllergy" name="addNewAllergy" class="btn btn-primary" ng-disabled="addNewAllergyForm.$invalid" ng-click="addNewAllergyFunc()" >
+					<i class="fa fa-plus"></i>
+					Add Allergy
+					</button>
+					<button id="cancelNewAllergy" name="cancelNewAllergy" class="btn btn-danger" ng-click="toggleNewMedicalInfo('allergy')">
+					<i class="fa fa-times"></i> Cancel
+					</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+
+<!-- Edit Allergy Form -->
+<div class="edit-allergy-form" ng-show="editAllergy">
+		<form class="form-horizontal" name="editAllergyForm"  novalidate>
+		<fieldset>
+			<h5 class="pull-left">Edit Allergy</h5>
+			<div class="clearfix"></div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="editAllergyName">
+					<span class="required">*</span>
+				Allergy Name</label>
+				<div class="controls">
+					<input id="editAllergyName" name="editAllergyName" ng-model="editAllergyObj.AllergyName" type="text" class="input-xlarge form-control" required="">
+				</div>
+			</div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="editAllergyFrequency">
+					<span class="required">*</span>Frequency
+				</label>
+				<div class="controls relative">
+					<select id="editAllergySeverity" name="editAllergySeverity" class="severity form-control" ng-model="editAllergyObj.Severity" required="">
+						<option value="M" >Mild</option>
+						<option value="S" >Seasonal</option>
+						<option value="E" >Severe</option>
+					</select>
+					<i class="fa fa-caret-down" select-button select-id="editAllergySeverity"></i>
+					
+				</div>
+			</div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="editAllergyAction">
+					Action
+				</label>
+				<div class="controls">
+					<textarea id="editAllergyAction" name="editAllergyAction" ng-model="editAllergyObj.Action" class="form-control" ></textarea>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<!-- Button -->
+			<div class="control-group button-wrapper">
+				<div class="controls">
+					<button id="editAllergy" name="editAllergy" class="btn btn-primary" ng-disabled="editAllergyForm.$invalid" ng-click="editAllergyFunc()" >
+					<i class="fa fa-plus"></i>
+					Edit Allergy
+					</button>
+					<button id="cancelEditAllergy" name="cancelEditAllergy" class="btn btn-danger" ng-click="toggleEditMedicalInfo('allergy')">
+					<i class="fa fa-times"></i> Cancel
+					</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>

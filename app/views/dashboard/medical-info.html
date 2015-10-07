@@ -104,3 +104,29 @@
 		</form>
 	</div>
 </div><!-- medical-info-breakdown-view -->
+
+<hr/>
+
+<div class="clearfix" ></div>
+
+<div class="medical-info-dropdown-wrapper" ng-hide="editMedicalInfo">
+	
+	<div class="detail-breakdown">
+		<span class="detail-label">Select Medical Info:</span>
+		<span class="detail-value controls relative">
+			<select id="medical-info-dropdown" class="form-control" ng-model="currentMedicalInfoView" ng-change="resetMedicalViews()">
+					<option ng-repeat="option in medicalInfoDropdown" value="{{option.name}}">{{option.name}}</option>
+			</select>
+			<i class="fa fa-caret-down" select-button select-id="medical-info-dropdown"></i>
+		</span>
+	</div>
+
+</div>
+
+<div class="clearfix"></div>
+
+<div ng-if="currentMedicalInfoView == 'Medications'" class="medication-wrapper" ng-include src="'views/dashboard/medical-info/medications.html'"></div>
+
+<div ng-if="currentMedicalInfoView == 'Allergies'" class="allergies-wrapper" ng-include src="'views/dashboard/medical-info/allergies.html'"></div>
+
+<div ng-if="currentMedicalInfoView == 'Immunizations'" class="immunizations-wrapper" ng-include src="'views/dashboard/medical-info/immunizations.html'"></div>

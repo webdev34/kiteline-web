@@ -34,6 +34,12 @@ html {
                 cursor: not-allowed;
             }
         }
+        .pagination > li:first-child > a, 
+        .pagination > li:first-child > span {
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            margin-right: 5px;
+        }
         input.form-control,
         select.form-control,
         textarea.form-control{
@@ -142,6 +148,9 @@ html {
         .btn-primary {
             font-size: 14px;
         }
+        .btn-danger{
+            margin-left: 5px;
+        }
         .header {
             margin-bottom: 5px;
             border-bottom: thin solid #4e99bd;
@@ -193,6 +202,16 @@ html {
         .table{
             tr{
                 border-bottom: thin solid #ccc;
+            }
+            th{
+                &.instructions{
+                    width: 35%;
+                }
+            }
+            td{
+                 &.instructions{
+                   
+                }
             }
         }
         .table.shadow {
@@ -849,6 +868,9 @@ body {
         height: 100% !important;
         opacity: 0.9;
         position: fixed !important;
+        background-image: url(../images/kiteline-logo.png);
+        background-repeat: no-repeat;
+        background-position: 51% 55%;
         div {
             left: 50% !important;
             top: 45% !important;
@@ -856,7 +878,7 @@ body {
             &:nth-child(1) {
                 div:after {
                     content: "Loading...";
-                    top: 35px;
+                    top: 30px;
                     position: relative;
                     right: 40px;
                     font-size: 16px;
@@ -916,6 +938,15 @@ body {
     width: 30%;
     margin-top: 15px;
     margin-bottom: 15px;
+    color: #333;
+    .fa{
+        color: #333;
+    }
+    .pagination-content{
+        top: -18px;
+        display: inline-block;
+        position: relative;
+    }
     .pagination{
         position: relative;
         top: 10px;
@@ -926,6 +957,8 @@ body {
     }
     span{
         margin-top: -5px;
+        color: #333;
+        font-size: 14px;
     }
     .pagination > li > a,
     .pagination > li > span {
@@ -1214,7 +1247,13 @@ body {
     .right-feature-container.col-md-4{
         width: auto;
     }
+    .sub-header-wrapper ul li img {
+        top: -9px;
+    }
     .left-feature-container {
+        h4{
+            font-size: 16px;
+        }
         &.col-md-4,
         &.col-md-8,
         &.col-md-12 {
@@ -1224,13 +1263,24 @@ body {
                 width: 80%;
             }
         }
-        ul.nav.nav-tabs li a {
-            font-size: 16px;
-            min-width: 125px;
-        }
          ul.nav.nav-tabs.billing-tab li a {
             font-size: 14px;
             min-width: 120px;
+        }
+
+        ul.nav.nav-tabs li {
+            margin-left: 5px;
+            a{
+                font-size: 14px;
+                min-width: 125px;
+            }
+
+        }
+        .lower-container-dashboard {
+            ul.nav.nav-tabs li a{
+                font-size: 14px;
+                min-width: 105px;
+            }
         }
     }
     .billing-container .transactions-breakdown-wrapper .dates-input-wrapper .input-group-addon,
@@ -1262,12 +1312,93 @@ body {
         min-height: 1055px;
         overflow: auto;
     }
-    // .kiteline-logo {
-    //     height: 36px;
-    //     background-size: contain;
-    //     margin-top: 5px;
-    //     margin-left: 10px;
-    // }
+   
+   .lower-container-dashboard{
+        .medications-table{
+            table{
+                td{
+                    padding: 6px !important;
+                }
+            }
+            a.edit{
+                position: relative;
+                top: -2px;
+                right: -6px;
+            }
+        }
+        .guardian-detail-wrapper h2, 
+        .emergency-contact-detail-wrapper h2, 
+        .medical-info-edit h2 {
+            margin-left: 4%;
+        }  
+    }
+
+    .left-feature-container .detail-breakdown{
+        margin: 12px 5% !important;
+        width: 100% !important;
+    }
+
+    .billing-container .left-feature-container.col-md-12 .tile.col-md-6 {
+        margin-top: 0px !important;
+        width: 100%;
+    }
+
+    .billing-container .transactions-breakdown-wrapper .transactions-table-wrapper table tr th {
+        font-size: 15px;
+        width: 60px;
+    }
+
+    .transactions-breakdown-wrapper{
+        .dates-input-wrapper{
+            margin-top: 0px !important;
+            .row{
+                margin-top: 15px;
+                float: left;
+                div{
+                    width: 40%;
+                    float: left;
+                    &.col-md-1{
+                        width: 8%;
+                    }
+                }
+            }
+        }
+    }
+
+    .invoices-breakdown-wrapper{
+        .row{
+            float: left;
+            div{
+                width: 40%;
+                float: left;
+                &.col-md-1{
+                    width: 8%;
+                }
+            }
+            .btn-primary{
+                margin-top: 38px;
+            }
+        }
+    }
+
+    html body .input-group .input-group-btn {
+        top: 20px;
+        left: 0px;
+    }
+
+    body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container form{
+        .cvv {
+            width: 15% !important;
+            float: left;
+        }
+        .expire-dates-wrapper {
+            float: left;
+        }
+    } 
+
+    .control-group{
+        margin-bottom: 10px;
+    }
 }
 
 

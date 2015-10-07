@@ -4,7 +4,12 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   if window.location.href.indexOf('localhost:9000') > - 1
     $rootScope.modalUrl = 'http://localhost:9000'
   else if window.location.href.indexOf('cloud.spinsys.com') > - 1
-    $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb'
+
+    if window.location.href.indexOf('kitelineweb-Redesign') > - 1
+      $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb-redesign'
+    else
+      $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb'
+
   else if window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
     $rootScope.modalUrl = 'https://uat.skychildcare.com/parentportal'
   else if window.location.href.indexOf('parent.skychildcare.com') > - 1
@@ -40,6 +45,9 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   $rootScope.sortOrderBy = 'PaymentDate'
   $rootScope.invoiceGrandTotal = 0
   $rootScope.invoicesArray = []
+  $scope.childrenMedicationInfo = []
+  $scope.childrenImmunizationInfo = []
+  $scope.childrenAllergyInfo = []
 
   d = new Date
   $scope.billDates = {}
@@ -90,14 +98,19 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
   $rootScope.logOut = () ->
     $rootScope.showLogOut = false
-    StorageService.deleteLocalStorage() ;
-    if window.location.href.indexOf('localhost') > - 1
+    StorageService.deleteLocalStorage();
+    if window.location.href.indexOf('localhost:9000') > - 1
       $window.location.href = '/'
-    else if window.location.href.indexOf('cloud') > - 1
-      $window.location.href = 'https://cloud.spinsys.com/skychildcare/kitelineweb/#/'
-    else if window.location.href.indexOf('parent') > - 1
+    else if window.location.href.indexOf('cloud.spinsys.com') > - 1
+
+      if window.location.href.indexOf('kitelineweb-redesign') > - 1
+        $window.location.href = 'https://cloud.spinsys.com/skychildcare/kitelineweb-redesign/#/'
+      else
+        $window.location.href = 'https://cloud.spinsys.com/skychildcare/kitelineweb/#/'
+        
+    else if window.location.href.indexOf('parent.skychildcare.com') > - 1
       $window.location.href = 'https://parent.skychildcare.com/#/'
-    else
+    else if window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
       $window.location.href = 'https://uat.skychildcare.com/parentportal/#/'
 
   $rootScope.sortByFunc = (sortBy, reverse) ->
@@ -130,7 +143,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
     if paymentAmount > outstandingBalance
       document.getElementById('payment-amount').blur()
-      # document.getElementById('payment-amount').value = $filter('currency') trueTotal, ''
       $rootScope.paymentGreaterThanAmount = true
 
   $rootScope.paymentCleared = () ->
@@ -159,7 +171,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
         $rootScope.paymentCC.ExpirationDate = "0" + $rootScope.paymentCC.ExpirationDate
 
       if $rootScope.paymentCC.RecurringAccount is true
-        console.log 'saving new card'
         $rootScope.submitNewAccount('CC Payment', '')
       else
         PaymentService.makePaymentWithCC($rootScope.currentCenter.FamilyId, $rootScope.currentCenter.CenterId, invoiceId, $rootScope.currentCenter.CustomerId, $rootScope.paymentCC).then (response) ->
@@ -213,7 +224,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
         $rootScope.getPaymentAccounts()
         $scope.resetAccountForm('CC', form)
     else if type == 'CC Payment' and $rootScope.paymentCC.saveAccount
-      console.log 'right track'
       thisYear = String($rootScope.expireDatesPayment.year)
       thisYear = thisYear[2] + thisYear[3]
       $rootScope.paymentCC.ExpirationDate = $rootScope.expireDatesPayment.month + '/' + thisYear
@@ -430,21 +440,33 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
     if $scope.pastTransactions
       $scope.pastTransactionsPagination = Pagination.getNew(10)
-      console.log $scope.pastTransactionsPagination
       $scope.pastTransactionsPagination.numPages = Math.ceil($scope.pastTransactions.length / $scope.pastTransactionsPagination.perPage)
+    
     if $scope.historicalTransactions
       $scope.historicalTransactionsPagination = Pagination.getNew(10)
       $scope.historicalTransactionsPagination.numPages = Math.ceil($scope.historicalTransactions.length / $scope.historicalTransactionsPagination.perPage)
+    
     if $rootScope.outstandingInvoices
       $rootScope.outstandingInvoicesPagination = Pagination.getNew(10)
       $rootScope.outstandingInvoicesPagination.numPages = Math.ceil($rootScope.outstandingInvoices.length / $rootScope.outstandingInvoicesPagination.perPage)
+    
     if $rootScope.bankAccounts
       $rootScope.bankAccountsPagination = Pagination.getNew()
       $rootScope.bankAccountsPagination.numPages = Math.ceil($rootScope.bankAccounts.length / $scope.bankAccountsPagination.perPage)
+    
     if $rootScope.creditCardAccounts
       $rootScope.creditCardAccountsPagination = Pagination.getNew()
       $rootScope.creditCardAccountsPagination.numPages = Math.ceil($rootScope.creditCardAccounts.length / $scope.creditCardAccountsPagination.perPage)
+    
+  $scope.setPaginationMedicalInfo = () ->
+    $scope.childrenMedicationInfoPagination = Pagination.getNew(3)
+    $scope.childrenMedicationInfoPagination.numPages = Math.ceil($scope.childrenMedicationInfo.length / $scope.childrenMedicationInfoPagination.perPage)
+    
+    $scope.childrenAllergyInfoPagination = Pagination.getNew()
+    $scope.childrenAllergyInfoPagination.numPages = Math.ceil($scope.childrenAllergyInfo.length / $scope.childrenAllergyInfoPagination.perPage)
 
+    $scope.childrenImmunizationInfoPagination = Pagination.getNew()
+    $scope.childrenImmunizationInfoPagination.numPages = Math.ceil($scope.childrenImmunizationInfo.length / $scope.childrenImmunizationInfoPagination.perPage)
 
   $rootScope.isMobileFunc = () ->
     if sessionStorage.desktop
@@ -519,6 +541,13 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       $rootScope.paymentCC.BusinessPhone = null
 
   $rootScope.footerYear = (new Date).getFullYear()
+
+  $rootScope.lastTenYearsArray = [$rootScope.footerYear]
+
+  i = 0
+  while i < 9
+    $rootScope.lastTenYearsArray.push $rootScope.footerYear++
+    i++
 
   $rootScope.bankAccountTypes = [
     {

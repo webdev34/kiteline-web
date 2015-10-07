@@ -11,5 +11,37 @@
 .tos-wrapper h1:first-child,
 .privacy-wrapper h1:first-child,
 h4.effective {
-    text-align: center;
+    //text-align: center;
+}
+
+body.terms-of-service,
+body.privacy{
+	background-size: 30%;
+
+	.container.wider{
+		width: 95%;
+		background-color: #6f97c5;
+		&.kiteline-content{
+			box-shadow: 0px 0px 2px 0px whitesmoke;
+		}
+		
+		*{
+			color: white !important;
+		}
+		h4{
+			margin-bottom: 10px !important;
+		}
+		h3,h4{
+			font-size: 21px !important;
+		}
+		p{
+			margin-bottom: 20px;
+		}
+		.head{
+			font-size: 24px;
+		}
+		.effective{
+			margin-top: 25px;
+		}
+	}
 }

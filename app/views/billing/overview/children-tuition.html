@@ -5,12 +5,10 @@
 	<div class="clearfix"></div>
 	<ul class="tuition-list"  >
 		<li data-ng-repeat="child in userChildrenTuition">
-			<img ng-if="child.Sex == 'M' && child.PhotoUrl == ''" ng-src="{{child.PhotoUrl}}" onerror="this.src = 'images/male.svg';" />
-			<img ng-if="child.Sex == 'M' && child.PhotoUrl != ''" src="images/male.svg" />
-
-			<img ng-if="child.Sex == 'F'  && child.PhotoUrl == ''" ng-src="{{child.PhotoUrl}}" onerror="this.src = 'images/female.svg';" />
-			<img ng-if="child.Sex == 'F' && child.PhotoUrl != ''" src="images/female.svg" />
-
+			<img ng-if="child.Sex == 'M'" ng-src="{{child.PhotoURL}}" onerror="this.src = 'images/male.svg';" />
+			
+			<img ng-if="child.Sex == 'F'" ng-src="{{child.PhotoURL}}" onerror="this.src = 'images/female.svg';" />
+			
 			<span class="child-name">{{child.FullName}}</span>
 			<span class="class-name" >{{child.ClassName}}</span> 
 			<span class="tuition-rate">{{child.TuitionAmount | currency}} {{child.RateInterval}}</span>

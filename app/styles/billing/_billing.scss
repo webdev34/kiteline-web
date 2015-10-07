@@ -32,7 +32,8 @@
     .left-feature-container.col-md-12 {
         background-color: transparent;
         border: none;
-        ul.nav.nav-tabs li.active a {
+        ul.nav.nav-tabs li.active a ,
+        ul.nav.nav-tabs li a:hover{
             background-color: white;
             color: black;
         }
@@ -156,7 +157,10 @@
                         padding-top: 5px;
                         border-bottom: thin solid #ccc;
                         img{
-                            width: 50px;
+                            width: 55px;
+                            height: 55px;
+                            top: 2px;
+                            position: relative;
                         }
                         span{
                             display: inline-block;
@@ -426,7 +430,7 @@
             margin: 0 5px;
         }
         .col-md-6 {
-            .fa {
+            .fa.fa-usd {
                 margin-top: 20px;
                 margin-bottom: 30px;
             }

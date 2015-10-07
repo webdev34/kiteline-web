@@ -83,47 +83,6 @@ angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScop
         
       return
 
-  @processCreditCard = (obj) ->
-    url = undefined
-    url = rootUrl+'api/CreditCard/ProcessCC'
-    $http(
-      method: 'POST'
-      headers:
-        'Content-Type': 'application/json'
-        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
-        'X-SkyChildCareToken': $rootScope.currentUserToken
-        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
-        'X-SkyChildCareUserId': $rootScope.currentUserEmail
-      data:
-        'familyId': obj
-        'centerId': obj
-        'invoiceId': obj
-        'customerId': obj
-        'amount': obj
-        'ccname': obj
-        'ccnum': obj
-        'cctype': obj
-        'expiration': obj
-        'cvv': obj
-        'street': obj
-        'city': obj
-        'state': obj
-        'zip': obj
-        'trackData': obj
-        'SessionID': obj
-        'OriginationIP': obj
-      url: url).success((data, status, headers, config) ->
-      deferred.resolve data
-      return
-    ).error (data, status, headers, config) ->
-      deferred.reject status
-      if data.Message isnt null
-        toastr.error data.Message, 'Error'
-      else
-        toastr.error data.Message, 'Error'
-        
-      return
-
   @addCreditCard = (obj) ->
     url = undefined
     url = rootUrl+'api/CreditCard/AddCCAccount'

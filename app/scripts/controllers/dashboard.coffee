@@ -1,5 +1,5 @@
 'use strict'
-angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, ChildService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, Pagination) ->
+angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, ChildService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, ImmunizationService, Pagination) ->
   
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
@@ -11,6 +11,12 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.editContact = false
   $scope.editMedicalInfo = false
   $scope.editPickupList = false
+  $scope.editMedication = false
+  $scope.newMedication = false
+  $scope.editAllergy = false
+  $scope.newAllergy = false
+  $scope.editImmunization = false
+  $scope.newImmunization = false
   $scope.newPickupContact = false
   $scope.buttonDisable = false
   $scope.isPinValid = false
@@ -20,8 +26,135 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.activeEmergencyContact = "contact-1"
   $scope.activePickupContact = "pickup-contact-1"
   $scope.viewPickupContactNew = {}
+  $scope.newMedicationObj = {}
+  $scope.newAllergyObj = {}
+  $scope.newImmunizationObj = {}
   $rootScope.changePageTitle()
+  $scope.currentMedicalInfoView = 'Medications'
+  $scope.medicalInfoDropdown = [
+    {
+      name: 'Medications'
+    }
+    {
+      name: 'Allergies'
+    }
+    {
+      name: 'Immunizations'
+    }
+  ]
 
+  d = new Date
+  $scope.newImmunizationObj.DateReceived = [
+    d.getMonth() + 1
+    d.getDate()
+    d.getFullYear()
+  ].join('/')
+  $scope.newImmunizationObj.ExpiryDate = new Date((new Date).setDate((new Date).getDate() + 30))
+  $scope.newImmunizationObj.ExpiryDate = $filter('date')($scope.newImmunizationObj.ExpiryDate, 'M/d/yyyy')
+
+  $scope.newMedicationObj.StartDate = $scope.newImmunizationObj.DateReceived
+  $scope.newMedicationObj.EndDate = $scope.newImmunizationObj.ExpiryDate
+  $scope.newMedicationObj.Expiration = $scope.newImmunizationObj.ExpiryDate
+
+  $scope.resetMedicalViews = () ->
+    $scope.editMedication = false
+    $scope.newMedication = false
+    $scope.editAllergy = false
+    $scope.newAllergy = false
+    $scope.editImmunization = false
+    $scope.newImmunization = false
+
+  $scope.addNewMedicationFunc = () ->
+    ChildService.addMedication($scope.newMedicationObj, $scope.viewChild.ChildId).then (response) ->
+      $scope.getMedicalInfo($scope.viewChild.ChildId)
+      $scope.newMedication = false
+      $scope.newMedicationObj = {}
+
+  $scope.editMedicationFunc = () ->
+    ChildService.updateMedication($scope.editMedicationObj, $scope.viewChild.ChildId).then (response) ->
+      $scope.getMedicalInfo($scope.viewChild.ChildId)
+      $scope.editMedication = false
+
+  $scope.deleteMedication = (medication) ->
+    ChildService.deleteMedication(medication.ChildMedicationId).then (response) ->
+      ChildService.getMedications(medication.ChildId).then (response) ->
+        $scope.childrenMedicationInfo = response.data
+        $scope.setPaginationMedicalInfo()
+
+  $scope.addNewAllergyFunc = () ->
+    ChildService.addAllergy($scope.newAllergyObj, $scope.viewChild.ChildId).then (response) ->
+      $scope.getMedicalInfo($scope.viewChild.ChildId)
+      $scope.newAllergy = false
+      $scope.newAllergyObj = {}
+
+  $scope.editAllergyFunc = () ->
+    ChildService.updateAllergy($scope.editAllergyObj, $scope.viewChild.ChildId).then (response) ->
+      $scope.getMedicalInfo($scope.viewChild.ChildId)
+      $scope.editAllergy = false
+
+  $scope.deleteAllergy = (allergy) ->
+    ChildService.deleteAllergy(allergy.ChildAllergyId).then (response) ->
+      ChildService.getAllergies(allergy.ChildId).then (response) ->
+        $scope.childrenAllergyInfo = response.data
+        $scope.setPaginationMedicalInfo()
+
+  $scope.addNewImmunizationFunc = () ->
+    ImmunizationService.createImmunization($scope.newImmunizationObj, $scope.viewChild.ChildId).then (response) ->
+      $scope.getMedicalInfo($scope.viewChild.ChildId)
+      $scope.newImmunization = false
+      $scope.newImmunizationObj = {}
+  
+  $scope.editImmunizationFunc = () ->
+    ImmunizationService.updateImmunization($scope.editImmunizationObj, $scope.viewChild.ChildId).then (response) ->
+      $scope.getMedicalInfo($scope.viewChild.ChildId)
+      $scope.editImmunization = false
+
+  $scope.deleteImmunization = (immunization) ->
+    ImmunizationService.deleteImmunization(immunization, $scope.viewChild.ChildId).then (response) ->
+      ImmunizationService.getImmunizations(immunization.ChildId).then (response) ->
+        $scope.childrenImmunizationInfo = response.data
+        $scope.setPaginationMedicalInfo()
+
+  $scope.toggleNewMedicalInfo = (addNew) ->
+    if addNew == 'medication'
+      $scope.newMedicationObj = {}
+      $scope.newMedicationObj.StartDate = [
+        d.getMonth() + 1
+        d.getDate()
+        d.getFullYear()
+      ].join('/')
+      $scope.newMedicationObj.EndDate = new Date((new Date).setDate((new Date).getDate() + 30))
+      $scope.newMedicationObj.EndDate = $filter('date')($scope.newMedicationObj.EndDate, 'M/d/yyyy')
+      $scope.newMedicationObj.Expiration = $scope.newMedicationObj.EndDate
+      $scope.newMedication = !$scope.newMedication
+
+    else if addNew == 'allergy'
+      $scope.newAllergyObj = {}
+      $scope.newAllergy = !$scope.newAllergy
+
+    else if addNew == 'immunization'
+      $scope.newImmunizationObj = {}
+      $scope.newImmunizationObj.DateReceived = [
+        d.getMonth() + 1
+        d.getDate()
+        d.getFullYear()
+      ].join('/')
+      $scope.newImmunizationObj.ExpiryDate = new Date((new Date).setDate((new Date).getDate() + 30))
+      $scope.newImmunizationObj.ExpiryDate = $filter('date')($scope.newImmunizationObj.ExpiryDate, 'M/d/yyyy')
+      $scope.newImmunization = !$scope.newImmunization
+
+  $scope.toggleEditMedicalInfo = (editThis, editObj) ->
+    if editThis == 'medication'
+      $scope.editMedicationObj = editObj
+      $scope.editMedication = !$scope.editMedication
+
+    else if editThis == 'allergy'
+      $scope.editAllergyObj = editObj
+      $scope.editAllergy = !$scope.editAllergy
+
+    else if editThis == 'immunization'
+      $scope.editImmunizationObj = editObj
+      $scope.editImmunization = !$scope.editImmunization
 
   $scope.pinValidation = ()->
     if $scope.viewEmergencyContactEdit.Pin 
@@ -85,7 +218,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
         if value.PickupName == $scope.viewPickupContactEdit
           $scope.goToPickupContact(value.ChildPickupId)
 
-
   $scope.changeActivePickupContact = (activePickupContact) ->
     $scope.activePickupContact = activePickupContact
 
@@ -104,7 +236,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.getChildrenData = (refreshingData) ->
     CurbSideService.getAllChildren($rootScope.centerId, $rootScope.familyId).then (response) ->
       $scope.userChildren = response.data
-      
       $scope.childrenClasses = []
       $scope.childrenGenInfo = []
       $scope.childrenMedicalInfo = []
@@ -128,6 +259,27 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
                 else if refreshingData
                   $scope.goToChild(value.ChildId, true)
 
+
+  $scope.getMedicalInfo = (childId) ->
+    ChildService.getMedications(childId).then (response) ->
+      $scope.childrenMedicationInfo = response.data
+      if $scope.childrenMedicationInfo
+        $scope.childrenMedicationInfoPagination = Pagination.getNew()
+        $scope.childrenMedicationInfoPagination.numPages = Math.ceil($scope.childrenMedicationInfo.length / $scope.childrenMedicationInfoPagination.perPage)
+            
+    ChildService.getAllergies(childId).then (response) ->
+      $scope.childrenAllergyInfo = response.data
+      if $scope.childrenAllergyInfo
+        $scope.childrenAllergyInfoPagination = Pagination.getNew()
+        $scope.childrenAllergyInfoPagination.numPages = Math.ceil($scope.childrenAllergyInfo.length / $scope.childrenAllergyInfoPagination.perPage)
+
+    ImmunizationService.getImmunizations(childId, $rootScope.centerId).then (response) ->
+      $scope.childrenImmunizationInfo = response.data
+      if $scope.childrenImmunizationInfo
+        $scope.childrenImmunizationInfoPagination = Pagination.getNew()
+        $scope.childrenImmunizationInfoPagination.numPages = Math.ceil($scope.childrenImmunizationInfo.length / $scope.childrenImmunizationInfoPagination.perPage)
+
+
   $scope.goToChild = (childId, refreshingData, tabToShow) ->
     $scope.viewChild = $filter('filter')($scope.userChildren, (d) -> d.ChildId == childId)[0]
     $scope.viewChildMedicalInfo = $filter('filter')($scope.childrenMedicalInfo, (d) -> d.ChildId == childId)[0]
@@ -135,6 +287,9 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     $scope.viewChildMedicalInfoEdit.PhysicalDate = $filter('date') $scope.viewChildMedicalInfoEdit.PhysicalDate, 'M/dd/yyyy'
     $scope.viewChildGeneralInfo = $filter('filter')($scope.childrenGenInfo, (d) -> d.ChildId == childId)[0]
     $scope.viewChildHistoryInfo = $filter('filter')($scope.childrenHistoryInfo, (d) -> d.ChildId == childId)[0]
+    
+    $scope.getMedicalInfo(childId)
+    
     if refreshingData
       $scope.changeActiveLowerTab(tabToShow)
 

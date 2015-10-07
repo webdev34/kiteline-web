@@ -113,7 +113,7 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
         
       return
 
-  @updateMedication = (childMedicationId, childId, centerId, medicationName, frequency, startDate, endDate, expiration, instructions, openUID, openDate, editUID, editDate) ->  
+  @updateMedication = (obj, childId) ->  
     url = rootUrl+'api/Child/UpdateMedication'
     $http(
       method: 'POST'
@@ -124,19 +124,19 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'ChildMedicationId': childMedicationId
+        'ChildMedicationId': obj.ChildMedicationId
         'ChildId': childId
-        'CenterId': centerId
-        'MedicationName': medicationName
-        'Frequency': frequency
-        'StartDate': startDate
-        'EndDate': endDate
-        'Expiration': expiration
-        'Instructions': instructions
-        'OPEN_UID': openUID
-        'OPEN_DATE': openDate
-        'EDIT_UID': editUID
-        'EDIT_DATE': editDate
+        'CenterId': $rootScope.currentCenter.CenterId
+        'MedicationName': obj.MedicationName
+        'Frequency': obj.Frequency
+        'StartDate': obj.StartDate
+        'EndDate': obj.EndDate
+        'Expiration': obj.Expiration
+        'Instructions': obj.Instructions
+        'OPEN_UID': $rootScope.currentUserEmail
+        'OPEN_DATE': new Date
+        'EDIT_UID': $rootScope.currentUserEmail
+        'EDIT_DATE': new Date
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
@@ -152,7 +152,7 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
         
       return  
 
-  @addMedication = (childMedicationId, childId, centerId, medicationName, frequency, startDate, endDate, expiration, instructions, openUID, openDate, editUID, editDate) ->  
+  @addMedication = (obj, childId) ->  
     url = rootUrl+'api/Child/AddMedication'
     $http(
       method: 'POST'
@@ -163,19 +163,19 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'ChildMedicationId': childMedicationId
+        'ChildMedicationId':0
         'ChildId': childId
-        'CenterId': centerId
-        'MedicationName': medicationName
-        'Frequency': frequency
-        'StartDate': startDate
-        'EndDate': endDate
-        'Expiration': expiration
-        'Instructions': instructions
-        'OPEN_UID': openUID
-        'OPEN_DATE': openDate
-        'EDIT_UID': editUID
-        'EDIT_DATE': editDate
+        'CenterId': $rootScope.currentCenter.CenterId
+        'MedicationName': obj.MedicationName
+        'Frequency': obj.Frequency
+        'StartDate': obj.StartDate
+        'EndDate': obj.EndDate
+        'Expiration': obj.Expiration
+        'Instructions': obj.Instructions
+        'OPEN_UID': $rootScope.currentUserEmail
+        'OPEN_DATE': new Date
+        'EDIT_UID': $rootScope.currentUserEmail
+        'EDIT_DATE': new Date
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
@@ -191,7 +191,7 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
         
       return
 
-  @updateAllergy = (childAllergyId, childId, centerId, allergyName, severity, action, openUID, openDate, editUID, editDate) ->  
+  @updateAllergy = (obj, childId) ->  
     url = rootUrl+'api/Child/UpdateAllergy'
     $http(
       method: 'POST'
@@ -202,16 +202,16 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'ChildAllergyId': childAllergyId
+        'ChildAllergyId': obj.ChildAllergyId
         'ChildId': childId
-        'CenterId': centerId
-        'AllergyName': allergyName
-        'Severity': severity
-        'Action': action
-        'OPEN_UID': openUID
-        'OPEN_DATE': openDate
-        'EDIT_UID': editUID
-        'EDIT_DATE': editDate
+        'CenterId': $rootScope.currentCenter.CenterId
+        'AllergyName': obj.AllergyName
+        'Severity': obj.Severity
+        'Action': obj.Action
+        'OPEN_UID': $rootScope.currentUserEmail
+        'OPEN_DATE': new Date
+        'EDIT_UID': $rootScope.currentUserEmail
+        'EDIT_DATE': new Date
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
@@ -227,7 +227,7 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
         
       return
 
-  @addAllergy = (childAllergyId, childId, centerId, allergyName, severity, action, openUID, openDate, editUID, editDate) ->  
+  @addAllergy = (obj, childId) ->  
     url = rootUrl+'api/Child/AddAllergy'
     $http(
       method: 'POST'
@@ -238,16 +238,16 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'ChildAllergyId': childAllergyId
+        'ChildAllergyId': obj.ChildAllergyId
         'ChildId': childId
-        'CenterId': centerId
-        'AllergyName': allergyName
-        'Severity': severity
-        'Action': action
-        'OPEN_UID': openUID
-        'OPEN_DATE': openDate
-        'EDIT_UID': editUID
-        'EDIT_DATE': editDate
+        'CenterId': $rootScope.currentCenter.CenterId
+        'AllergyName': obj.AllergyName
+        'Severity': obj.Severity
+        'Action': obj.Action
+        'OPEN_UID': $rootScope.currentUserEmail
+        'OPEN_DATE': new Date
+        'EDIT_UID': $rootScope.currentUserEmail
+        'EDIT_DATE': new Date
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
@@ -407,7 +407,7 @@ angular.module('kiteLineApp').service 'ChildService', ($http, $q, $rootScope, to
         
       return
 
-  @deleteMedications = (childMedicationId) ->  
+  @deleteMedication = (childMedicationId) ->  
     url = rootUrl+'api/Child/DeleteMedication/'+childMedicationId
     $http(
       method: 'POST'

@@ -9,6 +9,7 @@
 			font-weight: bold;
 			font-size: 18px;
 			margin: 30px 0;
+			float: left;
 		}
 	}
 	button{
@@ -17,10 +18,13 @@
 	.table{
 		tr{
 			td{
+				padding: 0 !important;
 				.file-name{
 					max-width: 250px;
 				    text-align: center;
 				    display: inline-block;
+				    margin-top: 10px;
+    				margin-bottom: 0;
 				}
 			}
 		}

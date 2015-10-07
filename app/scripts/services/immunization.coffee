@@ -6,8 +6,8 @@ angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootSc
   deferred = undefined
   deferred = $q.defer()
 
-  @getImmunizations = (childId, centerId) ->   
-    url = rootUrl+'api/Immunization/GetImmunizations?childId='+childId+'&centerId='+centerId
+  @getImmunizations = (childId) ->   
+    url = rootUrl+'api/Immunization/GetImmunizations?childId='+childId+'&centerId='+$rootScope.currentCenter.CenterId
     $http(
       method: 'GET'
       headers:
@@ -30,7 +30,7 @@ angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootSc
         
       return
 
-  @createImmunization = (childImmunizationId, childId, centerId, immunizationName, description, doses, dateReceived, expiryDate, userId) ->   
+  @createImmunization = (obj, childId) ->   
     url = rootUrl+'api/Immunization/CreateImmunization'
     $http(
       method: 'POST'
@@ -40,16 +40,16 @@ angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootSc
         'X-SkyChildCareToken': $rootScope.currentUserToken
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
-    data:
-      'ChildImmunizationId': childImmunizationId
-      'ChildId': childId
-      'CenterId': centerId
-      'ImmunizationName': immunizationName
-      'Description': description
-      'Doses': doses
-      'DateReceived': dateReceived
-      'ExpiryDate': expiryDate
-      'UserId': userId
+      data:
+        'ChildImmunizationId': 0
+        'ChildId': childId
+        'CenterId': $rootScope.currentCenter.CenterId
+        'ImmunizationName': obj.ImmunizationName
+        'Description': obj.Description
+        'Doses': obj.Doses
+        'DateReceived': obj.DateReceived
+        'ExpiryDate': obj.ExpiryDate
+        'UserId': $rootScope.currentUserEmail
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
 
@@ -64,7 +64,7 @@ angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootSc
         
       return
 
-  @updateImmunization = (childImmunizationId, childId, centerId, immunizationName, description, doses, dateReceived, expiryDate, userId) ->   
+  @updateImmunization = (obj, childId) ->   
     url = rootUrl+'api/Immunization/UpdateImmunization'
     $http(
       method: 'POST'
@@ -74,16 +74,16 @@ angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootSc
         'X-SkyChildCareToken': $rootScope.currentUserToken
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
-    data:
-      'ChildImmunizationId': childImmunizationId
-      'ChildId': childId
-      'CenterId': centerId
-      'ImmunizationName': immunizationName
-      'Description': description
-      'Doses': doses
-      'DateReceived': dateReceived
-      'ExpiryDate': expiryDate
-      'UserId': userId
+      data:
+        'ChildImmunizationId': obj.ChildImmunizationId
+        'ChildId': childId
+        'CenterId': $rootScope.currentCenter.CenterId
+        'ImmunizationName': obj.ImmunizationName
+        'Description': obj.Description
+        'Doses': obj.Doses
+        'DateReceived': obj.DateReceived
+        'ExpiryDate': obj.ExpiryDate
+        'UserId': $rootScope.currentUserEmail
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
 
@@ -98,10 +98,10 @@ angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootSc
         
       return
 
-  @deleteImmunization = (childImmunizationId, childId, centerId, immunizationName, description, doses, dateReceived, expiryDate, userId) ->   
+  @deleteImmunization = (obj, childId) ->   
     url = rootUrl+'api/Immunization/DeleteImmunization'
     $http(
-      method: 'GET'
+      method: 'POST'
       headers:
         'Content-Type': 'application/json'
         'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
@@ -109,15 +109,15 @@ angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootSc
         'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
         'X-SkyChildCareUserId': $rootScope.currentUserEmail
       data:
-        'ChildImmunizationId': childImmunizationId
+        'ChildImmunizationId': obj.ChildImmunizationId
         'ChildId': childId
-        'CenterId': centerId
-        'ImmunizationName': immunizationName
-        'Description': description
-        'Doses': doses
-        'DateReceived': dateReceived
-        'ExpiryDate': expiryDate
-        'UserId': userId
+        'CenterId': $rootScope.currentCenter.CenterId
+        'ImmunizationName': obj.immunizationName
+        'Description': obj.Description
+        'Doses': obj.Doses
+        'DateReceived': obj.DateReceived
+        'ExpiryDate': obj.ExpiryDate
+        'UserId': $rootScope.currentUserEmail
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
       

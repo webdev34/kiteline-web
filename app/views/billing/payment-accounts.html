@@ -59,7 +59,7 @@
 		    </table>
 		</div>
 
-		<nav class="pagination-wrapper text-center" ng-show="addBankAccount || bankAccounts.length < 6">
+		<nav class="pagination-wrapper text-center" ng-hide="addBankAccount" ng-show="bankAccounts.length > 5">
 			<span>
 				{{(bankAccountsPagination.page * bankAccountsPagination.perPage)+1}}
 			</span>
@@ -156,21 +156,7 @@
 			    </tbody>
 		    </table>
 			</div>
-		    <nav class="pagination-wrapper text-center" ng-hide="addCreditCard || creditCardAccounts.length < 6"  >
-				<ul class="pagination">
-					<li>
-						<a href="" ng-click="creditCardAccountsPagination.prevPage()">&laquo;</a>
-					</li>
-				  	<li ng-repeat="n in [] | range: creditCardAccountsPagination.numPages" ng-class="{active: n == creditCardAccountsPagination.page}">
-				  		<a href="" ng-click="creditCardAccountsPagination.toPageId(n)">{{n + 1}}</a>
-				  	</li>
-				  	<li>
-				  		<a href="" ng-click="creditCardAccountsPagination.nextPage()">&raquo;</a>
-				  	</li>
-				</ul>
-			</nav>
-
-			<nav class="pagination-wrapper text-center" ng-show="addCreditCard || creditCardAccounts.length < 6">
+			<nav class="pagination-wrapper text-center" ng-hide="addCreditCard" ng-show="creditCardAccounts.length > 5">
 				<span>
 					{{(creditCardAccountsPagination.page * creditCardAccountsPagination.perPage)+1}}
 				</span>

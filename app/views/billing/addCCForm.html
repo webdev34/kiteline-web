@@ -1,184 +1,185 @@
 <form class="form-horizontal" name="addCCForm"  novalidate>
-<fieldset>
+  <fieldset>
 
-<!-- Form Name -->
-<h5 class="pull-left">Add Credit Card Account</h5>
-<label class="pull-right autofill-address">
-    <input type="checkbox" name="useHomeAddress" ng-model="newCC.autofillAddressCC" ng-change="autocompleteHomeAddressCC()" ng-true-value="true" ng-false-value="false">
-    Autofill Address with saved Address
-</label>
-
-<div class="clearfix"></div>
-
-<!-- Text input-->
-<div class="control-group col-md-4">
-  <label class="control-label" for="BillingAddress">
-    <span class="required">*</span>
-    Billing Address</label>
-  <div class="controls">
-    <input id="BillingAddress" name="BillingAddress" ng-model="newCC.BillingAddress" type="text" class="input-xlarge" required="">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group col-md-4">
-  <label class="control-label" for="BillingCity">
-    <span class="required">*</span>
-    Billing City</label>
-  <div class="controls">
-    <input id="BillingCity" name="BillingCity" ng-model="newCC.BillingCity" type="text" class="input-xlarge" required="">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group col-md-4">
-  <label class="control-label" for="BillingStateCC">
-    <span class="required">*</span>
-    Billing State</label>
-  <div class="controls relative">
-
- <select id="BillingStateCC" class="BillingState" ng-model="newCC.BillingState" required="">
-      <option value="{{option.abbreviation}}" data-ng-repeat="option in statesDropDown
-">{{option.name}}</option>
-    </select>
-    <i class="fa fa-caret-down" select-button select-id="BillingStateCC"></i>
-    
-  </div>
-</div>
-
-<div class="clearfix"></div>
-
-<!-- Text input-->
-<div class="control-group col-md-4">
-  <label class="control-label" for="BillingZip">
-    <span class="required">*</span>
-    Billing Zip</label>
-  <div class="controls">
-    <input numeric-only id="BillingZip" name="BillingZip" ng-model="newCC.BillingZip" type="text" class="input-xlarge" required=""  maxlength="5"  />
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group col-md-4">
-  <label class="control-label" for="BusinessPhone">
-    <span class="required">*</span>
-    Billing Phone</label>
-  <div class="controls">
-    <input id="BusinessPhone" name="BusinessPhone" ng-model="newCC.BusinessPhone" type="text" class="input-xlarge" required=""  mask="(999) 999-9999" clean="true">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group col-md-4">
-  <label class="control-label" for="PayerEmail">Email</label>
-  <div class="controls">
-    <input id="PayerEmail" name="PayerEmail" ng-model="newCC.PayerEmail" type="email" class="input-xlarge" >
-    
-  </div>
-</div>
-
-<div class="clearfix"></div>
-
-<!-- Text input-->
-<div class="control-group col-md-4">
-  <label class="control-label" for="CardHolderName">
-    <span class="required">*</span>
-    Card Holder Name</label>
-  <div class="controls">
-    <input id="PayerName" name="PayerName" ng-model="newCC.PayerName" type="text" class="input-xlarge" required="">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group col-md-3">
-  <label class="control-label" for="AccountNumber">
-    <span class="required">*</span>
-    Card Number</label>
-  <div class="controls">
-    <input id="AccountNumber" name="AccountNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()" acct-num="{{newCC.AccountNumber}}" maxlength="16" numbers-only />
-    
-  </div>
-</div>
-
-
-<!-- Text input-->
-<div class="control-group col-md-5 expire-dates-wrapper" >
-  <label class="control-label" for="ExpirationDate">
-    <span class="required">*</span>
-    Expiration Date</label>
-  <div class="controls relative expire-month-wrapper" >
-    <select id="expireMonth" class="expireMonth"  ng-model="expireDates.month" cc-exp-month required="">
-        <option value="01">01 - Jan</option>
-        <option value="02">02 - Feb</option>
-        <option value="03">03 - Mar</option>
-        <option value="04">04 - Apr</option>
-        <option value="05">05 - May</option>
-        <option value="06">06 - Jun</option>
-        <option value="07">07 - Jul</option>
-        <option value="08">08 - Aug</option>
-        <option value="09">09 - Sep</option>
-        <option value="10">10 - Oct</option>
-        <option value="11">11 - Nov</option>
-        <option value="12">12 - Dec</option>
-    </select>
-    <i class="fa fa-caret-down" select-button select-id="expireMonth"></i>
-  </div>
-
-  <div class="controls relative expire-year-wrapper" >
-    <select id="expireYear" class="expireYear"  ng-model="expireDates.year" cc-exp-year required="">
-          <option value="15">2015</option>
-          <option value="16">2016</option>
-          <option value="17">2017</option>
-          <option value="18">2018</option>
-          <option value="19">2019</option>
-          <option value="20">2020</option>
-          <option value="21">2021</option>
-          <option value="22">2022</option>
-          <option value="23">2023</option>
-          <option value="24">2024</option>
-          <option value="25">2025</option>
-    </select>
-    <i class="fa fa-caret-down" select-button select-id="expireYear"></i>
-  </div>
-</div>
-
-
-<!-- Drop Down-->
-<div class="control-group col-md-4 hide">
-  <label class="control-label" for="ccType">Account Type</label>
-  <div class="controls">
-      <span class="pull-left cc-type">{{addCCForm.AccountNumber.$ccType}}</span>
-
-      <i ng-show="addCCForm.AccountNumber.$ccType == 'American Express'" class="fa fa-cc-amex"></i>
-      <i ng-show="addCCForm.AccountNumber.$ccType == 'Discover'" class="fa fa-cc-discover"></i>
-      <i ng-show="addCCForm.AccountNumber.$ccType == 'Visa'" class="fa fa-cc-visa"></i>
-      <i ng-show="addCCForm.AccountNumber.$ccType == 'MasterCard'" class="fa fa-cc-mastercard"></i>
-  </div>
-</div>
-
-<div class="clearfix"></div>
-
-<div class="control-group">
-  <label class="">
-      <input type="checkbox" name="RecurringAccount" ng-model="newCC.RecurringAccount"  ng-true-value="true" ng-false-value="false" >
-      Default Payment Account
+  <!-- Form Name -->
+  <h5 class="pull-left">Add Credit Card Account</h5>
+  <label class="pull-right autofill-address">
+      <input type="checkbox" name="useHomeAddress" ng-model="newCC.autofillAddressCC" ng-change="autocompleteHomeAddressCC()" ng-true-value="true" ng-false-value="false">
+      Autofill Address with saved Address
   </label>
-</div>
 
-<!-- Button -->
-<div class="control-group">
-  <label class="control-label" for="addCreditCard"></label>
-  <div class="controls">
-    <button id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC', addCCForm); currentCardType(addCCForm.AccountNumber.$ccType);" ><i class="fa fa-plus"></i> 
-      Add Card</button>
-    <button id="cancelCreditCard" name="cancelCreditCard" class="btn btn-danger" ng-click="resetAccountForm('CC', addCCForm);" ><i class="fa fa-times"></i> Cancel</button>
+  <div class="clearfix"></div>
+
+  <!-- Text input-->
+  <div class="control-group col-md-4">
+    <label class="control-label" for="BillingAddress">
+      <span class="required">*</span>
+      Billing Address</label>
+    <div class="controls">
+      <input id="BillingAddress" name="BillingAddress" ng-model="newCC.BillingAddress" type="text" class="input-xlarge" required="">
+      
+    </div>
   </div>
-</div>
 
-</fieldset>
+  <!-- Text input-->
+  <div class="control-group col-md-4">
+    <label class="control-label" for="BillingCity">
+      <span class="required">*</span>
+      Billing City</label>
+    <div class="controls">
+      <input id="BillingCity" name="BillingCity" ng-model="newCC.BillingCity" type="text" class="input-xlarge" required="">
+      
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="control-group col-md-4">
+    <label class="control-label" for="BillingStateCC">
+      <span class="required">*</span>
+      Billing State</label>
+    <div class="controls relative">
+
+   <select id="BillingStateCC" class="BillingState" ng-model="newCC.BillingState" required="">
+        <option value="{{option.abbreviation}}" data-ng-repeat="option in statesDropDown
+  ">{{option.name}}</option>
+      </select>
+      <i class="fa fa-caret-down" select-button select-id="BillingStateCC"></i>
+      
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <!-- Text input-->
+  <div class="control-group col-md-4">
+    <label class="control-label" for="BillingZip">
+      <span class="required">*</span>
+      Billing Zip</label>
+    <div class="controls">
+      <input numeric-only id="BillingZip" name="BillingZip" ng-model="newCC.BillingZip" type="text" class="input-xlarge" required=""  maxlength="5"  />
+      
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="control-group col-md-4">
+    <label class="control-label" for="BusinessPhone">
+      <span class="required">*</span>
+      Billing Phone</label>
+    <div class="controls">
+      <input id="BusinessPhone" name="BusinessPhone" ng-model="newCC.BusinessPhone" type="text" class="input-xlarge" required=""  mask="(999) 999-9999" clean="true">
+      
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="control-group col-md-4">
+    <label class="control-label" for="PayerEmail">Email</label>
+    <div class="controls">
+      <input id="PayerEmail" name="PayerEmail" ng-model="newCC.PayerEmail" type="email" class="input-xlarge" >
+      
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <!-- Text input-->
+  <div class="control-group col-md-4">
+    <label class="control-label" for="CardHolderName">
+      <span class="required">*</span>
+      Card Holder Name</label>
+    <div class="controls">
+      <input id="PayerName" name="PayerName" ng-model="newCC.PayerName" type="text" class="input-xlarge" required="">
+      
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="control-group col-md-3">
+    <label class="control-label" for="AccountNumber">
+      <span class="required">*</span>
+      Card Number</label>
+    <div class="controls">
+      <input id="AccountNumber" name="AccountNumber" ng-model="newCC.AccountNumber" type="text" class="input-xlarge" required="" cc-number cc-eager-type cc-type="cardType" ng-paste="$event.preventDefault()" acct-num="{{newCC.AccountNumber}}" maxlength="16" numbers-only />
+      
+    </div>
+  </div>
+
+
+  <!-- Text input-->
+  <div class="control-group col-md-5 expire-dates-wrapper" >
+    <label class="control-label" for="ExpirationDate">
+      <span class="required">*</span>
+      Expiration Date</label>
+    <div class="controls relative expire-month-wrapper" >
+      <select id="expireMonth" class="expireMonth"  ng-model="expireDates.month" cc-exp-month required="">
+          <option value="01">01 - Jan</option>
+          <option value="02">02 - Feb</option>
+          <option value="03">03 - Mar</option>
+          <option value="04">04 - Apr</option>
+          <option value="05">05 - May</option>
+          <option value="06">06 - Jun</option>
+          <option value="07">07 - Jul</option>
+          <option value="08">08 - Aug</option>
+          <option value="09">09 - Sep</option>
+          <option value="10">10 - Oct</option>
+          <option value="11">11 - Nov</option>
+          <option value="12">12 - Dec</option>
+      </select>
+      <i class="fa fa-caret-down" select-button select-id="expireMonth"></i>
+    </div>
+
+    <div class="controls relative expire-year-wrapper" >
+      <select id="expireYear" class="expireYear"  ng-model="expireDates.year" cc-exp-year required="">
+            <option value="15">2015</option>
+            <option value="16">2016</option>
+            <option value="17">2017</option>
+            <option value="18">2018</option>
+            <option value="19">2019</option>
+            <option value="20">2020</option>
+            <option value="21">2021</option>
+            <option value="22">2022</option>
+            <option value="23">2023</option>
+            <option value="24">2024</option>
+            <option value="25">2025</option>
+            <!--   <option ng-repeat="year in lastTenYearsArray track by $index" value="{{year[2]}}{{year[3]}}">{{year}}</option> -->
+      </select>
+      <i class="fa fa-caret-down" select-button select-id="expireYear"></i>
+    </div>
+  </div>
+
+
+  <!-- Drop Down-->
+  <div class="control-group col-md-4 hide">
+    <label class="control-label" for="ccType">Account Type</label>
+    <div class="controls">
+        <span class="pull-left cc-type">{{addCCForm.AccountNumber.$ccType}}</span>
+
+        <i ng-show="addCCForm.AccountNumber.$ccType == 'American Express'" class="fa fa-cc-amex"></i>
+        <i ng-show="addCCForm.AccountNumber.$ccType == 'Discover'" class="fa fa-cc-discover"></i>
+        <i ng-show="addCCForm.AccountNumber.$ccType == 'Visa'" class="fa fa-cc-visa"></i>
+        <i ng-show="addCCForm.AccountNumber.$ccType == 'MasterCard'" class="fa fa-cc-mastercard"></i>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="control-group">
+    <label class="">
+        <input type="checkbox" name="RecurringAccount" ng-model="newCC.RecurringAccount"  ng-true-value="true" ng-false-value="false" >
+        Default Payment Account
+    </label>
+  </div>
+
+  <!-- Button -->
+  <div class="control-group">
+    <label class="control-label" for="addCreditCard"></label>
+    <div class="controls">
+      <button id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC', addCCForm); currentCardType(addCCForm.AccountNumber.$ccType);" ><i class="fa fa-plus"></i> 
+        Add Card</button>
+      <button id="cancelCreditCard" name="cancelCreditCard" class="btn btn-danger" ng-click="resetAccountForm('CC', addCCForm);" ><i class="fa fa-times"></i> Cancel</button>
+    </div>
+  </div>
+
+  </fieldset>
 </form>

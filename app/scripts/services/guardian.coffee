@@ -55,7 +55,6 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
       return
 
   @updatePersonalInfo = (obj) ->
-    console.log obj
     url = rootUrl+'api/Guardian/UpdatePersonalInfo'
     $http(
       method: 'POST'

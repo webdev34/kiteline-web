@@ -8,7 +8,7 @@
 		<span class="current-balance text-center">
 			{{outstandingInvoicesDueTotal | currency}}
 		</span> 
-		<span class="auto-pay ng-hide" ng-show="defaultAccount.RecurringAccount != null">Auto pay scheduled for {{currentCenter.NextPayDate}}</span> 
+		<span class="auto-pay hide" ng-show="defaultAccount.RecurringAccount != null">Auto pay scheduled for {{currentCenter.NextPayDate}}</span> 
 		
 		<button ng-hide="outstandingInvoicesDueTotal == 0" class="btn btn-primary payment-btn" ng-click="payOutstandingBalance();">
 			Make Payment

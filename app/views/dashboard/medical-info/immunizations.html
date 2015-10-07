@@ -1,0 +1,230 @@
+<div class="table-wrapper immunization-table" ng-show="!newImmunization || !editImmunization" ng-hide="newImmunization || editImmunization || editMedicalInfo" >
+	<a class="add-btn add-immunization-btn" ng-click="toggleNewMedicalInfo('immunization')">+ Add Immunization</a>
+	<div class="table-wrap">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						Vaccine
+					</th>
+					<th>
+						Description
+					</th>
+					<th>
+						Doses
+					</th>
+					<th>
+						Date Received
+					</th>
+					<th>
+						Expiry Date
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-if="childrenImmunizationInfo.length == 0">
+					<td colspan="6" class="left-aligned-empty-msg">
+						<span>No Immunization Information</span>
+					</td>
+				</tr>
+				<tr ng-animate="'animate'" data-ng-repeat="immunization in childrenImmunizationInfo |  orderBy:sortOrderBy:reverse | startFrom: childrenImmunizationInfoPagination.page * childrenImmunizationInfoPagination.perPage | limitTo: childrenImmunizationInfoPagination.perPage">
+					<td>{{immunization.ImmunizationName}}</td>
+					<td class="description">{{immunization.Description}}</td>
+					<td>{{immunization.Doses}}</td>
+					<td>{{immunization.DateReceived | date}}</td>
+					<td>{{immunization.ExpiryDate | date}}</td>
+					<td>
+						<a class="edit" title="Edit Immunization" ng-click="toggleEditMedicalInfo('immunization', immunization);">
+							<i class="fa fa-pencil-square-o"></i>
+						</a>
+						<a title="Delete Immunization">
+							<i class="fa fa-trash red"
+							mwl-confirm
+							message="Confirm Delete"
+							confirm-text="Delete"
+							cancel-text="Cancel"
+							placement="top"
+							on-confirm="deleteImmunization(immunization)"
+							on-cancel=""
+							confirm-button-type="primary"
+							cancel-button-type="danger"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<nav class="pagination-wrapper text-center" ng-show="childrenImmunizationInfo.length > 5" >
+		<span>
+			{{(childrenImmunizationInfoPagination.page * childrenImmunizationInfoPagination.perPage)+1}}
+		</span>
+		-
+		<span ng-hide="((childrenImmunizationInfoPagination.page+1) * childrenImmunizationInfoPagination.perPage) >  childrenImmunizationInfoPagination.perPage">
+			{{((childrenImmunizationInfoPagination.page+1) * childrenImmunizationInfoPagination.perPage)}}
+		</span>
+		<span ng-if="((childrenImmunizationInfoPagination.page+1) * childrenImmunizationInfoPagination.perPage) >  childrenImmunizationInfoPagination.perPage">
+			{{((childrenImmunizationInfo.length - ((childrenImmunizationInfoPagination.page * childrenImmunizationInfoPagination.perPage)+1))) + ((childrenImmunizationInfoPagination.page * childrenImmunizationInfoPagination.perPage)+1)}}
+		</span>
+		<span> of {{childrenImmunizationInfo.length}}</span>
+		<ul class="pagination">
+			<li class="ng-hide" ng-repeat="n in [] | range: childrenImmunizationInfoPagination.numPages">
+				<a href="" ng-click="childrenImmunizationInfoPagination.toPageId(n);">{{n + 1}}</a>
+			</li>
+			<li class="prev-next-wrapper">
+				<a class="prev" ng-click="childrenImmunizationInfoPagination.prevPage()">
+					<i class="fa fa-caret-left"></i>
+				</a>
+				<a class="next" ng-click="childrenImmunizationInfoPagination.nextPage()">
+					<i class="fa fa-caret-right"></i>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+<!-- New Immunization Form -->
+<div class="new-medication-form" ng-show="newImmunization">
+	<form class="form-horizontal" name="addNewImmunizationForm"  novalidate>
+		<fieldset>
+			<h5 class="pull-left">Add New Immunization</h5>
+			<div class="clearfix"></div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="newImmunizationName">
+					<span class="required">*</span>
+				Immunization Name</label>
+				<div class="controls">
+					<input id="newImmunizationName" name="immunizationName" ng-model="newImmunizationObj.ImmunizationName" type="text" class="input-xlarge form-control" required="">
+				</div>
+			</div>
+
+			<div class="control-group col-md-4">
+				<label class="control-label" for="newImmunizationDescription">
+					Description
+				</label>
+				<div class="controls">
+					<textarea id="newImmunizationsDescription" name="newImmunizationsDescription" ng-model="newImmunizationObj.Description" class="form-control" ></textarea>
+				</div>
+			</div>
+
+			<div class="control-group col-md-4">
+				<label class="control-label" for="newImmunizationDoses">
+					<span class="required">*</span>
+					Doses
+				</label>
+				<div class="controls">
+					<input type="text" ng-model="newImmunizationObj.Doses" id="newImmunizationDoses" class="newImmunizationDoses form-control" required="" numeric-only>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="newImmunizationDateReceived">
+					Date Received
+				</label>
+				<div class="controls">
+					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{newImmunizationObj.DateReceived}}" date-format="M/dd/yyyy">
+					<input type="text" ng-model="newImmunizationObj.DateReceived" id="newImmunizationDateReceived" class="newImmunizationDateReceived form-control">
+					</datepicker>
+				</div>
+			</div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="newImmunizationExpirationDate">
+					Expiration Date
+				</label>
+				<div class="controls">
+					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{newImmunizationObj.ExpiryDate}}" date-format="M/dd/yyyy">
+					<input type="text" ng-model="newImmunizationObj.ExpiryDate" id="newImmunizationExpiryDate" class="newImmunizationExpiryDate form-control">
+					</datepicker>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+			<!-- Button -->
+			<div class="control-group button-wrapper">
+				<div class="controls">
+					<button id="addNewImmunization" name="addNewImmunization" class="btn btn-primary" ng-disabled="addNewImmunizationForm.$invalid" ng-click="addNewImmunizationFunc()" >
+					<i class="fa fa-plus"></i>
+					Add Immunization
+					</button>
+					<button id="cancelNewImmunization" name="cancelNewImmunization" class="btn btn-danger" ng-click="toggleNewMedicalInfo('immunization')">
+					<i class="fa fa-times"></i> Cancel
+					</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+
+<!-- Edit Immunization Form -->
+<div class="edit-immunization-form" ng-show="editImmunization">
+	<form class="form-horizontal" name="editImmunizationForm"  novalidate>
+		<fieldset>
+			<h5 class="pull-left">Edit Immunization</h5>
+			<div class="clearfix"></div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="editImmunizationName">
+					<span class="required">*</span>
+				Immunization Name</label>
+				<div class="controls">
+					<input id="editImmunizationName" name="immunizationName" ng-model="editImmunizationObj.ImmunizationName" type="text" class="input-xlarge form-control" required="">
+				</div>
+			</div>
+
+			<div class="control-group col-md-4">
+				<label class="control-label" for="editImmunizationDescription">
+					Description
+				</label>
+				<div class="controls">
+					<textarea id="editImmunizationsDescription" name="editImmunizationsDescription" ng-model="editImmunizationObj.Description" class="form-control" ></textarea>
+				</div>
+			</div>
+
+			<div class="control-group col-md-4">
+				<label class="control-label" for="editImmunizationDoses">
+					<span class="required">*</span>
+					Doses
+				</label>
+				<div class="controls">
+					<input type="text" ng-model="editImmunizationObj.Doses" id="editImmunizationDoses" class="editImmunizationDoses form-control" required="" numeric-only>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="editImmunizationDateReceived">
+					Date Received
+				</label>
+				<div class="controls">
+					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{editImmunizationObj.DateReceived}}" date-format="M/dd/yyyy">
+					<input type="text" ng-model="editImmunizationObj.DateReceived" id="editImmunizationDateReceived" class="editImmunizationDateReceived form-control">
+					</datepicker>
+				</div>
+			</div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="editImmunizationExpirationDate">
+					Expiration Date
+				</label>
+				<div class="controls">
+					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{editImmunizationObj.ExpiryDate}}" date-format="M/dd/yyyy">
+					<input type="text" ng-model="editImmunizationObj.ExpiryDate" id="editImmunizationExpiryDate" class="editImmunizationExpiryDate form-control">
+					</datepicker>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+			<!-- Button -->
+			<div class="control-group button-wrapper">
+				<div class="controls">
+					<button id="editImmunization" name="editImmunization" class="btn btn-primary" ng-disabled="editImmunizationForm.$invalid" ng-click="editImmunizationFunc()" >
+					<i class="fa fa-plus"></i>
+					Edit Immunization
+					</button>
+					<button id="cancelEditImmunization" name="cancelEditImmunization" class="btn btn-danger" ng-click="toggleEditMedicalInfo('immunization')">
+					<i class="fa fa-times"></i> Cancel
+					</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>

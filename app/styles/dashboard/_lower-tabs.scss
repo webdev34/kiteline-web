@@ -1,13 +1,13 @@
 .lower-container-dashboard{
 	ul.nav.nav-tabs{
-		background-color: #ddd;
-		padding-top: 15px;
+		// background-color: #ddd;
+		// padding-top: 15px;
 	}
 	.feed-breakdown-view{
 		  width: 72%;
 		  float: left;
 		  margin-top: 10px;
-		  padding: 1%;
+		  padding: 1% 2%;
 		  &.empty{
 		  	width: 100%;
 		  }
@@ -27,10 +27,66 @@
 		}
 	}
 
+	.edit-medical-btn{
+		margin-top: 4px;
+	}
+	a.edit{
+		position: relative;
+		top: 2px;
+		right: 3px;
+		.fa{
+			color: #4e99bd;
+		}
+	}
+	a .fa-trash{
+		position: relative; 
+		right: -5px;
+	}
+
+
+	 .control-group.button-wrapper,
+	 h5.pull-left{
+	    margin-top: 25px;
+	    margin-left: 15px;
+	    .btn-primary{
+	    	margin-right: 10px;
+	    }
+	}
+
+	.left-aligned-empty-msg{
+		span{
+			color: #666;
+			float: left;
+		}
+	}
+
 	.medical-info-view{
 		margin-top: -30px;
 		.edit-medical-btn{
 			margin-top: 5px;
+		}
+		.detail-breakdown{
+			padding-top: 0px;
+			width: 45%;
+			.detail-label{
+				width: 35%;
+			}
+		}
+	}
+
+	.medical-info-dropdown-wrapper{
+		float: right;
+		.detail-breakdown{
+			width: 100%;
+			.detail-label{
+				margin-top: 5px;
+			}
+		}
+		.btn{
+		    margin-left: 20px;
+		}
+		select.form-control{
+			width: 150px !important;
 		}
 	}
 
@@ -48,6 +104,10 @@
 			display: inline-block;
 			margin-left: 2px;
 		}
+	}
+
+	.table-wrap{
+		height: 200px;
 	}
 
 	.guardian-detail-wrapper,
@@ -97,12 +157,12 @@
 		}
 
 		.can-pickup{
-			.detail-value{
-				width: 200px;
-			}
-			.detail-label{
-				width: 100px;
-			}
+			// .detail-value{
+			// 	width: 200px;
+			// }
+			// .detail-label{
+			// 	width: 100px;
+			// }
 
 		}
 	}

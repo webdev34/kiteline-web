@@ -1,4 +1,4 @@
-<div class="col-md-12 overview-breakdown-wrapper" ng-show="currentTab == 'Overview'">
+<div class="col-md-12 overview-breakdown-wrapper" ng-show="currentTab == 'Overview'" ng-hide="isLoading">
 	<!-- TUITION RATES -->
 	<div class="tuition-rates" ng-include src="'views/billing/overview/children-tuition.html'"></div>
 
@@ -16,4 +16,5 @@
 	
 	<!-- TAX STATEMENT -->
 	<div class="tax-state" ng-include src="'views/billing/overview/tax-statement.html'"></div>
+	<div class="clearfix"></div>
 </div>

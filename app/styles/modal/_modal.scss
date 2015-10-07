@@ -73,7 +73,7 @@ body {
                         tr:nth-child(even),
                         tr:nth-child(odd){
                             background-color: white;
-                            border-bottom: #666666 thin solid;
+                            border-bottom: #ddd thin solid;
                             &:hover{
                                 cursor: pointer;
                             }
@@ -335,7 +335,7 @@ body {
                             &.active {
                                 background-color: white;
                                 max-height: 115px;
-                                a, .fa {
+                                a{
                                     color: #04364c !important;
                                 }
                             }
@@ -361,6 +361,7 @@ body {
                     .invoice-cycle-wrapper {
                         width: 100%;
                         text-align: center;
+                        display: none;
                         ul {
                             width: 350px;
                             height: 50px;
@@ -486,14 +487,12 @@ body {
                         h3 {
                             font-family: "concourse_t4regular";
                             color: #529acd;
-                            //text-align: center;
                             font-size: 21px;
                             margin-left: 15px;
                             margin-top: 30px;
-                            //margin-bottom: 20px;
                             width: 94%;
                         }
-                        .glyphicon, .fa {
+                        .fa.fa-caret-down {
                             color: white;
                             font-size: 25px;
                             top: 20px;

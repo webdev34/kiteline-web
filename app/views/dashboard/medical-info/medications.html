@@ -1,0 +1,263 @@
+<div class="table-wrapper medications-table" ng-show="!newMedication || !editMedication" ng-hide="newMedication || editMedication || editMedicalInfo" >
+	<a class="add-btn add-medications-btn" ng-click="toggleNewMedicalInfo('medication')">+ Add Medication</a>
+	<div class="table-wrap">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						Medication/Dose
+					</th>
+					<th>
+						Frequency
+					</th>
+					<th>
+						Start Date
+					</th>
+					<th>
+						End Date
+					</th>
+					<th>
+						Expiration
+					</th>
+					<th class="instructions">
+						Instructions
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-if="childrenMedicationInfo.length == 0">
+					<td colspan="7" class="left-aligned-empty-msg">
+						<span>No Medication Information</span>
+					</td>
+				</tr>
+				<tr ng-animate="'animate'" data-ng-repeat="medication in childrenMedicationInfo |  orderBy:sortOrderBy:reverse | startFrom: childrenMedicationInfoPagination.page * childrenMedicationInfoPagination.perPage | limitTo: childrenMedicationInfoPagination.perPage">
+					<td>{{medication.MedicationName}}</td>
+					<td>
+						<span ng-if="medication.Frequency == 'L'">Lunch</span>
+						<span ng-if="medication.Frequency == 'H'">Hourly</span>
+						<span ng-if="medication.Frequency == 'O'">See Instructions</span>
+					</td>
+					<td>{{medication.StartDate | date}}</td>
+					<td>{{medication.EndDate | date}}</td>
+					<td>{{medication.Expiration | date}}</td>
+					<td class="instructions">{{medication.Instructions}}</td>
+					<td>
+						<a class="edit" title="Edit Medication" ng-click="toggleEditMedicalInfo('medication', medication);">
+							<i class="fa fa-pencil-square-o"></i>
+						</a>
+						<a title="Delete Medication">
+							<i class="fa fa-trash red"
+							mwl-confirm
+							message="Confirm Delete"
+							confirm-text="Delete"
+							cancel-text="Cancel"
+							placement="top"
+							on-confirm="deleteMedication(medication)"
+							on-cancel=""
+							confirm-button-type="primary"
+							cancel-button-type="danger"></i>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<nav class="pagination-wrapper text-center" ng-show="childrenMedicationInfo.length > 5" >
+		<span>
+			{{(childrenMedicationInfoPagination.page * childrenMedicationInfoPagination.perPage)+1}}
+		</span>
+		-
+		<span ng-hide="((childrenMedicationInfoPagination.page+1) * childrenMedicationInfoPagination.perPage) >  childrenMedicationInfoPagination.perPage">
+			{{((childrenMedicationInfoPagination.page+1) * childrenMedicationInfoPagination.perPage)}}
+		</span>
+		<span ng-if="((childrenMedicationInfoPagination.page+1) * childrenMedicationInfoPagination.perPage) >  childrenMedicationInfoPagination.perPage">
+			{{((childrenMedicationInfo.length - ((childrenMedicationInfoPagination.page * childrenMedicationInfoPagination.perPage)+1))) + ((childrenMedicationInfoPagination.page * childrenMedicationInfoPagination.perPage)+1)}}
+		</span>
+		<span> of {{childrenMedicationInfo.length}}</span>
+		<ul class="pagination">
+			<li class="ng-hide" ng-repeat="n in [] | range: childrenMedicationInfoPagination.numPages">
+				<a href="" ng-click="childrenMedicationInfoPagination.toPageId(n);">{{n + 1}}</a>
+			</li>
+			<li class="prev-next-wrapper">
+				<a class="prev" ng-click="childrenMedicationInfoPagination.prevPage()">
+					<i class="fa fa-caret-left"></i>
+				</a>
+				<a class="next" ng-click="childrenMedicationInfoPagination.nextPage()">
+					<i class="fa fa-caret-right"></i>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+<!-- New Medication Form -->
+<div class="new-medication-form" ng-show="newMedication">
+	<form class="form-horizontal" name="addNewMedicationForm"  novalidate>
+		<fieldset>
+			<h5 class="pull-left">Add New Medication</h5>
+			<div class="clearfix"></div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="medicationName">
+					<span class="required">*</span>
+				Medication Name</label>
+				<div class="controls">
+					<input id="newMedicationName" name="medicationName" ng-model="newMedicationObj.MedicationName" type="text" class="input-xlarge form-control" required="">
+				</div>
+			</div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="newMedicationFrequency">
+					<span class="required">*</span>Frequency
+				</label>
+				<div class="controls relative">
+					<select id="newMedicationFrequency" name="newMedicationFrequency" class="frequency form-control" ng-model="newMedicationObj.Frequency" required="">
+						<option value="H" >Hourly</option>
+						<option value="L" >Lunch</option>
+						<option value="O" >See Instructions</option>
+					</select>
+					<i class="fa fa-caret-down" select-button select-id="newMedicationFrequency"></i>
+					
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="control-group col-md-3">
+				<label class="control-label" for="newMedicationStartDate">
+					Start Date
+				</label>
+				<div class="controls">
+					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{newMedicationObj.StartDate}}" date-format="M/dd/yyyy">
+					<input type="text" ng-model="newMedicationObj.StartDate" id="newMedicationStartDate" class="newMedicationStartDate form-control">
+					</datepicker>
+				</div>
+			</div>
+			<div class="control-group col-md-3">
+				<label class="control-label" for="newMedicationEndDate">
+					End Date
+				</label>
+				<div class="controls">
+					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{newMedicationObj.EndDate}}" date-format="M/dd/yyyy">
+					<input type="text" ng-model="newMedicationObj.EndDate" id="newMedicationEndDate" class="newMedicationEndDate form-control">
+					</datepicker>
+				</div>
+			</div>
+			<div class="control-group col-md-3">
+				<label class="control-label" for="newMedicationExpirationDate">
+					Expiration Date
+				</label>
+				<div class="controls">
+					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{newMedicationObj.Expiration}}" date-format="M/dd/yyyy">
+					<input type="text" ng-model="newMedicationObj.Expiration" id="newMedicationExpirationDate" class="newMedicationExpirationDate form-control">
+					</datepicker>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="control-group col-md-5">
+				<label class="control-label" for="newMedicationInstructions">
+					Instructions
+				</label>
+				<div class="controls">
+					<textarea id="newMedicationsInstructions" name="newMedicationsInstructions" ng-model="newMedicationObj.Instructions" class="form-control" ></textarea>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+			<!-- Button -->
+			<div class="control-group button-wrapper">
+				<div class="controls">
+					<button id="addNewMedication" name="addNewMedication" class="btn btn-primary" ng-disabled="addNewMedicationForm.$invalid" ng-click="addNewMedicationFunc()" >
+					<i class="fa fa-plus"></i>
+					Add Medication
+					</button>
+					<button id="cancelNewMedication" name="cancelNewMedication" class="btn btn-danger" ng-click="toggleNewMedicalInfo('medication')">
+					<i class="fa fa-times"></i> Cancel
+					</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+
+<!-- Edit Medication Form -->
+<div class="edit-medication-form" ng-show="editMedication">
+		<form class="form-horizontal" name="editMedicationForm"  novalidate>
+		<fieldset>
+			<h5 class="pull-left">Edit Medication</h5>
+			<div class="clearfix"></div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="medicationName">
+					<span class="required">*</span>
+				Medication Name</label>
+				<div class="controls">
+					<input id="editMedicationName" name="medicationName" ng-model="editMedicationObj.MedicationName" type="text" class="input-xlarge form-control" required="">
+				</div>
+			</div>
+			<div class="control-group col-md-4">
+				<label class="control-label" for="editMedicationFrequency">
+					<span class="required">*</span>Frequency
+				</label>
+				<div class="controls relative">
+					<select id="editMedicationFrequency" name="editMedicationFrequency" class="frequency form-control" ng-model="editMedicationObj.Frequency" required="">
+						<option value="H" >Hourly</option>
+						<option value="L" >Lunch</option>
+						<option value="O" >See Instructions</option>
+					</select>
+					<i class="fa fa-caret-down" select-button select-id="editMedicationFrequency"></i>
+					
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="control-group col-md-3">
+				<label class="control-label" for="editMedicationStartDate">
+					Start Date
+				</label>
+				<div class="controls">
+					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{editMedicationObj.StartDate}}" date-format="M/dd/yyyy">
+					<input type="text" ng-model="editMedicationObj.StartDate" id="editMedicationStartDate" class="editMedicationStartDate form-control">
+					</datepicker>
+				</div>
+			</div>
+			<div class="control-group col-md-3">
+				<label class="control-label" for="editMedicationEndDate">
+					End Date
+				</label>
+				<div class="controls">
+					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{editMedicationObj.EndDate}}" date-format="M/dd/yyyy">
+					<input type="text" ng-model="editMedicationObj.EndDate" id="editMedicationEndDate" class="editMedicationEndDate form-control">
+					</datepicker>
+				</div>
+			</div>
+			<div class="control-group col-md-3">
+				<label class="control-label" for="editMedicationExpirationDate">
+					Expiration Date
+				</label>
+				<div class="controls">
+					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{editMedicationObj.Expiration}}" date-format="M/dd/yyyy">
+					<input type="text" ng-model="editMedicationObj.Expiration" id="editMedicationExpirationDate" class="editMedicationExpirationDate form-control">
+					</datepicker>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="control-group col-md-5">
+				<label class="control-label" for="editMedicationInstructions">
+					Instructions
+				</label>
+				<div class="controls">
+					<textarea name="editMedicationInstructions" ng-model="editMedicationObj.Instructions" class="form-control" ></textarea>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<!-- Button -->
+			<div class="control-group button-wrapper">
+				<div class="controls">
+					<button id="editMedication" name="editMedication" class="btn btn-primary" ng-disabled="editMedicationForm.$invalid" ng-click="editMedicationFunc()" >
+					<i class="fa fa-plus"></i>
+					Edit Medication
+					</button>
+					<button id="cancelEditMedication" name="cancelEditMedication" class="btn btn-danger" ng-click="toggleEditMedicalInfo('medication')">
+					<i class="fa fa-times"></i> Cancel
+					</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>

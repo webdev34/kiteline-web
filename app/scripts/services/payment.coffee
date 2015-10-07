@@ -160,6 +160,7 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
 
   @makePaymentWithAccountId = (accountId, customerId, invoiceId) ->  
     amount = document.getElementById('payment-amount').value 
+    amount = amount.replace /,/g, ''
     url = rootUrl+'api/Payment/MakePayment?accountId='+accountId+'&customerId='+customerId+'&amount='+amount+'&invoiceid='+invoiceId
     $http(
       method: 'POST'
@@ -184,6 +185,8 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
       return  
 
   @makePaymentWithCC = (familyId, centerId, invoiceId, customerId, accountObj) ->  
+    amount = document.getElementById('payment-amount').value 
+    amount = amount.replace /,/g, ''
     url = rootUrl+'api/CreditCard/ProcessCC'
     $http(
       method: 'POST'
@@ -198,7 +201,7 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
         'centerId': centerId
         'invoiceId': invoiceId                        
         'customerId': customerId        
-        'amount': document.getElementById('payment-amount').value 
+        'amount': amount
         'ccname': accountObj.PayerName
         'ccnum': accountObj.AccountNumber
         'cctype': $rootScope.newCCAccountTypeId
@@ -218,9 +221,7 @@ angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, 
       return
     ).error (data, status, headers, config) ->
       deferred.reject status
-      console.log data
-      console.log headers
-      console.log config
+
       $rootScope.processingPayment = false
       
       if data.Message isnt null

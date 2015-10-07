@@ -12,7 +12,14 @@
 
                  if (window.location.href.indexOf('cloud.spinsys.com') > -1) {
                   serviceUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/';
-                  templateUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html';
+                    
+                    if(window.location.href.indexOf('kitelineweb-redesign') > -1){
+                      templateUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb-redesign/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html';
+                    }
+                    else{
+                      templateUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html';
+                    }
+                    
                 } else if (window.location.href.indexOf('localhost:9000') > -1 ) {
                   serviceUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/';
                   templateUrl = 'http://localhost:9000/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html'

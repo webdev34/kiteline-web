@@ -152,6 +152,7 @@ body.loginPage {
     }
     a {
         color: white;
+        display: inline-block;
         &:hover {
             color: white;
             text-decoration: none;

@@ -54,7 +54,6 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
         'InitialLogin': true
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
-      console.log data
       if data.SubscriptionTypeName == 'bronze'
         $rootScope.isBronze = true
         $rootScope.invalidCenter = data

@@ -2,21 +2,18 @@
 	margin-top: 3%;
 	height: auto;
   	padding-bottom: 20px;
+  	a,span,p{
+  		color: #ccc;
+  		font-size: 16px;
+  	}
 	h4.pull-left{
 		margin-top: 19px;
-	}
-	.glyphicon.glyphicon-bullhorn{
-		font-size: 28px;
-		margin-top: 15px;
-		color: #999;
-		margin-right: 7px;
-		margin-left: 3%;
 	}
 	.view-all-messages{
 		margin-top: -10px;
 	}
 	.message-count{
-		color: #5b5b5a;
+		color: #ccc;
 		font-size: 28px;
 		font-family: concourse_c4bold;
 		margin-top: -38px;
@@ -27,4 +24,12 @@
       font-size: 16px;
       color: #ccc;
     }	
+    .message-headline{
+    	width: 75%;
+    	margin: 0 auto;
+    }
+    .message-date,
+    .message-headline{
+    	font-size: 15px !important;
+    }
 }
