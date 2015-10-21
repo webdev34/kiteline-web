@@ -46,66 +46,80 @@
 	<div class="medical-info-edit" ng-show="editMedicalInfo">
 		<form name="editMedicalInfoForm">
 			<div class="detail-breakdown">
-				<span class="detail-label">Doctor Name</span>
+				<span class="detail-label">
+					<span class="required">*</span>
+					Doctor Name</span>
 				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.DoctorName" name="doctor_name" />
+					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.DoctorName" name="doctor_name" required maxlength="100" />
 					</span>
 			</div>
 			<div class="detail-breakdown">
-				<span class="detail-label">Doctor Phone</span>
+				<span class="detail-label">
+					<span class="required">*</span>
+					Doctor Phone</span>
 				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.DoctorPhone" name="doctor_number" mask="(999) 999-9999" clean="true" />
+					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.DoctorPhone" name="doctor_number" mask="(999) 999-9999" clean="true" required maxlength="50" />
 					</span>
 			</div>
 			<div class="detail-breakdown">
-				<span class="detail-label">Last Physical Date</span>
+				<span class="detail-label">
+					<span class="required">*</span>
+					Last Physical Date</span>
 				<span class="detail-value">
 					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-format="M/dd/yyyy">
-			        <input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.PhysicalDate" name="physical_date">
+			        <input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.PhysicalDate" name="physical_date" ng-readonly="true" required >
 			      </datepicker>
 				</span>
 			</div>
 			<div class="detail-breakdown">
-				<span class="detail-label">Immunized?</span>
+				<span class="detail-label">
+					<span class="required">*</span>
+					Immunized?</span>
 				<span class="detail-value">
 					<span class="radio-btn-wrapper">Yes
-						<input type="radio" class="form-control" ng-model="viewChildMedicalInfoEdit.Immunized" name="Immunized_yes" value="Y" />
+						<input type="radio" class="form-control" ng-model="viewChildMedicalInfoEdit.Immunized" name="Immunized_yes" value="Y" required />
 					</span>
 					<span class="radio-btn-wrapper">No
-						<input type="radio" class="form-control" ng-model="viewChildMedicalInfoEdit.Immunized" name="Immunized_no" value="N" />
+						<input type="radio" class="form-control" ng-model="viewChildMedicalInfoEdit.Immunized" name="Immunized_no" value="N" required />
 					</span>
 					<div class="clearfix"></div>
 				</span>
 			</div>
 			<div class="clearfix"></div>
 			<div class="detail-breakdown">
-				<span class="detail-label">Insurance Company</span>
+				<span class="detail-label">
+					<span class="required">*</span>
+					Insurance Company</span>
 				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.InsuranceCompany" name="insurance_company" />
+					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.InsuranceCompany" name="insurance_company" required maxlength="100" />
 				</span>
 			</div>
 			<div class="detail-breakdown">
-				<span class="detail-label">Policy Number</span>
+				<span class="detail-label">
+					<span class="required">*</span>
+					Policy Number</span>
 				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.PolicyNumber" name="policy_number" />
+					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.PolicyNumber" name="policy_number" required maxlength="100" />
 				</span>
 			</div>
 			<div class="detail-breakdown">
-				<span class="detail-label">Group Number</span>
+				<span class="detail-label">
+					<span class="required">*</span>
+					Group Number</span>
 				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.GroupNumber" name="group_number" />
+					<input type="text" class="form-control" ng-model="viewChildMedicalInfoEdit.GroupNumber" name="group_number" required maxlength="100" />
 				</span>
 			</div>
 			<div class="button-wrapper detail-breakdown right-align">
 				<img ng-if="buttonDisable"  class="preloader" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
-				<button class="btn btn-primary" ng-click="editMedInfo();" ng-disabled="editMedicalInfoForm.doctor_number.$invalid || buttonDisable">Save</button>
+				<button class="btn btn-primary" ng-click="editMedInfo();" ng-disabled="editMedicalInfoForm.$invalid || buttonDisable">Save</button>
 				<button class="btn btn-danger" ng-click="editSection('Medical Info')">Cancel</button>
 			</div>
 		</form>
 	</div>
 </div><!-- medical-info-breakdown-view -->
 
-<hr/>
+<hr ng-hide="editMedicalInfo" />
 
 <div class="clearfix" ></div>
 
@@ -125,8 +139,8 @@
 
 <div class="clearfix"></div>
 
-<div ng-if="currentMedicalInfoView == 'Medications'" class="medication-wrapper" ng-include src="'views/dashboard/medical-info/medications.html'"></div>
+<div ng-if="currentMedicalInfoView == 'Medications'" class="medication-wrapper" ng-include src="'views/dashboard/medications.html'"></div>
 
-<div ng-if="currentMedicalInfoView == 'Allergies'" class="allergies-wrapper" ng-include src="'views/dashboard/medical-info/allergies.html'"></div>
+<div ng-if="currentMedicalInfoView == 'Allergies'" class="allergies-wrapper" ng-include src="'views/dashboard/allergies.html'"></div>
 
-<div ng-if="currentMedicalInfoView == 'Immunizations'" class="immunizations-wrapper" ng-include src="'views/dashboard/medical-info/immunizations.html'"></div>
+<div ng-if="currentMedicalInfoView == 'Immunizations'" class="immunizations-wrapper" ng-include src="'views/dashboard/immunizations.html'"></div>

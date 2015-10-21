@@ -17,6 +17,8 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
   $rootScope.invalidCenter = null
 
   $rootScope.searchAPI = () ->
+    console.log 'here'
+    $rootScope.invalidCenter = false
     if !$rootScope.showLogIn
       thisString = document.getElementById('centernameSearchForgotPin_value').value.trim()
     else
@@ -36,6 +38,9 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
           return
         ).error((data, status, headers, config) ->
           deferred.reject status
+          $rootScope.invalidCenter = true
+          # document.getElementById('centernameSearch_dropdown').style.display = 'none';
+          # document.getElementById('centernameSearch_dropdown').setAttribute("class", "ng-invalid");
           $rootScope.careCenters = null
           return
         )

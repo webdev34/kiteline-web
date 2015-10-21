@@ -6,7 +6,6 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $scope.currentTab = 'Overview'
   $rootScope.addBankAccount = false
   $rootScope.newBankAccount = {}
-  $scope.taxStatements = [2015,2014,2013,2012,2011,2010,2009,2008,2007]
   $rootScope.changePageTitle()
 
   $rootScope.processInvoicePayment = (accountId) ->
@@ -199,7 +198,21 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
 
       CurbSideService.getAllChildren($rootScope.centerId, $rootScope.familyId).then (response) ->
         $scope.userChildren = response.data
+        $scope.taxStartYear = parseInt($scope.userChildren[0].StartDate.split('-')[0])
+        
+        angular.forEach $scope.userChildren, (value, key) ->
+          testYear = parseInt(value.StartDate.split('-')[0])
+          if testYear > $scope.taxStartYear
+            $scope.taxStartYear = testYear
 
+        $scope.taxStatements = []
+
+        if $rootScope.footerYear != $scope.taxStartYear
+          while $rootScope.footerYear > $scope.taxStartYear
+            $scope.taxStatements.push $scope.taxStartYear++
+        else
+          $scope.taxStatements = [$scope.taxStartYear]
+            
       PaymentService.getChildrenTuiton($rootScope.familyId).then (response) ->
         $scope.userChildrenTuition = response.data
       

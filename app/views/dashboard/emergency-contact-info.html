@@ -99,7 +99,7 @@
 						<span class="required">*</span>
 						Name</span>
 					<span class="detail-value">
-						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.Name" name="contact_name" required />
+						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.Name" name="contact_name" required  maxlength="200"/>
 						</span>
 				</div>
 				<div class="detail-breakdown">
@@ -107,7 +107,7 @@
 						<span class="required">*</span>
 						Relationship</span>
 					<span class="detail-value">
-						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.RelationShip" name="contact_name" required/>
+						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.RelationShip" name="contact_name" required maxlength="100"/>
 					</span>
 				</div>
 				<div class="detail-breakdown">
@@ -185,13 +185,13 @@
 				<div class="detail-breakdown">
 					<span class="detail-label">Street</span>
 					<span class="detail-value">
-						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.Street" name="contact_street" />
+						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.Street" name="contact_street" maxlength="200"/>
 					</span>
 				</div>
 				<div class="detail-breakdown">
 					<span class="detail-label">City</span>
 					<span class="detail-value">
-						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.City" name="contact_city" />
+						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.City" name="contact_city" maxlength="200" />
 					</span>
 				</div>
 				<div class="detail-breakdown">
@@ -206,32 +206,32 @@
 				<div class="detail-breakdown">
 					<span class="detail-label">Zip</span>
 					<span class="detail-value">
-						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.Zip" name="contact_zip" maxlength="5" numeric-only />
+						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.Zip" name="contact_zip" numeric-only maxlength="20" />
 					</span>
 				</div>
 				<div class="detail-breakdown">
 					<span class="detail-label">Home Phone</span>
 					<span class="detail-value">
-						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.HomePhone" name="contact_home_phone"  mask="(999) 999-9999" clean="true" />
+						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.HomePhone" name="contact_home_phone"  mask="(999) 999-9999" clean="true" maxlength="50"/>
 					</span>
 				</div>
 				<div class="detail-breakdown">
 					<span class="detail-label">Work Phone</span>
 					<span class="detail-value">
-						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.WorkPhone" name="contact_work_phone"  mask="(999) 999-9999" clean="true" />
+						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.WorkPhone" name="contact_work_phone"  mask="(999) 999-9999" clean="true" maxlength="50"/>
 					</span>
 				</div>
 				<div class="detail-breakdown">
 					<span class="detail-label">Cell Phone</span>
 					<span class="detail-value">
-						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.CellPhone" name="contact_cell_phone"  mask="(999) 999-9999" clean="true" />
+						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.CellPhone" name="contact_cell_phone"  mask="(999) 999-9999" clean="true" maxlength="50" />
 					</span>
 				</div>
 				<div class="clearfix"></div>
 				<div class="detail-breakdown">
 					<span class="detail-label">Email</span>
 					<span class="detail-value no-cap">
-						<input type="email" class="form-control" ng-model="viewEmergencyContactEdit.EmailAddress" name="contact_email" />
+						<input type="email" class="form-control" ng-model="viewEmergencyContactEdit.EmailAddress" name="contact_email" maxlength="100" />
 					</span>
 				</div>
 				<div class="button-wrapper detail-breakdown" >

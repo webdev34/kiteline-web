@@ -101,7 +101,7 @@
 					<span class="required">*</span>
 				Medication Name</label>
 				<div class="controls">
-					<input id="newMedicationName" name="medicationName" ng-model="newMedicationObj.MedicationName" type="text" class="input-xlarge form-control" required="">
+					<input id="newMedicationName" name="medicationName" ng-model="newMedicationObj.MedicationName" type="text" class="input-xlarge form-control" required="" maxlength="100" >
 				</div>
 			</div>
 			<div class="control-group col-md-4">
@@ -125,7 +125,7 @@
 				</label>
 				<div class="controls">
 					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{newMedicationObj.StartDate}}" date-format="M/dd/yyyy">
-					<input type="text" ng-model="newMedicationObj.StartDate" id="newMedicationStartDate" class="newMedicationStartDate form-control">
+					<input type="text" ng-model="newMedicationObj.StartDate" id="newMedicationStartDate" class="newMedicationStartDate form-control" ng-readonly="true" >
 					</datepicker>
 				</div>
 			</div>
@@ -135,7 +135,7 @@
 				</label>
 				<div class="controls">
 					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{newMedicationObj.EndDate}}" date-format="M/dd/yyyy">
-					<input type="text" ng-model="newMedicationObj.EndDate" id="newMedicationEndDate" class="newMedicationEndDate form-control">
+					<input type="text" ng-model="newMedicationObj.EndDate" id="newMedicationEndDate" class="newMedicationEndDate form-control" ng-readonly="true" >
 					</datepicker>
 				</div>
 			</div>
@@ -145,7 +145,7 @@
 				</label>
 				<div class="controls">
 					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{newMedicationObj.Expiration}}" date-format="M/dd/yyyy">
-					<input type="text" ng-model="newMedicationObj.Expiration" id="newMedicationExpirationDate" class="newMedicationExpirationDate form-control">
+					<input type="text" ng-model="newMedicationObj.Expiration" id="newMedicationExpirationDate" class="newMedicationExpirationDate form-control" ng-readonly="true" >
 					</datepicker>
 				</div>
 			</div>
@@ -155,7 +155,7 @@
 					Instructions
 				</label>
 				<div class="controls">
-					<textarea id="newMedicationsInstructions" name="newMedicationsInstructions" ng-model="newMedicationObj.Instructions" class="form-control" ></textarea>
+					<textarea id="newMedicationsInstructions" name="newMedicationsInstructions" ng-model="newMedicationObj.Instructions" class="form-control" maxlength="500" ></textarea>
 				</div>
 			</div>
 
@@ -188,7 +188,7 @@
 					<span class="required">*</span>
 				Medication Name</label>
 				<div class="controls">
-					<input id="editMedicationName" name="medicationName" ng-model="editMedicationObj.MedicationName" type="text" class="input-xlarge form-control" required="">
+					<input id="editMedicationName" name="medicationName" ng-model="editMedicationObj.MedicationName" type="text" class="input-xlarge form-control" required="" maxlength="100" >
 				</div>
 			</div>
 			<div class="control-group col-md-4">
@@ -212,7 +212,7 @@
 				</label>
 				<div class="controls">
 					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{editMedicationObj.StartDate}}" date-format="M/dd/yyyy">
-					<input type="text" ng-model="editMedicationObj.StartDate" id="editMedicationStartDate" class="editMedicationStartDate form-control">
+					<input type="text" ng-model="editMedicationObj.StartDate" id="editMedicationStartDate" class="editMedicationStartDate form-control" ng-readonly="true" >
 					</datepicker>
 				</div>
 			</div>
@@ -222,7 +222,7 @@
 				</label>
 				<div class="controls">
 					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{editMedicationObj.EndDate}}" date-format="M/dd/yyyy">
-					<input type="text" ng-model="editMedicationObj.EndDate" id="editMedicationEndDate" class="editMedicationEndDate form-control">
+					<input type="text" ng-model="editMedicationObj.EndDate" id="editMedicationEndDate" class="editMedicationEndDate form-control" ng-readonly="true" >
 					</datepicker>
 				</div>
 			</div>
@@ -232,7 +232,7 @@
 				</label>
 				<div class="controls">
 					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{editMedicationObj.Expiration}}" date-format="M/dd/yyyy">
-					<input type="text" ng-model="editMedicationObj.Expiration" id="editMedicationExpirationDate" class="editMedicationExpirationDate form-control">
+					<input type="text" ng-model="editMedicationObj.Expiration" id="editMedicationExpirationDate" class="editMedicationExpirationDate form-control" ng-readonly="true" >
 					</datepicker>
 				</div>
 			</div>
@@ -242,7 +242,7 @@
 					Instructions
 				</label>
 				<div class="controls">
-					<textarea name="editMedicationInstructions" ng-model="editMedicationObj.Instructions" class="form-control" ></textarea>
+					<textarea name="editMedicationInstructions" ng-model="editMedicationObj.Instructions" class="form-control" maxlength="500"></textarea>
 				</div>
 			</div>
 			<div class="clearfix"></div>

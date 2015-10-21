@@ -1,0 +1,19 @@
+<div class="col-md-6 tile tuition-rates-wrapper">
+	<h4 class="pull-left">
+	Tuition Rates
+	</h4>
+	<div class="clearfix"></div>
+	<ul class="tuition-list"  >
+		<li data-ng-repeat="child in userChildrenTuition">
+			<img ng-if="child.Sex == 'M' && child.PhotoURL.length > 0" ng-src="{{child.PhotoURL}}" onerror="this.src = 'images/male.svg';" />
+			<img ng-if="child.Sex == 'M' && child.PhotoURL.length == 0" ng-src="images/male.svg" />
+			
+			<img ng-if="child.Sex == 'F' && child.PhotoURL.length > 0" ng-src="{{child.PhotoURL}}" onerror="this.src = 'images/female.svg';" />
+			<img ng-if="child.Sex == 'F' && child.PhotoURL.length == 0" ng-src="images/female.svg" />
+			
+			<span class="child-name">{{child.FullName}}</span>
+			<span class="class-name" >{{child.ClassName}}</span> 
+			<span class="tuition-rate" ng-hide="child.ClassName == 'Not Enrolled'">{{child.TuitionAmount | currency}} {{child.RateInterval}}</span>
+		</li>
+	<ul/>		
+</div>

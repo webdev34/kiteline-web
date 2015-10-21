@@ -93,7 +93,7 @@
 					<span class="required">*</span>
 				Immunization Name</label>
 				<div class="controls">
-					<input id="newImmunizationName" name="immunizationName" ng-model="newImmunizationObj.ImmunizationName" type="text" class="input-xlarge form-control" required="">
+					<input id="newImmunizationName" name="immunizationName" ng-model="newImmunizationObj.ImmunizationName" type="text" class="input-xlarge form-control" required="" maxlength="200">
 				</div>
 			</div>
 
@@ -102,7 +102,7 @@
 					Description
 				</label>
 				<div class="controls">
-					<textarea id="newImmunizationsDescription" name="newImmunizationsDescription" ng-model="newImmunizationObj.Description" class="form-control" ></textarea>
+					<textarea id="newImmunizationsDescription" name="newImmunizationsDescription" ng-model="newImmunizationObj.Description" class="form-control" maxlength="500"></textarea>
 				</div>
 			</div>
 
@@ -112,7 +112,7 @@
 					Doses
 				</label>
 				<div class="controls">
-					<input type="text" ng-model="newImmunizationObj.Doses" id="newImmunizationDoses" class="newImmunizationDoses form-control" required="" numeric-only>
+					<input type="text" ng-model="newImmunizationObj.Doses" id="newImmunizationDoses" class="newImmunizationDoses form-control" required="" numeric-only maxlength="4">
 				</div>
 			</div>
 
@@ -123,7 +123,7 @@
 				</label>
 				<div class="controls">
 					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{newImmunizationObj.DateReceived}}" date-format="M/dd/yyyy">
-					<input type="text" ng-model="newImmunizationObj.DateReceived" id="newImmunizationDateReceived" class="newImmunizationDateReceived form-control">
+					<input type="text" ng-model="newImmunizationObj.DateReceived" id="newImmunizationDateReceived" class="newImmunizationDateReceived form-control" ng-readonly="true">
 					</datepicker>
 				</div>
 			</div>
@@ -133,7 +133,7 @@
 				</label>
 				<div class="controls">
 					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{newImmunizationObj.ExpiryDate}}" date-format="M/dd/yyyy">
-					<input type="text" ng-model="newImmunizationObj.ExpiryDate" id="newImmunizationExpiryDate" class="newImmunizationExpiryDate form-control">
+					<input type="text" ng-model="newImmunizationObj.ExpiryDate" id="newImmunizationExpiryDate" class="newImmunizationExpiryDate form-control" ng-readonly="true" >
 					</datepicker>
 				</div>
 			</div>
@@ -167,7 +167,7 @@
 					<span class="required">*</span>
 				Immunization Name</label>
 				<div class="controls">
-					<input id="editImmunizationName" name="immunizationName" ng-model="editImmunizationObj.ImmunizationName" type="text" class="input-xlarge form-control" required="">
+					<input id="editImmunizationName" name="immunizationName" ng-model="editImmunizationObj.ImmunizationName" type="text" class="input-xlarge form-control" required="" maxlength="200">
 				</div>
 			</div>
 
@@ -176,7 +176,7 @@
 					Description
 				</label>
 				<div class="controls">
-					<textarea id="editImmunizationsDescription" name="editImmunizationsDescription" ng-model="editImmunizationObj.Description" class="form-control" ></textarea>
+					<textarea id="editImmunizationsDescription" name="editImmunizationsDescription" ng-model="editImmunizationObj.Description" class="form-control" maxlength="500"></textarea>
 				</div>
 			</div>
 
@@ -186,7 +186,7 @@
 					Doses
 				</label>
 				<div class="controls">
-					<input type="text" ng-model="editImmunizationObj.Doses" id="editImmunizationDoses" class="editImmunizationDoses form-control" required="" numeric-only>
+					<input type="text" ng-model="editImmunizationObj.Doses" id="editImmunizationDoses" class="editImmunizationDoses form-control" required="" numeric-only maxlength="4">
 				</div>
 			</div>
 
@@ -197,7 +197,7 @@
 				</label>
 				<div class="controls">
 					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{editImmunizationObj.DateReceived}}" date-format="M/dd/yyyy">
-					<input type="text" ng-model="editImmunizationObj.DateReceived" id="editImmunizationDateReceived" class="editImmunizationDateReceived form-control">
+					<input type="text" ng-model="editImmunizationObj.DateReceived" id="editImmunizationDateReceived" class="editImmunizationDateReceived form-control" ng-readonly="true" >
 					</datepicker>
 				</div>
 			</div>
@@ -207,7 +207,7 @@
 				</label>
 				<div class="controls">
 					<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{editImmunizationObj.ExpiryDate}}" date-format="M/dd/yyyy">
-					<input type="text" ng-model="editImmunizationObj.ExpiryDate" id="editImmunizationExpiryDate" class="editImmunizationExpiryDate form-control">
+					<input type="text" ng-model="editImmunizationObj.ExpiryDate" id="editImmunizationExpiryDate" class="editImmunizationExpiryDate form-control" ng-readonly="true">
 					</datepicker>
 				</div>
 			</div>

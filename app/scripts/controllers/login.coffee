@@ -6,7 +6,8 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
   'LogInService'
   'CenterInfoService'
   'ForgotPinService'
-  ($scope, $rootScope, $location, LogInService, CenterInfoService, ForgotPinService, StorageService) ->
+  'toastr'
+  ($scope, $rootScope, $location, LogInService, CenterInfoService, ForgotPinService, StorageService, toastr) ->
     $rootScope.isLoggedIn = false
     $rootScope.isLoginPage = true
     $rootScope.showLogIn = true
@@ -39,7 +40,8 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
 
     $scope.forgotPinFunc = ->
       $rootScope.dataLoading = true
-      ForgotPinService.sendForgottenPIN $scope.email, $rootScope.centerId
+      $rootScope.centerId = $scope.centernameSearch.originalObject.CenterId
+      ForgotPinService.sendForgottenPIN($scope.email, $rootScope.centerId).then (response) ->
   
     return
 ]

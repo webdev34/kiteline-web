@@ -43,13 +43,15 @@ angular.module('kiteLineApp').service 'ForgotPinService', ($http, $q, $rootScope
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
+      $rootScope.dataLoading = false
+      toastr.success 'Your pin has been sent!', 'Success'
 
       return
     ).error (data, status, headers, config) ->
       deferred.reject status
 
-      if data.Message isnt null
-        toastr.error data.Message, 'Error'
+      if data.status == 200
+        toastr.sucess '', data.data
       else
         toastr.error data.Message, 'Error'
         

@@ -5,7 +5,7 @@
             <div class="input-group">
             	<p class="pull-left">Start Date</p>
         	 <datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{billDates.transactionStartDate}}" date-format="M/dd/yyyy">
-		        <input type="text" ng-model="billDates.transactionStartDate" class="transactionStartDate">
+		        <input type="text" ng-model="billDates.transactionStartDate" class="transactionStartDate" ng-readonly="true">
 		      </datepicker>
 
               <span class="input-group-btn">
@@ -18,7 +18,7 @@
             <div class="input-group">
             	<p class="pull-left">End Date</p>
           	 	<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{billDates.transactionEndDate}}" date-format="M/dd/yyyy">
-		        <input type="text" ng-model="billDates.transactionEndDate" class="transactionEndDate" >
+		        <input type="text" ng-model="billDates.transactionEndDate" class="transactionEndDate" ng-readonly="true" >
 		      </datepicker>
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" datepicker-button datepicker-parent="transactionEndDate"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -39,7 +39,7 @@
 				    <thead>
 				    	<tr>
 					        <th>
-					        	Transaction Date
+					        	<span class="transaction-th">Transaction Date</span>
 					        	<span class="pull-right trans-payment-date">
 						      		<i class="fa fa-caret-up" ng-class="{active: sortOrderBy == 'PaymentDate' && reverse == false}" ng-click="sortByFunc('PaymentDate',false);"></i>
 						      		<i class="fa fa-caret-down" ng-class="{active: sortOrderBy == 'PaymentDate' && reverse == true}" ng-click="sortByFunc('PaymentDate',true);"></i>

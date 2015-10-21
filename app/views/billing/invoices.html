@@ -105,7 +105,7 @@
 	            <div class="input-group">
 	            	<p class="pull-left">Start Date</p>
 	        	 <datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{billDates.historicalStartDate}}" date-format="M/dd/yyyy">
-			        <input type="text" ng-model="billDates.historicalStartDate" class="historicalStartDate">
+			        <input type="text" ng-model="billDates.historicalStartDate" class="historicalStartDate" ng-readonly="true">
 			      </datepicker>
 
 	              <span class="input-group-btn in-more">
@@ -118,7 +118,7 @@
 	            <div class="input-group">
 	            	<p class="pull-left">End Date</p>
 	          	 	<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{billDates.historicalEndDate}}" date-format="M/dd/yyyy">
-			        <input type="text" ng-model="billDates.historicalEndDate" class="historicalEndDate" >
+			        <input type="text" ng-model="billDates.historicalEndDate" class="historicalEndDate" ng-readonly="true" >
 			      </datepicker>
 	              <span class="input-group-btn in-more">
 	                <button type="button" class="btn btn-default" datepicker-button datepicker-parent="historicalEndDate"><i class="glyphicon glyphicon-calendar"></i></button>

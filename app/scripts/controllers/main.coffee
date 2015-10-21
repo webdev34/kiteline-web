@@ -70,20 +70,20 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   $rootScope.changePageTitle = () ->
     if $location.$$path is '/dashboard'
       $rootScope.pageTitle = 'Dashboard'
-      document.title = 'Kiteline Web - Dashboard'
+      document.title = 'Parent Portal - SkyChildCare | Dashboard'
 
     if $location.$$path is '/billing' || $location.$$path is '/billing/invoices' || $location.$$path is '/billing/payment-accounts'
       $rootScope.pageTitle = 'Billing'
-      document.title = 'Kiteline Web - Billing'
+      document.title = 'Parent Portal - SkyChildCare | Billing'
 
     if $location.$$path is '/'
       $rootScope.pageTitle = 'Kiteline Web'
-      document.title = 'Kiteline Web - Log In'
+      document.title = 'Parent Portal - SkyChildCare | Log In'
       $rootScope.stopSpin()
 
     if $location.$$path is '/forms'
       $rootScope.pageTitle = 'Forms'
-      document.title = 'Kiteline Web - Forms'
+      document.title = 'Parent Portal - SkyChildCare | Forms'
 
   $rootScope.startSpin = ->
     $rootScope.isLoading = true
@@ -155,6 +155,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
   $rootScope.paymentClearedDashboard = () ->
     $rootScope.processingPayment = false
+    $rootScope.getTransactionsByDate(null)
+    $rootScope.getTransactionsByDate('Historical')
     $rootScope.getInvoiceData()
     $rootScope.resetAccountForm('CC Payment')
 
@@ -541,12 +543,13 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       $rootScope.paymentCC.BusinessPhone = null
 
   $rootScope.footerYear = (new Date).getFullYear()
+  currentYear = $rootScope.footerYear
 
   $rootScope.lastTenYearsArray = [$rootScope.footerYear]
 
   i = 0
   while i < 9
-    $rootScope.lastTenYearsArray.push $rootScope.footerYear++
+    $rootScope.lastTenYearsArray.push currentYear++
     i++
 
   $rootScope.bankAccountTypes = [

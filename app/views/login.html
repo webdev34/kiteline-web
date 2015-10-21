@@ -24,12 +24,12 @@
 
     <form class="login-form" name="logInform" ng-submit="login()" role="form" autocomplete="off" ng-show="showLogIn">
         <div class="disclaimer">
-            <h5>Parent Login Here to SkyChildcare Kiteline</h5>
+            <h5>Parent Login</h5>
             <p>KiteLine allows parents to view invoices, and view and update their children's medical and contact records in your enrolled child care center.</p>
 
-            <p class="center-contact" ng-show="centernameSearch.description">Contact {{centernameSearch.description.CenterName}} at <span>{{centernameSearch.description.Phone}}</span> <span ng-if="centernameSearch.EmailAddress"> or </span> <a href="mailto:{{centernameSearch.EmailAddress}}">{{centernameSearch.description.EmailAddress}}</a> with any questions </p>
+            <p class="center-contact" ng-show="centernameSearch.description">Contact {{centernameSearch.description.CenterName}} at <span>{{centernameSearch.description.Phone}}</span> <span ng-if="centernameSearch.description.EmailAddress"> or </span> <a href="mailto:{{centernameSearch.description.EmailAddress}}">{{centernameSearch.description.EmailAddress}}</a> with any questions.</p>
         </div>
-        <div class="form-group">
+        <div class="form-group">{{searching}}
             <label for="username">Child Care Center Name</label>
             <i class="fa fa-map-marker"></i>
            <angucomplete-alt id="centernameSearch"
@@ -63,8 +63,10 @@
 
     <form class="forgot-pin-form"  name="forgotPinform" ng-submit="forgotPinFunc()" role="form" ng-hide="showLogIn || isBronze">
         <div class="disclaimer">
-            <h5>Parent Login Here to SkyChildcare Kiteline</h5>
+            <h5>Parent Login</h5>
             <p>KiteLine allows parents to view invoices, and view and update their children's medical and contact records in your enrolled child care center.</p>
+
+            <p class="center-contact" ng-show="centernameSearch.description">Contact {{centernameSearch.description.CenterName}} at <span>{{centernameSearch.description.Phone}}</span> <span ng-if="centernameSearch.description.EmailAddress"> or </span> <a href="mailto:{{centernameSearch.description.EmailAddress}}">{{centernameSearch.description.EmailAddress}}</a> with any questions.</p>
         </div>
         <div class="form-group">
             <label for="username">Child Care Center Name</label>

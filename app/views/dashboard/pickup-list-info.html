@@ -92,7 +92,7 @@
 						<span class="required">*</span>
 						Name</span>
 					<span class="detail-value">
-						<input type="text" class="form-control" ng-model="viewPickupContactEdit.PickupName" name="pickup_name" required />
+						<input type="text" class="form-control" ng-model="viewPickupContactEdit.PickupName" name="pickup_name" required maxlength="200"/>
 					</span>
 				</div>
 				<div class="detail-breakdown can-pickup" >
@@ -112,7 +112,7 @@
 				<div class="detail-breakdown longer" >
 					<span class="detail-label">Notes</span>
 					<span class="detail-value longer">
-						<textarea class="form-control" ng-model="viewPickupContactEdit.AdditionalInfo" name="pickup_notes"></textarea>
+						<textarea class="form-control" ng-model="viewPickupContactEdit.AdditionalInfo" name="pickup_notes" maxlength="500"></textarea>
 					</span>
 				</div>
 				<div class="button-wrapper detail-breakdown" >
@@ -131,7 +131,7 @@
 							<span class="required">*</span>
 							Name</span>
 						<span class="detail-value">
-							<input type="text" class="form-control" ng-model="viewPickupContactNew.PickupName" name="pickup_name" required />
+							<input type="text" class="form-control" ng-model="viewPickupContactNew.PickupName" name="pickup_name" required maxlength="200"/>
 						</span>
 					</div>
 					<div class="detail-breakdown can-pickup" >
@@ -151,7 +151,7 @@
 					<div class="detail-breakdown longer" >
 						<span class="detail-label">Notes</span>
 						<span class="detail-value longer">
-							<textarea class="form-control" ng-model="viewPickupContactNew.AdditionalInfo" name="pickup_notes"></textarea>
+							<textarea class="form-control" ng-model="viewPickupContactNew.AdditionalInfo" name="pickup_notes" maxlength="500"></textarea>
 
 						</span>
 					</div>
