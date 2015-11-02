@@ -1,4 +1,3 @@
-'use strict'
 angular.module('kiteLineApp').controller 'FormsCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, CenterInfoService, ChildService, AnnouncementsService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, CreditCardService, Pagination) ->
   $rootScope.changePageTitle()
   $rootScope.startSpin()

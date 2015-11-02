@@ -1,4 +1,4 @@
-'use strict'
+
 angular.module('kiteLineApp').directive 'numbersOnly', ->
   {
     require: 'ngModel'

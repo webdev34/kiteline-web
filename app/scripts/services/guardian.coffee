@@ -1,5 +1,5 @@
-'use strict'
-angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope, toastr, $location) ->
+
+angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope, toastr, $location, StorageService, LogInService) ->
   rootUrl =  $rootScope.rootUrl
   self = undefined
   self = this
@@ -129,6 +129,11 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
 
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
+
+      if $rootScope.loggedInGuardianId == obj.GuardianId
+        StorageService.setItem('userEmail', $rootScope.currentUserEmail) 
+        $rootScope.currentUserEmail = $rootScope.currentUserEmail
+        LogInService.Login(obj.EmailAddress, StorageService.getItem('userPin'), StorageService.getItem('currentCenter').CenterId, true)
       
       return
     ).error (data, status, headers, config) ->

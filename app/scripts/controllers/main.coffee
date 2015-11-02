@@ -1,4 +1,4 @@
-'use strict'
+
 angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScope, $location, StorageService, CenterInfoService, PaymentService, AnnouncementsService, CreditCardService, InvoiceDetailService, InvoiceService, GuardianService, AccountService, usSpinnerService, $window, ngDialog, Pagination) ->
   
   if window.location.href.indexOf('localhost:9000') > - 1
@@ -10,6 +10,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     else
       $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb'
 
+  else if window.location.href.indexOf('uat.skychildcare.com/parentportal2') > - 1
+    $rootScope.modalUrl = 'https://uat.skychildcare.com/parentportal2'
   else if window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
     $rootScope.modalUrl = 'https://uat.skychildcare.com/parentportal'
   else if window.location.href.indexOf('parent.skychildcare.com') > - 1
@@ -110,6 +112,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
         
     else if window.location.href.indexOf('parent.skychildcare.com') > - 1
       $window.location.href = 'https://parent.skychildcare.com/#/'
+    else if window.location.href.indexOf('uat.skychildcare.com/parentportal2') > - 1
+      $window.location.href = 'https://uat.skychildcare.com/parentportal2/#/'
     else if window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
       $window.location.href = 'https://uat.skychildcare.com/parentportal/#/'
 

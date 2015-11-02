@@ -1,4 +1,4 @@
-'use strict'
+
 angular.module('kiteLineApp').service 'CreditCardService', ($http, $q, $rootScope, toastr, $location) ->
   deferred = undefined
   rootUrl = undefined

@@ -1,4 +1,4 @@
-'use strict'
+
 angular.module('kiteLineApp').service 'CurbSideService', ($http, $q, $rootScope, toastr) ->
   rootUrl =  $rootScope.rootUrl
   self = undefined

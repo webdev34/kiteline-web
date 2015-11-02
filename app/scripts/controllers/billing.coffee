@@ -1,4 +1,3 @@
-'use strict'
 angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $filter, $route, $routeParams, $location, StorageService, LogInService, PaymentService, CurbSideService, CreditCardService, AccountService, ngDialog, Pagination) ->
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
@@ -7,7 +6,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $rootScope.addBankAccount = false
   $rootScope.newBankAccount = {}
   $rootScope.changePageTitle()
-
+  
   $rootScope.processInvoicePayment = (accountId) ->
     $rootScope.processingPayment = true
     if $rootScope.viewInvoiceArray is null
@@ -224,7 +223,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       setTimeout (->
         $rootScope.stopSpin()
         return
-      ), 800
+      ), 1000
 
     if $route.current.$$route.originalPath == '/billing/invoices'
       $scope.goToTab('Invoices')

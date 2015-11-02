@@ -76,7 +76,7 @@
                 }
                 .no-messages {
                     text-align: center;
-                    font-size: 18px;
+                    font-size: 16px;
                     margin-top: 30px;
                 }
             }
@@ -115,7 +115,7 @@
                 .auto-pay {
                     color: #999;
                     font-weight: bold;
-                    font-size: 18px;
+                    font-size: 16px;
                     margin-top: 0px;
                     text-align: center;
                 }
@@ -136,17 +136,17 @@
                 .fa {
                     margin-top: 0px;
                     padding: 2px;
-                    font-size: 18px;
+                    font-size: 16px;
                 }
                 table {
                     margin-top: 10px;
                     th{
                         padding: 2px;
                         background-color: white;
-                        font-size: 18px;
+                        font-size: 16px;
                     }
                     td {
-                        font-size: 16px;
+                        font-size: 14px;
                         padding: 2px;
                     }
                 }
@@ -234,7 +234,7 @@
             }
         }
         .transactions-table-wrapper {
-            margin-top: 30px;
+            //margin-top: 30px;
             table {
                 tr {
                     td {
@@ -245,15 +245,21 @@
                         }
                     }
                     th {
-                        font-size: 18px;
+                        font-size: 16px;
                         position: relative;
                         padding: 0px;
                         padding-top: 10px;
                         span.pull-right {
-                            position: relative;
-                            top: -5px;
-                            width: 6px;
-                            right: 20%;
+                            // position: relative;
+                            // top: -5px;
+                            // width: 6px;
+                            // right: 20%;
+                                float: none !important;
+                                width: 6px;
+                                display: inline-block;
+                                position: relative;
+                                top: 10px;
+                                left: 3%;
                         }
                         .fa-caret-up,
                         .fa-caret-down {

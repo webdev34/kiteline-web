@@ -83,7 +83,7 @@
 				<span class="detail-label">Relationship</span>
 				<span class="detail-value">{{viewEmergencyContact.RelationShip || '(Not Set)'}}</span>
 			</div>
-			<div class="detail-breakdown">
+			<div class="detail-breakdown hide">
 				<span class="detail-label">Security Pin</span>
 				<span class="detail-value">
 					{{viewEmergencyContact.Pin || '(Not Set)'}}
@@ -110,16 +110,7 @@
 						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.RelationShip" name="contact_name" required maxlength="100"/>
 					</span>
 				</div>
-				<div class="detail-breakdown">
-					<span class="detail-label">
-						<span class="required">*</span>
-						Security Pin
-					</span>
-					<span class="detail-value PIN">
-						<input type="text" class="form-control" ng-model="viewEmergencyContactEdit.Pin" name="pin" numeric-only required maxlength="4" minlength="4" ng-keyup="pinValidation()" ng-class="{'ng-invalid': !isPinValid}" /> 
-						<span class="required" ng-show="editContactFormTop.pin.$invalid && editContactFormTop.pin.$dirty" >PIN must be 4 digits</span>
-					</span>
-				</div>
+				
 			</form>
 		</div>
 		<!-- Edit -->

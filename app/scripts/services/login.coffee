@@ -1,4 +1,4 @@
-'use strict'
+
 angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, toastr, $location, StorageService, CustomStatisticsService) ->
   
   if window.location.href.indexOf('localhost:9000') > -1 || window.location.href.indexOf('cloud.spinsys.com') > - 1
@@ -17,7 +17,6 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
   $rootScope.invalidCenter = null
 
   $rootScope.searchAPI = () ->
-    console.log 'here'
     $rootScope.invalidCenter = false
     if !$rootScope.showLogIn
       thisString = document.getElementById('centernameSearchForgotPin_value').value.trim()
@@ -45,7 +44,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
           return
         )
   
-  @Login = (email, pin, centerId) ->
+  @Login = (email, pin, centerId, trueLogin) ->
     url = rootUrl+'api/Login'
     $http(
       method: 'POST'
@@ -68,15 +67,18 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
         $rootScope.currentCenter = data
         $rootScope.currentUserEmail = email
         $rootScope.currentUserToken = headers()['x-skychildcaretoken']
-
+        $rootScope.loggedInGuardianId = data.GuardianId
+        
         StorageService.setItem 'currentCenter', data
         StorageService.setItem 'x-skychildcaretoken', $rootScope.currentUserToken
         StorageService.setItem 'userEmail', email
+        StorageService.setItem 'GuardianId', data.GuardianId
         StorageService.setItem 'userPin', pin
         StorageService.setItem 'LastLoginInfo', data.LastLoginInfo
         
-        self.setTimeStamp()
-        $location.path 'dashboard'
+        if !trueLogin
+          self.setTimeStamp()
+          $location.path 'dashboard'
       
       return
     ).error (data, status, headers, config) ->

@@ -13,9 +13,16 @@
 		<button ng-hide="outstandingInvoicesDueTotal == 0" class="btn btn-primary payment-btn" ng-click="payOutstandingBalance();">
 			Make Payment
 		</button>
-		<button ng-show="outstandingInvoicesDueTotal == 0" class="btn btn-primary payment-btn dead" tooltips data-title="You do not have any balance to pay">
-				Make Payment
+
+		<div class="kiteline-tooltip-wrapper" ng-show="outstandingInvoicesDueTotal == 0" >
+			<button class="btn btn-primary payment-btn dead">
+					Make Payment
 			</button>
+			<div class="kiteline-tooltip">
+				<div class="kiteline-tooltip-title ng-binding"> You do not have any balance to pay</div> 
+				<span class="kiteline-tooltip-caret"></span>
+			</div>
+		</div>
 		<div class="text-center light-gray">
 			<a href="#/billing/">View Payment Activity</a> | <a href="#/billing/invoices">View Details</a>
 		</div>

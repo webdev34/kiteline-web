@@ -108,7 +108,7 @@ html {
             &> div{
                 width: 600px;
                 left: 30%;
-                font-size: 18px;
+                font-size: 16px;
             }
             &> .toast-success{
                 text-align: center;
@@ -175,23 +175,26 @@ html {
         //Date-picker wrapper
         .input-group {
             width: 285px;
-            p.pull-left {
+            .input-group-btn{
                 display: inline-block;
-                margin-right: 9px;
-                margin-top: 9px;
+            }
+            p {
+                display: inline-block;
+                margin-bottom: 0px;
+                width: 100%;
                 font-size: 16px;
                 color: #666;
                 font-weight: bold;
             }
             .datepicker-wrapper {
                 float: left;
-                width: 171px;
+                width: auto;
             }
             .input-group-btn {
-                top: -3px;
-                left: -20px;
+                // top: -3px;
+                // left: -20px;
                 &.in-more {
-                    left: -41px;
+                    //left: -41px;
                 }
             }
             .glyphicon.glyphicon-calendar {
@@ -200,6 +203,10 @@ html {
             .historicalStartDate,
             .historicalEndDate {
                 height: 34px;
+            }
+            input[type='text']{
+                border-top-right-radius: 0px;
+                border-bottom-right-radius: 0px;
             }
         }
         .table-wrapper {
@@ -281,6 +288,12 @@ html {
                 cursor: pointer;
             }
         }
+        .carousel-indicators {
+
+            li {
+                margin-right: 4px !important;
+            }
+        }
         div[id*="myCarousel"] {
             button.carousel-control {
                 background-color: transparent;
@@ -306,7 +319,7 @@ html {
             .message-headline {
                 text-align: center;
                 display: block;
-                font-size: 18px;
+                font-size: 16px;
             }
             .message-date {
                 color: #999;
@@ -423,11 +436,11 @@ h1, h2, h3 {
                 margin-top: 25px;
             }
             .center-info{
-                margin-top: 7px;
+                margin-top: 11px;
             }
             span{
                 margin-top: 18px;
-                font-size: 18px;
+                font-size: 16px;
                 .last-logged-in{
                     display: list-item;
                     font-size: 14px;
@@ -512,7 +525,7 @@ h1, h2, h3 {
                 .feed-headline {
                     margin-top: 5%;
                     max-width: 82%;
-                    font-size: 18px;
+                    font-size: 16px;
                     @extend .ellipsis;
                 }
                 .pull-left {
@@ -556,9 +569,9 @@ h1, h2, h3 {
                 background-color: #529acd;
                 color: white;
                 border: none;
-                min-width: 135px;
+                min-width: 130px;
                 text-align: center;
-                font-size: 18px;
+                font-size: 16px;
                 text-transform: capitalize;
                 &:hover {
                     background-color: #224f77;
@@ -596,7 +609,7 @@ h1, h2, h3 {
             }
             p {
                 color: #224f77;
-                font-size: 18px;
+                font-size: 16px;
                 text-transform: capitalize;
                 @extend .ellipsis;
             }
@@ -634,6 +647,20 @@ h1, h2, h3 {
 .left-feature-container,
 .middle-feature-container {
     //@extend .box-shadow-container;
+}
+
+.medical-info-edit{
+    padding: 10px;
+}
+
+.navbar-inverse .navbar-collapse, 
+.navbar-inverse .navbar-form{
+    border-color: #4e99bd;
+    // background: #4e99bd;
+
+    &.collapsing{
+        width: 100%;
+    }
 }
 
 .left-feature-container,
@@ -688,6 +715,7 @@ h1, h2, h3 {
         border-color: #ccc;
         width: 100%;
         margin-bottom: 0px;
+        clear: both;
     }
     h4 {
         color: #999;
@@ -710,7 +738,7 @@ h1, h2, h3 {
         color: #4a90e2;
         float: none;
         font-family: concourse_t4regular;
-        font-size: 18px;
+        font-size: 16px;
         border-bottom: thin solid #ccc;
         width: 100%;
         display: block;
@@ -734,20 +762,20 @@ h1, h2, h3 {
         float: left;
         .detail-label {
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
             float: left;
             //width: 38%;
        
         }
         label {
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
         }
         .detail-header {
             clear: both;
         }
         .detail-value {
-            font-size: 18px;
+            font-size: 16px;
             margin-left: 10px;
             float: left;
             //width: 51%;
@@ -788,7 +816,7 @@ h1, h2, h3 {
             height: 75px;
             clear: both;
             //border-bottom: thin solid #ccc;
-            font-size: 18px;
+            font-size: 16px;
             span {
                 display: block;
                 margin-left: 15px;
@@ -917,7 +945,7 @@ body {
     }
     ._720kb-datepicker-calendar-years-pagination-pages {
         .fa {
-            font-size: 18px;
+            font-size: 16px;
         }
     }
     ._720kb-datepicker-calendar-header:nth-child(odd),
@@ -928,9 +956,9 @@ body {
     ._720kb-datepicker-calendar-month {
         color: #fff;
         font-family: concourse_t4regular;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
-        top: 8px;
+        //top: 8px;
         position: relative;
         a {
             span {
@@ -1000,7 +1028,7 @@ body {
             margin-left: 5px;
         }
         i.fa{
-            font-size: 18px;
+            font-size: 16px;
             position: relative;
             &.fa-caret-left{
                 left: -2px;
@@ -1069,6 +1097,10 @@ body {
 
 
 .margin-top-0 { margin-top: 0px !important; }
+.margin-top-10 { margin-top: 10px !important; }
+.margin-top-15 { margin-top: 15px !important; }
+.margin-top-20 { margin-top: 20px !important; }
+.margin-top-25 { margin-top: 25px !important; }
 .margin-bottom-0 { margin-top: 0px !important; }
 .margin-left-5{ margin-left: 5px; }
 .margin-left-10{ margin-left: 10px; }
@@ -1188,6 +1220,81 @@ body {
     /* Firefox 18- */
 }
 
+
+.kiteline-tooltip-wrapper{
+    position: relative;
+    &:hover .kiteline-tooltip{
+        visibility: visible;
+    }
+
+    .kiteline-tooltip{
+        background-color: #4e99bd;
+        color: #fff;
+        position: absolute;
+        z-index: 9;
+        width: 100%;
+        padding: 4px 0px;
+        visibility: hidden;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        top: -28px;
+        pointer-events: none;
+
+        &:hover{
+            visibility: visible;
+        }
+        .kiteline-tooltip-title{
+
+        }
+
+        .kiteline-tooltip-caret:after, 
+        .kiteline-tooltip-caret:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+
+        .kiteline-tooltip-caret:after{
+            border-top-color: $light-blue;
+            border: 5px solid transparent;
+            top: 100%;
+            margin-left: -6px;
+            margin-bottom: -6px;
+            border-bottom-width: 0;
+            left: 50%;
+            border-right-color: transparent;
+            border-left-color: transparent;
+        }
+
+        .kiteline-tooltip-caret:before{
+            border-top-color: $light-blue;
+            border: 6px solid $light-blue;
+            top: 100%;
+            margin-left: -5px;
+            margin-bottom: -5px;
+            border-bottom-width: 0;
+            left: 50%;
+            border-right-color: transparent;
+            border-left-color: transparent;
+        }
+    }
+}
+
+.outstanding-bal{
+    .kiteline-tooltip{
+        padding: 0px;
+        top: -37px;
+    }
+
+    .kiteline-tooltip-title{
+        position: relative;
+        left: 5px;
+        top: 4px;
+    }
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (max-device-width: 480px) {
     body {
@@ -1252,69 +1359,222 @@ body {
     .header {
         margin-bottom: 30px;
     }
+    .navbar-nav{
+        float: right !important;
+    }
 }
 
-@media (max-width: 992px) {
-    .left-feature-container.col-md-8.white-bg,
-    .right-feature-container.col-md-4{
+@media (max-width: 800px) {
+    .left-feature-container .detail-breakdown, 
+    .middle-feature-container .detail-breakdown, 
+    .right-feature-container .detail-breakdown{
+        width: 100% !important;
+    }
+    .my-children-container-dashboard{
+        img{
+            display: none;
+        }
+
+        .pull-left.child-name-wrapper.col-md-10{
+            float: none !important;
+        }
+    } 
+    .sub-header-wrapper ul li img{
+        top: -8px;
+    }
+
+    .dashboard-container .contact-container .col-md-12 {
+        width: 100% !important;
+        margin-bottom: 15px;
+    }
+
+    .left-feature-container ul.nav.nav-tabs {
+        li{
+            margin-left: .5% !important;
+            a{
+                min-width: 110px;
+                text-align: center;
+                font-size: 15px;
+
+                i.fa,
+                i.glyphicon{
+                    font-size: 12px;
+                    margin-right: 1%;
+                }
+            }
+        }
+    }
+
+    .messages-container-dashboard{
+        .left.carousel-control{
+            margin-left: 15% !important;
+        }
+        .right.carousel-control{
+            margin-right: 15% !important;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-collapse.pull-right.collapse.in,
+    .navbar-collapse.pull-right.collapsing{
+        width: 88%;
+        position: absolute;
+        z-index: 10000;
+        background: #4e99bd;
+        top: 60px;
+        margin-left: 0px;
+    }
+
+    header.header .navbar-inverse .navbar-nav > li 
+    {
+        > a{
+            &:hover{
+                background-color: $bkgd-blue;
+            }
+        }
+    }
+
+    header.header .navbar .nav .glyphicon ,
+    header.header .navbar .nav .fa{
+        color: white !important;
+        z-index: 10000;
+        margin-right: 10px;
+        a{
+            color: white !important;
+        }
+    }
+
+    header.header .navbar-inverse .navbar-nav li:hover .fa, 
+    header.header .navbar-inverse .navbar-nav li:hover .glyphicon, 
+    header.header .navbar-inverse .navbar-nav li:hover a {
+        color: white;
+        transition: 0.3s all linear;
+    }
+}
+
+@media (max-width: 875px) {
+
+    .sub-header-wrapper ul li img {
+       // top: -9px;
+    }
+
+    .left-feature-container ul.nav.nav-tabs {
+        li{
+            margin-left: .5% !important;
+            a{
+               
+                text-align: center;
+                font-size: 14px;
+
+                i.fa,
+                i.glyphicon{
+                    font-size: 12px;
+                    margin-right: 2%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 915px) {
+
+    .left-feature-container{
+
+        ul.nav.nav-tabs {
+            li{
+                margin-left: 1%;
+                a{
+                   
+                    text-align: center;
+                    font-size: 15px;
+
+                    i.fa,
+                    i.glyphicon{
+                        font-size: 12px;
+                        margin-right: 2%;
+                    }
+                }
+            }
+        }
+
+        .detail-breakdown{
+            width: 100%;
+        }
+
+    }
+    
+}
+
+@media (max-width: 990px) {
+
+     .lower-container-dashboard{
+        .medications-table{
+            a.edit{
+                top: 0 !important;
+                right: -6px !important
+            }
+        }
+    }
+
+    .dates-input-wrapper .col-md-3{
         width: auto;
     }
-    .sub-header-wrapper ul li img {
-        top: -9px;
+
+    .transactions-breakdown-wrapper .dates-input-wrapper .row div.col-md-1{
+        width: auto !important;
     }
-    .left-feature-container {
-        h4{
-            font-size: 16px;
+
+}
+
+@media (max-width: 1200px) {
+    .left-feature-container.col-md-8.white-bg{
+        width: 100%;
+    }
+    .right-feature-container.col-md-4{
+        width: 100%;
+    }
+    .dashboard-container .contact-container{
+        .col-md-12{
+            width: 32%;
+            float: left;
         }
+        .day-care-hours{
+            clear: none;
+            margin-left: 4%;
+        }
+    } 
+    .left-feature-container {
         &.col-md-4,
         &.col-md-8,
         &.col-md-12 {
             height: auto;
             padding-bottom: 25px;
-            .child-name-wrapper {
-                width: 80%;
-            }
-        }
-         ul.nav.nav-tabs.billing-tab li a {
-            font-size: 14px;
-            min-width: 120px;
-        }
-
-        ul.nav.nav-tabs li {
-            margin-left: 5px;
-            a{
-                font-size: 14px;
-                min-width: 125px;
-            }
-
-        }
-        .lower-container-dashboard {
-            ul.nav.nav-tabs li a{
-                font-size: 14px;
-                min-width: 105px;
-            }
         }
     }
+
     .billing-container .transactions-breakdown-wrapper .dates-input-wrapper .input-group-addon,
     .billing-container .transactions-breakdown-wrapper .dates-input-wrapper .input-group-addon.end-date {
         left: 12px;
     }
+
     .dates-input-wrapper .input-wrapper {
         float: none !important;
         &:first-child {
             margin-right: 25px;
         }
     }
+
     footer.footer {
         position: relative;
     }
+
     .container.kiteline-content,
     .inner-kiteline-content-container,
     header.header .navbar,
     header.header .navbar-inverse,
     footer.footer .footer-container {
         width: auto;
-        //height: auto;
     }
     .right-feature-container {
         padding: 0px;
@@ -1327,15 +1587,10 @@ body {
    
    .lower-container-dashboard{
         .medications-table{
-            table{
-                td{
-                    padding: 6px !important;
-                }
-            }
             a.edit{
                 position: relative;
-                top: -2px;
-                right: -6px;
+                top: 2px;
+                right: 3px;
             }
         }
         .guardian-detail-wrapper h2, 
@@ -1345,19 +1600,10 @@ body {
         }  
     }
 
-    .left-feature-container .detail-breakdown{
-        margin: 12px 5% !important;
-        width: 100% !important;
-    }
-
     .billing-container .left-feature-container.col-md-12 .tile.col-md-6 {
         margin-top: 0px !important;
         width: 100%;
-    }
-
-    .billing-container .transactions-breakdown-wrapper .transactions-table-wrapper table tr th {
-        font-size: 15px;
-        width: 60px;
+        margin-left: 0px;
     }
 
     .transactions-breakdown-wrapper{
@@ -1367,8 +1613,9 @@ body {
                 margin-top: 15px;
                 float: left;
                 div{
-                    width: 40%;
+                     width: auto;
                     float: left;
+                    margin-top: 10px;
                     &.col-md-1{
                         width: 8%;
                     }
@@ -1381,7 +1628,8 @@ body {
         .row{
             float: left;
             div{
-                width: 40%;
+                //width: 40%;
+                width: auto;
                 float: left;
                 &.col-md-1{
                     width: 8%;
@@ -1394,8 +1642,8 @@ body {
     }
 
     html body .input-group .input-group-btn {
-        top: 21px;
-        left: 0px;
+        // top: 21px;
+        // left: 0px;
     }
 
     body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container form{
@@ -1414,14 +1662,21 @@ body {
     .transaction-th{
         width: 40px;
     }
+
+    .messages-container-dashboard{
+        .left.carousel-control{
+            margin-left: 25%;
+        }
+        .right.carousel-control{
+            margin-right: 25%;
+        }
+    }
 }
 
 
 //Firefox
 @-moz-document url-prefix() {
-    .input-group-btn .btn.btn-default{
-        margin-top: -2px;
-    }
+    
 
     .billing-container .payment-accounts-breakdown-wrapper form select, 
     .billing-container .invoices-breakdown-wrapper form select{
@@ -1430,5 +1685,20 @@ body {
         border: 1px solid rgb(204, 204, 204);
     }
 
+    .carousel-inner{
+        width: auto;
+    }
+
+    .carousel-indicators{
+        width: 68%;
+    }
+
+    .dashboard-container #myCarousel.my-children-carousel .left.carousel-control{
+        margin-left: 0px;
+    }
+
+        .dashboard-container #myCarousel.my-children-carousel .right.carousel-control{
+        margin-right: 0px;
+    }
 
 }

@@ -1,4 +1,4 @@
-'use strict'
+
 angular.module('kiteLineApp').service 'PaymentService', ($http, $q, $rootScope, toastr, $location) ->
 
   if window.location.href.indexOf('localhost:9000') > -1 || window.location.href.indexOf('cloud.spinsys.com') > - 1

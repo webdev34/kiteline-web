@@ -1,4 +1,4 @@
-'use strict'
+
 angular.module('kiteLineApp', [
   'ngAnimate'
   'ngResource'
@@ -10,7 +10,6 @@ angular.module('kiteLineApp', [
   'toggle-switch'
   'ngMask'
   '720kb.datepicker'
-  '720kb.tooltips'
   'angularSpinner'
   'credit-cards'
   'simplePagination'

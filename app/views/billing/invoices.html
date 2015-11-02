@@ -1,4 +1,4 @@
-<div class="col-md-12 invoices-breakdown-wrapper" ng-show="currentTab == 'Invoices'">
+<div class="col-md-12 invoices-breakdown-wrapper">
     <div class="col-md-6">
     	<i class="fa fa-usd pull-left"></i>
 		<h4 class="pull-left">
@@ -103,7 +103,7 @@
 		<div class="row">
 		<div class="col-md-5">
 	            <div class="input-group">
-	            	<p class="pull-left">Start Date</p>
+	            	<p>Start Date</p>
 	        	 <datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{billDates.historicalStartDate}}" date-format="M/dd/yyyy">
 			        <input type="text" ng-model="billDates.historicalStartDate" class="historicalStartDate" ng-readonly="true">
 			      </datepicker>
@@ -116,7 +116,7 @@
 
 	        <div class="col-md-5">
 	            <div class="input-group">
-	            	<p class="pull-left">End Date</p>
+	            	<p>End Date</p>
 	          	 	<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{billDates.historicalEndDate}}" date-format="M/dd/yyyy">
 			        <input type="text" ng-model="billDates.historicalEndDate" class="historicalEndDate" ng-readonly="true" >
 			      </datepicker>
@@ -127,7 +127,7 @@
 	        </div>
 	        <div class="col-md-1">
 	            <div class="input-group">
-	                <button type="button" class="btn btn-primary" ng-class="{'waiting': billDates.queryingHistorical}" ng-disabled="billDates.queryingHistorical" ng-click="getTransactionsByDate('Historical'); billDates.queryingHistorical = true;">Submit</button>
+	                <button type="button" class="btn btn-primary margin-top-20" ng-class="{'waiting': billDates.queryingHistorical}" ng-disabled="billDates.queryingHistorical" ng-click="getTransactionsByDate('Historical'); billDates.queryingHistorical = true;">Submit</button>
 	            </div>
 	        </div>
     </div>

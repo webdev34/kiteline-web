@@ -1,4 +1,4 @@
-'use strict'
+
 angular.module('kiteLineApp').service 'StorageService', ($http, $q, $rootScope, localStorageService) ->
   self = undefined
   self = undefined

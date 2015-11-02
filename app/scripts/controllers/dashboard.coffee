@@ -1,4 +1,3 @@
-'use strict'
 angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, ChildService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, ImmunizationService, Pagination) ->
   
   $rootScope.startSpin()
@@ -19,7 +18,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.newImmunization = false
   $scope.newPickupContact = false
   $scope.buttonDisable = false
-  $scope.isPinValid = false
   $scope.currentLowerTab = "Updates"
   $scope.activeChild = "child-1"
   $scope.activeGuardian = "guardian-1"
@@ -145,24 +143,16 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
 
   $scope.toggleEditMedicalInfo = (editThis, editObj) ->
     if editThis == 'medication'
-      $scope.editMedicationObj = editObj
+      $scope.editMedicationObj = angular.copy(editObj)
       $scope.editMedication = !$scope.editMedication
 
     else if editThis == 'allergy'
-      $scope.editAllergyObj = editObj
+      $scope.editAllergyObj = angular.copy(editObj)
       $scope.editAllergy = !$scope.editAllergy
 
     else if editThis == 'immunization'
-      $scope.editImmunizationObj = editObj
+      $scope.editImmunizationObj = angular.copy(editObj)
       $scope.editImmunization = !$scope.editImmunization
-
-  $scope.pinValidation = ()->
-    if $scope.viewEmergencyContactEdit.Pin 
-      if $scope.viewEmergencyContactEdit.Pin.length == 4
-        $scope.isPinValid = true
-      else
-        editContactFormTop.pin.$invalid = true
-        $scope.isPinValid = false
 
   $scope.editSection = (editMe) ->
     if editMe == 'Medical Info'
@@ -190,7 +180,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.newPickupListContact = () ->
     $scope.buttonDisable = true
     ChildPickupService.addChildPickUpRecord($scope.viewPickupContactNew, $scope.viewChild.ChildId).then (response) ->
-      $scope.getPickListData(true)
+      $scope.getPickListData(true, false)
       $scope.buttonDisable = false
       $scope.newPickupContact = false
       thisIndex = $scope.pickupList.length+1
@@ -211,12 +201,14 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.editPickupContactInfo = () ->
     $scope.buttonDisable = true
     ChildPickupService.updateChildPickupInfo($scope.viewChild.ChildId, $scope.viewPickupContactEdit).then (response) ->
-      $scope.getPickListData().then (response) ->
-      $scope.buttonDisable = false
-      $scope.editPickupList = false
-      angular.forEach $scope.pickupList, (value, key) ->
-        if value.PickupName == $scope.viewPickupContactEdit
-          $scope.goToPickupContact(value.ChildPickupId)
+      $scope.getPickListData(true, $scope.viewPickupContactEdit.ChildPickupId).then (response) ->
+        $scope.buttonDisable = false
+        $scope.editPickupList = false
+        angular.forEach $scope.pickupList, (value, key) ->
+          if value.ChildPickupId == $scope.viewPickupContactEdit.ChildPickupId
+            console.log 'here'
+            $scope.goToPickupContact(value.ChildPickupId)
+            $scope.changeActivePickupContact('pickup-contact-'+[key+1]);
 
   $scope.changeActivePickupContact = (activePickupContact) ->
     $scope.activePickupContact = activePickupContact
@@ -227,8 +219,17 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.changeActiveGuardian = (activeGuardian) ->
     $scope.activeGuardian = activeGuardian
 
-  $scope.changeActiveChild = (activeChild) ->
-    $scope.activeChild = activeChild
+  $scope.changeActiveChild = (activeChild, direction) ->
+    if activeChild isnt false
+      $scope.activeChild = activeChild
+    else
+
+     setTimeout (->
+        $scope.activeChild = 'child-'+document.getElementsByClassName('slide active')[0].attributes.activeChild
+        childId = parseInt(document.getElementsByClassName('slide active')[0].attributes.childId.nodeValue)
+        $scope.goToChild(childId)
+      ), 200
+      
 
   $scope.changeActiveLowerTab = (activeTab) ->
     $scope.currentLowerTab = activeTab
@@ -279,9 +280,9 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
         $scope.childrenImmunizationInfoPagination = Pagination.getNew()
         $scope.childrenImmunizationInfoPagination.numPages = Math.ceil($scope.childrenImmunizationInfo.length / $scope.childrenImmunizationInfoPagination.perPage)
 
-
   $scope.goToChild = (childId, refreshingData, tabToShow) ->
     $scope.viewChild = $filter('filter')($scope.userChildren, (d) -> d.ChildId == childId)[0]
+
     $scope.viewChildMedicalInfo = $filter('filter')($scope.childrenMedicalInfo, (d) -> d.ChildId == childId)[0]
     $scope.viewChildMedicalInfoEdit = angular.copy $scope.viewChildMedicalInfo
     $scope.viewChildMedicalInfoEdit.PhysicalDate = $filter('date') $scope.viewChildMedicalInfoEdit.PhysicalDate, 'M/dd/yyyy'
@@ -357,7 +358,9 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.pickupList = response.data
       if $scope.pickupList == null
         $scope.pickupList = []
-      else if refreshed
+      else if refreshed && childPickupId != false
+        $scope.goToPickupContact(childPickupId)
+      else if refreshed && childPickupId == false
         $scope.goToPickupContact($scope.pickupList[$scope.pickupList.length-1].ChildPickupId)
       else
         $scope.goToPickupContact($scope.pickupList[0].ChildPickupId)
@@ -388,6 +391,8 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       
       setTimeout (->
         $rootScope.getPaymentAccounts()
+        if $rootScope.currentCenter.WebSiteURL.indexOf('http://') != 0
+          $rootScope.currentCenter.WebSiteURL = 'http://'+$rootScope.currentCenter.WebSiteURL
         $rootScope.stopSpin()
       ), 1000
         

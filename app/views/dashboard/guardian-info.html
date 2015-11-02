@@ -70,7 +70,7 @@
 				<span class="detail-label">Employer</span>
 				<span class="detail-value" > {{ viewGuardian.Employer || '(Not Set)' }}</span>
 			</div>
-			<div class="detail-breakdown">
+			<div class="detail-breakdown hide">
 				<span class="detail-label">Security PIN</span>
 				<span class="detail-value" > {{ viewGuardian.PIN || '(Not Set)' }}</span>
 			</div>	
@@ -79,58 +79,61 @@
 		<!-- Edit -->
 
 		<div class="edit-guardian-info" ng-show="editGuardian">
-			<div class="detail-breakdown">
-				<span class="detail-label">
-					<span class="required">*</span>
-					First Name</span>
-				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.FirstName" name="guardian_first_name" required maxlength="100" />
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				
-				<span class="detail-label">
-					<span class="required">*</span>
-					Last Name</span>
-				<span class="detail-value">
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.LastName" name="guardian_last_name" required maxlength="100"/>
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">
-					<span class="required">*</span>
-					Relationship</span>
-				<span class="detail-value">
-					<span class="radio-btn-wrapper wide">Mother
-						<input type="radio" class="form-control" ng-model="viewGuardianEdit.RelationShip" name="relationship_m" value="M" required/>
+			<form name="editGuardianForm">
+				<div class="detail-breakdown">
+					<span class="detail-label">
+						<span class="required">*</span>
+						First Name</span>
+					<span class="detail-value">
+						<input type="text" class="form-control" ng-model="viewGuardianEdit.FirstName" name="guardian_first_name" required maxlength="100" />
 					</span>
-					<span class="radio-btn-wrapper wide">Father
-						<input type="radio" class="form-control" ng-model="viewGuardianEdit.RelationShip" name="relationship_f" value="F" required/>
+				</div>
+				<div class="detail-breakdown">
+					
+					<span class="detail-label">
+						<span class="required">*</span>
+						Last Name</span>
+					<span class="detail-value">
+						<input type="text" class="form-control" ng-model="viewGuardianEdit.LastName" name="guardian_last_name" required maxlength="100"/>
 					</span>
-					<div class="clearfix"></div>
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">Legal Custody?</span>
-				<span class="detail-value">
-					<span class="radio-btn-wrapper">Yes
-						<input type="radio" class="form-control" ng-model="viewGuardianEdit.LegalCustody" name="has_custody_yes" value="Y" />
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">
+						<span class="required">*</span>
+						Relationship</span>
+					<span class="detail-value">
+						<span class="radio-btn-wrapper wide">Mother
+							<input type="radio" class="form-control" ng-model="viewGuardianEdit.RelationShip" name="relationship_m" value="M" required/>
+						</span>
+						<span class="radio-btn-wrapper wide">Father
+							<input type="radio" class="form-control" ng-model="viewGuardianEdit.RelationShip" name="relationship_f" value="F" required/>
+						</span>
+						<div class="clearfix"></div>
 					</span>
-					<span class="radio-btn-wrapper">No
-						<input type="radio" class="form-control" ng-model="viewGuardianEdit.LegalCustody" name="has_custody_no" value="N" />
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Legal Custody?</span>
+					<span class="detail-value">
+						<span class="radio-btn-wrapper">Yes
+							<input type="radio" class="form-control" ng-model="viewGuardianEdit.LegalCustody" name="has_custody_yes" value="Y" />
+						</span>
+						<span class="radio-btn-wrapper">No
+							<input type="radio" class="form-control" ng-model="viewGuardianEdit.LegalCustody" name="has_custody_no" value="N" />
+						</span>
+						<div class="clearfix"></div>
 					</span>
-					<div class="clearfix"></div>
-				</span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">Employer</span>
-				<span class="detail-value" >
-					<input type="text" class="form-control" ng-model="viewGuardianEdit.Employer" name="guardian_employer" maxlength="100" /></span>
-			</div>
-			<div class="detail-breakdown">
-				<span class="detail-label">Security PIN</span>
-				<span class="detail-value" > {{ viewGuardian.PIN }}</span>
-			</div>	
+				</div>
+				<div class="detail-breakdown">
+					<span class="detail-label">Employer</span>
+					<span class="detail-value" >
+						<input type="text" class="form-control" ng-model="viewGuardianEdit.Employer" name="guardian_employer" maxlength="100" /></span>
+				</div>
+				<div class="detail-breakdown hide">
+					<span class="detail-label">Security PIN</span>
+					<span class="detail-value" > {{ viewGuardian.PIN }}</span>
+				</div>	
+			
+
 		</div>
 		<!-- Edit -->
 
@@ -204,7 +207,6 @@
 
 		<!-- EDIT GUARDIAN ADDRESS -->
 		<div class="edit-guardian-address-wrapper" ng-show="editGuardian">
-			<form name="editGuardianForm">
 				<div class="detail-breakdown">
 					<span class="detail-label">Street</span>
 					<span class="detail-value">

@@ -19,6 +19,49 @@
 		position: relative;
 	}
 
+	#myCarousel.my-children-carousel{
+		margin-top: -25px;
+		height: 205px;
+		
+		img.child-photo{
+			margin: 5px auto;
+			height: 100px;
+		}
+
+		.child-name,
+		.child-dob{
+			display: block;
+			font-size: 16px;
+
+			label{
+				color: #529acd;
+				font-weight: bold;
+			}
+		}
+
+		.carousel-indicators{
+			position: relative;
+    		top: 0;
+		}
+
+		.left.carousel-control{
+			margin-left: 15%
+		}
+
+		.right.carousel-control{
+			margin-right: 15%
+		}
+
+		ol{
+			li{
+				margin-right: 5px;
+				height: 15px;
+				width: 15px;
+			}
+		}
+
+	}
+
 	.contact-container{
 		color: #ccc;
 		font-size: 16px;
@@ -40,6 +83,7 @@
 		.contact-wrap{
 			margin: 5px;
 			float: left;
+			display: flex;
 			.phone-wrapper{
 				margin: 5px 0px;
 			}

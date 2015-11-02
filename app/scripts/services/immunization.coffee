@@ -1,4 +1,4 @@
-'use strict'
+
 angular.module('kiteLineApp').service 'ImmunizationService', ($http, $q, $rootScope, toastr, $location) ->
   rootUrl =  $rootScope.rootUrl
   self = undefined

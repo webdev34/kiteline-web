@@ -1,4 +1,4 @@
-'use strict'
+
 angular.module('kiteLineApp').controller 'LoginCtrl', [
   '$scope'
   '$rootScope'
@@ -42,6 +42,7 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
       $rootScope.dataLoading = true
       $rootScope.centerId = $scope.centernameSearch.originalObject.CenterId
       ForgotPinService.sendForgottenPIN($scope.email, $rootScope.centerId).then (response) ->
+        $rootScope.dataLoading = false
   
     return
 ]

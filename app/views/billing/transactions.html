@@ -3,7 +3,7 @@
 	<div class="row">
         <div class="col-md-3">
             <div class="input-group">
-            	<p class="pull-left">Start Date</p>
+            	<p>Start Date</p>
         	 <datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{billDates.transactionStartDate}}" date-format="M/dd/yyyy">
 		        <input type="text" ng-model="billDates.transactionStartDate" class="transactionStartDate" ng-readonly="true">
 		      </datepicker>
@@ -16,7 +16,7 @@
 
         <div class="col-md-3">
             <div class="input-group">
-            	<p class="pull-left">End Date</p>
+            	<p>End Date</p>
           	 	<datepicker class="datepicker-wrapper" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-set="{{billDates.transactionEndDate}}" date-format="M/dd/yyyy">
 		        <input type="text" ng-model="billDates.transactionEndDate" class="transactionEndDate" ng-readonly="true" >
 		      </datepicker>
@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-1">
             <div class="input-group">
-                <button type="button" class="btn btn-primary" ng-class="{'waiting': billDates.querying}" ng-disabled="billDates.querying" ng-click="getTransactionsByDate(); billDates.querying = true;">Submit</button>
+                <button type="button" class="btn btn-primary margin-top-20" ng-class="{'waiting': billDates.querying}" ng-disabled="billDates.querying" ng-click="getTransactionsByDate(); billDates.querying = true;">Submit</button>
             </div>
         </div>
     </div>
