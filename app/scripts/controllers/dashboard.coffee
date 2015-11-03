@@ -27,6 +27,9 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.newMedicationObj = {}
   $scope.newAllergyObj = {}
   $scope.newImmunizationObj = {}
+  $scope.childrenMedicationInfo = []
+  $scope.childrenImmunizationInfo = []
+  $scope.childrenAllergyInfo = []
   $rootScope.changePageTitle()
   $scope.currentMedicalInfoView = 'Medications'
   $scope.medicalInfoDropdown = [
@@ -76,8 +79,12 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.deleteMedication = (medication) ->
     ChildService.deleteMedication(medication.ChildMedicationId).then (response) ->
       ChildService.getMedications(medication.ChildId).then (response) ->
-        $scope.childrenMedicationInfo = response.data
-        $scope.setPaginationMedicalInfo()
+        if response.data is null
+          $scope.childrenMedicationInfo = []
+        else
+          $scope.childrenMedicationInfo = response.data
+          $scope.childrenMedicationInfoPagination = Pagination.getNew()
+          $scope.childrenMedicationInfoPagination.numPages = Math.ceil($scope.childrenMedicationInfo.length / $scope.childrenMedicationInfoPagination.perPage)
 
   $scope.addNewAllergyFunc = () ->
     ChildService.addAllergy($scope.newAllergyObj, $scope.viewChild.ChildId).then (response) ->
@@ -93,8 +100,12 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.deleteAllergy = (allergy) ->
     ChildService.deleteAllergy(allergy.ChildAllergyId).then (response) ->
       ChildService.getAllergies(allergy.ChildId).then (response) ->
-        $scope.childrenAllergyInfo = response.data
-        $scope.setPaginationMedicalInfo()
+        if response.data is null
+          $scope.childrenAllergyInfo = []
+        else
+          $scope.childrenAllergyInfo = response.data
+          $scope.childrenAllergyInfoPagination = Pagination.getNew()
+          $scope.childrenAllergyInfoPagination.numPages = Math.ceil($scope.childrenAllergyInfo.length / $scope.childrenAllergyInfoPagination.perPage)
 
   $scope.addNewImmunizationFunc = () ->
     ImmunizationService.createImmunization($scope.newImmunizationObj, $scope.viewChild.ChildId).then (response) ->
@@ -110,8 +121,12 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.deleteImmunization = (immunization) ->
     ImmunizationService.deleteImmunization(immunization, $scope.viewChild.ChildId).then (response) ->
       ImmunizationService.getImmunizations(immunization.ChildId).then (response) ->
-        $scope.childrenImmunizationInfo = response.data
-        $scope.setPaginationMedicalInfo()
+        if response.data is null
+          $scope.childrenImmunizationInfo = []
+        else
+          $scope.childrenImmunizationInfo = response.data
+          $scope.childrenImmunizationInfoPagination = Pagination.getNew()
+          $scope.childrenImmunizationInfoPagination.numPages = Math.ceil($scope.childrenImmunizationInfo.length / $scope.childrenImmunizationInfoPagination.perPage)
 
   $scope.toggleNewMedicalInfo = (addNew) ->
     if addNew == 'medication'
@@ -206,7 +221,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
         $scope.editPickupList = false
         angular.forEach $scope.pickupList, (value, key) ->
           if value.ChildPickupId == $scope.viewPickupContactEdit.ChildPickupId
-            console.log 'here'
             $scope.goToPickupContact(value.ChildPickupId)
             $scope.changeActivePickupContact('pickup-contact-'+[key+1]);
 
@@ -263,22 +277,22 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
 
   $scope.getMedicalInfo = (childId) ->
     ChildService.getMedications(childId).then (response) ->
-      $scope.childrenMedicationInfo = response.data
-      if $scope.childrenMedicationInfo
+      if response.data isnt null
+        $scope.childrenMedicationInfo = response.data
         $scope.childrenMedicationInfoPagination = Pagination.getNew()
         $scope.childrenMedicationInfoPagination.numPages = Math.ceil($scope.childrenMedicationInfo.length / $scope.childrenMedicationInfoPagination.perPage)
-            
-    ChildService.getAllergies(childId).then (response) ->
-      $scope.childrenAllergyInfo = response.data
-      if $scope.childrenAllergyInfo
-        $scope.childrenAllergyInfoPagination = Pagination.getNew()
-        $scope.childrenAllergyInfoPagination.numPages = Math.ceil($scope.childrenAllergyInfo.length / $scope.childrenAllergyInfoPagination.perPage)
 
-    ImmunizationService.getImmunizations(childId, $rootScope.centerId).then (response) ->
-      $scope.childrenImmunizationInfo = response.data
-      if $scope.childrenImmunizationInfo
-        $scope.childrenImmunizationInfoPagination = Pagination.getNew()
-        $scope.childrenImmunizationInfoPagination.numPages = Math.ceil($scope.childrenImmunizationInfo.length / $scope.childrenImmunizationInfoPagination.perPage)
+      ChildService.getAllergies(childId).then (response) ->
+        if response.data isnt null
+          $scope.childrenAllergyInfo = response.data
+          $scope.childrenAllergyInfoPagination = Pagination.getNew()
+          $scope.childrenAllergyInfoPagination.numPages = Math.ceil($scope.childrenAllergyInfo.length / $scope.childrenAllergyInfoPagination.perPage)
+     
+        ImmunizationService.getImmunizations(childId, $rootScope.centerId).then (response) ->
+          if response.data isnt null
+            $scope.childrenImmunizationInfo = response.data
+            $scope.childrenImmunizationInfoPagination = Pagination.getNew()
+            $scope.childrenImmunizationInfoPagination.numPages = Math.ceil($scope.childrenImmunizationInfo.length / $scope.childrenImmunizationInfoPagination.perPage)
 
   $scope.goToChild = (childId, refreshingData, tabToShow) ->
     $scope.viewChild = $filter('filter')($scope.userChildren, (d) -> d.ChildId == childId)[0]

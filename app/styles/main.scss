@@ -1363,6 +1363,11 @@ body {
         float: right !important;
     }
 }
+@media (max-width: 768px) {
+    .sub-header-wrapper ul li img{
+        top: -8px !important;
+    }
+}
 
 @media (max-width: 800px) {
     .left-feature-container .detail-breakdown, 
@@ -1380,7 +1385,7 @@ body {
         }
     } 
     .sub-header-wrapper ul li img{
-        top: -8px;
+        top: 8px;
     }
 
     .dashboard-container .contact-container .col-md-12 {

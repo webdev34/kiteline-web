@@ -22,6 +22,7 @@ angular.module('kiteLineApp').service 'ForgotPinService', ($http, $q, $rootScope
       return
     ).error (data, status, headers, config) ->
       deferred.reject status
+      $rootScope.dataLoading = false
 
       if data.Message isnt null
         toastr.error data.Message, 'Error'
@@ -49,6 +50,7 @@ angular.module('kiteLineApp').service 'ForgotPinService', ($http, $q, $rootScope
       return
     ).error (data, status, headers, config) ->
       deferred.reject status
+      $rootScope.dataLoading = false
 
       if data.status == 200
         toastr.sucess '', data.data

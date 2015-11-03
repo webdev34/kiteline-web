@@ -59,7 +59,7 @@
 		    </table>
 		</div>
 
-		<nav class="pagination-wrapper text-center" ng-hide="addBankAccount" ng-show="bankAccounts.length > 5">
+		<nav class="pagination-wrapper text-center" ng-hide="addBankAccount || bankAccounts.length < 5" ng-show="bankAccounts.length > 5">
 			<span>
 				{{(bankAccountsPagination.page * bankAccountsPagination.perPage)+1}}
 			</span>
@@ -156,7 +156,7 @@
 			    </tbody>
 		    </table>
 			</div>
-			<nav class="pagination-wrapper text-center" ng-hide="addCreditCard" ng-show="creditCardAccounts.length > 5">
+			<nav class="pagination-wrapper text-center" ng-hide="addCreditCard || creditCardAccounts.length < 5" ng-show="creditCardAccounts.length > 5">
 				<span>
 					{{(creditCardAccountsPagination.page * creditCardAccountsPagination.perPage)+1}}
 				</span>

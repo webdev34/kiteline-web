@@ -47,9 +47,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   $rootScope.sortOrderBy = 'PaymentDate'
   $rootScope.invoiceGrandTotal = 0
   $rootScope.invoicesArray = []
-  $scope.childrenMedicationInfo = []
-  $scope.childrenImmunizationInfo = []
-  $scope.childrenAllergyInfo = []
 
   d = new Date
   $scope.billDates = {}
@@ -464,16 +461,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       $rootScope.creditCardAccountsPagination = Pagination.getNew()
       $rootScope.creditCardAccountsPagination.numPages = Math.ceil($rootScope.creditCardAccounts.length / $scope.creditCardAccountsPagination.perPage)
     
-  $scope.setPaginationMedicalInfo = () ->
-    $scope.childrenMedicationInfoPagination = Pagination.getNew(3)
-    $scope.childrenMedicationInfoPagination.numPages = Math.ceil($scope.childrenMedicationInfo.length / $scope.childrenMedicationInfoPagination.perPage)
-    
-    $scope.childrenAllergyInfoPagination = Pagination.getNew()
-    $scope.childrenAllergyInfoPagination.numPages = Math.ceil($scope.childrenAllergyInfo.length / $scope.childrenAllergyInfoPagination.perPage)
-
-    $scope.childrenImmunizationInfoPagination = Pagination.getNew()
-    $scope.childrenImmunizationInfoPagination.numPages = Math.ceil($scope.childrenImmunizationInfo.length / $scope.childrenImmunizationInfoPagination.perPage)
-
   $rootScope.isMobileFunc = () ->
     if sessionStorage.desktop
       return false
