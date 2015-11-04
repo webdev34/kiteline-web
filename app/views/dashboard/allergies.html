@@ -1,5 +1,8 @@
 <div class="table-wrapper allergy-table" ng-show="!newAllergy || !editAllergy" ng-hide="newAllergy || editAllergy || editMedicalInfo" >
-	<a class="add-btn add-allergies-btn" ng-click="toggleNewMedicalInfo('allergy')">+ Add Allergy</a>
+	<button class="btn btn-primary margin-bottom-10 add-btn add-allergies-btn pull-right" ng-click="toggleNewMedicalInfo('allergy')">+ Add Allergy</button>
+
+
+	<div class="clearfix"></div>
 	
 	<div class="table-wrap">
 		<table class="table">
@@ -31,7 +34,10 @@
 						<span ng-if="allergy.Severity == 'M'">Mild</span>
 
 					</td>
-					<td>{{allergy.Action}}</td>
+					<td>
+						<span ng-show="allergy.Action.length == 0">N/A</span>
+						<span ng-show="allergy.Action.length > 0">{{allergy.Action}}</span>
+					</td>
 					<td class="pull-right">
 						<a class="edit" title="Edit Allergy" ng-click="toggleEditMedicalInfo('allergy', allergy);">
 							<i class="fa fa-pencil-square-o"></i>
@@ -126,7 +132,7 @@
 			<!-- Button -->
 			<div class="control-group button-wrapper">
 				<div class="controls">
-					<button id="addNewAllergy" name="addNewAllergy" class="btn btn-primary" ng-disabled="addNewAllergyForm.$invalid" ng-click="addNewAllergyFunc()" >
+					<button id="addNewAllergy" name="addNewAllergy" class="btn btn-primary" ng-disabled="addNewAllergyForm.$invalid || buttonDisable" ng-click="addNewAllergyFunc()" >
 					<i class="fa fa-plus"></i>
 					Add Allergy
 					</button>
@@ -180,7 +186,7 @@
 			<!-- Button -->
 			<div class="control-group button-wrapper">
 				<div class="controls">
-					<button id="editAllergy" name="editAllergy" class="btn btn-primary" ng-disabled="editAllergyForm.$invalid" ng-click="editAllergyFunc()" >
+					<button id="editAllergy" name="editAllergy" class="btn btn-primary" ng-disabled="editAllergyForm.$invalid || buttonDisable" ng-click="editAllergyFunc()" >
 					<i class="fa fa-plus"></i>
 					Edit Allergy
 					</button>

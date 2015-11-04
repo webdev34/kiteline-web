@@ -186,7 +186,7 @@
 <div class="control-group">
   <label class="control-label" for="addCreditCard"></label>
   <div class="controls">
-    <button id="addBankAccount" name="addBankAccount" class="btn btn-primary" ng-click="submitNewAccount('Bank', addBankForm);" ><i class="fa fa-plus"></i> 
+    <button id="addBankAccount" ng-disabled="buttonDisable" name="addBankAccount" class="btn btn-primary" ng-click="submitNewAccount('Bank', addBankForm);" ><i class="fa fa-plus"></i> 
       Add Bank Account
     </button>
     <button id="cancelCreditCard" name="addCreditCard" class="btn btn-danger" ng-click="resetAccountForm('Bank', addBankForm);" ><i class="fa fa-times"></i> Cancel</button>

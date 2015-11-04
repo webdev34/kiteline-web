@@ -1,5 +1,6 @@
 <div class="table-wrapper immunization-table" ng-show="!newImmunization || !editImmunization" ng-hide="newImmunization || editImmunization || editMedicalInfo" >
-	<a class="add-btn add-immunization-btn" ng-click="toggleNewMedicalInfo('immunization')">+ Add Immunization</a>
+	<button class="btn btn-primary add-btn add-immunization-btn pull-right margin-bottom-10" ng-click="toggleNewMedicalInfo('immunization')">+ Add Immunization</button>
+	<div class="clearfix"></div>
 	<div class="table-wrap">
 		<table class="table">
 			<thead>
@@ -30,7 +31,10 @@
 				</tr>
 				<tr ng-animate="'animate'" data-ng-repeat="immunization in childrenImmunizationInfo |  orderBy:sortOrderBy:reverse | startFrom: childrenImmunizationInfoPagination.page * childrenImmunizationInfoPagination.perPage | limitTo: childrenImmunizationInfoPagination.perPage">
 					<td>{{immunization.ImmunizationName}}</td>
-					<td class="description">{{immunization.Description}}</td>
+					<td class="description">
+						<span ng-show="immunization.Description.length == 0">N/A</span>
+						<span ng-show="immunization.Description.length > 0">{{immunization.Description}}</span>
+					</td>
 					<td>{{immunization.Doses}}</td>
 					<td>{{immunization.DateReceived | date}}</td>
 					<td>{{immunization.ExpiryDate | date}}</td>
@@ -142,7 +146,7 @@
 			<!-- Button -->
 			<div class="control-group button-wrapper">
 				<div class="controls">
-					<button id="addNewImmunization" name="addNewImmunization" class="btn btn-primary" ng-disabled="addNewImmunizationForm.$invalid" ng-click="addNewImmunizationFunc()" >
+					<button id="addNewImmunization" name="addNewImmunization" class="btn btn-primary" ng-disabled="addNewImmunizationForm.$invalid || buttonDisable" ng-click="addNewImmunizationFunc()" >
 					<i class="fa fa-plus"></i>
 					Add Immunization
 					</button>
@@ -216,7 +220,7 @@
 			<!-- Button -->
 			<div class="control-group button-wrapper">
 				<div class="controls">
-					<button id="editImmunization" name="editImmunization" class="btn btn-primary" ng-disabled="editImmunizationForm.$invalid" ng-click="editImmunizationFunc()" >
+					<button id="editImmunization" name="editImmunization" class="btn btn-primary" ng-disabled="editImmunizationForm.$invalid || buttonDisable" ng-click="editImmunizationFunc()" >
 					<i class="fa fa-plus"></i>
 					Edit Immunization
 					</button>

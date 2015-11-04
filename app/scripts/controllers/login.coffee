@@ -8,6 +8,7 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
   'ForgotPinService'
   'toastr'
   ($scope, $rootScope, $location, LogInService, CenterInfoService, ForgotPinService, StorageService, toastr) ->
+    $rootScope.currentView = 'Login'
     $rootScope.isLoggedIn = false
     $rootScope.isLoginPage = true
     $rootScope.showLogIn = true
@@ -18,8 +19,15 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
     $scope.requestSent = false
     $scope.currentActive = 0
     $rootScope.centernameSearch = null
-    LogInService.isLoggedIn()
+    # LogInService.isLoggedIn()
     $rootScope.changePageTitle()
+    
+
+    setTimeout (->
+        $rootScope.isLoading = false
+        return
+      ), 1000
+
 
     $scope.requestUpgrade = (centerId, familyId) ->
       LogInService.sendRequestEmail(centerId, familyId).then (response) ->

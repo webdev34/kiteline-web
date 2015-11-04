@@ -2,6 +2,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
   LogInService.isLoggedIn()
+  $rootScope.currentView = 'Billing'
   $scope.currentTab = 'Overview'
   $rootScope.addBankAccount = false
   $rootScope.newBankAccount = {}

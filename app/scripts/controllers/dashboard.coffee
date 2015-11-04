@@ -1,6 +1,7 @@
 angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $filter, $location, ngDialog, StorageService, LogInService, ChildService, CurbSideService, DailyActivityFeedService, GuardianService, ContactService, ChildPickupService, ImmunizationService, Pagination) ->
   
   $rootScope.startSpin()
+  $rootScope.currentView = 'Dashboard'
   $rootScope.isLoginPage = false
   $scope.showItemsMenu = false
   LogInService.isLoggedIn()
@@ -17,7 +18,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
   $scope.editImmunization = false
   $scope.newImmunization = false
   $scope.newPickupContact = false
-  $scope.buttonDisable = false
   $scope.currentLowerTab = "Updates"
   $scope.activeChild = "child-1"
   $scope.activeGuardian = "guardian-1"
@@ -66,15 +66,20 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     $scope.newImmunization = false
 
   $scope.addNewMedicationFunc = () ->
+    $rootScope.makingAjaxCallFunc(true) 
     ChildService.addMedication($scope.newMedicationObj, $scope.viewChild.ChildId).then (response) ->
       $scope.getMedicalInfo($scope.viewChild.ChildId)
       $scope.newMedication = false
       $scope.newMedicationObj = {}
+      $rootScope.makingAjaxCallFunc(false) 
 
   $scope.editMedicationFunc = () ->
+    $rootScope.makingAjaxCallFunc(true) 
     ChildService.updateMedication($scope.editMedicationObj, $scope.viewChild.ChildId).then (response) ->
       $scope.getMedicalInfo($scope.viewChild.ChildId)
       $scope.editMedication = false
+      $rootScope.makingAjaxCallFunc(true) 
+
 
   $scope.deleteMedication = (medication) ->
     ChildService.deleteMedication(medication.ChildMedicationId).then (response) ->
@@ -87,15 +92,19 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
           $scope.childrenMedicationInfoPagination.numPages = Math.ceil($scope.childrenMedicationInfo.length / $scope.childrenMedicationInfoPagination.perPage)
 
   $scope.addNewAllergyFunc = () ->
+    $rootScope.makingAjaxCallFunc(true) 
     ChildService.addAllergy($scope.newAllergyObj, $scope.viewChild.ChildId).then (response) ->
       $scope.getMedicalInfo($scope.viewChild.ChildId)
       $scope.newAllergy = false
       $scope.newAllergyObj = {}
+      $rootScope.makingAjaxCallFunc(false) 
 
   $scope.editAllergyFunc = () ->
+    $rootScope.makingAjaxCallFunc(true) 
     ChildService.updateAllergy($scope.editAllergyObj, $scope.viewChild.ChildId).then (response) ->
       $scope.getMedicalInfo($scope.viewChild.ChildId)
       $scope.editAllergy = false
+      $rootScope.makingAjaxCallFunc(false) 
 
   $scope.deleteAllergy = (allergy) ->
     ChildService.deleteAllergy(allergy.ChildAllergyId).then (response) ->
@@ -108,15 +117,19 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
           $scope.childrenAllergyInfoPagination.numPages = Math.ceil($scope.childrenAllergyInfo.length / $scope.childrenAllergyInfoPagination.perPage)
 
   $scope.addNewImmunizationFunc = () ->
+    $rootScope.makingAjaxCallFunc(true) 
     ImmunizationService.createImmunization($scope.newImmunizationObj, $scope.viewChild.ChildId).then (response) ->
       $scope.getMedicalInfo($scope.viewChild.ChildId)
       $scope.newImmunization = false
       $scope.newImmunizationObj = {}
+      $rootScope.makingAjaxCallFunc(false) 
   
   $scope.editImmunizationFunc = () ->
+    $rootScope.makingAjaxCallFunc(true) 
     ImmunizationService.updateImmunization($scope.editImmunizationObj, $scope.viewChild.ChildId).then (response) ->
       $scope.getMedicalInfo($scope.viewChild.ChildId)
       $scope.editImmunization = false
+      $rootScope.makingAjaxCallFunc(false) 
 
   $scope.deleteImmunization = (immunization) ->
     ImmunizationService.deleteImmunization(immunization, $scope.viewChild.ChildId).then (response) ->
@@ -182,6 +195,16 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.newPickupContact = !$scope.newPickupContact
       $scope.viewPickupContactNew = {}
 
+  $scope.resetSection = () ->
+    $scope.editMedicalInfo = false
+    $scope.editGuardian = false
+    $scope.editContact = false
+    $scope.editPickupList = false
+    $scope.newMedication = false
+    $scope.newAllergy = false
+    $scope.newImmunization = false
+    $scope.newPickupContact = false
+    
   $scope.deleteEmergencyContact = (contactId) ->
     ContactService.deleteContact(contactId, $rootScope.centerId).then (response) ->
       $scope.getContactData(false)
@@ -193,16 +216,16 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $scope.activePickupContact = "pickup-contact-1"
 
   $scope.newPickupListContact = () ->
-    $scope.buttonDisable = true
+    $rootScope.makingAjaxCallFunc(true) 
     ChildPickupService.addChildPickUpRecord($scope.viewPickupContactNew, $scope.viewChild.ChildId).then (response) ->
       $scope.getPickListData(true, false)
-      $scope.buttonDisable = false
+      $rootScope.makingAjaxCallFunc(false)
       $scope.newPickupContact = false
       thisIndex = $scope.pickupList.length+1
       $scope.changeActivePickupContact('pickup-contact-'+thisIndex)
 
   $scope.editMedInfo = () ->
-    $scope.buttonDisable = true
+    $rootScope.makingAjaxCallFunc(true)
     ChildService.updateChildMedInfo($scope.viewChildMedicalInfoEdit).then (response) ->
       ChildService.getChildMedInfo($scope.viewChildMedicalInfoEdit.ChildId).then (response) ->
         $scope.childrenMedicalInfo = []
@@ -211,14 +234,14 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
         $scope.viewChildMedicalInfoEdit = angular.copy $scope.viewChildMedicalInfo
         $scope.viewChildMedicalInfoEdit.PhysicalDate = $filter('date') $scope.viewChildMedicalInfoEdit.PhysicalDate, 'M/dd/yyyy'
         $scope.editMedicalInfo = false
-        $scope.buttonDisable = false
+        $rootScope.makingAjaxCallFunc(false)
 
   $scope.editPickupContactInfo = () ->
-    $scope.buttonDisable = true
+    $rootScope.makingAjaxCallFunc(true)
     ChildPickupService.updateChildPickupInfo($scope.viewChild.ChildId, $scope.viewPickupContactEdit).then (response) ->
       $scope.getPickListData(true, $scope.viewPickupContactEdit.ChildPickupId).then (response) ->
-        $scope.buttonDisable = false
         $scope.editPickupList = false
+        $rootScope.makingAjaxCallFunc(false)
         angular.forEach $scope.pickupList, (value, key) ->
           if value.ChildPickupId == $scope.viewPickupContactEdit.ChildPickupId
             $scope.goToPickupContact(value.ChildPickupId)
@@ -226,14 +249,18 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
 
   $scope.changeActivePickupContact = (activePickupContact) ->
     $scope.activePickupContact = activePickupContact
+    $scope.resetSection();
 
   $scope.changeActiveEmergencyContact = (activeEmergencyContact) ->
     $scope.activeEmergencyContact = activeEmergencyContact
+    $scope.resetSection();
 
   $scope.changeActiveGuardian = (activeGuardian) ->
     $scope.activeGuardian = activeGuardian
+    $scope.resetSection();
 
   $scope.changeActiveChild = (activeChild, direction) ->
+    $scope.resetSection();
     if activeChild isnt false
       $scope.activeChild = activeChild
     else
@@ -247,6 +274,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
 
   $scope.changeActiveLowerTab = (activeTab) ->
     $scope.currentLowerTab = activeTab
+    $scope.resetSection();
   
   $scope.getChildrenData = (refreshingData) ->
     CurbSideService.getAllChildren($rootScope.centerId, $rootScope.familyId).then (response) ->
@@ -327,14 +355,14 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
       $rootScope.headOfHouseHold = $scope.viewGuardian
 
   $scope.editGuardianInfo = () ->
-    $scope.buttonDisable = true
+    $rootScope.makingAjaxCallFunc(true)
     GuardianService.updatePersonalInfo($scope.viewGuardianEdit)
     GuardianService.updateMailingAddress($scope.viewGuardianEdit)
     GuardianService.updateContactInfo($scope.viewGuardianEdit).then (response) ->
       $rootScope.getGuardianData(true)
       $scope.goToGuardian($scope.viewGuardianEdit.GuardianId)
       $scope.editGuardian = false
-      $scope.buttonDisable = false
+      $rootScope.makingAjaxCallFunc(false)
 
   $scope.goToEmergencyContact = (contactId) ->
     ContactService.getContact(contactId).then (response) ->
@@ -344,14 +372,14 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
         $scope.viewEmergencyContactEdit.Pin = null
 
   $scope.editContactInfo = () ->
-    $scope.buttonDisable = true
+    $rootScope.makingAjaxCallFunc(true)
     ContactService.updatePersonalInfo($scope.viewEmergencyContactEdit)
     ContactService.updateMailingAddress($scope.viewEmergencyContactEdit)
     ContactService.updateContactInfo($scope.viewEmergencyContactEdit).then (response) ->
       $scope.getContactData(true)
       $scope.goToEmergencyContact($scope.viewEmergencyContactEdit.EmergencyContactId)
       $scope.editContact = false
-      $scope.buttonDisable = false
+      $rootScope.makingAjaxCallFunc(false)
 
   $scope.goToPickupContact = (contactId) ->
     $scope.viewPickupContact = $filter('filter')($scope.pickupList, (d) -> d.ChildPickupId == contactId)[0]  

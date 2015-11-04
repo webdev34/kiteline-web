@@ -16,14 +16,32 @@ $bkgd-blue: #064c70;
 html {
     height: 100%;
     width: 100%;
+
+
     &.tablet{
         //display: flex;   
     }
+    
+    body.skychildcare.Billing,
+    body.skychildcare.Dashboard,
+    body.skychildcare.Forms{
+        background: $bkgd-blue;
+        background-image: none;
+        footer.footer{
+            display: block;
+        }
+    }
+
+
     body {
         height: 100%;
         padding: 0;
-        background: $bkgd-blue;
         font-family: concourse_t4regular;
+        background-color: #4b7eb7;
+
+        footer.footer{
+            display:none;
+        }
         button {
             .fa {
                 font-size: inherit !important;
@@ -31,6 +49,13 @@ html {
                 margin: 0px !important;
             }
             &.dead:hover{
+                cursor: not-allowed;
+                pointer-events: all;
+            }
+        }
+        .btn-primary[disabled]{
+            pointer-events: all;
+            &:hover{
                 cursor: not-allowed;
             }
         }
@@ -71,8 +96,7 @@ html {
                 color: gold !important;
             }
             &.fa-paper-plane{
-                color: $dark-blue !important;
-                
+                color: $dark-blue !important;  
             }
             &.fa-caret-up,
             &.fa-caret-down{
@@ -88,6 +112,13 @@ html {
                 }
                 &.dead{
                     visibility: hidden;
+                }
+            }
+
+            &.fa-exchange{
+                font-size: 18px;
+                &:before{
+                    color: darkgreen !important;
                 }
             }
         }
@@ -223,13 +254,18 @@ html {
                 border-bottom: thin solid #ccc;
             }
             th{
-                &.instructions{
-                    width: 35%;
-                }
+               
             }
             td{
-                 &.instructions{
-                   
+                &.instructions
+                {
+                    width: 150px;
+                }
+                &.description{
+                    width: 200px;
+                }
+                &.action{
+                    width: 250px;
                 }
             }
         }
@@ -381,7 +417,7 @@ input.ng-invalid-minlength{
 }
 
 .white-bg {
-    background-color: #fffff8;
+    background-color: #ffffff;
 }
 
 .logo {
@@ -417,8 +453,7 @@ h1, h2, h3 {
 .sub-header-wrapper {
     float: left;
     width: 100%;
-    margin-top: 35px;
-    margin-bottom: 20px;
+    margin: 35px 0px;
     background-color: #07405e;
     min-height: 60px;
     .greeting {
@@ -1101,7 +1136,10 @@ body {
 .margin-top-15 { margin-top: 15px !important; }
 .margin-top-20 { margin-top: 20px !important; }
 .margin-top-25 { margin-top: 25px !important; }
-.margin-bottom-0 { margin-top: 0px !important; }
+.margin-bottom-0 { margin-bottom: 0px !important; }
+.margin-bottom-10 { margin-bottom: 10px !important; }
+.margin-bottom-15 { margin-bottom: 15px !important; }
+.margin-bottom-25 { margin-bottom: 25px !important; }
 .margin-left-5{ margin-left: 5px; }
 .margin-left-10{ margin-left: 10px; }
 .margin-left-15{ margin-left: 15px; }
@@ -1171,7 +1209,8 @@ body {
 
 .fa-times.red{
     background-color: red;
-    padding: 3px !important;
+    padding: 5px 6px !important;
+    font-size: 18px !important;
     &:before,
     &:after{
         color: white !important;
@@ -1225,6 +1264,13 @@ body {
     position: relative;
     &:hover .kiteline-tooltip{
         visibility: visible;
+    }
+
+    &.invoices-breakdown{
+        .kiteline-tooltip{
+            top: -35px;
+            text-indent: 5px;
+        }
     }
 
     .kiteline-tooltip{
@@ -1389,8 +1435,11 @@ body {
     }
 
     .dashboard-container .contact-container .col-md-12 {
-        width: 100% !important;
+        //width: 100% !important;
         margin-bottom: 15px;
+        a,span, p{
+            font-size: 14px;
+        }
     }
 
     .left-feature-container ul.nav.nav-tabs {
@@ -1471,11 +1520,13 @@ body {
                
                 text-align: center;
                 font-size: 14px;
+                    min-width: 120px;
 
                 i.fa,
                 i.glyphicon{
                     font-size: 12px;
                     margin-right: 2%;
+                    display: none;
                 }
             }
         }
@@ -1516,8 +1567,8 @@ body {
      .lower-container-dashboard{
         .medications-table{
             a.edit{
-                top: 0 !important;
-                right: -6px !important
+                // top: 0 !important;
+                // right: -6px !important
             }
         }
     }
@@ -1532,13 +1583,31 @@ body {
 
 }
 
+@media (min-width: 992px){
+    body .col-md-6 {
+        width: 100%;
+    }
+    // body .invoices-breakdown-wrapper .row .col-md-5 {
+    //     width: 41.66666667%;
+    // }
+}
+
 @media (max-width: 1200px) {
+
+    html body .table-wrapper, 
+    html body .table-wrapper.longer {
+        min-height: auto;
+    }
     .left-feature-container.col-md-8.white-bg{
         width: 100%;
     }
     .right-feature-container.col-md-4{
         width: 100%;
+        .outstanding-balance-container .payment-btn {
+            width: 30%;
+        }
     }
+
     .dashboard-container .contact-container{
         .col-md-12{
             width: 32%;
@@ -1593,15 +1662,15 @@ body {
    .lower-container-dashboard{
         .medications-table{
             a.edit{
-                position: relative;
-                top: 2px;
-                right: 3px;
+                // position: relative;
+                // top: 2px;
+                // right: 3px;
             }
         }
         .guardian-detail-wrapper h2, 
         .emergency-contact-detail-wrapper h2, 
         .medical-info-edit h2 {
-            margin-left: 4%;
+            //margin-left: 4%;
         }  
     }
 
@@ -1617,7 +1686,8 @@ body {
             .row{
                 margin-top: 15px;
                 float: left;
-                div{
+                .col-md-3,
+                .input-group{
                      width: auto;
                     float: left;
                     margin-top: 10px;
@@ -1625,6 +1695,11 @@ body {
                         width: 8%;
                     }
                 }
+                .col-md-1{
+                    float: left;
+                    margin-top: 12px;
+                }
+
             }
         }
     }
@@ -1634,7 +1709,7 @@ body {
             float: left;
             div{
                 //width: 40%;
-                width: auto;
+                //width: auto;
                 float: left;
                 &.col-md-1{
                     width: 8%;

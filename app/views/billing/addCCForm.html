@@ -175,7 +175,7 @@
   <div class="control-group">
     <label class="control-label" for="addCreditCard"></label>
     <div class="controls">
-      <button id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC', addCCForm); currentCardType(addCCForm.AccountNumber.$ccType);" ><i class="fa fa-plus"></i> 
+      <button id="addCreditCard" ng-disabled="buttonDisable" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC', addCCForm); currentCardType(addCCForm.AccountNumber.$ccType);" ><i class="fa fa-plus"></i> 
         Add Card</button>
       <button id="cancelCreditCard" name="cancelCreditCard" class="btn btn-danger" ng-click="resetAccountForm('CC', addCCForm);" ><i class="fa fa-times"></i> Cancel</button>
     </div>

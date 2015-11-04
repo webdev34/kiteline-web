@@ -9,7 +9,8 @@
 			<toggle-switch ng-model="bank_auto_pay" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch>
 		</p>-->
 		<div class="clearfix"></div>
-		<button class="pull-left btn btn-primary" ng-click="addAccount('Bank')"><i class="fa fa-plus"></i>  Add New</button>
+		<button class="pull-left btn btn-primary" ng-click="addAccount('Bank')" ng-disabled="bankAccounts.length > 3"><i class="fa fa-plus"></i>  Add New</button>
+		<p ng-show="bankAccounts.length > 3" class="red pull-left margin-top-10 margin-left-10">No more than 4 Bank Accounts</p>
 		<div class="clearfix"></div>
 		<div class="table-wrapper shorter" ng-hide="addBankAccount">
           <table class="table" >
@@ -59,7 +60,7 @@
 		    </table>
 		</div>
 
-		<nav class="pagination-wrapper text-center" ng-hide="addBankAccount || bankAccounts.length < 5" ng-show="bankAccounts.length > 5">
+		<nav class="pagination-wrapper text-center hide" ng-hide="addBankAccount || bankAccounts.length < 5" ng-show="bankAccounts.length > 5">
 			<span>
 				{{(bankAccountsPagination.page * bankAccountsPagination.perPage)+1}}
 			</span>
@@ -102,7 +103,8 @@
 			<toggle-switch ng-model="credit_card_auto_pay" class="switch-success auto-pay-toggle-btn" on-label="On" off-label="Off"></toggle-switch> 
 		</p>-->
 		<div class="clearfix"></div>
-		<button class="pull-left btn btn-primary" ng-click="addAccount('CC')"><i class="fa fa-plus"></i>  Add New</button>
+		<button class="pull-left btn btn-primary" ng-click="addAccount('CC')" ng-disabled="creditCardAccounts.length > 3"><i class="fa fa-plus"></i>  Add New</button>
+		<p ng-show="creditCardAccounts.length > 3" class="red pull-left margin-top-10 margin-left-10">No more than 4 Debit/Credit Cards</p>
 		<div class="clearfix"></div>
 		<div class="table-wrapper shorter" ng-hide="addCreditCard">
           <table class="table" >

@@ -2,6 +2,7 @@ angular.module('kiteLineApp').controller 'FormsCtrl', ($scope, $rootScope, $filt
   $rootScope.changePageTitle()
   $rootScope.startSpin()
   $rootScope.isLoginPage = false
+  $rootScope.currentView = 'Forms'
   LogInService.isLoggedIn()
 
   if StorageService.getItem('currentCenter')

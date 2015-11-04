@@ -24,6 +24,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   else if window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
     $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
 
+  $rootScope.buttonDisable = false
   $rootScope.isTablet = false
   $rootScope.pageTitle = ' '
   $rootScope.paymentGreaterThanAmount = false
@@ -94,6 +95,9 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
   $rootScope.showLogOutFunc = () ->
     $rootScope.showLogOut = true
+
+  $rootScope.makingAjaxCallFunc = (state) ->
+    $rootScope.buttonDisable = state
 
   $rootScope.logOut = () ->
     $rootScope.showLogOut = false
@@ -217,6 +221,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       form.$setPristine() ;
 
   $rootScope.submitNewAccount = (type, form) ->
+    $rootScope.makingAjaxCallFunc(true)
     if type == 'CC'
       thisYear = String($rootScope.expireDates.year)
       thisYear = thisYear[2] + thisYear[3]
@@ -246,6 +251,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
 
   $rootScope.resetAccountForm = (type, form) ->
       $rootScope.paymentGreaterThanAmount = false
+      $rootScope.makingAjaxCallFunc(false)
       if type == 'CC'
         $rootScope.addCreditCard = false
         $rootScope.newCC = {}

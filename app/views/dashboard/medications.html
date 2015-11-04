@@ -1,5 +1,7 @@
 <div class="table-wrapper medications-table" ng-show="!newMedication || !editMedication" ng-hide="newMedication || editMedication || editMedicalInfo" >
-	<a class="add-btn add-medications-btn" ng-click="toggleNewMedicalInfo('medication')">+ Add Medication</a>
+	<button class="btn btn-primary add-btn add-medications-btn pull-right margin-bottom-10" ng-click="toggleNewMedicalInfo('medication')">+ Add Medication</button>
+
+	<div class="clearfix"></div>
 	<div class="table-wrap">
 		<table class="table">
 			<thead>
@@ -41,8 +43,11 @@
 					<td>{{medication.StartDate | date}}</td>
 					<td>{{medication.EndDate | date}}</td>
 					<td>{{medication.Expiration | date}}</td>
-					<td class="instructions">{{medication.Instructions}}</td>
-					<td>
+					<td class="instructions">
+						<span ng-show="medication.Instructions.length == 0">N/A</span>
+						<span ng-show="medication.Instructions.length > 0">{{medication.Instructions}}</span>
+					</td>
+					<td class="edit-td">
 						<a class="edit" title="Edit Medication" ng-click="toggleEditMedicalInfo('medication', medication);">
 							<i class="fa fa-pencil-square-o"></i>
 						</a>
@@ -163,7 +168,7 @@
 			<!-- Button -->
 			<div class="control-group button-wrapper">
 				<div class="controls">
-					<button id="addNewMedication" name="addNewMedication" class="btn btn-primary" ng-disabled="addNewMedicationForm.$invalid" ng-click="addNewMedicationFunc()" >
+					<button id="addNewMedication" name="addNewMedication" class="btn btn-primary" ng-disabled="addNewMedicationForm.$invalid || buttonDisable" ng-click="addNewMedicationFunc()" >
 					<i class="fa fa-plus"></i>
 					Add Medication
 					</button>
@@ -249,7 +254,7 @@
 			<!-- Button -->
 			<div class="control-group button-wrapper">
 				<div class="controls">
-					<button id="editMedication" name="editMedication" class="btn btn-primary" ng-disabled="editMedicationForm.$invalid" ng-click="editMedicationFunc()" >
+					<button id="editMedication" name="editMedication" class="btn btn-primary" ng-disabled="editMedicationForm.$invalid || buttonDisable" ng-click="editMedicationFunc()" >
 					<i class="fa fa-plus"></i>
 					Edit Medication
 					</button>
