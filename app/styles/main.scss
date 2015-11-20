@@ -16,10 +16,23 @@ $bkgd-blue: #064c70;
 html {
     height: 100%;
     width: 100%;
-
-
+    
     &.tablet{
         //display: flex;   
+    }
+
+    &.Billing,
+    &.Forms,
+    &.Dashboard{
+        header.header,
+        footer.footer{
+            visibility: visible;
+        }
+    }
+
+    header.header,
+    footer.footer{
+        visibility: hidden;
     }
     
     body.skychildcare.Billing,
@@ -267,6 +280,9 @@ html {
                 &.action{
                     width: 250px;
                 }
+                &.edit-td{
+                    width: 60px;
+                }
             }
         }
         .table.shadow {
@@ -389,7 +405,7 @@ input.ng-invalid-maxlength,
 input.ng-invalid-minlength{
     border-color: red !important;
     outline-color: red !important;
-    background-color: #f66;
+    background-color: #f66 !important;
     color: white !important;
 }
 
@@ -472,6 +488,7 @@ h1, h2, h3 {
             }
             .center-info{
                 margin-top: 11px;
+                text-transform: capitalize;
             }
             span{
                 margin-top: 18px;
@@ -893,10 +910,6 @@ h1, h2, h3 {
     }
 }
 
-// .ng-enter.ng-enter-active {
-//   opacity:1;
-// }
-
 .box-shadow-container {
     @include box-shadow(4px 3px 8px 0px rgba(166, 166, 166, 0.5));
 }
@@ -975,8 +988,17 @@ body {
     .fa {
         font-size: 16px;
     }
+    ._720kb-datepicker-calendar-header a:hover{
+        background-color: transparent;
+        i.fa{
+            color: white;
+        }
+    }
     ._720kb-datepicker-calendar-years-pagination {
         background-color: white;
+        a:hover{
+            font-size: 16px !important;
+        }
     }
     ._720kb-datepicker-calendar-years-pagination-pages {
         .fa {
@@ -1410,9 +1432,16 @@ body {
     }
 }
 @media (max-width: 768px) {
-    .sub-header-wrapper ul li img{
-        top: -8px !important;
-    }
+    .sub-header-wrapper ul li{
+        &.pull-right{
+            width: 100%;
+        }
+        img{
+            top: -8px !important;
+            float: right;
+        }
+
+    } 
 }
 
 @media (max-width: 800px) {
@@ -1509,10 +1538,6 @@ body {
 
 @media (max-width: 875px) {
 
-    .sub-header-wrapper ul li img {
-       // top: -9px;
-    }
-
     .left-feature-container ul.nav.nav-tabs {
         li{
             margin-left: .5% !important;
@@ -1520,7 +1545,7 @@ body {
                
                 text-align: center;
                 font-size: 14px;
-                    min-width: 120px;
+                min-width: 100px;
 
                 i.fa,
                 i.glyphicon{
@@ -1564,15 +1589,6 @@ body {
 
 @media (max-width: 990px) {
 
-     .lower-container-dashboard{
-        .medications-table{
-            a.edit{
-                // top: 0 !important;
-                // right: -6px !important
-            }
-        }
-    }
-
     .dates-input-wrapper .col-md-3{
         width: auto;
     }
@@ -1583,13 +1599,10 @@ body {
 
 }
 
-@media (min-width: 992px){
+@media (max-width: 1110px){
     body .col-md-6 {
         width: 100%;
     }
-    // body .invoices-breakdown-wrapper .row .col-md-5 {
-    //     width: 41.66666667%;
-    // }
 }
 
 @media (max-width: 1200px) {
@@ -1658,21 +1671,6 @@ body {
         min-height: 1055px;
         overflow: auto;
     }
-   
-   .lower-container-dashboard{
-        .medications-table{
-            a.edit{
-                // position: relative;
-                // top: 2px;
-                // right: 3px;
-            }
-        }
-        .guardian-detail-wrapper h2, 
-        .emergency-contact-detail-wrapper h2, 
-        .medical-info-edit h2 {
-            //margin-left: 4%;
-        }  
-    }
 
     .billing-container .left-feature-container.col-md-12 .tile.col-md-6 {
         margin-top: 0px !important;
@@ -1708,8 +1706,6 @@ body {
         .row{
             float: left;
             div{
-                //width: 40%;
-                //width: auto;
                 float: left;
                 &.col-md-1{
                     width: 8%;
@@ -1719,11 +1715,6 @@ body {
                 margin-top: 38px;
             }
         }
-    }
-
-    html body .input-group .input-group-btn {
-        // top: 21px;
-        // left: 0px;
     }
 
     body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container form{
@@ -1777,7 +1768,7 @@ body {
         margin-left: 0px;
     }
 
-        .dashboard-container #myCarousel.my-children-carousel .right.carousel-control{
+    .dashboard-container #myCarousel.my-children-carousel .right.carousel-control{
         margin-right: 0px;
     }
 

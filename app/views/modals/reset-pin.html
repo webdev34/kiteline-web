@@ -1,0 +1,36 @@
+<div class="overlay-container reset-pin">
+ 	<section class="overlay-right-col"  >
+
+	 	<h3 class="margin-bottom-25 center-align">Reset Pin</h3>
+
+ 		<form name="resetPinForm" novalidate="">
+ 			<div class="control-group col-md-4">
+			  <label class="control-label" for="oldPin">
+			    <span class="required">*</span>
+			    Old Pin
+			  </label>
+			  <div class="controls">
+			    <input id="oldPin" name="oldPin" ng-model="oldPin" type="text" class="form-control input-xlarge" required="" numeric-only maxlength="4" minlength="4" />
+			  </div>
+			</div>
+			<div class="control-group col-md-4">
+			  <label class="control-label" for="newPin">
+			    <span class="required">*</span>
+			    New Pin
+			  </label>
+			  <div class="controls">
+			    <input id="newPin" name="newPin" ng-model="newPin" type="text" class="form-control input-xlarge" required="" numeric-only maxlength="4" minlength="4" />
+			  </div>
+			</div>
+			<div class="control-group col-md-4">
+			    <button id="resetPinButton" ng-class="{'waiting': buttonDisable}" class="btn btn-primary reset-pin-button" ng-click="submitNewPin();" ng-disabled="!resetPinForm.$valid || buttonDisable">
+			      Reset Pin
+			  	</button> 
+
+			</div>
+ 		</form>
+
+
+
+	</section>
+<div>

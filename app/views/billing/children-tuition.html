@@ -5,6 +5,11 @@
 	<div class="clearfix"></div>
 	<ul class="tuition-list"  >
 		<li data-ng-repeat="child in userChildrenTuition">
+
+			<img ng-if="child.Sex.length == 0 && child.PhotoURL.length > 0" ng-src="{{child.PhotoURL}}" onerror="this.src = 'images/no_image_available.jpg';" />
+
+			<img ng-if="child.Sex.length == 0 && child.PhotoUrl.length == 0" ng-src="images/no_image_available.jpg" />
+
 			<img ng-if="child.Sex == 'M' && child.PhotoURL.length > 0" ng-src="{{child.PhotoURL}}" onerror="this.src = 'images/male.svg';" />
 			<img ng-if="child.Sex == 'M' && child.PhotoURL.length == 0" ng-src="images/male.svg" />
 			

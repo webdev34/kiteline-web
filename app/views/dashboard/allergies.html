@@ -34,7 +34,7 @@
 						<span ng-if="allergy.Severity == 'M'">Mild</span>
 
 					</td>
-					<td>
+					<td class="action">
 						<span ng-show="allergy.Action.length == 0">N/A</span>
 						<span ng-show="allergy.Action.length > 0">{{allergy.Action}}</span>
 					</td>
@@ -132,7 +132,7 @@
 			<!-- Button -->
 			<div class="control-group button-wrapper">
 				<div class="controls">
-					<button id="addNewAllergy" name="addNewAllergy" class="btn btn-primary" ng-disabled="addNewAllergyForm.$invalid || buttonDisable" ng-click="addNewAllergyFunc()" >
+					<button id="addNewAllergy" name="addNewAllergy" ng-class="{'waiting': buttonDisable}" class="btn btn-primary" ng-disabled="addNewAllergyForm.$invalid || buttonDisable" ng-click="addNewAllergyFunc()" >
 					<i class="fa fa-plus"></i>
 					Add Allergy
 					</button>
@@ -186,7 +186,7 @@
 			<!-- Button -->
 			<div class="control-group button-wrapper">
 				<div class="controls">
-					<button id="editAllergy" name="editAllergy" class="btn btn-primary" ng-disabled="editAllergyForm.$invalid || buttonDisable" ng-click="editAllergyFunc()" >
+					<button id="editAllergy" name="editAllergy" ng-class="{'waiting': buttonDisable}" class="btn btn-primary" ng-disabled="editAllergyForm.$invalid || buttonDisable" ng-click="editAllergyFunc()" >
 					<i class="fa fa-plus"></i>
 					Edit Allergy
 					</button>

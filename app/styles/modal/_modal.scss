@@ -13,13 +13,27 @@ body {
                  color: #4e99bd;
             }
         }
+        .reset-pin-button{
+            margin-top: 27px;
+        }
+        .kiteline-tooltip-wrapper{
+            width: 190px;
+            .kiteline-tooltip{
+                top: -47px;
+                font-size: 13px;
+                text-align: left;
+                padding-left: 14px;
+                line-height: 16px;
+            }
+
+        }
         &.ngdialog-theme-default {
             padding: 10px;
             width: 100%;
             height: auto;
             &.ngdialog-pdf {
                 .ngdialog-content {
-                    width: 48%;
+                    width: 50%;
                     //height: 82%;
                 }
             }
@@ -44,6 +58,12 @@ body {
                     height: 100%;
                     background-color: white;
                     color: #529acd;
+                    
+                    &.reset-pin{
+                        width: 90%;
+                        margin: 0 auto;
+                    }
+
                     &.invoice-history{
                         .control-group{
                             margin: 0px;
@@ -152,9 +172,9 @@ body {
                         &.ng-dirty.ng-invalid,
                         &.ng-dirty.ng-invalid-required,
                         &.ng-error-input {
-                            border-color: red;
-                            outline-color: red;
-                            background-color: #f66;
+                            border-color: red !important;
+                            outline-color: red !important;
+                            background-color: #f66 !important;
                             color: white;
                         }
                        

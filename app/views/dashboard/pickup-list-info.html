@@ -116,7 +116,7 @@
 					</span>
 				</div>
 				<div class="button-wrapper detail-breakdown" >
-						<button class="btn btn-primary" ng-disabled="editPickuplistForm.$invalid || buttonDisable" ng-click="editPickupContactInfo();">Save</button>
+						<button ng-class="{'waiting': buttonDisable}" class="btn btn-primary" ng-disabled="editPickuplistForm.$invalid || buttonDisable" ng-click="editPickupContactInfo();">Save</button>
 						<button class="btn btn-danger" ng-click="editSection('Picklist Info')">Cancel</button>
 				</div>
 			</form>
@@ -156,7 +156,7 @@
 						</span>
 					</div>
 					<div class="button-wrapper detail-breakdown" >
-						<button class="btn btn-primary" ng-disabled="newPickuplistForm.$invalid || buttonDisable" ng-click="newPickupListContact();">Save</button>
+						<button ng-class="{'waiting': buttonDisable}" class="btn btn-primary" ng-disabled="newPickuplistForm.$invalid || buttonDisable" ng-click="newPickupListContact();">Save</button>
 						<button class="btn btn-danger" ng-click="editSection('New Picklist Info')">Cancel</button>
 					</div>
 				</div>

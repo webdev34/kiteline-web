@@ -44,7 +44,7 @@ angular.module('kiteLineApp').controller 'LoginCtrl', [
         $rootScope.showLogIn = false
       else
         $rootScope.showLogIn = true
-        $scope.validationCheck()
+        # $scope.validationCheck()
 
     $scope.forgotPinFunc = ->
       $rootScope.dataLoading = true

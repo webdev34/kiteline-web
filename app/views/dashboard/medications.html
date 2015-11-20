@@ -168,7 +168,7 @@
 			<!-- Button -->
 			<div class="control-group button-wrapper">
 				<div class="controls">
-					<button id="addNewMedication" name="addNewMedication" class="btn btn-primary" ng-disabled="addNewMedicationForm.$invalid || buttonDisable" ng-click="addNewMedicationFunc()" >
+					<button id="addNewMedication" name="addNewMedication" ng-class="{'waiting': buttonDisable}" class="btn btn-primary" ng-disabled="addNewMedicationForm.$invalid || buttonDisable" ng-click="addNewMedicationFunc()" >
 					<i class="fa fa-plus"></i>
 					Add Medication
 					</button>
@@ -254,7 +254,7 @@
 			<!-- Button -->
 			<div class="control-group button-wrapper">
 				<div class="controls">
-					<button id="editMedication" name="editMedication" class="btn btn-primary" ng-disabled="editMedicationForm.$invalid || buttonDisable" ng-click="editMedicationFunc()" >
+					<button id="editMedication" name="editMedication" ng-class="{'waiting': buttonDisable}" class="btn btn-primary" ng-disabled="editMedicationForm.$invalid || buttonDisable" ng-click="editMedicationFunc()" >
 					<i class="fa fa-plus"></i>
 					Edit Medication
 					</button>

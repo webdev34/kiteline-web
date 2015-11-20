@@ -78,8 +78,7 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
     ChildService.updateMedication($scope.editMedicationObj, $scope.viewChild.ChildId).then (response) ->
       $scope.getMedicalInfo($scope.viewChild.ChildId)
       $scope.editMedication = false
-      $rootScope.makingAjaxCallFunc(true) 
-
+      $rootScope.makingAjaxCallFunc(false) 
 
   $scope.deleteMedication = (medication) ->
     ChildService.deleteMedication(medication.ChildMedicationId).then (response) ->

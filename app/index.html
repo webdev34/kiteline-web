@@ -30,18 +30,6 @@
     <link href="third-party-css/kendo.blueopal.min.css" rel="stylesheet" />
     <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
     <link href="ReportViewer/styles/telerikReportViewer-9.0.15.324.css" rel="stylesheet" />
-    <!-- Gets User IP Address -->
-    <script type="text/javascript">
-    window.onload = function () {
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "https://www.telize.com/jsonip?callback=DisplayIP";
-        document.getElementsByTagName("head")[0].appendChild(script);
-    };
-    function DisplayIP(response) {
-        document.getElementById("user-ip").value = response.ip;
-    }
-    </script>
   </head>
   <body class="skychildcare {{currentView}}" ng-class="{'loginPage': isLoginPage, 'privacy': isPrivacy, 'terms-of-service': isTOS}" >
 
@@ -53,7 +41,7 @@
         <div class="inner-kiteline-content-container" ng-view></div>
     </div>
     
-    <input id="user-ip" type="hidden" />
+    <input id="user-ip" type="hidden" value="{{userIP}}" />
     <span us-spinner="{shadow: true}" spinner-key="spinner-1"></span>
     
     <footer ng-hide="isLoginPage" class="footer">
@@ -118,6 +106,7 @@
         
         
         <script src="scripts/services/storage.js"></script>
+        <script src="scripts/services/ip.js"></script>
         <script src="scripts/services/login.js"></script>
         <script src="scripts/services/payment.js"></script>
         <script src="scripts/services/center-info.js"></script>

@@ -1,29 +1,31 @@
 
-angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScope, $location, StorageService, CenterInfoService, PaymentService, AnnouncementsService, CreditCardService, InvoiceDetailService, InvoiceService, GuardianService, AccountService, usSpinnerService, $window, ngDialog, Pagination) ->
-  
-  if window.location.href.indexOf('localhost:9000') > - 1
+angular.module('kiteLineApp').controller 'MainCtrl', ($http, $filter, $scope, $rootScope, $location, StorageService, CenterInfoService, PaymentService, AnnouncementsService, CreditCardService, InvoiceDetailService, InvoiceService, GuardianService, AccountService, usSpinnerService, $window, ngDialog, Pagination, IPService) ->
+
+  if $window.location.href.indexOf('localhost:9000') > - 1
+    $rootScope.isLocalHost = true
+  else
+    $rootScope.isLocalHost = false
+    if $window.location.protocol != 'https:'
+      $window.location = 'https://' + $window.location.href.substring($window.location.protocol.length, $window.location.href.length)
+
+  if $window.location.href.indexOf('localhost:9000') > - 1
     $rootScope.modalUrl = 'http://localhost:9000'
-  else if window.location.href.indexOf('cloud.spinsys.com') > - 1
-
-    if window.location.href.indexOf('kitelineweb-Redesign') > - 1
-      $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb-redesign'
-    else
-      $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb'
-
-  else if window.location.href.indexOf('uat.skychildcare.com/parentportal2') > - 1
+  else if $window.location.href.indexOf('cloud.spinsys.com') > - 1
+    $rootScope.modalUrl = 'https://cloud.spinsys.com/skychildcare/kitelineweb-redesign'
+  else if $window.location.href.indexOf('uat.skychildcare.com/parentportal2') > - 1
     $rootScope.modalUrl = 'https://uat.skychildcare.com/parentportal2'
-  else if window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
-    $rootScope.modalUrl = 'https://uat.skychildcare.com/parentportal'
-  else if window.location.href.indexOf('parent.skychildcare.com') > - 1
+  else if $window.location.href.indexOf('parent.skychildcare.com') > - 1
     $rootScope.modalUrl = 'https://parent.skychildcare.com'
   
-  if window.location.href.indexOf('localhost:9000') > -1 || window.location.href.indexOf('cloud.spinsys.com') > - 1
+  if $window.location.href.indexOf('localhost:9000') > -1 || $window.location.href.indexOf('cloud.spinsys.com') > - 1
     $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
-  else if window.location.href.indexOf('parent.skychildcare.com') > - 1
+  else if $window.location.href.indexOf('parent.skychildcare.com') > - 1
     $rootScope.rootUrl = 'https://app.skychildcare.com/services/kiteline/v2.0/'
-  else if window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
+  else if $window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
     $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
 
+  IPService.getIPAddress()
+    
   $rootScope.buttonDisable = false
   $rootScope.isTablet = false
   $rootScope.pageTitle = ' '
@@ -99,24 +101,25 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
   $rootScope.makingAjaxCallFunc = (state) ->
     $rootScope.buttonDisable = state
 
+  $rootScope.resetPin = () ->
+    ngDialog.open template: $rootScope.modalUrl+'/views/modals/reset-pin.html'
+
+  $rootScope.submitNewPin = () ->
+    $rootScope.makingAjaxCallFunc(true)
+    GuardianService.updatePin().then (response) ->
+      $rootScope.makingAjaxCallFunc(false)
+     
   $rootScope.logOut = () ->
     $rootScope.showLogOut = false
     StorageService.deleteLocalStorage();
-    if window.location.href.indexOf('localhost:9000') > - 1
+    if $window.location.href.indexOf('localhost:9000') > - 1
       $window.location.href = '/'
-    else if window.location.href.indexOf('cloud.spinsys.com') > - 1
-
-      if window.location.href.indexOf('kitelineweb-redesign') > - 1
-        $window.location.href = 'https://cloud.spinsys.com/skychildcare/kitelineweb-redesign/#/'
-      else
-        $window.location.href = 'https://cloud.spinsys.com/skychildcare/kitelineweb/#/'
-        
-    else if window.location.href.indexOf('parent.skychildcare.com') > - 1
+    else if $window.location.href.indexOf('cloud.spinsys.com') > - 1
+      $window.location.href = 'https://cloud.spinsys.com/skychildcare/kitelineweb-redesign/#/'   
+    else if $window.location.href.indexOf('parent.skychildcare.com') > - 1
       $window.location.href = 'https://parent.skychildcare.com/#/'
-    else if window.location.href.indexOf('uat.skychildcare.com/parentportal2') > - 1
+    else if $window.location.href.indexOf('uat.skychildcare.com/parentportal2') > - 1
       $window.location.href = 'https://uat.skychildcare.com/parentportal2/#/'
-    else if window.location.href.indexOf('uat.skychildcare.com/parentportal') > - 1
-      $window.location.href = 'https://uat.skychildcare.com/parentportal/#/'
 
   $rootScope.sortByFunc = (sortBy, reverse) ->
     $rootScope.sortOrderBy = sortBy
@@ -379,7 +382,8 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     $rootScope.arrayOfinvoicesHolder = $filter('orderBy')($rootScope.arrayOfinvoicesHolder, 'CreatedOn', true)
 
     angular.forEach $rootScope.arrayOfinvoicesHolder, (value, key) ->
-      $rootScope.arrayOfinvoices.push value.InvoiceId
+      if value.InvoiceId.length > 0
+        $rootScope.arrayOfinvoices.push value.InvoiceId
 
   $rootScope.getUserData = () ->
     $rootScope.currentCenter = StorageService.getItem('currentCenter')
@@ -408,7 +412,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
       $rootScope.guardians = response.data
       $rootScope.guardiansPagination = Pagination.getNew()
       $rootScope.guardiansPagination.numPages = Math.ceil($rootScope.guardians.length / $rootScope.guardiansPagination.perPage)
-
       GuardianService.getGuardian($rootScope.guardians[0].GuardianId).then (response) ->
         $rootScope.headOfHouseHold = response.data
 
@@ -416,7 +419,6 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($filter, $scope, $rootScop
     PaymentService.getPastPaymentsByDate($rootScope.currentCenter.CustomerId).then (response) ->
       $scope.pastTransactions  = response
       $scope.setPagination()
-
 
   $rootScope.getTransactionsByDate = (type) ->
     if type == 'Historical'

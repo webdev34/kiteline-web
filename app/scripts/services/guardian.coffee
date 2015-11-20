@@ -1,10 +1,44 @@
 
-angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope, toastr, $location, StorageService, LogInService) ->
+angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope, toastr, $location, StorageService, LogInService, ngDialog) ->
   rootUrl =  $rootScope.rootUrl
   self = undefined
   self = this
   deferred = undefined
   deferred = $q.defer()
+
+  
+  @updatePin = (currentPin, newPin) ->   
+    url = rootUrl+'api/Guardian/updatepin'
+    $http(
+      method: 'POST'
+      headers:
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+        'X-SkyChildCareToken': $rootScope.currentUserToken
+        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
+        'X-SkyChildCareUserId': $rootScope.currentUserEmail
+      data:
+        'GuardianId': $rootScope.currentCenter.GuardianId
+        'CurrentPin': document.getElementById('oldPin').value
+        'NewPin': document.getElementById('newPin').value
+        'CenterId': $rootScope.currentCenter.CenterId
+
+      url: url).success((data, status, headers, config) ->
+      deferred.resolve data
+
+      if data is 'Current Pin is incorrect. Enter correct Pin to change it.' or data is 'Desired Pin is not available, please enter different Pin.'
+        toastr.error data, 'Error'
+      else if data is 'Success'
+        toastr.success 'PIN successfully updated.', 'Success'
+        StorageService.setItem 'userPin', document.getElementById('newPin').value
+        ngDialog.closeAll()
+
+      return
+    ).error (data, status, headers, config) ->
+      deferred.reject status
+
+      toastr.error status, 'Success'
+      return
 
   @getAllGuardians = (familyId) ->  
     url = rootUrl+'api/Guardians/GetAllGuardians/'+familyId

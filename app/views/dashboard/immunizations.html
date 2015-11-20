@@ -220,7 +220,7 @@
 			<!-- Button -->
 			<div class="control-group button-wrapper">
 				<div class="controls">
-					<button id="editImmunization" name="editImmunization" class="btn btn-primary" ng-disabled="editImmunizationForm.$invalid || buttonDisable" ng-click="editImmunizationFunc()" >
+					<button id="editImmunization" name="editImmunization" ng-class="{'waiting': buttonDisable}" class="btn btn-primary" ng-disabled="editImmunizationForm.$invalid || buttonDisable" ng-click="editImmunizationFunc()" >
 					<i class="fa fa-plus"></i>
 					Edit Immunization
 					</button>

@@ -20,7 +20,7 @@ angular.module('kiteLineApp').service 'ContactService', ($http, $q, $rootScope, 
         'EmergencyContactId': obj.EmergencyContactId
         'Name': obj.Name
         'RelationShip': obj.RelationShip
-        'Pin': obj.Pin
+        # 'Pin': obj.Pin
       url: url).success((data, status, headers, config) ->
       deferred.resolve data
 

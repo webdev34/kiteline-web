@@ -5,7 +5,8 @@
 	        <li ng-class="{'active': activeGuardian == 'guardian-'+[$index+1]}" data-ng-repeat="guardian in guardians | startFrom: guardiansPagination.page * guardiansPagination.perPage | limitTo: guardiansPagination.perPage" ng-animate="'animate'" ng-click="goToGuardian(guardian.GuardianId); changeActiveGuardian('guardian-'+[$index+1]);">
 				<div class="pull-left">
 					<span class="feed-headline cap">Guardian {{$index+1}}</span>
-					<span class="feed-headline cap">{{guardian.FullName || '(Not Set)'}}</span>
+					<span ng-show="guardian.FirstName.length > 0 && guardian.LastName.length > 0" class="feed-headline cap">{{guardian.FirstName}} {{guardian.LastName}}</span>
+					<span ng-show="guardian.FirstName.length == 0 && guardian.LastName.length == 0" class="feed-headline cap">(Not Set)</span>
 				</div>
 				<div class="pointer pull-right">
 				</div>
@@ -79,7 +80,7 @@
 		<!-- Edit -->
 
 		<div class="edit-guardian-info" ng-show="editGuardian">
-			<form name="editGuardianForm">
+			<form name="editGuardianForm1">
 				<div class="detail-breakdown">
 					<span class="detail-label">
 						<span class="required">*</span>
@@ -132,8 +133,7 @@
 					<span class="detail-label">Security PIN</span>
 					<span class="detail-value" > {{ viewGuardian.PIN }}</span>
 				</div>	
-			
-
+			</form>	
 		</div>
 		<!-- Edit -->
 
@@ -207,6 +207,7 @@
 
 		<!-- EDIT GUARDIAN ADDRESS -->
 		<div class="edit-guardian-address-wrapper" ng-show="editGuardian">
+			<form name="editGuardianForm2">
 				<div class="detail-breakdown">
 					<span class="detail-label">Street</span>
 					<span class="detail-value">
@@ -231,7 +232,7 @@
 				<div class="detail-breakdown">
 					<span class="detail-label">Zip</span>
 					<span class="detail-value">
-						<input type="text" class="form-control" ng-model="viewGuardianEdit.Zip" name="guardian_zip" maxlength="20" numeric-only />
+						<input type="text" class="form-control" ng-model="viewGuardianEdit.Zip" name="guardian_zip" maxlength="10" numeric-only />
 					</span>
 				</div>
 				<div class="detail-breakdown">
@@ -272,8 +273,7 @@
 					</span>
 				</div>
 				<div class="button-wrapper detail-breakdown">
-					<img ng-if="buttonDisable"  class="preloader" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
-					<button class="btn btn-primary" ng-click="editGuardianInfo();" ng-disabled="!editGuardianForm.$valid || buttonDisable">Save</button>
+					<button ng-class="{'waiting': buttonDisable}" class="btn btn-primary" ng-click="editGuardianInfo();" ng-disabled="!editGuardianForm1.$valid || !editGuardianForm2.$valid || buttonDisable">Save</button>
 					<button class="btn btn-danger" ng-click="editSection('Guardian Info')">Cancel</button>
 				</div>
 			</form>
