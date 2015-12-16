@@ -1611,6 +1611,21 @@ body {
     html body .table-wrapper.longer {
         min-height: auto;
     }
+
+    body .ngdialog.ngdialog-theme-default .ngdialog-content .overlay-container .col-md-4{
+        width: 100%;
+        form{
+            select{
+                width: 95% !important;
+            }
+            .fa-caret-down{
+                right: 15px !important;
+            }
+            #AccountNumber{
+                width: 95% !important;
+            }
+        }
+    }
     .left-feature-container.col-md-8.white-bg{
         width: 100%;
     }

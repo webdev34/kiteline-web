@@ -435,5 +435,6 @@ angular.module('kiteLineApp').controller 'DashboardCtrl', ($scope, $rootScope, $
         if $rootScope.currentCenter.WebSiteURL.indexOf('http://') != 0
           $rootScope.currentCenter.WebSiteURL = 'http://'+$rootScope.currentCenter.WebSiteURL
         $rootScope.stopSpin()
+        $rootScope.termsPolicyCheck()
       ), 1000
         

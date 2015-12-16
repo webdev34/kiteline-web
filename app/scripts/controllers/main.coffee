@@ -87,11 +87,24 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($http, $filter, $scope, $r
       $rootScope.pageTitle = 'Forms'
       document.title = 'Parent Portal - SkyChildCare | Forms'
 
-  $rootScope.startSpin = ->
+  
+  $rootScope.termsPolicyCheck = ()->
+    if $rootScope.currentCenter.RequirePolicyConsent == true
+      ngDialog.open
+        template: $rootScope.modalUrl+'/views/modals/termsPolicy.html'
+        className: 'ngdialog-theme-default ngdialog-terms'
+        showClose: false
+        closeByDocument: false
+
+  $rootScope.acceptTermsPolicy = ()->
+    GuardianService.termsVerification($rootScope.currentCenter.CenterId, $rootScope.currentCenter.FamilyId, $rootScope.currentCenter.PolicyId, $rootScope.currentUserEmail)
+    ngDialog.closeAll()
+
+  $rootScope.startSpin = () ->
     $rootScope.isLoading = true
     usSpinnerService.spin 'spinner-1'
 
-  $rootScope.stopSpin = ->
+  $rootScope.stopSpin = () ->
     $rootScope.isLoading = false
     usSpinnerService.stop 'spinner-1'
 

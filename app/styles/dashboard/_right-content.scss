@@ -53,57 +53,11 @@
 		}
 	}
 
-	.contact-container.box-shadow-container {
-		margin-top: 15px;
-		height: auto;
-		color: #ccc;
-
-		.day-care-hours {
-			margin-top: 15px;
-		}
-
-		.text-center{
-		    margin-bottom: 15px;
-		    font-size: 16px;
-		    span{
-		    	word-wrap: break-word;
-		    }
-		}
-
-		p{
-			font-size: 16px;
-			padding-left: 5px;
-		}
-		.glyphicon{
-			margin-top: 15px;
-	    	margin-left: 10px;
-		}
-
-		h4{
-			margin-top: 17px;
-	    	margin-left: 5px;
-		}
-
-		.contact-wrap{
-	    	margin-bottom: 10px;
-	    	@extend .ellipsis;
-	    	.fa-mobile{
-	    		margin-right: 10px;
-	    		margin-left: 5px;
-	    	}
-		}
-		.contact-section-wrapper{
-			padding-left: 5px;
-		}
-		.day-care-hours{
-			@extend .ellipsis;
-			b{
-				width: 40px;
-	    		float: left;
-			}
-		}
-		.col-md-6{
-			padding-right: 0px;
+	.day-care-hours{
+		
+		b{
+			width: 85px;
+    		display: inline-block;
 		}
 	}
 }

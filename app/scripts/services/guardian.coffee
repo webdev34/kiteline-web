@@ -6,6 +6,29 @@ angular.module('kiteLineApp').service 'GuardianService', ($http, $q, $rootScope,
   deferred = undefined
   deferred = $q.defer()
 
+  @termsVerification = () ->
+    url = rootUrl+'api/Guardian/AgreeToPolicy'
+    $http(
+      method: 'POST'
+      headers:
+        'Content-Type': 'application/json'
+        'X-SkyChildCareApiKey': '{10E8BA23-5605-41F3-A357-52219AB105C5}'
+        'X-SkyChildCareToken': $rootScope.currentUserToken
+        'X-SkyChildCareCenterId': $rootScope.currentCenter.CenterId
+        'X-SkyChildCareUserId': $rootScope.currentUserEmail
+      data:
+        'familyid': $rootScope.currentCenter.FamilyId
+        'centerid': $rootScope.currentCenter.CenterId
+        'centerfileid': $rootScope.currentCenter.PolicyId
+        'userid': $rootScope.currentUserEmail
+      url: url).success((data, status, headers, config) ->
+      deferred.resolve data
+      console.log data
+     
+    ).error (data, status, headers, config) ->
+      deferred.reject status
+        
+      return
   
   @updatePin = (currentPin, newPin) ->   
     url = rootUrl+'api/Guardian/updatepin'

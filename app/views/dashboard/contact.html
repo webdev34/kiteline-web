@@ -9,20 +9,17 @@
 				{{currentCenter.CenterCity}}, {{currentCenter.CenterState}} {{currentCenter.CenterZip}}
 			</p>
 			<div class="contact-section-wrapper col-md-12 pull-left">
-				<div class="contact-wrap">
+				<div class="contact-wrap" ng-show="currentCenter.WebSiteURL != 'http://'">
 					<i class="fa fa-globe pull-left"></i>
-					<a href="{{currentCenter.WebSiteURL}}" target="_blank" ng-hide="currentCenter.WebSiteURL.length == 0">{{currentCenter.WebSiteURL}}</a>
-					<p ng-show="currentCenter.WebSiteURL.length == 0">No Website Listed</p>
+					<a href="{{currentCenter.WebSiteURL}}" target="_blank">{{currentCenter.WebSiteURL}}</a>
 				</div>	
-				<div class="contact-wrap phone-wrapper clearfix">
+				<div class="contact-wrap phone-wrapper clearfix" ng-show="currentCenter.CenterPhone">
 					<i class="fa fa-mobile pull-left"></i>
-					<a class="phone-number" href="tel:{{currentCenter.CenterPhone}}" ng-hide="currentCenter.CenterPhone.length == 0">{{currentCenter.CenterPhone}}</a>
-					<p ng-show="currentCenter.CenterPhone.length == 0">No Number Listed</p>
+					<a class="phone-number" href="tel:{{currentCenter.CenterPhone}}">{{currentCenter.CenterPhone}}</a>
 				</div>
-				<div class="contact-wrap clearfix">
+				<div class="contact-wrap clearfix" ng-show="currentCenter.CenterEmail">
 					<i class="fa fa-at pull-left"></i>
-					<a href="mailto:{{currentCenter.EmailAddress}}" ng-hide="currentCenter.CenterPhone.length == 0">{{currentCenter.CenterEmail}}</a>
-					<p ng-show="currentCenter.EmailAddress.length == 0">No Email Listed</p>
+					<a href="mailto:{{currentCenter.EmailAddress}}">{{currentCenter.CenterEmail}}</a>
 				</div>
 			</div>
 			<p class="day-care-hours col-md-12 clearfix">

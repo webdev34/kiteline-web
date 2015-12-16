@@ -1,5 +1,5 @@
 
-angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, toastr, $location, StorageService, CustomStatisticsService) ->
+angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, toastr, $location, StorageService, CustomStatisticsService, ngDialog) ->
   
   if window.location.href.indexOf('localhost:9000') > -1 || window.location.href.indexOf('cloud.spinsys.com') > - 1
     $rootScope.rootUrl = 'https://cloud.spinsys.com/SkyServices/KiteLine/V1.0/'
@@ -75,7 +75,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
         StorageService.setItem 'GuardianId', data.GuardianId
         StorageService.setItem 'userPin', pin
         StorageService.setItem 'LastLoginInfo', data.LastLoginInfo
-        
+
         if !trueLogin
           self.setTimeStamp()
           $location.path 'dashboard'
@@ -128,7 +128,7 @@ angular.module('kiteLineApp').service 'LogInService', ($http, $q, $rootScope, to
 
       return     
 
-  @getCenterInfo = (centerId, familyId) ->
+  @getCenterInfo = (centerId, familyId, userId) ->
     url = rootUrl+'api/Account/GetAccounts?familyId='+familyId+'&centerId='+centerId
     $http(
       method: 'GET'

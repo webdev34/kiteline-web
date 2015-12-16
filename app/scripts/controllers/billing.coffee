@@ -223,6 +223,7 @@ angular.module('kiteLineApp').controller 'BillingCtrl', ($scope, $rootScope, $fi
       $rootScope.getInvoiceData().then (response) ->
       setTimeout (->
         $rootScope.stopSpin()
+        $rootScope.termsPolicyCheck()
         return
       ), 1000
 

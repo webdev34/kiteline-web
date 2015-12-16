@@ -1,0 +1,24 @@
+<div class="overlay-container reset-pin">
+ 	<section class="overlay-right-col"  >
+
+	 	<h3 class="margin-bottom-25 center-align">Terms & Conditions {{footerYear}}</h3>
+
+ 		<form name="termsForm" class="termsForm" novalidate="">
+ 			<div class="control-group col-md-12">
+			  <div class="controls">
+			    <input id="termsInput" name="termsAccepted" ng-model="termsAccepted" type="checkbox" required=""/>
+			    <span>I agree to the center's</span>
+			    <a class="termsAndConditions" ng-href="{{currentCenter.PolicyURL}}" target="_blank">Terms & Policy</a>
+			  </div>
+
+			    <button id="termsAcceptButton" ng-class="{'waiting': buttonDisable}" class="btn btn-primary" ng-click="acceptTermsPolicy();" ng-disabled="!termsForm.$valid || buttonDisable">
+			      Submit
+			  	</button> 
+
+			</div>
+ 		</form>
+
+
+
+	</section>
+<div>

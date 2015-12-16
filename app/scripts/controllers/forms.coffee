@@ -22,4 +22,4 @@ angular.module('kiteLineApp').controller 'FormsCtrl', ($scope, $rootScope, $filt
       $scope.currentCenterFilesPagination = Pagination.getNew(10)
       $scope.currentCenterFilesPagination.numPages = Math.ceil($scope.currentCenterFiles.length/$scope.currentCenterFilesPagination.perPage)
       $rootScope.stopSpin()
-      
+      $rootScope.termsPolicyCheck()
