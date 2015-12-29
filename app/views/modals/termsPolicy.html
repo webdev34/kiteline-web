@@ -1,14 +1,17 @@
 <div class="overlay-container reset-pin">
  	<section class="overlay-right-col"  >
 
-	 	<h3 class="margin-bottom-25 center-align">Terms & Conditions {{footerYear}}</h3>
+	 	<h3 class="margin-bottom-25 center-align">Terms and Conditions</h3>
+
+	
+	 <iframe type="application/pdf" width="380" height="385" ng-src="{{currentCenter.PolicyURL}}" allowfullscreen frameborder="0"></iframe>
 
  		<form name="termsForm" class="termsForm" novalidate="">
  			<div class="control-group col-md-12">
 			  <div class="controls">
 			    <input id="termsInput" name="termsAccepted" ng-model="termsAccepted" type="checkbox" required=""/>
 			    <span>I agree to the center's</span>
-			    <a class="termsAndConditions" ng-href="{{currentCenter.PolicyURL}}" target="_blank">Terms & Policy</a>
+			    <a class="termsAndConditions" ng-href="{{currentCenter.PolicyURL}}" download >Terms and Conditions</a>
 			  </div>
 
 			    <button id="termsAcceptButton" ng-class="{'waiting': buttonDisable}" class="btn btn-primary" ng-click="acceptTermsPolicy();" ng-disabled="!termsForm.$valid || buttonDisable">

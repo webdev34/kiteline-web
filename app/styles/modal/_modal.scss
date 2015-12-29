@@ -45,7 +45,12 @@ body {
 
             &.ngdialog-terms{
                 .ngdialog-content {
-                    width: 35%;
+                    width: 65%;
+
+                    iframe{
+                        width: 100%;
+                        margin-bottom: 25px;
+                    }
                 }
 
                 .termsForm{
@@ -70,9 +75,7 @@ body {
                     }
 
                     #termsAcceptButton{
-                        margin-left: 65px;
-                        display: block;
-                        margin-top: 10px;
+                        margin-left: 5px;
                     }
                 }
 

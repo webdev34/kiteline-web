@@ -1,5 +1,5 @@
 
-angular.module('kiteLineApp').controller 'MainCtrl', ($http, $filter, $scope, $rootScope, $location, StorageService, CenterInfoService, PaymentService, AnnouncementsService, CreditCardService, InvoiceDetailService, InvoiceService, GuardianService, AccountService, usSpinnerService, $window, ngDialog, Pagination, IPService) ->
+angular.module('kiteLineApp').controller 'MainCtrl', ($sce, $http, $filter, $scope, $rootScope, $location, StorageService, CenterInfoService, PaymentService, AnnouncementsService, CreditCardService, InvoiceDetailService, InvoiceService, GuardianService, AccountService, usSpinnerService, $window, ngDialog, Pagination, IPService) ->
 
   if $window.location.href.indexOf('localhost:9000') > - 1
     $rootScope.isLocalHost = true
@@ -25,6 +25,7 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($http, $filter, $scope, $r
     $rootScope.rootUrl = ' https://uat.skychildcare.com/services/KiteLine/V2.0/'
 
   IPService.getIPAddress()
+
     
   $rootScope.buttonDisable = false
   $rootScope.isTablet = false
@@ -86,10 +87,13 @@ angular.module('kiteLineApp').controller 'MainCtrl', ($http, $filter, $scope, $r
     if $location.$$path is '/forms'
       $rootScope.pageTitle = 'Forms'
       document.title = 'Parent Portal - SkyChildCare | Forms'
-
+  
+  $rootScope.trustSrc = (src) ->
+    $sce.trustAsResourceUrl src
   
   $rootScope.termsPolicyCheck = ()->
     if $rootScope.currentCenter.RequirePolicyConsent == true
+      $rootScope.currentCenter.PolicyURL = $rootScope.trustSrc($rootScope.currentCenter.PolicyURL)
       ngDialog.open
         template: $rootScope.modalUrl+'/views/modals/termsPolicy.html'
         className: 'ngdialog-theme-default ngdialog-terms'

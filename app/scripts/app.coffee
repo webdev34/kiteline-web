@@ -17,6 +17,7 @@ angular.module('kiteLineApp', [
   'ng-currency'
   'mwl.confirm'
   'angucomplete-alt'
+  'ngSanitize'
 
 ]).config ($routeProvider) ->
   $routeProvider.when('/',

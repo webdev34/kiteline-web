@@ -1,13 +1,13 @@
 		  <label class="control-label pull-left" for="creditCardDropDown">Saved Credit Cards</label>
 
 		   <a class="btn btn-primary new-credit-card pull-right" ng-click="addAccountModal()" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0 || creditCardAccounts.length > 3" ng-disabled="processingPayment" ng-class="{'waiting': processingPayment}">
-			 Pay With New Credit Card
+			 Pay Now
  			</a>
 
 
  			<div class="kiteline-tooltip-wrapper pull-right" ng-show="creditCardAccounts.length > 3" >
 				<button class="btn btn-primary new-credit-card " ng-click="addAccountModal()" ng-hide="addCreditCardFromModal || creditCardAccounts.length == 0 " ng-disabled="processingPayment || creditCardAccounts.length > 3" ng-class="{'waiting': processingPayment}">
-						Pay With New Credit Card
+						Pay Now
 				</button>
 				<div class="kiteline-tooltip">
 					<div class="kiteline-tooltip-title ng-binding">No more than 4 Debit/Credit Cards</div> 

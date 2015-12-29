@@ -182,10 +182,10 @@
   <label class="control-label" for="addCreditCard"></label>
   <div class="controls">
     <button ng-show="paymentCC.saveAccount" id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="submitNewAccount('CC Payment', paymentCCForm); currentCardType(paymentCCForm.AccountNumber.$ccType);  processPayment();" ng-disabled="processingPayment || paymentGreaterThanAmount || creditCardAccounts.length > 3" ng-class="{'waiting': processingPayment}">
-      Pay with New Credit Card</button> 
+      Pay Now</button> 
 
  <button ng-show="!paymentCC.saveAccount" id="addCreditCard" name="addCreditCard" class="btn btn-primary" ng-click="currentCardType(paymentCCForm.AccountNumber.$ccType); processPayment();" ng-disabled="processingPayment || paymentGreaterThanAmount || creditCardAccounts.length > 3" ng-class="{'waiting': processingPayment}">
-      Pay with New Credit Card</button> 
+      Pay Now</button> 
       <p ng-show="creditCardAccounts.length > 3" class="red pull-left margin-top-10 margin-left-10">No more than 4 Debit/Credit Cards</p>
     <button id="cancelCreditCard" name="cancelCreditCard" class="btn btn-danger" ng-click="resetAccountForm('CC Payment', paymentCCForm);" ><i class="fa fa-times"></i> Cancel</button>
   </div>
